@@ -1,0 +1,11 @@
+load LineLabel
+
+! label
+gosub LineLabel,local(@tag)
+offset #buttonOffset
+
+! popup menu
+cell PopupMenuEditMenuItems local("Unknown")&"::"MenuItems local("Unreliable")&":0"MenuItems local("Questionable")&":1"MenuItems local("Secondary")&":2"MenuItems local("Primary")&":3"help local("Click to enter quality of this source")
+set border no
+SizeToFit
+

@@ -1,0 +1,15 @@
+! indent and print level and tag for this line
+sub LevTag
+  NewLine
+  tab @level
+  cell label @level
+  set font "Level Number Text"
+  SizeToFit
+  set height #defaultHeight$
+  help local("Line level number")
+
+  cell label @tag
+  SizeToFit
+  set height #defaultHeight$
+  help local(@tag)
+endSub

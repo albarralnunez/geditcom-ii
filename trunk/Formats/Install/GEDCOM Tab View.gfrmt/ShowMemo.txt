@@ -1,0 +1,21 @@
+sub ShowMemo #memoContent
+  if #memoContent!=""
+    #subLevel=@level+1
+    NewLine
+    tab #subLevel
+    cell label #subLevel
+    set font "Level Number Text"
+    SizeToFit
+    set height #defaultHeight$
+    help local("Line level number")
+
+    cell label "_MEMO"
+    SizeToFit
+    set height #defaultHeight$
+    help local("_MEMO")
+
+    cell static #memoContent
+    set width -1
+    help local("_MEMO")
+  endif
+endSub

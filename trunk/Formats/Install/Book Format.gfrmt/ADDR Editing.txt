@@ -1,0 +1,22 @@
+load LineLabel
+
+gosub LineLabel local(@tag)
+offset #editOffset
+
+! edit address in multiline field
+cell EditField
+set Width -1 border no offset 2-#editOffset
+if printing
+  set minheight #defaultHeight$
+else
+  set minheight 44 maxheight 128
+endif
+sizetofit
+
+! possible subordinate tags have alternate cells for address
+ShowAll ADR1
+ShowAll ADR2
+ShowAll CITY
+ShowAll STAE
+ShowAll POST
+ShowAll CTRY

@@ -1,0 +1,30 @@
+load FAMLines,RefLinks
+
+DisplayWidth #paperWidth$+#leftSkip+#rightSkip
+ResizeWindow true
+
+newline
+cell static
+set font "Name Text"
+text local("Genealogy Notes")
+sizetofit
+
+gosub FAMLines 2
+
+! notes on
+gosub RefLinks local("Notes on"),local("All Notated Records")
+gosub FAMLines 1
+
+! the notes in an expression field with option to editing if not printing
+if printing is false
+  cell StructuresLink "Edit_Notes"
+  set text local("Edit") border shadowlesssquare
+  sizetofit
+  linkall CONC
+endif
+
+cell ExpressionField,@this.CONC
+set width -1 font "Notes Text" border no
+sizetofit
+
+hideexcess

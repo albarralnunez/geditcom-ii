@@ -1,0 +1,37 @@
+load LineLabel
+
+if @TYPE="Creation Date"
+  gosub LineLabel local("Creation Date")
+
+  cell static,@contents
+  sizetofit -1
+  help local("The date this record was first created")
+  
+  HideExcess
+
+else
+  if @TYPE=""
+    gosub LineLabel,local(@tag)
+  else
+    newline
+    cell Expression,@TYPE
+    set format "%@: " font "Label Text"
+    sizetofit
+  endif
+  Offset #editOffset
+  help local("Click button to change the label")
+
+  ! edit field with value
+  #edge=#rightMargin$-#rightSkip-24-#cellSkip
+  cell editvalue
+  set Width #edge-#hpos$ 
+
+  ! rest in a child window
+  cell StructuresLink,REFNLabel
+  set image "more" border no
+  sizetofit
+  shift 24-#cellWidth$
+  LinkAll all
+  help local("Click button to change the label")
+
+endif

@@ -1,0 +1,9 @@
+! button to attach optional data
+
+sub AttachData
+  hskip 2  cell LinkButton
+  set border shadowlesssquare width 26 height 26
+  image "plus"
+  MenuLink "Attach Optional Data"
+  help local("Click to attach optional data fields")
+endSub

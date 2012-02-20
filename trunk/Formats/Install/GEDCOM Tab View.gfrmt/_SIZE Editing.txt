@@ -1,0 +1,8 @@
+load LevTag
+
+gosub LevTag
+
+! popup menu
+cell PopupMenuEdit
+MenuItems "Full Page","Large Textbook","Novel"help local("Click to select page size for text content")set controlsize small border no offset #popupOffset 
+sizetofit

@@ -1,0 +1,19 @@
+ifndef #eZone
+  use _Unknown_
+else
+
+newline -1
+cell static #msg&":"
+set width #labelWidth alignment right offset #labelOffset
+
+hskip 2
+cell EditDate
+set width #eZone-#labelWidth-2
+if printing is false
+  set border line
+else
+  set border none
+endif
+HideExcess
+
+endif

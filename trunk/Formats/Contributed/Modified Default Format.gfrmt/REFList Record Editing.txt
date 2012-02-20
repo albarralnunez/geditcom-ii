@@ -1,0 +1,8 @@
+cell GroupBox,local("Records citing")&" "&@this.altview
+  width -1
+  newline -#lineSkip-3
+  #lineSkip=0
+  ShowAll _REF
+EndGroup
+
+resizeWindow yes

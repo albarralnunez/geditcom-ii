@@ -1,0 +1,9 @@
+load LineLabel
+
+gosub LineLabel,local(@tag)
+set offset #buttonOffset
+
+! popup menu
+cell PopupMenuEdit
+set controlsize smallMenuItems local("Roadmap")&":Roadmap"MenuItems local("Satellite")&":Satellite"MenuItems local("Hybrid")&":Hybrid"MenuItems local("Terrain")&":Terrain"SizeToFit
+help local("Click to select initial map style")

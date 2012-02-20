@@ -1,0 +1,66 @@
+Load ResetTabs,OBJEPanes
+
+! -------------- Start Template -----------------
+#title=@TITL
+#path=@_FILE
+#form=@FORM
+
+GoSub ResetTabs,0
+GoSub OBJEPanes,"Zoom"
+
+newline
+if #form="url"
+  tab 1
+  cell Multimedia
+  set url #path width -1 font "Hyperlink Text"
+  if #title<>""
+    text #title
+  else
+    text #path
+  endif
+  set objectImage @this imageposition left
+    sizetofit -1
+
+  set alignment left height #imageHeight$
+  set help local("Click to open this URL link in your browser application.") 
+else
+  newline
+
+  if #zoom>1
+    DisplayWidth #zoom*#rightMargin$
+    #width=#rightMargin$-#leftSkip-#rightSkip
+  else
+    #width=#zoom*#rightMargin$-#leftSkip-#rightSkip
+  endif
+
+  cell Multimedia
+  #padding=5
+  set objectFull @this mmFormat #form width #width
+  set imageposition imageonly 
+  #mmRatio=#imageHeight$/#imageWidth$
+  #posWidth=#cellWidth$-2*#padding
+  set imagewidth #posWidth
+  set height #mmRatio*#posWidth+2*#padding
+
+  ! handle non-image objects
+  if #imageType$="noimage"
+    set text local("No image representation. Click to open in another application")
+    set font "Static Text" imageposition left alignment left
+    help local("Click to open in a helper application.")
+	help " "&local("You can configure which application opens each type of multimedia object.")
+  else if #imageType$="notfound"
+    set text " "&local("Multimedia file not found (click to fix)")
+    set font "Static Text" imageposition left alignment left
+    set MenuLink "Attach Multimedia"
+	help local("Click to link this record to a multimedia object.")
+  else if #imageType$="image"
+    help local("Click to open in a helper application.")
+	help " "&local("You can configure which application opens each type of multimedia object.")
+  else
+    ! thumbnail
+    help local("Click to view multimedia record")
+    set recordLink @this paneID ""
+  endif
+endif
+
+hideexcess

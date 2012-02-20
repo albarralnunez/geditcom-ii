@@ -1,0 +1,22 @@
+DropTypes SUBM
+settab 200
+
+cell GroupBox,local("Submission Details")
+width -1
+if SUBM is here  show SUBM
+  newline 3
+  #hasSUBM="Yes"
+else
+  #hasSUBM="No"
+endifshow FAMFshow TEMPshow ANCEshow DESCshow ORDI
+show RIN
+EndGroup
+
+! --------- Attach links
+if #hasSUBM="No"
+  newline  cell GroupBox,local("Attach Link")
+  width -1
+  newline -#lineSkip-3
+  #lineSkip=0
+  Show SUBM
+endif

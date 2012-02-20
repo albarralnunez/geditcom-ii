@@ -1,0 +1,8 @@
+load ResetTabs,SectionLabel
+
+gosub ResetTabs
+
+! -------------- Start Template -----------------
+DropTypes SUBM
+gosub SectionLabel "SUBN Record",0
+showall SUBM

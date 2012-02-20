@@ -1,0 +1,28 @@
+load ResetTabs
+
+! -------------- Start Template -----------------
+DropTypes SUBM,INDI,FAM,SOUR,OBJE,NOTE,_LOG,REPO
+gosub ResetTabs,40
+
+! --------- Title -----------
+cell GroupBox,local("Creating Software")
+  width -1
+  newline -3
+  Show SOUR
+EndGroup
+
+cell GroupBox,local("Submitter, Submission, and Home Records")
+  width -1
+  newline -3
+  Show SUBM
+  ShowAll SUBN
+  ShowAll _HME
+EndGroup
+
+ClearTabs
+SetTab 140,230,320
+cell GroupBox,local("Header Details")
+  width -1
+  newline -3
+  show DEST  show DATE  show FILE  show COPR  show GEDC  show CHAR  show LANG  show PLAC
+  show NOTEEndGroup

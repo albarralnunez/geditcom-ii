@@ -1,0 +1,24 @@
+! Optional tags for Event Editing
+if #opts[0]>0
+  cell CreateLinkButton
+  set image "plus" border shadowlesssquare
+  set width 22 height 22
+  if #msg!="NoOffset"
+    set Offset -2
+  endif
+  help local("Click to attach optional data fields")
+
+  repeat "#i",1,#opts[0]
+    if #opts[#i]="_PNOTE"
+      #plabel=local(#opts[#i])
+      #pdist=local("Anyone")
+      optionalTag #opts[#i],#plabel&" ("&#pdist&")",local(#opts[#i])
+      #pdist=local("Family")
+      optionalTag #opts[#i],#plabel&" ("&#pdist&")",local(#opts[#i]),"_DIST Family"
+      #pdist=local("Owner")
+      optionalTag #opts[#i],#plabel&" ("&#pdist&")",local(#opts[#i]),"_DIST Owner"
+    else
+      optionalTag #opts[#i],local(#opts[#i]),local(#opts[#i])
+    endif
+  endrepeat
+endif

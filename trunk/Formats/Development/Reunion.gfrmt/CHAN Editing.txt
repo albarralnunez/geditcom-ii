@@ -1,0 +1,17 @@
+! show changed dat
+NewLine
+
+Cell static,local("CHAN")&": "
+sizetofit
+
+Cell Expression @DATE
+AppendedExpression view
+SizeToFit 16
+set Alignment center
+
+! add the time
+Cell Expression @DATE.TIME
+SizeToFit 24
+set Alignment center
+
+HideExcess

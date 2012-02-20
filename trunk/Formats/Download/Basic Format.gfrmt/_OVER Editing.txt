@@ -1,0 +1,4 @@
+Newline
+cell CheckBoxEdit,local(@tag)
+sizetofit
+help local("Check to overwrite files in target folder rather then creating a new folder")

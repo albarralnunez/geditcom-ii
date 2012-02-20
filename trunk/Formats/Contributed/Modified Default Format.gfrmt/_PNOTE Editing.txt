@@ -1,0 +1,20 @@
+! static text with level and tabNewLine
+#tlabel=local(@tag)
+cell static,#tlabel&":"
+set tabwidth -1 alignment right
+if #msg="pfact"
+  offset 2
+endif
+help #tlabel
+
+! edit field with value
+cell EditValue
+if #msg="pfact"
+  set tabwidth 2
+else
+  set Width -1 Offset -2
+endif
+help local("Enter")&" "&local(@tag)
+set width #cellWidth$-90-#cellSkip$
+
+Show _DIST

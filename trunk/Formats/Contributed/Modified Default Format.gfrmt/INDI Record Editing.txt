@@ -1,0 +1,36 @@
+!SJGR changed from default to deal with modified FAMS template
+
+load TagBlock,ResetTabs,ListBlock,References,AttachData,INDIPanes
+
+! -------------- Start Template -----------------
+GoSub INDIPanes,""
+GoSub ResetTabs,0
+
+! --------- Birth and Death -----------
+show BIRT details
+showAll BIRT details
+show DEAT details
+showAll DEAT details
+
+! --------- Parent links -----------
+#famLabelEnd=120
+cell GroupBox,local("Parents")
+  width -1
+  NewLine -3
+  Show FAMC
+  ShowAll FAMC
+EndGroup
+
+! --------- Spouse/Family links -----------
+cell GroupBox,local("Spouses")
+  width -1
+  NewLine -3
+  !set a variable to decide later if this is the first/only family or a subsequent one SJGR
+  #fams=1
+  
+  Show FAMS
+  ShowAll FAMS
+EndGroup
+
+
+hideexcess

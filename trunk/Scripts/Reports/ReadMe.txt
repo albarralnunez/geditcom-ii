@@ -1,0 +1,1 @@
+This folder has scripts that generate reports and output them within GEDitCOM II as _RPT Records (formatted using html methods)

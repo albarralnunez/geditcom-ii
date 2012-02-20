@@ -1,0 +1,7 @@
+sub ToolBtn #menuCmd,#btnImage,#tip
+  cell LinkButton
+  set image #btnImage border none
+  set height 26 width 32
+  MenuLink #menuCmd
+  help #tip
+endSub

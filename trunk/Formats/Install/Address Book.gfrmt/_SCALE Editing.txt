@@ -1,0 +1,22 @@
+load LineLabel
+
+! label
+newline
+gosub LineLabel,local("_SCALE")
+offset #buttonOffset
+
+! popup menu
+cell PopupMenuEdit
+MenuItems local("25%")&":.25"
+MenuItems local("50%")&":.5"MenuItems local("75%")&":.75"MenuItems local("100%")&"::"MenuItems local("125%")&":1.25"MenuItems local("150%")&":1.5"MenuItems local("200%")&":2"MenuItems local("300%")&":3.0"MenuItems local("400%")&":4.0"if @tag="_SCALE"  MenuItems local("fit")&":0"
+endif
+#maxText=""
+ifdef #maxScale
+  if #maxScale<4
+    #maxText=" (<"&int(100*#maxScale)&"%)"
+  endif
+endifhelp local("Click to set image scaling")&#maxText
+set Autoreload YES border shadowlesssquareSizeToFit
+
+cell static,#maxText
+sizetofit

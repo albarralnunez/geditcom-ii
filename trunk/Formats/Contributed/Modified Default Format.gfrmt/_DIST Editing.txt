@@ -1,0 +1,16 @@
+if #msg="label"
+  NewLine
+  #tlabel=local(@tag)
+  cell static,#tlabel&":"
+  set tabwidth -1 alignment right
+  cell PopupMenuEdit
+  set offset -1 width 90
+else
+  cell PopupMenuEdit
+  set controlsize small offset -1 width 90
+endif
+
+! popup menu
+MenuItems local("Anyone")&":Anyone"MenuItems local("Family")&":Family"MenuItems local("Owner")&":Owner"help local("Click to select distribution recommendations for this note")if #msg="label"
+  sizetofit
+endif

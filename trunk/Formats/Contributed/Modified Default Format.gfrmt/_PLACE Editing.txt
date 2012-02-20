@@ -1,0 +1,19 @@
+load ListOptionals
+
+NewLine
+cell static,local(NAME)&":"
+sizetofit
+ifDef #numPlace
+  #numPlace+=1
+endif
+! edit field with value#edge=#rightMargin$-#rightSkip-22-#cellSkip
+cell editvalue
+set width #edge-#hpos$ Offset -2
+help local("Enter the full name for this place")
+
+gosub ListOptionals FORM,DATE,LANG,"",""
+Show _OPTIONAL_TAGS
+
+ShowAll FORM
+ShowAll DATE
+ShowAll LANG

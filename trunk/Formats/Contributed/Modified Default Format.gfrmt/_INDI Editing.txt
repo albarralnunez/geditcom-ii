@@ -1,0 +1,19 @@
+! existing link
+if tagexists is true
+  newline
+  cell LinkButton
+  TextExpression @contents.rec
+  AppendedExpression view
+  set border no Font "Hyperlink Text"
+  sizetofit
+  RecordLink @contents
+  Help local("Click to view individual record")
+! no notes - an attach button
+else
+  ! button to link to new or existing notes (on in _BOK records)
+  NewLine
+  cell CreateLinkButton
+  set border no width 24 height 22
+  set image "plus"
+  help local("Click to attach a source individual for the book")
+endif

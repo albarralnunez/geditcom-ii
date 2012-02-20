@@ -1,0 +1,12 @@
+! Optional tags for Event Editing
+cell CreateLinkButton
+set image add border no
+sizetofit
+help local("Click to attach optional data")
+
+optionalTag PAGE,"Page number","1"
+optionalTag DATA,"Date and Text from the source","","TEXT Enter text from the source"
+optionalTag EVEN,"Event recorded in the sources"
+optionalTag,QUAY,"Source quality","Primary"
+
+hskip 5

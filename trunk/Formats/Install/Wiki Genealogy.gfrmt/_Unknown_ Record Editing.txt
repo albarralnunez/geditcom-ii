@@ -1,0 +1,6 @@
+load ResetTabs
+gosub ResetTabs
+
+! display record id in static cell
+cell static "0 "&@rec&" "&@contents
+set width -1

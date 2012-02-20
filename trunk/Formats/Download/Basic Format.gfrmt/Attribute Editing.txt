@@ -1,0 +1,14 @@
+load LineLabel,SectionLabel,ShowOBJE
+
+if #hasLabel!="YES"
+  gosub SectionLabel #hasLabel
+  #hasLabel="YES"
+endif
+
+gosub LineLabel,local(@tag)
+offset #editOffset
+sizetofit
+
+if @tag!=RESI  cell editValue
+  set width -1else  set width -1endifshowall DATEshowall AGEshowall TYPEshowall PLACshowall ADDR
+showall _GPSshowall PHONshowall CAUSshowall AGNCgosub ShowOBJEshowAll SOURshowAll NOTE

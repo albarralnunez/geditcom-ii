@@ -1,0 +1,39 @@
+! #mgnText is text to left of first cited record
+! #allText is text of button linked to "Referenced By" menu command
+sub RefLinks #label,#buttonLabel,#initSkip
+  if @_REF=""
+    return
+  endif
+
+  #leftSkip=#hangSkip
+  NewLine #initSkip  cell label local(#label)
+  set width -1 font "Section Label"
+  #leftSkip=#leftSkip$
+  newline 3
+
+  Repeat "#ref",1,10
+    #cite=@_REF.i.#ref
+    if #cite=""
+      break
+    endif
+    Newline
+    cell LinkButton
+    TextExpression @#cite.rec
+    AppendedExpression view
+    RecordLink #cite
+    set font "Hyperlink Text" border none width -1 alignment left
+	help local("Click to see citing record")
+  EndRepeat
+
+  if #cite<>""
+    NewLine
+    hskip #tabSpacing
+    cell LinkButton local(#buttonLabel)
+    set border smallsquare
+    sizetofit
+    menulink "Referenced By"
+	help local("Click for list of all citing records")
+  endif
+
+endsub
+

@@ -1,0 +1,75 @@
+! Show all tags of type #theTag in a group box
+! Label the box with localized #label
+! Caller must include ListBlock before TabBlock
+
+sub TagBlock,#theTag,#label
+  if #theTag is here
+    newline
+    if inGroupBox is false      cell label,#label
+      SizeToFit
+      newline -3
+      cell GroupBox
+      set width -1 border line titleposition none
+    endif
+	newline -#lineSkip-3
+    if #theTag="NOTE"
+      Gosub ListBlock,"NOTE","notes",local("Notes on these data"),"Attach Notes"
+    else if #theTag="SOUR"
+      Gosub ListBlock,"SOUR","source",local("Sources on these data"),"Attach Source"
+	else if #theTag="_LOG"
+      Gosub ListBlock,"_LOG","researchlog",local("Reseach logs for these data"),"Attach Research Log"
+    else
+      if #theTag<>"OBJE"
+        #lineSkip=0
+      else
+         #numURLs[0]=0
+      endif
+      ShowAll #theTag
+	  if #theTag=="OBJE"
+        if @level=0
+ 	      Show _NOPOR
+        endif
+    	#lineSkip=#lineSkip$	  endif
+    endif
+    EndGroup
+
+    if #theTag="OBJE"
+	  if #numURLs[0]>0
+        cell label,local("Web Links")
+	    sizeToFit
+	    newline -3
+	    cell GroupBox
+        set width -1 border line titleposition none
+		newline -#lineSkip-3
+		#lineSkip=0
+
+        repeat "#i",1,#numURLs[0]
+          #objeID=#numURLs[#i]
+    	  newline
+   		  cell Multimedia
+    	  set url @#objeID._FILE font "Hyperlink Text"
+    	  if @#objeID.TITL<>""
+      		TextExpression @#objeID.TITL
+    	  else
+      		TextExpression @#objeID._FILE
+    	  endif
+    	  set objectImage @#objeID imageposition left imageheight 22 alignment left
+		  sizetofit -1
+    	  set height 22
+    	  set help local("Click to open this URL link in you web browser")
+
+    	  ! rest in a child window
+    	  HMoveTo #rightMargin$-#rightSkip-21-#cellSkip
+    	  cell LinkButton
+    	  set border no width -1 image "details_here"
+    	  RecordLink @#objeID
+    	  set target child
+    	  Help local("Click to view multimedia record")
+        endrepeat
+
+    	EndGroup
+    	#lineSkip=#lineSkip$
+	  endif
+	endif
+  endif
+endsub

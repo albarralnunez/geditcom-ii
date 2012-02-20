@@ -1,0 +1,7 @@
+load PlacePanes,ResetTabs,URLTabs
+
+! -------------- Start Template -----------------
+#thisnum=0
+GoSub PlacePanes,"WebAll","All"
+GoSub ResetTabs,0
+GoSub URLTabs

@@ -1,0 +1,11 @@
+! Optional tags for Event Editing
+cell CreateLinkButton
+set image add border no
+sizetofit
+help local("Click to attach optional data")
+
+optionalTag NPFX,local(NPFX)
+optionalTag SPFX,local(SPFX)
+optionalTag NSFX,local(NSFX)
+
+hskip 5

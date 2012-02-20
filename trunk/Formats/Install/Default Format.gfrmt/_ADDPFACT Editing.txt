@@ -1,0 +1,22 @@
+cell CreateLinkButton
+set image "plus" border none width 24 height 22
+Help local("Click to add place information")
+optionalTag "_PFACT","Area","Area"
+optionalTag "_PFACT","Boundary Change","Boundary Change"
+optionalTag "_PFACT","Census","Census"
+optionalTag "_PFACT","Date of Formation","Date of Formation"
+optionalTag "_PFACT","Ethnicity","Ethnicity"
+optionalTag "_PFACT","Government Change","Government Change"
+optionalTag "_PFACT","Language","Language"
+optionalTag "_PFACT","Natural Disaster","Natural Disaster"
+optionalTag "_PFACT","Name Change","Name Change"
+optionalTag "_PFACT","Other Place Fact","Place Fact"
+optionalTag "_PFACT","Population Change","Population Change"
+optionalTag "_PFACT","Population Density","Population Density"
+optionalTag "_PFACT","Population Female","Population Female"
+optionalTag "_PFACT","Population Male","Population Male"
+optionalTag "_PFACT","Population Total","Population Total"
+optionalTag "_PFACT","Religion","Religion"
+optionalTag "_PFACT","Vital Records","Vital Records"
+optionalTag "_PFACT","War","War"
+

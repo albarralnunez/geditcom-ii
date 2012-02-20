@@ -1,0 +1,12 @@
+load LineLabel
+
+! status menu label
+gosub LineLabel local(@tag)
+offset #buttonOffset
+! popup menu
+cell PopupMenuEditMenuItems local("[Unspecified]")&"::"if #parentTag$="SLGC"  MenuItems local("BIC [Born in convenant]")&":BIC"else if #parentTag$="SLGS"  MenuItems local("Canceled")&":Canceled"else  MenuItems local("CHIL")&":Child"endifMenuItems local("Cleared")&":Cleared"MenuItems local("Completed")&":Completed"MenuItems Doneif #parentTag$="SLGS"  MenuItems local("DNS [Do not seal]")&":DNS"  MenuItems local("DNS-CAN")&":DNS/CAN"  MenuItems local("Excluded")&":Excluded"else if #parentTag$="SLGC"  MenuItems local("DNS [Do not seal]")&":DNS"  MenuItems local("Excluded")&":Excluded"else  MenuItems local("Excluded")&":Excluded"  MenuItems local("Infant")&":Infant"endifMenuItems local("In Process")&":In Process"MenuItems local("Pre-1970")&":Pre-1970"MenuItems local("Qualified")&":Qualified"if #parentTag$<>"SLGS"  MenuItems local("Stillborn")&":Stillborn"endifMenuItems local("Submitted")&":Submitted"MenuItems local("Uncleared")&":Uncleared"
+
+help local("Click to enter status of this ordinance")
+SizeToFit
+
+

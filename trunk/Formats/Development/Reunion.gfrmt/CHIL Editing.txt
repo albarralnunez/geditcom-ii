@@ -1,0 +1,22 @@
+if #col>#cols
+  #row+=1
+  #col=1
+  #curV=#vpos$
+  newline
+  MoveTo #topHPos+(#row-1)*#stagger,#curV+#rowHeight
+else
+  HMoveTo #topHPos+(#row-1)*#stagger+(#col-1)*#colWidth
+endif
+
+cell LinkButton
+set width #btnWidth
+TextExpression @contents.rec
+AppendedExpression view
+if @contents.FAMS<>""
+  RecordLink @contents.FAMS
+else
+  RecordLink @contents
+  font "No Spouse Text"
+endif
+
+#col+=1

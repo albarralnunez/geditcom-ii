@@ -1,0 +1,4 @@
+sub ResetTabs
+  ClearTabs
+  SetTab #labelWidth
+endsub

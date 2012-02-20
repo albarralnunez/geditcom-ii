@@ -1,0 +1,32 @@
+load ListOptionals
+
+if #factNum=0
+  newline
+  cell static,local("Description")
+  set tabwidth 1 border square alignment center
+  cellbackground "Table Cell Background"
+
+  cell static,local("DATE")
+  set tabwidth 1 border square alignment center
+  cellbackground "Table Cell Background"
+
+  cell static,local("_VALUE")
+  set tabwidth 1 border square alignment center
+  cellbackground "Table Cell Background" 
+endif
+
+newline
+#factNum +=1
+
+! Label in contents
+cell editValue
+set tabwidth 1
+help local("Enter the type of place information")
+
+Show DATE "Event"
+Show _VALUE
+
+gosub ListOptionals _PNOTE,"","","",""
+Show _OPTIONAL_TAGS "NoOffset"
+
+ShowAll _PNOTE "pfact"

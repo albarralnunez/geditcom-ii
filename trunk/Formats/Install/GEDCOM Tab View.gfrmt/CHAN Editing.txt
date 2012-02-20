@@ -1,0 +1,24 @@
+load LevTag
+
+gosub LevTag
+
+Cell static local("Last Changed")&": "
+SizeToFit
+set height #defaultHeight$
+
+#cellSkip=0
+Cell Expression @DATE
+AppendedExpression view
+SizeToFit 8
+set height #defaultHeight$
+
+hskip -8
+Cell static ", "
+SizeToFit
+set height #defaultHeight$
+
+Cell Expression @DATE.TIME
+SizeToFit 8
+set height #defaultHeight$
+
+HideExcess

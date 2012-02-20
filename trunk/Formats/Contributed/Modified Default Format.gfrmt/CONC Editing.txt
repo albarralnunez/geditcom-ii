@@ -1,0 +1,47 @@
+!SJGR changed from default to change the note editing field in Note records
+
+ifStr @rec="NOTE"
+  if printing
+    hideexcess
+  else
+if #msg="all"
+    ! use separate pane when not printing
+    cell EditPane,"("&local("type to enter notes")&")"
+    
+    if #posNotes>2.5
+      position right
+    else if #posNotes >1.5
+      position bottom
+    else if #posNotes >0.5
+      position left
+    else
+	  position bottom
+    endif
+    fraction .5
+    help local("Enter free-format notes")
+
+else if #msg="html"
+   newline 6
+   #fldHeight=#displayHeight$-#vpos$-#bottomMargin$
+   cell Editfield,"("&local("type to enter notes")&")"
+   width -1
+   height #fldHeight		
+   help local("Enter free-format notes")
+else
+   newline 6
+   #fldHeight=#displayHeight$-#vpos$-#bottomMargin$
+   if @this.CONC is htmldiv
+       cell ExpressionField, (CONC)
+   else
+       cell Editfield,"("&local("type to enter notes")&")"
+       help local("Enter free-format notes")
+   endif
+   width -1
+   height #fldHeight
+		endif
+	endif
+  endif
+
+else
+  use _Unknown_
+endif

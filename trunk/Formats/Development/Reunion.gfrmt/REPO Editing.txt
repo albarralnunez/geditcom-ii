@@ -1,0 +1,14 @@
+load RecordChildLink
+
+newline
+cell label,local(@tag)&": "
+sizetofit
+
+gosub RecordChildLink local("Click to view and edit repository"),"parent"
+
+NewLine
+tab
+#leftSkip=#hpos$
+
+ShowAll CALN
+ShowAll NOTE

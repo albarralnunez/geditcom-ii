@@ -1,0 +1,200 @@
+!SJGR changed from default to remove scale adjustment and calculate amount of scale based on window size
+!SJGR Also changed unsupported multimedia to be displayed using html
+
+Load ResetTabs,OBJEPanes
+
+! -------------- Start Template -----------------
+GoSub ResetTabs,0
+GoSub OBJEPanes,""
+
+#title=@TITL
+#path=@_FILE
+#form=@FORM
+#disp=@_DISP
+
+!-----List of filetypes for coice of html display ----
+#htmldisp=0
+if #form="asf"
+	#htmldisp=62
+endif
+if #form="asx"
+	#htmldisp=62
+endif
+if #form="avi"
+	#htmldisp=62
+endif
+if #form="f4v"
+	#htmldisp=62
+endif
+if #form="flv"
+	#htmldisp=62
+endif
+if #form="m4v"
+	#htmldisp=62
+endif
+if #form="mov"
+	#htmldisp=62
+endif
+if #form="mp4"
+	#htmldisp=62
+endif
+if #form="mpg"
+	#htmldisp=62
+endif
+if #form="wmv"
+	#htmldisp=62
+endif
+
+if #form="aif"
+	#htmldisp=62
+endif
+if #form="m4a"
+	#htmldisp=62
+endif
+if #form="mpa"
+	#htmldisp=62
+endif
+if #form="mp3"
+	#htmldisp=62
+endif
+if #form="wav"
+	#htmldisp=62
+endif
+if #form="wma"
+	#htmldisp=62
+endif
+
+if #disp <>""
+cell GroupBox,local("Multimedia")
+width -1
+newline 6
+   #fldHeight=#displayHeight$-#vpos$-#bottomMargin$
+      cell Expressionfield, @_DISP
+      width -1
+   height #fldHeight-123-#htmldisp
+EndGroup
+else
+
+cell GroupBox,local("Multimedia Link")
+width -1
+
+newline
+if #form="url"
+  tab 1
+  cell Multimedia
+  set url #path width -1 font "Hyperlink Text"
+  if #title<>""
+    text #title
+  else
+    text #path
+  endif
+  set objectImage @this imageposition left
+    sizetofit -1
+
+  set alignment left height #imageHeight$
+  set help local("Click to open this URL link in your browser application.") 
+else 
+  newline
+  cell Multimedia
+  #padding=5
+  set objectFull @this mmFormat #form width -1
+  set imageposition imageonly
+
+
+	! Work out the maximum space available for display based on window size
+   #maxWidth=#cellWidth$-2*#padding
+   #maxHeight=#displayHeight$-#vpos$-#bottomMargin$-154-#htmldisp
+   #displayRatio=#maxHeight/#maxWidth
+  
+ 
+  
+   ! set size by to large dimension of the picture
+  #mmRatio=#imageHeight$/#imageWidth$
+  if #mmRatio>#displayRatio
+	! more width available than required so height governs size
+	if #maxHeight<#imageHeight$*(#imagePPI$/72)
+	  set imageheight #displayHeight$-#vpos$-#bottomMargin$-154-#htmldisp
+        endif
+  else
+    ! available space not wide enough so width governs size
+    if #maxWidth<#imageWidth$*(#imagePPI$/72)
+      set imageWidth #maxWidth
+	    endif
+  endif
+
+  
+  set height #displayHeight$-#vpos$-#bottomMargin$-154-#htmldisp
+  
+  ! handle non-image objects
+  if #imageType$="noimage"
+    set text local("No image representation. Click to open in another application")
+    set font "Static Text" imageposition left alignment left
+    help local("Click to open in a helper application.")
+	help " "&local("You can configure which application opens each type of multimedia object.")
+  else if #imageType$="notfound"
+    set text " "&local("Multimedia file not found (click to fix)")
+    set font "Static Text" imageposition left alignment left
+    set MenuLink "Attach Multimedia"
+	help local("Click to link this record to a multimedia object.")
+  else if #imageType$="image"
+    help local("Click to open in a helper application.")
+	help " "&local("You can configure which application opens each type of multimedia object.")
+  else
+    ! thumbnail
+    help local("Click to view multimedia record")
+    set recordLink @this paneID ""
+  endif
+endif
+
+newline 6
+Show _FILE #form
+ShowAll FORM
+!if #form<>"url"
+!  Show _SCALE
+!else
+!  Hide _SCALE
+!endif
+
+EndGroup
+endif
+
+!--------- Buttons to display html-----
+if #htmldisp>0
+	if #disp =""
+		cell GroupBox,local("Html Display")
+		width -1
+		cell linkbutton
+		Offset -2
+		set border shadowlesssquare height 22 Width 145
+		text "Display here using html"
+		ScriptType Format
+		ScriptLink "Add_DISP"
+		EndGroup
+	else
+		cell GroupBox,local("Html Display")
+		width -1 
+		cell linkbutton
+		Offset -2
+		set border shadowlesssquare height 22 Width 145
+		text "Don't display as html"
+		ScriptType Format
+		ScriptLink "Del_DISP"
+		
+		Show _WIDT
+		Show _HEIG
+		
+		hskip 5
+		cell linkbutton
+		Offset -2
+		set border shadowlesssquare height 22 Width 70
+		text "Refresh"
+		ScriptType Format
+		ScriptLink "Add_DISP"
+		EndGroup
+	EndIf
+EndIf
+
+hideexcess
+
+optionalTag _KEY,local(_KEY)
+

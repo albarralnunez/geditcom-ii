@@ -1,0 +1,5 @@
+hskip 10
+cell CheckBoxEdit,local("LaTeX Content")
+sizetofit -1
+help local("Check to include this text in the book as verbatim LaTeX content")
+set shift #rightMargin$-#hpos$-#rightSkip-#cellWidth$

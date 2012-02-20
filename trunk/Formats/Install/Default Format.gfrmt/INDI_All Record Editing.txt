@@ -1,0 +1,195 @@
+load TagBlock,ResetTabs,ListBlock,References,AttachData,INDIPanes
+
+sub TableTabs,#check
+  newline
+  ClearTabs
+  #lineSkip=2
+  #cellSkip=2
+  #tableWidth=#rightMargin$-#rightSkip-#hpos$-21
+  #cellWidth=(#tableWidth-3*#cellSkip-20)/3
+  #nameWidth=#cellWidth
+  if #cellWidth>180
+    #nameWidth=180
+    #cellWidth=(3*#cellWidth-180)/2
+  endif
+  if #check=1
+    SetTab #habs$+#nameWidth,#habs$+#nameWidth+20,#habs$+#nameWidth+20+#habs$+.8*#cellWidth,#habs$+#tableWidth-22,#habs$+#tableWidth
+  else if #check=0
+    SetTab #habs$+#nameWidth+20,#habs$+#tableWidth
+  else
+    SetTab #habs$+#nameWidth+20,#habs$+#tableWidth-22,#habs$+#tableWidth
+  endif
+  #first="yes"
+endsub
+
+! *************** ENTRY PANE ***************
+
+GoSub ResetTabs,0
+GoSub INDIPanes,"All"
+
+! --------- Birth and Death -----------
+show BIRT box
+showAll BIRT box
+show DEAT box
+showAll DEAT box
+
+! To show existing individual events but none if no event,
+! add one line for each like:
+!ShowAll BURI
+
+! To show existing individual events and blank fields if no event,
+! add two lines for each like:
+!Show BAPM box
+!ShowAll BAPM box
+
+! --------- Parent links -----------
+#famLabelEnd=120
+cell GroupBox,local("Parents")
+  width -1
+  NewLine -3
+  Show FAMC
+  ShowAll FAMC
+EndGroup
+
+! --------- Spouse/Family links -----------
+cell GroupBox,local("Spouses")
+  width -1
+  NewLine -3
+  Show FAMS
+  ShowAll FAMS
+EndGroup
+
+! *************** EVENTS PANE ***************
+
+! --------- Events and attributes --------------
+cell GroupBox,local("Events and Attributes")
+  width -1
+
+  newline -1
+  #tstart=#vpos$
+  gosub TableTabs,1
+  !hide BIRT,DEAT  ShowAll INDIEvents
+  ShowAll INDIOrdinances
+
+  gosub TableTabs,2
+  ShowAll RESI
+
+  gosub TableTabs,0
+  ShowAll INDIAttributes
+
+  #lineSkip=#lineSkip$
+  #cellSkip=#cellSkip$
+
+  newline
+  if #vpos$=#tstart
+    newline -3
+  endif
+  cell LinkButton
+  image "plus"
+  set width 24 border no
+  MenuLink "Attach Event/Attribute"
+  help local("Click to add an event")
+
+  cell LinkButton "-"
+  image "minus"
+  set width 24 border no
+  MenuLink "Detach Event/Attribute/Link"
+  help local("Click to remove an event")
+
+  hskip 10
+  cell LinkButton local("Copy Event")
+  set border shadowlesssquare
+  MenuLink "Copy Event"
+  help local("Click to copy event with text selection bar")
+  sizetofit 10
+
+  hskip 3
+  cell LinkButton local("Paste Event")
+  set border shadowlesssquare
+  MenuLink "Paste Event"
+  help local("Click to paste previously copied event to this record")
+  sizetofit 10
+
+EndGroup
+GoSub ResetTabs,0
+
+! *************** MULTIMEDIA PANE ***************
+
+! --------- OBJEs -----------
+Gosub TagBlock,"OBJE","Multimedia"
+
+! *************** NOTES AND OTHER PANE ***************
+
+! --------- NOTEs, SOURs, and _LOGs -----------
+gosub References,"_LOG"
+
+! *************** ADDITIONAL DATA PANE ***************
+
+! --------- ALIA, ASSO, SUBM, ---------------
+if ALIA|ASSO|SUBM|ANCI|DESI is here
+  ClearTabs
+  #assoTab=100
+  SetTab #assoTab
+  newline  cell GroupBox,local("Associated Records")
+    width -1
+    newline
+    ShowAll ALIA
+    ShowAll ASSO
+    ShowAll SUBM
+    ClearTabs
+    gosub ResetTabs,50
+    ShowAll ANCI
+    ShowAll DESI
+  EndGroup
+  GoSub ResetTabs,0
+endif
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+  width -1
+  newline -#lineSkip-3
+  #lineSkip=2
+  Show OBJE
+  Show NOTE
+  Show SOUR
+  Show _LOG
+  Show ALIA
+  Show ASSO
+  gosub AttachData
+  newline 3
+  hskip 2
+EndGroup
+#lineSkip=#lineSkip$
+
+! -------- Additional Data ------------
+if more is true
+  ClearTabs
+  gosub ResetTabs,50
+  cell GroupBox,local("Additional Data")
+    width -1
+    newline
+    ShowAll CHAN
+    ShowAll AFN
+    ShowAll RFN
+    ShowAll RIN
+    ShowAll all
+  EndGroup
+endif
+
+! -------- Export -------------
+
+cell GroupBox,local("Export")
+  width -1
+  cell LinkButton ".ged"
+  set ScriptLink "Export Data/Share Family Tree" ScriptType "system"
+  set border shadowlesssquare
+  sizetofit
+
+  optionalTag AFN,local(AFN)
+  optionalTag RFN,local(RFN)
+  optionalTag RIN,local(RIN)
+  optionalTag REFN,local(REFN)
+  optionalTag SUBM,local(SUBM)
+  optionalTag ANCI,local(ANCI)
+  optionalTag DESI,local(DESI)
+  optionalTag,REFN,local("Keyword(s)"), ,"TYPE Keyword(s)"

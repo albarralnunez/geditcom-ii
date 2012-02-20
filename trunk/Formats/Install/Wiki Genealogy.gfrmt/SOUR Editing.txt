@@ -1,0 +1,128 @@
+load WikiSection,RecordChildLink,LineLabel,WebLinks,ShowOBJE
+
+if #msg="wiki"
+
+  newline
+  cell static,#sourceNumber&". "
+  sizetofit
+
+  hskip 0
+  if printing is false
+    #swidth=#rightMargin$-#rightSkip-50-#hpos$
+  else
+    #swidth =-1
+  endif
+  #hang=#hpos$
+  cell StaticField
+  set width #swidth minheight 10 border none
+
+  ! authors
+  #authors=@contents.AUTH
+  if #authors!=""
+    #authors=replace(return&"\, \"&#authors)&" "
+    text #authors
+  endif
+
+  ! date
+  #sdate=@contents._DATE.user
+  if #sdate!=""
+    text " ("&#sdate&") "
+  endif
+
+  ! title
+  text "'"&@contents.view&".' "
+
+  ! publisher
+  #publinfo=@contents.PUBL
+  if #publinfo!=""
+    #publinfo =replace(return&"\, \"&#publinfo)&". "
+    text #publinfo
+  endif
+
+  ! page number
+  if PAGE is here
+    text "Page(s) "&@PAGE&". "
+  endif
+  sizetofit
+
+  !gosub RecordChildLink local("Click to view and edit source"),"parent"
+
+  if printing is false
+    HMoveTo #rightMargin$-#rightSkip-100
+    cell LinkButton,"["&local("edit")&"]"
+    set font "Hyperlink Text" border none
+    sizetofit
+    set RecordLink @contents PaneID "" shift 100-#cellWidth$
+  endif
+
+  if @contents._TYPE="web page"
+    NewLine -#lineSkip
+    HMoveTo #hang+12
+    cell static,local("Web Page")&": "
+    sizetofit
+
+    ! link to web site
+    hskip 0    cell Multimedia
+    set width -1 alignment left
+    set url @contents._URL font "Hyperlink Text"
+    TextExpression @contents._URL
+    sizetofit -1
+    set help local("Click to open in browser")
+  endif
+  #sourceNumber+=1
+  hideexcess
+
+else
+
+if @rec="HEAD"
+  ! In HEAD, SOUR is about the application that created the data
+  ! and about the data
+  gosub LineLabel,local("Software")
+  offset #editOffset
+  cell EditValue
+  set width -1
+
+  ! Subordinate data in preferred order
+  ShowAll VERS
+  ShowAll NAME
+  ShowAll CORP
+  ShowAll DATA
+  
+else
+  if @contents is validlink
+    ! label and link to a source record
+    #sourStyle=#msg
+    newline
+    cell LinkButton
+    set image source border no
+    sizetofit
+    hskip 3
+    gosub RecordChildLink local("Click to view and edit source"),"parent"
+
+    ! Possible subordinate data    ShowAll PAGE
+    ShowAll QUAY
+    ShowAll EVEN
+    ShowAll DATA "Edit"
+
+    ! NOTE and OBJE at the end    ShowAll NOTE
+    gosub ShowOBJE 1
+
+    newline 2
+    tab 2
+    cell static,local("Attach")&": "
+    sizetofit
+    Show NOTE
+    Show OBJE
+    Show _OPTIONAL_SOUR
+
+  else
+    cell CreateLinkButton,"Attach Source"
+    set image source border no
+    sizetofit
+    help local("Click to attach new source to this record")
+    hskip 5
+  endif
+endif
+
+endif
+

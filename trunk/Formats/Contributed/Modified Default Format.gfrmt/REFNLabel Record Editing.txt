@@ -1,0 +1,10 @@
+cell GroupBox,local("Enter custom label for the user reference entry")
+width -1
+SetTab 120
+
+! show date and place
+Show TYPE
+
+EndGroup
+
+resizeWindow yes

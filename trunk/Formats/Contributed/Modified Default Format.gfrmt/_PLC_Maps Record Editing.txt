@@ -1,0 +1,30 @@
+load PlacePanes,ResetTabs
+
+! -------------- Start Template -----------------
+GoSub PlacePanes,"Maps","1"
+GoSub ResetTabs,0
+
+! Remove Map
+if _BOX is here
+  ! Add Map
+  cell LinkButton
+  set image "plus" border none width 24 height 22
+  Help local("click to add a map")
+  set ScriptLink Add_BOX ScriptType format
+
+  cell LinkButton
+  set image "minus" border none width 24 height 22
+  Help local("click to remove a map")
+  #sm = "_BOX"&return&"(unnamed map)"&return&"Select a map to remove"&return&"Remove a Map"
+  set ScriptLink Delete_Tag ScriptType format ScriptMessage #sm
+endif
+
+NewLine
+
+! bounding box
+#boxnum=0
+Show _BOX
+ShowAll _BOX
+
+hideexcess
+

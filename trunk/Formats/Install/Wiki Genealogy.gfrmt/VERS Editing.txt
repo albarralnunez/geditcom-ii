@@ -1,0 +1,9 @@
+if #parentTag$="GEDC"
+  ! edit on same line after label done in GEDC template
+  cell EditValue
+  set width -1
+
+else
+  use _Unknown_
+
+endif

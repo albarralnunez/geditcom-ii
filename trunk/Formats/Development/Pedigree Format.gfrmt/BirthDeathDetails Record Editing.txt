@@ -1,0 +1,63 @@
+load ListBlock,TagBlock,References,ToolBtn,ToolBar
+
+#eventTag=@contents
+#tagKey=#eventTag&" details"
+Title @this.altview&" - "&local(#tagKey)
+
+! --------- Toolbar -----------
+GoSub ToolBar "M","N","S","L","O"
+
+cell label,local(#eventTag)
+SizeToFit
+newline -3
+cell GroupBox
+set width -1 border line titleposition none
+newline -#lineSkip-3
+SetTab 120
+
+! static text event date and place
+NewLine
+cell static,local("DATE")&":"
+set tabwidth 1 alignment right
+cell expression,@parent.DATE
+set Width -1 AppendedExpression view
+
+NewLine
+cell static,local("PLAC")&":"
+set tabwidth 1 alignment right
+cell expression,@parent.PLAC
+set Width -1
+
+if @contents=BIRT  Show ADDR  ShowAll TYPE  ShowAll AGNCelse if @contents=DEAT  Show ADDR
+  Show AGE  Show CAUS
+  ShowAll TYPE  ShowAll AGNCelse  Show ADDR
+  ShowAll TYPE  ShowAll AGNC  showAll HUSB  ShowAll WIFEendif
+
+! Family link in Birth events
+if @contents="BIRT"
+  Show FAMC "BIRT"
+  ShowAll FAMC "BIRT"
+endif
+EndGroup
+! --------- NOTEs, SOURs, and OBJEs -----------
+gosub TagBlock,"OBJE",local("Multimedia")
+gosub References,"_LOG"
+
+optionaltag AGNC,local("AGNC"),local("AGNC")
+optionaltag TYPE,local("TYPE"),local("TYPE")
+if @rec=FAM
+  if @this.WIFE.SEX="M"
+    optionaltag HUSB,local("HUSB 1's Age"),"","AGE age"
+    optionaltag WIFE,local("HUSB 2's Age"),"","AGE age"
+  else if @this.HUSB.SEX="F"
+    optionaltag HUSB,local("WIFE 1's Age"),"","AGE age"
+    optionaltag WIFE,local("WIFE 2's Age"),"","AGE age"
+  else
+    optionaltag HUSB,local("HUSB's Age"),"","AGE age"
+    optionaltag WIFE,local("WIFE's Age"),"","AGE age"
+  endif
+endif
+
+resizewindow yes
+
+DropTypes NOTE,SOUR,OBJE,_LOG

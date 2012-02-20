@@ -1,0 +1,12 @@
+load LevTag
+
+gosub LevTag
+
+! edit field with value
+cell PopupMenuEdit
+MenuItems local("Unknown")&"::",local("Unreliable")&":0"
+MenuItems local("Questionable")&":1"
+MenuItems local("Secondary")&":2",local("Primary")&":3"
+SizeToFit
+set offset #popupOffset border none controlsize small height #defaultHeight$
+help local("Click to enter quality of this source")

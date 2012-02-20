@@ -1,0 +1,75 @@
+! Show all tags of type #theTag in a group box
+! Label the box with #label
+
+sub TagBlock,#theTag,#label
+  if #theTag is here
+    if inGroupBox is false      newline
+      cell GroupBox,local(#label)
+      width -1
+      newline -#lineSkip-3
+      #localBox="Yes"
+    else
+      #localBox="No"
+    endif
+    if #theTag<>"OBJE"
+      #lineSkip=0
+    else
+      #numURLs[0]=0
+    endif
+    ShowAll #theTag
+    if #theTag="OBJE"
+      if @level=0
+        if @rec="INDI"
+          Show _NOPOR
+        else if @rec="FAM"
+          Show _NOPOR
+        else if @rec="_PLC"
+          Show _NOPOR
+        endif
+      endif
+    endif
+    if #localBox="Yes"
+      EndGroup
+    endif
+    #lineSkip=#lineSkip$
+
+    if #theTag="OBJE"
+      if #numURLs[0]>0
+        if #localBox="Yes"
+          cell GroupBox,local("Web Links")
+          width -1
+          newline -#lineSkip-3
+          #lineSkip=0
+        endif
+
+        repeat "#i",1,#numURLs[0]
+          newline
+          cell Multimedia
+          #objeID=#numURLs[#i]
+          set url @#objeID._FILE font "Hyperlink Text"
+          if @#objeID.TITL<>""
+            TextExpression @#objeID.TITL
+          else
+            TextExpression @#objeID._FILE
+          endif
+          set objectImage @#objeID imageposition left imageheight 22
+          sizetofit -1
+          set height 22
+          set help local("Click to open in browser")
+
+          ! rest in a child window
+          HMoveTo #rightMargin$-#rightSkip-21-#cellSkip
+          cell LinkButton
+          set border no width -1 image "details_here"
+          RecordLink @#objeID
+          set target child
+          Help local("Click to view multimedia record")
+        endrepeat
+          
+        if #localBox="Yes"
+          EndGroup
+        endif
+        #lineSkip=#lineSkip$
+      endif
+    endif  endif
+endsub

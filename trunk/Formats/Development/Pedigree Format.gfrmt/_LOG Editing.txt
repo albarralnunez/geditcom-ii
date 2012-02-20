@@ -1,0 +1,11 @@
+newline
+cell static,local("bullet")
+SizeToFit
+
+cell LinkButton
+TextExpression @contents.rec
+AppendedExpression view
+set border no Font "Hyperlink Text" alignment left
+sizetofit -1
+RecordLink @contents
+Help local("Click to view log record")

@@ -1,0 +1,43 @@
+load ListBlock,TagBlock,References,ToolBtn,ToolBar
+
+! --------- Toolbar -----------
+GoSub ToolBar "M","N","","","O"
+
+#tagKey="SOUR details"
+Title @this.altview&" - "&local(#tagKey)
+
+cell label,local(#tagKey)
+SizeToFit
+newline -3
+cell GroupBox
+set width -1 border line titleposition none
+newline -#lineSkip-3
+SetTab 120
+
+Show PAGE
+show DATA
+ShowAll EVEN
+show QUAY
+
+EndGroup
+
+! --------- NOTEs and OBJEs -----------
+gosub TagBlock,"OBJE",local("Multimedia")
+if NOTE is here
+  cell label local("NOTE")
+  SizeToFit
+  newline -3
+  cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-3
+  #lineSkip=-2
+  Gosub ListBlock,"NOTE","notes",local("Notes on these data"),"Attach Notes"
+  #lineSkip=#lineSkip$
+  EndGroup
+endif
+
+optionaltag EVEN,local("Event type cited"),"event type"
+
+DisplayHeight <600
+
+DropTypes NOTE,OBJE,_LOG

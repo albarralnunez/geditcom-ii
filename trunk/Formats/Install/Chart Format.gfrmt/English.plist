@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>(and others)</key>
+	<string>(and others)</string>
+	<key>&lt;LANG&gt;</key>
+	<string>English</string>
+	<key>All Notated Records</key>
+	<string>All Notated Records</string>
+	<key>BIRT</key>
+	<string>Born</string>
+	<key>Bottom Margin</key>
+	<string>Bottom Margin</string>
+	<key>Button Text</key>
+	<string>Button Text</string>
+	<key>Cell Separation</key>
+	<string>Cell Separation</string>
+	<key>Chart Format Settings</key>
+	<string>Chart Format Settings</string>
+	<key>Check Box Text</key>
+	<string>Check Box Text</string>
+	<key>Child</key>
+	<string>Child</string>
+	<key>Children</key>
+	<string>Children</string>
+	<key>Click to see all citing records</key>
+	<string>Click to see all citing records</string>
+	<key>Click to see citing record</key>
+	<string>Click to see citing record</string>
+	<key>Click to set task status</key>
+	<string>Click to set task status</string>
+	<key>Click to view family chart for</key>
+	<string>Click to view family chart for</string>
+	<key>Click to view pedigree chart for</key>
+	<string>Click to view pedigree chart for</string>
+	<key>Click to view pedigree or family chart for</key>
+	<string>Click to view pedigree or family chart for</string>
+	<key>DATE</key>
+	<string>Date</string>
+	<key>DEAT</key>
+	<string>Died</string>
+	<key>Daughter</key>
+	<string>Daughter</string>
+	<key>Default Cell Height</key>
+	<string>Default Cell Height</string>
+	<key>Default Cell Width</key>
+	<string>Default Cell Width</string>
+	<key>Default Settings</key>
+	<string>Default Settings</string>
+	<key>Details Text</key>
+	<string>Details Text</string>
+	<key>Done</key>
+	<string>Done</string>
+	<key>Edit</key>
+	<string>Edit</string>
+	<key>Editing Background</key>
+	<string>Editing Background</string>
+	<key>Editing Text</key>
+	<string>Editing Text</string>
+	<key>FAM</key>
+	<string>Family</string>
+	<key>Failed</key>
+	<string>Failed</string>
+	<key>Family Chart</key>
+	<string>Family Chart</string>
+	<key>Father</key>
+	<string>Father</string>
+	<key>Genealogy Notes</key>
+	<string>Genealogy Notes</string>
+	<key>HEAD Record</key>
+	<string>Header records</string>
+	<key>HUSB</key>
+	<string>Husband</string>
+	<key>Individual Label Offset</key>
+	<string>Individual Label Offset</string>
+	<key>Individual Label Width</key>
+	<string>Individual Label Width</string>
+	<key>Label Text</key>
+	<string>Label Text</string>
+	<key>Left Margin</key>
+	<string>Left Margin</string>
+	<key>Line Separation</key>
+	<string>Line Separation</string>
+	<key>MARR</key>
+	<string>Married</string>
+	<key>Margin Settings</key>
+	<string>Margin Settings</string>
+	<key>Mother</key>
+	<string>Mother</string>
+	<key>Name Text</key>
+	<string>Name Text</string>
+	<key>New</key>
+	<string>New</string>
+	<key>Notes Editing Text</key>
+	<string>Notes Editing Text</string>
+	<key>Notes Text</key>
+	<string>Notes Text</string>
+	<key>Notes on</key>
+	<string>Notes on</string>
+	<key>OBJE Record</key>
+	<string>Multimedia Object records</string>
+	<key>Other Spouses</key>
+	<string>Other Spouses</string>
+	<key>PLAC</key>
+	<string>Place</string>
+	<key>Page dividing line (will not appear when printed)</key>
+	<string>Page dividing line (will not appear when printed)</string>
+	<key>Pedigree Chart</key>
+	<string>Pedigree Chart</string>
+	<key>Please switch to a different format, such as the 'Default Format,' to edit this kind of record.</key>
+	<string>Please switch to a different format, such as the 'Default Format,' to edit this kind of record.</string>
+	<key>Popup Menu Text</key>
+	<string>Popup Menu Text</string>
+	<key>REPO Record</key>
+	<string>Repository records</string>
+	<key>Research Log</key>
+	<string>Research Log</string>
+	<key>Research Log on</key>
+	<string>Research Log on</string>
+	<key>Right Margin</key>
+	<string>Right Margin</string>
+	<key>SOUR Record</key>
+	<string>Source records</string>
+	<key>SUBM Record</key>
+	<string>Submitter records</string>
+	<key>SUBN Record</key>
+	<string>Submission records</string>
+	<key>Son</key>
+	<string>Son</string>
+	<key>Spouse</key>
+	<string>Spouse</string>
+	<key>Static Text</key>
+	<string>Static Text</string>
+	<key>Summary</key>
+	<string>Summary</string>
+	<key>Tasks</key>
+	<string>Tasks</string>
+	<key>The 'Chart Format' is not set up for display or editing of</key>
+	<string>The 'Chart Format' is not set up for display or editing of</string>
+	<key>Top Margin</key>
+	<string>Top Margin</string>
+	<key>Unknown</key>
+	<string>Unknown</string>
+	<key>WIFE</key>
+	<string>Wife</string>
+	<key>Window Background</key>
+	<string>Window Background</string>
+	<key>Working</key>
+	<string>Working</string>
+	<key>_BOK Record</key>
+	<string>Book Style records</string>
+	<key>_OBJECT</key>
+	<string>Objective</string>
+	<key>_PLC Record</key>
+	<string>Place records</string>
+	<key>_RESULTS</key>
+	<string>Results</string>
+	<key>_STATUS</key>
+	<string>Status</string>
+	<key>_SUMMARY</key>
+	<string>Research Summary</string>
+	<key>of</key>
+	<string>of</string>
+</dict>
+</plist>

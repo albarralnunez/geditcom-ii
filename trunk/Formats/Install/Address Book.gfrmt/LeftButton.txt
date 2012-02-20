@@ -1,0 +1,25 @@
+sub LeftButton,#stag,#showTop,#hasStag
+  if printing is false
+    newline
+    #nextTop=#vpos$
+    VMoveTo #showTop
+    if #stag="OBJE"
+      show OBJE
+      #mhelp=local("Click to remove multimedia object from this residence")
+    else if #stag="NOTE"
+      show NOTE
+      #mhelp=local("Click to remove set of notes from this residence")
+    endif
+
+    if #hasStag>0
+      cell LinkButton
+      set image MinusButton border none
+      sizetofit
+      set offset #buttonOffset
+      set ScriptLink Remove_RESI_Tag ScriptType format ScriptMessage #resnum&" "&#stag
+      Help #mhelp
+    endif
+
+    MoveTo #leftSkip,#nextTop
+  endif
+endSub

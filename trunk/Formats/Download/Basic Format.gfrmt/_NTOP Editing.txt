@@ -1,0 +1,17 @@
+load LineLabel
+
+! labeled popup menu
+gosub LineLabel local(@tag)
+offset #buttonOffset
+
+! popup menu
+cell PopupMenuEdit
+MenuItems local("Include all")&":hideNone"
+MenuItems local("Omit all")&":hideAll"
+MenuItems local("Omit 'Owner'")&":hideOwner"
+MenuItems local("Omit 'Owner' and 'Family'")&":hideFamily"
+SizeToFit -1
+if @tag="_NTOP"
+  help local("Click to select which notes to include in the book")
+else  help local("Click to select which portraits to include in the book")
+endif

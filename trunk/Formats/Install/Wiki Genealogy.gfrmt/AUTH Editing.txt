@@ -1,0 +1,16 @@
+load LineLabel
+
+! Author or use as location for vital records
+set #type=@this._TYPE
+if #type="vital records"
+  #label=local("Location")
+else
+  #label=local(@tag)
+endif
+gosub LineLabel,#label
+set offset #editOffset
+sizetofit
+
+! editing field
+cell EditField
+set width -1

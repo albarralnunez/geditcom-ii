@@ -1,0 +1,19 @@
+if #parentTag$="GEDC"
+  ! FORM under GEDC in HEAD is type of GEDCOM data
+  use _Unknown_
+
+else if @rec="HEAD"
+  ! FORM subodinate to PLAC in HEAD to indicate default place hierarchy
+  ! Just editing field as the PLAC template did a label
+  cell EditValue
+  set width -1
+
+else if @rec="OBJE"
+  ! FORM in OBJE is edited only in attach file dialog box
+  hideexcess
+
+else
+  ! Other use is under PLAC lines for that place hierarchy
+  use _Unknown_
+
+endif

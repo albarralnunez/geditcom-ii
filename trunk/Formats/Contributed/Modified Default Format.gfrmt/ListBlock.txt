@@ -1,0 +1,57 @@
+!SJGR changed from default to add button for sorting sources
+!also added buttons to copy/paste sources
+
+! Show all tags of type #theTag in a group box
+! Label the box with #label
+
+sub ListBlock,#theTag,#image,#help,#menuCmd
+  if #theTag is here
+	if #theTag="NOTE"
+    	ReadAll "#readTheTags",@NOTE
+	else
+		#readTheTags[0]=0
+	endif
+    newline
+    #annTop=#vpos$    cell LinkButton
+   if #theTag="SOUR"
+    set border none image SortSource width 24 imagewidth 24 
+	scriptlink SortSources
+    scripttype Format
+    help local("Click to sort these sources by date/name")
+    else
+     set border none image #image width 24 imagewidth 24 
+	help #help
+    menulink #menuCmd
+    endif
+    HSkip 2
+    #leftSkip=#hpos$
+	VMoveTo #annTop
+    ShowAll #theTag,#readTheTags[0]
+    
+    !Add a copy and paste buttons for sources
+    if #theTag="SOUR"
+    	newline 2
+    	hskip 15
+    	
+		hskip 2
+		cell linkbutton
+		set border shadowlesssquare Width 75
+		text "Copy Source"
+		ScriptType Format
+		ScriptLink "CopySources"
+		help local("Click to copy source")
+	
+		hskip 2
+		cell linkbutton
+		set border shadowlesssquare Width 75
+		text "Paste Source"
+		ScriptType Format
+		ScriptLink "PasteSources"
+		help local("Click to paste previously copied source here")
+    endif
+   endif
+    
+    #leftSkip=#leftSkip$
+    
+endif
+endsub

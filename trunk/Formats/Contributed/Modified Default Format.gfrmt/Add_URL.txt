@@ -1,0 +1,10 @@
+tell application "GEDitCOM II"    set message visible to false
+    set newText to "http://"
+	tell front document		begin undo		set recRef to key record		tell recRef			set boxRef to (make new structure with properties {name:"_URL", contents:newText})
+			set urls to find structures tag "_URL"
+			set numurls to number of items in urls
+			if numurls<6
+			  show browserpane with id ("Web"&numurls)
+			else
+			  show browserpane with id "WebAll"
+			end if		end tell		end undo action local string for key "Add New URL"	end tellend tell

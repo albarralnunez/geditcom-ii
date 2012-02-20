@@ -1,0 +1,14 @@
+load BookPanes,ResetTabs
+
+! -------------- Start Template -----------------
+GoSub ResetTabs,0
+GoSub BookPanes,"Intro"
+
+NewLine
+cell static,local("Book Introduction")
+sizetofit
+
+show _INTRO
+
+hideexcess
+

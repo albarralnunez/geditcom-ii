@@ -1,0 +1,28 @@
+load ResetTabs,EditingPage
+
+gosub EditingPage,"Research Tasks"
+
+newline
+gosub ResetTabs
+
+cell label,local("Attach")&": "
+sizetofit
+set offset #buttonOffset
+
+cell LinkButton
+image "add"
+set border no width 24
+MenuLink "Attach Optional Data"
+help local("Click to attach new research task")
+
+cell LinkButton
+image "remove"
+set width 24 border no
+MenuLink "Detach Event/Attribute/Link"
+help "Click to detach research task"
+
+ShowAll _TASK
+
+optionaltag _TASK,local("_TASK"),"","_GOAL New Task"
+
+HideExcess

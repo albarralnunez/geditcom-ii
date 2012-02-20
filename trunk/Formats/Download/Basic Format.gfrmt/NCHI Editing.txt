@@ -1,0 +1,7 @@
+if #parentTag$="FAM"
+  use _Unknown_
+
+else
+  use Attribute
+
+endif

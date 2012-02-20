@@ -1,0 +1,13 @@
+if @rec="_LOG"
+  newline
+  cell EditDate
+  set tabwidth 1 border square
+else
+  newline  cell static,local("DATE")&":"
+  set TabWidth 1 Alignment right font "GEDCOM Extension Text"
+
+  ! edit field with value
+  cell EditDate
+  set Width -1 Offset -2
+endif
+help local("Enter a valid date")

@@ -1,0 +1,12 @@
+if @rec=INDI
+  use Attribute
+
+else if #msg="here"
+  ! static text with level and tab  cell static,local(@tag)&":"
+  SizeToFit
+
+  ! edit field with value
+  cell EditValue
+  set Width 48 border no alignment center
+  help local("Enter number of children")
+endif

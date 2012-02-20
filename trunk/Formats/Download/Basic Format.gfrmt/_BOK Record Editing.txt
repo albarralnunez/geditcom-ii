@@ -1,0 +1,64 @@
+load ResetTabs,SectionLabel,TagBlock
+
+gosub ResetTabs
+
+!--------- Names
+gosub SectionLabel local("Description")
+ShowAll _DESC
+
+!--------- Author
+gosub SectionLabel local("AUTH")
+ShowAll _AUTH
+ShowALl _EMAIL
+
+!--------- Generations
+gosub SectionLabel local("Individuals and Generations")
+ShowAll _INDI
+ShowAll _ANC
+ShowAll _DES
+
+!--------- Settings
+gosub SectionLabel local("Settings")
+Show _TEXSTY
+Show _FFAM
+Show _FONT
+Show _LINE
+Show _SIZE
+Show _PAPER
+Show _NTOP
+Show _PTOP
+
+!--------- Introduction
+gosub SectionLabel local("_INTRO")
+ShowAll _INTRO
+
+!--------- About the Author
+gosub SectionLabel local("_ABOUT")
+ShowAll _ABOUT
+
+!--------- Book Control
+gosub SectionLabel local("Book Control")
+if printing is false
+  cell LinkButton,local("Create Book")
+  set border shadowlesssquare
+  sizetofit
+  set height 18
+  if @_USER="Y"
+    set ScriptLink "Reports/Generations LaTeX Book" ScriptType "user"
+  else
+    set ScriptLink "Reports/Generations LaTeX Book" ScriptType "system"
+  endif
+endif
+
+Show _TSET
+Show _USER
+Show _FLDR
+Show _OVER
+ShowAll _ABOUT
+
+! --------- The Rest
+if more
+  gosub SectionLabel local("Additional Data")
+endif
+
+

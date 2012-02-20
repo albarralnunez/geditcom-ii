@@ -1,0 +1,24 @@
+load ResetTabs
+
+GoSub ResetTabs,0
+
+! -------- Data --------
+cell GroupBox,local("Type of Data in the Source")
+width -1
+Show DATA
+EndGroup
+
+if printing
+  cell GroupBox,local("Text from the Source")
+  width -1
+  cell ExpressionField,@TEXT
+  set width -1
+  set minHeight 15 height 200
+  sizetofit 3
+  Show TEXT
+  EndGroup
+else
+  Show TEXT
+  DisplayHeight <600
+endif
+

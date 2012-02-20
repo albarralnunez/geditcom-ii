@@ -1,0 +1,11 @@
+if #parentTag$="FAM"
+  NewLine
+  cell static local(@tag)&": "
+  sizetofit
+
+  cell EditValue
+  set Width -1 border none
+
+else
+  use Attribute
+endif

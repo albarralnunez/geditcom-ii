@@ -1,0 +1,322 @@
+load ResetTabs,RecordTitle,MiniDetail,WikiSection,ClearFloats,ShowOBJE_Wiki,EventDate,WebLinks,ExtraSections
+
+DropTypes SOUR,NOTE,OBJE,INDI,_LOG,INDICtrl
+
+#hasLabel="YES"
+gosub ResetTabs
+
+! -------- Title name
+GoSub RecordTitle,""
+#famName=@this.altview
+
+! -------- Portrait
+#por=@OBJE
+if @_NOPOR="Y"
+  #por=""
+endif
+if #por!=""
+  #thumbW=190
+  newline
+  #boxtop=#vpos$
+  HMoveTo #rightMargin$-#rightSkip-#thumbW-8
+  
+  cell GroupBox
+    set width -1 border line titleposition none
+    
+    newline -#lineSkip
+    #leftSkip=1
+    #rightSkip=3
+    
+    cell staticfield,#famName
+    set width -1 alignment center border no minheight 0
+    sizetofit
+
+    newline
+    cell LinkButton
+    set width #thumbW objectFull #por
+    #mmRatio=#imageHeight$/#imageWidth$
+    set height #thumbW*#mmRatio imageWidth #thumbW
+    set imageposition above
+    set border none target parent
+    RecordLink #por
+    Help local("Click to view and edit multimedia object")
+
+    newline 3
+    #lineSkip=0
+    GoSub MiniDetail,@MARR.DATE.user,local("Married")
+    GoSub MiniDetail,@MARR.PLAC,local("Place")
+
+  endGroup
+  newline
+  #boxend=#vpos$
+  #lineSkip=#lineSkip$
+  #leftSkip=#leftSkip$
+  #rightSkip=#rightSkip$
+  
+  newline
+  DisplayWidth #oldWidth-#rightSkip$-#thumbW-8
+  MoveTo #leftSkip,#boxtop
+
+endif
+
+! -------------- Family Details
+#sectionCount+=2
+GoSub WikiSection,local("Family Details"),"Details"
+
+if HUSB is here
+  #hName=@HUSB.altview
+else
+  #hName=""
+endif
+if WIFE is here
+  #wName=@WIFE.altview
+else
+  #wName=""
+endif
+if #hName!=""
+  if #wName=""
+    #wName="an unknown spouse"
+    #couple=#hName&" and this spouse"
+  else
+    #couple=#hName&" and "&#wName
+  endif
+else
+  #wName=#hName
+  if #hName!=""
+    #wName="an unknown spouse"
+    #couple=#hName&" and this spouse"
+  else
+    #hName="Two unknown spouses"
+    #couple="These two spouses"
+  endif
+endif
+
+newline
+cell StaticField
+set width -1 minheight 10 border none lineheight #lineMult
+text #hName
+if #wName!=""
+  text " and "&#wName
+endif
+if _UMR is here
+  text " were never married. "
+else
+  GoSub EventDate," were married",@MARR.DATE.user,@MARR.PLAC
+  if #etext=""
+    text " were married on an unknown date. "
+  else
+    text #etext&". "
+  endif
+endif
+
+if HUSB is here
+  GoSub EventDate,@HUSB.altview&" was born",@HUSB.BIRT.DATE.user,@HUSB.BIRT.PLAC
+  if #etext!=""
+    text #etext
+    #dPref=" and died"
+  else
+    #dPref=@HUSB.altview&" died"
+  endif
+  GoSub EventDate,#dPref,@HUSB.DEAT.DATE.user,@HUSB.DEAT.PLAC
+  if #etext!=""
+    text #etext&". "
+  else if #dPref=" and died"
+    text #etext&". "
+  endif
+endif
+
+if WIFE is here
+  GoSub EventDate,@WIFE.altview&" was born",@WIFE.BIRT.DATE.user,@WIFE.BIRT.PLAC
+  if #etext!=""
+    text #etext
+    #dPref=" and died"
+  else
+    #dPref=@WIFE.altview&" died"
+  endif
+  GoSub EventDate,#dPref,@WIFE.DEAT.DATE.user,@WIFE.DEAT.PLAC
+  if #etext!=""
+    text #etext&". "
+  else if #dPref=" and died"
+    text #etext&". "
+  endif
+endif
+
+sizetofit
+
+if #wName!=""
+  newline
+
+  hskip 18
+  cell static,local("See also")&":"
+  font "Static Italic Text"
+  sizetofit
+
+  if HUSB is here
+    cell LinkButton
+    set font "Hyperlink Text" RecordLink @HUSB PaneID "" border none
+  	textexpression @HUSB.rec
+    appendedexpression altview
+    sizetofit
+    #conj=local("and")
+  else
+    #conj=""
+  endif
+
+  if WIFE is here
+    if #conj!=""
+      cell static " "&#conj&" "
+      sizetofit
+      cell LinkButton
+      set font "Hyperlink Text" RecordLink @WIFE PaneID "" border none
+  	  textexpression @WIFE.rec
+      appendedexpression altview
+      sizetofit
+    endif
+  endif
+endif
+
+
+! --------- Children --------------
+#sectionCount+=2
+GoSub WikiSection,local("Children"),"Children"
+
+ReadAll "#chil" from @CHIL
+cell StaticField
+set width -1 minheight 10 border none lineheight #lineMult
+text #couple
+if #chil[0]=0
+  text " had no known children. "
+else if #chil[0]=1
+  text " had one known child. "
+else if #chil[0]=2
+  text " had two known children. "
+else if #chil[0]=3
+  text " had three known children. "
+else
+  text " had "&#chil[0]&" known children. "
+endif
+if NCHI is here
+  if @NCHI!=#chil[0]
+    text "Their total number of children was "&@NCHI&". "
+  endif
+endif
+sizetofit
+
+if CHIL is here
+  newline 5
+  hskip 12
+  #leftSkip=#hpos$
+  #lineSkip=-2
+  ClearTabs
+  #tableWidth=#rightMargin$-#rightSkip-#hpos$
+  if #tableWidth>600
+    #tableWidth=600
+  endif
+  SetTab #habs$,#habs$+0.5*#tableWidth,#habs$+0.65*#tableWidth
+  SetTab #habs$+#tableWidth
+  #tableCellHeight=22
+  #tablePad=5
+  #first="yes"
+  ShowAll CHIL
+
+  #lineSkip=#lineSkip$
+  #cellSkip=#cellSkip$
+  gosub ResetTabs
+  NewLine #lineSkip
+  #leftSkip=#leftSkip$
+  newline
+endif
+
+!--------- Events
+#recSections[#sectionCount]=local("Events")
+#recSections[#sectionCount+1]="Events"
+#sectionCount+=2
+#hasLabel=local("Events")
+#ePrefix=#couple
+#Pronoun="They"
+
+ShowAll ENGA "wiki","were engaged"
+ShowAll MARR "wiki","were married"
+ShowAll MARB "wiki","had marriage banns"
+ShowAll MARC "wiki","recorded a marriage contract"
+ShowAll ANUL "wiki","had their marriage annuled"
+ShowAll DIV "wiki","were divorced"
+ShowAll DIVF "wiki","finalized their divorce"
+ShowAll CENS "wiki","were recorded in a census"
+ShowAll MARL "wiki","obtained a marriage license"
+ShowAll MARS "wiki","reached a marriage settlement"
+ShowAll EVEN "wiki","had a generic event"
+
+!--------- Ordinances
+#recSections[#sectionCount]=local("Ordinances")
+#recSections[#sectionCount+1]="Ordinances"
+#sectionCount+=2
+#hasLabel=local("Ordinances")
+#ePrefix=#couple
+
+ShowAll SLGS "wiki","had an LDS spouse sealing"
+
+!--------- Notes
+#recSections[#sectionCount]=local("Notes")
+#recSections[#sectionCount+1]="Notes"
+#sectionCount+=2
+if NOTE is here
+  GoSub WikiSection,local("Notes"),"Notes"
+  ShowAll NOTE "wiki"
+endif
+
+!-------- Multimedia
+#recSections[#sectionCount]=local("Multimedia")
+#recSections[#sectionCount+1]="Media"
+#sectionCount+=2
+#hasOBJE="no"
+if OBJE is here
+  GoSub ClearFloats
+  GoSub WikiSection,local("Multimedia"),"Media"
+  #hasOBJE="yes"
+else if #otherOBJE!=""
+  GoSub ClearFloats
+  GoSub WikiSection,local("Multimedia"),"Media"
+  #hasOBJE="yes"
+endif
+if #hasOBJE="yes"
+  newline 3
+  #numURLs[0]=0
+  ShowAll OBJE "wiki"
+  if #otherOBJE!=""
+    #numOBJE=words(#otherOBJE)
+    repeat "#io",1,#numOBJE
+      GoSub ShowOBJE_Wiki word(#io&"\"&#otherOBJE)
+    endrepeat
+  endif
+  if #numURLs[0]>0
+    GoSub WebLinks,"wiki"
+  endif
+endif
+
+!-------- Sources
+#recSections[#sectionCount]=local("Sources")
+#recSections[#sectionCount+1]="Sources"
+#sectionCount+=2
+#sourceNumber=1
+if SOUR is here
+  GoSub WikiSection,local("Sources"),"Sources"
+  ShowAll SOUR "wiki"
+endif
+
+!-------- Research logs
+#recSections[#sectionCount]=local("Research Logs")
+#recSections[#sectionCount+1]="Logs"
+#sectionCount+=2
+#sourceNumber=1
+if _LOG is here
+  GoSub WikiSection,local("Research Logs"),"Logs"
+  ShowAll _LOG "wiki"
+endif
+
+hideexcess
+
+GoSub ExtraSections
+
+! just in case not reset yet
+DisplayWidth #oldWidth

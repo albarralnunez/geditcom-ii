@@ -1,0 +1,68 @@
+load TagBlock
+
+if #msg="Media"
+  Gosub TagBlock,"OBJE","Media"
+  hideexcess
+  
+else
+  newline
+
+  ! header on first event
+  if #first="yes"
+    cell static,local("EVEN")
+    set tabwidth 1 alignment center border square
+    cellBackground "Table Cell Background"
+
+    cell static,"?"
+    set tabwidth 1 alignment center border square
+    cellBackground "Table Cell Background"
+
+    cell static,local("DATE")
+    set tabwidth 1 alignment center border square
+    cellBackground "Table Cell Background"
+
+    hskip -24
+    cell LinkButton
+    menulink "Sort Events"
+    set tabwidth 1 border none image "go-down" imageHeight 12
+    help local("Sort the events")
+
+    cell static,local("PLAC")
+    set tabwidth 2 alignment center border square
+    set width #cellWidth$+5
+    cellBackground "Table Cell Background"
+
+    newline
+    #first="no"
+  endif
+  
+  ! event name, check box, and date
+  cell static,local(@tag)
+  set tabwidth 1 alignment center border square
+  cellBackground "Table Cell Background"
+
+  cell CheckBoxEdit
+  set tabwidth 1
+  if local("<LANG>")="English"
+    help "Check if "&local(@tag)&" occurred but nothing else known"
+  else
+    help local("Check if ordinance occurred but nothing else known")
+  endif
+
+  #eventDate=@DATE.view
+  show DATE Event
+  show PLAC Event
+
+  ! rest in a child window
+  cell StructuresLink,OrdinanceDetails,@tag
+  set border no width -1
+  if more
+    set image "details_here"
+  else
+    set image "details"
+  endif
+  LinkAll all
+
+  #tagKey=@tag&" details"
+  help local("Click to edit")&": "&local(#tagKey)
+endif

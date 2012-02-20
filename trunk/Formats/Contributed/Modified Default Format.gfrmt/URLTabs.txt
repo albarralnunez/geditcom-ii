@@ -1,0 +1,69 @@
+sub URLTabs
+  ReadAll "#urls" from @_URL
+  if #urls[0]>5
+    #urls[0]=5
+  endif
+  Repeat "#i",1,#urls[0]
+    cell LinkButton
+    #wlabel = @_URL.i.#i._LABEL
+    if #wlabel!=""
+      set TextExpression @this._URL.i.#i._LABEL
+    else
+      set Text "URL #"&#i
+    endif
+    set RecordLink @this PaneID "Web"&#i border shadowlesssquare
+    sizetofit 10
+    if #thisnum=#i
+      set font "Hyperlink Text" fontsize 11
+    endif
+  EndRepeat
+  
+  if #urls[0]>0
+    cell LinkButton
+    set Text local("All")
+    set RecordLink @this PaneID "WebAll" border shadowlesssquare
+    sizetofit 20
+    if #thisnum=0
+      set font "Hyperlink Text" fontsize 11
+    endif
+  endif
+  
+  ! Remove Map
+  if _URL is here
+    ! Add Map
+    cell LinkButton
+    set image "plus" border none width 24 height 22
+    Help local("click to add a web site URL for this place")
+    set ScriptLink Add_URL ScriptType format
+
+    cell LinkButton
+    set image "minus" border none width 24 height 22
+    Help local("click to remove a web site URL for this place")
+    #sm = "_URL"&return&"(unnamed url)"&return&"Select a place web site URL to remove"&return&"Remove a URL"
+    #sm = #sm&return&#thisnum
+    set ScriptLink Delete_Tag ScriptType format ScriptMessage #sm
+    
+    if #urls[0]>1
+      if #thisnum=0
+        cell LinkButton
+        set image "go-up" border none width 24 height 22
+        Help local("click to select first web site, which is displayed in this window")
+        #sm = "_URL"&return&"(unnamed url)"&return&"Select primary place web site URL to display"&return&"Reorder URLs"
+        set ScriptLink Promote_Tag ScriptType format ScriptMessage #sm
+      endif
+    endif
+  endif
+
+  NewLine
+  
+  ! web links
+  #urlnum=0
+  if _URL is here
+    ShowAll _URL,#thisnum
+  else
+    Show _URL,0
+  endif
+
+  hideexcess
+
+endSub

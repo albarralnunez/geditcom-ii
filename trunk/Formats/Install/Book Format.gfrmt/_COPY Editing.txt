@@ -1,0 +1,3 @@
+load BookCheckBox
+gosub BookCheckBox,local("Include Copyright Notices"),@contents
+help local("Check to include copyright notices on back of title page")

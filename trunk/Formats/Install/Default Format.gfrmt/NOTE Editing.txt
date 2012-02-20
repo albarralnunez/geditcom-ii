@@ -1,0 +1,87 @@
+! special case for header
+if @rec=HEAD
+  use Field 5
+
+else
+  ! existing note structure
+  if tagexists is true
+	if #msg="1"
+      if @contents is validlink
+        if printing is false
+		  #topField=#vpos$
+		  cell LinkButton
+		  text local("Edit")
+		  set RecordLink @contents Target child border shadowlesssquare
+		  sizetofit
+		  #viewSpace=#rightMargin$-#rightSkip-#cellWidth$-#hpos$
+		  set shift #viewSpace
+		  Help local("Click to view and edit notes")
+
+		  newline
+		  VMoveTo #topField
+	      cell ExpressionField @contents.CONC
+	      set width #viewSpace-#cellSkip MinHeight 22 MaxHeight 400
+		else
+	      cell ExpressionField @contents.CONC
+	      set width -1 MinHeight 22
+        endif
+		sizetofit 3
+
+      ! embedded notes
+      else
+        cell static,local("(Embedded notes - reopen file to fix)")
+        set width -1
+      endif
+
+	else
+    if #msg="label"
+      newline
+      cell static,local(NOTE)&":"
+      sizetofit
+      set alignment right tabwidth 1
+    else
+      if #msg!="sameline"
+        newline
+      endif
+	  cell label,"• "
+	  SizeToFit
+	  set
+    endif
+
+    ! link to NOTE record
+    if @contents is validlink
+      cell LinkButton
+      TextExpression @contents.rec
+      AppendedExpression view
+      !Watch @contents.viewTag
+      set border no Font "Hyperlink Text" width -1 alignment left
+      RecordLink @contents
+      Target child
+	  sizetofit -1
+      Help local("Click to view and edit notes")
+
+      ! test notes display in field here
+      !newline 3
+      !cell ExpressionField,@contents.CONC
+      !set width -1 height 50
+      !sizetofit 3
+
+    ! embedded notes
+    else
+      cell static,local("(Embedded notes - reopen file to fix)")
+      set width -1
+    endif
+	endif
+
+    ! subordinate data should not be there, will fix on reopen
+    hideexcess
+  ! no notes - an attach button
+  else
+    ! button to link to new or existing notes
+    hskip 2    cell CreateLinkButton
+    set border shadowlesssquare width 26 height 26 target childifnew
+    image "notes"
+    help local("Click to attach notes")
+  endif
+
+endif

@@ -1,0 +1,40 @@
+! leave room for RESN icon, margin, and cellSkip
+#avail=#rightMargin$-#rightSkip-#cellSkip-#hpos$-29
+
+if @this.FAMS=""
+  ! edit field with value
+  cell PopupMenuEdit
+  if @contents="Male"
+    MenuItems local("Male")&":Male"
+  else
+    MenuItems local("Male")&":M"
+  endif
+  if @contents="Female"
+    MenuItems local("Female")&":Female"
+  else
+    MenuItems local("Female")&":F"
+  endif
+  MenuItems local("Unknown")&"::"
+  SizeToFit
+  help local("Select sex")
+  border shadowlesssquare
+else
+  cell LinkButton
+  if @contents="M"
+    set text local("Male")
+  else if @contents="F"
+    set text local("Female")
+  else
+    set text local(@contents)
+  endif
+  set border shadowlesssquare
+  SizeToFit 24
+  MenuLink "Attach Changed Sex"
+  help local("Click to change this person's sex")
+endif
+
+#margin=(#avail-#cellWidth$)/2
+if #margin>0
+  shift #margin
+  hskip #margin
+endif

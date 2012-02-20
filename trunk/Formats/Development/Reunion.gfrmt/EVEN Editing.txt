@@ -1,0 +1,31 @@
+if @rec="SOUR"
+    newline
+    cell static,local("Events")&": "    sizetofit
+
+    ! edit field with value
+    cell EditValue
+    set Width -1 Offset -2
+    set border none
+    help local("Enter event types cited")
+    NewLine
+ 	tab
+    #leftSkip=#hpos$
+
+    ShowAll DATE "label"
+    ShowAll PLAC
+
+else if #parentTag$="SOUR"    newline
+    cell static,local("Events")&": "    sizetofit
+
+    cell EditValue
+    set Width -1 border none
+    help local("Enter event types cited")
+
+    NewLine
+	tab
+    #leftSkip=#hpos$
+
+    ShowAll ROLE
+else
+  use Event
+endif

@@ -1,0 +1,184 @@
+% Custom styles for Genealogy Book
+
+%------------------------------------------------------------------
+%:Load Packages
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+%\ifpdf
+\DeclareGraphicsExtensions{.pdf,.jpg,.png,.tif,.gif,.psd,.bmp}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`-tif-converted-to.png}
+\DeclareGraphicsRule{.gif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .gif`-gif-converted-to.png}
+\DeclareGraphicsRule{.psd}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .psd`-psd-converted-to.png}
+\DeclareGraphicsRule{.bmp}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .bmp`-bmp-converted-to.png}
+%\else
+%\DeclareGraphicsExtensions{.eps,.jpg,.png,.tif,.gif,.psd,.bmp}
+%\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+%\DeclareGraphicsRule{.gif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .gif`.png}
+%\DeclareGraphicsRule{.psd}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .psd`.png}
+%\DeclareGraphicsRule{.bmp}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .bmp`.png}
+%\fi
+
+\usepackage{wrapfig}
+\usepackage{makeidx}
+
+\bibliographystyle{unsrt}
+\makeindex
+
+%---------------------------------------
+% Document settings
+
+\catcode`\@=11
+
+%------------------------------------------
+% Introduction section of first chapter
+
+\def\theintroduction{\section*{Introduction}}
+
+%---------------------------------------
+% Sectioning formats
+
+\def\tableofcontents{\setcounter{page}{1}\begin{center}
+  {\Large\bf\tocName}\end{center}\vskip0in
+  \@starttoc{toc}}
+
+%---------------------------------------
+% Citing references, equations, and figures
+
+% BIBLIOGRAPHY format
+\def\thebibliography#1{\chapter*{\bibName\@mkboth
+  {\bibName}{\bibName}}\list
+  {\arabic{enumi}.}{\settowidth\labelwidth{#1.}\leftmargin\labelwidth
+    \advance\leftmargin\labelsep
+    \usecounter{enumi}}
+    \def\newblock{\hskip .11em plus .33em minus .07em}
+    \sloppy\clubpenalty4000\widowpenalty4000
+    \sfcode`\.=1000\relax}
+
+\catcode`\@=12
+
+%------------------------------------------
+% Figures and captions
+% #1 to #6 three pairs of caption, path, #7 is page with, #8 is picture width (<1/3 page width)
+% #9 is location (t,b,h)
+\def\portraits#1#2#3#4#5#6#7#8#9{
+\begin{figure}[#9]
+ \begin{minipage}{#7\textwidth}
+ \begin{center}
+ \includegraphics[width=#8\textwidth]{#2}\\
+ {\small #1}
+ \end{center}
+ \end{minipage}
+ \if\empty#3\else
+ \begin{minipage}{#7\textwidth}
+ \begin{center}
+ \includegraphics[width=#8\textwidth]{#4}\\
+ {\small #3}
+ \end{center}
+ \end{minipage}
+ \fi
+ \if\empty#5\else
+ \begin{minipage}{#7\textwidth}
+ \begin{center}
+ \includegraphics[width=#8\textwidth]{#6}\\
+ {\small #5}
+ \end{center}
+ \end{minipage}
+ \fi
+\end{figure}
+}
+
+\renewcommand{\textfraction}{.25}
+\renewcommand{\topfraction}{.6}
+\renewcommand{\bottomfraction}{.6}
+
+%------------------------------------------
+% New Chapter
+
+\def\startGeneration#1{\clearpage
+\chapter*{\uppercase{#1}}
+\addcontentsline{toc}{chapter}{#1}
+\markboth{#1}{#1}
+}
+
+%------------------------------------------
+% Person section
+
+\def\person#1#2#3#4{
+\section*{#1. #2}#3
+\if\empty#4\else
+\addcontentsline{toc}{section}{\hspace{12pt}#4 #2 (#1)}
+\fi}
+
+%------------------------------------------
+% Children list
+
+\newcounter{chil}
+\newenvironment{children}{\begin{list}{\arabic{chil}.}{\usecounter{chil}
+\setlength{\rightmargin}{9pt}
+\setlength{\topsep}{6pt plus 3pt minus 2pt}
+\setlength{\parsep}{0pt}}
+\setlength{\itemsep}{4pt plus 2pt minus 2pt}
+\small}
+{\end{list}}
+
+%------------------------------------------
+% Title page and contents
+% arguments {Main title}{People List}{Author}{email}{subtitle}{copyright}
+
+\def\booktitlepage#1#2#3#4#5#6{
+\thispagestyle{empty}
+
+\vbox{}\vfill
+\begin{center}
+{\Huge \bf #1}
+\end{center}
+{\hsize\textwidth
+ \setbox0=\hbox{\Huge\bf #2}
+ \ifdim \wd0 >\hsize \hsize\textwidth\begin{center}\vskip6pt\Large\bf #2\end{center}\par
+ \else \vskip12pt\hfil\Huge\bf #2\hfil \fi}
+\begin{center}
+\if\empty#5\else
+\vskip12pt
+{\Huge\bf #5}
+\fi
+
+{\Large\bf
+\vskip 1in
+\authorIntro\ #3
+\vskip 12pt
+\printDate}
+\end{center}
+\vfill
+
+\newpage
+\thispagestyle{empty}
+
+\vbox{}\vfill
+\begin{center}
+#6
+\vskip 12pt
+Email: {\tt #4}
+\vskip12pt
+\geditcomII\par
+{\tt http://www.geditcom.com}
+\end{center}
+\vfill
+
+\newpage
+\pagestyle{plain}
+\pagenumbering{roman}
+\tableofcontents
+}
+
+
+

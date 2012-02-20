@@ -1,0 +1,11 @@
+if @rec="OBJE"
+  hideexcess
+else
+  ! static text with level and tab  NewLine
+  cell static,local(@tag)&":"
+  set tabwidth 1 alignment right
+
+  cell EditValue
+  set Width -1 Offset -2
+  help local("Enter place hierachy form")
+endif

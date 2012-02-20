@@ -1,0 +1,1 @@
+This folder has scripts that change data in the file or that find and move things to albums.

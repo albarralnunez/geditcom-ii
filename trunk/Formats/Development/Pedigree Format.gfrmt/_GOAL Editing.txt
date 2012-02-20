@@ -1,0 +1,3 @@
+cell EditValue
+set tabwidth 1 border square
+help local("Enter goal for this task")

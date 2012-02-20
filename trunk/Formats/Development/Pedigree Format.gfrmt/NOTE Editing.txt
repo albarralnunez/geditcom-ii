@@ -1,0 +1,38 @@
+! special case for header
+if @rec=HEAD
+  use Field 5
+
+else
+  if #msg="label"
+    newline
+    cell static,local("Notes")&":"
+    sizetofit
+    set alignment right tabwidth 1
+  else
+    newline
+    cell static,local("bullet")
+    SizeToFit
+  endif
+
+  ! link to NOTE record
+  if @contents is validlink
+    cell LinkButton
+    TextExpression @contents.rec
+    AppendedExpression view
+    !Watch @contents.viewTag
+    set border no Font "Hyperlink Text" alignment left
+    sizetofit -1
+    RecordLink @contents
+    Target child
+    Help local("Click to view and edit notes")
+
+  ! embedded notes
+  else
+    cell static,local("(Embedded notes - reopen file to fix)")
+    sizetofit -1
+  endif
+
+  ! subordinate data should not be there, will fix on reopen
+  hideexcess
+
+endif

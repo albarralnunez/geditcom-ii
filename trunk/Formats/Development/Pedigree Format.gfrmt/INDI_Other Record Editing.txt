@@ -1,0 +1,91 @@
+load INDIPanes,ResetTabs,ListBlock,References,ToolBtn
+
+! -------------- Start Template -----------------
+
+GoSub ResetTabs
+#sex=@SEX
+
+! --------- Name -----------
+#oldWidth=#rightMargin$
+DisplayWidth #oldWidth+#rightSkip+1
+newline -#topMargin$-1
+hskip -#leftSkip-1
+cell GroupBox
+border line
+titleposition none
+cellbackground "Record Header Box Background"
+width -1
+
+! -------------- Mini Toolbar -----------------
+moveto 1,1
+GoSub INDIPanes,"Other"
+hskip 10
+gosub ToolBtn,"Attach Notes","notes",local("Click to attach notes")
+gosub ToolBtn,"Attach Source","source",local("Click to attach source")
+gosub ToolBtn,"Attach Research Log","researchlog",local("Click to attach research log")
+gosub ToolBtn,"Attach Optional Data","plus",local("Click to attach optional data")
+
+newline 3
+Show NAME #rightMargin$-265
+Show SEX
+Show RESN
+if NAME is here
+  newline
+  ShowAll NAME #rightMargin$-265
+endif
+EndGroup
+
+DisplayWidth #oldWidth
+
+! --------- ALIA, ASSO, SUBM, ---------------
+if ALIA|ASSO|SUBM|ANCI|DESI is here
+  ClearTabs
+  #assoTab=140
+  SetTab #assoTab
+  newline
+  cell label,local("Associated Records")
+  SizeToFit
+  newline -3  cell GroupBox
+    set width -1 border line titlePosition none
+    newline -#lineSkip-3
+    ShowAll ALIA
+    ShowAll ASSO
+	ShowAll SUBM
+	ShowAll ANCI
+	ShowALl DESI
+  EndGroup
+  GoSub ResetTabs
+endif
+
+! --------- NOTEs, SOURs, and _LOGs -----------
+gosub References,"_LOG"
+#lineSkip=#lineSkip$
+
+Hide INDIEvents,INDIOrdinances,INDIAttributes,RESN,SEX,FAMC,FAMS,OBJE,_NOPOR
+
+! -------- Additional Data ------------
+if more is true
+  ClearTabs
+  SetTab 150,240,330
+  cell label,local("Additional Data")
+  SizeToFit
+  newline -3
+  cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-3
+  ShowAll CHAN
+  ShowAll all
+  EndGroup
+endif
+
+optionalTag RIN,local(RIN)
+optionalTag REFN,local(REFN)
+optionalTag SUBM,local(SUBM)
+optionalTag ANCI,local(ANCI)
+optionalTag DESI,local(DESI)
+optionalTag ALIA,local(ALIA)
+optionalTag ASSO,local(ASSO)
+
+DropTypes SOUR,NOTE,_LOG,INDI,INDICtrl
+
+

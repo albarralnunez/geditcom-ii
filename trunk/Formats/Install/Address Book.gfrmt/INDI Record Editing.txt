@@ -1,0 +1,122 @@
+load LineLabel,ResetTabs,ABSectionLabel,ArrangeOBJE
+
+! Address book report
+! Finish French strings
+
+! Problems
+!   Undo attach URL needs more then one Ctrl-Z
+!   _REFs might get out of synch when using new attach/detach scripts
+
+DropTypes OBJE,NOTE
+
+gosub ResetTabs
+
+! Portrait NAME and SEX and RESN
+#nameTop=#vpos$
+#thumbW=64
+#padding=10
+#por=@OBJE
+if @_NOPOR="Y"
+  #por=""
+endif
+if #por!=""
+  newline
+  cell LinkButton
+  set width #thumbW+#padding objectImage #por
+  #mmRatio=(#imageHeight$+#padding)/(#imageWidth$+#padding)
+  if #mmRatio<1
+    #mmRatio=1
+  endif
+  set height (#thumbW+#padding)*#mmRatio imageWidth #thumbW
+  set imageposition imageonly
+  set border smallsquare target parent RecordLink #por
+  Help local("Click to view and edit multimedia object")
+else
+  cell LinkButton
+  set width #thumbW+#padding height #thumbW+#padding
+  set border smallsquare
+endif
+hskip 0
+#nameHoriz=#hpos$
+newline
+#nameBottom=#vpos$
+
+MoveTo #nameHoriz,#nameTop
+#leftSkip=#hpos$
+
+Show NAME
+Show SEX
+Show RESN
+Show BIRT
+Show DEAT
+
+!-------- Known Residences
+
+#leftSkip=#leftSkip$
+newline
+VMoveTo #nameBottom
+
+#plus="Add_Residence"
+if "RESI" is here
+  #minus="Remove_Tag"
+else
+  #minus=""
+endif
+#ph=local("Click to add a new residence")
+#mh=local("Click to remove a residence")
+gosub ABSectionLabel local("Known Residences"),#plus,#ph,#minus,#mh,"RESI"
+
+#resnum=0
+ShowAll RESI
+
+!--------- Multimedia
+#plus="Attach Multimedia"
+#ph=local("Click to attach a new multimedia object")
+if OBJE is here
+  #minus="Remove_Tag"
+else
+  #minus=""
+endif
+#mh=local("Click to remove a multimedia object")
+gosub ABSectionLabel local("OBJE"),#plus,#ph,#minus,#mh,"OBJE"
+#leftSkip=#leftSkip$+6
+gosub ArrangeOBJE
+#leftSkip=#leftSkip$
+
+!--------- Notes
+#plus="Attach Notes"
+#ph=local("Click to attach a new set of notes")
+if NOTE is here
+  #minus="Remove_Tag"
+else
+  #minus=""
+endif
+#mh=local("Click to remove a set of notes")
+gosub ABSectionLabel local("NOTE"),#plus,#ph,#minus,#mh,"NOTE"
+if "NOTE" is here
+  #leftSkip=#leftSkip$+6
+  showall NOTE
+  #leftSkip=#leftSkip$
+endif
+
+!-------- Extra Buttons
+if printing is false
+  gosub ABSectionLabel local("Utilities"),"","","","",""
+  newline
+  hskip 24
+  cell LinkButton,local("Find Individuals with Residences")
+  set border shadowlesssquare
+  sizetofit
+  set ScriptLink "Find_Residences" ScriptType format ScriptMessage local("Known Residences")
+  help local("Click to move all individuals with known residences to an album named 'Known Residences'")
+
+  cell LinkButton,local("Export vCard")
+  set border shadowlesssquare
+  sizetofit
+  set ScriptLink "Export_vCard.py" ScriptType format
+  help local("Click to export this individual to a vCard file")
+
+endif
+
+
+hideexcess

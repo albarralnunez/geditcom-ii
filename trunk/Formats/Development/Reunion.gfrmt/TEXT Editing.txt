@@ -1,0 +1,28 @@
+if @rec="SOUR"
+  ! Indent and put up label
+  NewLine
+  #name=string(@tag)
+  if #name<>""
+    cell static #name&": "
+  else
+    cell static @level&" "&@tag&" "
+  endif
+  sizetofit
+
+  if printing
+    ! edit field with value
+    cell EditField
+    set Width -1 border none
+    minHeight 44
+    sizetofit
+  else
+    cell Static,local("see editing pane at bottom of the window")
+    sizetofit
+
+    cell EditPane,"("&local("TEXT_HELP")&")"
+    set Position bottom fraction .3
+    help local("TEXT_HELP")
+  endif
+else
+  use _Unknown_
+endif

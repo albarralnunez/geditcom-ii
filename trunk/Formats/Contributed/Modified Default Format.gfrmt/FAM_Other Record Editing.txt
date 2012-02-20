@@ -1,0 +1,44 @@
+load FAMPanes,ResetTabs,AttachData
+
+! -------------- Start Template -----------------
+DropTypes INDI,INDICtrl
+GoSub ResetTabs,0
+GoSub FAMPanes,"Other"
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+width -1
+newline -#lineSkip-3
+#lineSkip=0
+gosub AttachData
+EndGroup
+#lineSkip=#lineSkip$
+
+hide HUSB,WIFE,_UMR,CHIL,NCHI
+hide FAMEvents,FAMOrdinances,SOUR,NOTE,OBJE
+hide _NOPOR,_LOG
+
+! -------- Additional Data ------------
+if more is true
+  ClearTabs
+  gosub ResetTabs,50
+  cell GroupBox,local("Additional Data")
+  width -1
+  ShowAll CHAN
+  ShowAll all
+  EndGroup
+endif
+
+! -------- Export -------------
+
+cell GroupBox,local("Export")
+width -1
+cell LinkButton ".ged"
+set ScriptLink "Export Data/Share Family Tree" ScriptType "system"
+set border shadowlesssquare
+sizetofit
+
+optionalTag RIN,local(RIN)
+optionalTag REFN,local(REFN)
+optionalTag SUBM,local(SUBM)
+optionalTag,REFN,local("Keyword(s)"), ,"TYPE Keyword(s)"

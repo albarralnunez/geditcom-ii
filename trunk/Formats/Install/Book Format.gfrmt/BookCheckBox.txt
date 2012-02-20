@@ -1,0 +1,16 @@
+sub BookCheckBox,#cblabel,#cbvalue
+  if printing is true
+    cell static
+    if #cbvalue="Y"
+      text "✓ "
+    else if #cblabel!=""
+      text "– "
+    endif
+    text #cblabel
+    sizetofit
+  else
+    cell CheckBoxEdit,#cblabel
+    controlSize small
+    sizetofit
+  endif
+endSub

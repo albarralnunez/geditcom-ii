@@ -1,0 +1,65 @@
+load LineLabel,RecordChildLink
+
+! get #useTag for parent's sex and localize #parent=(Husband, Wife, Father, or Mother)
+#useTag=@tag
+#sex=""
+if @contents is validlink
+  #sex=@contents.SEX
+else
+  if @tag="HUSB"
+    #sex=@this.HUSB.SEX
+  else
+    #sex=@this.WIFE.SEX
+  endif
+endif
+if #sex="M"
+  #useTag="HUSB"
+else if #sex="F"
+  #useTag="WIFE"
+else if @tag="HUSB"
+  #sex="M"
+else
+  #sex="F"
+endif
+if @this._UMR=""
+  if #useTag="HUSB"
+    #parent="Husband"
+  else
+    #parent="Wife"
+  endif
+else
+  if #useTag="HUSB"
+    #parent="Father"
+  else
+    #parent="Mother"
+  endif
+endif
+
+if #parentTag$="FAM"
+  gosub LineLabel,#parent
+
+  if @contents is validlink
+    gosub RecordChildLink local("Click to view record for")&" "&#parent,"parent"
+  else
+    offset #buttonOffset
+    cell LinkButton,"Attach "&#parent
+    set border shadowlesssquare
+    if #useTag="HUSB"
+      set menulink "Attach Husband" 
+    else
+      set menulink "Attach Wife"
+    endif
+    sizetofit
+  endif
+
+else
+  ! ages in family event
+  if #useTag=@tag
+    #agelab=local(#parent&"'s Age")
+  else if #useTag="WIFE"
+    #agelab=local(#parent&" 1's Age")
+  else
+    #agelab=local(#parent&" 2's Age")
+  endif
+  Show AGE #agelab
+endif

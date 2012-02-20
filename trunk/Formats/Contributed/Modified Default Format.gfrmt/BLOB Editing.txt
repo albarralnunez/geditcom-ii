@@ -1,0 +1,7 @@
+! static text with level and tabNewLine
+cell static,local(@tag)&":"
+set tabwidth 1 alignment right
+
+! edit field with value
+cell static,local("Encoded data not supported")
+set Width -1

@@ -1,0 +1,7 @@
+! Indent and put up label
+NewLine
+cell static,"     "&local(@tag)&": "
+sizetofit
+
+cell EditValue
+set Width -1 border none

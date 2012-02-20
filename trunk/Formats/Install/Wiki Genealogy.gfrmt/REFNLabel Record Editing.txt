@@ -1,0 +1,18 @@
+sub SectionLabel #labelText
+  NewLine 6  cell label #labelText
+  set width -1 font "Section Label"
+
+  newline -2
+  cell Palette
+  set width -1 height 4
+  PalMoveTo 0,0
+  PalLineTo #cellWidth$,0
+
+  NewLine
+endsub
+
+gosub SectionLabel,local("Enter custom label for the user reference entry")
+
+Show TYPE
+
+resizeWindow yes

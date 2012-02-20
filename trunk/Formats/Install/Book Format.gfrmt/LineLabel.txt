@@ -1,0 +1,13 @@
+! Level 1 is label text at start of the line
+! Higher levels are indented and use static cell text
+! #theLabel should be localized already
+
+sub LineLabel #theLabel
+  NewLine
+  if @level>1
+    tab (@level-1)
+	cell static #theLabel&": "
+  else  	cell label #theLabel&": "
+  endif
+  sizetofit
+endSub

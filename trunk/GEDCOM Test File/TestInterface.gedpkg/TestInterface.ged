@@ -1,0 +1,1770 @@
+0 HEAD
+1 SOUR GEDitCOM II
+2 NAME GEDitCOM II
+2 VERS 1.6
+2 CORP John A. Nairn, RSAC Software
+3 ADDR 2995 NW Snowberry Pl
+4 CONT Corvallis, OR 97330
+4 CONT USA
+3 PHON +1-541-123-4567
+2 DATA Name of source data
+3 DATE 1 JAN 1998
+3 COPR Copyright of source data
+1 SUBM @SUBM@
+1 DEST ANSTFILE
+1 DATE 1 JAN 1998
+2 TIME 13:57:24.80
+1 FILE TestInterface.ged
+1 COPR © 2009-2010 by J. A. Nairn.
+1 GEDC
+2 VERS 5.5
+2 FORM LINEAGE-LINKED
+1 LANG English
+1 CHAR UTF-8
+1 PLAC
+2 FORM City, County, State, Country
+1 NOTE This file was created by GEDitCOM II - the customizable Macintosh genealogy application. The GEDitCOM II web site is <http://www.geditcom.com>.
+1 SUBN @SUBN1@
+1 _HME @I1@
+0 @SUBN1@ SUBN
+1 FAMF Family File Name
+1 TEMP Temple Code
+1 ANCE 5
+1 DESC 2
+1 ORDI Process Flag
+1 RIN Submission Record ID
+1 SUBM @SUBM@
+0 @SUBM@ SUBM
+1 NAME John A. Nairn
+1 ADDR 2995 NW Snowberry Place
+2 CONT Corvallis, OR
+2 ADR1 2995 NW Snowberry Place
+2 ADR2 off Garryanna
+2 CITY Corvallis
+2 STAE Oregon
+2 POST 97330
+2 CTRY USA
+1 PHON 541-123-4567
+1 _EMAIL john@geditcom.com
+1 CHAN
+2 DATE 15 FEB 2012
+3 TIME 09:06:45
+1 LANG English
+1 RFN Record File Number
+1 OBJE @M3@
+1 _GPS -100,100
+0 @I16@ INDI
+1 NAME Mother //
+1 SEX F
+1 FAMS @F6@
+1 REFN 18 NOV 2010 17:53:46
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 18:06:55
+1 NOTE @N15@
+0 @I3@ INDI
+1 NAME Fanny /Alger/
+1 SEX F
+1 FAMS @F3@
+1 REFN 1 SEP 2009 22:41:26
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 18:07:58
+1 ASSO @I1@
+1 NOTE @N15@
+0 @I19@ INDI
+1 NAME Various Language /Alphabets/
+1 SEX M
+1 BIRT
+2 DATE 25 MAY 1985
+2 PLAC Łódź, Polska
+1 DEAT
+2 DATE 24 MAY 1985
+2 PLAC Wółka Mędrzechowska, Polska
+1 REFN 18 NOV 2010 21:15:47
+2 TYPE Creation Date
+1 CHAN
+2 DATE 19 NOV 2010
+3 TIME 19:05:33
+1 NOTE @N1@
+0 @I18@ INDI
+1 NAME Louisa /Beaman/
+1 SEX F
+1 BIRT
+2 DATE Bet 1789
+1 FAMS @F7@
+1 REFN 18 NOV 2010 18:01:26
+2 TYPE Creation Date
+1 CHAN
+2 DATE 10 NOV 2011
+3 TIME 09:00:26
+1 NOTE @N15@
+0 @I9@ INDI
+1 NAME Adoptive /Father/
+1 SEX M
+1 FAMS @F6@
+1 REFN 5 SEP 2009 11:56:04
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 18:08:13
+1 DSCR Bald
+1 DSCR Freckles
+1 NOTE @N15@
+0 @I2@ INDI
+1 NAME Emma /Hale/
+1 SEX F
+1 BIRT
+2 DATE 10 JUL 1804
+2 PLAC Harmony Township, Susquehanna County, Pennsylvania
+1 DEAT
+2 DATE 30 APR 1879
+2 PLAC Navoo, Illinois, USA
+2 ADDR Nauvoo House
+1 FAMS @F2@
+1 REFN 1 SEP 2009 22:35:56
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 18:08:19
+1 NOTE @N8@
+1 NOTE @N15@
+1 OBJE @M8@
+1 OBJE @M7@
+1 OBJE @M4@
+1 OBJE @M6@
+1 _LOG @L2@
+1 BAPM
+2 DATE 28 JUN 1830
+2 PLAC Colesville, Broome, NY
+2 AGE 25
+2 TYPE LDS Baptism
+0 @I17@ INDI
+1 NAME Lucinda Pendleton Morgan /Harris/
+1 SEX F
+1 FAMS @F5@
+1 REFN 18 NOV 2010 18:00:43
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 18:08:28
+1 NOTE @N15@
+0 @I5@ INDI
+1 NAME Lucy /Mack/
+1 SEX F
+1 FAMS @F4@
+1 REFN 1 SEP 2009 22:43:40
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 18:08:32
+1 NOTE @N15@
+0 @I12@ INDI
+1 NAME Joseph /Murdoch/
+1 SEX M
+1 BIRT
+2 DATE 30 APR 1831
+2 PLAC Kirtland, Lake, Ohio
+1 DEAT
+2 DATE MAR 1832
+2 PLAC Hiram, Portage, Ohio
+1 FAMC @F2@
+2 PEDI Adopted
+1 REFN 18 NOV 2010 17:44:03
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 18:08:36
+1 NOTE @N15@
+0 @I13@ INDI
+1 NAME Julia /Murdoch/
+1 SEX F
+1 BIRT
+2 DATE 30 APR 1831
+2 PLAC Kirtland, Lake, Ohio
+1 FAMC @F2@
+2 PEDI Adopted
+1 REFN 18 NOV 2010 17:44:33
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 18:08:40
+1 NOTE @N15@
+0 @I20@ INDI
+1 NAME Character /Sets/
+1 SEX M
+1 REFN 19 NOV 2010 19:12:52
+2 TYPE Creation Date
+1 NOTE @N17@
+1 NOTE @N18@
+1 NOTE @N19@
+1 NOTE @N22@
+1 CHAN
+2 DATE 19 NOV 2010
+3 TIME 19:42:53
+0 @I11@ INDI
+1 NAME Joseph /Smith Alias/
+1 SEX M
+1 REFN 5 SEP 2009 12:06:45
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 18:08:45
+1 NOTE @N15@
+0 @I6@ INDI
+1 NAME Alvin /Smith/
+2 SPFX Jr.
+1 SEX M
+1 BIRT
+2 DATE 15 JUN 1828
+2 PLAC Harmony, Susquehanna, Pennsylvania, USA
+1 DEAT
+2 DATE 15 JUN 1828
+2 PLAC Harmony, Susquehanna, Pennsylvania, USA
+1 FAMC @F2@
+1 REFN 5 SEP 2009 10:20:14
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 18:08:50
+1 NOTE @N15@
+0 @I15@ INDI
+1 NAME Frederick Granger Williams /Smith/
+1 SEX M
+1 BIRT
+2 DATE 29 JUN 1836
+1 FAMC @F2@
+1 REFN 18 NOV 2010 17:48:25
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 18:08:57
+1 NOTE @N15@
+0 @I4@ INDI
+1 NAME Joseph /Smith/
+1 SEX M
+1 FAMS @F4@
+1 REFN 1 SEP 2009 22:43:20
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 18:09:00
+1 RESI
+2 ADDR Nouvelle adresse
+1 NOTE @N15@
+0 @I14@ INDI
+1 NAME Joseph /Smith/ III
+1 SEX M
+1 BIRT
+2 DATE 6 NOV 1832
+2 PLAC Kirtland, Lake, Ohio
+1 FAMC @F2@
+1 REFN 18 NOV 2010 17:46:27
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 18:09:06
+1 NOTE @N15@
+0 @I1@ INDI
+1 NAME Joseph /Smith/ Jr
+2 NPFX Mr
+2 GIVN Joseph
+2 NICK Joe
+2 SPFX LDS
+2 SURN Smith
+2 NSFX Jr
+2 NOTE @N7@
+2 SOUR @SR5@
+2 _LOG @L1@
+1 SEX M
+1 FAMS @F2@
+1 FAMS @F3@
+1 FAMS @F5@
+1 FAMC @F4@
+1 FAMC @F6@
+2 PEDI Adopted
+1 FAMS @F7@
+1 BARM
+2 DATE BEF 1200 B.C.
+1 CHR
+2 DATE 23 TSH 3456
+1 REFN 25 AUG 2009 23:48:52
+2 TYPE Creation Date
+1 CHAN
+2 DATE 15 FEB 2012
+3 TIME 09:11:10
+1 SOUR @SR3@
+2 PAGE 122-145
+1 SOUR @SR2@
+1 SOUR @SR1@
+1 SOUR @SR4@
+1 _LOG @L2@
+1 _LOG @L3@
+1 FCOM
+2 DATE 0056 B.C.
+1 CONF
+2 DATE @#DJULIAN@ 15 MAR 0857
+1 EVEN
+2 DATE Int 1066 (Battle of Hastings)
+2 TYPE Deed
+1 EVEN
+2 DATE 17 SEP 1708/09
+2 TYPE Generic Event
+1 EVEN
+2 DATE PLUV 0012
+2 TYPE Circumcision
+1 CHRA
+2 DATE BET DEC 1805 AND 12 JUN 1843
+1 BIRT
+2 DATE 23 DEC 1805
+2 PLAC Sharon, Vermont
+2 ADDR 100 S. Main Sreet
+3 CONT Salt Lake City, UT
+3 CONT USA
+2 NOTE @N11@
+2 SOUR @SR7@
+2 OBJE @M1@
+2 _LOG @L3@
+2 OBJE @M6@
+2 TYPE Normal Birth
+2 AGNC LDS Church
+2 FAMC @F6@
+2 NOTE @N8@
+2 _GPS -50,100
+1 ALIA @I11@
+1 ASSO @I3@
+2 RELA Plural wife
+1 ANCI @SUBM@
+1 AFN 1234
+1 DESI @SUBM@
+1 RFN 5678
+1 RIN id 1234
+1 SUBM @SUBM@
+1 REFN REFN
+2 TYPE Reference Number
+1 REFN LSD, Mormon, Tablets
+2 TYPE Keyword(s)
+1 BAPM
+2 DATE AFT 23 DEC 1805
+2 SOUR @SR3@
+3 PAGE 1734
+3 DATA
+4 DATE 2001
+4 TEXT Source citation text
+3 QUAY 0
+1 EMIG
+2 DATE From 12 NOV 1806 to DEC 1806
+1 ADOP
+2 DATE 1815
+2 PLAC Palmyra, New York
+2 AGE 10
+2 TYPE To test ADOP event in GEDCOM file
+2 ADDR 100 North Main Street
+3 CONT Palmyra, NY
+3 CONT USA
+2 FAMC @F6@
+2 NOTE @N7@
+2 SOUR @SR5@
+2 _LOG @L3@
+2 OBJE @M6@
+2 CAUS Editing text GEDCOM file
+1 RESI
+2 DATE 1820
+2 PLAC Palmyra, Wayne, New York, United States
+2 ADDR 100 S Main Street
+3 CONT Palmyra, NY
+3 CONT USA
+3 STAE state
+3 CTRY country
+2 _GPS -100,100
+2 PHON 801-942-7768
+2 PHON 541-758-2850
+2 OBJE @M4@
+2 OBJE @M10@
+2 OBJE @M1@
+2 OBJE @M6@
+2 NOTE @N10@
+2 NOTE @N13@
+1 BAPL
+2 DATE ABT 1840
+2 PLAC Salt Lake City
+2 STAT Completed
+2 NOTE @N21@
+2 TEMP SLC
+1 CENS
+2 DATE 1840
+1 ADOP
+2 DATE Bef 1843
+1 DEAT
+2 DATE 27 JUN 1844
+2 PLAC Carthage Ill
+2 ADDR Carthage Jail
+3 CONT Illinois
+2 AGE 38
+2 CAUS Attacked and killed by a mob
+2 AGNC Murder
+2 NOTE @N10@
+2 SOUR @SR6@
+2 _LOG @L3@
+2 OBJE @M2@
+2 TYPE Type
+1 GRAD
+2 DATE Est 1845
+1 BLES
+2 DATE MAR 1856
+1 SSN 123-45-6789
+1 NCHI 20
+1 CAST Mormon
+1 EDUC School
+1 EVEN
+2 DATE From 3 JAN 1806
+2 TYPE Illness
+1 IMMI
+2 DATE To 2 FEB 1807
+1 SLGC Y
+1 CONL Y
+1 ENDL Y
+1 WAC Y
+1 EVEN
+2 DATE Cal 1888
+2 TYPE Military Service
+1 EVEN
+2 DATE Abt 1860
+2 TYPE Miscarriage
+1 EVEN
+2 TYPE Mission
+1 IDNO 1234
+1 NATI USA
+1 NATU Y
+1 TITL Title
+1 NMR 7
+1 OCCU Prophet
+1 ORDN Y
+1 DSCR 5ft 11in
+1 PROP propery
+1 PROB Y
+1 RELI LDS
+1 RETI Y
+1 WILL Y
+1 ADOP Y
+1 ADOP Y
+1 BARM Y
+1 BASM Y
+1 BURI Y
+1 CREM Y
+1 RESI
+2 DATE 1840
+2 ADDR A second place
+2 PLAC Navoo, IL, USA
+1 OBJE @M6@
+1 OBJE @M11@
+1 OBJE @M8@
+1 NOTE @N8@
+1 NOTE @N14@
+1 NOTE @N15@
+0 @I8@ INDI
+1 NAME Louisa /Smith/
+1 SEX F
+1 BIRT
+2 DATE 30 APR 1831
+2 PLAC Kirtland, Lake Ohio
+1 DEAT
+2 DATE 30 APR 1831
+2 PLAC Kirtland, Lake Ohio
+1 FAMC @F2@
+1 REFN 5 SEP 2009 10:43:39
+2 TYPE Creation Date
+1 CHAN
+2 DATE 10 NOV 2011
+3 TIME 08:33:58
+1 NOTE @N15@
+0 @I7@ INDI
+1 NAME Thadeus /Smith/
+1 SEX M
+1 RESN Privacy
+1 BIRT
+2 DATE 30 APR 1831
+2 PLAC Kirtland, Lake Ohio
+1 DEAT
+2 DATE 30 APR 1831
+2 PLAC Kirtland, Lake Ohio
+1 FAMC @F2@
+1 REFN 5 SEP 2009 10:21:07
+2 TYPE Creation Date
+1 CHAN
+2 DATE 4 FEB 2012
+3 TIME 12:00:06
+1 NOTE @N15@
+0 @F6@ FAM
+1 HUSB @I9@
+1 WIFE @I16@
+1 CHIL @I1@
+1 REFN 5 SEP 2009 11:07:23
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 17:53:58
+0 @F4@ FAM
+1 HUSB @I4@
+1 WIFE @I5@
+1 REFN 1 SEP 2009 22:43:16
+2 TYPE Creation Date
+1 CHIL @I1@
+1 CHAN
+2 DATE 1 SEP 2009
+3 TIME 22:43:40
+0 @F3@ FAM
+1 HUSB @I1@
+1 WIFE @I3@
+1 MARR
+2 DATE 1833
+1 REFN 1 SEP 2009 22:41:02
+2 TYPE Creation Date
+1 CHAN
+2 DATE 1 SEP 2009
+3 TIME 22:42:04
+1 NOTE @N9@
+0 @F2@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 MARR
+2 DATE 17 JAN 1827
+2 PLAC Palmyra, Wayne, New York, United States
+2 ADDR 100 Pleasant Streey
+3 CONT Palymyra, NY
+3 CONT USA
+2 AGNC LDS Church
+2 HUSB
+3 AGE 22
+2 WIFE
+3 AGE age
+2 NOTE @N13@
+2 SOUR @SR6@
+2 _LOG @L3@
+2 AGNC Agency
+2 OBJE @M8@
+2 OBJE @M6@
+2 TYPE Plural #1
+1 CHIL @I6@
+1 CHIL @I7@
+1 CHIL @I8@
+1 CHIL @I12@
+1 CHIL @I13@
+1 CHIL @I14@
+1 CHIL @I15@
+1 REFN 1 SEP 2009 22:35:52
+2 TYPE Creation Date
+1 CHAN
+2 DATE 9 NOV 2011
+3 TIME 09:03:19
+1 NOTE @N8@
+1 NOTE @N11@
+1 SOUR @SR1@
+1 SOUR @SR5@
+1 _LOG @L3@
+1 _LOG @L4@
+1 _LOG @L2@
+1 NCHI 20
+1 RIN 123456
+1 SUBM @SUBM@
+1 REFN 567
+1 REFN LDS; Morman; Plural Marriage
+2 TYPE Keyword(s)
+1 ANUL
+2 DATE 1842
+1 CENS
+2 DATE 1840
+1 DIV Y
+1 ENGA
+2 DATE 1825
+1 EVEN Y
+2 TYPE Generic Event
+1 SLGS Y
+1 MARB Y
+1 MARC Y
+1 MARL Y
+1 MARS Y
+1 EVEN Y
+2 TYPE Separation
+1 OBJE @M6@
+1 OBJE @M8@
+1 OBJE @M4@
+1 DIVF Y
+0 @F5@ FAM
+1 HUSB @I1@
+1 WIFE @I17@
+1 MARR
+2 DATE Abt 1838
+1 REFN 18 NOV 2010 18:00:37
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 18:00:48
+0 @F7@ FAM
+1 HUSB @I1@
+1 WIFE @I18@
+1 MARR
+2 DATE 5 APR 1841
+1 REFN 18 NOV 2010 18:01:21
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 18:01:35
+0 @SR3@ SOUR
+1 _TYPE article
+1 TITL An article
+1 ABBR Short Article Title
+1 AUTH John Nairn
+2 CONT Second Author
+2 CONT Third Author
+1 PUBL RSAC Industries
+2 CONT Corvallis, OR
+2 CONT USA
+1 _DATE 2009
+1 TEXT This field is to type in text from the source, optionally using html text
+1 REFN 25 AUG 2009 10:32:10
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 18:19:49
+1 DATA
+2 EVEN CENS
+3 DATE 5 JUL 1776
+3 PLAC Philadelphia, PA
+2 AGNC The Responsible Agency
+2 NOTE @N4@
+1 REFN User Reference Number
+2 TYPE A REFN Number
+1 RIN Record Number
+1 NOTE @N3@
+1 OBJE @M1@
+1 REPO @R1@
+2 CALN 123.456
+3 MEDI book
+0 @SR2@ SOUR
+1 _TYPE book
+1 TITL Book as a source
+1 ABBR Short Book Title
+1 AUTH John Nairn
+1 PUBL RSAC Industries
+1 _DATE 2009
+1 TEXT This field is to type in text from the source, optionally using html text
+1 REFN 25 AUG 2009 10:32:10
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 MAR 2010
+3 TIME 09:17:42
+1 DATA
+2 EVEN CENS
+3 DATE 5 JUL 1776
+3 PLAC Philadelphia, PA
+2 AGNC The Responsible Agency
+2 NOTE @N4@
+1 REFN User Reference Number
+1 RIN Record Number
+1 NOTE @N3@
+1 OBJE @M1@
+1 REPO @R1@
+2 CALN 928.3.4
+3 MEDI book
+0 @SR1@ SOUR
+1 TITL A General Source
+1 ABBR Short General Title
+1 AUTH John Nairn
+1 PUBL RSAC Industries
+1 _DATE 2009
+1 TEXT This field is to type in text from the source, optionally using html text
+1 REFN 25 AUG 2009 10:32:10
+2 TYPE Creation Date
+1 CHAN
+2 DATE 28 JAN 2010
+3 TIME 20:43:09
+1 DATA
+2 EVEN
+3 DATE 5 JUL 1776
+3 PLAC Philadelphia, PA
+2 AGNC The Responsible Agency
+2 NOTE @N4@
+1 REFN User Reference Number
+1 RIN Record Number
+1 NOTE @N3@
+1 OBJE @M1@
+0 @SR5@ SOUR
+1 _TYPE in book
+1 TITL An In Book Source
+1 ABBR Short In Book Title
+1 AUTH John Nairn
+1 PUBL RSAC Industries
+1 _DATE 2009
+1 TEXT This field is to type in text from the source, optionally using html text
+1 REFN 25 AUG 2009 10:32:10
+2 TYPE Creation Date
+1 CHAN
+2 DATE 15 DEC 2009
+3 TIME 09:45:01
+1 DATA
+2 EVEN CENS
+3 DATE 5 JUL 1776
+3 PLAC Philadelphia, PA
+2 AGNC The Responsible Agency
+2 NOTE @N4@
+1 REFN User Reference Number
+1 RIN Record Number
+1 NOTE @N3@
+1 OBJE @M1@
+0 @SR7@ SOUR
+1 _TYPE unpublished
+1 TITL An Unpublished Source
+1 ABBR Short Unpublished Title
+1 AUTH John Nairn
+1 PUBL RSAC Industries
+1 _DATE 2009
+1 TEXT This field is to type in text from the source, optionally using html text
+1 REFN 25 AUG 2009 10:32:10
+2 TYPE Creation Date
+1 CHAN
+2 DATE 15 DEC 2009
+3 TIME 09:45:07
+1 DATA
+2 EVEN CENS
+3 DATE 5 JUL 1776
+3 PLAC Philadelphia, PA
+2 AGNC The Responsible Agency
+2 NOTE @N4@
+1 REFN User Reference Number
+1 RIN Record Number
+1 NOTE @N3@
+1 OBJE @M1@
+0 @SR6@ SOUR
+1 _TYPE vital records
+1 TITL A Vital Records Source
+1 ABBR Short Vital Records Title
+1 AUTH John Nairn
+1 PUBL RSAC Industries
+1 _DATE 2009
+1 TEXT This field is to type in text from the source, optionally using html text
+1 REFN 25 AUG 2009 10:32:10
+2 TYPE Creation Date
+1 CHAN
+2 DATE 15 DEC 2009
+3 TIME 09:45:11
+1 DATA
+2 EVEN CENS
+3 DATE 5 JUL 1776
+3 PLAC Philadelphia, PA
+2 AGNC The Responsible Agency
+2 NOTE @N4@
+1 REFN User Reference Number
+1 RIN Record Number
+1 NOTE @N3@
+1 OBJE @M1@
+0 @SR4@ SOUR
+1 _TYPE web page
+1 _URL http://www.geditcom.com
+1 TITL The GEDitCOM.com home page
+1 ABBR Short Web Page Title
+1 AUTH John Nairn
+1 PUBL RSAC Industries
+1 _DATE 2009
+1 TEXT This field is to type in text from the source, optionally using html text
+1 REFN 25 AUG 2009 10:32:10
+2 TYPE Creation Date
+1 CHAN
+2 DATE 20 MAR 2010
+3 TIME 13:17:19
+1 DATA
+2 EVEN CENS
+3 DATE 5 JUL 1776
+3 PLAC Philadelphia, PA
+2 AGNC The Responsible Agency
+2 NOTE @N4@
+1 REFN User Reference Number
+1 RIN Record Number
+1 NOTE @N3@
+1 OBJE @M1@
+0 @R1@ REPO
+1 NAME Family History Library
+1 ADDR 35 North West Temple
+2 CONT Salt Lake City, UT 84111
+2 CONT USA
+2 ADR1 35 North West Temple
+2 ADR2 Across the street from Temple Square
+2 CITY Salt Lake City
+2 STAE Utah
+2 POST 84111
+2 CTRY USA
+1 PHON +1-801-240-2331 (information)
+1 PHON +1-801-240-1278 (gifts & donations)
+1 PHON +1-801-240-2584 (support)
+1 _EMAIL fhl@lds.org
+1 NOTE @N2@
+1 REFN User Ref Number
+2 TYPE Sample
+1 RIN 1
+1 CHAN
+2 DATE 15 FEB 2012
+3 TIME 09:05:36
+1 REFN Repository
+2 TYPE Keyword(s)
+1 _URL http://www.geditcom.com
+1 _GPS -100,100
+0 @N17@ NOTE
+1 CONC Accented ANSEL Characters
+1 CONT
+1 CONT To represent accented characters, the ANSEL character set uses two-byte codes. The first byte is E0 to FB or FE (hexadecimal); the second byte is the letter to be accented.
+1 CONT
+1 CONT These notes have all possible accented characters. How many of the characters are represented correctly? Even programs that fully support ANSEL will not draw all these accented characters correctly. Many of them correspond to
+1 CONC  accents that cannot be found in any langauge and therefore do not correspond to any computer fonts.
+1 CONT
+1 CONT code: E0 (Unicode: hook above, 0309) low rising tone mark
+1 CONT      ẢB̉C̉D̉ẺF̉G̉H̉ỈJ̉K̉L̉M̉
+1 CONT      N̉ỎP̉Q̉R̉S̉T̉ỦV̉W̉X̉ỶZ̉
+1 CONT      ảb̉c̉d̉ẻf̉g̉h̉ỉj̉k̉l̉m̉
+1 CONT      n̉ỏp̉q̉r̉s̉t̉ủv̉w̉x̉ỷz̉
+1 CONT
+1 CONT code: E1 (Unicode: grave, 0300) grave accent
+1 CONT      ÀB̀C̀D̀ÈF̀G̀H̀ÌJ̀K̀L̀M̀
+1 CONT      ǸÒP̀Q̀R̀S̀T̀ÙV̀ẀX̀ỲZ̀
+1 CONT      àb̀c̀d̀èf̀g̀h̀ìj̀k̀l̀m̀
+1 CONT      ǹòp̀q̀r̀s̀t̀ùv̀ẁx̀ỳz̀
+1 CONT
+1 CONT code: E2 (Unicode: acute, 0301) acute accent:
+1 CONT      ÁB́ĆD́ÉF́ǴH́ÍJ́ḰĹḾ
+1 CONT      ŃÓṔQ́ŔŚT́ÚV́ẂX́ÝŹ
+1 CONT      áb́ćd́éf́ǵh́íj́ḱĺḿ
+1 CONT      ńíṕq́ŕśt́úv́ẃx́ýź
+1 CONT
+1 CONT code: E3 (Unicode: circumflex, 0302) circumflex accent
+1 CONT      ÂB̂ĈD̂ÊF̂ĜĤÎĴK̂L̂M̂
+1 CONT      N̂ÔP̂Q̂R̂ŜT̂ÛV̂ŴX̂ŶẐ
+1 CONT      âb̂ĉd̂êf̂ĝĥîĵk̂l̂m̂
+1 CONT      n̂ôp̂q̂r̂ŝt̂ûv̂ŵx̂ŷẑ
+1 CONT
+1 CONT code: E4 (Unicode: tilde, 0303) tilde
+1 CONT      ÃB̃C̃D̃ẼF̃G̃H̃ĨJ̃K̃L̃M̃
+1 CONT      ÑÕP̃Q̃R̃S̃T̃ŨṼW̃X̃ỸZ̃
+1 CONT      Ñb̃c̃d̃ẽf̃g̃h̃ĩj̃k̃l̃m̃
+1 CONT      ñõp̃q̃r̃s̃t̃ũṽw̃x̃ỹz̃
+1 CONT
+1 CONT code: E5 (Unicode: macron, 0304) macron
+1 CONT      ĀB̄C̄D̄ĒF̄ḠH̄ĪJ̄K̄L̄M̄
+1 CONT      N̄ŌP̄Q̄R̄S̄T̄ŪV̄W̄X̄ȲZ̄
+1 CONT      āb̄c̄d̄ēf̄ḡh̄īj̄k̄l̄m̄
+1 CONT      n̄ōp̄q̄r̄s̄t̄ūv̄w̄x̄ȳz̄
+1 CONT
+1 CONT code: E6 (Unicode: breve, 0306) breve
+1 CONT      ĂB̆C̆D̆ĔF̆ĞH̆ĬJ̆K̆L̆M̆
+1 CONT      N̆ŎP̆Q̆R̆S̆T̆ŬV̆W̆X̆Y̆Z̆
+1 CONT      ăb̆c̆d̆ĕf̆ğh̆ĭj̆k̆l̆m̆
+1 CONT      n̆ŏp̆q̆r̆s̆t̆ŭv̆w̆x̆y̆z̆
+1 CONT
+1 CONT code: E7 (Unicode: dot above, 0307) dot above
+1 CONT      ȦḂĊḊĖḞĠḢİJ̇K̇L̇Ṁ
+1 CONT      ṄȮṖQ̇ṘṠṪU̇V̇ẆẊẎŻ
+1 CONT      ȧḃċḋėḟġḣi̇j̇k̇l̇ṁ
+1 CONT      ṅȯṗq̇ṙṡṫu̇v̇ẇẋẏż
+1 CONT
+1 CONT code: E8 (Unicode: diaeresis, 0308) umlaut (dieresis)
+1 CONT      ÄB̈C̈D̈ËF̈G̈ḦÏJ̈K̈L̈M̈
+1 CONT      N̈ÖP̈Q̈R̈S̈T̈ÜV̈ẄẌŸZ̈
+1 CONT      äb̈c̈d̈ëf̈g̈ḧïj̈k̈l̈m̈
+1 CONT      n̈öp̈q̈r̈s̈ẗüv̈ẅẍÿz̈
+1 CONT
+1 CONT code: E9 (Unicode: caron, 030C) hacek
+1 CONT      ǍB̌ČĎĚF̌ǦȞǏJ̌ǨĽM̌
+1 CONT      ŇǑP̌Q̌ŘŠŤǓV̌W̌X̌Y̌Ž
+1 CONT      ǎb̌čďěf̌ǧȟǐǰǩľm̌
+1 CONT      ňǒp̌q̌řšťǔv̌w̌x̌y̌ž
+1 CONT
+1 CONT code: EA (Unicode: ring above, 030A) circle above (angstrom)
+1 CONT      ÅB̊C̊D̊E̊F̊G̊H̊I̊J̊K̊L̊M̊
+1 CONT      N̊O̊P̊Q̊R̊S̊T̊ŮV̊W̊X̊Y̊Z̊
+1 CONT      åb̊c̊d̊e̊f̊g̊h̊i̊j̊k̊l̊m̊
+1 CONT      n̊o̊p̊q̊r̊s̊t̊ův̊ẘx̊ẙz̊
+1 CONT
+1 CONT code: EB (Unicode: ligature left half, FE20) ligature, left half
+1 CONT      A︠B︠C︠D︠E︠F︠G︠H︠I︠J︠K︠L︠M︠
+1 CONT      N︠O︠P︠Q︠R︠S︠T︠U︠V︠W︠X︠Y︠Z︠
+1 CONT      a︠b︠c︠d︠e︠f︠g︠h︠i︠j︠k︠l︠m︠
+1 CONT      n︠o︠p︠q︠r︠s︠t︠u︠v︠w︠x︠y︠z︠
+1 CONT
+1 CONT code: EC (Unicode: ligature right half, FE21) ligature, right half
+1 CONT      A︡B︡C︡D︡E︡F︡G︡H︡I︡J︡K︡L︡M︡
+1 CONT      N︡O︡P︡Q︡R︡S︡T︡U︡V︡W︡X︡Y︡Z︡
+1 CONT      a︡b︡c︡d︡e︡f︡g︡h︡i︡j︡k︡l︡m︡
+1 CONT      n︡o︡p︡q︡r︡s︡t︡u︡v︡w︡x︡y︡z︡
+1 CONT
+1 CONT code: ED (Unicode: comma above right, 0315) high comma, off center
+1 CONT      A̕B̕C̕D̕E̕F̕G̕H̕I̕J̕K̕L̕M̕
+1 CONT      N̕O̕P̕Q̕R̕S̕T̕U̕V̕W̕X̕Y̕Z̕
+1 CONT      a̕b̕c̕d̕e̕f̕g̕h̕i̕j̕k̕l̕m̕
+1 CONT      n̕o̕p̕q̕r̕s̕t̕u̕v̕w̕x̕y̕z̕
+1 CONT
+1 CONT code: EE (Unicode: double acute, 030B) double acute accent
+1 CONT      A̋B̋C̋D̋E̋F̋G̋H̋I̋J̋K̋L̋M̋
+1 CONT      N̋ŐP̋Q̋R̋S̋T̋ŰV̋W̋X̋Y̋Z̋
+1 CONT      a̋b̋c̋d̋e̋f̋g̋h̋i̋j̋k̋l̋m̋
+1 CONT      n̋őp̋q̋r̋s̋t̋űv̋w̋x̋y̋z̋
+1 CONT
+1 CONT code: EF (Unicode: candrabindu, 0310) candrabindu
+1 CONT      A̐B̐C̐D̐E̐F̐G̐H̐I̐J̐K̐L̐M̐
+1 CONT      N̐O̐P̐Q̐R̐S̐T̐U̐V̐W̐X̐Y̐Z̐
+1 CONT      a̐b̐c̐d̐e̐f̐g̐h̐i̐j̐k̐l̐m̐
+1 CONT      n̐o̐p̐q̐r̐s̐t̐u̐v̐w̐x̐y̐z̐
+1 CONT
+1 CONT code: F0 (Unicode: cedilla, 0327) cedilla
+1 CONT      A̧B̧ÇḐȨF̧ĢḨI̧J̧ĶĻM̧
+1 CONT      ŅO̧P̧Q̧ŖŞŢU̧V̧W̧X̧Y̧Z̧
+1 CONT      a̧b̧çḑȩf̧ģḩi̧j̧ķļm̧
+1 CONT      ņo̧p̧q̧ŗşţu̧v̧w̧x̧y̧z̧
+1 CONT
+1 CONT code: F1 (Unicode: ogonek, 0328) right hook
+1 CONT      ĄB̨C̨D̨ĘF̨G̨H̨ĮJ̨K̨L̨M̨
+1 CONT      N̨ǪP̨Q̨R̨S̨T̨ŲV̨W̨X̨Y̨Z̨
+1 CONT      ąb̨c̨d̨ęf̨g̨h̨įj̨k̨l̨m̨
+1 CONT      n̨ǫp̨q̨r̨s̨t̨ųv̨w̨x̨y̨z̨
+1 CONT
+1 CONT code: F2 (Unicode: dot below, 0323) dot below
+1 CONT      ẠḄC̣ḌẸF̣G̣ḤỊJ̣ḲḶṂ
+1 CONT      ṆỌP̣Q̣ṚṢṬỤṾẈX̣ỴẒ
+1 CONT      ạḅc̣ḍẹf̣g̣ḥịj̣ḳḷṃ
+1 CONT      ṇọp̣q̣ṛṣṭụṿẉx̣ỵẓ
+1 CONT
+1 CONT code: F3 (Unicode: diaeresis below, 0324) double dot below
+1 CONT      A̤B̤C̤D̤E̤F̤G̤H̤I̤J̤K̤L̤M̤
+1 CONT      N̤O̤P̤Q̤R̤S̤T̤ṲV̤W̤X̤Y̤Z̤
+1 CONT      a̤b̤c̤d̤e̤f̤g̤h̤i̤j̤k̤l̤m̤
+1 CONT      n̤o̤p̤q̤r̤s̤t̤ṳv̤w̤x̤y̤z̤
+1 CONT
+1 CONT code: F4 (Unicode: ring below, 0325) circle below
+1 CONT      ḀB̥C̥D̥E̥F̥G̥H̥I̥J̥K̥L̥M̥
+1 CONT      N̥O̥P̥Q̥R̥S̥T̥U̥V̥W̥X̥Y̥Z̥
+1 CONT      ḁb̥c̥d̥e̥f̥g̥h̥i̥j̥k̥l̥m̥
+1 CONT      n̥o̥p̥q̥r̥s̥t̥u̥v̥w̥x̥y̥z̥
+1 CONT
+1 CONT code: F5 (Unicode: double low line, 0333) double underscore
+1 CONT      A̳B̳C̳D̳E̳F̳G̳H̳I̳J̳K̳L̳M̳
+1 CONT      N̳O̳P̳Q̳R̳S̳T̳U̳V̳W̳X̳Y̳Z̳
+1 CONT      a̳b̳c̳d̳e̳f̳g̳h̳i̳j̳k̳l̳m̳
+1 CONT      n̳o̳p̳q̳r̳s̳t̳u̳v̳w̳x̳y̳z̳
+1 CONT
+1 CONT code: F6 (Unicode: line below, 0332) underscore
+1 CONT      A̲B̲C̲D̲E̲F̲G̲H̲I̲J̲K̲L̲M̲
+1 CONT      N̲O̲P̲Q̲R̲S̲T̲U̲V̲W̲X̲Y̲Z̲
+1 CONT      a̲b̲c̲d̲e̲f̲g̲h̲i̲j̲k̲l̲m̲
+1 CONT      n̲o̲p̲q̲r̲s̲t̲u̲v̲w̲x̲y̲z̲
+1 CONT
+1 CONT code: F7 (Unicode: comma below, 0326) left hook
+1 CONT      A̦B̦C̦D̦E̦F̦G̦H̦I̦J̦K̦L̦M̦
+1 CONT      N̦O̦P̦Q̦R̦ȘȚU̦V̦W̦X̦Y̦Z̦
+1 CONT      a̦b̦c̦d̦e̦f̦g̦h̦i̦j̦k̦l̦m̦
+1 CONT      n̦o̦p̦q̦r̦șțu̦v̦w̦x̦y̦z̦
+1 CONT
+1 CONT code: F8 (Unicode: left half ring below, 031C) right cedilla
+1 CONT      A̜B̜C̜D̜E̜F̜G̜H̜I̜J̜K̜L̜M̜
+1 CONT      N̜O̜P̜Q̜R̜S̜T̜U̜V̜W̜X̜Y̜Z̜
+1 CONT      a̜b̜c̜d̜e̜f̜g̜h̜i̜j̜k̜l̜m̜
+1 CONT      n̜o̜p̜q̜r̜s̜t̜u̜v̜w̜x̜y̜z̜
+1 CONT
+1 CONT code: F9 (Unicode: breve below, 032E) half circle below
+1 CONT      A̮B̮C̮D̮E̮F̮G̮ḪI̮J̮K̮L̮M̮
+1 CONT      N̮O̮P̮Q̮R̮S̮T̮U̮V̮W̮X̮Y̮Z̮
+1 CONT      a̮b̮c̮d̮e̮f̮g̮ḫi̮j̮k̮l̮m̮
+1 CONT      n̮o̮p̮q̮r̮s̮t̮u̮v̮w̮x̮y̮z̮
+1 CONT
+1 CONT code: FA (Unicode: double tilde left half, FE22) double tilde, left half
+1 CONT      A︢B︢C︢D︢E︢F︢G︢H︢I︢J︢K︢L︢M︢
+1 CONT      N︢O︢P︢Q︢R︢S︢T︢U︢V︢W︢X︢Y︢Z︢
+1 CONT      a︢b︢c︢d︢e︢f︢g︢h︢i︢j︢k︢l︢m︢
+1 CONT      n︢o︢p︢q︢r︢s︢t︢u︢v︢w︢x︢y︢z︢
+1 CONT
+1 CONT code: FB (Unicode: double tilde right half, FE23) double tilde, right half
+1 CONT      A︣B︣C︣D︣E︣F︣G︣H︣I︣J︣K︣L︣M︣
+1 CONT      N︣O︣P︣Q︣R︣S︣T︣U︣V︣W︣X︣Y︣Z︣
+1 CONT      a︣b︣c︣d︣e︣f︣g︣h︣i︣j︣k︣l︣m︣
+1 CONT      n︣o︣p︣q︣r︣s︣t︣u︣v︣w︣x︣y︣z︣
+1 CONT
+1 CONT code: FE (Unicode: comma above, 0313) high comma, centered
+1 CONT      A̓B̓C̓D̓E̓F̓G̓H̓I̓J̓K̓L̓M̓
+1 CONT      N̓O̓P̓Q̓R̓S̓T̓U̓V̓W̓X̓Y̓Z̓
+1 CONT      a̓b̓c̓d̓e̓f̓g̓h̓i̓j̓k̓l̓m̓
+1 CONT      n̓o̓p̓q̓r̓s̓t̓u̓v̓w̓x̓y̓z̓
+1 REFN 19 NOV 2010 19:13:00
+2 TYPE Creation Date
+1 CHAN
+2 DATE 19 NOV 2010
+3 TIME 19:14:32
+0 @N9@ NOTE
+1 CONC According to George D. Smith, Alger's marriage to Smith was attested to by several people, including Emma Smith, Warren Parish, Oliver Cowdery, and Heber C. Kimball. Compton cites Mosiah Hancock's handwritten report of his
+1 CONC  father Levi's account of the marriage ceremony of Smith and Alger, and records his father's account of the negotiations between Levi and Smith in procuring their respective wives. Compton also notes that nineteenth century Mormons
+1 CONC  in Utah, including Benjamin Johnson, Heber C. Kimball and Andrew Jenson, and former Mormons Chauncey Webb and Ann Eliza Webb Young regarded the Smith-Alger relationship as a marriage. Historian Lawrence Foster asserts a claim that
+1 CONC  later Mormons may have falsely assumed there was a marriage where there was only a sexual relationship: he views the marriage of Alger to Joseph Smith as "debatable supposition" rather than "established fact".
+1 CONT
+1 REFN 1 SEP 2009 22:42:04
+2 TYPE Creation Date
+1 CHAN
+2 DATE 16 MAR 2010
+3 TIME 09:17:59
+0 @N15@ NOTE
+1 CONC Common notes on all individuals
+1 CONT
+1 CONT The notes record is linked to many different individuals. How will an application treat such notes when the GEDCOM data is imported.
+1 REFN 18 NOV 2010 18:06:55
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 18:07:37
+0 @N8@ NOTE
+1 CONC Emma Hale was the only woman to whom Joseph Smith, Jr. was legally married and whom he claimed publicly was his only spouse. Emma continued church activity within the Reorganized Church of Jesus Christ of Latter Day Saints.
+1 CONC  Throughout life and on her deathbed denied Joseph Smith, Jr. had plural wives. Claimed that the very first time she ever became aware of a polygamy revelation being attributed to Joseph Smith was when she read about it in Orson
+1 CONC  Pratt's booklet The Seer in 1853.
+1 _DIST Family
+1 REFN 1 SEP 2009 22:37:03
+2 TYPE Creation Date
+1 CHAN
+2 DATE 4 FEB 2012
+3 TIME 15:45:42
+0 @N12@ NOTE
+1 CONC <div><!--name HTML Interactive Map of Sharon, Vermont-->
+1 CONT <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+1 CONC  src="http://maps.google.com/maps?;num=1&amp;sll=43.900861,-72.386169&amp;sspn=0.064336,0.128059&amp;hl=en&amp;ie=UTF8&amp;ll=43.767127,-72.473373&amp;spn=0.101365,0.177841&amp;z=12&amp;output=embed"></iframe><br /><small><a
+1 CONC  href="http://maps.google.com/maps?q=43.782993,-72.454147&amp;num=1&amp;sll=43.900861,-72.386169&amp;sspn=0.064336,0.128059&amp;hl=en&amp;ie=UTF8&amp;ll=43.767127,-72.473373&amp;spn=0.101365,0.177841&amp;z=12&amp;source=embed"
+1 CONC  style="color:#0000FF;text-align:left">View Larger Map</a></small></div>
+1 CONT
+1 REFN 5 SEP 2009 11:17:57
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 NOV 2010
+3 TIME 18:06:05
+0 @N2@ NOTE
+1 CONC <div><!--name HTML Notes on Family History LIbrary REPOSITORY -->
+1 CONT <p>Comments on "Family History Library" REPOSITORY Record.</p>
+1 CONT
+1 CONT <p>This record uses all possible GEDCOM tags for a REPOSITORY record. Some things to look for are:</p>
+1 CONT
+1 CONT <ol>
+1 CONT <li>The address is specified twice. Once in a multi-line address record and once in separate lines. The first method is usually enough. The second method is to be more specific about parts of the address. Is everything imported?</li>
+1 CONT
+1 CONT <li>There are multiple phone numbers. Are they all imported?</li>
+1 CONT
+1 CONT <li>A custom _EMAIL tag is present</li>
+1 CONT
+1 CONT </ol>
+1 CONT </div>
+1 CHAN
+2 DATE 3 FEB 2012
+3 TIME 19:52:42
+1 SOUR @SR6@
+1 _DIST Owner
+1 RIN Record ID Number
+1 REFN REFN
+2 TYPE Note Reference
+0 @N14@ NOTE
+1 CONC Joseph Smith, Jr. (December 23, 1805 – June 27, 1844) was the founder of the Latter Day Saint movement, a group of churches whose adherents regard him as a prophet. During the late 1820s he became the leader of a small group
+1 CONC  of followers who believed that an angel had given him a book of golden plates containing a religious history of ancient American peoples. Smith said he had translated the writing on the plates from an unknown language into English;
+1 CONC  and in 1830, he published the translation as the Book of Mormon and organized what he said was a restoration of the early Christian church.
+1 _DIST Owner
+1 REFN 18 NOV 2010 17:57:19
+2 TYPE Creation Date
+1 CHAN
+2 DATE 4 FEB 2012
+3 TIME 15:45:48
+0 @N22@ NOTE
+1 CONC MacOS Roman
+1 CONT
+1 CONT Below are the extended ASCII characters (128 to 255 or 80 to FF) in MacOS Roman character set. The decimal character code is first, the actual character follows the equals sign. The number in parentheses is the decimal value for the
+1 CONC  Unicode character.
+1 CONT
+1 CONT 128 = Ä (196)
+1 CONT 129 = Å (197)
+1 CONT 130 = Ç (199)
+1 CONT 131 = É (201)
+1 CONT 132 = Ñ (209)
+1 CONT 133 = Ö (214)
+1 CONT 134 = Ü (220)
+1 CONT 135 = á (225)
+1 CONT 136 = à (224)
+1 CONT 137 = â (226)
+1 CONT 138 = ä (228)
+1 CONT 139 = ã (227)
+1 CONT 140 = å (229)
+1 CONT 141 = ç (231)
+1 CONT 142 = é (233)
+1 CONT 143 = è (232)
+1 CONT 144 = ê (234)
+1 CONT 145 = ë (235)
+1 CONT 146 = í (237)
+1 CONT 147 = ì (236)
+1 CONT 148 = î (238)
+1 CONT 149 = ï (239)
+1 CONT 150 = ñ (241)
+1 CONT 151 = ó (243)
+1 CONT 152 = ò (242)
+1 CONT 153 = ô (244)
+1 CONT 154 = ö (246)
+1 CONT 155 = õ (245)
+1 CONT 156 = ú (250)
+1 CONT 157 = ù (249)
+1 CONT 158 = û (251)
+1 CONT 159 = ü (252)
+1 CONT 160 = † (8224)
+1 CONT 161 = ° (176)
+1 CONT 162 = ¢ (162)
+1 CONT 163 = £ (163)
+1 CONT 164 = § (167)
+1 CONT 165 = • (8226)
+1 CONT 166 = ¶ (182)
+1 CONT 167 = ß (223)
+1 CONT 168 = ® (174)
+1 CONT 169 = © (169)
+1 CONT 170 = ™ (8482)
+1 CONT 171 = ´ (180)
+1 CONT 172 = ¨ (168)
+1 CONT 173 = ≠ (8800)
+1 CONT 174 = Æ (198)
+1 CONT 175 = Ø (216)
+1 CONT 176 = ∞ (8734)
+1 CONT 177 = ± (177)
+1 CONT 178 = ≤ (8804)
+1 CONT 179 = ≥ (8805)
+1 CONT 180 = ¥ (165)
+1 CONT 181 = µ (181)
+1 CONT 182 = ∂ (8706)
+1 CONT 183 = ∑ (8721)
+1 CONT 184 = ∏ (8719)
+1 CONT 185 = π (960)
+1 CONT 186 = ∫ (8747)
+1 CONT 187 = ª (170)
+1 CONT 188 = º (186)
+1 CONT 189 = Ω (937)
+1 CONT 190 = æ (230)
+1 CONT 191 = ø (248)
+1 CONT 192 = ¿ (191)
+1 CONT 193 = ¡ (161)
+1 CONT 194 = ¬ (172)
+1 CONT 195 = √ (8730)
+1 CONT 196 = ƒ (402)
+1 CONT 197 = ≈ (8776)
+1 CONT 198 = ∆ (8710)
+1 CONT 199 = « (171)
+1 CONT 200 = » (187)
+1 CONT 201 = … (8230)
+1 CONT 202 =   (160)
+1 CONT 203 = À (192)
+1 CONT 204 = Ã (195)
+1 CONT 205 = Õ (213)
+1 CONT 206 = Œ (338)
+1 CONT 207 = œ (339)
+1 CONT 208 = – (8211)
+1 CONT 209 = — (8212)
+1 CONT 210 = “ (8220)
+1 CONT 211 = ” (8221)
+1 CONT 212 = ‘ (8216)
+1 CONT 213 = ’ (8217)
+1 CONT 214 = ÷ (247)
+1 CONT 215 = ◊ (9674)
+1 CONT 216 = ÿ (255)
+1 CONT 217 = Ÿ (376)
+1 CONT 218 = ⁄ (8260)
+1 CONT 219 = € (8364)
+1 CONT 220 = ‹ (8249)
+1 CONT 221 = › (8250)
+1 CONT 222 = ﬁ (64257)
+1 CONT 223 = ﬂ (64258)
+1 CONT 224 = ‡ (8225)
+1 CONT 225 = · (183)
+1 CONT 226 = ‚ (8218)
+1 CONT 227 = „ (8222)
+1 CONT 228 = ‰ (8240)
+1 CONT 229 = Â (194)
+1 CONT 230 = Ê (202)
+1 CONT 231 = Á (193)
+1 CONT 232 = Ë (203)
+1 CONT 233 = È (200)
+1 CONT 234 = Í (205)
+1 CONT 235 = Î (206)
+1 CONT 236 = Ï (207)
+1 CONT 237 = Ì (204)
+1 CONT 238 = Ó (211)
+1 CONT 239 = Ô (212)
+1 CONT 240 =  (63743)
+1 CONT 241 = Ò (210)
+1 CONT 242 = Ú (218)
+1 CONT 243 = Û (219)
+1 CONT 244 = Ù (217)
+1 CONT 245 = ı (305)
+1 CONT 246 = ˆ (710)
+1 CONT 247 = ˜ (732)
+1 CONT 248 = ¯ (175)
+1 CONT 249 = ˘ (728)
+1 CONT 250 = ˙ (729)
+1 CONT 251 = ˚ (730)
+1 CONT 252 = ¸ (184)
+1 CONT 253 = ˝ (733)
+1 CONT 254 = ˛ (731)
+1 CONT 255 = ˇ (711)
+1 REFN 19 NOV 2010 19:42:53
+2 TYPE Creation Date
+1 CHAN
+2 DATE 19 NOV 2010
+3 TIME 19:45:02
+0 @N21@ NOTE
+1 CONC Maybe this was the first ordinance ever performed.
+1 REFN 14 APR 2010 08:33:28
+2 TYPE Creation Date
+1 CHAN
+2 DATE 14 APR 2010
+3 TIME 08:33:52
+0 @N6@ NOTE
+1 CONC Note on a source on a multimedia record
+1 REFN 25 AUG 2009 20:01:37
+2 TYPE Creation Date
+1 CHAN
+2 DATE 6 SEP 2009
+3 TIME 20:57:08
+1 RIN 1234
+1 REFN Source
+2 TYPE Keyword(s)
+0 @N13@ NOTE
+1 CONC Notes of Joseph Smith - Emma Hale marriage details
+1 REFN 6 SEP 2009 09:18:19
+2 TYPE Creation Date
+1 CHAN
+2 DATE 3 AUG 2010
+3 TIME 22:24:43
+0 @N5@ NOTE
+1 CONC Notes on a multimedia object record
+1 REFN 25 AUG 2009 20:00:28
+2 TYPE Creation Date
+1 CHAN
+2 DATE 25 AUG 2009
+3 TIME 20:00:55
+0 @N3@ NOTE
+1 CONC Notes on a source record at the root level of the record
+1 REFN 25 AUG 2009 10:37:18
+2 TYPE Creation Date
+1 CHAN
+2 DATE 25 AUG 2009
+3 TIME 10:37:37
+0 @N7@ NOTE
+1 CONC Notes on Joseph Smith name details
+1 REFN 1 SEP 2009 22:27:26
+2 TYPE Creation Date
+1 CHAN
+2 DATE 1 SEP 2009
+3 TIME 22:27:48
+0 @N1@ NOTE
+1 CONC Polish Alphabet and Characters
+1 CONT
+1 CONT The Polish alphabet is Roman, with nine additional letters:
+1 CONT
+1 CONT Ąą Ęę Ćć Ęę Łł Ńń Óó Śś Żż Źź
+1 CONT
+1 CONT Nie wieże, że już minęło dziesięć lat.
+1 CONT Spóźniłem się do szkoły.
+1 CONT Jagiełło był królem.
+1 CONT
+1 CONT Here is a name: Rafał Gąsecki
+1 CONT Birth place: Łódź, Polska
+1 CONT Death Place: Wółka Mędrzechowska, Polska
+1 REFN 18 NOV 2010 21:17:14
+2 TYPE Creation Date
+1 CHAN
+2 DATE 19 NOV 2010
+3 TIME 19:05:11
+0 @N10@ NOTE
+1 CONC Second set of notes on Joseph Smith and the notes linked to two Joseph Smiths
+1 REFN 5 SEP 2009 10:46:00
+2 TYPE Creation Date
+1 CHAN
+2 DATE 5 SEP 2009
+3 TIME 10:47:57
+0 @N18@ NOTE
+1 CONC Special ANSEL Characters
+1 CONT
+1 CONT The following are the special characters supported by the ANSEL character set. The first two letters are the Hex code. The following text describes the character. Finally, that character, or a character as close as possible to that
+1 CONC  character, should appear in the parentheses.
+1 CONT
+1 CONT A1 slash l - uppercase (Ł)
+1 CONT A2 slash o - uppercase (Ø)
+1 CONT A3 slash d - uppercase (Đ)
+1 CONT A4 thorn - uppercase (Þ)
+1 CONT A5 ligature ae - uppercase (Æ)
+1 CONT A6 ligature oe - uppercase (Œ)
+1 CONT A7 single prime (ʹ)
+1 CONT A8 middle dot (·)
+1 CONT A9 musical flat (♭)
+1 CONT AA registered sign (®)
+1 CONT AB plus-or-minus (±)
+1 CONT AC hook o - uppercase (Ơ)
+1 CONT AD hook u - uppercase (Ư)
+1 CONT AE left half ring (ʼ)
+1 CONT BO right half ring (ʻ)
+1 CONT B1 slash l - lowercase (ł)
+1 CONT B2 slash o - lowercase (ø)
+1 CONT B3 slash d - lowercase (đ)
+1 CONT B4 thorn - lowercase (þ)
+1 CONT B5 ligature ae - lowercase (æ)
+1 CONT B6 ligature oe - lowercase (œ)
+1 CONT B7 double prime (ʺ)
+1 CONT B8 dotless i - lowercase (ı)
+1 CONT B9 british pound (£)
+1 CONT BA eth (ð)
+1 CONT BC hook o - lowercase (ơ)
+1 CONT BD hook u - lowercase (ư)
+1 CONT BE empty box - LDS extension (□)
+1 CONT BF black box - LDS extension (■)
+1 CONT CO degree sign (°)
+1 CONT C1 script l (ℓ)
+1 CONT C2 phonograph copyright mark (℗)
+1 CONT C3 copyright symbol (©)
+1 CONT C4 musical sharp (♯)
+1 CONT C5 inverted question mark (¿)
+1 CONT C6 inverted exclamation mark (¡)
+1 CONT CD midline e - LDS extension (e)
+1 CONT CE midline o - LDS extension (o)
+1 CONT CF es zet (ß)
+1 REFN 19 NOV 2010 19:15:07
+2 TYPE Creation Date
+1 CHAN
+2 DATE 19 NOV 2010
+3 TIME 19:16:45
+0 @N4@ NOTE
+1 CONC These notes are for about a DATA tag at the root level of a SOUR record
+1 REFN 25 AUG 2009 10:42:29
+2 TYPE Creation Date
+1 CHAN
+2 DATE 25 AUG 2009
+3 TIME 10:42:52
+0 @N11@ NOTE
+1 CONC Third set of notes on Joseph Smith. These notes have a very long line in case the notes link does not fit into the window. The text might break if user sets maximum GEDCOM length to a low number.
+1 REFN 5 SEP 2009 10:46:28
+2 TYPE Creation Date
+1 CHAN
+2 DATE 5 SEP 2009
+3 TIME 10:47:12
+0 @N19@ NOTE
+1 CONC Windows Latin 1
+1 CONT
+1 CONT Below are the characters A1 and higher in Windows Latin 1. This set is also known as ISO 8859-1
+1 CONT
+1 CONT NBSP  -  A0
+1 CONT ¡  -  A1
+1 CONT ¢  -  A2
+1 CONT £  -  A3
+1 CONT ¤  -  A4
+1 CONT ¥  -  A5
+1 CONT ¦  -  A6
+1 CONT §  -  A7
+1 CONT ¨  -  A8
+1 CONT ©  -  A9
+1 CONT ª  -  AA
+1 CONT «  -  AB
+1 CONT ¬  -  AC
+1 CONT SHY  -  AD
+1 CONT ®  -  AE
+1 CONT ¯  -  AF
+1 CONT  
+1 CONT °  -  B0
+1 CONT ±  -  B1
+1 CONT ²  -  B2
+1 CONT ³  -  B3
+1 CONT ´  -  B4
+1 CONT µ  -  B5
+1 CONT ¶  -  B6
+1 CONT ·  -  B7
+1 CONT ¸  -  B8
+1 CONT ¹  -  B9
+1 CONT º  -  BA
+1 CONT »  -  BB
+1 CONT ¼  -  BC
+1 CONT ½  -  BD
+1 CONT ¾  -  BE
+1 CONT ¿  -  BF
+1 CONT  
+1 CONT À  -  C0
+1 CONT Á  -  C1
+1 CONT Â  -  C2
+1 CONT Ã  -  C3
+1 CONT Ä  -  C4
+1 CONT Å  -  C5
+1 CONT Æ  -  C6
+1 CONT Ç  -  C7
+1 CONT È  -  C8
+1 CONT É  -  C9
+1 CONT Ê  -  CA
+1 CONT Ë  -  CB
+1 CONT Ì  -  CC
+1 CONT Í  -  CD
+1 CONT Î  -  CE
+1 CONT Ï  -  CF
+1 CONT  
+1 CONT Ð  -  D0
+1 CONT Ñ  -  D1
+1 CONT Ò  -  D2
+1 CONT Ó  -  D3
+1 CONT Ô  -  D4
+1 CONT Õ  -  D5
+1 CONT Ö  -  D6
+1 CONT ×  -  D7
+1 CONT Ø  -  D8
+1 CONT Ù  -  D9
+1 CONT Ú  -  DA
+1 CONT Û  -  DB
+1 CONT Ü  -  DC
+1 CONT Ý  -  DD
+1 CONT Þ  -  DE
+1 CONT ß  -  DF
+1 CONT  
+1 CONT à  -  E0
+1 CONT á  -  E1
+1 CONT â  -  E2
+1 CONT ã  -  E3
+1 CONT ä  -  E4
+1 CONT å  -  E5
+1 CONT æ  -  E6
+1 CONT ç  -  E7
+1 CONT è  -  E8
+1 CONT é  -  E9
+1 CONT ê  -  EA
+1 CONT ë  -  EB
+1 CONT ì  -  EC
+1 CONT í  -  ED
+1 CONT î  -  EE
+1 CONT ï  -  EF
+1 CONT  
+1 CONT ð  -  F0
+1 CONT ñ  -  F1
+1 CONT ò  -  F2
+1 CONT ó  -  F3
+1 CONT ô  -  F4
+1 CONT õ  -  F5
+1 CONT ö  -  F6
+1 CONT ÷  -  F7
+1 CONT ø  -  F8
+1 CONT ù  -  F9
+1 CONT ú  -  FA
+1 CONT û  -  FB
+1 CONT ü  -  FC
+1 CONT ý  -  FD
+1 CONT þ  -  FE
+1 CONT ÿ  -  FF
+1 CONT
+1 REFN 19 NOV 2010 19:21:22
+2 TYPE Creation Date
+1 CHAN
+2 DATE 19 NOV 2010
+3 TIME 19:38:06
+0 @M2@ OBJE
+1 TITL Budd L Farris Gravestone
+1 _FILE Multimedia/IMG_4471.jpg
+1 FORM jpg
+1 _SCALE 1.25
+1 REFN 25 AUG 2009 19:17:52
+2 TYPE Creation Date
+1 CHAN
+2 DATE 3 FEB 2012
+3 TIME 19:45:11
+1 _LOC Ridge Lawn Cemetery, Chicago, Il
+2 _GPS 41.54577,-87.39066
+1 _DATE 8 NOV 2002
+1 _ZOOM 1.25
+1 _KEY Gravestones
+1 NOTE @N5@
+1 SOUR @SR5@
+2 PAGE 45
+2 DATA
+3 DATE 4 JUN 1978
+3 TEXT Text from the source cited for this record
+2 QUAY 3
+2 NOTE @N6@
+2 EVEN DEAT, BIRT
+3 ROLE Documenter
+1 _DIST Family
+1 RIN 6789
+1 REFN REFN
+2 TYPE REFN Number Type
+0 @M8@ OBJE
+1 TITL Emma Smith Protrait
+1 _FILE Multimedia/EmmaSmith.jpg
+1 FORM jpg
+1 REFN 6 SEP 2009 09:19:59
+2 TYPE Creation Date
+1 CHAN
+2 DATE 4 FEB 2012
+3 TIME 15:42:09
+1 _DIST Family
+0 @M4@ OBJE
+1 TITL GEDitCOM II Web Site
+1 _LOC Hostway.com servers
+1 _DATE FROM 1998
+1 _KEY Genealogy; GEDitCOM; Macintosh
+1 _FILE http://www.geditcom.com
+1 FORM url
+1 REFN 25 AUG 2009 20:21:18
+2 TYPE Creation Date
+1 CHAN
+2 DATE 25 AUG 2009
+3 TIME 20:22:02
+0 @M11@ OBJE
+1 TITL http://www.geditcom.com
+1 _FILE http://www.geditcom.com/scripts
+1 FORM url
+1 REFN 30 JUL 2010 20:21:24
+2 TYPE Creation Date
+1 CHAN
+2 DATE 18 AUG 2010
+3 TIME 20:30:51
+0 @M1@ OBJE
+1 TITL Image of a Gravestone
+1 _FILE Multimedia/cemetery-01.jpg
+1 FORM jpg
+1 REFN 25 AUG 2009 10:40:23
+2 TYPE Creation Date
+1 CHAN
+2 DATE 25 AUG 2009
+3 TIME 10:40:47
+0 @M3@ OBJE
+1 TITL John Nairn Portrait
+1 _FILE Multimedia/JohnNairn.jpg
+1 FORM jpg
+1 REFN 25 AUG 2009 20:20:01
+2 TYPE Creation Date
+1 CHAN
+2 DATE 25 JAN 2010
+3 TIME 19:53:50
+0 @M10@ OBJE
+1 _FILE mailto:john@geditcom.com
+1 REFN 28 JUL 2010 21:58:53
+2 TYPE Creation Date
+1 CHAN
+2 DATE 28 JUL 2010
+3 TIME 21:58:53
+1 FORM url
+1 TITL john@geditcom.com
+0 @M6@ OBJE
+1 TITL Portrait of Joseph Smith, Jr.
+1 _FILE Multimedia/Joseph_Smith.jpg
+1 FORM jpg
+1 _SCALE 2
+1 REFN 5 SEP 2009 11:59:57
+2 TYPE Creation Date
+1 CHAN
+2 DATE 4 FEB 2012
+3 TIME 15:47:37
+1 _DIST Anyone
+0 @M7@ OBJE
+1 TITL Wikipedia Page for Emma Hale
+1 _FILE http://en.wikipedia.org/wiki/Emma_Hale_Smith
+1 FORM url
+1 REFN 6 SEP 2009 09:14:01
+2 TYPE Creation Date
+1 CHAN
+2 DATE 25 JAN 2010
+3 TIME 10:17:53
+0 @M9@ OBJE
+1 TITL Wikipedia page for Joseph Smith
+1 _FILE http://en.wikipedia.org/wiki/Joseph_Smith,_Jr.
+1 FORM url
+1 REFN 6 SEP 2009 09:23:11
+2 TYPE Creation Date
+1 CHAN
+2 DATE 6 SEP 2009
+3 TIME 09:23:25
+0 @L2@ _LOG
+1 _TTL Joseph Smith Research Log
+1 _OBJECT Get more information on Joseph Smith
+2 CONT Search LDS Archives.
+1 REFN 5 SEP 2009 11:01:50
+2 TYPE Creation Date
+1 _INDI @I1@
+1 CHAN
+2 DATE 26 DEC 2009
+3 TIME 10:01:06
+1 _INDI @I2@
+1 _FAM @F2@
+0 @L3@ _LOG
+1 _TTL More Smith Research
+1 REFN 5 SEP 2009 11:02:23
+2 TYPE Creation Date
+1 _INDI @I1@
+1 CHAN
+2 DATE 21 JAN 2010
+3 TIME 15:41:15
+1 _FAM @F2@
+1 _TASK
+2 _DATE 25 AUG 2009
+2 _GOAL Research Task
+2 _STATUS Working
+2 _RESULTS These are some results of a research task
+3 CONT Line 2 of the task
+3 CONT Line 3 of the task
+3 CONT Line 4 of the task
+2 NOTE @N8@
+2 SOUR @SR7@
+2 OBJE @M8@
+1 _SUMMARY Summary of all the tasks combined
+1 OBJE @M3@
+1 NOTE @N9@
+1 SOUR @SR6@
+1 _TASK
+2 _DATE 2009
+2 _GOAL Second Task
+2 _STATUS Done
+0 @L1@ _LOG
+1 _TTL Name Research
+1 _OBJECT Find details on a name
+1 REFN 1 SEP 2009 22:28:02
+2 TYPE Creation Date
+1 _INDI @I1@
+1 CHAN
+2 DATE 9 NOV 2011
+3 TIME 21:19:18
+1 __PLC @P16@
+0 @L4@ _LOG
+1 _TTL Smith-Hale Marriage Research
+1 REFN 6 SEP 2009 09:22:14
+2 TYPE Creation Date
+1 _FAM @F2@
+1 CHAN
+2 DATE 6 SEP 2009
+3 TIME 09:22:27
+0 @P13@ _PLC
+1 _PLACE Carthage Ill
+1 REFN 10 AUG 2011 23:03:09
+2 TYPE Creation Date
+0 @P5@ _PLC
+1 _PLACE Colesville, Broome, NY
+1 REFN 10 AUG 2011 23:03:09
+2 TYPE Creation Date
+0 @P3@ _PLC
+1 _PLACE Harmony Township, Susquehanna County, Pennsylvania
+1 REFN 10 AUG 2011 23:03:09
+2 TYPE Creation Date
+0 @P8@ _PLC
+1 _PLACE Harmony, Susquehanna, Pennsylvania, USA
+1 REFN 10 AUG 2011 23:03:09
+2 TYPE Creation Date
+0 @P7@ _PLC
+1 _PLACE Hiram, Portage, Ohio
+1 REFN 10 AUG 2011 23:03:09
+2 TYPE Creation Date
+0 @P15@ _PLC
+1 _PLACE Kirtland, Lake Ohio
+1 REFN 10 AUG 2011 23:03:09
+2 TYPE Creation Date
+0 @P6@ _PLC
+1 _PLACE Kirtland, Lake, Ohio
+1 REFN 10 AUG 2011 23:03:09
+2 TYPE Creation Date
+0 @P1@ _PLC
+1 _PLACE Łódź, Polska
+1 REFN 10 AUG 2011 23:03:09
+2 TYPE Creation Date
+0 @P14@ _PLC
+1 _PLACE Navoo, IL, USA
+1 REFN 10 AUG 2011 23:03:09
+2 TYPE Creation Date
+0 @P4@ _PLC
+1 _PLACE Navoo, Illinois, USA
+1 REFN 10 AUG 2011 23:03:09
+2 TYPE Creation Date
+0 @P10@ _PLC
+1 _PLACE Palmyra, New York
+1 REFN 10 AUG 2011 23:03:09
+2 TYPE Creation Date
+0 @P16@ _PLC
+1 _PLACE Palmyra, Wayne, New York, United States
+2 FORM town, county, state, country
+2 DATE From 1789
+2 LANG English
+1 REFN 9 NOV 2011 09:03:04
+2 TYPE Creation Date
+1 CHAN
+2 DATE 26 NOV 2011
+3 TIME 12:42:26
+1 _URL http://en.wikipedia.org/wiki/Palmyra_(town),_New_York
+2 _LABEL Wikipedia
+1 _BOX Bounding Box
+2 _BNDS (43.051102, -77.247039), (43.071789, -77.213333)
+2 _POI Saint Anne'c Catholic Cemetery
+3 _GPS 43.0577, -77.2196
+3 _CODE CMTY
+3 _PNOTE The biggest church in town
+2 _POI Saint Anne's Roman Catholic Church
+3 _GPS 43.0645, -77.2328
+3 _CODE CH
+3 _NOPOI Y
+2 _PNOTE The box surrounds the current day town
+2 _STYLE Roadmap
+1 _PFACT Date of Formation
+2 DATE 1789
+1 _PFACT Population Total
+2 DATE 2000
+2 _VALUE 7672
+2 _PNOTE From the 2000 Census
+1 _URL http://www.mormonhistoricsitesfoundation.org/USA/newYork/palmyra/smithLogHome/history.htm
+2 _LABEL Joseph Smith Cabin
+2 _PNOTE Mormon Historic Site
+3 _DIST Owner
+2 LANG English
+1 OBJE @M6@
+1 OBJE @M10@
+1 NOTE @N21@
+1 SOUR @SR5@
+1 _LOG @L1@
+1 REFN Filled Record
+2 TYPE Keyword(s)
+1 RIN RIN
+1 REFN REFN
+1 _PLACE Palmyra, Wayne, New York, USA
+0 @P12@ _PLC
+1 _PLACE Salt Lake City
+1 REFN 10 AUG 2011 23:03:09
+2 TYPE Creation Date
+0 @P9@ _PLC
+1 _PLACE Sharon, Vermont
+2 FORM City, State
+1 _BOX Map of Town
+2 _BNDS 43.782993,-72.454147
+1 REFN 10 AUG 2011 23:03:09
+2 TYPE Creation Date
+1 NOTE @N12@
+1 CHAN
+2 DATE 10 AUG 2011
+3 TIME 23:06:08
+0 @P2@ _PLC
+1 _PLACE Wółka Mędrzechowska, Polska
+1 REFN 10 AUG 2011 23:03:09
+2 TYPE Creation Date
+0 @B1@ _BOK
+1 _DESC Book Description
+1 _COPY Y
+2 _OWNER Copyright Owner
+2 _GTEES Person 1, Person 2, Person 3
+1 _ABOUT The author of this book created this file to test full GEDCOM tags in user interface formats for GEDitCOM II.
+1 _INTRO This in an introduction to the book.
+1 _AUTH John A. Nairn
+1 _EMAIL john@geditcom.com
+1 _ANC all
+1 _DES none
+1 _FONT 10
+1 _FFAM Computer Modern Roman
+1 _LINE 1.2
+1 _NTOP hideNone
+1 _PTOP hideNone
+1 _PAPER US Letter
+1 _SIZE Full Page
+1 _TEXSTY Default
+1 _TSET Y
+1 REFN 9 NOV 2011 20:55:30
+2 TYPE Creation Date
+1 _INDI @I1@
+1 CHAN
+2 DATE 15 FEB 2012
+3 TIME 00:13:28
+1 _FLDR /Users/nairnj/Library/Application Support/GEDitCOM II/GEDCOM Test File/Books/Book Description
+1 _OVER Y
+0 TRLR

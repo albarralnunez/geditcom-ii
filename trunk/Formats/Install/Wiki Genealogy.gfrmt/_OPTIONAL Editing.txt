@@ -1,0 +1,21 @@
+! Optional tags for Event Editing
+cell CreateLinkButton
+set image add border no
+sizetofit
+help local("Click to attach optional data")
+
+optionalTag ADDR,local(ADDR)
+optionalTag PHON,local(PHON)
+optionalTag CAUS,local(CAUS)
+optionalTag,AGNC,local(AGNC)
+optionalTag,TYPE,local(TYPE)
+if #msg!="BIRT"
+  optionalTag,AGE,local(AGE)
+endif
+if @rec=FAM
+  optionalTag,HUSB,local(HUSB)
+  optionalTag,WIFE,local(WIFE)
+endif
+optionalTag _GPS,local(_GPS)
+
+hskip 5

@@ -1,0 +1,100 @@
+! set an expression to display this name and add "+" if there
+! are ancestors
+sub NameWithAncestors,#mate
+  TextExpression @#mate.NAME
+  AppendedExpression altview
+  #extra=""
+  if @#mate.FAMC!=""
+    #extra=#extra&"+"
+  endif
+  #bdate=@#mate.BIRT.DATE
+  if #bdate<>""
+    #extra=#extra&" ("&local("born")&": "&#bdate&")"
+  endif
+  if #extra<>""
+    Format "%@"&#extra
+  endif
+  set font "Hyperlink Text"  set border no alignment left width -1
+  help local("Click to see spouse's record")
+endsub
+
+! set an expression to display this name and add "+" if there
+! are ancestors
+sub NameWithDescendants,#chil
+  cell LinkButton
+  RecordLink #chil
+  TextExpression @#chil.NAME
+  AppendedExpression altview
+  #pref=""
+  if @#chil.FAMS.CHIL!=""
+    #pref="+"
+  endif
+  #nsex=@#chil.SEX
+  if #nsex="M"
+    #suff=" ("&local("Son")
+  else if #nsex="F"
+    #suff=" ("&local("Daughter")
+  else
+    #suff=" ("&local("Unknown")
+  endif
+  #bdate=@#chil.BIRT.DATE
+  if #bdate<>""
+    #suff =#suff&", "&local("born")&": "&#bdate&")"
+  else
+    #suff=#suff&")"
+  endif
+  Format #pref&"%@"&#suff
+  set font "Hyperlink Text" offset -1  set border no alignment left width -1
+  help local("Click to see child's record")
+endsub
+
+cell label
+#sex=@this.SEX
+if #sex="F"
+  if @contents._UMR=""
+    #spouse=local("HUSB")
+  else
+    #spouse=local("Partner")
+  endif
+  text #spouse&": "
+  #spouse=@contents.HUSB
+else  if @contents._UMR=""
+    #spouse=local("WIFE")
+  else
+    #spouse=local("Partner")
+  endif
+  text #spouse&": "
+  #spouse=@contents.WIFE
+endif
+sizetofit
+
+! spouse name and link
+if #spouse is validlink  cell LinkButton  RecordLink #spouse  gosub NameWithAncestors #spouse
+  offset -1
+else
+  cell static "<"&local("Unknown")&">"
+endif
+
+! list of children
+NewLine
+#famsSkip=#leftSkip
+tab
+#leftSkip=#hpos$
+#col=0
+RepeatWith "#child" from @contents.CHIL
+  if #col=0
+    cell label,local("Children")&": "
+    sizetofit
+    #col=1
+    hskip 0
+    #chilSkip=#leftSkip
+    #leftSkip=#hpos$
+  else
+    newline
+  endif
+  gosub NameWithDescendants,#child
+EndRepeat
+#leftSkip=#famsSkip
+
+ShowAll NOTE
+

@@ -1,0 +1,9 @@
+load LineLabel,RecordChildLink
+
+! Link to Repository record in a source
+gosub LineLabel,local(@tag)
+gosub RecordChildLink local("Click to view and edit repository"),"parent"
+
+!  Subordinate data CALN; NOTE
+ShowAll CALN
+ShowAll NOTE

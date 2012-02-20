@@ -1,0 +1,7 @@
+load LevTag
+
+gosub LevTag
+cell CheckBoxEdit local(@tag)
+sizetofit
+set height #defaultHeight$ controlsize small offset #checkOffset
+help local(@tag)

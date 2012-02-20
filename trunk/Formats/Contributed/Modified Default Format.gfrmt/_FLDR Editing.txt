@@ -1,0 +1,23 @@
+! static text with level and tabNewLine
+#tlabel=local(@tag)
+cell static,#tlabel&":"
+set tabwidth -1 alignment right
+help #tlabel
+
+! edit field with value
+hskip 0
+#fldrLeft=#hpos$
+#edge=#rightMargin$-#rightSkip-18-#cellSkip-#hpos$
+cell EditValue
+set Width #edge Offset -2
+help local("Enter full path for folder to write the ouput LaTeX files")
+! edit field with value
+
+if @contents!=""
+  cell LinkButton
+  set image "reveal" border none offset -3
+  set width 18
+  set ScriptLink "Open_FLDR" ScriptType "format"
+  set help local("Reveal this folder in the Finder")
+endif
+

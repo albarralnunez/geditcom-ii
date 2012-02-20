@@ -1,0 +1,8 @@
+load LevTag
+
+gosub LevTag
+cell CheckBoxEdit local("Overwrite files in target folder")
+set height #defaultHeight$ controlsize small offset #checkOffset
+help local("Check to overwrite files in target folder rather then creating a new folder")
+sizetofit
+

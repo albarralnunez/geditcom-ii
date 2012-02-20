@@ -1,0 +1,35 @@
+sub NOTEPanes,#thisPane
+	! --------- Name -----------
+	#oldWidth=#rightMargin$
+	DisplayWidth #oldWidth+#rightSkip+1
+	newline -#topMargin$-1
+	hskip -#leftSkip-1
+	cell GroupBox
+	border line
+	titleposition none
+	cellbackground "Record Header Box Background"
+	width -1
+
+	moveto 1,1
+
+	cell PaneBar
+	AddPane local("Notes"),""
+	  	if @this.CONC is htmldiv
+			AddPane local("HTML"),"HTML"
+		endif	
+
+	endif
+ 	AddPane local("Other"),"Other"
+    AddPane local("All"),"All"
+	set selected #thisPane
+	sizetofit
+	set height #cellHeight$+1		! needed for Tiger
+	shift (#rightMargin$-#hpos$-#cellWidth$)/2
+	help local("Click to view section of this individual's data")
+
+	
+	EndGroup
+
+	DisplayWidth #oldWidth
+
+endSub

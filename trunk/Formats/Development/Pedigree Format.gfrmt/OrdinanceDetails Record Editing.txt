@@ -1,0 +1,34 @@
+load ListBlock,References,ToolBtn,ToolBar
+
+#eventTag=@contents
+
+! --------- Toolbar -----------
+GoSub ToolBar "","N","S","L",""
+
+#tagKey=#eventTag&" details"
+cell label,local(#tagKey)
+SizeToFit
+newline -3
+cell GroupBox
+set width -1 border line titleposition none
+newline -#lineSkip-3
+SetTab 120
+
+! show date and place
+NewLine
+cell static,local("DATE")&":"
+set tabwidth 1 alignment right
+cell expression,@parent.DATE
+set Width -1 AppendedExpression view
+Show TEMP
+Show PLAC
+Show STAT #eventTag
+
+EndGroup
+
+! --------- NOTEs, SOURs, and logs -----------
+gosub References,"_LOG"
+
+resizeWindow yes
+
+DropTypes NOTE,SOUR,_LOG

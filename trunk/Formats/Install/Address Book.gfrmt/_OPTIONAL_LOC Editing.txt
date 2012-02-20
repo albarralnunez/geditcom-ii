@@ -1,0 +1,16 @@
+if printing is false
+
+newline
+#nextTop=#vpos$
+VMoveTo #msg
+  
+cell CreateLinkButton
+set image AddButton border none
+sizetofit
+help local("Click to add latitude and longitude")
+
+OptionalTag _GPS,local(_GPS),"51.477N, 0W"
+
+MoveTo #leftSkip,#nextTop
+
+endif

@@ -1,0 +1,20 @@
+load LevTag,ShowMemo
+
+gosub LevTag
+
+! edit field with value
+cell EditField
+set Width -1
+if #usenum>0
+  set Height 14*#use
+else
+  set Height 14*5
+endif
+if printing
+  set MinHeight 15
+  SizeToFit 3
+endif
+set border none offset #editFieldOffset
+help local("Enter text for")&": "&local(@tag)
+
+gosub ShowMemo,@_MEMO

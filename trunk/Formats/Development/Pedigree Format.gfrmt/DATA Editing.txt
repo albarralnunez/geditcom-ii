@@ -1,0 +1,26 @@
+if @rec="SOUR"
+  show EVEN
+  show AGNC
+  showAll NOTE
+else if @rec="HEAD"
+  ! static text with level and tab  NewLine
+  cell static,local("Source Data")&":"
+  set tabwidth 1 alignment right
+
+  ! edit field with value
+  cell EditValue
+  set Width -1 Offset -2
+  help local("Enter name of source data")
+
+  newline
+  tab 1
+  ClearTabs
+  SetTab #hpos$+30
+  HMoveTo #leftSkip$
+
+  show DATE
+  show COPR
+else
+  show DATE
+  show TEXT
+endif

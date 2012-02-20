@@ -1,0 +1,104 @@
+load FAMPanes,ResetTabs,ListBlock,References,ToolBtn
+
+! --------- Toolbar -----------
+#oldWidth=#rightMargin$
+DisplayWidth #oldWidth+#rightSkip+1
+newline -#topMargin$-1
+hskip -#leftSkip-1
+cell GroupBox
+border line
+titleposition none
+cellbackground "Record Header Box Background"
+width -1
+
+moveto 1,1
+gosub FAMPanes,"Details"
+hskip 10
+gosub ToolBtn,"Attach Notes","notes",local("Click to attach notes")
+gosub ToolBtn,"Attach Source","source",local("Click to attach source")
+gosub ToolBtn,"Attach Research Log","researchlog",local("Click to attach research log")
+gosub ToolBtn,"Attach Optional Data","plus",local("Click to attach optional data")
+
+newline
+#halign=#hpos$
+Show HUSB link
+newline -4
+hmoveto #halign
+Show WIFE link
+
+EndGroup
+
+DisplayWidth #oldWidth
+
+GoSub ResetTabs
+
+! --------- Events --------------
+newline
+cell label,local("Events")
+set width 80
+
+cell LinkButton
+image "plus"
+set width 24 border no
+MenuLink "Attach Event/Attribute"
+help local("Click to add an event")
+
+cell LinkButton "-"
+image "minus"
+set width 24 border no
+MenuLink "Detach Event/Attribute/Link"
+help local("Click to remove an event")
+
+newline -6
+cell GroupBox
+set width -1 border line titleposition none
+
+newline -#lineSkip-3
+
+ClearTabs
+#lineSkip=2
+#cellSkip=2
+#tableWidth=#rightMargin$-#rightSkip-#hpos$-#cellSkip-21
+#nameWidth=(#tableWidth-2*#cellSkip-20)/2
+if #nameWidth>180
+  #nameWidth=180
+endif
+SetTab #habs$+#nameWidth,#habs$+#nameWidth+20,#habs$+#tableWidth
+#first="yes"
+
+!hide MARRShowAll FAMEvents
+ShowAll FAMOrdinances
+
+#lineSkip=#lineSkip$
+#cellSkip=#cellSkip$
+
+EndGroup
+GoSub ResetTabs
+
+! --------- NOTEs, SOURs, and _LOGs -----------
+gosub References,"_LOG"
+
+hide CHIL,NCHI,OBJE
+
+! -------- Additional Data ------------
+if more is true
+  ClearTabs
+  SetTab 150,240,330
+  cell label,local("Additional Data")
+  SizeToFit
+  newline -3
+  cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-3
+  ShowAll CHAN
+  ShowAll all
+  EndGroup
+endif
+
+optionalTag RIN,local(RIN)
+optionalTag REFN,local(REFN)
+optionalTag SUBM,local(SUBM)
+
+DropTypes SOUR, NOTE, FAM, _LOG, SUBM
+
+hideexcess

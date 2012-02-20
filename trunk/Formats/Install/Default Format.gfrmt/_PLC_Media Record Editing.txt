@@ -1,0 +1,19 @@
+load TagBlock,ResetTabs,PlacePanes
+
+! -------------- Start Template -----------------
+GoSub PlacePanes,"Media","1"
+GoSub ResetTabs,0
+
+! --------- OBJEs -----------
+Gosub TagBlock,"OBJE","Multimedia"
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+  width -1
+  newline -#lineSkip-3
+  Show OBJE
+EndGroup
+#lineSkip=#lineSkip$
+
+hideexcess
+

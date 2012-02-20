@@ -1,0 +1,4 @@
+newline
+cell CheckBoxEdit,local(@tag),@contents
+sizetofit
+help local("Check to  automatically typeset the book, if proper tools are availabls")

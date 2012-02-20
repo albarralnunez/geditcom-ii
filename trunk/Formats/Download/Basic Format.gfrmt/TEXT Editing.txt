@@ -1,0 +1,20 @@
+load LineLabel
+
+if @rec="SOUR"
+  if printing
+    ! if printing, was displayed in parent in ExpressionField
+  else
+    ! TEXT at level 1 in SOUR record - explain to use the editing panel
+    gosub LineLabel local(@tag)
+    cell Static,local("see editing pane at bottom of the window")
+    sizetofit -1
+
+    cell EditPane,"("&local("TEXT_HELP")&")"
+    set Position bottom fraction .3
+    help local("TEXT_HELP")
+  endif
+
+else
+  use _Unknown_
+
+endif

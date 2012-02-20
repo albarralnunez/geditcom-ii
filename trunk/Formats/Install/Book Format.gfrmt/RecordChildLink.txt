@@ -1,0 +1,23 @@
+! standard button to link to a record using
+! record view and hyperlink text
+! help text should be localized before he call
+
+sub RecordChildLink #helpText,#targ
+  if @contents is validlink
+	cell LinkButton
+	TextExpression @contents.rec
+	AppendedExpression view
+	set border no Font "Hyperlink Text" alignment left
+    if printing
+      fontcolor black
+    endif
+	set RecordLink @contents Target #targ
+	sizetofit -1
+	Help #helpText
+
+  else
+    cell static "("&local("Invalid Link")&")"
+    sizetofit
+
+  endif
+endsub

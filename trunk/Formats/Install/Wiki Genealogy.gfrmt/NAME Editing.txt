@@ -1,0 +1,31 @@
+load LineLabel
+
+if @rec!="INDI"
+  ! Used for SUBM name, REPO name, and HEAD app name
+  use ADR1
+
+else
+  ! Here only for INDI name
+  gosub LineLabel,local("NAME")
+  offset #editOffset
+  Cell EditName
+  set width -1 
+  set ScriptLink "Make_UPPERCASE_NAME" ScriptType "format"
+  set ScriptLink "Make_Uppercase_SURNAME" ScriptType "format"
+  set ScriptLink "Make_Titlecase_Name" ScriptType "format"
+
+  ! Possible subordinate data  ShowAll NPFX  Show GIVN  Show SURN  Show NICK  ShowAll SPFX  ShowAll NSFX
+
+  ! SOUR and NOTE and _LOG at the end  ShowAll SOUR  ShowAll NOTE
+  ShowAll _LOG
+
+  ! Attach too
+  newline 5
+  cell static,local("Attach")&": "
+  sizetofit
+  Show NOTE
+  Show SOUR
+  Show _LOG
+  Show _OPTIONAL_NAME
+
+  hideexcessendif

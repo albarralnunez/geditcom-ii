@@ -1,0 +1,164 @@
+load ListBlock,TagBlock,ResetTabs,RefLinks,ToolBtn
+
+! -------------- Start Template -----------------
+DropTypes REPO,INDI,FAM
+GoSub ResetTabs
+
+! ---------- Type -----------
+#oldWidth=#rightMargin$
+DisplayWidth #oldWidth+#rightSkip+1
+newline -#topMargin$-1
+hskip -#leftSkip-1
+cell GroupBox
+border line
+titleposition none
+cellbackground "Record Header Box Background"
+width -1
+
+newline -3
+gosub ToolBtn,"Attach Notes","notes",local("Click to attach notes")
+gosub ToolBtn,"Attach Multimedia","multimedia",local("Click to attach multimedia object")
+gosub ToolBtn,"Attach Optional Data","plus",local("Click to attach optional data")
+
+newline 3
+#type=@_TYPE
+if #type=""
+  #type="book"
+endif
+show _TYPE
+EndGroup
+
+! --------- Title -----------
+DisplayWidth #oldWidth
+
+! --------- Reference Details ---------
+ClearTabs
+SetTab 110
+cell label,local("Reference")
+SizeToFit
+newline -3
+cell GroupBox
+set width -1 border line titleposition none
+newline -#lineSkip-3
+
+if #type="article"
+  Show AUTH
+  ShowAll AUTH
+  Show TITL
+  ShowAll TITL
+  Show ABBR
+  ShowAll ABBR
+  Show PUBL
+  ShowAll PUBL
+  Show _DATE
+  ShowAll _DATE
+  ShowAll _URL
+else if #type="web page"
+  NewLine
+  cell static,local("Web Page")&":"
+  set tabwidth 1 alignment right font "GEDCOM Extension Text"
+
+  ! link to web site
+  hskip 0  #edge=#rightMargin$-#rightSkip-21-#cellSkip
+  cell Multimedia
+  set Width #edge-#hpos$ alignment left offset -3
+  set url @_URL font "Hyperlink Text"
+  TextExpression @_URL
+  set help local("Click to open this URL link in you web browser")
+  ! rest in a child window
+  cell StructuresLink,URLDetails
+  set border no width -1
+  if @contents!=""
+    set image "details_here"
+  else
+    set image "details"
+  endif
+  LinkAll _URL
+  help local("Click to enter web site")
+
+  Show TITL
+  ShowAll TITL
+  Show ABBR
+  ShowAll ABBR
+  Show AUTH
+  ShowAll AUTH
+  Show PUBL
+  ShowAll PUBL
+  Show _DATE
+  ShowAll _DATE
+else
+  Show TITL
+  ShowAll TITL
+  Show ABBR
+  ShowAll ABBR
+  Show AUTH
+  ShowAll AUTH
+  Show PUBL
+  ShowAll PUBL
+  Show _DATE
+  ShowAll _DATE
+  ShowAll _URL
+endif
+
+EndGroup
+
+! --------- NOTEs, OBJEs -----------
+cell label,local("Reference Citing and Content")
+SizeToFit
+newline -3
+cell GroupBox
+set width -1 border line titleposition none
+newline -#lineSkip-3
+GoSub RefLinks,"Cited by","All Citing Records"
+
+! content in a child window
+newline
+tab 1
+hskip #cellSkip$
+cell StructuresLink,SourceContent
+set text local("Content and Text from the Source") border shadowlesssquare
+sizetofit
+LinkAll DATA,TEXT
+help local("Click to see content and enter text from this source")
+
+EndGroup
+
+! --------- NOTEs, OBJEs -----------
+Gosub TagBlock,"NOTE",local("Notes")
+Gosub TagBlock,"OBJE",local("Multimedia")
+
+! --------- Repository ---------
+GoSub ResetTabs
+
+if REPO is here
+  cell label,local("REPO")
+  SizeToFit
+  newline -3
+  cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-3
+  ShowAll REPO
+  EndGroup
+Endif
+
+! -------- Additional Data ------------
+if more is true
+  ClearTabs
+  SetTab 150,240,330
+  cell label,local("Additional Data")
+  SizeToFit
+  newline -3
+  cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-3
+  ShowAll CHAN
+  ShowAll all
+  EndGroup
+endif
+
+optionalTag RIN,local(RIN)
+optionalTag REFN,local(REFN)
+optionalTag REPO,local(REPO)
+
+dropTypes REPO,NOTE,OBJE
+

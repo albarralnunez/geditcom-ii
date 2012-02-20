@@ -1,0 +1,157 @@
+!SJGR Added a field for display code for unsuported multimedia
+
+Load ResetTabs,RefLinks,ListBlock,References,AttachData,OBJEPanes
+
+! -------------- Start Template -----------------
+GoSub ResetTabs,0
+GoSub OBJEPanes,"All"
+DropTypes INDI,FAM
+
+#title=@TITL
+#path=@_FILE
+#form=@FORM
+
+cell GroupBox,local("Multimedia Link")
+  width -1
+
+  newline
+  if #form="url"
+    tab 1
+    cell Multimedia
+    set url #path width -1 font "Hyperlink Text"
+    if #title<>""
+      text #title
+    else
+      text #path
+    endif
+    set objectImage @this imageposition left
+    sizetofit -1
+
+    set alignment left height #imageHeight$
+    set help local("Click to open this URL link in your browser application.") 
+  else
+    newline
+    cell Multimedia
+    #padding=5
+    set objectFull @this mmFormat #form width -1
+    set imageposition imageonly
+
+    ! max width is available space, but not more then #mmHeight
+    ! max height from user preference
+    #maxWidth=#cellWidth$-2*#padding
+    if #maxWidth>#mmHeight
+      #maxWidth=#mmHeight-2*#padding
+    endif
+    #maxHeight=#mmHeight-2*#padding
+
+    ! set size by to large dimension of the picture
+    #mmRatio=#imageHeight$/#imageWidth$
+    if #mmRatio<1
+      ! wider than tall
+      if #maxWidth>#scale*#imageWidth$
+        set imageWidth #scale*#imageWidth$
+      else
+        set imageWidth #maxWidth
+      endif
+    else
+      ! taller than wide
+      if #maxHeight>#scale*#imageHeight$
+        set imageHeight #scale*#imageHeight$
+      else
+        set imageheight #maxHeight
+      endif
+    endif
+
+    ! finally, set cell height to final height
+    set height #imageHeight$+2*#padding
+
+    ! handle non-image objects
+    if #imageType$="noimage"
+      set text local("No image representation. Click to open in another application")
+      set font "Static Text" imageposition left alignment left
+      help local("Click to open in a helper application.")
+      help " "&local("You can configure which application opens each type of multimedia object.")
+    else if #imageType$="notfound"
+      set text " "&local("Multimedia file not found (click to fix)")
+      set font "Static Text" imageposition left alignment left
+      set MenuLink "Attach Multimedia"
+      help local("Click to link this record to a multimedia object.")
+    else if #imageType$="image"
+      help local("Click to open in a helper application.")
+      help " "&local("You can configure which application opens each type of multimedia object.")
+    else
+      ! thumbnail
+      help local("Click to view multimedia record")
+      set recordLink @this paneID "All"
+    endif
+  endif
+
+  newline 6
+  Show _FILE #form
+  ShowAll FORM
+  if #form<>"url"
+    Show _SCALE
+  else
+    Hide _SCALE
+  endif
+
+EndGroup
+
+Newline 3
+cell GroupBox,local("Geographical Data and Keywords")
+  width -1
+  newline -3
+  Show _LOC
+  Show _KEY
+  ShowAll _KEY
+endGroup
+
+! --------- A field to enter html code for the display of unsupported multimedia
+if @this._DISP<>"" 
+Newline 3
+cell GroupBox,local("Display code for unsupported media")
+  width -1
+  newline -3
+  Show _DISP
+endGroup
+EndIf
+
+! --------- NOTEs, SOURs, OBJEs, and _LOGs -----------
+if @_REF<>""
+  cell GroupBox,local("Linked Records")
+    width -1
+    newline -#lineSkip
+    gosub RefLinks,local("Linked to"),local("All Linked Records")
+  EndGroup
+endif
+gosub References,"_LOG"
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+  width -1
+  newline -#lineSkip-3
+  #lineSkip=0
+  Show NOTE
+  Show SOUR
+  Show _LOG
+  gosub AttachData
+EndGroup
+#lineSkip=#lineSkip$
+
+! -------- Additional Data ------------
+if more is true
+  ClearTabs
+  gosub ResetTabs,50
+  cell GroupBox,local("Additional Data")
+    width -1
+    ShowAll CHAN
+    !ShowAll all
+  EndGroup
+endif
+
+HideExcess
+
+optionalTag RIN,local(RIN)
+optionalTag REFN,local(REFN)
+optionalTag _KEY,local(_KEY)
+

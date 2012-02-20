@@ -1,0 +1,42 @@
+load ResetTabs
+
+sub HeadTabs
+  ClearTabs
+  SetTab 120,210,300
+endsub
+
+! -------------- Start Template -----------------
+DropTypes SUBM,INDI,FAM,SOUR,OBJE,NOTE,_LOG,REPO
+gosub HeadTabs
+
+! --------- Title -----------
+cell label,local("Creating Software")
+SizeToFit
+newline -3
+cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-3
+  Show SOUR
+EndGroup
+
+cell label,local("Submitter, Submission, and Home Records")
+SizeToFit
+newline -3
+cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-3
+  Show SUBM
+  ShowAll SUBN
+  ShowAll _HME
+EndGroup
+
+ClearTabs
+SetTab 140,230,320
+cell label,local("Header Details")
+SizeToFit
+newline -3
+cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-3
+  show DEST  show DATE  show FILE  show COPR  show GEDC  show CHAR  show LANG  show PLAC
+  show NOTEEndGroup

@@ -1,0 +1,74 @@
+load AttachData,ResetTabs,INDIPanes
+
+! -------------- Start Template -----------------
+GoSub INDIPanes,"Other"
+GoSub ResetTabs,0
+
+! --------- ALIA, ASSO, SUBM, ---------------
+if ALIA|ASSO|SUBM|ANCI|DESI is here
+  ClearTabs
+  #assoTab=100
+  SetTab #assoTab
+  newline  cell GroupBox,local("Associated Records")
+    width -1
+    newline
+    ShowAll ALIA
+    ShowAll ASSO
+    ShowAll SUBM
+  	ClearTabs
+    gosub ResetTabs,50
+    ShowAll ANCI
+    ShowAll DESI
+  EndGroup
+  GoSub ResetTabs,0
+endif
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+width -1
+newline -#lineSkip-3
+#lineSkip=2
+Show ALIA
+Show ASSO
+gosub AttachData
+newline 3
+hskip 2
+EndGroup
+#lineSkip=#lineSkip$
+
+! --------- Hide data in other panes ---------
+Hide NAME,RESN,SEX,INDIEvents,INDIAttributes,INDIOrdinances
+Hide FAMC,FAMS,SOUR,NOTE,OBJE,_NOPOR,_LOG
+
+! -------- Additional Data ------------
+if more is true
+  ClearTabs
+  gosub ResetTabs,50
+  cell GroupBox,local("Additional Data")
+  width -1
+  newline
+  ShowAll CHAN
+  ShowAll AFN
+  ShowAll RFN
+  ShowAll RIN
+  ShowAll all
+  EndGroup
+endif
+
+! -------- Export -------------
+
+cell GroupBox,local("Export")
+width -1
+cell LinkButton ".ged"
+set ScriptLink "Export Data/Share Family Tree" ScriptType "system"
+set border shadowlesssquare
+sizetofit
+
+optionalTag AFN,local(AFN)
+optionalTag RFN,local(RFN)
+optionalTag RIN,local(RIN)
+optionalTag REFN,local(REFN)
+optionalTag SUBM,local(SUBM)
+optionalTag ANCI,local(ANCI)
+optionalTag DESI,local(DESI)
+optionalTag,REFN,local("Keyword(s)"), ,"TYPE Keyword(s)"

@@ -1,0 +1,81 @@
+load ListOptionals
+
+if #msg="poi"
+  ! static text with level and tab  NewLine
+  cell static,local("_URL")&":"
+  set tabwidth 1 alignment right font "GEDCOM Extension Text"
+
+  ! edit field with value
+  cell EditURL
+  set Width -1 font "Hyperlink Text" border no cellbackground "parent"
+  help local("Click to visit place web site")
+  help " ("&local("option click to edit")&")"
+
+else if @rec="_PLC"
+  #urlnum+=1
+  #keynum=#msg
+  #display="yes"
+  if #keynum>0
+    if #urlnum!=#keynum
+      HideExcess
+      #display="no"
+    endif
+  endif
+  if #display="yes"
+    cell GroupBox,local("Place Web Site")
+      set width -1
+      NewLine -3
+      
+      ! static text with level and tab      cell static,local("URL")&":"
+      sizetofit
+      
+      ! edit field with value
+      #edge=#rightMargin$-#rightSkip-22-#cellSkip
+      if #urlnum=#keynum
+        cell EditValue
+        set Width #edge-#hpos$ Offset -2
+        help local("Enter place URL (including initial http:)")
+      else
+        cell EditURL
+        set Width #edge-#hpos$
+        if @contents!=""
+          set font "Hyperlink Text" border no cellbackground "parent"
+        endif
+        help local("Click to visit place web site")
+        help " ("&local("option click to edit")&")"
+      endif
+
+      ! optional tags
+      gosub ListOptionals _PNOTE,_LABEL,LANG,"",""
+      Show _OPTIONAL_TAGS
+      ShowAll _LABEL
+      ShowALl _PNOTE
+      ShowAll LANG
+
+      newline
+      if #urlnum=#keynum
+        cell ExpressionField @this._URL.i.#urlnum
+        format "<div><head><meta HTTP-EQUIV='REFRESH'content='0; url=%@'></head></div>"
+        set width -1 Height #displayHeight$-#vabs$-#bottomMargin$-16
+      endif
+      
+    EndGroup
+  endif
+  
+else if #msg="here"
+  cell EditURL
+  set Width -1 font "Hyperlink Text" border no cellbackground "parent"
+  help local("Click to visit place web site")
+  help " ("&local("option click to edit")&")"
+
+else
+  ! static text with level and tab  NewLine
+  cell static,local("_URL")&":"
+  set tabwidth 1 alignment right font "GEDCOM Extension Text"
+
+  ! edit field with value
+  cell EditURL
+  set Width -1 font "Hyperlink Text" border no cellbackground "parent"
+  help local("Click to visit place web site")
+  help " ("&local("option click to edit")&")"
+endif

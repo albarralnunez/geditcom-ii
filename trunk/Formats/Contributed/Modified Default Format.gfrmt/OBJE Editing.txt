@@ -1,0 +1,76 @@
+!SJGR changed from default to adjust button sizes and a bit to stop duplicates in certain places
+
+if tagexists is true
+
+if offset(@contents._FILE&\1\&#objdone)=0  !SJGR
+       #objdone=#objdone&@contents._FILE  !SJGR
+      	 
+  ! link to OBJE record
+  if @contents is validlink
+    #padding=3
+	if @contents.FORM="url"
+      #numURLs[0]+=1
+      #i=#numURLs[0]
+      #numURLs[#i]=@contents
+	else
+      #thumbW=int((#rightMargin$-#rightSkip-#leftSkip-(#mmPerRow-1)*#cellSkip)/#mmPerRow)
+	  #thumbH=#thumbW/1.61
+      cell LinkButton
+	  set width #thumbW height #thumbH
+      if #thumbW<2.5*#thumbnailSize$
+        objectImage @contents
+      else
+        objectFull @contents
+      endif
+      #mmRatio=#imageHeight$/#imageWidth$
+      #posWidth=#thumbW-2*#padding
+      #posHeight=#thumbH-#padding-22
+      #cellRatio=#posHeight/#posWidth
+      if #mmRatio<#cellRatio
+        if #posWidth<#imageWidth$
+        	set imagewidth #posWidth
+        endif
+      else
+        if #posHeight <#imageHeight$
+          set imageheight #posHeight
+        endif
+      endif
+
+	  ! comment section must wait to new version ID for formats
+	  TextExpression @contents.rec
+	  AppendedExpression view
+	  autoreload yes
+	  if @contents.TITL=""
+	    text @contents._FILE
+	  else
+	    text @contents.TITL
+	  endif
+
+	  set imageposition above
+      set border shadowlesssquare target child
+      RecordLink @contents
+      Help local ("Click to view multimedia record")
+    endif
+
+    ! are there details
+    hideexcess
+
+  ! embedded multimedia
+  else
+    newline
+    cell static,local("(Embedded multimedia - reopen file to fix)")
+    set width -1 offset 3
+    hideexcess
+  endif
+endif
+! no notes - an attach button
+else
+  ! button to link to new or existing notes
+  hskip 2
+  cell CreateLinkButton
+  set border shadowlesssquare width 28 height 28 target newifnew
+  image "multimedia"
+  imagewidth 24
+  help local("Click to attach multimedia object")
+endif
+

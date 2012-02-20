@@ -1,0 +1,93 @@
+load ResetTabs,BookPanes
+
+! -------------- Start Template -----------------
+GoSub ResetTabs,0
+GoSub BookPanes,""
+
+ClearTabs
+#midPt=#rightMargin$/2-#leftSkip-10
+SetTab 120,#midPt+120
+
+! individuals for the book
+cell GroupBox,local("Target Individuals")
+  width -1
+  NewLine -3
+  
+  if _INDI is here
+    #hasINDI="Yes"
+  else
+    #hasINDI="No"
+  endif
+  ShowAll _INDI
+  Show _INDI
+  DropTypes INDI
+
+  ! Remove _INDI
+  if #hasINDI="YES"
+    cell LinkButton
+    set image "minus" border none height 22 width 24
+    Help local("Click to remove a target individual")
+    set MenuLink "Detach Event/Attribute/Link"
+  endif
+endGroup
+
+! --------- Author Settings -----------
+cell GroupBox,local("Author Information")
+  width -1
+  NewLine -3
+  Show _AUTH
+  Show _EMAIL
+endGroup
+
+! --------- Generation Settings -----------
+cell GroupBox,local("Generations")
+  width -1
+  NewLine -3
+  Show _ANC
+  Show _DES
+EndGroup
+
+! --------- Run the Script -----------
+cell GroupBox,local("Create Book")
+  width -1
+  newline -3
+  cell LinkButton,local("Create Book")
+  set border shadowlesssquare
+  sizetofit
+  if @_USER="Y"
+    set ScriptLink "Reports/Generations LaTeX Book" ScriptType "user"
+  else
+    set ScriptLink "Reports/Generations LaTeX Book" ScriptType "system"
+  endif
+  help local("Click to typeset the book")
+  
+  if @_FLDR!=""
+    hskip 10
+    cell LinkButton
+    set image "reveal" border none offset -2
+    set width 18
+    set ScriptLink "Open_BookFIle" ScriptType "format"
+    set help local("Open previously typeset book in Preview (if available)")
+  endif
+  
+  Show _TSET
+EndGroup
+
+! --------- Style Settings -----------
+cell GroupBox,local("Style Settings")
+  width -1
+  NewLine -3
+  Show _TEXSTY
+  Show _FFAM
+  Show _PAPER
+  Show _FONT
+  Show _SIZE
+  Show _LINE
+  newline
+  Show _NTOP
+  Show _PTOP
+EndGroup
+
+optionaltag _INDI,local("Book Target Individual")
+
+hideexcess

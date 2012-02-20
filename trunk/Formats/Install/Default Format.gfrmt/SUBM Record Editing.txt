@@ -1,0 +1,71 @@
+load TagBlock,ResetTabs,AttachData
+
+! -------------- Start Template -----------------
+
+GoSub ResetTabs,0
+
+! --------- Name -----------
+#oldWidth=#rightMargin$
+DisplayWidth #oldWidth+#rightSkip+1
+newline -#topMargin$-1
+hskip -#leftSkip-1
+cell GroupBox
+border line
+titleposition none
+cellbackground "Record Header Box Background"
+width -1
+
+newline -3
+Show NAME
+EndGroup
+
+DisplayWidth #oldWidth
+
+! --------- Address -----------
+ClearTabs
+gosub ResetTabs,50
+newlinecell GroupBox,local("Submitter Address")
+width -1
+newline -#lineSkip-3
+Show ADDR
+ShowAll _GPS
+Show PHON
+ShowAll PHON
+Show _EMAIL
+ShowAll _EMAIL
+EndGroup
+Gosub ResetTabs,0
+
+! --------- OBJEs -----------
+Gosub TagBlock,"OBJE","Multimedia"
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+width -1
+newline -#lineSkip-3
+#lineSkip=0
+Show OBJE
+gosub AttachData
+EndGroup
+#lineSkip=#lineSkip$
+
+! -------- Additional Data ------------
+if more is true
+  ClearTabs
+  gosub ResetTabs,50
+  cell GroupBox,local("Additional Data")
+  width -1
+  ShowAll CHAN
+  ShowAll all
+  EndGroup
+endif
+
+optionaltag PHON,local(PHON),local(PHON)
+optionaltag _EMAIL,local(_EMAIL),local(_EMAIL)
+optionalTag LANG,local(LANG),"English"
+optionalTag RFN,local(RFN),local(RFN)
+optionalTag REFN,local(REFN),local(REFN)
+optionaltag _GPS,local("_GPS"),""
+
+
+

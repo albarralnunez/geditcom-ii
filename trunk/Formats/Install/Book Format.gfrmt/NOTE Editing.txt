@@ -1,0 +1,24 @@
+load LineLabel,RecordChildLink
+
+gosub LineLabel,local(@tag)
+
+if @rec="HEAD"
+  offset #editOffset
+  cell EditField
+  set width -1 alignment justify border no offset 2-#editOffset
+  if printing
+    set minheight #defaultHeight$
+  else
+    set minheight 44 maxheight 240
+  endif
+  sizetofit
+
+else
+  if printing
+    cell ExpressionField @contents.CONC
+    set width -1 border none minheight 1 alignment justify offset 4
+    sizetofit
+  else
+    gosub RecordChildLink local("Click to view and edit notes"),"child"
+  endif
+endif

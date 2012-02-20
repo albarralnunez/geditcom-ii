@@ -1,0 +1,22 @@
+load ResetTabs,LineLabel
+
+if @rec="OBJE"
+  ! FORM in OBJE is edited only in attach file dialog box
+  hideexcess
+
+else
+
+  ! Label and editing field, but indent more, it is under PLAC
+  newline
+  ClearTabs
+  SetTab #labelWidth+24
+  gosub LineLabel,local(@tag)
+  set offset #editOffset
+
+  cell EditValue
+  set Width -1 border none
+  help local("This text can be edited by clicking in the field and typing")
+
+  gosub ResetTabs
+
+endif

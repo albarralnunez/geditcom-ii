@@ -1,0 +1,13 @@
+load ResetTabs,RecordTitle
+
+DropTypes SUBM
+gosub ResetTabs
+
+! -------------- Start Template -----------------
+gosub RecordTitle,local("SUBN Record")
+showall SUBMshow FAMF
+show TEMP
+show ANCE
+show DESC
+show ORDI
+show RIN

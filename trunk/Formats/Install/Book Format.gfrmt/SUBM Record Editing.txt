@@ -1,0 +1,15 @@
+load ResetTabs,SectionLabel,TagBlock
+
+DropTypes OBJE
+gosub ResetTabs
+
+! -------------- Start Template -----------------
+gosub SectionLabel local("Submitter Details")
+showall NAMEshowall ADDR
+showall _GPSshowall PHONshowall _EMAILshowall LANG
+! ----- tag blocksGosub TagBlock,"OBJE",local("OBJE")
+! --------- Additional Data ----------
+! Remaining data is REFN, RFN, and CHAN
+if more
+  gosub SectionLabel local("Additional Data")
+endif

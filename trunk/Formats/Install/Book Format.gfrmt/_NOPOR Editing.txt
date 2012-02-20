@@ -1,0 +1,6 @@
+load BookCheckBox
+newline
+
+gosub BookCheckBox,local("None of these objects is a portrait"),@contents
+help local("Check this box to indicate none of the images linked to this record is a portrait.")
+help " "&local("When checked it will prevent non-portrait images from appearing in family trees.")

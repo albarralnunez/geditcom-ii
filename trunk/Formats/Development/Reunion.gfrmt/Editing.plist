@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Colors</key>
+	<dict>
+		<key>Box Background</key>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWE
+		AWMBhARmZmZmAQEBAYY=
+		</data>
+		<key>Editing Background</key>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWE
+		AWMBhARmZmZmAQEBAYY=
+		</data>
+		<key>Row Background</key>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWE
+		AWMBhARmZmZmg3wZcj+DLR9sP4MtH2w/AYY=
+		</data>
+		<key>Window Background</key>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWE
+		AWMBhARmZmZmg2U9Rz+DZT1HP4NlPUc/AYY=
+		</data>
+	</dict>
+	<key>Fonts</key>
+	<dict>
+		<key>Bold Label</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSCEBVszMmNdBgAAABYAAAD//lQAaQBtAGUAcwAtAEIA
+			bwBsAGQAAACEAWYOhAFjAJgBmACYAIY=
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMDhAJmZgABhg==
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Button Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSSEBVszNmNdBgAAABoAAAD//kwAdQBjAGkAZABhAEcA
+			cgBhAG4AZABlAAAAhAFmDYQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmAAAAAYY=
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Check Box Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSCEBVszMmNdBgAAABgAAAD//lQAaQBtAGUAcwAtAFIA
+			bwBtAGEAbgCEAWYMhAFjAJgBmACYAIY=
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmAAAAAYY=
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Editing Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSCEBVszMmNdBgAAABgAAAD//lQAaQBtAGUAcwAtAFIA
+			bwBtAGEAbgCEAWYMhAFjAJgBmACYAIY=
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMDhAJmZgABhg==
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Hyperlink Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSCEBVszMmNdBgAAABgAAAD//lQAaQBtAGUAcwAtAFIA
+			bwBtAGEAbgCEAWYMhAFjAJgBmACYAIY=
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmg4lpNT2D3+hfPYMWsjA/AYY=
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Label Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSCEBVszMmNdBgAAABYAAAD//lQAaQBtAGUAcwAtAEIA
+			bwBsAGQAAACEAWYMhAFjAJgBmACYAIY=
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmAAAAAYY=
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Name Button Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSSEBVszNmNdBgAAABoAAAD//kwAdQBjAGkAZABhAEcA
+			cgBhAG4AZABlAAAAhAFmDYQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMDhAJmZgABhg==
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Name Editing Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSCEBVszMmNdBgAAABYAAAD//lQAaQBtAGUAcwAtAEIA
+			bwBsAGQAAACEAWYOhAFjAJgBmACYAIY=
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMDhAJmZgABhg==
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>No Spouse Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSSEBVszNmNdBgAAABoAAAD//kwAdQBjAGkAZABhAEcA
+			cgBhAG4AZABlAAAAhAFmDYQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmg3TX/j6DdNf+PoN01/4+AYY=
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Popup Menu Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSCEBVszMmNdBgAAABgAAAD//lQAaQBtAGUAcwAtAFIA
+			bwBtAGEAbgCEAWYMhAFjAJgBmACYAIY=
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMDhAJmZgABhg==
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Section Label</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSCEBVszMmNdBgAAABYAAAD//lQAaQBtAGUAcwAtAEIA
+			bwBsAGQAAACEAWYOhAFjAJgBmACYAIY=
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmg1aKDj2DZD3HPoOqfcc9AYY=
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Static Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSSEBVszNmNdBgAAABoAAAD//kwAdQBjAGkAZABhAEcA
+			cgBhAG4AZABlAAAAhAFmCoQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmAAAAAYY=
+			</data>
+			<integer>0</integer>
+		</array>
+	</dict>
+	<key>Variables</key>
+	<array>
+		<array>
+			<string>Left Margin</string>
+			<string>#leftSkip</string>
+			<string>Number</string>
+			<string>8</string>
+			<integer>1</integer>
+		</array>
+		<array>
+			<string>Right Margin</string>
+			<string>#rightSkip</string>
+			<string>Number</string>
+			<string>8</string>
+			<integer>2</integer>
+		</array>
+		<array>
+			<string>Top Margin</string>
+			<string>#topMargin$</string>
+			<string>Number</string>
+			<string>0</string>
+			<integer>3</integer>
+		</array>
+		<array>
+			<string>Bottom Margin</string>
+			<string>#bottomMargin$</string>
+			<string>Number</string>
+			<string>10</string>
+			<integer>4</integer>
+		</array>
+		<array>
+			<string>Default Cell Width</string>
+			<string>#cellWidth$</string>
+			<string>Number</string>
+			<string>72</string>
+			<integer>5</integer>
+		</array>
+		<array>
+			<string>Default Cell Height</string>
+			<string>#cellHeight$</string>
+			<string>Number</string>
+			<string>23</string>
+			<integer>6</integer>
+		</array>
+		<array>
+			<string>Line Separation</string>
+			<string>#lineSkip</string>
+			<string>Number</string>
+			<string>0</string>
+			<integer>7</integer>
+		</array>
+		<array>
+			<string>Cell Separation</string>
+			<string>#cellSkip</string>
+			<string>Number</string>
+			<string>0</string>
+			<integer>8</integer>
+		</array>
+		<array>
+			<string>Book Format Settings</string>
+			<string></string>
+			<string>Group</string>
+			<string></string>
+			<integer>9</integer>
+		</array>
+		<array>
+			<string>Hang Indent</string>
+			<string>#hangSkip</string>
+			<string>Number</string>
+			<string>2</string>
+			<integer>10</integer>
+		</array>
+		<array>
+			<string>Level Indentation</string>
+			<string>#tabSpacing</string>
+			<string>Number</string>
+			<string>18</string>
+			<integer>11</integer>
+		</array>
+		<array>
+			<string>Multimedia Full Size</string>
+			<string>#mmHeight</string>
+			<string>Number</string>
+			<string>500</string>
+			<integer>12</integer>
+		</array>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,13 @@
+load BookPanes,ResetTabs
+
+! -------------- Start Template -----------------
+GoSub ResetTabs,0
+GoSub BookPanes,"About"
+
+NewLine
+cell static,local("_ABOUT")
+sizetofit
+
+show _ABOUT
+
+hideexcess

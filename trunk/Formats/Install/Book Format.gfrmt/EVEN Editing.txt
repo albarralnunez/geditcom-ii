@@ -1,0 +1,26 @@
+load LineLabel
+
+if @rec="SOUR"
+    ! Here is is subordinate to the DATA element in SOUR record
+    gosub LineLabel local("Events")
+	offset #editOffset
+    cell EditValue
+    set Width -1 border no
+    help local("Enter event types cited")
+    ShowAll DATE
+    ShowAll PLAC
+
+else if #parentTag$="SOUR"
+	! Here is is subordinate to SOUR link    gosub LineLabel local("Events")
+    offset #editOffset
+    cell EditValue
+    set Width -1 border no
+    help local("Enter event types cited")
+
+    ShowAll ROLE
+
+else
+	! here is generic event
+	use Event
+
+endif

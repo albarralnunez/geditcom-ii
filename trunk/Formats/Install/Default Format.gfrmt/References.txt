@@ -1,0 +1,34 @@
+! List NOTE, SOUR, and _LOG links in a single section
+! Caller must include ListBlock too
+
+sub References,#uselog
+  #annote=""
+  if NOTE is here
+    #annote=local("NOTE")
+  endif
+  if SOUR is here
+    if #annote!=""
+      #annote&=" "&local("and")&" "
+    endif
+    #annote&=local("Sources")
+  endif
+  if _LOG is here
+    if #uselog="_LOG"
+      if #annote!=""
+        #annote&=" "&local("and")&" "
+      endif
+      #annote&=local("Research Logs")
+    endif
+  endif
+  if #annote!=""
+    cell GroupBox,#annote
+      width -1
+      newline -3
+      Gosub ListBlock,"NOTE","notes",local("Notes on these data"),"Attach Notes"
+      Gosub ListBlock,"SOUR","source",local("Sources on these data"),"Attach Source"
+      if #uselog="_LOG"
+        Gosub ListBlock,"_LOG","researchlog",local("Reseach logs for these data"),"Attach Research Log"
+      endif
+    EndGroup
+  endif
+endSub

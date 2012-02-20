@@ -1,0 +1,83 @@
+load LineLabel,ABSectionLabel,ArrangeOBJE,LeftButton
+
+newline 4
+#lineSkip=0
+#resiMargin=0
+#leftSkip=#resiMargin
+#resnum+=1
+
+hskip 6
+cell GroupBox
+set width -1 border line titleposition none
+set bordercolor "Box Lines"
+
+! show date and place
+newline -9
+cell static local("RESI")&" #"&#resnum
+set fontsize 10
+sizetofit
+
+newline -#editOffset
+Show PLAC
+Show DATE
+ShowAll AGEShow ADDR
+Show _GPS "event"
+
+ReadAll "#phones" from @PHON
+if #phones[0]=0
+  #phones[0]=1
+endif
+Repeat "#i",1,#phones[0]
+  newline
+  if printing is false
+  cell LinkButton
+  set image AddButton border none
+  sizetofit
+  offset #buttonOffset
+  Help local("Click to add another phone number for this residence")
+  set ScriptLink "Add_Phone" ScriptType format ScriptMessage #resnum&" "&#i
+  if PHON is here
+    cell LinkButton
+    set image MinusButton border none
+    sizetofit
+    offset #buttonOffset
+    Help local("Click to remove this phone number")
+    set ScriptLink "Remove_Phone" ScriptType format ScriptMessage #resnum&" "&#i
+  endif
+  endif
+  Show PHON
+EndRepeat
+
+! Multimedia (need to pull out URLs and emails in separate section from images)
+! Add sript button to add URL or email address and it will create and link to the record
+newline
+#createTop=#vpos$
+gosub LineLabel,local("Multimedia")
+hskip 5
+#leftSkip=#hpos$
+Gosub ArrangeOBJE
+#leftSkip=#resiMargin
+GoSub LeftButton,"OBJE",#createTop,#numOBJEs
+
+! Notes
+newline
+#createTop=#vpos$
+newline
+gosub LineLabel,local("NOTE")
+if "NOTE" is here
+  #numNotes=1
+  offset #editOffset+5
+  #createTop+=5
+  hskip 5
+  #leftSkip=#hpos$
+  ShowAll NOTE
+  #leftSkip=#resiMargin
+else
+  #numNotes=0
+  offset #editOffset
+endif
+GoSub LeftButton,"NOTE",#createTop,#numNotes
+
+endgroup
+
+hideexcess

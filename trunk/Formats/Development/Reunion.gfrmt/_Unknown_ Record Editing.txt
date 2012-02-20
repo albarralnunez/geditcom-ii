@@ -1,0 +1,13 @@
+! tab stops for up to 10 levels
+SetTab 15,30,45,60,75,90,105,120,135,150
+if printing
+  #lineSkip=0
+endif
+
+! display record id in static cell
+ifStr @rec="HEAD"
+  cell static "0 "&@rec
+else
+  cell static "0 "&@rec&" "&@contents
+endif
+set width -1

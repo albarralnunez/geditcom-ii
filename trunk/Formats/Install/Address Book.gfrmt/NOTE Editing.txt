@@ -1,0 +1,38 @@
+load LineLabel
+
+if tagexists is true
+  if @contents is validlink
+    newline 6
+    #topField=#vpos$
+    if printing is false
+      cell LinkButton
+      text local("Edit")
+	  set RecordLink @contents Target child border shadowlesssquare
+      sizetofit
+      #viewSpace=#rightMargin$-#rightSkip-#cellWidth$-#hpos$
+      set shift #viewSpace
+      Help local("Click to view and edit notes")
+
+      newline
+      VMoveTo #topField
+    endif
+
+    cell ExpressionField @contents.CONC
+    if printing is false
+      set width #viewSpace-#cellSkip
+    else
+	  set width -1
+    endif
+    set MinHeight 22 font "Editing Text" border none offset #editOffset
+    sizetofit 3
+    Help local("Click 'Edit' button to view and edit these notes")
+  endif
+  hideexcess
+else
+  ! button to link to new or existing notes
+  cell CreateLinkButton
+  set border none offset #buttonOffset
+  image "AddButton"
+  sizetofit
+  help local("Click to attach notes about this residence")
+endif

@@ -1,0 +1,52 @@
+! link to OBJE record
+if @contents is validlink
+  #padding=3
+  if @contents.FORM="url"
+    #numURLs[0]+=1
+	#numURLs[#numURLs[0]]=@contents
+  else
+    #thumbW=int((#rightMargin$-#rightSkip-#leftSkip-(#mmPerRow-1)*#cellSkip)/#mmPerRow)
+	#thumbH=#thumbW/1.61
+    cell LinkButton
+    set width #thumbW height #thumbH
+    if #thumbW<2.6*#thumbnailSize$
+      objectImage @contents
+	else
+	  objectFull @contents
+	endif
+    #mmRatio=#imageHeight$/#imageWidth$
+    #posWidth=#thumbW-2*#padding
+    #posHeight=#thumbH-#padding-22
+    #cellRatio=#posHeight/#posWidth
+    if #mmRatio<#cellRatio
+      if #posWidth<#imageWidth$
+      	set imagewidth #posWidth
+      endif
+    else
+      if #posHeight <#imageHeight$
+        set imageheight #posHeight
+      endif
+    endif
+    TextExpression @contents.TITL
+    autoreload yes
+    if @contents.TITL<>""
+      text @contents.TITL
+    else
+      text @contents._FILE
+    endif
+    set imageposition above
+    set border shadowlesssquare target child
+    RecordLink @contents
+    Help local("Click to see multimedia record")
+  endif
+
+  ! are there details
+  hideexcess
+
+! embedded multimedia
+else
+  newline
+  cell static,local("(Embedded multimedia - reopen file to fix)")
+  sizetofit -1
+  hideexcess
+endif

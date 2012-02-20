@@ -1,0 +1,22 @@
+if @rec="INDI"
+  use Attribute
+else
+  ! static text with level and tab  NewLine
+  cell static,local("Title")&":"
+  set tabwidth -1 alignment right
+
+  ! edit field with value
+  if @rec="SOUR"
+    cell EditField
+    set Width -1 Offset -2 Height 44
+    if printing
+      set minHeight 15
+      sizetofit 3
+    endif
+    help local("Enter source title")
+  else
+    cell EditValue
+    set Width -1 Offset -2
+    help local("Enter a title")
+  endif
+endif

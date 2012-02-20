@@ -1,0 +1,55 @@
+load TagBlock,ResetTabs,ListBlock,References
+
+! --------- Name -----------
+#oldWidth=#rightMargin$
+DisplayWidth #oldWidth+#rightSkip+1
+newline -#topMargin$-1
+hskip -#leftSkip-1
+cell GroupBox
+border line
+titleposition none
+cellbackground "Record Header Box Background"
+width -1
+
+newline -3
+cell static
+set width -1
+text @contents
+EndGroup
+
+DisplayWidth #oldWidth
+
+! --------- The Results -----------
+if printing
+  if _RESULTS is here
+    cell GroupBox,local("Task Results")
+    width -1
+    cell ExpressionField,@_RESULTS
+    set width -1
+    set minHeight 15 height 200
+    sizetofit 3
+    showAll _RESULTS
+    EndGroup
+  endif
+else
+  Show _RESULTS
+endif
+GoSub ResetTabs,0
+
+! --------- NOTEs and OBJEs -----------
+gosub TagBlock,"OBJE","Multimedia"
+gosub References,""
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+width -1
+newline -#lineSkip-3
+#lineSkip=0
+Show NOTE
+Show OBJE
+Show SOUR
+EndGroup
+#lineSkip=#lineSkip$
+
+DisplayHeight <600
+DisplayHeight >400

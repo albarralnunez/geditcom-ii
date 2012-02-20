@@ -1,0 +1,13 @@
+if #parentTag$=="GEDC"
+  ! static text with level and tab  NewLine
+  cell static,local("GEDCOM Version")&":"
+  set tabwidth 1 alignment right
+
+  ! edit field with value
+  cell EditValue
+  set Width -1 Offset -2
+  help local("Enter gedcom version number used")
+
+else
+  use _Unknown_
+endif

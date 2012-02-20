@@ -1,0 +1,22 @@
+! Show all tags of type #theTag in a group box
+! Label the box with #label
+
+sub ListBlock,#theTag,#image,#help,#menuCmd
+  if #theTag is here
+	if #theTag="NOTE"
+    	ReadAll "#readTheTags",@NOTE
+	else
+		#readTheTags[0]=0
+	endif
+    newline
+    #annTop=#vpos$    cell LinkButton
+    set border none image #image width 24
+	help #help
+    menulink #menuCmd
+    HSkip 2
+    #leftSkip=#hpos$
+	VMoveTo #annTop
+    ShowAll #theTag,#readTheTags[0]
+    #leftSkip=#leftSkip$
+  endif
+endsub

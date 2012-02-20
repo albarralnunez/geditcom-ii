@@ -1,0 +1,13 @@
+! static text with level and tabNewLine
+cell static,local(@tag)&":"
+set tabwidth 1 alignment right
+
+! edit field with value
+cell static,@contents
+set Width -1
+help local("Character set can only be changed when extracting GEDCOM file")
+if @VERS!=""
+  text "(version: "&@VERS&")"
+endif
+
+hideexcess

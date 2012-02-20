@@ -1,0 +1,27 @@
+if #hasLabel!="YES"
+  #leftSkip=#hangSkip
+  NewLine 9  cell label local(#hasLabel)
+  set width -1 font "Section Label"
+  #leftSkip=#leftSkip$
+  #hasLabel="YES"
+endif
+
+newline 3
+cell label local(@tag)&": "
+set font "Bold Label"
+sizetofit
+
+if @contents="Y"
+  cell static "("&local("yes")&") "
+  set offset 2
+  sizetofit
+endif
+
+show DATE
+
+NewLine 2
+tab
+#leftSkip=#hpos$
+
+showAll PLACshowAll STATshowAll TEMPshowAll QUALshowAll SOURshowAll NOTE
+if @tag=SLGC  ShowAll FAMC SLGCendif

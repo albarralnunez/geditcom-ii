@@ -1,0 +1,18 @@
+sub AttachMenu,#attachCmd,#attachHelp,#detachCmd,#detachHelp
+  cell label,local("Attach")&": "
+  sizetofit
+  set offset #buttonOffset
+
+  cell LinkButton
+  image "add"
+  set border no width 24
+  MenuLink #attachCmd
+  help #attachHelp
+
+  cell LinkButton
+  image "remove"
+  set width 24 border no
+  MenuLink #detachCmd
+  help #detachHelp
+
+endSub

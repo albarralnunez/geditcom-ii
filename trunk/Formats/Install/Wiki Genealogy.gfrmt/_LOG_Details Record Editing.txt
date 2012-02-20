@@ -1,0 +1,20 @@
+load ResetTabs,EditingPage
+
+gosub EditingPage,"Research Log Details"
+
+newline
+gosub ResetTabs
+
+!--------- Personal Details
+cell GroupBox,local("Research Log Details")
+set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+newline 6
+Show _TTL
+Show _OBJECT
+
+endgroup
+
+show _SUMMARY
+
+hideexcess

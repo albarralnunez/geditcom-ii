@@ -1,0 +1,13 @@
+sub EventDate,#ePref,#edate,#eplace
+  #etext=""
+  if #edate!=""
+    #etext=#ePref&" "&#edate
+  endif
+  if #eplace!=""
+    if #etext=""
+      #etext=#ePref&" in "&#eplace
+    else
+      #etext=#etext&" in "&#eplace
+    endif
+  endif
+endsub

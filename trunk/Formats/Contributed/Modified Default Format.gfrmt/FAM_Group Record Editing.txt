@@ -1,0 +1,111 @@
+load FAMPanes,HLine,DrawEdges,ResetTabs
+
+! -------------- Start Template -----------------
+DropTypes INDI,INDICtrl
+
+#husbID=@HUSB
+#wifeID=@WIFE
+if printing is "false"
+  GoSub ResetTabs,0
+  gosub FAMPanes,"Group"
+  newline 4
+else
+  background "white"
+endif
+
+ClearTabs
+SetTab 80
+#tableWidth=(#rightMargin$-#leftSkip)
+SetTab #leftSkip+#tableWidth/2
+#dateWidth=0.3*#tableWidth
+if #dateWidth>150
+  #dateWidth=150
+endif
+
+DefaultCellSize 72,19
+#lineSkip=0
+
+cell static,local("Family Group Chart")
+set fontSize 18 height 24
+SizeToFit
+hskip 0
+#detailOffset=#hpos$+36
+
+newline
+Show HUSB_FG "HUSB",#husbID
+Show HUSB_FG "WIFE",#wifeID
+
+! --------- Marriage --------------
+if @this._UMR=""
+  gosub HLine,2
+
+  if @this._UMR=""
+    newline
+    #marrStart=#vpos$
+    cell static,local("Married")&": "
+    set tabwidth 1 alignment right
+
+    cell expression,@this.MARR.DATE
+    set AppendedExpression view
+    set width #dateWidth
+
+    cell static,local("PLAC")&": "
+    SizeToFit
+
+    cell expression,@this.MARR.PLAC
+    set width -1
+
+    gosub DrawEdges,#marrStart
+  endif
+  hideexcess
+else
+  gosub HLine,2
+  newline
+  #sectionStart=#vpos$
+
+  hskip 5
+  cell LinkButton,local("Ummarried Couple")&" ("&local("click to change")&")"
+  set border no
+  SizeToFit
+  MenuLink "Attach Married Status"
+  Help local("Click to change to married couple")
+
+  newline
+  gosub DrawEdges,#sectionStart
+endif
+
+! --------- Children --------------
+
+gosub HLine,2
+
+newline
+#sectionStart=#vpos$
+cell static,local("Children")
+set tabwidth 1 alignment right
+cell LinkButton
+image "plus"
+set width 24 border no
+MenuLink "Attach Child"
+help local("Click to attach new child")
+
+cell LinkButton "-"
+image "minus"
+set width 24 border no
+MenuLink "Detach Child"
+help local("Click to detach child")
+
+newline
+gosub DrawEdges,#sectionStart
+
+if CHIL is here
+  newline
+  #num=0  RepeatWith "#chil" from @CHIL
+	Show CHIL_FG #chil
+  EndRepeat
+endif
+
+newline
+gosub HLine,2
+
+hideexcess
+

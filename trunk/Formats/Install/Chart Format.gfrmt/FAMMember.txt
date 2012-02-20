@@ -1,0 +1,76 @@
+sub FAMMember #label,#aid
+  cell Label,#label
+  sizetofit
+  if #aid=""
+    newline
+    tab
+    cell Static
+    text local("BIRT")&":"
+    set font "Details Text"
+    sizetofit
+    set tabwidth 1
+
+    cell Static
+    text local("PLAC")&":"
+    set font "Details Text"
+    sizetofit
+    
+    newline
+    tab
+    cell Static
+    text local("DEAT")&":"
+    set font "Details Text"
+    sizetofit
+    set tabwidth 1
+
+    cell Static
+    text local("PLAC")&":"
+    set font "Details Text"
+    sizetofit
+
+  else
+    cell LinkButton
+    set width -1 border none alignment left
+    set TextExpression @#aid.rec AppendedExpression "altview"
+    set RecordLink #aid font "Name Text"
+    Help local("Click to view pedigree chart for")&" "&@#aid.altview
+    sizetofit
+    
+    newline
+    tab
+    cell Static
+    text local("BIRT")&":"
+    set font "Details Text"
+    sizetofit
+    cell Expression @#aid.BIRT.DATE
+    set font "Details Text" appendedexpression view
+    set tabwidth 1
+
+    cell Static
+    text local("PLAC")&":"
+    set font "Details Text"
+    sizetofit
+    cell Expression @#aid.BIRT.PLAC
+    set font "Details Text"
+    sizetofit -1
+    
+    newline
+    tab
+    cell Static
+    text local("DEAT")&":"
+    set font "Details Text"
+    sizetofit
+    cell Expression @#aid.DEAT.DATE
+    set font "Details Text" appendedexpression view
+    set tabwidth 1
+
+    cell Static
+    text local("PLAC")&":"
+    set font "Details Text"
+    sizetofit
+    cell Expression @#aid.DEAT.PLAC
+    set font "Details Text"
+    sizetofit -1
+  endif
+  
+endSub

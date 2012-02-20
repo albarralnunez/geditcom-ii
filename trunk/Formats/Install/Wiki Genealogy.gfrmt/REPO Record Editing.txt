@@ -1,0 +1,29 @@
+load ResetTabs,RecordTitle,WikiSection,ExtraSections
+
+DropTypes NOTE
+gosub ResetTabs
+
+! -------------- Repository Details --------------
+gosub RecordTitle local("Repository Record")
+!--------- Personal Details
+#sectionCount+=2
+GoSub WikiSection,local("Repository Details"),"Details"
+
+Show NAME "wiki"
+ShowAll ADDR "wiki"
+ShowAll _GPS "wiki"
+ShowAll PHON "wiki"
+ShowAll _URL "wiki"
+ShowAll _EMAIL "wiki"
+!--------- Notes
+#recSections[#sectionCount]=local("Notes")
+#recSections[#sectionCount+1]="Notes"
+#sectionCount+=2
+if NOTE is here
+  GoSub WikiSection,local("Notes"),"Notes"
+  ShowAll NOTE "wiki"
+endif
+
+hideexcess
+
+GoSub ExtraSections

@@ -1,0 +1,15 @@
+MoveTo #hpos$,#vpos$-7
+cell LinkButton
+set border shadowlesssquare width 29 height 29
+set TextExpression @this.RESN
+set Autoreload YES
+if @contents = "locked"
+   image "locked"
+else if @contents = "privacy"
+   image "private"
+else
+   image "unlocked"
+endif
+MenuLink "Attach Restriction"
+help local("Click to change record restriction")
+

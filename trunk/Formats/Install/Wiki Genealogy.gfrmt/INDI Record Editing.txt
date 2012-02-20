@@ -1,0 +1,265 @@
+load EventDate,WikiSection,WebLinks,MiniDetail,ClearFloats,ShowOBJE_Wiki,RecordTitle,ExtraSections
+
+! Future options for data not current diplayed or edited
+!  INDI: add RESN, SUBM, ASSO, ALIA, ANCI, DESI, RFN, AFN
+!  FAM: add SUBM
+!  INDI, FAM, NOTE, SUBM, REPO OBJE SOUR: edit REFN, RIN, and CHAN
+!  All: Collect all sources, including subordinate ones, for final main source list
+
+dropTypes SOUR,NOTE,OBJE,_LOG
+
+#indiName=@this.altview
+if @SEX="F"
+  #Pronoun="She"
+  #Possnoun="Her"
+else
+  #Pronoun="He"
+  #Possnoun="His"
+endif
+
+! -------- Title name
+GoSub RecordTitle,""
+
+! -------- Portrait
+#por=@OBJE
+if @_NOPOR="Y"
+  #por=""
+endif
+if #por!=""
+  #thumbW=190
+  newline
+  #boxtop=#vpos$
+  HMoveTo #rightMargin$-#rightSkip-#thumbW-8
+  
+  cell GroupBox
+    set width -1 border line titleposition none
+    
+    newline -#lineSkip
+    #leftSkip=1
+    #rightSkip=3
+    
+    cell static,#indiName
+    set width -1 alignment center
+
+    newline
+    cell LinkButton
+    set width #thumbW objectFull #por
+    #mmRatio=#imageHeight$/#imageWidth$
+    set height #thumbW*#mmRatio imageWidth #thumbW
+    set imageposition above
+    set border none target parent
+    RecordLink #por
+    Help local("Click to view and edit multimedia object")
+
+    #lineSkip=0
+    newline 3
+    GoSub MiniDetail,@BIRT.DATE.user,local("Born")
+    GoSub MiniDetail,@BIRT.PLAC,local("Birth Place")
+    GoSub MiniDetail,@DEAT.DATE.user,local("Died")
+    GoSub MiniDetail,@DEAT.PLAC,local("Death Place")
+
+  endGroup
+  newline
+  #boxend=#vpos$
+  #lineSkip=#lineSkip$
+  #leftSkip=#leftSkip$
+  #rightSkip=#rightSkip$
+  
+  newline
+  DisplayWidth #oldWidth-#rightSkip$-#thumbW-8
+  MoveTo #leftSkip,#boxtop
+endif
+
+!--------- Personal Details
+#sectionCount+=2
+GoSub WikiSection,local("Personal Details"),"Name"
+
+newline
+cell StaticField
+set width -1 minheight 10 border none lineheight #lineMult
+text #indiName
+GoSub EventDate," was born",@BIRT.DATE.user,@BIRT.PLAC
+if #etext=""
+  text " was born on an unknown date. "
+else
+  text #etext&". "
+endif
+GoSub EventDate,#Pronoun&" died",@DEAT.DATE.user,@DEAT.PLAC
+if #etext!=""
+  text #etext&". "
+endif
+
+ReadAll "#names" from @NAME
+if #names[0]>1
+  text #Pronoun
+  if #names[0]=2
+    text " had an additional documented name: "
+    #conj=""
+  else
+    text " had some additional documented names: "
+    #conj=" and "
+  endif
+
+  repeat "#i",2,#names[0]
+    if #i=#names[0]
+      text #conj
+    endif
+    text #names[#i]
+    if #i<#names[0]
+      if #names[0]=3
+        text " "
+      else
+        text ", "
+      endif
+    endif
+  endrepeat
+  text ". "
+endif
+sizetofit
+
+! parents (need to look for PEDI in the text)
+ShowAll FAMC "wiki"
+
+! spouses and children (need comment on number of marriage if >1)
+if FAMS is here
+  #sectionCount+=2
+  GoSub WikiSection,local("Spouses and Children"),"Name"
+  ShowAll FAMS "wiki"
+endif
+
+!--------- Events
+#recSections[#sectionCount]=local("Events")
+#recSections[#sectionCount+1]="Events"
+#sectionCount+=2
+#hasLabel=local("Events")
+#ePrefix=#indiName
+
+ShowAll BIRT "wiki","was born"
+ShowAll BAPM "wiki","was baptized"
+ShowAll CHR "wiki","was christened"
+ShowAll ADOP "wiki","was adopted"
+ShowAll BARM "wiki","had a Bar Mitzvah"
+ShowAll BASM "wiki","had a Bas Mitzvah"
+ShowAll BLES "wiki","received a blessing"
+ShowAll FCOM "wiki","received first communion"
+ShowAll CONF "wiki","went through confirmation"
+ShowAll ORDN "wiki","was ordained"
+ShowAll GRAD "wiki","graduated"
+ShowAll NATU "wiki","was naturalized"
+ShowAll EMIG "wiki","emmigrated"
+ShowAll IMMI "wiki","immigrated"
+ShowAll CENS "wiki","was recorded in a census"
+ShowAll RETI "wiki","retired"
+ShowAll DEAT "wiki","died"
+ShowAll PROB "wiki","was recorded in probate"
+ShowAll WILL "wiki","filed a will"
+ShowAll BURI "wiki","was buried"
+ShowAll CREM "wiki","was cremated"
+ShowAll EVEN "wiki","had a generic event"
+
+!-----------Residences
+#hasLabel=local("Residences")
+#recSections[#sectionCount]=#hasLabel
+#recSections[#sectionCount+1]="RESI"
+#sectionCount+=2
+#ePrefix=#indiName
+ShowAll RESI "wiki","residence"
+
+!--------- Attributes
+#hasLabel=local("Attributes")
+#recSections[#sectionCount]=#hasLabel
+#recSections[#sectionCount+1]="Attributes"
+#sectionCount+=2
+#ePrefix=#indiName&"'s"
+
+ShowAll OCCU "wiki","occupation was"
+ShowAll RELI "wiki","religion was"
+ShowAll DSCR "wiki","physical description was"
+ShowAll TITL "wiki","nobility title was"
+ShowAll CAST "wiki","caste name was"
+ShowAll EDUC "wiki","educational achievement was"
+ShowAll IDNO "wiki","national ID number was"
+ShowAll SSN "wiki","social security number was"
+ShowAll NATI "wiki","national or tribal origin was"
+ShowAll NCHI "wiki","number of children was"
+ShowAll NCHI "wiki","number of marriages was"
+ShowAll PROP "wiki","possessions were"
+
+!--------- Ordinances
+#recSections[#sectionCount]=local("Ordinances")
+#recSections[#sectionCount+1]="Ordinances"
+#sectionCount+=2
+#hasLabel=local("Ordinances")
+#ePrefix=#indiName
+
+ShowAll BAPL "wiki","had an LDS baptism"
+ShowAll CONL "wiki","received LDS confirmation"
+ShowAll WAC "wiki","occupation was"
+ShowAll ENDL "wiki","had an LDS endowment ordinance"
+ShowAll SLGC "wiki","had an LDS child sealing ordinace"
+
+!--------- Notes
+#recSections[#sectionCount]=local("Notes")
+#recSections[#sectionCount+1]="Notes"
+#sectionCount+=2
+if NOTE is here
+  GoSub WikiSection,local("Notes"),"Notes"
+  ShowAll NOTE "wiki"
+endif
+
+!-------- Multimedia
+#recSections[#sectionCount]=local("Multimedia")
+#recSections[#sectionCount+1]="Media"
+#sectionCount+=2
+#hasOBJE="no"
+if OBJE is here
+  GoSub ClearFloats
+  GoSub WikiSection,local("Multimedia"),"Media"
+  #hasOBJE="yes"
+else if #otherOBJE!=""
+  GoSub ClearFloats
+  GoSub WikiSection,local("Multimedia"),"Media"
+  #hasOBJE="yes"
+endif
+if #hasOBJE="yes"
+  newline 3
+  #numURLs[0]=0
+  ShowAll OBJE "wiki"
+  if #otherOBJE!=""
+    #numOBJE=words(#otherOBJE)
+    repeat "#io",1,#numOBJE
+      GoSub ShowOBJE_Wiki word(#io&"\"&#otherOBJE)
+    endrepeat
+  endif
+  if #numURLs[0]>0
+    GoSub WebLinks,"wiki"
+  endif
+endif
+
+!-------- Sources
+#recSections[#sectionCount]=local("Sources")
+#recSections[#sectionCount+1]="Sources"
+#sectionCount+=2
+#sourceNumber=1
+if SOUR is here
+  GoSub WikiSection,local("Sources"),"Sources"
+  ShowAll SOUR "wiki"
+endif
+
+!-------- Research logs
+#recSections[#sectionCount]=local("Research Logs")
+#recSections[#sectionCount+1]="Logs"
+#sectionCount+=2
+#sourceNumber=1
+if _LOG is here
+  GoSub WikiSection,local("Research Logs"),"Logs"
+  ShowAll _LOG "wiki"
+endif
+
+hideexcess
+
+GoSub ExtraSections
+
+! just in case
+DisplayWidth #oldWidth
+

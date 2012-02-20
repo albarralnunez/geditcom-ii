@@ -1,0 +1,34 @@
+load FAMLines
+
+gosub FAMLines 1
+
+newline
+#taskNum+=1
+cell label #taskNum&": "
+set offset 2
+sizetofit
+hskip 0
+#leftSkip=#hpos$
+
+show _GOAL
+show _STATUS
+show _DATE
+
+newline 6
+
+! the notes in an expression field with option to editing if not printing
+if printing is false
+  cell StructuresLink,Task_Results
+  set text local("Edit") border shadowlesssquare
+  sizetofit
+  LinkAll _RESULTS
+  hskip 3
+endif
+
+cell ExpressionField,@this._TASK.i.#taskNum._RESULTS
+set width -1 font "Details Text" border none
+sizetofit
+
+#leftSkip=#leftSkip$
+
+hideexcess

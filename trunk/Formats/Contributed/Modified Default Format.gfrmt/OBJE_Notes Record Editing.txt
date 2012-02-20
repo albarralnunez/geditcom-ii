@@ -1,0 +1,131 @@
+!SJGR Added a field for display code for unsuported multimedia
+
+Load ResetTabs,RefLinks,ListBlock,References,AttachData,OBJEPanes
+
+! -------------- Start Template -----------------
+#title=@TITL
+#path=@_FILE
+#form=@FORM
+
+GoSub ResetTabs,0
+GoSub OBJEPanes,"Notes"
+
+newline
+if #form="url"
+  cell Multimedia
+  set url #path width -1 font "Hyperlink Text"
+  if #title<>""
+    text #title
+  else
+    text #path
+  endif
+  set objectImage @this imageposition left
+  sizetofit -1
+
+  set alignment left height #imageHeight$
+  set help local("Click to open this URL link in your browser application.") 
+  newline
+else
+  newline
+  cell Multimedia
+  #padding=5
+  #thumbMax=96
+  set objectImage @this mmFormat #form width -1
+  set imageposition imageonly border shadowlesssquare offset 3
+  #mmRatio=#imageHeight$/#imageWidth$
+  if #mmRatio<1
+    set imageWidth #thumbMax
+  else
+    set imageheight #thumbMax
+  endif
+  set height #imageHeight$+2*#padding
+  set width #imageWidth$+2*#padding
+
+  ! handle non-image objects
+  if #imageType$="noimage"
+    set text local("No image representation. Click to open in another application")
+    set font "Static Text" imageposition left alignment left
+    help local("Click to open in a helper application.")
+    help " "&local("You can configure which application opens each type of multimedia object.")
+  else if #imageType$="notfound"
+    set text " "&local("Multimedia file not found (click to fix)")
+    set font "Static Text" imageposition left alignment left
+    set MenuLink "Attach Multimedia"
+    help local("Click to link this record to a multimedia object.")
+  else if #imageType$="image"
+    help local("Click to open in a helper application.")
+    help " "&local("You can configure which application opens each type of multimedia object.")
+  else
+    ! this means it is thumbnail (if one was found)
+    help local("Click to view multimedia record")
+    set recordLink @this paneID ""
+  endif
+endif
+
+if @_REF<>""
+  hskip 5
+  cleartabs
+  settab #hpos$+100
+  cell GroupBox,local("Linked Records")
+    width -1
+    newline -#lineSkip
+    gosub RefLinks,local("Linked to"),local("All Linked Records")
+  EndGroup
+  gosub ResetTabs,0
+endif
+
+Newline 3
+cell GroupBox,local("Geographical Data and Keywords")
+  width -1
+  newline -3
+  Show _LOC
+  Show _KEY
+  ShowAll _KEY
+endGroup
+
+! --------- A field to enter html code for the display of unsupported multimedia
+if @this._DISP<>"" 
+Newline 3
+cell GroupBox,local("Display code for unsupported media")
+  width -1
+  newline -3
+  Show _DISP
+endGroup
+EndIf
+
+! --------- NOTEs, SOURs, and _LOGs -----------
+gosub References,"_LOG"
+
+! --------- Attach links
+hskip 0
+cell GroupBox,local("Attach")
+  width -1
+  newline -#lineSkip-3
+  #lineSkip=0
+  Show NOTE
+  Show SOUR
+  Show _LOG
+  gosub AttachData
+EndGroup
+#lineSkip=#lineSkip$
+
+Hide TITL,_DATE,_FILE,_LOC,_KEY,FORM,_SCALE
+
+! -------- Additional Data ------------
+if more is true
+  ClearTabs
+  gosub ResetTabs,50
+  cell GroupBox,local("Additional Data")
+    width -1
+    ShowAll CHAN
+    !ShowAll all
+  EndGroup
+endif
+
+HideExcess
+
+optionalTag RIN,local(RIN)
+optionalTag REFN,local(REFN)
+
+DropTypes INDI,FAM
+

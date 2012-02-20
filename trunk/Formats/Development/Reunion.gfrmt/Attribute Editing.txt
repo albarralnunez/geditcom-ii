@@ -1,0 +1,19 @@
+if #hasLabel!="YES"
+  #leftSkip=#hangSkip
+  NewLine 9  cell label local(#hasLabel)
+  set width -1 font "Section Label"
+  #leftSkip=#leftSkip$
+  #hasLabel="YES"
+endif
+
+newline 3
+cell label local(@tag)&": "
+set font "Bold Label"
+sizetofit
+
+if @tag!=RESI  cell editValue
+  set width -1 offset 4 border noelse  set width -1endifNewLine 2
+tab
+#leftSkip=#hpos$
+
+showall DATE "label"showall AGEshowall TYPEshowall PLACshowall ADDRif @tag=RESI  showall PHONendifshowall CAUSshowall AGNCshowAll OBJEshowAll SOURshowAll NOTE

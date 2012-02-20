@@ -1,0 +1,22 @@
+load LineLabel
+
+if @rec!="INDI"
+  ! Used for SUBM name, REPO name, and HEAD app name
+  use _Unknown_
+
+else
+  if #sexPos>0
+    MoveTo #leftSkip$,#sexPos
+    #sexPos=-1
+  else
+    newline
+  endif
+  Cell EditName
+  sizetofit -1
+  set width #sexStart border none
+  set font "Label Text" fontsize 14  
+
+  ! Possible subordinate data  ShowAll NPFX  ShowAll GIVN  ShowAll NICK  ShowAll SPFX  ShowAll SURN  ShowAll NSFX
+
+  ! SOUR and NOTE and _LOG at the end  ShowAll SOUR  ShowAll NOTE
+  ShowAll _LOGendif

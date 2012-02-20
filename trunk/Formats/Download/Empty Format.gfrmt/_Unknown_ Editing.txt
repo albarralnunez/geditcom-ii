@@ -1,0 +1,16 @@
+! Indent and put up label
+NewLine
+tab @level
+cell static @level&" "&@tag
+SizeToFit
+if printing is false
+  offset 3
+endif
+
+! edit field with value
+cell EditValue
+set Width -1 Height 22
+if printing
+  set border none
+  sizetofit
+endif

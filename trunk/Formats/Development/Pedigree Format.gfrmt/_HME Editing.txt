@@ -1,0 +1,25 @@
+! existing link
+if tagexists is true
+  ! label number
+  ifNDef #hrecNum
+      #hrecNum="H"
+  else if #hrecNum="H"
+      #hrecNum=0
+  else
+      #hrecNum+=1
+  endif
+      
+  ! static text with level and tab  NewLine
+  cell static,local(@tag)&" ("&#hrecNum&"):"
+  set font "GEDCOM Extension Text"
+  sizetofit
+  set tabwidth 1 alignment right
+
+  cell LinkButton
+  TextExpression @contents.view
+  AppendedExpression view
+  set border no Font "Hyperlink Text" alignment left
+  sizetofit -1
+  RecordLink @contents
+  Help local("Click to open home individual record")
+endif

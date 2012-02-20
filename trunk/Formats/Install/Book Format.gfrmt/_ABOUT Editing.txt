@@ -1,0 +1,13 @@
+! editing field
+
+cell EditField
+set width -1 border no offset 2-#editOffset
+if printing
+  set minheight #defaultHeight$
+else
+  set minheight 44 maxheight 128
+endif
+sizetofit
+
+newline
+Show _TEX

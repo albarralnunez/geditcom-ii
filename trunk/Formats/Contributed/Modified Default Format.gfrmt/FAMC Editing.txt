@@ -1,0 +1,141 @@
+!SJGR changed from default to add date ranges to links
+!also changes to icon size
+!indication of further ancesters changed from + to an arrow
+
+! set an expression to display this name and add "+" if there
+! are ancestors
+sub NameWithAncestors,#parent,#label,#nameWidth
+  if #parent is validlink
+    if @#parent.SEX="F"
+      cell static,local("Mother")&":"
+    else
+      cell static,local("Father")&":"
+    endif
+    sizetofit
+    set tabwidth 1 alignment right
+    
+ ! lines inserted to calculate text required for parent links including dates SJGR
+#dates=@#parent.BIRT.DATE.span
+if @#parent.FAMC.HUSB!=""
+#pname=@#parent.NAME.altview&" ↑ "
+else
+if @#parent.FAMC.WIFE!=""
+#pname=@#parent.NAME.altview&" ↑ "
+else
+#pname=@#parent.NAME.altview&"  "
+endif
+endif
+if #dates<>""
+#preqtxt=#pname&"("&#dates&")"
+else 
+#preqtxt=#pname
+endif
+
+    cell LinkButton
+    RecordLink #parent
+   ! Two lines taken out and one inserted to use new calculated name with dates SJGR
+   ! TextExpression @#parent.NAME
+   ! AppendedExpression altview
+   text #preqtxt
+    if @#parent.FAMC!=""
+      Format "%@+"
+    endif
+    set font "Hyperlink Text"    set border no alignment left width #nameWidth
+    sizetofit -1
+    if #nameWidth>0
+      if #cellWidth$>#nameWidth
+        set width #nameWidth
+      endif
+    endif
+	! "Click to view Father's record" or "Mother's"
+    #helpKey="Click to view "&#label&"'s record"
+    help local(#helpKey)
+  else
+    cell static,local(#label)&":"
+    sizetofit
+    set tabwidth 1 alignment right
+
+    cell static "<"&local("Unknown")&">"
+    sizetofit
+  endif
+endsub
+
+!----------- Begin Template ------------
+
+if #parentTag$!="INDI"
+  if tagexists is true
+    newline
+    cell static local("Family")&":"
+    sizetofit
+    set tabwidth 1 alignment right
+
+    cell LinkButton
+    RecordLink @contents
+    TextExpression @contents.rec
+    AppendedExpression view
+    set font "Hyperlink Text" border no
+	sizetofit -1    help local("Click to view family record")
+
+    if #msg="ADOP"
+	  show ADOP
+    else
+      hideexcess
+    endif
+
+  else
+    ! button to link to family
+    hskip 2    cell CreateLinkButton
+    set border shadowlesssquare width 28 height 28
+    set image "family"
+	TextExpression @contents.rec
+	Autoreload yes
+    help local("Click to link to family record")
+  endif
+
+else
+
+  if tagexists is true
+    ClearTabs
+    SetTab #famLabelEnd
+
+    ! marriage button    NewLine    cell LinkButton
+    RecordLink @contents
+    set TextExpression @contents.rec Autoreload yes
+    set image "family"
+    set width 28 height 28 border shadowlesssquare
+    imagewidth 21
+    help local("Click to view family record")
+
+    #topX=#hpos$+#cellWidth$+#cellSkip
+    #topY=#vpos$
+    show PEDI
+    MoveTo #topX,#topY
+
+    ! Parents
+    gosub NameWithAncestors,@contents.HUSB,"Father",#leftPedi-#famLabelEnd-2*#cellSkip
+    newLine
+    gosub NameWithAncestors,@contents.WIFE,"Mother",-1
+
+    ! notes might be left
+    ShowAll NOTE "label"
+
+  else
+    cell CreateLinkButton
+    set border shadowlesssquare width 28 height 28
+    set image "family"
+	Autoreload yes
+    help local("Click to link to an existing family record")
+
+    ! button to link to family
+    cell LinkButton
+    set border shadowlesssquare
+    text local("Link as child to new family")
+    sizetofit
+	set height 28
+    MenuLink "Attach As Child in New Family"
+    help local("Click to link as child to a newly created family")
+
+  endif
+
+endif
+

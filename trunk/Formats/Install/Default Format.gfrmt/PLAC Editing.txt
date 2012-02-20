@@ -1,0 +1,99 @@
+if @rec=HEAD
+  NewLine
+  cell static,local("Default Place Hierarchy")&":"
+  set width -1
+  Show FORM
+
+else if @rec=SOUR
+  use _Unknown_
+
+else if firstword(#msg)="Event"
+  ! edit field with value  cell editvalue
+  set tabwidth 1 offset -2 width #cellWidth$+2
+  help local("Enter place for this event")
+  if #msg="Event ADDR"
+  	#addr=@parent.ADDR
+  	if #addr!=""
+  	  help " ("&replace(return&"\, \"&#addr)&")"
+  	endif
+  endif
+  hskip -2
+
+  cell static
+  set tabwidth 1 alignment center border square height 20
+  ! cellBackground "Table Cell Background"
+
+  ! link to place record
+  if tag exists    if @contents.p._BOX._BNDS!=""
+      #pim="urllink"
+      #ihgt=17
+    else if @contents.p._URL!=""
+      #pim="urllink"
+      #ihgt=17
+    else
+      #pim="GPS"
+      #ihgt=19
+    endif
+    tab -2
+    cell LinkButton
+    set tabwidth 1 border none
+    set image #pim imageheight #ihgt offset -2 target child
+    watch @contents.p.rec
+    watch @parent.PLAC
+    set autoreload yes
+    RecordLink "place"
+    help local("Click to view and edit place record")
+  endif
+  
+else
+  #edge=#rightMargin$-#rightSkip-21-#cellSkip
+  NewLine
+  cell static,local(@tag)&":"
+  set tabwidth 1 alignment right offset 2
+  ! edit field with value  cell editvalue
+  set Width #edge-#hpos$ Offset -2
+  help local("Enter place for this event")
+
+  ! link to place record
+  if tag exists    if @contents.p._BOX._BNDS!=""
+      #pim="urllink"
+    else if @contents.p._URL!=""
+      #pim="urllink"
+    else
+      #pim="GPS"
+    endif
+    cell LinkButton
+    set border no width 20 offset -2
+    set image #pim target child autoreload yes
+    RecordLink "place"
+    help local("Click to view and edit place record")
+    watch @parent.PLAC
+    watch @contents.p.rec
+  endif
+  
+  #i=1
+  #lineSkip=0
+  RepeatWith "#place" from @contents.p._PLACE
+    if #i>1
+      NewLine
+      if #i=2
+      	tab 1
+      	hskip 5
+        cell static,local("Other")&":"
+        set fontsize 11
+        sizetofit
+        #altheight=#cellHeight$
+        hskip 0
+        #altspot=#hpos$
+      else
+      	HMoveTo #altspot
+      endif
+      cell expression,@contents.p._PLACE.i.#i
+      set width -1 fontsize 11 height #altheight
+    else if #i=1
+      NewLine -2
+    endif
+    #i+=1
+  EndRepeat
+
+endif

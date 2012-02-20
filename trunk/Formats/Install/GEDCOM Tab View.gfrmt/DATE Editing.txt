@@ -1,0 +1,11 @@
+load LevTag,ShowMemo
+
+gosub LevTag
+
+! edit field with value
+cell EditDate
+sizetofit
+set Width -1 border none height #defaultHeight$ offset #editLineOffset
+help local("Enter a valid date")
+
+gosub ShowMemo,@_MEMO

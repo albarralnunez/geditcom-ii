@@ -1,0 +1,13 @@
+newline
+cell static
+set font "Name Text" offset 2
+text local("Research Log")&": "
+sizetofit
+
+cell EditValue
+set font "Name Text" width -1
+if printing is false
+  set border line height #cellHeight$+2
+else
+  set border none
+endif

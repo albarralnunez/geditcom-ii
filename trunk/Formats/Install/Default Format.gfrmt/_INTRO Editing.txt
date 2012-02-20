@@ -1,0 +1,11 @@
+#topLine=#vpos$
+
+NewLine 1
+cell EditField
+set width -1 height #displayHeight$-#bottomMargin$-#vpos$
+help local("Enter plain text for the book")
+help " '"&local(@tag)&".' "
+help local("Check 'LaTeX Content' box and enter LaTeX commands.")
+
+VMoveTo #topLine
+show _TEX

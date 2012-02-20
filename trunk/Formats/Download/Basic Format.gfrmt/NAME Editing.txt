@@ -1,0 +1,17 @@
+load LineLabel
+
+if @rec!="INDI"
+  ! Used for SUBM name, REPO name, and HEAD app name
+  use _Unknown_
+
+else
+  ! Here only for INDI name
+  gosub LineLabel,local("NAME")
+  offset #editOffset
+  Cell EditName
+  set width -1 
+
+  ! Possible subordinate data  ShowAll NPFX  ShowAll GIVN  ShowAll NICK  ShowAll SPFX  ShowAll SURN  ShowAll NSFX
+
+  ! SOUR and NOTE and _LOG at the end  ShowAll SOUR  ShowAll NOTE
+  ShowAll _LOGendif

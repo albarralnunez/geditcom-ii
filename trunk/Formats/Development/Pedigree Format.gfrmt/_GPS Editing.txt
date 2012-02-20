@@ -1,0 +1,17 @@
+! static text with level and tabNewLine
+if #msg="indent"
+	tab
+endif
+cell static,local(@tag)&":"
+set alignment right font "GEDCOM Extension Text"
+if #msg="indent"
+	SizeToFit
+else
+	set tabwidth 1
+endif
+
+! edit field with value
+cell EditValue
+set Width -1 Offset -2
+help local("Enter latitude and longitude (e.g., 45.3N, 112.3W)")
+set ScriptLink "Open_Location_in_GeoHack" ScriptType format

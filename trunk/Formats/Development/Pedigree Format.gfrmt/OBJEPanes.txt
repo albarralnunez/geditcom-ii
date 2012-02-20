@@ -1,0 +1,52 @@
+sub OBJEPanes,#thisPane,#toolBar
+	#scale=@_SCALE
+	if #scale=""
+	  #scale=1
+	endif
+    #zoom=@_ZOOM
+    if #zoom=""
+      #zoom=1
+    endif
+
+	! --------- Title and Date -----------
+	#oldWidth=#rightMargin$
+	DisplayWidth #oldWidth+#rightSkip+1
+	newline -#topMargin$-1
+	hskip -#leftSkip-1
+	cell GroupBox
+	border line
+	titleposition none
+	cellbackground "Record Header Box Background"
+	width -1
+
+	moveto 1,1
+
+	cell PaneBar
+	AddPane local("OBJE"),""
+	AddPane local("Other"),"Notes"
+	AddPane local("Zoom"),"Zoom"
+    AddPane local("All"),"All"
+	set selected #thisPane border smallsquare
+	sizetofit
+	set height #cellHeight$+1		! needed for Tiger
+	help local("Click to view section of this multimedia record")
+
+	if #toolBar="Yes"
+		gosub ToolBtn,"Attach Notes","notes",local("Click to attach notes")
+		gosub ToolBtn,"Attach Source","source",local("Click to attach source")
+		gosub ToolBtn,"Attach Research Log","researchlog",local("Click to attach research log")
+		gosub ToolBtn,"Attach Optional Data","plus",local("Click to attach optional data")
+    endif
+
+	newline 5
+    Show TITL
+    ShowAll TITL
+    Show _DATE
+
+    if #thisPane="Zoom"
+	  Show _ZOOM
+    endif
+	EndGroup
+
+	DisplayWidth #oldWidth
+endSub

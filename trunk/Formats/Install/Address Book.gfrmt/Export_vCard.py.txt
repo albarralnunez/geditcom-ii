@@ -1,0 +1,152 @@
+#!/usr/bin/python
+#
+# GEDitCOM II Export vCard for Current Record
+# 17 AUG 2010
+
+# Prepare to use Apple's Scripting Bridge for Python
+from Foundation import *
+from ScriptingBridge import *
+import base64
+
+################### Subroutines
+
+# get email and url lines
+def FindEmailAndURLs(sref,thedoc):
+    eandu = ""
+    objes = sref.findStructuresTag_output_value_("OBJE","references",None)
+    for obje in objes:
+        mmid = obje.contents()
+        objerec = thedoc.multimedia().objectWithID_(mmid)
+        if objerec != None:
+            form = objerec.evaluateExpression_("FORM")
+            if form.lower() == "url":
+                theurl = objerec.evaluateExpression_("_FILE")
+                parse = theurl.split(":",1)
+                if parse[0].lower() == "mailto":
+                    if len(parse)>1:
+                        eandu = eandu + "\nEMAIL:" + parse[1]
+                else:
+                    eandu = eandu + "\nURL:" + theurl
+    return eandu
+                
+# return vCard for one individual
+def GetVCard(indiRec,thedoc,resiOnly):
+    # check for residenceis
+    resis = indiRec.findStructuresTag_output_value_("RESI","references",None)
+    if len(resis) == 0 and resiOnly == "Yes":
+        return ""
+
+    vCard = 'BEGIN:VCARD\nVERSION:2.1'
+
+    # Name N:Surname;Given Names;;;Name Suffix.
+    rawName = indiRec.evaluateExpression_("NAME")
+    namePieces = indiRec.namePartsGedcomName_(rawName)
+    vCard = vCard + "\nN;CHARSET=UTF-8:" + namePieces[1] + ";" + namePieces[0] + ";;;" + namePieces[2]
+    
+    # Formatted name - or name as spoken
+    vCard = vCard + "\nFN;CHARSET=UTF-8:" + indiRec.alternateName()
+    
+    # birthdate
+    bsdn = indiRec.birthSDN()
+    if bsdn!=0 and bsdn == indiRec.birthSDNMax():
+        isoDate = indiRec.dateTextSdn_withFormat_(bsdn,"%y%N%D")
+        vCard = vCard + "\nBDAY:" + isoDate
+    
+    # addresses and phone numbers
+    for resi in resis:
+        # main residence
+        addr = resi.evaluateExpression_("ADDR")
+        if addr != "":
+            vCard = vCard + "\nADR;CHARSET=UTF-8;HOME:"
+            addrLines = addr.splitlines()
+            vCard = vCard + ';'.join(addrLines)
+            if len(addrLines) == 1:
+                vCard = vCard + ";;"
+            elif len(addrLines) == 2:
+                vCard = vCard + ";"
+    
+        # address by separate fields
+        # ADR;HOME:ADR1;ADR2;;CITY;STAE;POST;CTRY
+        adr1=resi.evaluateExpression_("ADDR.ADR1")
+        adr2=resi.evaluateExpression_("ADDR.ADR2")
+        city=resi.evaluateExpression_("ADDR.CITY")
+        stae=resi.evaluateExpression_("ADDR.STAE")
+        post=resi.evaluateExpression_("ADDR.POST")
+        ctry=resi.evaluateExpression_("ADDR.CTRY")
+        adrLabel = adr1 + ";" + adr2 + ";;" + city + ";" + stae + ";" + post + ";" + ctry
+        if adrLabel != ";;;;;;":
+            vCard = vCard + "\nADR;CHARSET=UTF-8;HOME:" + adrLabel
+    
+        # phone numbers
+        phones = resi.findStructuresTag_output_value_("PHON","references",None)
+        for phone in phones:
+            tel = phone.contents();
+            if tel != "":
+                vCard = vCard + "\nTEL;HOME:" + tel
+
+        # email and URLS
+        vCard = vCard + FindEmailAndURLs(resi,thedoc)
+
+    # main individual email and URLS
+    vCard = vCard + FindEmailAndURLs(indiRec,thedoc)
+
+    # is there a photo?
+    portrait = indiRec.evaluateExpression_("_NOPOR")
+    if portrait != "N":
+        porObje = indiRec.evaluateExpression_("OBJE")
+        if porObje!="":
+            obje=thedoc.multimedia().objectWithID_(porObje)
+            if obje != None:
+                objePath = obje.objectPath()
+                if objePath != "":
+                    try:
+                        f = open(objePath,'rb')
+                        imageData = f.read()
+                        f.close()
+                    except IOError:
+                        # just skip if file not found
+                        cantOpen = True
+                    else:
+                        vCard = vCard + "\nPHOTO;BASE64:"
+                        encodedData = base64.b64encode(imageData)
+                        for i in xrange((len(encodedData)/76)+1):
+    				        vCard = vCard + "\n  " + encodedData[i*76:(i+1)*76]                
+
+    # notes from main record (at most 1)
+    noteid = indiRec.evaluateExpression_("NOTE")
+    if noteid != "":
+        noterec = thedoc.notes().objectWithID_(noteid)
+        if noterec != None:
+            notetext = noterec.notesText()
+            if notetext.find("<div>") < 0:
+                noteLines = notetext.splitlines()
+                vCard = vCard + "\nNOTE;CHARSET=UTF-8;QUOTED-PRINTABLE:" + '=0D=0A='.join(noteLines)        
+
+    # end
+    vCard = vCard + "\nEND:VCARD"
+    return vCard
+
+################### Main Script
+
+# fetch application object
+gedit = SBApplication.applicationWithBundleIdentifier_("com.geditcom.GEDitCOMII")
+gedit.setMessageVisible_(False)
+
+# current front document
+gdoc = gedit.documents()[0]
+
+# gave save file name
+desktop = NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES).objectAtIndex_(0)
+fname = gdoc.userSaveFileExtensions_prompt_start_title_(["vcf"],None,desktop,"Export vCard File")
+if fname == "":
+    quit()
+
+# get vCard for this window
+allCards = GetVCard(gdoc.selectedRecords()[0],gdoc,False)
+
+# write to a file using Cocoa
+nstring = NSString.stringWithString_(allCards)
+(result,error) = nstring.writeToFile_atomically_encoding_error_(fname,objc.YES,NSUTF8StringEncoding,objc.nil)
+if result != True:
+    errMsg = "An I-O error occurred trying to write the vCard file"
+    gdoc.userOptionTitle_buttons_message_(errMsg,["OK"],error.description())

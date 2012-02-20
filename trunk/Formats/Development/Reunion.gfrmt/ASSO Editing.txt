@@ -1,0 +1,16 @@
+load RecordChildLink
+
+newline
+cell label,local(@tag)&": "
+sizetofit
+
+gosub RecordChildLink local("Click to view and edit multimedia object"),"parent"
+
+NewLine
+tab
+#leftSkip=#hpos$
+
+ShowAll TYPE
+ShowAll RELA
+ShowAll SOUR
+ShowAll NOTE

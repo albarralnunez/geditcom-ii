@@ -1,0 +1,24 @@
+load ListBlock,References,ResetTabs,INDIPanes
+
+! -------------- Start Template -----------------
+GoSub INDIPanes,"Notes"
+GoSub ResetTabs,0
+
+! --------- NOTEs, SOURs, and _LOGs -----------
+gosub References,"_LOG"
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+width -1
+newline -#lineSkip-3
+#lineSkip=2
+Show NOTE
+Show SOUR
+Show _LOG
+newline 3
+hskip 2
+
+EndGroup
+#lineSkip=#lineSkip$
+
+hideexcess

@@ -1,0 +1,32 @@
+if #first="yes"
+  newline
+  cell static,local("DATE")
+  set tabwidth 1 border square alignment center
+  cellbackground "Table Cell Background"
+
+  cell static,local("_GOAL")
+  set tabwidth 1 border square alignment center
+  cellbackground "Table Cell Background"
+
+  cell static,local("_STATUS")
+  set tabwidth 1 border square alignment center
+  cellbackground "Table Cell Background"
+
+  #first="no"
+endif
+
+#goal=@_GOAL
+Show _DATE
+Show _GOAL
+Show _STATUS
+
+! rest in a child window
+cell StructuresLink,TaskComments,#goal
+set border no width -1
+if more
+  set image "details_here"
+else
+  set image "details"
+endif
+LinkAll all
+help local("Click for task findings")

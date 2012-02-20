@@ -1,0 +1,239 @@
+sub famcGroup,#famc,#bowWidth
+
+  cell GroupBox
+
+  set border line cellbackground "Box Background"
+  set width #bowWidth titleposition noe
+
+  ! father button
+  newline 2
+  cell LinkButton
+  set width -1
+  if #famc<>""
+    TextExpression @#famc.HUSB.rec
+    AppendedExpression view
+    RecordLink @#famc
+
+    newline -3
+    cell static
+    set text @#famc.HUSB.BIRT.DATE.view&" - "&@#famc.HUSB.DEAT.DATE.view
+    set width -1 alignment center
+  else
+    newline -3
+    cell static
+    set width -1
+  endif
+
+  ! mother button
+  newline -2
+  cell LinkButton
+  set width -1
+  if #famc<>""
+    TextExpression @#famc.WIFE.rec
+    AppendedExpression view
+    RecordLink @#famc
+
+    newline -3
+    cell static
+    set text @#famc.WIFE.BIRT.DATE.view&" - "&@#famc.WIFE.DEAT.DATE.view
+    set width -1 alignment center
+  else
+    newline -3
+    cell static
+    set width -1
+  endif
+
+  newline -10
+  EndGroup
+endsub
+
+sub spouseGroup,#spse,#left
+
+  newline 0
+  #leftSkip=#left
+  HMoveTo #left
+
+  ! Huusband Area
+  cell LinkButton
+  set width #mid-2
+  TextExpression @#spse.rec
+  AppendedExpression view
+  RecordLink @#spse
+  newline
+
+  cleartabs
+  #thumb=72
+  #row=15
+  settab #left+60
+  settab #left+5+#mid-#thumb
+  settab #left+5+#mid
+
+  #nextRow=#vpos$+2*#row-1
+  #leftSkip=#left+5
+  HMoveTo #left+5
+
+  cell static "Birth"
+  set tabwidth 1 border line cellbackground "Row Background" height 2*#row
+
+  HSkip -1
+  cell staticfield
+  set tabwidth 2 border line cellbackground "Row Background"
+  set text @#spse.BIRT.DATE.view&return
+  set text @#spse.BIRT.PLAC
+  set minheight 0 height 2*#row
+
+  cell Multimedia
+  set tabwidth 1 imagefile @#spse.OBJE._FILE
+  if #imageHeight$>0
+    set imagewidth #cellWidth$
+    set height #imageHeight$
+  endif
+
+  newline
+  VMoveTo #nextRow
+  cell static "Death"
+  set tabwidth 1 border line height 2*#row
+
+  HSkip -1
+  cell staticfield
+  set tabwidth 2 border line
+  set text @#spse.DEAT.DATE.view&return
+  set text @#spse.DEAT.PLAC
+  set minheight 0 height 2*#row
+
+  newline -1
+  cell static "Occu"
+  set tabwidth 1 border line cellbackground "Row Background" height #row
+
+  HSkip -1
+  cell static
+  set tabwidth 2 border line cellbackground "Row Background"
+  set text @#spse.OCCU
+  set height #row
+
+  newline -1
+  cell static "Reli"
+  set tabwidth 1 border line height #row
+
+  HSkip -1
+  cell static
+  set tabwidth 2 border line
+  set text @spse.RELI
+  set height #row
+
+  newline -1
+  cell static "Note"
+  set tabwidth 1 border line cellbackground "Row Background" height 140
+
+  HSkip -1
+  cell staticfield
+  set tabwidth 3 border line
+  set text @#spse.NOTE.CONC
+  set height 0 height 140
+
+endsub
+
+! Parents at the top
+#top=#vpos$
+#mid=(#rightMargin$-#leftSkip-#rightSkip-10)/2
+
+gosub famcGroup,@HUSB.FAMC,#mid
+MoveTo #leftSkip$+#mid+10,#top
+gosub famcGroup @WIFE.FAMC,#mid
+
+! display marriage date
+cell static
+set text @MARR.DATE.view&", "&@MARR.PLAC
+set width -1 alignment center
+
+!Spouse Group Box
+cell GroupBox
+set border line cellbackground "Box Background"
+set width 2*#mid+10 titleposition none
+
+gosub spouseGroup @HUSB,0
+MoveTo 0,0
+gosub spouseGroup @WIFE,#mid
+#leftSkip=#leftSkip$
+EndGroup
+
+! Children
+
+newline 15
+
+#boxWidth=2*#mid+10
+#boxHeight=140
+cell GroupBox
+set border line cellbackground "Box Background"
+set width #boxWidth titleposition none
+#leftSkip=0
+#rightSkip=0
+
+cell static
+set width 1 height #boxHeight
+
+#bgap=6
+#padding=10
+ReadAll "#chil" from @CHIL
+if #chil[0]<=1
+  #rows=1
+  #cols=1
+else if #chil[0]=2
+  #rows=2
+  #cols=1
+else if #chil[0]=3
+  #rows=3
+  #cols=1
+else if #chil[0]=4
+  #rows=2
+  #cols=2
+else if #chil[0]<7
+  #rows=2
+  #cols=int(#chil[0]/#rows+.01)
+  if #rows*#cols<#chil[0]
+    #cols+=1
+  endif
+else if #chil[0]<10
+  #rows=3
+  #cols=int(#chil[0]/#rows+.01)
+  if #rows*#cols<#chil[0]
+    #cols+=1
+  endif
+else
+  #rows=4
+  #cols=int(#chil[0]/#rows+.01)
+  if #rows*#cols<#chil[0]
+    #cols+=1
+  endif
+endif
+log "chil",#chil[0],#rows,#cols,#chil[0]/#rows+.01
+
+#colWidth=(#boxWidth-2*#padding)/#cols
+#rowHeight=#defaultHeight$+#bgap
+#btnWidth=#colWidth-#bgap
+if #btnWidth>#boxWidth/4
+  #btnWidth=#boxWidth/4
+endif
+if #colWidth>(1+#rows)*#btnWidth/2
+  #colWidth=(1+#rows)*#btnWidth/2
+endif
+#stagger=0
+if #rows>1
+  #stagger=(#colWidth-#btnWidth)/(#rows-1)
+endif
+log "bw,bh",#boxWidth,#boxHeight
+log "cw,rh,btnw,s",#colWidth,#rowHeight,#btnWidth,#stagger
+#topVPos=(#boxHeight-#rows*#rowHeight+#bgap)/2
+#topHPos=(#boxWidth-#cols*#colWidth)/2-6
+log "l,t",#topHPos,#topVPos
+
+MoveTo #topHPos,#topVPos
+#row=1
+#col=1
+ShowAll CHIL
+
+#leftSkip=#leftSkip$
+#rightSkip=#rightSkip$
+EndGroup
+
+hideexcess

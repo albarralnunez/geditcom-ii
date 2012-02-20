@@ -1,0 +1,21 @@
+load LineLabel
+
+if @rec="INDI"
+  use Attribute
+
+else if @rec="SOUR"
+  ! title of source might need multiline field
+  gosub LineLabel,local("Title")
+  offset #editOffset
+  cell EditField
+  set Width -1
+
+else
+  ! last one is in OBJE record
+  gosub LineLabel,local("Title")
+  offset #editOffset
+
+  cell EditValue
+  set Width -1
+
+endif

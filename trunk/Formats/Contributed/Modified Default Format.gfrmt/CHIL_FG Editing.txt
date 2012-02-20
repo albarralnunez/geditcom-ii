@@ -1,0 +1,94 @@
+load HLine,DrawEdges
+
+gosub HLine,2
+newline
+#chilStart=#vpos$
+#num+=1
+
+cell static,#num
+set alignment center cellbackground "black"
+if printing is false
+  set font "Bold Text" "Window Background"
+else
+  set font "Bold Text" fontColor "white"
+endif
+SizeToFit 6
+
+cell static,local("SEX")&": "
+set tabwidth 1 alignment right
+cell static,@#msg.SEX
+set width 36
+
+cell static,local("NAME")&": "
+SizeToFit
+
+cell LinkButton
+set border no tabwidth 1 alignment left font "Hyperlink Text"
+TextExpression @#msg.NAME
+AppendedExpression altview
+set RecordLink @#msg PaneID "Pedi"
+set width -1 offset -2
+help local("Click to view child's record")
+
+! birth
+newline
+gosub HLine,1
+newline
+cell static,local("Born")&": "
+set tabwidth 1 alignment right
+cell expression,@#msg.BIRT.DATE
+set AppendedExpression view
+set width #dateWidth
+
+cell static,local("PLAC")&": "
+SizeToFit
+cell expression,@#msg.BIRT.PLAC
+set width -1
+
+! death
+gosub HLine,1
+newline
+cell static,local("Died")&": "
+set tabwidth 1 alignment right
+cell expression,@#msg.DEAT.DATE
+set AppendedExpression view
+set width #dateWidth
+
+cell static,local("PLAC")&": "
+SizeToFit
+cell expression,@#msg.DEAT.PLAC
+set width -1
+
+! family links
+ReadAll "#fams" from @#msg.FAMS
+if #fams[0]>0
+  gosub HLine,1
+  newline
+  if #fams[0]=1
+    cell static,local("Spouse")&": "
+  else
+    cell static,local("Spouses")&": "
+  endif
+  set tabwidth 1 alignment right
+  
+  Repeat "#i",1,#fams[0]
+    if #i>1
+      newline
+      tab
+      HSkip #cellSkip
+    endif
+    cell LinkButton
+    set border no width -1 alignment left font "Hyperlink Text"
+    TextExpression @#msg.spouse.i.#i.NAME
+    AppendedExpression altview
+    #famID=#fams[#i]
+    RecordLink @#famID
+    set width -1 offset -2
+    help local("Click to view family record")
+  EndRepeat
+endif
+
+gosub DrawEdges,#chilStart
+
+
+

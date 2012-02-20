@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Colors</key>
+	<dict>
+		<key>Editing Background</key>
+		<data>
+		BAt0eXBlZHN0cmVhbYED6IQBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWE
+		AWMBhARmZmZmAQEBAYY=
+		</data>
+		<key>Window Background</key>
+		<data>
+		BAt0eXBlZHN0cmVhbYED6IQBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWE
+		AWMDhAJmZgEBhg==
+		</data>
+	</dict>
+	<key>Fonts</key>
+	<dict>
+		<key>Button Text</key>
+		<array>
+			<data>
+			BAt0eXBlZHN0cmVhbYED6IQBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSSEBVszNmNdBgAAABoAAAD+/wBMAHUAYwBpAGQAYQBH
+			AHIAYQBuAGQAZQAAhAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAt0eXBlZHN0cmVhbYED6IQBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmAAAAAYY=
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Check Box Text</key>
+		<array>
+			<data>
+			BAt0eXBlZHN0cmVhbYED6IQBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSSEBVszNmNdBgAAABoAAAD+/wBMAHUAYwBpAGQAYQBH
+			AHIAYQBuAGQAZQAAhAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAt0eXBlZHN0cmVhbYED6IQBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmAAAAAYY=
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Editing Text</key>
+		<array>
+			<data>
+			BAt0eXBlZHN0cmVhbYED6IQBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSSEBVszNmNdBgAAABoAAAD+/wBMAHUAYwBpAGQAYQBH
+			AHIAYQBuAGQAZQAAhAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAt0eXBlZHN0cmVhbYED6IQBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMDhAJmZgABhg==
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Label Text</key>
+		<array>
+			<data>
+			BAt0eXBlZHN0cmVhbYED6IQBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSSEBVszNmNdBgAAABoAAAD+/wBMAHUAYwBpAGQAYQBH
+			AHIAYQBuAGQAZQAAhAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAt0eXBlZHN0cmVhbYED6IQBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmAAAAAYY=
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Popup Menu Text</key>
+		<array>
+			<data>
+			BAt0eXBlZHN0cmVhbYED6IQBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSSEBVszNmNdBgAAABoAAAD+/wBMAHUAYwBpAGQAYQBH
+			AHIAYQBuAGQAZQAAhAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAt0eXBlZHN0cmVhbYED6IQBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMDhAJmZgABhg==
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Static Text</key>
+		<array>
+			<data>
+			BAt0eXBlZHN0cmVhbYED6IQBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSSEBVszNmNdBgAAABoAAAD+/wBMAHUAYwBpAGQAYQBH
+			AHIAYQBuAGQAZQAAhAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAt0eXBlZHN0cmVhbYED6IQBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmAAAAAYY=
+			</data>
+			<integer>0</integer>
+		</array>
+	</dict>
+	<key>Variables</key>
+	<array>
+		<array>
+			<string>Left Margin</string>
+			<string>#leftSkip</string>
+			<string>Number</string>
+			<string>10</string>
+			<string>1</string>
+		</array>
+		<array>
+			<string>Right Margin</string>
+			<string>#rightSkip</string>
+			<string>Number</string>
+			<string>10</string>
+			<string>2</string>
+		</array>
+		<array>
+			<string>Top Margin</string>
+			<string>#topMargin$</string>
+			<string>Number</string>
+			<string>10</string>
+			<string>3</string>
+		</array>
+		<array>
+			<string>Bottom Margin</string>
+			<string>#bottomMargin$</string>
+			<string>Number</string>
+			<string>10</string>
+			<string>4</string>
+		</array>
+		<array>
+			<string>Default Cell Width</string>
+			<string>#cellWidth$</string>
+			<string>Number</string>
+			<string>72</string>
+			<string>5</string>
+		</array>
+		<array>
+			<string>Default Cell Height</string>
+			<string>#cellHeight$</string>
+			<string>Number</string>
+			<string>22</string>
+			<string>6</string>
+		</array>
+		<array>
+			<string>Line Separation</string>
+			<string>#lineSkip</string>
+			<string>Number</string>
+			<string>5</string>
+			<string>7</string>
+		</array>
+		<array>
+			<string>Cell Separation</string>
+			<string>#cellSkip</string>
+			<string>Number</string>
+			<string>5</string>
+			<string>8</string>
+		</array>
+	</array>
+</dict>
+</plist>

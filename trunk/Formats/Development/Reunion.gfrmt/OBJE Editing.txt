@@ -1,0 +1,46 @@
+load RecordChildLink
+
+! link to OBJE record
+if @contents is validlink
+  newline
+  if @contents.FORM="url"
+    cell label local("Multimedia Link")&": "
+    sizetofit
+
+    cell Multimedia
+    set width -1
+    set url @contents._FILE font "Hyperlink Text"
+    if @contents.TITL<>""
+      TextExpression @contents.TITL
+    else
+      TextExpression @contents.FILE
+    endif
+	set alignment left
+    set help local("Click to open in browser")
+
+  else
+    newline
+    cell label local("Mulimedia Link")&": "
+    sizetofit
+
+	gosub RecordChildLink local("Click to view and edit multimedia object"),"child"
+
+    newline
+    hskip 40
+    cell Multimedia
+ 	set width -1 imagefile @contents._FILE
+    if #imageHeight$>0
+      if #imageWidth$<#cellWidth$
+        set height #imageHeight$
+	  else
+        set imagewidth #cellWidth$
+	    set height (#imageWidth$/#cellWidth$)*#imageHeight$
+      endif
+      set border none
+    else
+	  text "("&local("no image for this object")&")"
+      set border no alignment left
+    endif
+
+  endif
+endif

@@ -1,0 +1,1 @@
+This folder has scripts written by geditcom.com for use in formats. They are used in the user domain for development of scripts that are late copied and pasted into subroutines in various formats.

@@ -1,0 +1,27 @@
+! Indent and put up label
+NewLine
+cell static,local(@tag)&":"
+set tabwidth 1 alignment right
+
+! edit field with value
+cell EditField
+set Width -1
+if #usenum>0
+  set Height 16*#use
+else
+  set Height 16*5
+endif
+if printing
+  set minHeight 15
+  sizetofit 3
+endif
+help local("Edit the text for")&" "&local(@tag)
+
+!subordinate data
+if more
+  newline
+  tab 1
+  ClearTabs
+  SetTab #hpos$+30
+  HMoveTo #leftSkip$
+endif

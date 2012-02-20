@@ -1,0 +1,7 @@
+if printing
+  hideexcess
+else
+  cell EditPane,local("(type to enter results of this task)")
+  set Position top fraction .5
+  help local("Enter research task summary")
+endif

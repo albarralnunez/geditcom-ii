@@ -1,0 +1,58 @@
+load LineLabel
+
+! get #useTag for parent's sex and localize #parent=(Husband, Wife, Father, or Mother)
+#useTag=@tag
+#sex=""
+if @contents is validlink
+  #sex=@contents.SEX
+else
+  if @tag="HUSB"
+    #sex=@this.HUSB.SEX
+  else
+    #sex=@this.WIFE.SEX
+  endif
+endif
+if #sex="M"
+  #useTag="HUSB"
+else if #sex="F"
+  #useTag="WIFE"
+else if @tag="HUSB"
+  #sex="M"
+else
+  #sex="F"
+endif
+if @this._UMR=""
+  #parent=#useTag
+  if #useTag="HUSB"
+    #ageParent="Husband"
+  else
+    #ageParent="Wife"
+  endif
+else
+  if #useTag="HUSB"
+    #parent="Father"
+  else
+    #parent="Mother"
+  endif
+endif
+
+newline
+gosub LineLabel,local(#parent)
+#parentType=#parent
+
+if local("<LANG>")="French"
+  #parent="the "&#parent
+endif
+
+if @contents is validlink
+  cell LinkButton
+  set TextExpression @contents.rec AppendedExpression view
+  set border no Font "Hyperlink Text" alignment left
+  set RecordLink @contents
+  sizetofit -1
+  Help local("Click to view record for")&" "&local(#parent)
+else
+  cell static,"<"&local("Unknown")&">"
+  sizetofit -1
+endif
+

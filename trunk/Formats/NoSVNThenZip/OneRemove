@@ -1,0 +1,9 @@
+# Remove SVN files from one format
+echo " "$1
+cd "$1"
+sudo rm -r .svn
+if [ -r images ]; then
+  echo " "$1"/images"
+  sudo rm -r images/.svn
+fi
+cd ..

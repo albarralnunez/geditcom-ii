@@ -1,0 +1,8 @@
+newline
+cell static,local(@tag)&":"
+set tabwidth 1 alignment right
+
+! popup menu
+cell PopupMenuEdit
+set offset -2MenuItems "Default"MenuItems "Ruled Sections"SizeToFit
+help local("Click to select style for various elements in the book")

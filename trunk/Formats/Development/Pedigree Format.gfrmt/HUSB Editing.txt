@@ -1,0 +1,198 @@
+load HLine,DrawEdges
+
+! get labels
+#useTag=@tag
+#sex=""
+if @contents is validlink
+  #sex=@contents.SEX
+else
+  if @tag="HUSB"
+    #sex=@this.HUSB.SEX
+  else
+    #sex=@this.WIFE.SEX
+  endif
+endif
+if #sex="M"
+  #useTag="HUSB"
+else if #sex="F"
+  #useTag="WIFE"
+else if @tag="HUSB"
+  #sex="M"
+else
+  #sex="F"
+endif
+if @this._UMR=""
+  #label=#useTag
+else
+  if #useTag="HUSB"
+    #label="Father"
+  else
+    #label="Mother"
+  endif
+endif
+
+if #msg=""
+  ! links in family record
+  newline
+  if @level=1
+    ! label
+    gosub HLine,2
+
+    newline
+    #husbStart=#vpos$
+    cell static,local(#label)&": "
+    set tabwidth 1 alignment right
+
+    ! link to spouse or to attach a spouse
+    if @contents is validlink
+      cell LinkButton
+      RecordLink @contents
+      TextExpression @contents.rec
+      AppendedExpression altview
+      set font "Hyperlink Text"
+      set border no alignment left width -1 offset -1
+      ! #label will be HUSB, WIFE, Father, or Mother
+      #helpKey="Click to view "&#label&"'s record"      help local(#helpKey)
+
+    else
+      if @contents!=""
+        cell LinkButton
+        text "<"&local("Unknown")&"> - "&local("Click to detach broken link")
+        set border no alignment left width -1
+        if @tag="HUSB"
+          MenuLink "Detach Husband"
+        else
+          MenuLink "Detach Wife"
+        endif
+	  endif
+
+	  cell static
+	  set width -1
+    endif
+
+    ! birth
+    gosub HLine,1
+    newline
+    cell static,local("Born")&": "
+    set tabwidth 1 alignment right
+
+    cell expression,@contents.BIRT.DATE
+    set AppendedExpression view
+    set width #dateWidth
+
+    cell static,local("PLAC")&": "
+    SizeToFit
+  
+    cell expression,@contents.BIRT.PLAC
+    set width -1
+
+    ! death
+    gosub HLine,1
+    newline
+    cell static,local("Died")&": "
+    set tabwidth 1 alignment right
+
+    cell expression,@contents.DEAT.DATE
+    set AppendedExpression view
+    set width #dateWidth
+
+    cell static,local("PLAC")&": "
+    SizeToFit
+  
+    cell expression,@contents.DEAT.PLAC
+    set width -1
+
+    ! parents
+    gosub HLine,1
+    newline
+    #fatherRec=@contents.FAMC.HUSB
+    if #fatherRec!=""
+      if @#fatherRec.SEX="F"
+        cell static,local("Mother")&": "
+      	#helpKey="Click to view Mother's record"      else
+        cell static,local("Father")&": "
+      	#helpKey="Click to view Father's record"      endif
+      set tabwidth 1 alignment right
+      cell LinkButton
+      RecordLink #fatherRec
+      TextExpression @#fatherRec.rec
+      AppendedExpression altview
+      set font "Hyperlink Text"
+      set border no alignment left tabwidth 1 offset -1
+      help local(#helpKey)
+    else
+      cell static,local("Father")&": "
+      set tabwidth 1 alignment right
+      cell static
+      set tabwidth 1
+    endif
+
+    #motherRec=@contents.FAMC.WIFE
+    if #motherRec!=""
+      if @#motherRec.SEX="M"
+        cell static,local("Father")&": "
+      	#helpKey="Click to view Father's record"      else
+        cell static,local("Mother")&": "
+      	#helpKey="Click to view Mother's record"      endif
+      sizetofit
+      cell LinkButton
+      RecordLink @#motherRec
+      TextExpression @#motherRec.rec
+      AppendedExpression altview
+      set font "Hyperlink Text"
+      set border no alignment left width -1 offset -1
+      help local(#helpKey)
+    else
+      cell static,local("Mother")&": "
+      sizetofit -1
+      cell static
+      set width -1
+    endif
+
+    gosub DrawEdges,#husbStart
+
+  else
+    ! ages in family event
+    ! #label will be HUSB, WIFE, Father, or Mother
+    if #useTag=@tag
+      #ageKey=#label&"'s Age"
+    else if #useTag="WIFE"
+      #ageKey=#label&" 1's Age"
+    else
+      #ageKey=#label&" 2's Age"
+    endif
+    Show AGE local(#ageKey)
+  endif
+
+else
+  cell static,local(#label)&": "
+  set font "Children Number" fontSize 12
+  sizetofit
+  if @tag="HUSB"
+    #spouseLabelWidth=#cellWidth$
+  else
+    shift #spouseLabelWidth-#cellWidth$
+  endif
+
+  ! link to spouse or to attach a spouse
+  if @contents is validlink
+    cell LinkButton
+    RecordLink @contents
+    TextExpression @contents.rec
+    AppendedExpression altview
+    set font "Hyperlink Text" fontsize 12
+    set border no alignment left
+	sizetofit -1
+    ! #label will be HUSB, WIFE, Father, or Mother
+    #helpKey="Click to view "&#label&"'s record"    help local(#helpKey)
+
+  else
+	cell static,"<"&local("Unknown")&">"
+	set fontsize 12
+	sizetofit -1
+
+  endif
+
+endif
+
+

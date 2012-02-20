@@ -1,0 +1,8 @@
+load BookCheckBox
+hskip 10
+gosub BookCheckBox,local("Run script in the 'User' domain"),@contents
+if printing is false
+  set autoreload yes
+endif
+help local("Check to run 'User' version of the book script rather then the 'System' version")
+help ". "&local("It must be the 'Reports/Generations LaTeX Book' script in the 'User' section")&"."

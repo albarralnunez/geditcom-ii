@@ -1,0 +1,18 @@
+load FAMMember,FAMLines
+
+newline
+#sex=@contents.SEX
+if #sex="M"
+  #clabel=local("Son")&": "
+else if #sex="F"
+  #clabel=local("Daughter")&": "
+else
+  if @contents!=""
+    #clabel=local("Child")&": "
+  else
+    #clabel=""
+  endif
+endif
+#chilNum+=1
+gosub FAMMember #chilNum&". "&#clabel,@contents
+gosub FAMLines 1

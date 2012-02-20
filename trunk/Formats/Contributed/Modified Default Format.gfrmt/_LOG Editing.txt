@@ -1,0 +1,21 @@
+if tagexists is true
+  newline
+  cell label,"• "
+  SizeToFit
+
+  cell LinkButton
+  TextExpression @contents.rec
+  AppendedExpression view
+  set border no Font "Hyperlink Text" width -1 alignment left
+  RecordLink @contents
+  sizetofit -1
+  Help local("Click to view log record")
+
+else
+  ! button to link to new or existing notes
+  hskip 2  cell CreateLinkButton
+  set border shadowlesssquare width 28 height 28
+  image "researchlog"
+  set target child
+  help local("Click to attach research log")
+endif

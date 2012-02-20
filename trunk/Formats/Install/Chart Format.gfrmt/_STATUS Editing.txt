@@ -1,0 +1,20 @@
+hskip 6
+cell static local("_STATUS")&": "
+set font "Details Text"
+sizetofit
+
+! edit field with value
+if printing is false
+  cell PopupMenuEdit
+  set width -1 border no offset -1
+  help local("Click to set task status")
+
+  MenuItems local("New")&"::"
+  MenuItems local("Working")&":Working"
+  MenuItems local("Done")&":Done"
+  MenuItems local("Failed")&":Failed"
+
+else
+  cell static @contents
+  set width -1
+endif

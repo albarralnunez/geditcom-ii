@@ -1,0 +1,25 @@
+load LevTag
+
+gosub LevTag
+
+if @this.FAMS=""
+  ! edit field with value
+  cell PopupMenuEdit
+  MenuItems local("Male")&":M",local("Female")&":F",local("Unknown")&"::"
+  set offset #popupOffset border none controlsize small height #defaultHeight$
+  SizeToFit
+  help local("Select sex")
+else
+  cell LinkButton
+  if @contents="M"
+    set text local("Male")
+  else if @contents="F"
+    set text local("Female")
+  else
+    set text local(@contents)
+  endif
+  SizeToFit 24
+  set controlsize small border smallsquare height #defaultHeight$ offset -1
+  MenuLink "Attach Changed Sex"
+  help local("Click to change this person's sex")
+endif

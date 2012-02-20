@@ -1,0 +1,188 @@
+!SJGR changed from default to adjust tabs for extra columns events table
+!also added buttons to copy/paste events
+
+load TagBlock,ResetTabs,ListBlock,References,AttachData,INDIPanes
+
+sub TableTabs,#check
+  newline
+  ClearTabs
+  #lineSkip=2
+  #cellSkip=2
+  #tableWidth=#rightMargin$-#rightSkip-#hpos$-#cellSkip-48  !changed from 21 to account for extra space needed for 2 icons SJGR
+  #nameWidth=(#tableWidth-2*#cellSkip-20)/2
+  if #nameWidth>180
+    #nameWidth=180
+  endif
+  if #check=1
+    !Tabs Changed to account for place detail in main window
+    !SetTab #habs$+#nameWidth,#habs$+#nameWidth+20,#habs$+#tableWidth
+    SetTab #habs$+#nameWidth,#habs$+#nameWidth+20,#habs$+#nameWidth+222,#habs$+#tableWidth
+  else if #check=0
+    SetTab #habs$+#nameWidth+20,(#habs$+#tableWidth)/1.7,#habs$+#tableWidth
+   else if #check=3 !for RESI tags
+    SetTab #habs$+#nameWidth+20,#habs$+#tableWidth
+  else
+    SetTab #habs$+#nameWidth+20,#habs$+#tableWidth-22,#habs$+#tableWidth
+  endif
+  #first="yes"
+endsub
+
+! *************** ENTRY PANE ***************
+
+GoSub ResetTabs,0
+GoSub INDIPanes,"All"
+
+! --------- Birth and Death -----------
+show BIRT details
+showAll BIRT details
+show DEAT details
+showAll DEAT details
+
+! --------- Parent links -----------
+#famLabelEnd=120
+cell GroupBox,local("Parents")
+width -1
+NewLine -3
+Show FAMC
+ShowAll FAMC
+EndGroup
+
+! --------- Spouse/Family links -----------
+#fams=1
+cell GroupBox,local("Spouses")
+width -1
+NewLine -3
+Show FAMS
+ShowAll FAMS
+EndGroup
+
+! *************** EVENTS PANE ***************
+
+! --------- Events and attributes --------------
+cell GroupBox,local("Events and Attributes")
+width -1
+
+gosub TableTabs,1
+!hide BIRT,DEATShowAll INDIEvents
+ShowAll INDIOrdinances
+
+gosub TableTabs,3
+ShowAll RESI
+
+gosub TableTabs,0
+ShowAll INDIAttributes
+
+#lineSkip=#lineSkip$
+#cellSkip=#cellSkip$
+
+newline 3  !Changed from -3 to account for new Copy/Paste buttons SJGR
+cell LinkButton
+image "plus"
+set width 24 border no
+MenuLink "Attach Event/Attribute"
+help local("Click to add an event")
+
+cell LinkButton "-"
+image "minus"
+set width 24 border no
+MenuLink "Detach Event/Attribute/Link"
+help local("Click to remove an event")
+
+!Add two buttons to Copy/Paste SJGR
+hskip 2
+cell linkbutton
+set border shadowlesssquare height 18 Width 70
+text "Copy Event"
+ScriptType Format
+ScriptLink "CopyEvent"
+
+hskip 2
+cell linkbutton
+set border shadowlesssquare height 18 Width 70
+text "Paste Event"
+ScriptType Format
+ScriptLink "PasteEvent"
+
+EndGroup
+GoSub ResetTabs,0
+
+! *************** MULTIMEDIA PANE ***************
+#objdone=""
+! --------- OBJEs -----------
+Gosub TagBlock,"OBJE","Multimedia"
+
+! *************** NOTES AND OTHER PANE ***************
+
+! --------- NOTEs, SOURs, and _LOGs -----------
+gosub References,"_LOG"
+
+! *************** ADDITIONAL DATA PANE ***************
+
+! --------- ALIA, ASSO, SUBM, ---------------
+if ALIA|ASSO|SUBM|ANCI|DESI is here
+  ClearTabs
+  #assoTab=100
+  SetTab #assoTab
+  newline  cell GroupBox,local("Associated Records")
+    width -1
+    newline
+    ShowAll ALIA
+    ShowAll ASSO
+    ShowAll SUBM
+  	ClearTabs
+    gosub ResetTabs,50
+    ShowAll ANCI
+    ShowAll DESI
+  EndGroup
+  GoSub ResetTabs,0
+endif
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+width -1
+newline -#lineSkip-3
+#lineSkip=2
+Show OBJE
+Show NOTE
+Show SOUR
+Show _LOG
+Show ALIA
+Show ASSO
+gosub AttachData
+newline 3
+hskip 2
+EndGroup
+#lineSkip=#lineSkip$
+
+! -------- Additional Data ------------
+if more is true
+  ClearTabs
+  gosub ResetTabs,50
+  cell GroupBox,local("Additional Data")
+  width -1
+  newline
+  ShowAll CHAN
+  ShowAll AFN
+  ShowAll RFN
+  ShowAll RIN
+  ShowAll all
+  EndGroup
+endif
+
+! -------- Export -------------
+
+cell GroupBox,local("Export")
+width -1
+cell LinkButton ".ged"
+set ScriptLink "Share Family Tree" ScriptType "system"
+set border shadowlesssquare
+sizetofit
+
+optionalTag AFN,local(AFN)
+optionalTag RFN,local(RFN)
+optionalTag RIN,local(RIN)
+optionalTag REFN,local(REFN)
+optionalTag SUBM,local(SUBM)
+optionalTag ANCI,local(ANCI)
+optionalTag DESI,local(DESI)
+optionalTag,REFN,local("Keyword(s)"), ,"TYPE Keyword(s)"

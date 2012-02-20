@@ -1,0 +1,20 @@
+load LineLabel
+
+! label and editing field
+newline
+#addOpt=#vpos$+#editOffset+3
+gosub LineLabel local(@tag)
+set offset #editOffset
+
+cell EditValue
+set Width -1 border no
+help local("This text can be edited by clicking in the field and typing")
+
+if _GPS is here
+  ShowAll _GPS
+else
+  show _OPTIONAL_LOC #addOpt
+endif
+
+hideexcess
+

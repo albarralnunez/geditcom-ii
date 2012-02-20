@@ -1,0 +1,38 @@
+newline
+
+! header on first event
+if #first="yes"
+  newline 10
+  cell static,local("Residence Date")
+  set tabwidth 1 alignment center border square
+  cellBackground "Table Cell Background"
+
+  cell static,local("Residence Place")
+  set tabwidth 1 alignment center border square
+  cellBackground "Table Cell Background"
+
+  cell static,local("?")
+  set tabwidth 1 alignment center border square
+  cellBackground "Table Cell Background"
+
+  newline
+  #first="no"
+endif
+  
+! date and place
+#eventDate=@DATE.view
+show DATE Event
+show PLAC Event
+
+! rest in a child window
+cell StructuresLink,AttrDetails
+set border no width -1
+if more
+  set image "details_here"
+else
+  set image "details"
+endif
+LinkAll all
+
+#tagKey=@tag&" details"
+help local("Click to edit")&": "&local(#tagKey)

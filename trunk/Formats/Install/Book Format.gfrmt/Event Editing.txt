@@ -1,0 +1,41 @@
+load SectionLabel,LineLabel,ShowOBJE,BookCheckBox
+
+if #hasLabel!="YES"
+  gosub SectionLabel #hasLabel
+  #hasLabel="YES"
+endif
+
+! label and check box (except no check box for birth)
+if @tag="EVEN"
+  if @TYPE!=""
+    cell expression,@TYPE
+    set localize true font "Label Text" format "%@: "
+	sizetofit
+  else
+    gosub LineLabel,local(@tag)
+  endif
+else
+  gosub LineLabel,local(@tag)
+endif
+if @tag!="BIRT"
+  offset #buttonOffset
+  gosub BookCheckBox,"",@contents
+  help local("Check if event occurred but nothing else known")
+endif
+
+showall DATE
+showall PLACif @rec=INDI  ShowAll AGEendif
+ShowAll TYPEShowAll ADDR
+ShowALl _GPSShowAll CAUSShowAll AGNCif @rec=FAM
+  ShowAll AGE  ShowAll HUSB  ShowAll WIFEendif
+if @tag=BIRT
+  ShowAll FAMC @tag
+else if @tag=ADOP
+  ShowAll FAMC @tag
+else if @tag=CHR
+  ShowAll FAMC @tag
+endif
+
+gosub ShowOBJE
+showAll SOURshowAll NOTE
+showAll _LOG

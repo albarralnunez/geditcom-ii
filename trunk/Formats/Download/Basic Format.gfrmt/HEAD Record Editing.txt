@@ -1,0 +1,21 @@
+load ResetTabs,SectionLabel
+
+DropTypes SUBM,INDI,FAM,SOUR,OBJE,NOTE,_LOG,REPO
+gosub ResetTabs
+
+! -------------- Header Record ----------
+gosub SectionLabel local("HEAD Record")
+ShowAll SOUR
+ShowAll SUBM
+ShowAll SUBN
+ShowAll _HME
+
+! --------- Other Data -----------
+if more is true
+  gosub SectionLabel local("Header Details")
+endif
+
+ShowAll DESTShowAll DATEShowAll FILEShowAll COPRShowAll GEDCShowAll CHARShowAll LANGShowAll PLAC
+
+! --------- Embedded notes at the end ----------
+ShowAll NOTE

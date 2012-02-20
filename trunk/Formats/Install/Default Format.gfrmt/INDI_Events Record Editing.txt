@@ -1,0 +1,81 @@
+load ResetTabs,INDIPanes
+
+sub TableTabs,#check
+  newline
+  ClearTabs
+  #lineSkip=2
+  #cellSkip=2
+  #tableWidth=#rightMargin$-#rightSkip-#hpos$-21
+  #cellWidth=(#tableWidth-3*#cellSkip-20)/3
+  #nameWidth=#cellWidth
+  if #cellWidth>180
+    #nameWidth=180
+    #cellWidth=(3*#cellWidth-180)/2
+  endif
+  if #check=1
+    SetTab #habs$+#nameWidth,#habs$+#nameWidth+20,#habs$+#nameWidth+20+#habs$+.8*#cellWidth,#habs$+#tableWidth-22,#habs$+#tableWidth
+  else if #check=0
+    SetTab #habs$+#nameWidth+20,#habs$+#tableWidth
+  else
+    SetTab #habs$+#nameWidth+20,#habs$+#tableWidth-22,#habs$+#tableWidth
+  endif
+  #first="yes"
+endsub
+
+! -------------- Start Template -----------------
+GoSub INDIPanes,"Events"
+GoSub ResetTabs,0
+
+! --------- Events and attributes --------------
+cell GroupBox,local("Events and Attributes")
+  width -1
+
+  newline -1
+  #tstart=#vpos$
+  gosub TableTabs,1
+  !hide BIRT,DEAT  ShowAll INDIEvents
+  ShowAll INDIOrdinances
+
+  gosub TableTabs,2
+  ShowAll RESI
+
+  gosub TableTabs,0
+  ShowAll INDIAttributes
+
+  #lineSkip=#lineSkip$
+  #cellSkip=#cellSkip$
+
+  newline
+  if #vpos$=#tstart
+    newline -3
+  endif
+  cell LinkButton
+  image "plus"
+  set width 24 border no
+  MenuLink "Attach Event/Attribute"
+  help local("Click to add an event")
+
+  cell LinkButton "-"
+  image "minus"
+  set width 24 border no
+  MenuLink "Detach Event/Attribute/Link"
+  help local("Click to remove an event")
+
+  hskip 10
+  cell LinkButton local("Copy Event")
+  set border shadowlesssquare
+  MenuLink "Copy Event"
+  help local("Click to copy event with text selection bar")
+  sizetofit 10
+
+  hskip 3
+  cell LinkButton local("Paste Event")
+  set border shadowlesssquare
+  MenuLink "Paste Event"
+  help local("Click to paste previously copied event to this record")
+  sizetofit 10
+
+EndGroup
+GoSub ResetTabs,0
+
+hideexcess

@@ -1,0 +1,121 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf320
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww12200\viewh12020\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 The TestInterface.gedpkg file is designed for testing user interface formats for GEDitCOM II and for testing GEDCOM features of other applications. To test other applications, the data in this file can be exported to a GEDCOM file using GEDItCOM II's exporting options (or run the script called "Share GEDCOM File with Multimedia.")\
+\
+This "Read_Me" file explains some things to look for in the test file.\
+\
+
+\b Header (HEAD) and Submission Records (SUBN)
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li360\ql\qnatural\pardirnatural
+\cf0 \
+The one header record and submission record use every tag supported in the GEDCOM standard for these records. The header record use one custom tag defined in GEDitCOM II to store a link to the file's home record (_HME tag). Many applications will ignore these records when importing the data.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\b \cf0 Individual Records (INDI)
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li360\ql\qnatural\pardirnatural
+\cf0 \
+
+\i Joseph Smith Jr
+\i0 : Uses every possible GEDCOM tag for an individual record. The various events use many different date styles. This record is link by an Alias linkage to "Joseph Smith Alias". The record is attached to more than one multimedia object, multiple notes, and multiple source. In addition, several events are linked to multimedia notes and sources. The record is also linked to two custom research log records.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\b \cf0 Family Records (FAM)
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li360\ql\qnatural\pardirnatural
+\cf0 \
+
+\i Joseph Smith Jr / Emma Hale Family
+\i0 : Uses every possible GEDCOM tag for a family record.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\b \cf0 Note Records (NOTE)
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li360\ql\qnatural\pardirnatural
+\cf0 \
+Many short notes are linked to other records. A feature in GEDitCOM II is that the same notes can link to more than one record. Other applications may not allow this option. Some notes to watch are:\
+\
+
+\i HTML Notes on Family History LIbrary REPOSITORY
+\i0  - use every possible GEDCOM tags for note records\
+\
+
+\i Common notes on all individuals\'85 
+\i0 - these notes are linked to all individuals\
+\
+
+\i Notes with name beginning in "HTML"
+\i0  - these notes use the GEDItCOM II option to embed html content into notes. It is doubtful that other applications will support this feature. The "HTML Interactive Map of Sharon, Vermont" embeds a google map into the notes window.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\b \cf0 Source Records (SOUR)
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li360\ql\qnatural\pardirnatural
+\cf0 \
+GEDitCOM II uses a custom tag (_TYPE) to define the type of source (among Book, Article, Web Page, In Book, Vital Records, Unpublished, General). There is one source record for each type of source. Each sources uses most tags. The "Short Article Type" source uses every possible tag.\
+\
+GEDitCOM II defines a custom date tag (_DATE) to specify date of a source.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\b \cf0 Multimedia Objects (OBJE)
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li360\ql\qnatural\pardirnatural
+\cf0 \
+GEDitCOM II stores links to multimedia files in multimedia records rather than by the standard GEDCOM 5.5 method of embedding links into data of other records. This style was proposed for GEDCOM 5.5.1, but never officially adopted. When exporting to other applications you can embed these links back into the source data to better follow the GEDCOM 5.5 standard. You can test with other applications, but very few applications do a good job of importing multimedia objects.\
+\
+
+\i Bud L. Farris Gravestone
+\i0 : This record uses all possible tags for a multimedia record. These tags include custom tags defined in GEDitCOM II:\
+	_FILE - path the the file (all images are in the Multimedia folder)\
+	_SCALE - to scale the image\
+	_ZOOM - to define a separate zoom scale factor\
+	_LOC - place for the object\
+	_GPS - latitude and longitude for the object\
+	_DATE - date for the object\
+	_KEY - keywords for the object\
+\
+Also note that many objects are linked to more than one record. One thing to note on import to other applications (if they actually import the multimedia) is to see how they handle such objects.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\b \cf0 Repository Records (REPO)
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li360\ql\qnatural\pardirnatural
+\cf0 \
+The only repository records uses all possible tags for a repository record (REPO). GEDitCOM II defines two custom tags for Repository web site (_URL) and email address (_EMAIL).\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\b \cf0 Submitter Records (SUBM)
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li360\ql\qnatural\pardirnatural
+\cf0 \
+The one submitter record uses all possible tags for submitter records (SUBM). GEDitCOM II defines one custom tag for submitter's email address (_EMAIL)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\b \cf0 Research Log Records
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li360\ql\qnatural\pardirnatural
+\cf0 \
+These records are entirely custom records defined in GEDitCOM II. No other application will know how to handle them. You can optionally omit them when exporting a GEDCOM file to be tested. The "More Smith Research" record uses every possible tag *most of which are custom tags"\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\b \cf0 Album "Tag Torture Records"
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li360\ql\qnatural\pardirnatural
+\cf0 \
+GEDitCOM II lets you make albums of records. Thus album has all the records that test all possible tags for that type of record.\
+\
+}

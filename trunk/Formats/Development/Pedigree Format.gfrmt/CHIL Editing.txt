@@ -1,0 +1,71 @@
+load HLine,DrawEdges
+
+gosub HLine,2
+newline
+#chilStart=#vpos$
+#num+=1
+
+cell static,#num
+set alignment center cellbackground "black"
+if printing is false
+  set font "Children Number" fontColor "Family Chart Background"
+else
+  set font "Children Number" fontColor "white"
+endif
+SizeToFit 6
+
+
+cell static,local("SEX")&": "
+set tabwidth 1 alignment right
+cell static,@contents.SEX
+set width 36
+
+cell static,local("NAME")&": "
+SizeToFit
+
+cell LinkButton
+set border no tabwidth 1 alignment left font "Hyperlink Text"
+TextExpression @contents.NAME
+AppendedExpression altview
+RecordLink @contents
+set width -1 offset -1
+help local("Click to view child's record")
+
+! birth
+newline
+gosub HLine,1
+newline
+cell static,local("Born")&": "
+set tabwidth 1 alignment right
+cell expression,@contents.BIRT.DATE
+set AppendedExpression view
+set width #dateWidth
+
+cell static,local("PLAC")&": "
+SizeToFit
+cell expression,@contents.BIRT.PLAC
+set width -1
+
+! death
+gosub HLine,1
+newline
+cell static,local("Died")&": "
+set tabwidth 1 alignment right
+cell expression,@contents.DEAT.DATE
+set AppendedExpression view
+set width #dateWidth
+
+cell static,local("PLAC")&": "
+SizeToFit
+cell expression,@contents.DEAT.PLAC
+set width -1
+
+! family links
+ReadAll "#fams" from @contents.FAMS
+if #fams[0]>0
+endif
+
+gosub DrawEdges,#chilStart
+
+
+

@@ -1,0 +1,20 @@
+load LineLabel
+
+! Label and edit a date field
+newline
+
+if #msg=""
+  gosub LineLabel local("DATE")
+  offset #editOffset
+
+  cell EditDate
+  set Width -1 border no
+  help local("This text can be edited by clicking in the field and typing")
+else
+  gosub LineLabel local(#msg)
+  set offset #editOffset
+
+  cell EditDate
+  set Width 130 border no
+  help local("This text can be edited by clicking in the field and typing")
+endif

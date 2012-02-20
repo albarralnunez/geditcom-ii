@@ -1,0 +1,17 @@
+load LineLabel
+
+newline
+cell GroupBox,"Place Name"
+  set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+  
+  gosub LineLabel local(@tag)
+  offset #editOffset
+
+  cell EditValue
+  set Width -1
+  
+  Show FORM
+  Show DATE
+  Show LANG
+
+EndGroup

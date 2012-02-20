@@ -1,0 +1,20 @@
+load ResetTabs,SectionLabel,TagBlock
+
+gosub ResetTabs
+
+! -------------- Start Template -----------------
+DropTypes SUBM,INDI,FAM
+gosub SectionLabel "HEAD Record",0
+
+! --------- Title -----------
+ShowAll SOUR
+ShowAll SUBM
+ShowAll SUBN
+ShowAll _HME
+
+if more is true
+  gosub SectionLabel "Header Details",9
+endif
+
+ShowAll DESTShowAll DATE "label"ShowAll FILEShowAll COPRShowAll GEDCShowAll CHARShowAll LANGShowAll PLAC
+ShowAll NOTE

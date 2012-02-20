@@ -1,0 +1,12 @@
+load LineLabel
+
+gosub LineLabel,local(@tag)
+offset #buttonOffset
+
+cell PopupMenuEdithelp local("Click to set task status")
+MenuItems local("New")&"::"
+MenuItems local("Working")&":Working"
+MenuItems local("Done")&":Done"
+MenuItems local("Failed")&":Failed"
+set border no
+sizetofit

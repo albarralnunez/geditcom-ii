@@ -1,0 +1,9 @@
+cell EditName
+set width #eZone
+if printing is false
+  set border line
+else
+  set border none
+endif
+
+HideExcess

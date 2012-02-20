@@ -1,0 +1,22 @@
+load FAMPanes,ResetTabs,ListBlock,References
+
+! -------------- Start Template -----------------
+DropTypes INDI,INDICtrl
+GoSub ResetTabs,0
+GoSub FAMPanes,"Notes"
+
+! --------- NOTEs, SOURs, and _LOGs -----------
+gosub References,"_LOG"
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+width -1
+newline -#lineSkip-3
+#lineSkip=0
+Show NOTE
+Show SOUR
+Show _LOG
+EndGroup
+#lineSkip=#lineSkip$
+
+hideexcess

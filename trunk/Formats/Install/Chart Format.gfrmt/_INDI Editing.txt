@@ -1,0 +1,7 @@
+cell LinkButton
+set border none alignment left
+set TextExpression @contents.rec AppendedExpression "altview"
+set RecordLink @contents font "Name Text"
+Help local("Click to view pedigree or family chart for")&" "&@contents.altview
+sizetofit
+newline

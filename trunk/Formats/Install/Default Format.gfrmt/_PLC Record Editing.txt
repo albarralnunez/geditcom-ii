@@ -1,0 +1,86 @@
+load TagBlock,ResetTabs,ListBlock,References,AttachData,PlacePanes
+
+! -------------- Start Template -----------------
+GoSub PlacePanes,"","1"
+GoSub ResetTabs,0
+
+! --------- Place Names -----------
+cell GroupBox,local("Place Names")
+  width -1
+  NewLine -3
+  #numPlace=0
+  Show _PLACE
+  ShowAll _PLACE
+  newline
+  cell LinkButton
+  set border no width 22 height 22
+  image "plus"
+  MenuLink "Attach Optional Data"
+  help local("Click to attach addtional place names")
+  
+  if #numPlace>1
+    hskip 10
+    cell LinkButton
+    set image "go-up" border none width 24 height 22
+    Help local("Click to select preferred place name")
+    #sm = "_PLACE"&return&"(unnamed place)"&return&"Select preferred place name"&return&"Reorder Place Names"
+    set ScriptLink Promote_Tag ScriptType format ScriptMessage #sm
+  endif
+
+EndGroup
+
+! Referenced By
+cell GroupBox,local("Place References")
+  width -1
+  
+  NewLine -4
+  cell LinkButton local("See Linked Individuals or Families")
+  set border shadowlesssquare
+  sizetofit -1
+  menulink "Referenced By"
+  help local("Click to see all individual or family records that refer to this place")
+EndGroup
+
+! --------- FACTS ----------
+cell GroupBox,local("Place Information")
+  width -2
+  
+  ! Add Fact
+  NewLine -4
+  Show _ADDPFACT
+
+  if _PFACT is here
+    cell LinkButton
+    set image "minus" border none width 24 height 22
+    Help local("Click to remove place information")
+    #sm = "_PFACT"&return&"(empty information)"&return&"Select place information to remove"&return&"Remove Place Information"
+    set ScriptLink Delete_Tag ScriptType format ScriptMessage #sm
+  endif
+  
+  newline
+  ClearTabs
+  #lineSkip=2
+  #cellSkip=2
+  #tableWidth=#rightMargin$-#rightSkip-#hpos$-22-#cellSkip
+  ! .25 - .3 - .45
+  #t1=0.25
+  #t2=#t1+.3
+  #t3=#t2+.45
+  ! (0) Fact (#t1) Date (#t2) Value (#t3)
+  SetTab #habs$,#habs$+#t1*#tableWidth,#habs$+#t2*#tableWidth
+  SetTab #habs$+#t3*#tableWidth
+
+  #factNum=0
+  ShowAll _PFACT
+  
+  #lineSkip=#lineSkip$
+  #cellSkip=#cellSkip$
+  Gosub ResetTabs,0
+endif
+
+EndGroup
+
+hideexcess
+
+optionalTag _PLACE,"New Place Name","place name"
+

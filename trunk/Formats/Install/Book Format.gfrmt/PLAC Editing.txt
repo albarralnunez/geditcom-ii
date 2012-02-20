@@ -1,0 +1,30 @@
+load LineLabel
+
+if @rec="HEAD"
+  ! In the HEADER, PLAC has no value and default hierarchy in subordinate FORM tag
+  gosub LineLabel,local("Place Hierarchy")
+  show FORM
+
+else if @rec="SOUR"
+  use _Unknown_
+
+else
+  ! label and editing field
+  gosub LineLabel local(@tag)
+  offset #editOffset
+
+  if printing
+    cell static,@contents
+    set font "Editing Text" offset -1
+  else
+    cell EditValue
+    set offset -2
+  endif
+  set Width -1 border no
+
+  !ShowAll FORM  !ShowAll _GPS
+  !ShowAll SOUR
+  !ShowAll NOTE
+
+endif
+

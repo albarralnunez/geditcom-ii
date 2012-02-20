@@ -1,0 +1,38 @@
+load RecordChildLink
+
+if @this._UMR=""
+  if @tag="HUSB"
+    #parent="HUSB"
+    #ageKey="Father's Age"
+  else
+    #parent="WIFE"
+    #ageKey="Mother's Age"
+  endif
+else
+  if @tag="HUSB"
+    #parent="Father"
+  else
+    #parent="Mother"
+  endif
+  #ageKey=#parent&"'s Age"
+endif
+
+if #parentTag$="FAM"
+  newline
+  cell label,local(#parent)&": "
+  sizetofit
+
+  if local("<LANG>")="French"
+    #parent="the "&#parent
+  endif
+
+  gosub RecordChildLink local("Click to view record for")&" "&local(#parent),"parent"
+
+else
+  newline
+  cell static local(#ageKey)&": "
+  sizetofit
+
+  Show AGE "nolabel"
+  HideExcess
+endif

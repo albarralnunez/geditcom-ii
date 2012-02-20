@@ -1,0 +1,7 @@
+load SectionLabel
+
+gosub SectionLabel,local("Enter web site address")
+
+Show _URL
+
+resizeWindow yes

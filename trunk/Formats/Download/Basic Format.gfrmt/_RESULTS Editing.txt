@@ -1,0 +1,12 @@
+load LineLabel
+
+gosub LineLabel local(@tag)
+offset #editOffset
+
+cell EditField
+if printing
+  set Width -1 minheight 22 maxheight 2000
+else
+  set Width -1 minheight 44 maxheight 128
+endif
+sizetofit

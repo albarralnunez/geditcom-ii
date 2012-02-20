@@ -1,0 +1,2 @@
+#chelp=local("Enter copyright owner if different than the author")
+use _Custom_Help

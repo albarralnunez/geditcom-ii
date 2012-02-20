@@ -1,0 +1,7 @@
+! Indent and put up label
+NewLine
+cell static,"The '"&@rec&" Record  Editing' template is missing"
+width -1
+newline
+
+SetTab 120,210,300

@@ -1,0 +1,11 @@
+! Only use of CONC tag in GEDitCOM II is to display notes text
+! When printing, notes text is displayed in the main record
+
+if printing
+  hideexcess
+else
+  cell EditPane,"("&local("NOTES_HELP")&")"
+  set Position bottom fraction .8
+  help local("This text can be edited by clicking in the field and typing")&". "
+  help local("You can control click for editing options when using HTML text")&"."
+endif

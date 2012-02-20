@@ -1,0 +1,1151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>Lifelines Emulation in GEDitCOM II</title>
+<STYLE TYPE="text/css" MEDIA=screen>
+<!--
+  *  { font-family: Arial, sans-serif; line-height: 1.5; font-size: 10pt; }
+  h1 { font-size: 14pt; border-bottom: solid; }
+  h2 { font-size: 12pt; border-bottom: thin solid #888888;}
+  h3 { font-size: 11pt; border-bottom: thin solid #888888;}
+  h4 { font-size: 10pt; }
+  pre { font-family: Courier; line-height: 1.0;}
+  table.cb { background: #eeeeee; border: thin solid #666666; padding: 0pt 0pt 0pt 0pt;
+              margin: 6pt 0pt 6pt 0pt;}
+  table.cb td {padding: 2pt 4pt 2pt 4pt; vertical-align: top;}
+  table.cb td.rb {border-right: thin solid #666666;}
+  pre.cell { margin:  0pt 0pt 0pt 0pt;}
+  pre.alone { margin-left: 12pt;}
+  p { margin-left: 4pt; }
+  code { font-family: Courier; font-size: 9pt; }
+  table.funcs { border: thin solid #666666; margin-left: 9pt; }
+  table.funcs td.sup { font-family: Courier; padding-right: 18pt;}
+  table.funcs td.mod { font-family: Courier; color: green; padding-right: 18pt;}
+  table.funcs td.ni { font-family: Courier; color: red; padding-right: 18pt;}
+  .bb { border-bottom: thin solid #666666; }
+-->
+</STYLE></head>
+<body>
+
+<h1>Lifelines Emulation in GEDitCOM II</h1>
+
+<h2>Introduction</h2>
+
+<p><i>Lifelines</i> was written by Tom Wetmore in the early 1990's and is now <a href="http://lifelines.sourceforge.net/">available</a> under an MIT-style license. The two most important features of <i>Lifelines</i> (in my opinion) are that it is based on the GEDCOM standard and it is scriptable. These are also two things <i>Lifelines</i> has in common with <b>GEDitCOM II</b>. Although <i>Lifelines</i> is still <a href="http://lifelines.sourceforge.net/">available</a>, it is a Unix command line tool and has not developed much since the 1990's. Wouldn't it be nice to have all the reports written for <i>Lifelines</i> work in a more modern user interface? For the most part, that is now possible by using this <i>Lifelines</i> emulator for <b>GEDitCOM II</b>.</p>
+
+<p><i>Lifelines</i> programs are written using an internal scripting language. In contrast, <b>GEDitCOM II</b> scripts are written using AppleScript, python, or ruby. This emulator, however, was written using python and thus all <i>Lifelines</i> report emulations have to be converted by using python scripts for <b>GEDitCOM II</b>. One advantage of the <i>Lifelines</i> programming language is that it is simple. One advantage of python scripts for <b>GEDitCOM II</b> is that they open up the entire python universe and therefore is very powerful and extensible.
+</p>
+
+<p><i>Lifelines</i> reports converted to run in <b>GEDitCOM II</b> will always be slower in <b>GEDitCOM II</b> than in <i>Lifelines</i> (sometimes much slower). The two reasons for this performance hit are:</p>
+<ol>
+<li>In computer applications, emulators are always slower than native applications.</li>
+<li>The scripting system of <i>Lifelines</i> differs from the scripting technology of <b>GEDitCOM II</b>. In <i>Lifelines</i>, everything is handled internally within a single application. In <b>GEDitCOM II</b>, scripting is done by MacOS inter-application communication methods. Since each inter-application adds overhead to calculation time, the performance of a <b>GEDitCOM II</b> script depends on the number of communications required to complete the script.</li>
+</ol>
+<p>The <i>Lifelines</i> emulator was written to minimize the number of changes required to convert a <i>Lifelines</i> program to a <b>GEDitCOM II</b> script. It was not written to maximize efficiency. Once a <i>Lifelines</i> program is converted and running, it will commonly be possible to speed it up by factors of 10 or more by revising the script for efficiency. This process will sometimes be possible just by changing the logic of the script. For other scripts, it may be better to completely rewrite it in the <b>GEDitCOM II</b> scripting language rather than rely on <i>Lifelines</i> emulation.
+</p>
+
+<p>This documentaion has the following main sections:</p>
+
+<ul>
+<li><a href="#tasks">Conversion Tasks</a></li>
+<li><a href="#template">Outline of Emulated Lifelines Programs</a></li>
+<li><a href="#ref">Lifelines Emulation Reference</a></li>
+</ul>
+
+
+<h2><a name="tasks"></a>Conversion Tasks</h2>
+
+<p>The following is an outline of the process for converting any <i>Lifelines</i> program into an emulated <b>GEDitCOM II</b> script:</p>
+
+<ol>
+<li>Copy the text of the <i>Lifelines</i> report to a plain text file with extension <code>.py</code> and open in the GEDitCOM Editor. The script must start by <a href="#importmods">loading the <code>lifelines</code> modules</a>.</li>
+<li><a name="proc"></a>Change all <i>Lifelines</i> <code>proc</code> and <code>func</code> methods to python <code>def</code> methods:
+<table class="cb">
+<tr>
+<td><pre class="cell">proc name ( params ) {
+    statements
+}</pre></td>
+<td>&nbsp;&nbsp;&nbsp;<b>or</b>&nbsp;&nbsp;&nbsp;</td>
+<td class="rb"><pre class="cell">func name ( params ) {
+    statements
+    return result
+}</pre></td>
+<td><b>to</b>&nbsp;&nbsp;&nbsp;</td>
+<td><pre class="cell">def name ( params ) :
+    statements
+    return result</pre></td>
+</tr>
+</table>
+Furthermore, the python defs <i>have</i> to be indented precisely to indicate the statements are part of that method. In other words, the leading spaces have to be the same for all statements at the same level. You can use tabs or spaces, but not both (<i>e.g.</i>, 4 spaces is not the same as tab even if they look the same in the editor). Finally, any code that calls a proc should be changed:
+<table class="cb">
+<tr>
+<td><pre class="cell">call name (args)</pre></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>to</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><pre class="cell">name (args)</pre></td>
+</tr>
+</table>
+</li>
+<li>For the one <code>main</code> method, remove the <code>proc main</code>, remove its brackets (<code>{}</code>), move it to the end, and indent all lines for python needs starting with zero indent. In addition, the main method must begin with a <a href="#preamble">preamble</a> to set up the emulator and end with a <code>finish()</code> line to output the final report.</li>
+<li>If the program declares globals, they must be changed from <code>global(VAR)</code> to <code>VAR = None</code> or give it an initial value. They can be declared in the beginning of the script and/or in the main method. If any globals are used in methods, that method has to declare them as globals using a <code>global VAR</code> statement.</li>
+<li>Change all <i>Lifelines</i> comments (<code>/* a comment ... */</code>) to python comments (<code># a comment ...</code>).</li>
+<li><a name="cmnt"></a>Change all <i>Lifelines</i> functions that set a variable passed to the method to the new forms documented here. The most common is to change <code>set(VAR,VALUE)</code> to <code>VAR =  VALUE</code>. Other common ones that need changing are <code>list(LISV_VAR)</code> and <code>table(TABLE_VAR)</code>, which are changed to <code>LIST_VAR = list()</code> and <code>TABLE_VAR = table()</code>. These changes are needed becase python cannot change the value of a variables passed as a parameter.</li>
+<li>Change all conditionals from <i>Lifelines</i> syntax to python syntax:
+<table class="cb">
+<tr>
+<td><pre class="cell">if ([varb,] expr) {
+    statements } 
+elsif ([varb], expr) {
+    statements }
+else {
+    statements
+}</pre></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>to</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><pre class="cell">if expr :
+    statements 
+elif expr :
+    statements
+else :
+    statements
+</pre></td>
+</tr>
+</table>
+Notice that python cannot assign a variable and check an expression in the same line (as far as I know). Therefore <i>Lifelines</i> programs that use the optional <code>[varb,]</code> above will need to assign that variable before the conditional.</li>
+<li>Change all loops from <i>Lifelines</i> syntax to python syntax:
+<table class="cb">
+<tr>
+<td><pre class="cell">while ([varb,] expr) {
+    statements } 
+</pre></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>to</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><pre class="cell">while expr :
+    statements 
+</pre></td>
+</tr>
+</table>
+Notice that python cannot assign a variable and check an expression in the same line (as far as I know). Therefore <i>Lifelines</i> programs that use the optional <code>[varb,]</code> above will need to initialize that variable before the loop, provide an appropriate test in the <code>while</code> line, and increment the variable someplace within the loop. <i>Lifelines</i> also provides many functions for looping (such as <code>forindi()</code>). Each of these will need a special conversion as documented below for each of those methods.</li>
+<li>When the above steps are done, the converted program will follow the <a href="#template">template described below</a>.</li>
+</ol>
+
+<p>With luck, the conversion will be complete. Try running in <b>GEDitCOM II</b> and see what happens. The most likely errors are python syntax errors (such as forgetting those "<code>:</code>" needed in many places or not indenting correctly). Once the python problems are fixed, it will start. The next class of errors will be if the program uses methods not yet implemented in the emulator or if their use requires modification. You will then have to revise the code as needed by the emulator, revise the code to use a different method (or use internal <b>GEDitCOM II</b> scripting methods), modify the emulator to support an unimplemented method, or decide this program will be too hard to convert.</p>
+
+<h2><a name="template"></a>Outline of Emulated Lifelines Programs</h2>
+
+<p>All <i>Lifelines</i> programs converted to <b>GEDitCOM II</b> should use the following template:</p>
+
+<pre class="alone">#!/usr/bin/python
+
+<a name="importmods"></a># Import emulator modules
+from lifelines load *
+from operator import add,sub,mul,div,mod,neg,eq,ne,lt,gt,le,ge
+
+# Globals
+
+# Subroutines
+
+<a name="preamble"></a># Preamble
+linemode()
+gdoc = ll_init(&quot;script title&quot;)
+
+# The main method
+out("Hello World!)
+
+# Final Output
+finish()
+</pre>
+
+<p>The first section imports methods from python modules. The <code>lifelines</code> module contains all the methods that implement the <i>Lifelines</i> emulation. The <code>operator</code> module has methods identical to several <i>Lifelines</i> methods as listed above. If you need any of these methods, you need this import statement as well. If you want to use native <b>GEDitCOM II</b> scripting methods within the translated script, you may need to import three more modules using:</p>
+
+<pre class="alone">from Foundation import *
+from ScriptingBridge import *
+from GEDitCOMII load *
+</pre>
+
+<p>The next two (optional) sections define global variables and procedures or functions used by the script.</p>
+
+<p>The &quot;Preamble&quot; section selects the output mode and initializes the emulator. The <code>ll_init()</code> method verifies the script can run (which means the user has GEDitCOM II 1.6, build 2 or newer and that a document is open). It returns a reference to the current front doucment. If the script cannot run, a message will be printed and the script will quit. The one argument is the name of the script.</p>
+
+<p>Note that unlike <i>Lifelines</i>, which can only have one data base open at a time, <b>GEDitCOM II</b> can have any number of open documents. As a consequence, a few emulated methods let you specify which document to use. When no document is specified, these methods all default to using the current front document.</p>
+
+<p>The main method contains the translation of the <i>Lifelines</i> main method, except that ouput mode settings are moved to the preamble.</p>
+
+<p>Finally, call the <code>finish()</code> method, which outputs the results using the script's output mode.</p>
+
+<h2><a name="ref"></a>Lifelines Emulation Reference</h2>
+
+<p>The following sections list all methods from the <i>Lifelines</i> manual (which is available in <a href="quickref.pdf" target="new">pdf form</a> or in a <a href="http://lifelines.sourceforge.net/manual307/x1409.html" target="new">on-line translation</a>). This reference does not define the behavior of the <i>Lifelines</i> functions (you should refer to the <i>Lifelines</i> documentation for that information). Instead, this reference lists all <i>Lifelines</i> methods, whether or not they are implemented, and whether or not they are identical or require some modification. Fully supported methods are in <code>black</code>; methods needing modifcation are in <font color="green"><code>green</code></font>, and methods not implemented are in <font color="red"><code>red</code></font>. The subsections are:</p>
+
+<ul><a name="secind"></a>
+<li><a href="#sec1">Procedures and Functions</a></li>
+<li><a href="#sec2">Comments</a></li>
+<li><a href="#sec3">Statements</a></li>
+<li><a href="#sec4">Expressions</a></li>
+<li><a href="#sec5">Include Feature</a></li>
+<li><a href="#sec6">Built-in Functions</a></li>
+<li><a href="#sec7">Value Types</a></li>
+<li><a href="#sec8">Arithmetic and Logic Functions</a></li>
+<li><a href="#sec9">Person Functions</a></li>
+<li><a href="#sec10">Family Functions</a></li>
+<li><a href="#sec11">List Functions</a></li>
+<li><a href="#sec12">Table Functions</a></li>
+<li><a href="#sec13">GEDCOM Node Functions</a></li>
+<li><a href="#sec14">Event and Date Functions</a></li>
+<li><a href="#sec15">Value Extraction Functions</a></li>
+<li><a href="#sec16">User Interaction Functions</a></li>
+<li><a href="#sec17">String Functions</a></li>
+<li><a href="#sec18">Output Mode Functions</a></li>
+<li><a href="#sec19">Person Set Functions and GEDCOM Extraction</a></li>
+<li><a href="#sec20">Record Update Functions</a></li>
+<li><a href="#sec21">Record Linking Functions</a></li>
+<li><a href="#sec22">Miscellaneous Functions</a></li>
+<li><a href="#sec23">Additional <b>GEDitCOM II</b> Functions</a></li>
+</ul>
+
+<h3><a name="sec1"></a>Procedures and Functions</h3>
+
+<p>Convert these to python syntax as explain <a href="#proc">above</a>.</p>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec2"></a>Comments</h3>
+
+<p>Convert these to python syntax as explain <a href="#cmnt">above</a>.</p>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec3"></a>Statements</h3>
+
+<p>Conditionals, while loops, and procedure calls must all be converted to python syntax as explained <a href="#proc">above</a>. Some additional statements also require minor changes:</p>
+
+<table class="funcs">
+	<tr>
+		<td class="mod">include(string)</td> <td>Replace with python <a href="#sec5">import methods</a></td>
+	</tr>
+	<tr>
+		<td class="mod">global(varb)</td> <td>Replace with <code>varb = None</code></td>
+	</tr>
+	<tr>
+		<td class="mod">set(varb, expr)</td> <td>Replace with <code>varb = expr</code></td>
+	</tr>
+	<tr>
+		<td class="mod">continue()</td> <td>Use python <code>continue</code> command</td>
+	</tr>
+	<tr>
+		<td class="mod">break()</td> <td>Use python <code>break</code> command</td>
+	</tr>
+	<tr>
+		<td class="mod">return([expr])</td> <td>Any python method can return a value with <code>return expr</code></td>
+	</tr>
+</table>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec4"></a>Expressions</h3>
+
+<p>All expression should be converted to python expressions, which are very similar to most programming languages. Most <i>Lifelines</i> functions used in expressions are supported for convenience.</p>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec5"></a>Include Feature</h3>
+
+<p>The <code>include(string)</code> statement is not supported in this translation. It can easily be replaced by putting the other program into a  python module and then importing it with</p>
+
+<pre class="alone">import string
+from string import *
+</pre>
+
+<p>Python will look for such modules in the same directory as the source program or in various other locations. When running in <b>GEDitCOM II</b>, python will look for modules in the &quot;Modules&quot; directory of the <b>GEDitCOM II</b> libraries in either the user or the system level &quot;Application Support&quot; folders.</p>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec6"></a>Built-in Functions</h3>
+
+<p>The follow sections list translations for <i>Lifelines</i> functions.</p>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec7"></a>Value Types</h3>
+
+<p>Many types are built-in python types. A few special types are implemented using python classes. Besides these types, you can extend the program with any other python types (<i>e.g.</i>, longs (for unlimited integer precision) or floats).</p>
+
+<table class="funcs">
+	<tr>
+		<td class="sup">INT</td> <td>Python integer</td>
+	</tr>
+	<tr>
+		<td class="sup">BOOL</td> <td>Python <code>True</code> or <code>False</code></td>
+	</tr>
+	<tr>
+		<td class="sup">STRING</td> <td>Python string</td>
+	</tr>
+	<tr>
+		<td class="sup">LIST</td> <td>Python list</td>
+	</tr>
+	<tr>
+		<td class="sup">TABLE</td> <td>Python dictionary</td>
+	</tr>
+	<tr>
+		<td class="sup">INDI</td> <td><b>GEDitCOM II</b> individual record</td>
+	</tr>
+	<tr>
+		<td class="sup">FAM</td> <td><b>GEDitCOM II</b> family record</td>
+	</tr>
+	<tr>
+		<td class="sup">SET</td> <td>Python custom SET class (defined in the <code>lifelines</code> module)</td>
+	</tr>
+	<tr>
+		<td class="sup">NODE</td> <td><b>GEDitCOM II</b> structure</td>
+	</tr>
+	<tr>
+		<td class="sup">EVENT</td> <td>Python custom EVENT class (defined in the <code>lifelines</code> module)</td>
+	</tr>
+</table>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec8"></a>Arithmetic and Logic Functions</h3>
+
+<p>These <i>Lifelines</i> methods are mostly supported, but you can also convert to standard, simpler, and more powerful python expressions. The translations are:</p>
+
+<table class="funcs">
+	<tr>
+		<td class="sup">INT add(x, y)</td> <td>Same or change to <code>x + y</code></td>
+	</tr>
+	<tr>
+		<td class="sup">INT sub(x, y)</td> <td>Same or change to <code>x - y</code></td>
+	</tr>
+	<tr>
+		<td class="sup">INT mul(x, y)</td> <td>Same or change to <code>x * y</code></td>
+	</tr>
+	<tr>
+		<td class="sup">INT div(x, y)</td> <td>Same or change to <code>x / y</code></td>
+	</tr>
+	<tr>
+		<td class="sup">INT mod(x, y)</td> <td>Same or change to <code>x % y</code></td>
+	</tr>
+	<tr>
+		<td class="sup">INT exp(x, y)</td> <td>Same or change to <code>x ** y</code></td>
+	</tr>
+	<tr>
+		<td class="sup">INT neg(x)</td> <td>Same or change to <code>-x</code></td>
+	</tr>
+	<tr>
+		<td class="ni">VOID incr(x)</td> <td>Replace with <code>x += 1</code></td>
+	</tr>
+	<tr>
+		<td class="ni">VOID decr(x)</td> <td>Replace with <code>x -= 1</code></td>
+	</tr>
+	<tr>
+		<td class="ni">BOOL and(x, y)</td> <td>Replace with <code>x and y</code> because <code>and</code> is a protected keyword in python</td>
+	</tr>
+	<tr>
+		<td class="ni">BOOL or(x, y)</td> <td>change to <code>x or y</code> because <code>or</code> is a protected keyword in python</td>
+	</tr>
+	<tr>
+		<td class="sup">BOOL not(x)</td> <td>Same - a standard python function</td>
+	</tr>
+	<tr>
+		<td class="sup">BOOL eq(x, y)</td> <td>Same or change to <code>x == y</code></td>
+	</tr>
+	<tr>
+		<td class="sup">BOOL ne(x, y)</td> <td>Same or change to <code>x != y</code></td>
+	</tr>
+	<tr>
+		<td class="sup">BOOL lt(x, y)</td> <td>Same or change to <code>x &lt; y</code></td>
+	</tr>
+	<tr>
+		<td class="sup">BOOL gt(x, y)</td> <td>Same or change to <code>x &gt; y</code></td>
+	</tr>
+	<tr>
+		<td class="sup">BOOL le(x, y)</td> <td>Same or change to <code>x &lt;= y</code></td>
+	</tr>
+	<tr>
+		<td class="sup">BOOL ge(x, y)</td> <td>Same or change to <code>x &gt;= y</code></td>
+	</tr>
+</table>
+
+<p>To support them all, you need to import many of them from the <code>operator</code> module at the <a href="#template">beginning of the program</a> using:</p>
+
+<pre class="alone">from operator import add,sub,mul,div,mod,neg,eq,ne,lt,gt,le,ge</pre>
+
+<p>Note the <i>Lifelines</i> is all integer calculations. In python you can enforce integer calculations or use floating point  or longs (which have unlimited precision) as well.</p>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec9"></a>Person Functions</h3>
+
+<p>The following functions retrieve information about an individual. When the function needs an INDI, you pass an reference to a <b>GEDitCOM II</b> individual record.</p>
+
+<table class="funcs">
+	<tr>
+		<td class="sup">STRING name(INDI [,BOOL])</td> <td>Same, but passing FALSE in optional parameter (which is not the default behavior) is faster.</td>
+	</tr>
+	<tr>
+		<td class="sup" width="280">STRING fullname(INDI,BOOL,BOOL,INT)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING surname(INDI)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING givens(INDI)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">STRING trimname(INDI,INT)</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="sup">EVENT birth(INDI)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">EVENT death(INDI)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">EVENT baptism(INDI)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">EVENT burial(INDI)</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="sup">EVENT father(INDI)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">EVENT mother(INDI)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="ni">EVENT nextsib(INDI)</td> <td>Not implemented</td>
+	</tr>
+	<tr>
+		<td class="ni bb">EVENT prevsib(ni)</td> <td class="bb">Not implemented</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING sex(INDI)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">BOOL male(INDI)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">BOOL female(INDI)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">STRING pn(INDI)</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="sup">INT nspouses(INDI)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">INT nfamilies(INDI)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">FAM parents(INDI)</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING title(INDI)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="mod">STRING key(INDI|FAM[,BOOL])</td> <td>Similar. It returns the GEDCOM ID for the record without the @ signs. The second parameter can be used, but it is ignored.</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING soundex(INDI)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="ni">NODE inode(INDI)</td> <td>Not needed  - pass the individual directly to functions needing the root node.</td>
+	</tr>
+	<tr>
+		<td class="ni bb">NODE root(INDI)</td> <td class="bb">Not needed  - pass the individual directly to functions needing the root node.</td>
+	</tr>
+	<tr>
+		<td class="mod bb">INDI indi(STRING)</td> <td class="bb">Same. You can also use <code>indi(key,doc)</code> where <code>doc</code> is reference to a document if you want to get a record in a document other than the front document. The key can be provided with or without the @ signs.</td>
+	</tr>
+	<tr>
+		<td class="sup">INDI firstindi()</td> <td>Same. Can pass document reference to find first individual in document other than front document.</td>
+	</tr>
+	<tr>
+		<td class="ni">INDI nextindi(INDI)</td> <td>Not implemented - use <code>forindi()</code></td>
+	</tr>
+	<tr>
+		<td class="ni bb">INDI previndi(INDI)</td> <td class="bb">Not implemented - use <code>forindi()</code></td>
+	</tr>
+	<tr>
+		<td class="mod bb"><pre>spouses(indi,sp,fam,num) {
+    statements
+}</pre></td> <td class="bb">Change to following loop:<br>
+<pre>(sp,fam,num,iter) = spouses(indi)
+while sp :
+    statements
+    (sp,fam,num) = spouses(iter)</pre>
+    The <code>iter</code> is defined in the initialization that calls <code>spouses()</code> with <code>indi</code>. The call at the end of the loop uses <code>iter</code> instead of <code>indi</code>.
+</td>
+	</tr>
+	<tr>
+		<td class="mod bb"><pre>families(indi,fam,sp,num) {
+    statements
+}</pre></td> <td class="bb">Change to following loop:<br>
+<pre>(fam,sp,num,iter) = families(indi)
+while fam :
+    statements
+    (fam,sp,num) = families(iter)</pre>
+    The <code>iter</code> is defined in the initialization that calls <code>families()</code> with <code>indi</code>. The call at the end of the loop uses <code>iter</code> instead of <code>indi</code>.
+</td>
+	</tr>
+	<tr>
+		<td class="mod"><pre>forindi(indi,num) {
+    statements
+}</pre></td> <td>Change to following loop:<br>
+<pre>for (num0,indi) in forindi() :
+    num = num0+1
+    statements</pre>
+    Notice that order is switched to <code>(num0,indi)</code> because of way python enumerates lists. Also, python uses zero-based lists which means <code>num0</code> will be one less than the corresponding <code>num</code> in the <i>Lifelines</i> program. You can also optionally use <code>forindi(doc)</code> if you want to enumerate individuals in a document other than the front document.
+</td>
+	</tr>
+</table>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec10"></a>Family Functions</h3>
+
+<p>The following functions retrieve information about a family. When the function needs an FAM, you pass an reference to a <b>GEDitCOM II</b> family record.</p>
+
+<table class="funcs">
+	<tr>
+		<td class="sup">EVENT marriage(FAM)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">INDI husband(FAM)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">INDI wife(FAM)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">INT nchildren(FAM)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">INDI firstchild(FAM)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">INDI lastchild(FAM)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="mod" width="220">STRING key(INDI|FAM[,BOOL])</td> <td>Similar. It returns the GEDCOM ID for the record without the @ signs. The second parameter can be used, but it is ignored.</td>
+	</tr>
+	<tr>
+		<td class="ni">NODE fnode(INDI)</td> <td>Not needed  - pass the family directly to functions needing the root node.</td>
+	</tr>
+	<tr>
+		<td class="ni bb">NODE root(INDI)</td> <td class="bb">Not needed  - pass the family directly to functions needing the root node.</td>
+	</tr>
+	<tr>
+		<td class="mod bb">FAM fam(STRING)</td> <td class="bb">Same. You can also use <code>fam(key,doc)</code> where <code>doc</code> is reference to a document if you want to get a record in a document other than the front document. The key can be provided with or without the @ signs</td>
+	</tr>
+	<tr>
+		<td class="sup">INDI firstfam()</td> <td>Same. Can pass document reference to find first family in document other than front document.</td>
+	</tr>
+	<tr>
+		<td class="ni">INDI nextfam(FAM)</td> <td>Not implemented - use <code>forfam()</code></td>
+	</tr>
+	<tr>
+		<td class="ni bb">INDI prevfam(FAM)</td> <td class="bb">Not implemented - use <code>forfam()</code></td>
+	</tr>
+	<tr>
+		<td class="mod bb"><pre>children(fam,chil,num) {
+    statements
+}</pre></td> <td class="bb">Change to following loop:<br>
+<pre>for (num0,chil) in children(fam) :
+    num = num0+1
+    statements</pre>
+    Notice that order is switched to <code>(num0,chil)</code> because of way python enumerates lists. Also, python uses zero-based lists which means <code>num0</code> will be one less than the corresponding <code>num</code> in the <i>Lifelines</i> program. </td>
+	</tr>
+	<tr>
+		<td class="mod"><pre>forfam(fam,num) {
+    statements
+}</pre></td> <td>Change to following loop:<br>
+<pre>for (num0,fam) in forfam() :
+    num = num0+1
+    statements</pre>
+    Notice that order is switched to <code>(num0,fam)</code> because of way python enumerates lists. Also, python uses zero-based lists which means <code>num0</code> will be one less than the corresponding <code>num</code> in the <i>Lifelines</i> program. You can also optionally use <code>forfam(doc)</code> if you want to enumerate families in a document other than the front document.</td>
+	</tr>
+</table>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec11"></a>List Functions</h3>
+
+<p>Lists are handled by standard python lists, which means you can make use of all the <a href="http://docs.python.org/tutorial/datastructures.html" target="new">python list methods</a> as well. The <i>Lifelines</i> methods are implemented as follows (some just for convenience):</p>
+
+<table class="funcs">
+	<tr>
+		<td class="mod" width="200">VOID list(LIST_V)</td> <td>Replace with <code>LIST_V = list()</code> or <code>LIST_V = []</code>. The <code>list()</code> function is a built-in python method. You can optionally pass another list as an argument, <code>LIST_V = list(OTHER)</code>, and <code>LIST_V</code> will be a new list with a copy of <code>OTHER</code>.</td>
+	</tr>
+	<tr>
+		<td class="sup">BOOL empty(LIST)</td> <td>Same or use <code>len(LIST) == 0</code></td>
+	</tr>
+	<tr>
+		<td class="sup bb">INT length(LIST)</td> <td class="bb">Same or use <code>len(LIST)</code></td>
+	</tr>
+	<tr>
+		<td class="sup">VOID enqueue(LIST,ANY)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">ANY dequeue(LIST)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">VOID requeue(LIST,ANY)</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="sup">VOID push(LIST,ANY)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">ANY pop(LIST)</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="sup">VOID setel(LIST,INT,ANY)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">ANY getel(LIST,INT)</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="mod"><pre>forlist(alist,val,num) {
+    statements
+}</pre></td> <td>Change to following loop:
+<pre>for (num0,val) in forlist() :
+    num = num0+1
+    statements</pre>
+    Notice that order is switched to <code>(num0,val)</code> because of way python enumerates lists. Also, python uses zero-based lists which means <code>num0</code> will be one less than the corresponding <code>num</code> in the <i>Lifelines</i> program. 
+</td>
+	</tr>
+</table>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec12"></a>Table Functions</h3>
+
+<p>Tables are handled by standard python dictionaries, which means you can make use of all the <a href="http://docs.python.org/library/stdtypes.html#mapping-types-dict" target="new">python dictionary methods</a>. The <i>Lifelines</i> methods are implemented as follows (some just for convenience):</p>
+
+<table class="funcs">
+	<tr>
+		<td class="mod">VOID table(TABLE_V)</td> <td>Replace with <code>TABLE_V = table()</code> or <code>TABLE_V = {}</code>.</td>
+	</tr>
+	<tr>
+		<td class="sup">VOID insert(TABLE,STRING,ANY)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">ANY lookup(TABLE,STRING)</td> <td>Same</td>
+	</tr>
+</table>
+
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec13"></a>GEDCOM Node Functions</h3>
+
+<p><i>Lifelines</i> nodes are equivalent to <b>GEDitCOM II</b> structures. In addition, <b>GEDitCOM II</b> record objects can be used wherever a NODE is expected and it will be treated as the root or level 0 node for that record (a record's tag is its record type and its value is its record ID with the @ signs).</p>
+
+<table class="funcs">
+	<tr>
+		<td class="ni">STRING xref(NODE)</td> <td>Not implemented</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING tag(NODE)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING value(NODE)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">NODE parent(NODE)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">NODE child(NODE)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">NODE sibling(NODE)</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="ni bb">NODE savenode(NODE)</td> <td class="bb">Not implemented</td>
+	</tr>
+	<tr>
+		<td class="mod bb"><pre>fornodes(node,nodev) {
+    statements
+}</pre></td> <td class="bb">Change to following loop:
+<pre>for (num0,nodev) in fornodes(node) :
+    statements</pre>
+    The <code>num0</code> is the zero-based count of nodes and can be ignored in conversions.</td>
+	</tr>
+	<tr>
+		<td class="mod"><pre>traverse(node,nodev,lev) {
+    statements
+}</pre></td> <td>Change to following loop:
+<pre>(nodev,lev,iter) = traverse(node)
+while nodev :
+    statements
+    (nodev,lev) = traverse(iter)</pre>
+    The <code>iter</code> is defined in the initialization that calls <code>traverse()</code> with <code>node</code>. The call at the end of the loop uses <code>iter</code> instead of <code>node</code>.
+</td>
+	</tr>
+</table>
+
+<p>Note that traversing over all nodes can be slow in large files in both <i>Lifelines</i> and in <b>GEDitCOM II</b>. Scripts that use this method can often be made much faster by alternate methods. For example, you can grab the entire GEDCOM text of record or structure in a single <b>GEDitCOM II</b> record or structure property (<i>e.g.</i>, <code>indi.gedcom()</code>). Once you have the GEDCOM string, you an step through the lines using python's built-in and powerful text tools.</p>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec14"></a>Event and Date Functions</h3>
+
+<p>A custom <code>EVENT</code> class handles the <i>Lifelines</i> style events.</p>
+
+<table class="funcs">
+	<tr>
+		<td class="sup">STRING date(EVENT)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING place(EVENT)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING year(EVENT)</td> <td>Same. Year as string or empty string if no valid year in the date.</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING long(EVENT)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="mod">STRING short(EVENT)</td> <td>Same, but it is identical to <code>long(EVENT)</code></td>
+	</tr>
+	<tr>
+		<td class="sup bb">EVENT gettoday()</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="mod">VOID dayformat(EVENT)</td> <td>Same, except 0 is same as 2</td>
+	</tr>
+	<tr>
+		<td class="mod" width="190">VOID monthformat(EVENT)</td> <td>Same, except 0 is same as 2, 5 is same as 3, and 6 is same as 4</td>
+	</tr>
+	<tr>
+		<td class="sup">VOID dateformat(EVENT)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING stddate(EVENT)</td> <td>Same</td>
+	</tr>
+</table>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec15"></a>Value Extraction Functions</h3>
+
+<table class="funcs">
+	<tr>
+		<td class="mod">VOID extractdate(NODE,INV_V,INV_V,INV_V)</td> <td>Replace with <code>(day,month,year) = extractdate(NODE)</code>. The returned result will be (0,0,0) for an invalid or missing date.</td>
+	</tr>
+	<tr>
+		<td class="mod">VOID extractnames(NODE,LIST_V,INV_V,INV_V)</td> <td>Replace with <code>(LIST_V,INT_V,INT_V) = extractnames(NODE)</code></td>
+	</tr>
+	<tr>
+		<td class="mod">VOID extractplaces(NODE,LIST_V,INV_V)</td> <td>Replace with <code>(LIST_V,INT_V) = extractplaces(NODE)</code></td>
+	</tr>
+	<tr>
+		<td class="mod" width="370">VOID extracttokens(STRING,LIST_V,INV_V,STRING)</td> <td>Replace with <code>(LIST_V,INT_V) = extracttokens(STRING,STRING)</code><td>
+	</tr>
+</table>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec16"></a>User Interaction Functions</h3>
+
+<table class="funcs">
+	<tr>
+		<td class="mod">VOID getindi(INDI_V[,STRING])</td> <td>Revise to <code>INDI_V = getindi()</code>. Also <code>STRING</code> is not supported but can pass document object to get individual not in the front document.</td>
+	</tr>
+	<tr>
+		<td class="mod">VOID getindimsg(INDI_V,STRING)</td> <td>Same as <code>getindi()</code></td>
+	</tr>
+	<tr>
+		<td class="ni">VOID getindiset(SEV_V[,STRING])</td> <td>(not implemented)</td>
+	</tr>
+	<tr>
+		<td class="mod">VOID getfam(FAM_V[,STRING])</td> <td>Revise to <code>FAM_V = getfam()</code>. Also <code>STRING</code> is not support but can pass document object to get family not in the front document.</td>
+	</tr>
+	<tr>
+		<td class="mod">VOID getint(INT_V [,STRING])</td> <td>Replace with <code>INT_V = getint([String])</code></td>
+	</tr>
+	<tr>
+		<td class="mod">VOID getstr(STRING_V[,STRING])</td> <td>Replace with <code>STRING_V = getstr([STRING,STRING])</code> where first string is initial text to display to user and second string is the prompt.</td>
+	</tr>
+	<tr>
+		<td class="mod bb">VOID getstrmsg(STRING_V,STRING)</td> <td class="bb">Same as <code>getstr()</code></td>
+	</tr>
+	<tr>
+		<td class="sup">INDI choosechild(INDI|FAM)</td> <td>Same. Can pass document reference in a second parameter if the individual or family is not in the front document.</td>
+	</tr>
+	<tr>
+		<td class="sup">FAM choosefam(INDI)</td> <td>Same. Can pass document reference in a second parameter if the individual is not in the front document.</td>
+	</tr>
+	<tr>
+		<td class="sup">INDI chooseindi(SET)</td> <td>Same. Can pass document reference in a second parameter if the individuals are not in the front document.</td>
+	</tr>
+	<tr>
+		<td class="sup">INDI choosespouse(INDI)</td> <td>Same. Can pass document reference in a second parameter if the individual in not in the front document.</td>
+	</tr>
+	<tr>
+		<td class="ni bb">SET choosesubset(SET)</td> <td class="bb">Not implemented</td>
+	</tr>
+	<tr>
+		<td class="sup" width="250">INT menuchoose(LIST [,STRING])</td> <td>Same</td>
+	</tr>
+</table>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec17"></a>String Functions</h3>
+
+<p>Strings are handled by standard python strings, which means you can make use of all the <a href="http://docs.python.org/library/stdtypes.html#string-methods" target="new">python string methods</a> as well. The <i>Lifelines</i> methods are implemented as follows (some just for convenience):</p>
+
+<table class="funcs">
+	<tr class="sup">
+		<td>STRING lower(STRING)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING upper(STRING)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING capitalize(STRING)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING trim(STRING, INT)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">STRING rjustify(STRING, INT)</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING save(STRING)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING strsave(STRING)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING concat(STRING [,STRING]+)</td> <td>Same, can have any number of arguments.</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING strconcat(STRING [,STRING]+)</td> <td>Same, can have any number of arguments.</td>
+	</tr>
+	<tr>
+		<td class="sup bb">INT strlen(STRING)</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING substring(STRING, INT, INT)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">INT index(STRING, STRING, INT)</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING d(INT)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING card(INT)</td> <td>Same, except works only for 0 to 10.</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING ord(INT)</td> <td>Same, except output is 1st, 2nd, etc.</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING alpha(INT)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">STRING roman(INT)</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">STRING strsoundex(STRING)</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="sup">INT strtoint(STRING)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">INT atoi(STRING)</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="sup">INT strcmp(STRING, STRING)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">BOOL eqstr(STRING, STRING)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">BOOL nestr(STRING, STRING)</td> <td>Same</td>
+	</tr>
+</table>
+
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec18"></a>Output Mode Functions</h3>
+
+<p>In Lifelines programs, elements that are not function calls are sent to the output. This method has to be modifed in this emulator. The functions are listed here; the details as below the table.</p>
+
+<table class="funcs">
+	<tr>
+		<td class="mod">VOID linemode()</td> <td>Same, except move before <code>ll_init()</code></td>
+	</tr>
+	<tr>
+		<td class="mod">VOID pagemode(INT, INT)</td> <td>Same, except move before <code>ll_init()</code></td>
+	</tr>
+	<tr>
+		<td class="mod">VOID col(INT)</td> <td>Same in page mode, not allowed in line mode</td>
+	</tr>
+	<tr>
+		<td class="sup">VOID row(INT)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">VOID pos(INT, INT)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">VOID pageout()</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="mod">STRING nl()</td> <td>Outputs the new line (in method that depends on mode), but does not return a string. It must be moved to a separate line.</td>
+	</tr>
+	<tr>
+		<td class="sup">STRING sp()</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">STRING qt()</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="ni bb">VOID newfile(STRING,BOOL)</td> <td class="bb">Not implemented - but easy to support in python file methods (or add to the module if needed)</td>
+	</tr>
+	<tr>
+		<td class="mod bb">STRING outfile()</td> <td class="bb">Move this to before <code>ll_init()</code> and the report will be diverted to a file, which the user will select from standard Mac file dialog window. It can be used after <code>ll_init()</code> to retrieve the file name (full POSIX style path).</td>
+	</tr>
+	<tr>
+		<td class="ni bb">VOID copyfile(STRING)</td> <td class="bb">Not implemented - but easy to support in python file methods (or add to the module if needed)</td>
+	</tr>
+	<tr>
+		<td class="mod" width="230">VOID print(STRING[,STRING]*)</td> <td>Convert to python print commnd (by dropping the parentheses on the argument). The output goes to <b>GEDitCOM II</b>'s scripting panel. But the output might be buffered and not appear when expected. If you want to print a message to the panel during execution of the script, convert <code>print()</code> calls to <a href="#message"><code>message()</code></a> calls.</td>
+	</tr>
+</table>
+
+<h4>Line Mode</h4>
+
+<p>The line mode is the default mode. In this mode strings are just appended to the output. Sections of Lifelines programs that output content, however, must combine the content into strings and then pass the string to the <a href="#outfxn"><code>out()</code></a> command provided in this emulator to handle output. For example, a line such as:</p>
+
+<pre class="alone">"ANCESTORS OF -- " upper(name(i)) "    (" key(i) ") " nl() nl()
+</pre>
+
+<p>should be converted to</p>
+
+<pre class="alone">out("ANCESTORS OF -- "+upper(name(i))+"    ("+key(i)+") ")
+nl()
+nl()
+</pre>
+
+<p>which combines the strings (with <code>+</code>'s), sends the result to <a href="#outfxn"><code>out()</code></a>, and moves the <code>nl()</code> commands to their own lines. Alternatively, the <code>nl()</code> can be replaced with new line characters:</p>
+
+<pre class="alone">out("ANCESTORS OF -- "+upper(name(i))+"    ("+key(i)+") \n\n")
+</pre>
+
+<p>The line mode does not support the <code>col()</code> command. As a convenience, this emulator provides a <a href="#colfxn"><code>cols()</code></a> function to help rewrite Lifelines output in line mode that uses <code>col()</code>. For example, Linelines output such as:</p>
+
+<pre class="alone">col(1) name(i)
+col(38) key(i)
+col(49) stddate(birth(i))
+col(64) stddate(death(i)) nl()</pre>
+
+<p>can be converted to</p>
+
+<pre class="alone">cols(name(i),38,key(),49,stddate(birth(i)),64,stddate(death(i)))
+nl()
+</pre>
+
+<p>If the output is spread into separate statements, each call to <a href="#colfxn"><code>cols()</code></a> restarts at column 1 and you have to adjust the subsequent the column numbers. The above example could be converted to two statements using:</p>
+
+<pre class="alone">cols(name(i),38,key(),49)
+cols(stddate(birth(i)),15,stddate(death(i)))
+nl()
+</pre>
+
+<p>If the first item does not start in column 1, you can indent with:</p>
+
+<pre class="alone">cols("",5,name(i))
+</pre>
+
+<p>Finally, any column number can be negative of the desired column to right justify the preceding text in that output field.</p>
+
+<h4>Page Mode</h4>
+
+<p>Output in page mode is closer to Lifelines output except that all <code>row()</code>, <code>col()</code>, and <code>pos()</code> have to move to their own lines and all strings have to be sent to <a href="#outfxn"><code>out()</code></a>. For example, the Lifelines output:</p>
+
+<pre class="alone">pos(4,10)
+"  FULL NAME:   " name(i) col(46) "(" key(i) ")" nl() nl()
+</pre>
+
+<p>can converted to</p>
+
+<pre class="alone">pos(4,10)
+out("  FULL NAME:   "+name(i))
+col(46)
+out("("+key(i)+")")
+nl()
+nl()
+</pre>
+
+<p>Furthermore, you should use <code>nl()</code> to advance to next row in page mode and not simply output the character <code>&quot;\n&quot;</code>.</p>
+
+<h4>Program Output</h4>
+
+<p>By default, the output is sent to a <b>GEDitCOM II</b> report with fixed-space font. To direct to a file instead of a report, use an <code>outfile()</code> command before the <code>ll_init()</code> command.</p>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec19"></a>Person Set Functions and GEDCOM Extraction</h3>
+
+<p>These functions are implemented with a custom SET class.</p>
+
+<table class= "funcs">
+	<tr>
+		<td class="mod">VOID indiset(SET_V)</td> <td>Replace with SET_V = indiset()</td>
+	</tr>
+	<tr>
+		<td class="sup">SET addtoset(SET,INDI,ANY)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">SET deletefromset(SET,INDI,BOOL)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">INT lengthset(SET)</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="sup">SET union(SET, SET)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">SET intersect(SET, SET)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">SET difference(SET, SET)</td> <td class="bb">Sme</td>
+	</tr>
+	<tr>
+		<td class="sup">SET parentset(SET)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">SET childset(SET)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">SET spouseset(SET)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">SET siblingset(SET)</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="sup">SET ancestorset(SET)</td> <td>Same except can optionally add document in a second parameter if not for front document</td>
+	</tr>
+	<tr>
+		<td class="sup">SET descendentset(SET)</td> <td>Same except can optionally add document in a second parameter if not for front document</td>
+	</tr>
+	<tr>
+		<td class="sup bb">SET descendantset(SET)</td> <td class="bb">Same except can optionally add document in a second parameter if not for front document</td>
+	</tr>
+	<tr>
+		<td class="sup">SET uniqueset(SET)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">VOID namesort(SET)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">VOID keysort(SET)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup bb">VOID valuesort(SET)</td> <td class="bb">Same</td>
+	</tr>
+	<tr>
+		<td class="ni">VOID genindiset(STRING,SET)</td> <td>Not implemented</td>
+	</tr>
+	<tr>
+		<td class="ni bb">VOID gengedcom(SET)</td> <td class="bb">Not implemented</td>
+	</tr>
+	<tr>
+		<td class="mod">forindiset(b,i,v,n)</td> <td>Change the loop to
+<pre>(i,v,n,iter) = forindiset(b)
+while i :
+    statements
+    (i,v,n) = forindiset(iter)</pre>
+    The <code>iter</code> is defined in the initialization that calls <code>forindiset()</code> with the set. The call at the end of the loop uses <code>iter</code> instead of the set.
+
+</td>
+	</tr>
+</table>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec20"></a>Record Update Functions</h3>
+
+<p>This <i>Lifelines</i> emulation does not support editing of the data. You can however, use other <b>GEDitCOM II</b> script-editing methods to make changes to the data in a script.</p>
+
+<table class="funcs">
+	<tr>
+		<td class="ni">NODE createnode(STRING, STRING)</td> <td>Not implemented</td>
+	</tr>
+	<tr>
+		<td class="ni">VOID addnode(NODE, NODE, NODE)</td> <td>Not implemented</td>
+	</tr>
+	<tr>
+		<td class="ni">VOID deletenode(NODE)</td> <td>Not implemented</td>
+	</tr>
+</table>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec21"></a>Record Linking Functions</h3>
+
+<table class="funcs">
+	<tr>
+		<td class="sup">BOOLEAN reference(STRING)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">NODE dereference(STRING)</td> <td>Same</td>
+	</tr>
+	<tr>
+		<td class="sup">NODE getrecord(STRING)</td> <td>Same</td>
+	</tr>
+</table>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec22"></a>Miscellaneous Functions</h3>
+
+<table class = "funcs">
+	<tr>
+		<td class="ni">VOID lock(INDI|FAM)</td> <td>Not implemented</td>
+	</tr>
+	<tr>
+		<td class="ni bb">VOID unlock(INDI|FAM)</td> <td class="bb">Not implemented</td>
+	</tr>
+	<tr>
+		<td class="mod">STRING database()</td> <td>Same, except name of <b>GEDitCOM II</b> document</td>
+	</tr>
+	<tr>
+		<td class="mod bb">STRING version()</td> <td class="bb">Same, except <b>GEDitCOM II</b> version number</td>
+	</tr>
+	<tr>
+		<td class="sup">VOID system(STRING)</td> <td>Same</td>
+	</tr>
+</table>
+
+<p>(<a href="#secind">section index</a>)</p>
+
+<h3><a name="sec23"></a>Additional <b>GEDitCOM II</b> Functions</h3>
+
+<p>These methods were added as needed in various scripts and were used to keep the <i>Lifelines</i> emulation separate from all other <b>GEDitCOM II</b> modules.</p>
+
+<table class="funcs">
+    <tr>
+		<td class="sup bb">ll_init(STRING)</td><td class="bb">Must be called at the beginning of all Lifelines emulations. The one parameter is the name of the script. The output mode and output file (if desired) must be determined by functions calls <i>before</i> <code>ll_init()</code>.</td>
+	</tr>
+    <tr>
+		<td class="sup bb"><a name="outfxn"></a>out(STRING)</td><td class="bb">Send this string to program output. In line mode, the string adds to the end of the output. In page mode, it is inserted at the current row and column position.</td>
+	</tr>
+    <tr>
+		<td class="sup bb"><a name="colfxn"></a>cols(STRING,INT,...)</td><td class="bb">Output each <code>STRING</code> in the space from current position up to (but no including) column number in the next integer. Can have any number of arguments. If any <code>INT</code> is negative, the preceding text will be right justifed up to that column. If the number of arguments is odd, the last string is appended to the output.</td>
+	</tr>
+	<tr>
+		<td class="sup bb">fatalerror(msg,details)</td> <td class="bb">Alert the user of error with a message (and details can be used to add more information in smaller font). After the message, the script quits.</td>
+	</tr>
+    <tr>
+		<td class="sup bb">count(type[,doc])</td> <td class="bb">Return number of <code>INDI</code> or <code>FAM</code> records (in <code>type</code>) in the document (looks at front document if <code>doc</code> omitted)</td>
+	</tr>
+    <tr>
+		<td class="sup"><a name="message"></a>message(text[,fraction])</td> <td>Print message in the scripting panel window and optionally display the <code>fraction</code> of the script that is completed (<code>text</code> can be <code>None</code> for no message and just enter a <code>fraction</code>). Unlike python <code>print</code> command (which may be buffered), the message from this command will print to the panel immediately. If all output to the panel is by messages, the panel will close when the script is done. To keep it open when done, include at least one <code>print</code> command.</td>
+	</tr>
+</table>
+
+</body>
+</html>

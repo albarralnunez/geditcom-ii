@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=ISO-8859-1">
+  <title>GEDitCOM II Pedigree Format Help</title>
+  <link rel="stylesheet" type="text/css" href="help.css"></head>
+
+<body><h1>Pedigree Format</h1>
+
+<p>The &quot;Pedigree Format&quot; displays each individual as a four-generation pedigree chart (individual up to grandparents; hint: you can resize the individual window to display the entire chart and that size will be remembered). You can click on links in this view to quickly navigate around the genealogy data in your file:
+</p>
+
+<ol>
+<li>Click on any chart cell to view the pedigree chart for that individual (note: a line to the right of any grandparent means additional ancestors are documented; the lack of a line means no more ancestors are known).
+<li>Click on any family icon  button to view a family group chart for the spouses above and below the button.
+<li>To see descendants, click on any name in the list of &quot;Children.&quot; (note: a &quot;+&quot; in front of any child means additional descendants of that child are documented; the lack of a plus means that child has no documented children).
+<li>If the individual had more than one marriage, you click click on names in the &quot;Other Spouses/Children&quot; list (note: a &quot;+&quot; in front of any other child means additional descendants of that child are documented; the lack of a plus means that child has no documented children).
+</ol>
+
+<p>You cannot edit the pedigree chart. Instead, to edit all the details on an individual click various tabs in the button bar at the top of the window for &quot;Events,&quot; &quot;Multimedia,&quot; and &quot;Other.&quot; While most things can be edited, a few options in the &quot;Default Format&quot; are not available. You can alway switch back to the &quot;Default Format&quot; for any editing needs not found in the &quot;Pedigree Format.&quot;
+</p>
+
+<p>Besides individual records, other record editing options are:
+</p>
+
+<ul>
+
+<li><b>Family Records</b>: These records will show as a concise family group chart. You can edit marriage date and place and attach or detach children. To edit more family details, click the &quot;Events and Others&quot; or &quot;Multimedia&quot; tabs at the top of the window. To edit more marriage details, open the &quot;Events and Others&quot; section and click the &quot;info&quot; icon after the marriage event.
+
+<li><b>Other Records</b>: All other records are edited by methods similar to the &quot;Default Format&quot; and mostly documented in the <b>GEDitCOM II</b> help. The colors and fonts, however, use the style of the &quot;Pedigree Format.&quot;
+
+</ul>
+
+<p>The following sections give more details about the &quot;Pedigree Format&quot; including options for customization in <b>GEDitCOM II</b> preferences:
+</p>
+
+<ul>
+<li><a href="#scripts">Scripts</a></li>
+<li><a href="#fonts">Format Fonts</a></li>
+<li><a href="#colors">Format Colors</a></li>
+<li><a href="#variables">Format-Specific Variables</a></li>
+<li><a href="#icons">Icons</a></li>
+<li><a href="#languages">Languages</a></li>
+</ul>
+
+<h2><a name="scripts"></a>Embedded Scripts</h2>
+
+<p>The following embedded scripts provided extra functions when control clicking on some fields:
+</p>
+
+<dl>
+<dt>Name Editing Fields</dt>
+<dd>Control click to change the case of the name (<i>e.g.</i>, to all uppercase, title case, or surname only in uppercase).</dd>
+
+<dt>Lat,Lon Editing Fields</dt>
+<dd>Control click to open that latitude and longitude in a website called GeoHack. That web sites will have numerous links to map or view that location.</dd>
+
+</dl>
+
+<h2><a name="fonts"></a>Format Fonts</h2>
+
+<p>To change format-specific fonts, open the <b>GEDitCOM II</b> preferences window and click on the &quot;Fonts&quot; tab. The &quot;Pedigree Format's&quot; fonts are:
+</p>
+
+<dl>
+<dt>Label Text</dt>
+<dd>Prominent text labels.</dd>
+
+<dt>Static Text</dt>
+<dd>Lower-level text labels.</dd>
+
+<dt>Editing Text</dt>
+<dd>The text used in editing fields.</dd>
+
+<dt>Button Text</dt>
+<dd>The text for buttons.</dd>
+
+<dt>Check Box Text</dt>
+<dd>The text next to check boxes.</dd>
+
+<dt>Popup Menu Text</dt>
+<dd>The text used in pop-up menus.</dd>
+
+<dt>Hyperlink Text</dt>
+<dd>The text used for clickable links between records</dd>
+
+<dt>Children Number</dt>
+<dd>The font used for the numbering of children in the family group chart. The color is ignored and set to the chart's background color. This font is also used for the family group chart title. In this use, the size is ignored and set to 18 pt.
+</dd>
+
+<dt>GEDCOM Extension Text</dt>
+<dd>The &quot;Default Format&quot; has some extensions to GEDCOM 5.5. As long as you are using GEDitCOM II, those extension will always work fine. If the export to another program, the extensions will exported, but the other program will probably not recognize the data is may even delete it. To help you recognize GEDCOM extension, these labels are indicated in the font. The custom tags are mostly in Source and Multimedia Object records.
+</dd>
+
+</dl>
+
+<h2><a name="colors"></a>Format Colors</h2>
+
+<p>To change format-specific colors, open the <b>GEDitCOM II</b> preferences window and click on the &quot;Colors&quot; tab. The &quot;Pedigree Format's&quot; colors are:
+</p>
+
+<dl>
+<dt>Window Background</dt>
+<dd>The main color for the background of a browser window.</dd>
+
+<dt>Record Header Box Background</dt>
+<dd>The top section of the window background in a browser window uses this color rather than the main window background color.</dd>
+
+<dt>Editing Background</dt>
+<dd>The background for cells used for text editing.</dd>
+
+<dt>Table Cell Background</dt>
+<dd>The background for header cells used in tables of data.</dd>
+
+<dt>Main Individual Background</dt>
+<dd>The background color for the individual's cell in the pedigree chart window. You can click this cell to edit the individual and thus it is good for this color to differ from the background color.
+</dd>
+
+<dt>Family Chart Background</dt>
+<dd>The background color for family charts. This color is ignored when printing, which will use white background instead.
+</dd>
+
+</dl>
+
+
+<h2><a name="variables"></a>Format-Specific Variables</h2>
+
+<p>To change format-specific variables, open the <b>GEDitCOM II</b> preferences window and click on the &quot;Editing&quot; tab. The margin settings and default settings are common to all formats. The variables specific to the &quot;Pedigree Format&quot; are:
+</p>
+
+<dl>
+
+<dt>Multimedia Full Size</dt>
+<dd>Images in multimedia records will display at the full size of the image in the file (which can be scaled using the scale menu). The larger dimension of the image, however, will never exceed the window width or this &quot;Multimedia Full Size&quot; setting, whichever is smaller. You can use the &quot;Zoom&quot; pane view the image at a scale larger than the window (as set with the scale menu).
+</dd>
+
+<dt>Thumbnails Per Row</dt>
+<dd>Links for records to multimedia objects are displayed with a thumbnail image to the object. This preference sets the number of thumbnails per row in the display. The thumbnails will also adjust in size if the window size is changed.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;To spped up display of thumbnails, GEDitCOM II generates small thumbnails for each multimedia object containing an image. These thumbnails look fine when the links are small. If the links get large (<i>e.g.</i>, when using one thumbnail per row), this format will use the full scale image rather than the internal thumbnails. The image quality will be good, but it might slow down access to records with lots of linked images. To maximize speed when opening such records, it is best to increase this setting to at least 2 and you may need 3 or more if using a large monitor with large record windows.
+</dd>
+
+<dt>Notes Position</dt>
+<dd>A numeric code for location of the editing pane in Notes records. The options are: 1 = left, 2 = top, 3 = right, and 4 = bottom.
+</dd>
+
+<dt>Chart Box Width</dt>
+<dd>The width of cells in the pedigree chart. Make it large enough for your longest names.
+</dd>
+
+<dt>Chart Box Width</dt>
+<dd>The width of cells in the pedigree chart. Make it large enough for your longest names.
+</dd>
+
+<dt>Chart Column Spacing</dt>
+<dd>The horizontal spacing between generations in the pedigree chart</dd>
+
+<dt>Chart Row Spacing</dt>
+<dd>The vertical spacing between spouses in the pedigree chart</dd>
+
+<dt>Chart Box Padding</dt>
+<dd>Extra padding within the cell in the horizontal direction</dd>
+
+</dl>
+
+<h2><a name="icons"></a>Icons</h2>
+
+<p>The &quot;Default Format&quot; has several icons that can be clicked for various functions. Most of them are short cuts to menu commands.
+<p>
+
+<ul>
+
+<li><img src = "images/plus.tiff"/> - attach something, an event, a child, or optional data.
+<li><img src = "images/minus.tiff"/> - detach something, an event or a child
+<li><img src = "images/family.tiff" /> - link to a family record
+<li><img src = "images/locked.tiff"/> - a locked record (click to change)
+<li><img src = "images/private.tiff"/> - a private record (click to change)
+<li><img src = "images/unlocked.tiff"/> - an unlocked record (click to change)
+<li><img src = "images/details.tiff"/> - add details on the neighboring data.
+<li><img src = "images/details_here.tiff"/> - edit details on the neighboring data. A filled in letter &quot;i&quot; indicates some data is already present and click will let you see it and edit it.
+<li><img src = "images/GPS.tiff"/> - edit more information on a place including GPS information and the place hierarchy.
+<li><img src = "images/multimedia.tiff"/> - attach multimedia object
+<li><img src = "images/notes.tiff"/> - attach notes
+<li><img src = "images/source.tiff"/> - attach source citation
+<li><img src = "images/researchlog.tiff"/> - attach research log record
+
+</ul>
+
+<h2><a name="languages"></a>Languages</h2>
+
+<ul>
+<li>English</li>
+<li>French</li>
+<li>Spanish</li>
+</ul>
+
+</html>

@@ -1,0 +1,13 @@
+newline -1
+cell static local("DATE")&":"
+set font "Details Text" offset #labelOffset
+sizetofit
+
+cell EditDate
+set tabwidth 1
+if printing is false
+  set border line height #cellHeight$+2
+else
+  set border none
+endif
+HideExcess

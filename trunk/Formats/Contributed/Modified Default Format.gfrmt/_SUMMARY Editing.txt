@@ -1,0 +1,17 @@
+!SJGR changed from default to handle summary pane in LOG records differently
+
+if printing
+  hideexcess
+else
+if #msg = "tab"
+   #fldHeight=#displayHeight$-#vpos$-#bottomMargin$-161
+   cell Editfield,"("&local("type to enter summary of this research")&")"
+   width -1
+   height #fldHeight		
+   help local("Enter overall summary of this research log.")
+else
+  cell EditPane,local("(type to enter summary of this research)")
+  set Position bottom fraction .3
+  Help local("Enter overall summary of this research log.")
+endif
+endif

@@ -1,0 +1,110 @@
+Load ResetTabs,OBJEPanes
+
+! -------------- Start Template -----------------
+GoSub ResetTabs,0
+GoSub OBJEPanes,""
+
+#title=@TITL
+#path=@_FILE
+#form=@FORM
+
+cell GroupBox,local("Multimedia Link")
+  width -1
+
+  newline
+  #details="No"
+  if #form="url"
+    tab 1
+    cell Multimedia
+    set url #path width -1 font "Hyperlink Text"
+    if #title<>""
+      text #title
+    else
+      text #path
+    endif
+    set objectImage @this imageposition left
+    sizetofit -1
+
+    set alignment left height #imageHeight$
+    set help local("Click to open this URL link in your browser application.") 
+  else
+    newline
+    cell Multimedia
+    #padding=5
+    set objectFull @this mmFormat #form width -1
+    set imageposition imageonly
+    #iWidth=#imageWidth$/72
+    #iHeight=#imageHeight$/72
+    #ppi=#imagePPI$
+    #maxScale=(#cellWidth$-2*#padding)/#imageWidth$
+    if #scale>#maxScale
+      #makeWidth=#cellWidth$-2*#padding
+      #makeHeight=#makeWidth*#imageHeight$/#imageWidth$+2*#padding
+    else if #scale>.1
+      #makeWidth=#imageWidth$*#scale
+      #makeHeight=#imageHeight$*#scale
+    else
+      #makeWidth=#cellWidth$-2*#padding
+      #makeHeight=#makeWidth*#imageHeight$/#imageWidth$+2*#padding
+    endif
+    
+    ! handle non-image objects
+    if #imageType$="noimage"
+      set height #imageHeight$+2*#padding
+      set text local("No image representation. Click to open in another application")
+      set font "Static Text" imageposition left alignment left
+      help local("Click to open in a helper application.")
+      help " "&local("You can configure which application opens each type of multimedia object.")
+    else if #imageType$="notfound"
+      set height #imageHeight$+2*#padding
+      set text " "&local("Multimedia file not found (click to fix)")
+      set font "Static Text" imageposition left alignment left
+      set MenuLink "Attach Multimedia"
+      help local("Click to link this record to a multimedia object.")
+    else if #imageType$="image"
+      set imageWidth #makeWidth
+      set height #makeHeight+2*#padding
+      #details="Yes"
+      help local("Click to open in a helper application.")
+      help " "&local("You can configure which application opens each type of multimedia object.")
+    else
+      set imageWidth #makeWidth
+      set height #makeHeight+2*#padding
+      ! thumbnail
+      help local("Click to view multimedia record")
+      set recordLink @this paneID ""
+      #details="Yes"
+      #ppi=-1
+    endif
+    
+  endif
+
+  Show _FILE #form
+  ShowAll FORM
+  if #details="Yes"
+    newline
+    cell static,local("Details")&":"
+    set tabwidth 1 alignment right
+    cell static
+    if #ppi>0
+      #iWidth=int(100*#iWidth)/100
+      #iHeight=int(100*#iHeight)/100
+      text local("Size")&" "&#iWidth&" in X "&#iHeight&" in"
+      text " (ppi: "&#ppi&")"
+    else
+      #iWidth=int(72*#iWidth)
+      #iHeight=int(72*#iHeight)
+      text #iWidth&" X "&#iHeight&" pixel thumbnail"
+    endif
+    width -1
+    Show _SCALE
+  else
+    Hide _SCALE
+  endif
+
+EndGroup
+
+hideexcess
+
+optionalTag _KEY,local(_KEY)
+

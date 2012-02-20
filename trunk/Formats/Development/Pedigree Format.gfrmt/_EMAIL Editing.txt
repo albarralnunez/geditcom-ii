@@ -1,0 +1,15 @@
+! static text with level and tabNewLine
+cell static,local(@tag)&":"
+set tabwidth 1 alignment right font "GEDCOM Extension Text"
+
+! edit field with value
+cell EditValue
+set Width #rightMargin$-#rightSkip-#hpos$-22-#cellSkip Offset -2
+help local("Enter email address")
+
+if @contents!=""
+  cell Multimedia
+  set Width #rightMargin$-#rightSkip-#hpos$ offset -3
+  set url "mailto:"&@contents image SendEmail border no
+  set help local("Click to send email")
+endif

@@ -1,0 +1,15 @@
+! Indent and put up label
+NewLine
+cell static local(@tag)&": "
+sizetofit
+
+! edit field with value
+cell EditValue
+set Width -1
+set border none
+
+NewLine
+tab
+#leftSkip=#hpos$
+
+ShowAll all

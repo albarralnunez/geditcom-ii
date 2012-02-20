@@ -1,0 +1,14 @@
+load LevTag
+
+ifStr @TYPE="Creation Date"
+  gosub LevTag
+
+  Cell static local("Creation Date")&": "&@contents
+  SizeToFit
+  set height #defaultHeight$
+  HideExcess
+  help local("The date this record was first created")
+else
+  use _Unknown_ Editing
+endif
+

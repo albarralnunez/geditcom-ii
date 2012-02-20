@@ -1,0 +1,13 @@
+newline
+cell static,local(@tag)&": "
+sizetofit
+
+cell EditValue
+set Width -1
+set border none
+
+NewLine
+tab
+#leftSkip=#hpos$
+
+ShowAll TYPE

@@ -1,0 +1,7 @@
+load LevTag
+
+gosub LevTag
+cell CheckBoxEdit,local("LaTeX Content")
+set height #defaultHeight$ controlsize small offset #checkOffset
+sizetofit
+help local("Check to include this text in the book as verbatim LaTeX content")

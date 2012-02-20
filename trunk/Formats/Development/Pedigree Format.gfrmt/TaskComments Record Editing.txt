@@ -1,0 +1,51 @@
+load ListBlock,TagBlock,ResetTabs,References,ToolBtn
+
+! --------- Name -----------
+#oldWidth=#rightMargin$
+DisplayWidth #oldWidth+#rightSkip+1
+newline -#topMargin$-1
+hskip -#leftSkip-1
+cell GroupBox
+border line
+titleposition none
+cellbackground "Record Header Box Background"
+width -1
+
+newline -3
+gosub ToolBtn,"Attach Multimedia","multimedia",local("Click to attach multimedia object")
+gosub ToolBtn,"Attach Notes","notes",local("Click to attach notes")
+gosub ToolBtn,"Attach Source","source",local("Click to attach source")
+
+newline 3
+cell static
+set width -1
+text @contents
+EndGroup
+
+DisplayWidth #oldWidth
+
+! --------- The Results -----------
+if printing
+  cell label,local("Task Results")
+  SizeToFit
+  newline -3
+  cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-3
+  cell ExpressionField,@_RESULTS
+  set width -1 minheight 15
+  sizetofit 3
+  Show _RESULTS
+  EndGroup
+else
+  Show _RESULTS
+endif
+GoSub ResetTabs
+
+! --------- NOTEs and OBJEs -----------
+gosub TagBlock,"OBJE",local("Multimedia")
+gosub References,""
+
+DisplayHeight <500
+
+DropTypes NOTE,OBJE,SOUR

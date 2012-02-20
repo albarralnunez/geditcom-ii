@@ -1,0 +1,5 @@
+#leftSkip=2
+#rightSkip=3
+cell EditField
+set MinHeight 200 border no font "Notes Editing Text" width -1
+sizetofit

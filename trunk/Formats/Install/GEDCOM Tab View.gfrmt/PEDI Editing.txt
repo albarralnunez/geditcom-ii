@@ -1,0 +1,11 @@
+load LevTag
+
+gosub LevTag
+
+! edit field with value
+cell PopupMenuEdit
+MenuItems local("BIRT")&"::",local("Adopted")&":adopted"
+MenuItems local("Foster")&":foster",local("Sealing")&":sealing"
+SizeToFit
+set offset #popupOffset border none controlsize small height #defaultHeight$
+help local("Click to change relationship to parents")

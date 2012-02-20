@@ -1,0 +1,14 @@
+cell label,local("Enter custom label for the user reference entry")
+SizeToFit
+newline -3
+cell GroupBox
+set width -1 border line titleposition none
+newline -#lineSkip-3
+SetTab 120
+
+! show date and place
+Show TYPE
+
+EndGroup
+
+resizeWindow yes

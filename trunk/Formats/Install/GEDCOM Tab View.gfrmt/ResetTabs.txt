@@ -1,0 +1,6 @@
+sub ResetTabs
+  ClearTabs
+  Repeat "#i",1,10
+    SetTab #i*#tabWidth
+  EndRepeat
+endSub

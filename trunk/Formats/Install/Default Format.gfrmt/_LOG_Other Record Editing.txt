@@ -1,0 +1,39 @@
+load TagBlock,ResetTabs,ListBlock,References,AttachData,_LOGPanes
+
+! -------------- Start Template -----------------
+DropTypes INDI,FAM,_PLC
+GoSub ResetTabs,0
+GoSub _LOGPanes,"Other"
+
+! --------- Record links -----------
+if _FAM|_INDI is here
+  cell GroupBox,local("Researched Records")
+    width -1
+    newline -4
+    ShowAll _INDI
+    ShowAll _FAM
+    ShowAll __PLC
+  EndGroup
+endif
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+  width -1
+  newline -#lineSkip-3
+  gosub AttachData
+EndGroup
+#lineSkip=#lineSkip$
+
+! -------- Additional Data ------------
+ClearTabs
+gosub ResetTabs,50
+cell GroupBox,local("Additional Data")
+  width -1
+  ShowAll CHAN
+EndGroup
+
+optionaltag _INDI,local("Individual Being Researched")
+optionaltag _FAM,local("Family Being Researched")
+optionaltag __PLC,local("Place Being Researched")
+
+HideExcess

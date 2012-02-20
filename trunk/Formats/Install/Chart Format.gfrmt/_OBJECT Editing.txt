@@ -1,0 +1,14 @@
+cell static
+set font "Details Text"
+text local(@tag)&": "
+sizetofit
+
+cell EditField
+set width -1 
+if printing is false
+  set border line
+else
+  set border none font "Details Text" offset 2
+endif
+set MinHeight 22
+sizetofit 2

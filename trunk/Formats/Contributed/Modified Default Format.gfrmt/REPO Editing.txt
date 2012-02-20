@@ -1,0 +1,31 @@
+!SJGR Increase height of create link button and moved it a couple of pixels to the right
+if tagexists is true
+  ! static text with level and tab  NewLine
+  cell static,local(@tag)&":"
+  sizetofit
+  set tabwidth 1 alignment right
+
+  ! link to REPO
+  cell LinkButton
+  TextExpression @contents.rec
+  AppendedExpression view
+  set border no Font "Hyperlink Text"
+  sizetofit
+  RecordLink @contents
+  Help local("Click to view Repository record")
+
+  ClearTabs
+  SetTab 110
+  Show CALN
+
+ ! Notes show up if there, but no way to attach
+
+else
+  hskip 2
+  cell CreateLinkButton
+  text local("Link to Repository")
+  set border shadowlesssquare target newifnew
+  SizeToFit
+  set height 28
+  help local("Click to link source to a repository record")
+endif

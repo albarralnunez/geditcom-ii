@@ -1,0 +1,78 @@
+load WikiSection,WebLinks,MiniDetail,ShowImageBox,ShowOBJE,EventDate
+
+if #msg="wiki"
+
+  if #hasLabel!="YES"
+    gosub WikiSection,#hasLabel,"Attributes"
+    #hasLabel ="YES"
+  endif
+
+  newline
+  if #vpos$>#boxend
+    DisplayWidth #oldWidth
+  endif
+
+  if #rightMargin$>=#oldWidth
+    #objeID=@OBJE
+    if #objeID is validlink
+      if @#objeID.FORM<>"url"
+        gosub ShowImageBox #objeID
+      endif
+    endif
+  endif
+
+  newline
+  cell static,"◾"
+  set fontcolor "Block Color" offset 3
+  sizetofit
+
+  hskip 0
+  #leftSkip=#hpos$
+
+  cell StaticField
+  set width -1 minheight 10 border none lineheight #lineMult
+  text #ePrefix&" "&#msg1&" "&@contents&". "
+  GoSub EventDate,"It was for",@DATE.user,@PLAC
+  if #etext!=""
+    text #etext&". "
+  endif
+  sizetofit
+
+  ShowAll NOTE "wiki"
+
+  #ePrefix=#Possnoun
+
+  hideexcess
+
+else
+
+  ! label and check box (except no check bo for birth)
+  newline
+  cell GroupBox,local(@tag)
+    set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+    if @tag!=RESI      cell static,local(@tag)&": "
+      set offset #editOffset
+      sizetofit
+      cell editValue
+      set width -1    endif    show DATE    show PLAC    showall AGE    showall TYPE
+    if @tag!=RESI      showall ADDR    else
+      show ADDR
+    endif
+    showall _GPS
+    showall PHON    showall CAUS    showall AGNC    showAll NOTE
+    showAll SOUR
+    ShowAll _LOG    gosub ShowOBJE 2
+
+    newline 5
+    cell static,local("Attach")&": "
+    sizetofit
+    Show NOTE
+    Show SOUR
+    Show _LOG
+    Show OBJE
+    Show _OPTIONAL @tag
+
+  EndGroup
+
+endif

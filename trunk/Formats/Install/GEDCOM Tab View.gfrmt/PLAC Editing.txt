@@ -1,0 +1,31 @@
+load LevTag,ShowMemo
+
+if @rec="SOUR"
+  use _Unknown_
+  
+else
+  gosub LevTag
+
+  if @rec!=HEAD
+    ! edit field with value
+    if printing
+      cell static
+      text @contents
+      font "Editing Text"
+      sizetofit
+      set offset #editLineOffset+2
+    else
+      cell EditValue
+      sizetofit
+      set offset #editLineOffset-2
+    endif
+    set Width -1 border none height #defaultHeight$
+    help local("Enter text for")&": "&local(@tag)
+
+    gosub ShowMemo,@_MEMO
+  endif
+  
+  showAll FORM
+endif
+
+

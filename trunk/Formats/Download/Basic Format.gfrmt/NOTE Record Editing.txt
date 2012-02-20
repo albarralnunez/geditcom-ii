@@ -1,0 +1,22 @@
+load ResetTabs,SectionLabel,TagBlock,RefLinks
+
+DropTypes SOUR,INDI,FAM
+gosub ResetTabs
+
+! -------------- Start Template -----------------
+gosub RefLinks,local("Notes on:"),local("All Notated Records")
+
+if printing
+  gosub SectionLabel local("NOTE")
+  cell ExpressionField,@CONC
+  set width -1 minheight 44 alignment justify border none
+  sizetofit
+endif
+Show CONC
+
+! ------ blocks ------Gosub TagBlock,"SOUR",local("Sources")
+! --------- Additional Data --------
+! Remaining are REFN, RIN, CHAN
+if more
+  gosub SectionLabel local("Additional Data")
+endif

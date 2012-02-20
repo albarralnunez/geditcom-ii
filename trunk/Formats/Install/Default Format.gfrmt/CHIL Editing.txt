@@ -1,0 +1,87 @@
+if #chilNum=0
+
+  newline
+  cell static,local("Children")
+  set tabwidth 1 border square alignment center
+  cellbackground "Table Cell Background"
+
+  cell static,local("SEX")
+  set tabwidth 1 border square alignment center
+  cellbackground "Table Cell Background"
+
+  cell static,local("BIRT")
+  set tabwidth 1 border square alignment center
+  cellbackground "Table Cell Background"
+  
+  hskip -24
+  cell LinkButton
+  menulink "Sort Children"
+  set tabwidth 1 border none image "go-down" imageHeight 12
+  help local("Sort the children")
+
+  cell static,local("DEAT")
+  set tabwidth 1 border square alignment center
+  cellbackground "Table Cell Background"
+  
+  cell static,local("Links")
+  set tabwidth 1 border square alignment center
+  cellbackground "Table Cell Background"
+endif
+
+newline
+#chilNum+=1
+
+cell static
+set tabwidth 1 border square alignment center
+
+tab -2
+cell LinkButton
+set border no tabwidth 1 alignment left font "Hyperlink Text"
+TextExpression @contents.NAME
+AppendedExpression altview
+Format #chilNum&". %@"
+RecordLink @contents
+help local("Click to view child's record")
+
+cell static
+#sex=@contents.SEX
+if #sex="M"
+  text local("Son")
+else if #sex="F"
+  text local("Daughter")
+else
+  text local("Unknown")
+endif
+set alignment center tabwidth 1 border square
+
+cell Expression,@contents.BIRT.DATE
+AppendedExpression view
+set tabwidth 1 alignment center border square
+
+cell Expression,@contents.DEAT.DATE
+AppendedExpression view
+set tabwidth 1 alignment center border square
+
+cell static
+set tabwidth 1 border square alignment center
+#linkWidth=#cellWidth$
+
+! family links
+tab -2
+ReadAll "#fams" from @contents.FAMS
+if #fams[0]>0
+  #oldSkip=#cellSkip
+  #cellSkip=0
+  #linkWidth/=#fams[0]
+  Repeat "#i",1,#fams[0]
+    cell LinkButton,#i
+    RecordLink #fams[#i]
+    set width #linkWidth border no font "Hyperlink Text"
+    help local("Click to open family record #")&#i
+  EndRepeat
+  #cellSkip=#oldSkip
+endif
+
+
+
+

@@ -1,0 +1,7 @@
+newline
+
+tab @level-1
+cell CheckBoxEdit,local("_NOPOI")
+sizetofit
+set autoreload yes
+help local("Check this box to hide the point of interest on the map")

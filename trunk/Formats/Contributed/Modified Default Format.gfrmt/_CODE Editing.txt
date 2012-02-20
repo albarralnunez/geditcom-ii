@@ -1,0 +1,5 @@
+! popup menu
+cell PopupMenuEdit
+set autoreload yesMenuItems local("BTL")&":BTL"MenuItems local("BUR")&":BUR"MenuItems local("CMTY")&":CMTY"MenuItems local("CH")&":CH"MenuItems local("CTHSE")&":CTHSE"MenuItems local("DIP")&":DIP"MenuItems local("GOVL")&":GOVL"MenuItems local("GRVE")&":GRVE"MenuItems local("HSP")&":HSP"MenuItems local("LIBR")&":LIBR"MenuItems local("CTRM")&":CTRM"MenuItems local("MSSN")&":MSSN"MenuItems local("MSQE")&":MSQE"MenuItems local("MUS")&":MUS"MenuItems local("Other")&"::"MenuItems local("CTRR")&":CTRR"MenuItems local("RLG")&":RLG"MenuItems local("RESI")&":RESI"MenuItems local("syn")&":syn"MenuItems local("TEMP")&":TMPL"help local("Click to enter type for this point of interest")set width #codeSize-#cellSkip-22-#cellSkip controlsize small offset -2
+
+

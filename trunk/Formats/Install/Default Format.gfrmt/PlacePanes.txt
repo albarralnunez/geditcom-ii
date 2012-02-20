@@ -1,0 +1,37 @@
+sub PlacePanes,#thisPane,#webID
+  ! --------- Name -----------
+  #oldWidth=#rightMargin$
+  DisplayWidth #oldWidth+#rightSkip+1
+  newline -#topMargin$-1
+  hskip -#leftSkip-1
+  cell GroupBox
+    border line
+    titleposition none
+    cellbackground "Record Header Box Background"
+    width -1
+
+    moveto 1,1
+    
+    cell PaneBar
+    AddPane local("PLAC"),""
+    AddPane local("Maps")&" ("&@count._BOX&")","Maps"
+    AddPane local("Web")&" ("&@count._URL&")","Web"&#webID
+    AddPane local("Multimedia")&" ("&@count.OBJE&")","Media"
+	#plab=local("NOTE")&" ("&@count.NOTE&") "&local("and")
+	#plab&=" "&local("Sources")&" ("&@count.SOUR&")"
+	AddPane #plab,"Notes"
+    set selected #thisPane
+    sizetofit
+    set height #cellHeight$+1		! needed for Tiger
+    shift (#rightMargin$-#hpos$-#cellWidth$)/2
+    help local("Click to view section of this place's data")
+
+    newline 5
+    if #thisPane!=""
+      settab 100
+      Show _PLACE
+    endif
+  EndGroup
+
+  DisplayWidth #oldWidth
+endSub

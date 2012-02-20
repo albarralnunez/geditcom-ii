@@ -1,0 +1,23 @@
+newline
+cell label,local(@tag)&": "
+sizetofit
+
+if @rec="HEAD"
+  cell EditField
+  set width -1 border none minheight 1 alignment justify
+  sizetofit
+else
+  if printing
+    cell ExpressionField @contents.CONC
+    set width -1 border none minheight 1 alignment justify
+    sizetofit
+  else
+    cell LinkButton
+    TextExpression @contents.rec
+    AppendedExpression view
+    set border no Font "Hyperlink Text" width -1 alignment left
+    RecordLink @contents
+    Target child
+    Help local("Click to view and edit notes")
+  endif
+endif

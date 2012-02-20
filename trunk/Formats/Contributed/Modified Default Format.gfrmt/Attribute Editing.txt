@@ -1,0 +1,59 @@
+!SJGR changed from default to move place here from child window
+
+load TagBlock
+
+if #msg="Media"
+  Gosub TagBlock,"OBJE","Media"
+  hideexcess
+  
+else
+newline
+
+! header on first event
+if #first="yes"
+  newline 10
+  cell static,local("Attribute")
+  set tabwidth 1 alignment center border square
+  cellBackground "Table Cell Background"
+
+  cell static,local("Description")
+  set tabwidth 1 alignment center border square
+  cellBackground "Table Cell Background"
+  
+  cell static,local("PLAC")
+  set tabwidth 1 alignment center border square
+  cellBackground "Table Cell Background"
+
+  newline
+  #first="no"
+endif
+  
+! event name, check box, and date
+cell static,local(@tag)
+set tabwidth 1 alignment center border square
+cellBackground "Table Cell Background"
+
+! edit contents of the attribute
+!if @tag="RESI"
+ ! cell Expression @ADDR
+ ! set AppendedExpression contents.trunc border square cellbackground "Table Cell Background"
+!else
+  cell editvalue
+!endif
+set tabwidth 1
+
+Show PLAC Event
+
+! rest in a child window
+cell StructuresLink,AttrDetails,@tag
+set border no offset 3 width -1
+if more
+  set image "details_here"
+else
+  set image "details"
+endif
+LinkAll all
+
+#tagKey=@tag&" details"
+help local("Click to edit")&": "&local(#tagKey)
+endif

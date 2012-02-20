@@ -1,0 +1,24 @@
+!SJGR added a variable to prevent duplication of images
+
+load TagBlock,ResetTabs,ListBlock,References,AttachData,_LOGPanes
+
+! -------------- Start Template -----------------
+DropTypes OBJE
+GoSub ResetTabs,0
+GoSub _LOGPanes,"Media"
+
+! --------- NOTEs, SOURs, OBJEs and _LOGs -----------
+#objdone=""
+Gosub TagBlock,"OBJE","Multimedia"
+!gosub References,""
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+  width -1
+  newline -#lineSkip-3
+  #lineSkip=0
+  Show OBJE
+EndGroup
+#lineSkip=#lineSkip$
+
+HideExcess

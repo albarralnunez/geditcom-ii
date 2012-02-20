@@ -1,0 +1,79 @@
+load LineLabel,EventDate
+
+
+if @rec="HEAD"
+  gosub LineLabel local(@tag)
+
+  ! HEAD record describes the data
+  offset #editOffset
+  cell EditValue
+  set width -1
+
+  ! Possible subordinate DATE and copyright
+  ShowAll DATE
+  ShowAll COPR
+
+else if @rec="SOUR"
+  if #msg="wiki"
+    ! Decode EVEN and its subordinate DATE and PLAC
+    #dText=""
+    if EVEN is here
+      #eventType=@EVEN
+      if #eventType!=""
+        #dText="This source records events of type "&#eventType&". "
+        #ePrefix="The events were recorded "
+      else
+        #ePrefix="The unspecified events in this source were recorded "
+      endif
+      GoSub EventDate,#ePrefix,@EVEN.DATE.user,@EVEN.PLAC
+      if #etext=""
+        #dText&=#ePrefix&" on an unknown date. "
+      else
+        #dText&=#etext&". "
+      endif
+    endif
+
+    ! Look for AGNC
+    #agncText=@AGNC
+    if #agncText!=""
+      if #dText=""
+        #dText="The events in this source were recorded by the "&#agncText&". "
+      else
+        #dText&=" They were recorded by the "&#agncText&". "
+      endif
+    endif
+
+    ! Output any text that was found
+    if #dText!=""
+      newline
+      cell StaticField
+      set width -1 minheight 10 border none lineheight #lineMult
+      text #dText
+      sizetofit
+    endif
+
+    hideexcess       ! hides NOTE
+
+  else
+    ! in SOUR records, subordinate tags record events records, the agency, and allows notes
+    Show EVEN    Show AGNC
+    ShowAll NOTE
+    newline 5
+    cell static,local("Attach")&": "
+    sizetofit
+    Show NOTE
+  endif
+
+else
+  ! In SOUR link details has DATE and TEXT
+  if #msg="Edit"
+    Show DATE
+    Show TEXT
+    hideexcess
+  else
+    gosub LineLabel local(@tag)
+    ShowAll DATE
+    ShowAll TEXT
+  endif
+
+endif

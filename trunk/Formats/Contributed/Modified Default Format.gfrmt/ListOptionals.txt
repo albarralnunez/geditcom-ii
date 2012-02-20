@@ -1,0 +1,42 @@
+sub ListOptionals #tag1,#tag2,#tag3,#tag4,#tag5
+  ! Looks for up to 5 tags (all must be parameters, but ignores empty ones
+  ! loads into global variables #opts[] with #opt[0] being number found
+  ! Only added is tag not there or first one if it is _PNOTE
+
+  #otags=0
+  if #tag1!=""
+    if #tag1 is nothere
+      #otags+=1
+      #opts[#otags]=#tag1
+    else if #tag1="_PNOTE"
+      #otags+=1
+      #opts[#otags]=#tag1
+    endif
+  endif
+  if #tag2!=""
+    if #tag2 is nothere
+      #otags+=1
+      #opts[#otags]=#tag2
+    endif
+  endif
+  if #tag3!=""
+    if #tag3 is nothere
+      #otags+=1
+      #opts[#otags]=#tag3
+    endif
+  endif
+  if #tag4!=""
+    if #tag4 is nothere
+      #otags+=1
+      #opts[#otags]=#tag4
+    endif
+  endif
+  if #tag5!=""
+    if #tag5 is nothere
+      #otags+=1
+      #opts[#otags]=#tag5
+    endif
+  endif
+  #opts[0]=#otags
+  
+endSub

@@ -1,0 +1,37 @@
+sub FAMPanes,#thisPane
+  ! --------- Pane bar, husband, and wife in box -----------
+  #oldWidth=#rightMargin$
+  DisplayWidth #oldWidth+#rightSkip+1
+  newline -#topMargin$-1
+  hskip -#leftSkip-1
+  cell GroupBox
+  border line
+  titleposition none
+  cellbackground "Record Header Box Background"
+  width -1
+
+  moveto 1,1
+  cell PaneBar
+  AddPane local("Family"),""
+  #nevt=@count.FAMEvents+@count.FAMOrdinances
+  AddPane local("Events")&" ("&#nevt&")","Events"
+  AddPane local("Group"),"Group"
+  AddPane local("Multimedia")&" ("&@countAll.OBJE&")","Media"
+  #plab=local("NOTE")&" ("&@count.NOTE&") "&local("and")
+  #plab&=" "&local("Sources")&" ("&@count.SOUR&")"
+  AddPane #plab,"Notes"
+  AddPane local("Other"),"Other"
+  AddPane local("All"),"All"
+  set selected #thisPane
+  sizetofit
+  set height #cellHeight$+1		! needed for Tiger
+  shift (#rightMargin$-#hpos$-#cellWidth$)/2
+  help local("Click to view section of this family's data")
+
+  newline
+  Show HUSB
+  Show WIFE
+  EndGroup
+
+  DisplayWidth #oldWidth
+endSub

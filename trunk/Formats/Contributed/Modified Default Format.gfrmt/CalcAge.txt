@@ -1,0 +1,112 @@
+sub CalcAge
+
+
+!
+#pref=""
+#mid=""
+#a1=""
+#a2=""
+#bdate=""
+#bdatesdn=""
+#edate=""
+#edatesdn=""
+#byear=""
+#eyear=""
+#range=""
+
+if @rec="INDI"
+#bdate= @this.BIRT.DATE
+#bdatesdn= @this.BIRT.DATE.sdn
+#edate= @parent.DATE
+#edatesdn= @parent.DATE.sdn
+endif
+
+if @rec="FAM"
+   if @this.HUSB.BIRT.DATE.sdn<>""
+   		#bdate= @this.HUSB.BIRT.DATE
+		#bdatesdn= @this.HUSB.BIRT.DATE.sdn
+	else if @this.WIFE.BIRT.DATE.sdn<>""
+   		#bdate= @this.WIFE.BIRT.DATE
+		#bdatesdn= @this.WIFE.BIRT.DATE.sdn
+	endif
+	#edate= @parent.parent.DATE
+	#edatesdn= @parent.parent.DATE.sdn
+endif
+
+
+
+!If the birth date is estimated or approximate the age must be approximate
+if word("1\"&#bdate) ="c"
+#pref="~"
+endif
+if word("1\"&#bdate) ="ABT"
+#pref="~"
+endif
+if word("1\"&#bdate) ="EST"
+#pref="~"
+endif
+if word("1\"&#bdate) ="INT"
+#pref="~"
+endif
+if length(#bdate) <10
+#pref="~"
+endif
+
+!If the event date is estimated or approximate the age must be approximate
+if word("1\"&#edate) ="c"
+#pref="~"
+endif
+if word("1\"&#edate) ="ABT"
+#pref="~"
+endif
+if word("1\"&#edate) ="EST"
+#pref="~"
+endif
+if word("1\"&#edate) ="INT"
+#pref="~"
+endif
+if length(#edate) <10
+#pref="~"
+endif
+
+
+!First try to calculate and age
+if @rec="INDI"
+  if @this.BIRT.DATE.sdn<>""
+    if @parent.DATE.sdn<>""
+      #calage=#pref&int((@parent.DATE.sdn-@this.BIRT.DATE.sdn)/365.25)
+    else
+      #calage="?"
+    endif
+  else
+    #calage="?"
+  endif
+endif
+
+if @rec="FAM"
+  !if @parent.tag="HUSB"
+    if @this.HUSB.BIRT.DATE.sdn<>""
+      if @parent.parent.DATE.sdn<>""
+        #hcalage=int((@parent.parent.DATE.sdn-@this.HUSB.BIRT.DATE.sdn)/365.25)
+      else
+        #hcalage="?"
+      endif
+    else
+      #hcalage="?"
+    endif
+  !else
+  !if @parent.tag="WIFE"
+    if @this.WIFE.BIRT.DATE.sdn<>""
+      if @parent.parent.DATE.sdn<>""
+        #wcalage=int((@parent.parent.DATE.sdn-@this.WIFE.BIRT.DATE.sdn)/365.25)
+      else
+        #wcalage="?"
+      endif
+    else
+      #wcalage="?"
+  	endif
+ ! endif
+endif
+endif
+
+endSub

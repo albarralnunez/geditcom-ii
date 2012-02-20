@@ -1,0 +1,11 @@
+!SJGR changed from default to make icons slightly bigger
+! button to attach optional data
+
+sub AttachData
+  hskip 2  cell LinkButton
+  set border shadowlesssquare width 28 height 28
+  image "plus"
+  imagewidth 24
+  MenuLink "Attach Optional Data"
+  help local("Click to attach optional data fields")
+endSub

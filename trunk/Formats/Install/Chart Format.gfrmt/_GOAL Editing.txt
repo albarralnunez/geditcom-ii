@@ -1,0 +1,7 @@
+cell EditValue
+set tabwidth 1
+if printing is false
+  set border line height #cellHeight$+2
+else
+  set border no font "Details Text"
+endif

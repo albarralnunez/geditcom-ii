@@ -1,0 +1,129 @@
+load LineLabel,RecordChildLink
+
+! set an expression to display this name with a birth date if known
+sub NameWithAncestors,#mate
+  TextExpression @#mate.NAME
+  AppendedExpression altview
+  #extra=""
+  if @#mate.FAMC!=""
+    #extra=#extra&"+"
+  endif
+  #bdate=@#mate.BIRT.DATE
+  if #bdate<>""
+    #extra=#extra&" ("&local("born")&": "&#bdate&")"
+  endif
+  if #extra<>""
+    Format "%@"&#extra
+  endif
+  set font "Hyperlink Text"  set border no alignment left
+  sizetofit -1
+  help local("Click to view spouse's record")
+endsub
+
+! set an expression to display this name with sex and birth date as known
+sub NameWithDescendants,#chil
+  cell LinkButton
+  RecordLink #chil
+  TextExpression @#chil.NAME
+  AppendedExpression altview
+  #pref=""
+  if @#chil.FAMS.CHIL!=""
+    #pref="+"
+  else if @#chil.FAMS.i.2.CHIL!=""
+    #pref="+"
+  endif
+  #nsex=@#chil.SEX
+  if #nsex="M"
+    #suff=" ("&local("Son")
+  else if #nsex="F"
+    #suff=" ("&local("Daughter")
+  else
+    #suff=" ("&local("Unknown")
+  endif
+  #bdate=@#chil.BIRT.DATE
+  if #bdate<>""
+    #suff =#suff&", "&local("born")&": "&#bdate&")"
+  else
+    #suff=#suff&")"
+  endif
+  Format #pref&"%@"&#suff
+  set font "Hyperlink Text"  set border no alignment left
+  sizetofit -1
+  help local("Click to view child's record")
+endsub
+
+! ----------- Template starts here
+
+! ----------- Label and link to family
+gosub LineLabel,local("Family")
+gosub RecordChildLink local("Click to view family record"),"parent"
+
+! ----------- Label and link to spouse (works for same-sex too)
+newline
+tab @level
+cell static
+#spouseID=@contents.HUSB
+if #spouseID=@id
+  #spouseID=@contents.WIFE
+endif
+
+! get sex of spouse
+if #spouseID!=""
+  #sex=@#spouseID.SEX
+else
+  #sex=@this.SEX
+  if #sex="F"
+    #sex="M"
+  else
+    #sex="F"
+  endif
+endif
+
+! get label
+if #sex="F"
+  if @contents._UMR=""
+    #spouse=local("WIFE")
+  else
+    #spouse=local("Partner")
+  endif
+else
+  if @contents._UMR=""
+    #spouse=local("HUSB")
+  else
+    #spouse=local("Partner")
+  endif
+endif
+text #spouse&":"
+sizetofit
+
+! spouse name and link
+if #spouseID is validlink  cell LinkButton  RecordLink #spouseID  gosub NameWithAncestors #spouseID
+else
+  cell static "<"&local("Unknown")&">"
+  sizetofit -1
+endif
+
+! ----------- Links to all children with this spouse
+#col=0
+RepeatWith "#child" from @contents.CHIL
+  if #col<0.5
+    NewLine
+    #famsSkip=#leftSkip
+    tab @level
+    cell static,local("Children")&": "
+    sizetofit
+    #col=1
+    hskip 0
+    #leftSkip=#hpos$
+  else
+    newline
+  endif
+  gosub NameWithDescendants,#child
+EndRepeat
+if #col>0.5
+  #leftSkip=#famsSkip
+endif
+
+! ----------- might be notes
+ShowAll NOTE
+

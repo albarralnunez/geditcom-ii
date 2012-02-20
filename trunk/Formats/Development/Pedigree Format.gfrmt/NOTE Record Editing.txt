@@ -1,0 +1,65 @@
+load ListBlock,TagBlock,ResetTabs,RefLinks,ToolBtn,ToolBar
+
+if printing is false
+  #fraction=375/#rightMargin$
+  show CONC 1-#fraction
+  if #rightMargin$<375
+    if #posNotes>2.5
+      DisplayWidth 375
+    else if #posNotes=1
+      DisplayWidth 375
+    endif
+  endif
+endif
+
+! -------------- Start Template -----------------
+GoSub ResetTabs
+DropTypes INDI,FAM
+background "Record Header Box Background"
+
+newline -3
+gosub ToolBtn,"Attach Source","source",local("Click to attach source")
+
+newline 3
+cell static,local("Notes on")&":"
+SizeToFit
+set tabwidth 1
+
+gosub RefLinks,"","All Notated Records"
+
+#leftSkip=#leftSkip$
+#lineSkip=#lineSkip$
+
+! --------- The notes -----------
+if printing
+  ! Embed notes when printing
+  NewLine
+  cell ExpressionField,@CONC
+  set Width -1 Height 250 minHeight 15
+  sizetofit 3
+  show CONC
+endif
+
+! --------- SOURs -----------
+Gosub TagBlock,"SOUR",local("Sources")
+
+! only legal stuff left is REFN, RIN, and CHAN
+if more
+  newline
+  ClearTabs
+  SetTab 150,240,330
+  cell label,local("Additional Data")
+  SizeToFit
+  newline -3
+  cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-3
+  ShowAll CHAN
+  ShowAll all
+  EndGroup
+endif
+
+optionalTag RIN,local(RIN)
+optionalTag REFN,local(REFN)
+
+DropTypes SOUR

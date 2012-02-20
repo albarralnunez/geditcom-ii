@@ -1,0 +1,13 @@
+load LineLabel
+
+gosub LineLabel local(@tag)
+offset #editOffset
+    
+! edit field with value
+cell EditValue
+set Width -1
+help "Enter short comment text"
+set width #cellWidth$-90-#cellSkip$
+
+Show _DIST
+

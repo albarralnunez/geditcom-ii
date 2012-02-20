@@ -1,0 +1,6 @@
+if printing is false
+  newline
+  cell CheckBoxEdit,local(@tag)
+  sizetofit
+  help local("Check this box to allow use of LaTeX command in above text")
+endif

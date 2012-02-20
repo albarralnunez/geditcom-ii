@@ -1,0 +1,41 @@
+sub ShowImageBox,#por
+  #thumbW=130
+  newline
+  #boxtop=#vpos$
+  HMoveTo #rightMargin$-#rightSkip-#thumbW-8
+  
+  cell GroupBox
+    set width -1 border line titleposition none
+
+    #leftSkip=1
+    #rightSkip=3
+    newline -#lineSkip-4
+    
+    cell LinkButton
+    set width #thumbW objectImage #por
+    #mmRatio=#imageHeight$/#imageWidth$
+    set height #thumbW*#mmRatio imageWidth #thumbW
+    set imageposition above
+    set border none target parent
+    RecordLink #por
+    Help local("Click to view and edit multimedia object")
+
+    #imageTitle=@#objeID.TITL
+    if #imageTitle!=""
+      newline 3
+      GoSub MiniDetail,#imageTitle,""
+    endif
+    newline -#lineSkip
+
+  endgroup
+  
+  newline
+  #boxend=#vpos$
+  #lineSkip=#lineSkip$
+  #leftSkip=#leftSkip$
+  #rightSkip=#rightSkip$
+  
+  newline
+  DisplayWidth #oldWidth-#rightSkip$-#thumbW-8
+  MoveTo #leftSkip,#boxtop
+endSub

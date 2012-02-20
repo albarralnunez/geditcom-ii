@@ -1,0 +1,9 @@
+newline
+cell static,local(@tag)&":"
+set tabwidth -1 alignment right
+
+! popup menu
+cell PopupMenuEdit
+set offset -2MenuItems local("US Letter")&":US Letter"
+MenuItems local("A4")&":A4"SizeToFit
+help local("Click to select paper size for your LaTeX installation")

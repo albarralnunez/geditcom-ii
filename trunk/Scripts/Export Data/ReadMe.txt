@@ -1,0 +1,1 @@
+This folder has scripts that export data to GEDCOM files or other types of files.

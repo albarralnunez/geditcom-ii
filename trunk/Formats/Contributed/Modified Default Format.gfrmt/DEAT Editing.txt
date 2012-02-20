@@ -1,0 +1,40 @@
+if #msg="details"
+newline
+cell GroupBox local(@tag)
+width -1
+
+newline
+HMoveTo #rightMargin$-#rightSkip-106
+#vloc=#vpos$
+
+cell CheckBoxEdit,local("Has Died")
+width 85
+Offset -2
+help local("Check if deceased but nothing else known")
+
+VMoveTo #vloc
+
+Show DATE @tag
+#hloc=#hpos$+85
+#vloc=#vpos$
+Show PLAC @tag
+
+! rest in a child window
+MoveTo #hloc,#vloc
+cell StructuresLink,BirthDeathDetails,DEAT
+set border no
+if more
+  set image "details_here"
+else
+  set image "details"
+endif
+SizeToFit
+LinkAll all
+help local("Click for death details")
+
+EndGroup
+
+else
+  use Event
+endif
+

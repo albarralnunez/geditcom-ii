@@ -1,0 +1,69 @@
+!SJGR changed from default to add button to run birth calculation script
+
+if #msg="BIRT"  #edge=#rightMargin$-#rightSkip-21-#cellSkip
+  NewLine  cell static,local(@tag)&":"
+  set TabWidth 1 Alignment right
+
+  ! edit field with value  Added a button here where date is blank to enable calculation
+  if @contents=""  
+  cell EditDate
+  set Width #edge-#hpos$-68 Offset -2
+  help local("Enter a valid date")
+  
+  hskip 2
+  cell linkbutton local("Calculate")
+  Offset -2
+  set border shadowlesssquare Width 60
+  ScriptType Format
+  ScriptLink "CalcBirth"
+  help local("Calculate an approximate date of birth from available events")
+  hskip 5
+  
+  else if  offset("Date calculated\\"&@_MEMO)  
+  
+  cell EditDate
+  set Width #edge-#hpos$-76 Offset -2
+  hskip 2
+  cell linkbutton local("Recalculate")
+  Offset -2
+  set border shadowlesssquare Width 68
+  ScriptType Format
+  ScriptLink "CalcBirth"
+  help local("Recalculate an approximate date of birth from currently available events")
+  hskip 5
+  
+  
+  else
+  
+  cell EditDate
+  set Width #edge-#hpos$-4 Offset -2
+  hskip 5
+  endif
+  
+else if #msg="DEAT"
+  #edge=#rightMargin$-#rightSkip-21-#cellSkip
+  NewLine  cell static,local(@tag)&":"
+  set TabWidth 1 Alignment right
+
+  ! edit field with value
+  cell EditDate
+  set Width #edge-#hpos$-85 Offset -2
+  help local("Enter a valid date")
+else if #msg="Event"
+  !cell EditDate
+  !TabWidth 1
+  !Width 200
+   cell EditDate
+  TabWidth 1
+  #dateHeight=#cellHeight$
+  help local("Enter a valid date")
+  
+else
+  newline  cell static,local(@tag)&":"
+  set TabWidth 1 Alignment right
+
+  ! edit field with value
+  cell EditDate
+  set Width -1 Offset -2
+  help local("Enter a valid date")
+endif

@@ -1,0 +1,11 @@
+load LineLabel
+
+! labeled popup menu
+gosub LineLabel local(@tag)
+offset #buttonOffset
+
+! popup menu
+cell PopupMenuEdit
+MenuItems "9","10","11","12","14"
+SizeToFit -1
+help local("Click to select font size for the book")

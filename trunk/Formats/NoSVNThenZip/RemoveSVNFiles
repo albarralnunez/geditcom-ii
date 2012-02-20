@@ -1,0 +1,12 @@
+#!/bin/bash
+# To prepare copies for uploading:
+#  1. Copy all formats the ToZipNoSVN folder
+#  2. Run this script
+#  3. Copy install ones to install package
+#  4. Run AppleScript to zip and move all to web site folder
+
+# copy to new format file
+cd ~/Library/Application\ Support/GEDitCOM\ II/Formats/NoSVNThenZip
+
+echo "Removing SVN files in all formats in ToZipNoSVN folder"
+find . -name "*.gfrmt" -exec ./OneRemove {} \;

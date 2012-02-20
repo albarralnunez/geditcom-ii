@@ -1,0 +1,13 @@
+load LineLabel
+
+! Label and editing field
+gosub LineLabel #poinum&". "&local(@tag)
+offset #editOffset
+#poinum+=1
+
+cell EditValue
+set Width -1 border no
+
+ShowAll _GPS
+Show _CODE
+Show _NOPOI

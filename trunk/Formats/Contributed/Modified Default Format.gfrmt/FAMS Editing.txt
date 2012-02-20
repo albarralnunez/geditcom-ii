@@ -1,0 +1,189 @@
+!SJGR changed from default to add date ranges to links
+!also changes to icon size and line spacings and indentation of children's details
+! indication of further ancesters/descendants changed from + to an arrow
+
+! set an expression to display this name and add "+" if there
+! are ancestors
+sub NameWithAncestors,#mate
+
+#dates=@#mate.BIRT.DATE.span
+	if @#mate.FAMC!=""
+#mname=@#mate.NAME.altview&" ↑ "
+else
+
+#mname=@#mate.NAME.altview&"  "
+endif
+if #dates<>""
+#mreqtxt=#mname&"("&#dates&")"
+else
+#mreqtxt=#mname
+endif
+
+  !TextExpression @#mate.NAME
+  !AppendedExpression altview
+  text #mreqtxt
+  if @#mate.FAMC!=""
+    Format "%@+"
+  endif
+  set font "Hyperlink Text"  set border no alignment left
+  sizetofit -1
+  help local("Click to view spouse's record")
+endsub
+
+!  rounded, regularsquare, thicksquare, thickersquare
+! shadowlesssquare, circular, texturedsquare, or smallsquare
+
+! set an expression to display this name and add "+" if there
+! are ancestors
+sub NameWithDescendants,#chil
+
+#dates=@#chil.BIRT.DATE.span
+if @#chil.FAMS.CHIL!=""
+#cname=@#chil.NAME.altview&" ↓ "
+else
+#cname=@#chil.NAME.altview&"  "
+endif
+if #dates<>""
+#creqtxt=#cname&"("&#dates&")"
+else
+#creqtxt=#cname
+endif
+
+  cell LinkButton
+  RecordLink #chil
+  !TextExpression @#chil.NAME
+  !AppendedExpression altview
+  text #creqtxt
+  if @#chil.FAMS.CHIL!=""
+    Format "+%@"
+  else if @#chil.FAMS.i.2.CHIL!=""
+    Format "+%@"
+  endif
+  set font "Hyperlink Text"  set border no alignment left
+  sizetofit -1
+  help local("Click to view child's record")
+endsub
+
+if tagexists is true
+  ClearTabs
+  #midtab=(#famLabelEnd+#rightMargin$-#rightSkip)/2
+  SetTab #famLabelEnd,#midtab
+
+  ! marriage button
+  ! next 8 lines added to create a bit more space between multiple families when the family above had children SJGR
+  if #fams=1  NewLine
+  #fams=0
+  else if #numchil>0
+  Newline 10
+  else
+  NewLine 4
+  endif
+  
+    cell LinkButton
+  set image "family"
+  set width 28 height 28 border shadowlesssquare
+  imagewidth 21
+  RecordLink @contents
+  TextExpression @contents.rec
+  Autoreload yes
+  help local("Click to view family record")
+
+  cell static
+  #spouseID=@contents.HUSB
+  if #spouseID=@id
+    #spouseID=@contents.WIFE
+  endif
+
+  ! get sex of spouse
+  if #spouseID!=""
+    #sex=@#spouseID.SEX
+  else
+    #sex=@this.SEX
+    if #sex="F"
+      #sex="M"
+    else
+      #sex="F"
+    endif
+  endif
+
+  ! get label
+  if #sex="F"
+    if @contents._UMR=""
+      #spouse=local("WIFE")
+    else
+      #spouse=local("Partner")
+    endif
+  else
+    if @contents._UMR=""
+      #spouse=local("HUSB")
+    else
+      #spouse=local("Partner")
+    endif
+  endif
+  text #spouse&":"
+  sizetofit
+  #textSkip=#cellHeight$-22	! skip needed for text to align accounting for icon
+  set tabwidth 1 alignment right
+
+  ! spouse name and link
+  if #spouseID is validlink    cell LinkButton    RecordLink #spouseID    gosub NameWithAncestors #spouseID
+  else
+    cell static "<"&local("Unknown")&">"
+    sizetofit
+  endif
+
+  ! list of children
+  #col=0
+  #numchil=0   !Create variable to count number of children to decide if extra space needed before subsequent families SJGR
+  RepeatWith "#child" from @contents.CHIL
+  #numchil=#numchil+1
+  if #numchil=1
+  newline -5
+  endif
+    if #col=0
+      newline #textSkip
+     ClearTabs
+  !Reset tabs to indent children a bit SJGR
+  SetTab #famLabelEnd+35,#midtab+35
+      cell static,local("Children")&":"
+      sizetofit
+      set tabwidth 1 alignment right
+      #col=1
+    else if #habs$+#cellWidth$<#midtab
+      tab 1
+    else
+      newline
+      tab 1
+      hskip #cellSkip
+    endif
+    gosub NameWithDescendants,#child
+  EndRepeat
+
+  ! notes might be left
+  newline
+  ShowAll NOTE "label"
+
+else
+  ! button to link to family
+  #sex=@this.SEX
+  if #sex!=""
+    cell LinkButton
+    set border shadowlesssquare
+    if #sex="M"
+      text local("Link as Husband in a new family")
+      MenuLink "Attach As Husband in New Family"
+      help local("Click to link as husband of a newly created family")
+    else
+      text local("Link as Wife in a new family")
+      MenuLink "Attach As Wife in New Family"
+      help local("Click to link as wife of a newly created family")
+    endif
+    sizetofit
+    set height 28
+  else
+    cell static,local("Individual's sex must be known to attach as a spouse to a family")
+    set width -1
+  endif
+
+endif
+

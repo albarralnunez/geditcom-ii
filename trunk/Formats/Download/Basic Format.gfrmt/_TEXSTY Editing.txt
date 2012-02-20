@@ -1,0 +1,10 @@
+load LineLabel
+
+! labeled popup menu
+gosub LineLabel local(@tag)
+offset #buttonOffset
+
+! popup menu
+cell PopupMenuEdit
+MenuItems "Default"MenuItems "Ruled Sections"SizeToFit
+help local("Click to select style for various elements in the book")

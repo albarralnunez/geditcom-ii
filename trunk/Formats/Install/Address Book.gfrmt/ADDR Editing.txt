@@ -1,0 +1,23 @@
+load LineLabel
+
+newline #editOffset
+#addOpt=#vpos$
+newline
+gosub LineLabel local(@tag)
+
+! edit address in multiline field
+cell EditField
+set Width -1 minheight 44 maxheight 128 border no
+sizetofit
+set ScriptLink "Address_In_Google_Maps" ScriptType "format"
+help local("This text can be edited by clicking in the field and typing")
+
+! possible subordinate tags have alternate cells for address
+ShowAll ADR1
+ShowAll ADR2
+ShowAll CITY
+ShowAll STAE
+ShowAll POST
+ShowAll CTRY
+
+show _OPTIONAL_ADDR #addOpt

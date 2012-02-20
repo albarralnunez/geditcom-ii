@@ -1,0 +1,39 @@
+sub _LOGPanes,#thisPane
+  ! --------- Name -----------
+  #oldWidth=#rightMargin$
+  DisplayWidth #oldWidth+#rightSkip+1
+  newline -#topMargin$-1
+  hskip -#leftSkip-1
+  cell GroupBox
+    border line
+    titleposition none
+    cellbackground "Record Header Box Background"
+    width -1
+
+    moveto 1,1
+
+    cell PaneBar
+    AddPane local("Tasks")&" ("&@count._TASK&")",""
+    AddPane local("Summary"),"Summary"
+    AddPane local("Multimedia")&" ("&@count.OBJE&")","Media"
+    #plab=local("NOTE")&" ("&@count.NOTE&") "&local("and")
+    #plab&=" "&local("Sources")&" ("&@count.SOUR&")"
+    AddPane #plab,"Notes"
+    #nlnk=@count._INDI+@count._FAM+@count.__PLC
+    AddPane local("Links")&" ("&#nlnk&")","Other"
+    AddPane local("All"),"All"
+    set selected #thisPane
+    sizetofit
+    set height #cellHeight$+1		! needed for Tiger
+    shift (#rightMargin$-#hpos$-#cellWidth$)/2
+    help local("Click to view section of this log's data")
+
+    newline 5
+    Show _TTL 
+    Show _OBJECT
+    
+  EndGroup
+
+  DisplayWidth #oldWidth
+
+endSub

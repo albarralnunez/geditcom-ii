@@ -1,0 +1,50 @@
+if @rec=HEAD
+  NewLine
+  cell static,local("Default Place Hierarchy")&":"
+  set width -1
+  Show FORM
+
+else if @rec=SOUR
+  use _Unknown_
+
+else if #msg="MARR"
+  cell static,local("PLAC")&": "
+  SizeToFit
+
+  cell editValue
+  set Width -1 border no
+  help local("Enter marriage place")
+
+  hideexcess
+
+else if #msg="Event"
+  ! edit field with value  cell editvalue
+  set tabwidth 1
+  help local("Enter place for this event")
+
+  cell static
+  set tabwidth 1 alignment center border square
+  ! cellBackground "Table Cell Background"
+  ! rest in a child window
+  tab -2
+  cell LinkButton
+  set border no width 20
+  set image "GPS" imageheight 19 offset -1
+  RecordLink "place"
+  help local("Click for place details")
+
+else
+  #edge=#rightMargin$-#rightSkip-21-#cellSkip
+  NewLine
+  cell static,local(@tag)&":"
+  set tabwidth 1 alignment right
+  ! edit field with value  cell editvalue
+  set Width #edge-#hpos$ Offset -2
+  help local("Enter")&" "&local(@tag)
+  ! rest in a child window
+  cell LinkButton
+  set border no width 20 offset -2
+  set image "GPS"
+  RecordLink "place"
+  help local("Click for place details")
+endif

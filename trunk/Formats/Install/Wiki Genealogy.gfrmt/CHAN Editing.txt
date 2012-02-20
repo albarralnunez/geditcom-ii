@@ -1,0 +1,16 @@
+load LineLabel
+
+! show changed date
+gosub LineLabel,local("CHAN")
+
+Cell Expression @DATE.user
+AppendedExpression view
+SizeToFit 24
+
+! add the time
+Cell static,local("Time")&": "
+SizeToFit
+Cell Expression @DATE.TIME
+SizeToFit -1
+
+HideExcess

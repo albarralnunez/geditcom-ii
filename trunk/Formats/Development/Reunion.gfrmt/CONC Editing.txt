@@ -1,0 +1,10 @@
+if printing
+  cell EditField
+  set width -1 border none
+  set minheight 44 alignment justify
+  sizetofit
+else
+  cell EditPane,"("&local("NOTES_HELP")&")"
+  set Position top fraction .6
+  help local("NOTES_HELP")
+endif

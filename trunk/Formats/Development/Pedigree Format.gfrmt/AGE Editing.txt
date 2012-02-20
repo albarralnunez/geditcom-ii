@@ -1,0 +1,13 @@
+! static text with level and tabNewLine
+if #msgnum=0
+  cell static,local(@tag)&":"
+  set tabwidth 1 alignment right
+else
+  cell static,#msg&":"
+  set tabwidth 1 alignment right
+endif
+
+! edit field with value
+cell EditValue
+set Width -1 Offset -2
+help local("Enter individual's age for this event")

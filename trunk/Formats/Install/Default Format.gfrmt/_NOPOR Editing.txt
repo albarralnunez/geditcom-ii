@@ -1,0 +1,4 @@
+newline
+
+cell CheckBoxEdit,local("None of these objects is a portrait")
+sizetofit

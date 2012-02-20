@@ -1,0 +1,9 @@
+load LevTag
+
+gosub LevTag
+
+! edit field with value
+cell static @contents
+sizetofit
+set height #defaultHeight$
+help local("Character set can only be changed when extracting a GEDCOM file")

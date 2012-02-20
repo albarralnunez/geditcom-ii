@@ -1,0 +1,31 @@
+load ResetTabs,EditingPage
+
+DropTypes SOUR,NOTE,OBJE,INDI,FAM,_LOG,SUBM,INDICtrl
+
+newline
+gosub ResetTabs
+
+gosub EditingPage,"Individual Attributes"
+
+cell label,local("Attach")&": "
+sizetofit
+set offset #buttonOffset
+
+cell LinkButton
+image "add"
+set border no width 24
+MenuLink "Attach Event/Attribute"
+help local("Click to add an attribute")
+
+cell LinkButton
+image "remove"
+set width 24 border no
+MenuLink "Detach Event/Attribute/Link"
+help local("Click to remove an attribute")
+
+!--------- Attributes
+hide RESI
+ShowAll INDIAttributes
+
+hideexcess
+

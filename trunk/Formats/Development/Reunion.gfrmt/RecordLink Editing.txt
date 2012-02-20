@@ -1,0 +1,15 @@
+newline
+cell label,local(@tag)&": "
+sizetofit
+
+! link to NOTE record
+if @contents is validlink
+  cell LinkButton
+  TextExpression @contents.rec
+  AppendedExpression view
+  set border no Font "Hyperlink Text" width -1 alignment left
+  set RecordLink @contents offset -1
+  Help local(#use)
+else
+  cell state "("&local("Invalid Link")&")"
+endif

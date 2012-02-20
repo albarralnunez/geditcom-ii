@@ -1,0 +1,7 @@
+load LineLabel
+
+! character set in HEAD
+! label and display, but cannot edit, always UTF-8 in GEDitOCM II
+gosub LineLabel local(@tag)
+cell static @contents
+sizetofit -1

@@ -1,0 +1,84 @@
+! Indent and put up label
+NewLine
+
+#loc=#vpos$
+#loch=#hpos$
+cell static
+set #type=@this._TYPE
+if #type="article"
+  text local("Journal")&",  "
+  set tabwidth -1 alignment right
+  #cw=#cellWidth$
+  
+  newline -8
+  cell static,local("Periodical")&",  "
+  set tabwidth -1 alignment right
+  #tw=#cellWidth$
+  if #tw>#cw
+    #cw=#tw
+  endif
+
+  newline -8
+  cell static,local("Volume, etc.")&":"
+  set tabwidth -1 alignment right
+  #tw=#cellWidth$
+  if #tw>#cw
+    #cw=#tw
+  endif
+
+  MoveTo #hpos$,#loc
+  hskip #cw+#cellSkip$
+else if #type="in book"
+  text local("Chapter")&",  "
+  set tabwidth -1 alignment right
+  #cw=#cellWidth$
+  
+  newline -8
+  cell static,local(@tag)&",  "
+  set tabwidth -1 alignment right
+  #tw=#cellWidth$
+  if #tw>#cw
+    #cw=#tw
+  endif
+
+  newline -8
+  cell static,local("Editor, etc.")&":"
+  set tabwidth -1 alignment right
+  #tw=#cellWidth$
+  if #tw>#cw
+    #cw=#tw
+  endif
+
+  MoveTo #hpos$,#loc
+  hskip #cw+#cellSkip$
+else if #type="unpublished"
+  text local("Comments")&":"
+  set tabwidth -1 alignment right
+else if #type="vital records"
+  text local("Storage")&",  "
+  set tabwidth -1 alignment right
+  #cw=#cellWidth$
+  
+  newline -8
+  cell static,local(@tag)&":"
+  set tabwidth -1 alignment right
+  #tw=#cellWidth$
+  if #tw>#cw
+    #cw=#tw
+  endif
+
+  MoveTo #hpos$,#loc
+  hskip #cw+#cellSkip$
+else
+  text local(@tag)&":"
+  set tabwidth -1 alignment right
+endif
+
+! edit field with value
+cell EditField
+set Width -1 Offset -2 Height 64
+if printing
+  set minHeight 15
+  sizetofit 3
+endif
+help local("Enter publisher details or other indicated information")

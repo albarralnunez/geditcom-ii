@@ -1,0 +1,28 @@
+ifStr @rec="NOTE"
+  if printing
+    hideexcess
+  else
+    ! use separate pane when not printing
+    cell EditPane,local("(type to enter notes)")
+    #fraction=#msg
+    if #fraction<.5
+      #fraction=.5
+    endif
+    if #posNotes>2.5
+      position right
+    else if #posNotes >1.5
+      position top
+    else if #posNotes >0.5
+      position left
+    else
+	  position bottom
+    endif
+    fraction #fraction
+    fontsize 12
+    help local("Enter free-format notes")
+  endif
+
+else
+  use _Unknown_
+endif
+log none

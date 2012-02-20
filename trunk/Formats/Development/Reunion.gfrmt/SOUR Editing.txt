@@ -1,0 +1,41 @@
+if @rec="HEAD"
+  NewLine
+  cell static local("Software")&": "
+  sizetofit
+
+  cell EditValue
+  set Width -1 border none
+
+  NewLine
+  tab
+  #leftSkip=#hpos$
+
+  ShowAll VERS
+  ShowAll NAME
+  ShowAll CORP
+  ShowAll DATA
+  
+else
+  NewLine  cell label local("SOUR")&": "
+  sizetofit
+  
+  if @contents is validlink
+    cell LinkButton
+    TextExpression @contents.rec
+    AppendedExpression view
+    #page=@PAGE
+    if #page!=""
+      Format "%@ ("&local("page")&" "&#page&")"
+    endif
+    set border no Font "Hyperlink Text" width -1 alignment left
+    set RecordLink @contents target child offset -1
+    Help local("Click to view and edit source")
+    NewLine
+	tab
+    #leftSkip=#hpos$
+
+    ShowAll EVEN    ShowAll DATA    ShowAll QUAY    ShowAll NOTE
+
+  endif
+endif
+

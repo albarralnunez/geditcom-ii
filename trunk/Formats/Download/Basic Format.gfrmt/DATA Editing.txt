@@ -1,0 +1,25 @@
+load LineLabel
+
+gosub LineLabel local(@tag)
+
+if @rec="HEAD"
+  ! HEAD record describes the data
+  offset #editOffset
+  cell EditValue
+  set width -1
+
+  ! Possible subordinate DATE and copyright
+  ShowAll DATE
+  ShowAll COPR
+
+else if @rec="SOUR"
+  ! in SOUR records, subordinate tags record events records, the agency, and allows notes
+  ShowAll EVEN  ShowAll AGNC
+  ShowAll NOTE
+
+else
+  ! In SOUR link details has DATE and TEXT
+  ShowAll DATE
+  ShowAll TEXT
+
+endif

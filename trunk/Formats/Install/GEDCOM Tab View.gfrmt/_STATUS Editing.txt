@@ -1,0 +1,13 @@
+load LevTag
+
+gosub LevTag
+
+! edit field with value
+cell PopupMenuEdit
+help local("Click to set task status")
+MenuItems local("New")&"::"
+MenuItems local("Working")&":Working"
+MenuItems local("Done")&":Done"
+MenuItems local("Failed")&":Failed"
+set controlsize small border no offset #popupOffset 
+sizetofit

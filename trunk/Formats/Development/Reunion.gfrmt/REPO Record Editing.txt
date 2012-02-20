@@ -1,0 +1,12 @@
+load ResetTabs,SectionLabel,TagBlock
+
+gosub ResetTabs
+
+! -------------- Start Template -----------------
+DropTypes NOTE
+gosub SectionLabel "Repository Details",0
+showall NAMEshowall ADDRshowall PHON! ----- tag blocksGosub TagBlock,"NOTE","NOTE"
+! --------- The Rest
+if more
+  gosub SectionLabel "Additional Data",9
+endif

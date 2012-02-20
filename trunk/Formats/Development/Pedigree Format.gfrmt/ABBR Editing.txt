@@ -1,0 +1,10 @@
+! static text with level and tabNewLine
+tab 1
+hskip #cellSkip$
+cell static,local(@tag)&":"
+sizetofit
+
+! edit field with value
+cell EditValue
+set Width -1 Offset -2
+help local("Enter abbreviated title for the source")

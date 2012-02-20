@@ -1,0 +1,13 @@
+load ResetTabs,SectionLabel
+
+DropTypes SUBM
+gosub ResetTabs
+
+! -------------- Start Template -----------------
+gosub SectionLabel local("SUBN Record")
+showall SUBMshowall FAMF
+showall TEMP
+showall ANCE
+showall DESC
+showall ORDI
+showall RIN

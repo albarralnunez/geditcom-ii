@@ -1,0 +1,4 @@
+! Hide except when editing the web address in URLDetails window
+if #parentTag$!="SOUR"
+  use _Unknown_
+endif

@@ -1,0 +1,21 @@
+if printing is false
+
+newline
+#nextTop=#vpos$
+VMoveTo #msg
+  
+cell CreateLinkButton
+set image AddButton border none
+sizetofit
+help local("Click to add address details in separate lines")
+
+OptionalTag ADR1,local(ADR1),local("address line")
+OptionalTag ADR2,local(ADR2),local("address line")
+OptionalTag CITY,local(CITY),local("city")
+OptionalTag STAE,local(STAE),local("state")
+OptionalTag POST,local(POST),local("postal code")
+OptionalTag CTRY,local(CTRY),local("country")
+
+MoveTo #leftSkip,#nextTop
+
+endif

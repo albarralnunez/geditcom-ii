@@ -1,0 +1,8 @@
+load LevTag
+
+gosub LevTag
+
+! popup menu
+cell PopupMenuEdit
+MenuItems local("Anyone")&":Anyone"MenuItems local("Family")&":Family"MenuItems local("Owner")&":Owner"help local("Click to select distribution recommendations for this note")set controlsize small border no offset #popupOffset 
+sizetofit

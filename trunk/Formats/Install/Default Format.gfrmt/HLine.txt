@@ -1,0 +1,7 @@
+sub HLine,#thickness
+  cell Palette
+  set width -1 height #thickness
+  PalLineWidth #thickness
+  PalMoveTo 0,1
+  PalLine #cellWidth$,0
+endSub

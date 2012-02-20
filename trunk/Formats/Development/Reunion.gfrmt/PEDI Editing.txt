@@ -1,0 +1,8 @@
+newline
+cell label,local(@tag)&": "
+sizetofit
+
+! popup menu
+cell PopupMenuEditMenuItems local("Birth")&"::"MenuItems local("Adopted")&":adopted"MenuItems local("Foster")&":foster"MenuItems local("Sealing")&":sealing"help local("Click to enter child pedigree status")SizeToFit
+set border no offset -2
+

@@ -1,0 +1,38 @@
+load LineLabel
+
+if #msg=""
+  ! label and editing field
+  newline
+  #addOpt=#vpos$+#editOffset+3
+  gosub LineLabel local(@tag)
+  set offset #editOffset
+
+  cell EditValue
+  set Width -1 border no offset -2
+  help local("This text can be edited by clicking in the field and typing")
+
+  #extraPlac=0
+  if FORM is here
+    if _GPS is here
+      #extraPlac=1
+    endif
+  endif
+  ShowAll FORM  ShowAll _GPS
+
+  if #extraPlac=0
+    show _OPTIONAL_PLAC #addOpt
+  endif
+
+else
+
+  cell static local(@tag)&":"
+  sizetofit
+  set offset #editOffset
+
+  cell EditValue
+  set Width -1 border no offset -2
+  help local("This text can be edited by clicking in the field and typing")
+
+endif
+hideexcess
+

@@ -1,0 +1,46 @@
+if #first="yes"
+  newline
+  cell static,local("NAME")
+  set tabwidth 1 border line alignment center
+
+  cell static,local("SEX")
+  set tabwidth 2 border line alignment center
+
+  cell static,local("Birth Date")
+  set tabwidth 2 border line alignment center
+
+  #first="no"
+  #num=0
+endif
+
+newline
+#num+=1
+
+cell static
+set tabwidth 1 border line alignment center
+
+tab -1
+cell LinkButton
+set border no tabwidth 1 alignment left font "Hyperlink Text"
+TextExpression @contents.NAME
+AppendedExpression altview
+Format #num&". %@"
+RecordLink @contents
+help local("Click to view child's record")
+
+cell static
+#sex=@contents.SEX
+if #sex="M"
+  text local("Son")
+else if #sex="F"
+  text local("Daughter")
+else
+  text local("Unknown")
+endif
+set alignment center tabwidth 2 border line
+
+cell Expression,@contents.BIRT.DATE
+set tabwidth 2 alignment center border line
+set appendedexpression view
+
+

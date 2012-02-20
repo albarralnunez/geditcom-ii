@@ -1,0 +1,5 @@
+if @rec="SOUR
+  use Field 4
+else
+  use _Unknown_
+endif

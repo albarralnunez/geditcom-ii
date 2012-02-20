@@ -1,0 +1,28 @@
+if #msg="BIRT"  #edge=#rightMargin$-#rightSkip-21-#cellSkip
+  NewLine  cell static,local(@tag)&":"
+  set TabWidth 1 Alignment right
+
+  ! edit field with value
+  cell EditDate
+  set Width #edge-#hpos$ Offset -2
+else if #msg="DEAT"
+  #edge=#rightMargin$-#rightSkip-21-#cellSkip
+  NewLine  cell static,local(@tag)&":"
+  set TabWidth 1 Alignment right
+
+  ! edit field with value
+  cell EditDate
+  set Width #edge-#hpos$-85 Offset -2
+else if #msg="Event"
+  cell EditDate
+  TabWidth 1
+  #dateHeight=#cellHeight$
+else
+  newline  cell static,local(@tag)&":"
+  set TabWidth 1 Alignment right
+
+  ! edit field with value
+  cell EditDate
+  set Width -1 Offset -2
+endif
+help local("Enter a valid date")

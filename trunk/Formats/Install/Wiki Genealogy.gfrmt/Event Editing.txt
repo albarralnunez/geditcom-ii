@@ -1,0 +1,119 @@
+load WikiSection,WebLinks,ShowOBJE,EventDate,MiniDetail,ShowImageBox
+
+if #msg="wiki"
+
+  if #hasLabel!="YES"
+    gosub WikiSection,#hasLabel,"Events"
+    #hasLabel ="YES"
+  endif
+
+  if @tag="EVEN"
+    if @TYPE!=""
+      #msg1="had event of type "&@TYPE
+    endif
+  endif
+
+  newline
+  if #vpos$>#boxend
+    DisplayWidth #oldWidth
+  endif
+
+  #objeID=@OBJE
+  if #objeID is validlink
+    if @#objeID.FORM<>"url"
+      if #rightMargin$>=#oldWidth
+        gosub ShowImageBox #objeID
+      else if offset(#objeID&" \"&#otherOBJE)=0
+        #otherOBJE&=#objeID&" "
+        log #otherOBJE
+      endif
+    endif
+  endif
+
+  cell static,"◾"
+  set fontcolor "Block Color" offset 3
+  sizetofit
+
+  hskip 0
+  #leftSkip=#hpos$
+
+  cell StaticField
+  set width -1 minheight 10 border none lineheight #lineMult
+  GoSub EventDate,#ePrefix&" "&#msg1,@DATE.user,@PLAC
+  if #etext=""
+    text #ePrefix&" "&#msg1&" on an unknown date. "
+  else
+    text #etext&". "
+  endif
+  sizetofit
+
+  ShowAll NOTE "wiki"
+
+  #ePrefix=#Pronoun
+
+  hideexcess
+
+else
+
+  ! check box
+  newline
+  #gtop=#vpos$
+  if @tag!="BIRT"
+    cell CheckBoxEdit
+    help "Check this box if this even occurred, but nothing else is known about the event."
+  endif
+
+  ! label and check box (except no check bo for birth)
+  MoveTo #leftSkip,#vpos$+2
+  if @tag="EVEN"
+    if @TYPE!=""
+      cell GroupBox,"  "&local(@TYPE)
+      else
+        cell GroupBox,"  "&local(@tag)
+        endif
+      else
+        cell GroupBox,"  "&local(@tag)
+        endif
+        set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+        show DATE
+        show PLAC        if @rec=INDI          ShowAll AGE        endif
+        if @tag="EVEN"
+          Show TYPE
+        else
+          ShowAll TYPE
+        endif        ShowAll ADDR
+        ShowALl _GPS
+        ShowAll PHON        ShowAll CAUS        ShowAll AGNC        ShowAll AGE        if @rec=FAM
+          ShowAll HUSB          ShowAll WIFE        endif
+        #hasFAMC="no"
+        if FAMC is here
+          Show FAMC @tag
+          #hasFAMC="yes"
+        endif
+
+        showAll NOTE
+        showAll SOUR        showAll _LOG
+        gosub ShowOBJE 2
+
+        newline 5
+        cell static,local("Attach")&": "
+        sizetofit
+        Show NOTE
+        Show SOUR
+        Show _LOG
+        Show OBJE
+        Show _OPTIONAL @tag
+        if #hasFAMC="no"
+          if @tag=BIRT
+            Show FAMC @tag
+          else if @tag=ADOP
+            Show FAMC @tag
+          else if @tag=CHR
+            Show FAMC @tag
+          endif
+        endif
+
+      EndGroup
+
+    endif

@@ -1,0 +1,12 @@
+! standard button to link to a record using
+! record view and hyperlink text
+! help text should be localized before he call
+
+sub RecordChildLink #helpText,#targ
+  cell LinkButton
+  TextExpression @contents.rec
+  AppendedExpression view
+  set border no Font "Hyperlink Text" width -1 alignment left
+  set RecordLink @contents Target #targ offset -1
+  Help #helpText
+endsub

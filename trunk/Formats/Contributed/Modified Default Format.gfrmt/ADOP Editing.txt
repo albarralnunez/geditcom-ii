@@ -1,0 +1,15 @@
+if #parentTag$!="INDI"
+  ! static text with level and tab  NewLine
+  tab 1
+  cell static,local("Adopted by")&":"
+  SizeToFit
+
+  ! edit field with value
+  cell PopupMenuEdit
+  MenuItems local("HUSB")&"::HUSB"  MenuItems local("WIFE")&":WIFE"  MenuItems local("Both")&":BOTH"  SizeToFit
+  help local("Select who did the adopting")
+
+else
+  use Event
+
+endif

@@ -1,0 +1,11 @@
+sub INDIPanes,#thisPane
+	cell PaneBar
+	AddPane local("INDI"),""
+	AddPane local("Events"),"Events"
+	AddPane local("Multimedia"),"Media"
+	AddPane local("Other"),"Other"
+	set selected #thisPane border smallsquare
+	sizetofit
+	set height #cellHeight$+1		! needed for Tiger
+	help local("Click to view section of this individual's data")
+endSub

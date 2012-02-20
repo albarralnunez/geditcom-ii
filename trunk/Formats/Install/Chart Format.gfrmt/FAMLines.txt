@@ -1,0 +1,11 @@
+sub FAMLines #lines
+  newline 5
+  cell palette
+  set width -1 height 2*#lines+2
+  PalMoveTo 0,1
+  PalLineTo #cellWidth$,1
+  if #lines>1
+    PalMoveTo 0,4
+    PalLineTo #cellWidth$,4
+  endif
+endSub

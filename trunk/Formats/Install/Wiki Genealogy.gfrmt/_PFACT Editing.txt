@@ -1,0 +1,57 @@
+load EndPeriod,LineLabel
+
+if #msg="wiki"
+
+  newline
+  if #vpos$>#boxend
+    DisplayWidth #oldWidth
+  endif
+  
+  cell static,"◾"
+  set fontcolor "Block Color" offset 3
+  sizetofit
+
+  hskip 0
+  #leftSkip=#hpos$
+
+  cell StaticField
+  set width -1 minheight 10 border none lineheight #lineMult
+  
+  text @contents
+  #fdate=@DATE
+  #fval=@_VALUE
+  if #fval=""
+    if #fdate=""
+      text " (but not data or value information given). "
+    else
+      text " was in "&#fdate&". "
+    endif
+  else if #fdate=""
+    text " was "&#fval&". "
+  else
+    text " in "&#fdate&" was "&#fval&". "
+  endif
+
+  GoSub EndPeriod @_PNOTE
+  
+  sizetofit
+  hideexcess
+
+else
+
+  newline
+  cell GroupBox,"Place Fact"
+    set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+    
+    gosub LineLabel local(@tag)
+    offset #editOffset
+
+    cell EditValue
+    set Width -1
+    
+    Show DATE
+    Show _VALUE
+    Show _PNOTE
+
+  EndGroup
+endif

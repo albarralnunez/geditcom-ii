@@ -1,0 +1,29 @@
+load ResetTabs,SectionLabel,TagBlock,RefLinks
+
+gosub ResetTabs
+
+! -------------- Start Template -----------------
+DropTypes NOTE,OBJE,REPO
+gosub SectionLabel "Source Details",0
+ShowAll AUTHShowAll TITL SourceShowAll ABBRShowAll PUBLShowAll REPO Repository
+
+! ----- text and dataif TEXT is here
+  #td="YES"
+else if DATA is here
+  #td="YES"
+else
+  #td="NO"
+endif
+if #td="YES"
+  gosub SectionLabel "Text and Data",9
+  ShowAll TEXT
+  ShowAll DATA
+endif
+
+! ----- tag blocksGosub TagBlock,"NOTE","NOTE"
+Gosub TagBlock,"OBJE","OBJE"
+Gosub RefLinks,"Citing Records","All Citing Records",9
+! --------- The Rest
+if more
+  gosub SectionLabel "Additional Data",9
+endif

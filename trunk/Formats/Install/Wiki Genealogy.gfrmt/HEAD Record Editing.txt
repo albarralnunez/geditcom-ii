@@ -1,0 +1,36 @@
+load ResetTabs,WikiSection,RecordTitle
+
+DropTypes SUBM,INDI,FAM,SOUR,OBJE,NOTE,_LOG,REPO
+gosub ResetTabs
+
+! -------------- Header Record ----------
+gosub RecordTitle,local("HEAD Record")
+Show SOUR
+ShowAll SUBM
+ShowAll SUBN
+ShowAll _HME
+
+! --------- Other Data -----------
+gosub WikiSection,local("Header Details"),""
+
+if DEST is here
+  ShowAll DEST
+else  optionaltag DEST,local(DEST)
+endif
+Show DATEShow FILEif COPR is here
+  ShowAll COPR
+else  optionaltag COPR,local(COPR)
+endif
+Show GEDCShow CHARif LANG is here
+  ShowAll LANG
+else  optionaltag LANG,local(LANG)
+endif
+if PLAC is here
+  ShowAll PLAC
+else  optionaltag PLAC,local("Default Place Hierarchy")
+endif
+
+! --------- Embedded notes at the end ----------
+newline 3
+Show NOTE
+

@@ -1,0 +1,21 @@
+load TagBlock,ResetTabs,ListBlock,References,AttachData,_LOGPanes
+
+! -------------- Start Template -----------------
+GoSub ResetTabs,0
+GoSub _LOGPanes,"Notes"
+
+! --------- NOTEs, SOURs, OBJEs and _LOGs -----------
+!Gosub TagBlock,"OBJE","Multimedia"
+gosub References,""
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+  width -1
+  newline -#lineSkip-3
+  #lineSkip=0
+  Show NOTE
+  Show SOUR
+EndGroup
+#lineSkip=#lineSkip$
+
+HideExcess

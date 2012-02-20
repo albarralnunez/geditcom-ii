@@ -1,0 +1,14 @@
+Load LineLabel
+
+if @level=1
+  use Event
+
+else
+  ! subordinate to FAMC in ADOP event to say who did the adopting
+  gosub LineLabel,local(@tag)
+  offset #buttonOffset
+
+  cell PopupMenuEdit
+  set border no  MenuItems local("Adopted by both parents")&":BOTH"  MenuItems local("Adopted by father")&":HUSB"  MenuItems local("Adopted by mother")&":WIFE"  SizeToFit
+
+endif

@@ -1,0 +1,197 @@
+load FAMPanes,TagBlock,ResetTabs,ListBlock,References,AttachData
+
+! ************** MAIN PANE ****************
+
+DropTypes INDI,INDICtrl
+GoSub ResetTabs,0
+GoSub FAMPanes,"All"
+
+! --------- Marriage --------------
+if @this._UMR=""
+  Show MARR box
+  ShowAll MARR box
+else
+  newline
+  cell GroupBox local("MARR")
+    width -1
+
+    cell static,local("Unmarried Couple")
+    SizeToFit
+
+    hskip 10
+    cell LinkButton,local("Change")
+    set border shadowlesssquare offset -2
+    MenuLink "Attach Married Status"
+    Help local("Click to change to married couple")
+
+    ShowAll MARR box
+  EndGroup
+endif
+
+! To show existing family events but none if no event,
+! add one line for each like:
+!ShowAll ENGA
+
+! To show existing family events and blank fields if no event,
+! add two lines for each like:
+!Show ENGA box
+!ShowAll ENGA box
+
+! --------- Children --------------
+cell GroupBox,local("Children")
+  width -1
+
+  newline
+  ClearTabs
+  #lineSkip=2
+  #cellSkip=2
+  #tableWidth=#rightMargin$-#rightSkip-#hpos$
+  ! .3 - .11 - .24 - .24 - .11
+  #t1=0.3
+  #t2=#t1+.11
+  #t3=#t2+.24
+  #t4=#t3+.24
+  ! (0) Children (#t1) Sex (3t2) BD (#t3) DD (#t4) Links (1.0)
+  SetTab #habs$,#habs$+#t1*#tableWidth,#habs$+#t2*#tableWidth
+  SetTab #habs$+#t3*#tableWidth,#habs$+#t4*#tableWidth,#habs$+#tableWidth
+
+  #chilNum=0
+  #tstart=#vpos$  ShowAll CHIL
+
+  #lineSkip=#lineSkip$
+  #cellSkip=#cellSkip$
+
+  newline
+  if #vpos$=#tstart
+    newline -3
+  endif
+  cell LinkButton
+  image "plus"
+  set width 24 border no
+  MenuLink "Attach Child"
+  help local("Click to attach new child")
+
+  cell LinkButton "-"
+  image "minus"
+  set width 24 border no
+  MenuLink "Detach Child"
+  help local("Click to detach child")
+
+  if NCHI is here
+    show NCHI
+    hide NCHI
+  endif
+
+EndGroup
+GoSub ResetTabs,0
+
+! ************** EVENTS PANE **************
+
+! --------- Events --------------
+cell GroupBox,local("Events")
+  width -1
+
+  newline
+  ClearTabs
+  #lineSkip=2
+  #cellSkip=2
+  #tableWidth=#rightMargin$-#rightSkip-#hpos$-21
+  #cellWidth=(#tableWidth-3*#cellSkip-20)/3
+  #nameWidth=#cellWidth
+  if #cellWidth>180
+    #nameWidth=180
+    #cellWidth=(3*#cellWidth-180)/2
+  endif
+  SetTab #habs$+#nameWidth,#habs$+#nameWidth+20,#habs$+#nameWidth+20+#habs$+.8*#cellWidth,#habs$+#tableWidth-22,#habs$+#tableWidth
+  #first="yes"
+
+  #tstart=#vpos$
+  hide MARR  ShowAll FAMEvents
+  ShowAll FAMOrdinances
+
+  #lineSkip=#lineSkip$
+  #cellSkip=#cellSkip$
+
+  newline
+  if #vpos$=#tstart
+    newline -3
+  endif
+  cell LinkButton
+  image "plus"
+  set width 24 border no
+  MenuLink "Attach Event/Attribute"
+  help local("Click to add an event")
+
+  cell LinkButton "-"
+  image "minus"
+  set width 24 border no
+  MenuLink "Detach Event/Attribute/Link"
+  help local("Click to remove an event")
+
+  hskip 10
+  cell LinkButton local("Copy Event")
+  set border shadowlesssquare
+  MenuLink "Copy Event"
+  help local("Click to copy event with text selection bar")
+  sizetofit 10
+
+  hskip 3
+  cell LinkButton local("Paste Event")
+  set border shadowlesssquare
+  MenuLink "Paste Event"
+  help local("Click to paste previously copied event to this record")
+  sizetofit 10
+
+EndGroup
+GoSub ResetTabs,0
+
+! ***************** MULTIMEDIA PANE *****************
+
+! --------- OBJEs -----------
+Gosub TagBlock,"OBJE","Multimedia"
+
+! ***************** NOTES AND SOURCES PANE *****************
+
+! --------- NOTEs, SOURs, and _LOGs -----------
+gosub References,"_LOG"
+
+! ***************** ADDITIONAL DATA *****************
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+  width -1
+  newline -#lineSkip-3
+  #lineSkip=0
+  Show OBJE
+  Show NOTE
+  Show SOUR
+  Show _LOG
+  gosub AttachData
+EndGroup
+#lineSkip=#lineSkip$
+
+! -------- Additional Data ------------
+if more is true
+  ClearTabs
+  gosub ResetTabs,50
+  cell GroupBox,local("Additional Data")
+    width -1
+    ShowAll CHAN
+    ShowAll all
+  EndGroup
+endif
+
+! -------- Export -------------
+
+cell GroupBox,local("Export")
+  width -1
+  cell LinkButton ".ged"
+  set ScriptLink "Export Data/Share Family Tree" ScriptType "system"
+  set border shadowlesssquare
+  sizetofit
+
+  optionalTag NCHI,local(NCHI),#chilNum
+  optionalTag RIN,local(RIN)
+  optionalTag REFN,local(REFN)
+  optionalTag SUBM,local(SUBM)
+  optionalTag,REFN,local("Keyword(s)"), ,"TYPE Keyword(s)"

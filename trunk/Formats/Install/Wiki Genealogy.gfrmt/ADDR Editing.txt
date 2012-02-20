@@ -1,0 +1,53 @@
+load LineLabel
+
+if #msg="wiki"
+
+  newline
+  if #vpos$>#boxend
+    DisplayWidth #oldWidth
+  endif
+
+  hskip 12
+  cell Static,local(@tag)&": "
+  sizetofit
+  hskip 0
+  #leftSkip=#hpos$
+
+  cell StaticField
+  set width -1 border no offset 2 minheight 16
+  #addr=@contents
+  if #addr==""
+    #addr="The address is not documented"
+  endif
+  text #addr
+  sizetofit
+
+  ShowAll ADR1 "wiki"
+  ShowAll ADR2 "wiki"
+  ShowAll CITY "wiki"
+  ShowAll STAE "wiki"
+  ShowAll POST "wiki"
+  ShowAll CTRY "wiki"
+
+  hideexcess
+  #leftSkip=#leftSkip$
+
+else
+
+  gosub LineLabel local(@tag)
+  offset #editOffset
+
+  ! edit address in multiline field
+  cell EditField
+  set Width -1 minheight 44 maxheight 128
+  sizetofit
+
+  ! possible subordinate tags have alternate cells for address
+  ShowAll ADR1
+  ShowAll ADR2
+  ShowAll CITY
+  ShowAll STAE
+  ShowAll POST
+  ShowAll CTRY
+
+endif

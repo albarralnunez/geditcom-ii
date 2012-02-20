@@ -1,0 +1,16 @@
+sub MiniDetail,#detail,#label
+  if #detail!=""
+    newline
+    if #label!=""
+      cell label,#label
+      set width 70 fontsize 10
+      cell static #detail
+      set width -1 fontsize 10
+    else
+      cell staticfield,#detail
+      set fontsize 10
+      set width -1 alignment center border no minheight 0
+      sizetofit
+    endif
+  endif
+endsub

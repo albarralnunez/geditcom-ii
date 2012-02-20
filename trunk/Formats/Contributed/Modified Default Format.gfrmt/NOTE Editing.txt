@@ -1,0 +1,108 @@
+!SJGR changed from default to display of notes containing html tables and display a link instead
+!also changed button sizes and set maximum height for notes displayed in citing record, rather than 
+!just a link, to be 450 to avoid very long notes extending way off the bottom of the screen. Other
+!values may work better on monitors of different resolutions but this works fine on a screen with 900
+!pixels vertical resolution.
+
+! special case for header
+if @rec=HEAD
+  use Field 5
+
+else
+  ! existing note structure
+  if tagexists is true
+	if #msg="1"
+
+      if @contents is validlink
+  if offset ("</table>\1\"&@contents.CONC)>0 !don't display contents if html table in the note
+ newline
+      !cell static,local(NOTE)&":"
+      !sizetofit
+      !set alignment right tabwidth 1
+      newline
+	  cell label,"• "
+	  SizeToFit
+cell LinkButton
+      TextExpression @contents.rec
+      AppendedExpression view
+      !Watch @contents.viewTag
+      set border no Font "Hyperlink Text" width -1 alignment left
+      RecordLink @contents
+      Target child
+	  sizetofit -1
+      Help local("Click to view and edit notes")
+else
+		#topField=#vpos$
+		cell LinkButton
+		text local("Edit")
+		set RecordLink @contents Target child border shadowlesssquare
+		sizetofit
+		#viewSpace=#rightMargin$-#rightSkip-#cellWidth$-#hpos$
+		set shift #viewSpace
+		Help local("Click to view and edit notes")
+
+		newline
+		VMoveTo #topField
+	    cell ExpressionField @contents.CONC
+	    set width #viewSpace-#cellSkip MinHeight 22 MaxHeight 450
+		sizetofit 3
+endif
+      ! embedded notes
+      else
+        cell static,local("(Embedded notes - reopen file to fix)")
+        set width -1
+      endif
+
+	else
+    if #msg="label"
+      newline
+      cell static,local(NOTE)&":"
+      sizetofit
+      set alignment right tabwidth 1
+    else
+      newline
+	  cell label,"• "
+	  SizeToFit
+	  set
+    endif
+
+     ! link to NOTE record
+    if @contents is validlink
+      cell LinkButton
+      TextExpression @contents.rec
+      AppendedExpression view
+      !Watch @contents.viewTag
+      set border no Font "Hyperlink Text" width -1 alignment left
+      RecordLink @contents
+      Target child
+	  sizetofit -1
+      Help local("Click to view and edit notes")
+
+      ! test notes display in field here
+      !newline 3
+      !cell ExpressionField,@contents.CONC
+      !set width -1 height 50
+      !sizetofit 3
+
+    ! embedded notes
+    else
+      cell static,local("(Embedded notes - reopen file to fix)")
+      set width -1
+    endif
+	endif
+
+Newline 3   !This gives notes a similar spacing to sources and also ensures there is enough space for the 
+			!note icon in a list with only one note without overlapping the icon for any subsequent sources
+
+    ! subordinate data should not be there, will fix on reopen
+    hideexcess
+  ! no notes - an attach button
+  else
+    ! button to link to new or existing notes
+    hskip 2    cell CreateLinkButton
+    set border shadowlesssquare width 28 height 28 target childifnew
+    image "notes"
+    imagewidth 25
+    help local("Click to attach notes")
+  endif
+endif

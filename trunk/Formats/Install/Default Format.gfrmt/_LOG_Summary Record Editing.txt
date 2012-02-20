@@ -1,0 +1,23 @@
+load TagBlock,ResetTabs,ListBlock,References,AttachData,_LOGPanes
+
+! -------------- Start Template -----------------
+GoSub ResetTabs,0
+GoSub _LOGPanes,"Summary"
+
+! --------- SUMMARY -----------
+if printing
+  if _SUMMARY is here
+    cell GroupBox,local("Summary")
+      width -1
+      cell ExpressionField,@_SUMMARY
+      set width -1
+      set minHeight 15 height 200
+      sizetofit 3
+      showAll _SUMMARY
+    EndGroup
+  endif
+else
+  show _SUMMARY .77
+endif
+
+HideExcess

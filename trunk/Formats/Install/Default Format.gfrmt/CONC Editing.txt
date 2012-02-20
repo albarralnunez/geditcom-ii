@@ -1,0 +1,34 @@
+ifStr @rec="NOTE"
+  if printing
+    hideexcess
+  else if #msgnum>0
+    ! use separate pane when not printing
+    cell EditPane,"("&local("type to enter notes")&")"
+    #fraction=#msg
+    if #fraction<.5
+      #fraction=.5
+    endif
+    if #posNotes>2.5
+      position right
+    else if #posNotes >1.5
+      position top
+    else if #posNotes >0.5
+      position left
+    else
+	  position bottom
+    endif
+    fraction #fraction
+    help local("Enter free-format notes")
+  else
+     newline
+     cell static,"Extra Text (should be copied to main notes text)"
+     sizetofit
+     newline
+     cell EditField
+     set maxheight 150 width -1
+     sizetofit
+  endif
+
+else
+  use _Unknown_
+endif

@@ -1,0 +1,13 @@
+load ResetTabs,SectionLabel,TagBlock
+
+gosub ResetTabs
+
+! -------------- Start Template -----------------
+DropTypes OBJE
+gosub SectionLabel "Submitter Details",0
+showall NAMEshowall ADDRshowall PHONshowall LANG
+! ----- tag blocksGosub TagBlock,"OBJE","OBJE"
+! --------- The Rest
+if more
+  gosub SectionLabel "Additional Data",9
+endif

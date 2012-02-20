@@ -1,0 +1,5 @@
+#eZone=0.75*#paperWidth$
+Show DATE local(@tag)
+Show PLAC
+
+HideExcess

@@ -1,0 +1,7 @@
+cell static,local(@tag)&":"
+sizetofit
+
+! popup menu
+cell PopupMenuEdit
+set controlsize small offset -2MenuItems local("Roadmap")&":Roadmap"MenuItems local("Satellite")&":Satellite"MenuItems local("Hybrid")&":Hybrid"MenuItems local("Terrain")&":Terrain"SizeToFit
+help local("Click to select initial map style")

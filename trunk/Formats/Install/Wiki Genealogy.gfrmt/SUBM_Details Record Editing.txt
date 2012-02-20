@@ -1,0 +1,21 @@
+load ResetTabs,EditingPage
+
+gosub EditingPage,"Submitter Details"
+
+newline
+gosub ResetTabs
+
+!--------- Personal Details
+cell GroupBox,local("Submitter Details")
+set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+show NAMEshow ADDR
+show _GPSshowall PHON
+show PHON
+showall _EMAIL
+show _EMAIL
+show LANG
+
+EndGroup
+
+HideExcess

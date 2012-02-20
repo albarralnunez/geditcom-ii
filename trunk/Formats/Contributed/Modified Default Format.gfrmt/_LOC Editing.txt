@@ -1,0 +1,10 @@
+! static text with level and tabNewLine
+cell static,local(@tag)&":"
+set tabwidth 1 alignment right font "GEDCOM Extension Text"
+
+! edit field with value
+cell EditValue
+set Width -1 Offset -2
+help local("Enter location for this multimedia object")
+
+Show _GPS "indent"

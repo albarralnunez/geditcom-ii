@@ -1,0 +1,15 @@
+load LineLabel
+
+if #parentTag$="FAM"
+
+  ! Label and editing field
+  gosub LineLabel "Total Number of Children (if some unknown): "
+  offset #editOffset
+
+  cell EditValue
+  set Width 50
+
+else
+  use Attribute
+
+endif

@@ -1,0 +1,9 @@
+load LineLabel
+
+! labeled popup menu
+gosub LineLabel local("TYPE")
+offset #buttonOffset
+
+cell PopupMenuEdit
+set autoreload yes border noMenuItems local("Book")&":book"MenuItems local("Article")&":article"MenuItems local("Web Page")&":web page"MenuItems local("In Book")&":in book"MenuItems local("Vital Records")&":vital records"MenuItems local("Unpublished")&":unpublished"MenuItems local("General")&"::"help local("Click to enter type of source")SizeToFit
+

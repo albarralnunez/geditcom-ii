@@ -1,0 +1,19 @@
+! label for new section and hangSkip instead of leftSkip
+! #labelText should be localized already
+
+sub SectionLabel #labelText
+  #leftSkip=#hangSkip
+
+  NewLine 3  cell label #labelText
+  set width -1 font "Section Label"
+  sizetofit
+
+  newline 1
+  cell Palette
+  set width -1 height 4
+  PalMoveTo 0,0
+  PalLineTo #cellWidth$,0
+
+  #leftSkip=#leftSkip$
+  NewLine
+endsub

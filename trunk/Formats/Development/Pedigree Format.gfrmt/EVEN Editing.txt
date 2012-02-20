@@ -1,0 +1,22 @@
+if #parentTag$="SourceDetails"
+    newline
+    cell static,local("EVEN")&":"    set tabwidth 1 alignment right
+
+    ! edit field with value
+    cell EditValue
+    set Width -1 Offset -2
+    help local("Enter event type cited")
+    Show ROLEelse if @rec="SOUR"
+    newline
+    cell static,local("Events")&":"    set tabwidth 1 alignment right
+
+    ! edit field with value
+    cell EditValue
+    set Width -1 Offset -2
+    help local("Enter event types cited")
+    ClearTabs
+    SetTab 130
+    Show DATE
+    Show PLACelse
+  use Event
+endif

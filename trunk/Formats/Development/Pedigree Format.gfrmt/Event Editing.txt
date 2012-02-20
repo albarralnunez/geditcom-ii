@@ -1,0 +1,54 @@
+newline
+
+! header on first event
+if #first="yes"
+  cell static,local("EVEN")
+  set tabwidth 1 alignment center border square
+  cellBackground "Table Cell Background"
+
+  cell static,"?"
+  set tabwidth 1 alignment center border square
+  cellBackground "Table Cell Background"
+
+  cell static,local("DATE")
+  set tabwidth 1 alignment center border square
+  cellBackground "Table Cell Background"
+
+  newline
+  #first="no"
+endif
+  
+! event name, check box, and date
+if @tag="EVEN"
+  #eName=@TYPE
+  if #eName=""
+    #eName=local(@tag)
+  else
+    #eName=local(#eName)
+  endif
+else
+  #eName=local(@tag)
+endif
+cell static,#eName
+set tabwidth 1 alignment center border square
+cellBackground "Table Cell Background"
+
+cell CheckBoxEdit
+set tabwidth 1
+help local("Check if event occurred but nothing else known")
+
+#eventDate=@DATE.view
+show DATE Event
+
+! rest in a child window
+cell StructuresLink,EventDetails,@tag&" "&#eventDate
+set border no width -1
+if more
+  set image "details_here"
+else
+  set image "details"
+endif
+LinkAll all
+
+#tagKey=@tag&" details"
+help local("Click to edit")&": "&local(#tagKey)

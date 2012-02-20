@@ -1,0 +1,5 @@
+cell CheckBoxEdit,local("Run script in the 'User' domain")
+sizetofit
+set autoreload yes
+help local("Check to run 'User' version of the book script rather then the 'System' version")
+help ". "&local("It must be the 'Reports/Generations LaTeX Book' script in the 'User' section")&"."

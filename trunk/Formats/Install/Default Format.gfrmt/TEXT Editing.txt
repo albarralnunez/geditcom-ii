@@ -1,0 +1,12 @@
+if @rec="SOUR"
+  if printing
+    ! edit field with value
+    hideexcess
+  else
+    cell EditPane,local("Enter text from the source")
+	set position bottom fraction .6
+    help local("Enter text from the source")
+  endif
+else
+  use Field 10
+endif

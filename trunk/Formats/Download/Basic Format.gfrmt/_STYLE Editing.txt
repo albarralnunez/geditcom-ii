@@ -1,0 +1,10 @@
+load LineLabel
+
+! labeled popup menu
+gosub LineLabel local(@tag)
+offset #buttonOffset
+
+! popup menu
+cell PopupMenuEdit
+MenuItems local("Roadmap")&":Roadmap"MenuItems local("Satellite")&":Satellite"MenuItems local("Hybrid")&":Hybrid"MenuItems local("Terrain")&":Terrain"help local("Click to enter type of this point of interest")
+sizetofit

@@ -1,0 +1,1392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>(Embedded multimedia - reopen file to fix)</key>
+	<string>(Upotettu multimedia – uudelleenavaus korjaa)</string>
+	<key>(Embedded notes - reopen file to fix)</key>
+	<string>(Upotettuja huomautuksia - uudelleenavaus korjaa)</string>
+	<key>(Embedded source - reopen file to fix)</key>
+	<string>(Upotettu lähde - uudelleenavaus korjaa)</string>
+	<key>(type to enter results of this task)</key>
+	<string>(kirjoita tämän tehtävän tuloksia)</string>
+	<key>(type to enter summary of this research)</key>
+	<string>(kirjoita tämän tutkimuksen yhteenveto)</string>
+	<key>100%</key>
+	<string>100%</string>
+	<key>125%</key>
+	<string>125%</string>
+	<key>150%</key>
+	<string>150%</string>
+	<key>200%</key>
+	<string>200%</string>
+	<key>25%</key>
+	<string>25%</string>
+	<key>300%</key>
+	<string>300%</string>
+	<key>400%</key>
+	<string>400%</string>
+	<key>50%</key>
+	<string>50%</string>
+	<key>75%</key>
+	<string>75%</string>
+	<key>&lt;LANG&gt;</key>
+	<string>Finnish</string>
+	<key>&lt;Unknown&gt; - click to detach broken link</key>
+	<string>&lt;tuntematon&gt; - kosketus irrottaa viallisen linkin</string>
+	<key>&lt;no linked records&gt;</key>
+	<string>&lt;ei linkattuja tietueita&gt;</string>
+	<key>A '+' means this child also has children</key>
+	<string>+' tarkoittaa tällä lapsella on myös lapsia</string>
+	<key>A4</key>
+	<string>A4</string>
+	<key>ABBR</key>
+	<string>Lyhenne</string>
+	<key>ADDR</key>
+	<string>Osoite</string>
+	<key>ADOP</key>
+	<string>Adoptio</string>
+	<key>ADOP details</key>
+	<string>Adoptiotietoja</string>
+	<key>ADR1</key>
+	<string>Osoiterivi 1</string>
+	<key>ADR2</key>
+	<string>Osoiterivi 2</string>
+	<key>AFN</key>
+	<string>"Ancestral File Number" (LDS)</string>
+	<key>AGE</key>
+	<string>Ikä</string>
+	<key>AGNC</key>
+	<string>Virasto</string>
+	<key>ALIA</key>
+	<string>Alias</string>
+	<key>ANCE</key>
+	<string>Esipolvia</string>
+	<key>ANCI</key>
+	<string>Kiinnostus esipolviin</string>
+	<key>ANUL</key>
+	<string>Mitätöinti</string>
+	<key>ANUL details</key>
+	<string>Mitätöintitietoja</string>
+	<key>ASSO</key>
+	<string>Yhteys</string>
+	<key>AUTH</key>
+	<string>Tekijä</string>
+	<key>About</key>
+	<string>Tietoja</string>
+	<key>Additional Data</key>
+	<string>Lisätietoja</string>
+	<key>Adopted</key>
+	<string>Adoptoitu</string>
+	<key>Adopted by</key>
+	<string>Adoptoija</string>
+	<key>Advanced</key>
+	<string>Advanced</string>
+	<key>All</key>
+	<string>Kaikki</string>
+	<key>All Citing Records</key>
+	<string>Kaikki siteeraavat tietueet</string>
+	<key>All Linked Records</key>
+	<string>Kaikki linkatut tietueet</string>
+	<key>All Notated Records</key>
+	<string>Kaikki Notated tietueet</string>
+	<key>Anyone</key>
+	<string>Kuka tahansa</string>
+	<key>Article</key>
+	<string>Artikkeli</string>
+	<key>Associated Records</key>
+	<string>Yhteystietueita</string>
+	<key>Attach</key>
+	<string>Liitä</string>
+	<key>Attach Father</key>
+	<string>Liitä isä</string>
+	<key>Attach HUSB</key>
+	<string>Liitä aviomies</string>
+	<key>Attach Link</key>
+	<string>Liitä linkki</string>
+	<key>Attach Mother</key>
+	<string>Liitä äiti</string>
+	<key>Attach Source</key>
+	<string>Liitä lähde</string>
+	<key>Attach WIFE</key>
+	<string>Liitä vaimo</string>
+	<key>Attribute</key>
+	<string>Ominaisuus</string>
+	<key>Attributes</key>
+	<string>Ominaisuuksia</string>
+	<key>Author Information</key>
+	<string>Tekijätietoja</string>
+	<key>Auto Typeset</key>
+	<string>Automaattiladonta</string>
+	<key>BAPL</key>
+	<string>LDS "Baptism"</string>
+	<key>BAPL details</key>
+	<string>LDS "Baptism" tietoja</string>
+	<key>BAPM</key>
+	<string>Kaste</string>
+	<key>BAPM details</key>
+	<string>Kastetietoja</string>
+	<key>BARM</key>
+	<string>Bar Mitzvah</string>
+	<key>BARM details</key>
+	<string>Bar Mitzvah tietoja</string>
+	<key>BASM</key>
+	<string>Bas Mitzvah</string>
+	<key>BASM details</key>
+	<string>Bar tai Bas/Bat Mitzvah tietoja</string>
+	<key>BIRT</key>
+	<string>Syntynyt</string>
+	<key>BIRT details</key>
+	<string>Syntymätietoja</string>
+	<key>BLES</key>
+	<string>Siunaus</string>
+	<key>BLES details</key>
+	<string>"Blessing" tietoja</string>
+	<key>BLOB</key>
+	<string>Koodattua tietoa</string>
+	<key>BTL</key>
+	<string>Taistelukenttä</string>
+	<key>BUR</key>
+	<string>Hautapaikka</string>
+	<key>BURI</key>
+	<string>Hautaus</string>
+	<key>BURI details</key>
+	<string>Hautaustietoja</string>
+	<key>Birthdate</key>
+	<string>Syntymäpäivä</string>
+	<key>Bold Text</key>
+	<string>Lihavoitu</string>
+	<key>Book</key>
+	<string>Kirja</string>
+	<key>Book Target Individual</key>
+	<string>Kirjan kohdehenkilö</string>
+	<key>Born</key>
+	<string>Syntynyt</string>
+	<key>Both</key>
+	<string>molemmat</string>
+	<key>Bottom Margin</key>
+	<string>Alareunus</string>
+	<key>Button Text</key>
+	<string>Painiketeksti</string>
+	<key>CALN</key>
+	<string>Call numero</string>
+	<key>CAST</key>
+	<string>Kastinimi</string>
+	<key>CAST details</key>
+	<string>Kastinimitietoja</string>
+	<key>CAUS</key>
+	<string>Syy</string>
+	<key>CENS</key>
+	<string>Väestölaskenta</string>
+	<key>CENS details</key>
+	<string>Väestölaskentatietoja</string>
+	<key>CH</key>
+	<string>Igreja</string>
+	<key>CHAN</key>
+	<string>Muutettu</string>
+	<key>CHAR</key>
+	<string>Merkistö</string>
+	<key>CHIL</key>
+	<string>Lapsi</string>
+	<key>CHR</key>
+	<string>Ristiäiset</string>
+	<key>CHR details</key>
+	<string>Ristimistietoja</string>
+	<key>CHRA</key>
+	<string>Aikuiskaste</string>
+	<key>CHRA details</key>
+	<string>Aikuiskastetietoja</string>
+	<key>CITY</key>
+	<string>Kaupunki</string>
+	<key>CMTY</key>
+	<string>Hautausmaa</string>
+	<key>CONC</key>
+	<string>Ketjutus</string>
+	<key>CONF</key>
+	<string>Konfirmaatio</string>
+	<key>CONF details</key>
+	<string>Konfirmaatiotietoja</string>
+	<key>CONL</key>
+	<string>Konfirmaatio (LDS)</string>
+	<key>CONL details</key>
+	<string>"LDS Confirmation" tietoja</string>
+	<key>CONT</key>
+	<string>Jatkoa</string>
+	<key>COPR</key>
+	<string>Copyright</string>
+	<key>CORP</key>
+	<string>Yhtiö</string>
+	<key>CREM</key>
+	<string>Polttohautaus</string>
+	<key>CREM details</key>
+	<string>Polttohautaustietoja</string>
+	<key>CTHSE</key>
+	<string>Käräjäpaikka</string>
+	<key>CTRM</key>
+	<string>Lääkintäkeskus</string>
+	<key>CTRR</key>
+	<string>Palvontakeskus</string>
+	<key>CTRY</key>
+	<string>Maa</string>
+	<key>Cell Separation</key>
+	<string>Solujen väli</string>
+	<key>Change</key>
+	<string>Muuta</string>
+	<key>Chapter</key>
+	<string>Kappale</string>
+	<key>Character set can only be changed when extracting a GEDCOM file</key>
+	<string>Merkistöä voi vaihtaa vain  poimittaessa GEDCOM tiedostosta</string>
+	<key>Chart Box Padding</key>
+	<string>Kaaviolaatikon täyte</string>
+	<key>Chart Box Width</key>
+	<string>Kaaviolaatikon leveys</string>
+	<key>Chart Column Spacing</key>
+	<string>Kaavion sarakeväli</string>
+	<key>Chart Row Spacing</key>
+	<string>Kaavion riviväli</string>
+	<key>Check 'LaTeX Content' box and enter LaTeX commands.</key>
+	<string>Ruksaa 'Latex sisältö' ja syötä LaTex komennot</string>
+	<key>Check Box Text</key>
+	<string>Rastiruudun teksti</string>
+	<key>Check if deceased but nothing else known</key>
+	<string>Ruksaa jos kuollut eikä muuta tiedetä</string>
+	<key>Check if event occurred but nothing else known</key>
+	<string>Ruksaa jos tapahtunut eikä muuta tiedetä</string>
+	<key>Check if married but nothing else known</key>
+	<string>Ruksaa jos vihitty eikä muuta tiedetä</string>
+	<key>Children</key>
+	<string>Lapsia</string>
+	<key>Circumcision</key>
+	<string>Ympärileikkaus</string>
+	<key>Cited by</key>
+	<string>Lainaaja</string>
+	<key>Click for death details</key>
+	<string>Kosketa kuolematietoja varten</string>
+	<key>Click for marriage details</key>
+	<string>Kosketus avaa vihkimistiedot</string>
+	<key>Click for name details</key>
+	<string>Kosketuksella nimitietoja</string>
+	<key>Click for source details specific to this record</key>
+	<string>Kosketuksella lähdetietoja juuri tälle tapaukselle</string>
+	<key>Click for task findings</key>
+	<string>Kosketus näyttää tehtävälöytöjä</string>
+	<key>Click to add a map</key>
+	<string>Kosketus lisää kartan</string>
+	<key>Click to add a web site URL for this place</key>
+	<string>Kosketus lisää WWW-osoitteen</string>
+	<key>Click to add an event</key>
+	<string>Kosketus lisää tapahtuman</string>
+	<key>Click to add another point of interest on this map</key>
+	<string>Kosketus lisää uuden kiinnostuksen tähän karttaan</string>
+	<key>Click to add place information</key>
+	<string>Kosketus lisää paikkatiedon</string>
+	<key>Click to attach a target individual for the book</key>
+	<string>Kosketus liittää kohdehenkilön kirjaan</string>
+	<key>Click to attach additional place names</key>
+	<string>Kosketus liittää lisää paikannimiä</string>
+	<key>Click to attach alias record</key>
+	<string>Kosketus liittää alias tietueeseen</string>
+	<key>Click to attach associated record</key>
+	<string>Kosketus liittää yhteystietueeseen</string>
+	<key>Click to attach link to a family record</key>
+	<string>Kosketus liittää linkin perhetietoihin</string>
+	<key>Click to attach link to a place record</key>
+	<string>Kosketus liittää linkin paikkatietoihin</string>
+	<key>Click to attach link to an individual record</key>
+	<string>Kosketus liittää linkin henkilötietoihin</string>
+	<key>Click to attach link to submitter record</key>
+	<string>Kosketus liittää linkin luovuttajatietoihin</string>
+	<key>Click to attach multimedia object</key>
+	<string>Kosketus liittää multimedia kohteen</string>
+	<key>Click to attach new child</key>
+	<string>Kosketus liittää uuden lapsen</string>
+	<key>Click to attach new research task</key>
+	<string>Kosketus liittää uuden tutkimustehtävän</string>
+	<key>Click to attach notes</key>
+	<string>Kosketus liittää huomautuksia</string>
+	<key>Click to attach optional data fields</key>
+	<string>Kosketus liittää valinnaisia tietokenttiä</string>
+	<key>Click to attach research log</key>
+	<string>Kosketus liittää tutkimusmerkintöjä</string>
+	<key>Click to attach source</key>
+	<string>Kosketus liittää lähteen</string>
+	<key>Click to change</key>
+	<string>Kosketus muuttaa</string>
+	<key>Click to change record restriction</key>
+	<string>Kosketus muuttaa tietueen rajoituksen</string>
+	<key>Click to change relationship to parents</key>
+	<string>Kosketus muuttaa yhteyden vanhempiin</string>
+	<key>Click to change this person's sex</key>
+	<string>Kosketus vaihtaa henkilön sukupuolen</string>
+	<key>Click to change to married couple</key>
+	<string>Kosketus muuttaa vihityksi pariksi</string>
+	<key>Click to customize the label</key>
+	<string>Kosketus muokkaa nimiötä</string>
+	<key>Click to detach child</key>
+	<string>Kosketus irrottaa lapsen</string>
+	<key>Click to detach research task</key>
+	<string>Kosketus irrottaa tutkimustehtävän</string>
+	<key>Click to edit</key>
+	<string>Kosketa muokataksesi</string>
+	<key>Click to enter quality of this source</key>
+	<string>Kosketus lisää tämän lähteen laadun</string>
+	<key>Click to enter type for this point of interest</key>
+	<string>Kosketus valitsee kiinnostuksen tyypin</string>
+	<key>Click to enter type of source</key>
+	<string>Kosketus valitsee lähteen tyypin</string>
+	<key>Click to link as child to a newly created family</key>
+	<string>Kosketus liittää lapseksi uuteen perheeseen</string>
+	<key>Click to link as husband of a newly created family</key>
+	<string>Kosketus liittää mieheksi vastaluotuun perheeseen</string>
+	<key>Click to link as wife of a newly created family</key>
+	<string>Kosketus liittää vaimoksi uuteen perheeseen</string>
+	<key>Click to link source to a repository record</key>
+	<string>Kosketus liittää lähteen säilytystietueeseen</string>
+	<key>Click to link this record to a multimedia object.</key>
+	<string>Kosketus liittää tämän tietueen multimediakohteeseen.</string>
+	<key>Click to link to an existing family record</key>
+	<string>Kosketus liittää johonkin perhetietueeseen</string>
+	<key>Click to link to family record</key>
+	<string>Kosketus liittää perhetietueeseen</string>
+	<key>Click to open family record #</key>
+	<string>Kosketus avaa perhetietueen #</string>
+	<key>Click to open home individual record</key>
+	<string>Kosketus avaa koettihenkilön tiedot</string>
+	<key>Click to open in a helper application.</key>
+	<string>Kosketus avaa apusovelluksella.</string>
+	<key>Click to open in browser</key>
+	<string>Kosketus avaa selaimella</string>
+	<key>Click to open this URL link in your browser application.</key>
+	<string>Kosketus avaa tämän URL linkin selainsovelluksellasi.</string>
+	<key>Click to paste previously copied event to this record</key>
+	<string>Kosketus sijoittaa kopioidun tapahtuman tähän tietueeseen</string>
+	<key>Click to promote this individual to top-left and view ancestral pedigree</key>
+	<string>Kosketus vie tämän henkilön vasempaan yläkulmaan ja näyttää hänen syntyperänsä</string>
+	<key>Click to remove a map</key>
+	<string>Kosketus poistaa kartan</string>
+	<key>Click to remove a target individual</key>
+	<string>Kosketus poistaa kohdehenkilön</string>
+	<key>Click to remove a web site URL for this place</key>
+	<string>Kosketus poistaa WWW-sivun osoitteen tältä paikalta</string>
+	<key>Click to remove an event</key>
+	<string>Kosketus poistaa tapahtuman</string>
+	<key>Click to remove place information</key>
+	<string>Kosketus poistaa paikkatiedon</string>
+	<key>Click to remove this point of interest</key>
+	<string>Kosketus poistaa tämän kiinnostuksen</string>
+	<key>Click to see all citing records</key>
+	<string>Kosketus näyttää kaikki siteeraavat tietueet</string>
+	<key>Click to see all individual or family records that refer to this place</key>
+	<string>Kosketus näyttää kaikki tähän paikkaan viittaavat henkilöt tai perheet</string>
+	<key>Click to see citing record</key>
+	<string>Kosketus näyttää siteeraavan tietueen</string>
+	<key>Click to see content and enter text from this source</key>
+	<string>Kosketus näyttää sisällön ja antaa lisätä tekstiä tästä lähteestä</string>
+	<key>Click to select distribution recommendations for this note</key>
+	<string>Kosketus valitsee jakelusuositukset tälle huomautukselle</string>
+	<key>Click to select first web site, which is displayed in this window</key>
+	<string>Kosketus valitsee ensimmäisen sivuston, joka näytetään tässä ikkunassa</string>
+	<key>Click to select font family for the book</key>
+	<string>Kosketus valitsee kirjan kirjasinperheen</string>
+	<key>Click to select font size for the book</key>
+	<string>Kosketus valitsee kirjan kirjasinkoon</string>
+	<key>Click to select initial map style</key>
+	<string>Kosketus valitsee kartan alkutyylin</string>
+	<key>Click to select page size for text content</key>
+	<string>Kosketus valitsee arkin koon tekstisisällölle</string>
+	<key>Click to select paper size for your LaTeX installation</key>
+	<string>Kosketus valitsee arkin koon LaTex asennuksellesi</string>
+	<key>Click to select preferred place name</key>
+	<string>Kosketus valitsee suositeltavan paikannimen</string>
+	<key>Click to select style for various elements in the book</key>
+	<string>Kosketus valitsee tyylin kirjan eri osille</string>
+	<key>Click to select which notes to include in the book</key>
+	<string>Kosketus valitsee mitkä huomautukset sisällytetään kirjaan</string>
+	<key>Click to select which portraits to include in the book</key>
+	<string>Kosketus valitsee mitkä huomautukset sisällytetään kirjaan</string>
+	<key>Click to send email</key>
+	<string>Kosketus lähettää sähköpostia</string>
+	<key>Click to set image scaling</key>
+	<string>Kosketus asettaa kuvan skaalauksen</string>
+	<key>Click to set task status</key>
+	<string>Kosketus asettaa tehtävän tilan</string>
+	<key>Click to typeset the book</key>
+	<string>Kosketus latoo kirjan</string>
+	<key>Click to view Father's record</key>
+	<string>Kosketus näyttää isän tietueen</string>
+	<key>Click to view HUSB's record</key>
+	<string>Kosketus näyttää aviomiehen tietueen</string>
+	<key>Click to view Mother's record</key>
+	<string>Kosketus näyttää äidin tietueen</string>
+	<key>Click to view Repository record</key>
+	<string>Kosketus näyttää säilytyspaikkatiedot</string>
+	<key>Click to view Submission record</key>
+	<string>Kosketus näyttää Submission record</string>
+	<key>Click to view Submitter record</key>
+	<string>Kosketus näyttää luovuttajatietueen</string>
+	<key>Click to view WIFE's record</key>
+	<string>Kosketus näyttää vaimon tietueen</string>
+	<key>Click to view alias record</key>
+	<string>Kosketus näyttää alias tietueen</string>
+	<key>Click to view and edit birth details</key>
+	<string>Kosketus näyttää ja antaa muokata syntymätietoja</string>
+	<key>Click to view and edit notes</key>
+	<string>Kosketus näyttää ja sallii muokata huomautuksia</string>
+	<key>Click to view and edit place record</key>
+	<string>Kosketus näyttää ja sallii muokata paikkatietoja</string>
+	<key>Click to view and edit source</key>
+	<string>Kosketus näyttää ja antaa muokata lähteen</string>
+	<key>Click to view associated record</key>
+	<string>Kosketus näyttää yhteystietueen</string>
+	<key>Click to view child's record</key>
+	<string>Kosketus näyttää lapsen tiedot</string>
+	<key>Click to view cited record</key>
+	<string>Kosketus näyttää siteeratun tietueen</string>
+	<key>Click to view family chart for this couple</key>
+	<string>Kosketus näyttää tämän parin perhekaavion</string>
+	<key>Click to view family record</key>
+	<string>Kosketus näyttää perhetietueen</string>
+	<key>Click to view individual record</key>
+	<string>Kosketus näyttää henkilötietueen</string>
+	<key>Click to view log record</key>
+	<string>Kosketus näyttää lokitietueen</string>
+	<key>Click to view multimedia record</key>
+	<string>Kosketus näyttää multimediatietueen</string>
+	<key>Click to view parents' family record</key>
+	<string>Kosketus näyttää vanhempien perheen</string>
+	<key>Click to view place record</key>
+	<string>Kosketus näyttää paikkatiedon</string>
+	<key>Click to view section of this family's data</key>
+	<string>Kosketus näyttää osaston tämän perheen tiedoista</string>
+	<key>Click to view section of this individual's data</key>
+	<string>Kosketus näyttää osaston tämän henkilön tiedoista</string>
+	<key>Click to view section of this multimedia record</key>
+	<string>Kosketus näyttää tämän multimediatietueen osaston</string>
+	<key>Click to view section of this place's data</key>
+	<string>Kosketus näyttää osaston tämän paikan tiedoista</string>
+	<key>Click to view spouse's record</key>
+	<string>Kosketus näyttää puolison tietueen</string>
+	<key>Click to visit place web site</key>
+	<string>Kosketus vierailee paikan sivustolla</string>
+	<key>Comments</key>
+	<string>Kommentteja</string>
+	<key>Content and Text from the Source</key>
+	<string>Lähteen sisältö ja teksti</string>
+	<key>Copy Event</key>
+	<string>Kopioi tapahtuma</string>
+	<key>Copyright</key>
+	<string>Copyright</string>
+	<key>Create Book</key>
+	<string>Luo kirja</string>
+	<key>Creating Software</key>
+	<string>Luotu ohjelmalla</string>
+	<key>Creation Date</key>
+	<string>Luontipäivä</string>
+	<key>DATA</key>
+	<string>Data</string>
+	<key>DATE</key>
+	<string>Päiväys</string>
+	<key>DEAT</key>
+	<string>Kuollut</string>
+	<key>DEAT details</key>
+	<string>Kuolematietoja</string>
+	<key>DESC</key>
+	<string>Jälkipolvia</string>
+	<key>DESI</key>
+	<string>Kiinnostus jälkipolviin</string>
+	<key>DEST</key>
+	<string>Kohdetiedosto</string>
+	<key>DIP</key>
+	<string>Diplomatic Facility</string>
+	<key>DIV</key>
+	<string>Avioero</string>
+	<key>DIV details</key>
+	<string>Avioerotietoja</string>
+	<key>DIVF</key>
+	<string>Avioerohakemus</string>
+	<key>DIVF details</key>
+	<string>Avioerohakemustietoja</string>
+	<key>DSCR</key>
+	<string>Fyysinen kuvaus</string>
+	<key>DSCR details</key>
+	<string>Fyysisen kuvauksen tietoja</string>
+	<key>Daughter</key>
+	<string>Tytär</string>
+	<key>Deed</key>
+	<string>Sopimuskirja</string>
+	<key>Default</key>
+	<string>Oletus</string>
+	<key>Default Cell Height</key>
+	<string>Oletusruutukorkeus</string>
+	<key>Default Cell Width</key>
+	<string>Oletusruutuleveys</string>
+	<key>Default Place Hierarchy</key>
+	<string>Oletuspaikkahierarkia</string>
+	<key>Description</key>
+	<string>Kuvaus</string>
+	<key>Details</key>
+	<string>Tietoja</string>
+	<key>Details on</key>
+	<string>Tietoja</string>
+	<key>Died</key>
+	<string>Kuollut</string>
+	<key>Done</key>
+	<string>Valmis</string>
+	<key>EDUC</key>
+	<string>Koulutus</string>
+	<key>EDUC details</key>
+	<string>Koulutustietoja</string>
+	<key>EMIG</key>
+	<string>Maastamuutto</string>
+	<key>EMIG details</key>
+	<string>Maastamuuttotietoja</string>
+	<key>ENDL</key>
+	<string>LDS "Endowment"</string>
+	<key>ENDL details</key>
+	<string>LDS "Endowment" tietoja</string>
+	<key>ENGA</key>
+	<string>Kihlaus</string>
+	<key>ENGA details</key>
+	<string>Kihlaustietoja</string>
+	<key>EVEN</key>
+	<string>Tapahtuma</string>
+	<key>EVEN details</key>
+	<string>Tapahtumatietoja</string>
+	<key>Edit</key>
+	<string>Muokkaa</string>
+	<key>Edit the URL for this web site link</key>
+	<string>Muokkaa URLia tämän WWW sivun linkille</string>
+	<key>Edit the text for</key>
+	<string>Muokkaa tekstiä</string>
+	<key>Editing Background</key>
+	<string>Muokkaustausta</string>
+	<key>Editing Text</key>
+	<string>Tekstin muokkaus</string>
+	<key>Editor, etc.</key>
+	<string>Editori, jne.</string>
+	<key>Encoded data not supported</key>
+	<string>Encoded data ei tueta</string>
+	<key>Enter</key>
+	<string>Anna</string>
+	<key>Enter (lat,lon), (lat,lon,span), or (lat1,lon2,lat2,lon2)</key>
+	<string>Anna (lat,lon), (lat,lon,span), tai (lat1,lon2,lat2,lon2)</string>
+	<key>Enter a title</key>
+	<string>Anna otsikko</string>
+	<key>Enter a valid date</key>
+	<string>Syötä kelvollinen päiväys</string>
+	<key>Enter abbreviated title for the source</key>
+	<string>Anna lähteen lyhennetty nimike</string>
+	<key>Enter additional text information</key>
+	<string>Anna lisätietoja</string>
+	<key>Enter approved system ID code</key>
+	<string>Anna hyväksytty system ID koodi</string>
+	<key>Enter authors for this source</key>
+	<string>Anna tämän lähteen tekijät</string>
+	<key>Enter comma separated list of those granted license to copy the book</key>
+	<string>Anna pilkun eroteltu luettelo niistä, joilla on lupa kopioida kirja</string>
+	<key>Enter copyright owner if different than the author</key>
+	<string>Anna tekijänoikeuden haltija jos eri kuin tekijä</string>
+	<key>Enter custom label for the user reference entry</key>
+	<string>Anna oma nimike käyttäjäviitteelle</string>
+	<key>Enter email address,</key>
+	<string>Anna sähköpostiosoite</string>
+	<key>Enter event type cited</key>
+	<string>Anna tapahtumatyyppi cited</string>
+	<key>Enter event types cited</key>
+	<string>Anna tapahtumatyypit cited</string>
+	<key>Enter free-format notes</key>
+	<string>Syötä vapaamuotoisia huomautuksia</string>
+	<key>Enter gedcom version number used</key>
+	<string>Anna käytetty GEDCOM versionumero</string>
+	<key>Enter goal for this task</key>
+	<string>Anna tämän rehtävän tavoite</string>
+	<key>Enter individual's age for this event</key>
+	<string>Anna henkilön ikä tälle tapahtumalle</string>
+	<key>Enter keywords separated by semicolons</key>
+	<string>Anna avainsanoja puolipistein(;) eroteltuna</string>
+	<key>Enter latitude and longitude (e.g., 45.3N, 112.3W)</key>
+	<string>Anna leveysaste ja pituusaste (esim., 45.3N, 112.3W)</string>
+	<key>Enter location for this multimedia object</key>
+	<string>Anna tämän multimediakohteen sijainti</string>
+	<key>Enter name for this point of interest</key>
+	<string>Anna nimi tälle kiinnostukselle</string>
+	<key>Enter name of source data</key>
+	<string>Anna lähdetiedon nimi</string>
+	<key>Enter name using slashes for surname if needed</key>
+	<string>Anna nimi ympäröiden /sukunimi/ vinoviivoin jos tarpeen</string>
+	<key>Enter number of children</key>
+	<string>Anna lasten lukumäärä</string>
+	<key>Enter overall summary of this research log.</key>
+	<string>Enter overall summary of this research log.</string>
+	<key>Enter place URL (including initial http:)</key>
+	<string>Anna paikan URL (alkaen http:)</string>
+	<key>Enter place for this event</key>
+	<string>Anna paikka tälle tapahtumalle</string>
+	<key>Enter place hierachy form</key>
+	<string>Anna paikkahierarkian format</string>
+	<key>Enter plain text for the book</key>
+	<string>Syötä leipätekstiä kirjaan</string>
+	<key>Enter publisher details or other indicated information</key>
+	<string>Anna julkaisijatiedot tai muut ilmoitetut tiedot</string>
+	<key>Enter research task summary</key>
+	<string>Anna tutkimustehtävän yhteeveto</string>
+	<key>Enter source title</key>
+	<string>Anna lähteen nimike</string>
+	<key>Enter text from the source</key>
+	<string>Syötä lähteen teksti</string>
+	<key>Enter the full name for this place</key>
+	<string>Anna tämän paikan koko nimi</string>
+	<key>Enter the type of place information</key>
+	<string>Anna paikkatiedon tyyppi</string>
+	<key>Event Multimedia</key>
+	<string>Tapahtuma multimedia</string>
+	<key>Event and Attribute Multimedia</key>
+	<string>Tapahtuma ja ominaisuus multimedia</string>
+	<key>Event type cited</key>
+	<string>Siteerattu tapahtumatyyppi</string>
+	<key>Events</key>
+	<string>Tapahtumia</string>
+	<key>Events and Attributes</key>
+	<string>Tapahtumia ja ominaisuuksia</string>
+	<key>Export</key>
+	<string>Vienti</string>
+	<key>FAM</key>
+	<string>Perhe</string>
+	<key>FAM Record</key>
+	<string>Perhetietue</string>
+	<key>FAMC</key>
+	<string>Perhe lapsena</string>
+	<key>FAMF</key>
+	<string>Perhetiedosto</string>
+	<key>FAMS</key>
+	<string>Perhe puolisona</string>
+	<key>FCOM</key>
+	<string>Ripillepääsy</string>
+	<key>FCOM details</key>
+	<string>Ripillepääsytietoja</string>
+	<key>FILE</key>
+	<string>Tiedosto</string>
+	<key>FORM</key>
+	<string>Form</string>
+	<key>Failed</key>
+	<string>Epäonnistui</string>
+	<key>Family</key>
+	<string>Perhe</string>
+	<key>Family Being Researched</key>
+	<string>Tutkittava perhe</string>
+	<key>Family Group Chart</key>
+	<string>Perheryhmäkaavio</string>
+	<key>Family Link</key>
+	<string>Perhelinkki</string>
+	<key>Father</key>
+	<string>Isä</string>
+	<key>Father 1's Age</key>
+	<string>Isä 1:n ikä</string>
+	<key>Father 2's Age</key>
+	<string>Isä 2:n ikä</string>
+	<key>Father's Age</key>
+	<string>Isän ikä</string>
+	<key>Female</key>
+	<string>Nainen</string>
+	<key>Female Spouse</key>
+	<string>Naispuoliso</string>
+	<key>File path; click to change it</key>
+	<string>Hakemistopolku; kosketus muuttaa sen</string>
+	<key>Foster</key>
+	<string>Kasvatti</string>
+	<key>Full Page</key>
+	<string>Koko sivu</string>
+	<key>GEDC</key>
+	<string>GEDCOM Informaatio</string>
+	<key>GEDCOM Extension Text</key>
+	<string>GEDCOM laajennusteksti</string>
+	<key>GEDCOM Version</key>
+	<string>GEDCOM Versio</string>
+	<key>GIVN</key>
+	<string>Etunimi</string>
+	<key>GOVL</key>
+	<string>Hallintorakennus</string>
+	<key>GRAD</key>
+	<string>Tutkinto</string>
+	<key>GRAD details</key>
+	<string>Tutkintotietoja</string>
+	<key>GRVE</key>
+	<string>Hautapaikka</string>
+	<key>General</key>
+	<string>Yleinen</string>
+	<key>Generations</key>
+	<string>Sukupolvia</string>
+	<key>Generic Event</key>
+	<string>Yleinen tapahtuma</string>
+	<key>Grandfather</key>
+	<string>Isoisä</string>
+	<key>Grandmother</key>
+	<string>Isoäiti</string>
+	<key>Great Grandfather</key>
+	<string>Isoisoisä</string>
+	<key>Great Grandmother</key>
+	<string>Isoisoäiti</string>
+	<key>Group</key>
+	<string>Ryhmä</string>
+	<key>HEAD</key>
+	<string>Otsake</string>
+	<key>HEAD Record</key>
+	<string>Otsikkotietue</string>
+	<key>HSP</key>
+	<string>Sairaala</string>
+	<key>HUSB</key>
+	<string>Aviomies</string>
+	<key>HUSB 1's Age</key>
+	<string>Aviomies 1:n ikä</string>
+	<key>HUSB 2's Age</key>
+	<string>Aviomies 2:n ikä</string>
+	<key>HUSB's Age</key>
+	<string>Miehen ikä</string>
+	<key>Hardcover Novel</key>
+	<string>Kovakantinen kirja</string>
+	<key>Has Died</key>
+	<string>On kuollut</string>
+	<key>Header Details</key>
+	<string>Header tietoja</string>
+	<key>Husband</key>
+	<string>Aviomies</string>
+	<key>Hybrid</key>
+	<string>Hybridi</string>
+	<key>Hyperlink Text</key>
+	<string>Hyperlink teksti</string>
+	<key>IDNO</key>
+	<string>Henkilötunnus</string>
+	<key>IDNO details</key>
+	<string>Henkilötunnustietoja</string>
+	<key>IMMI</key>
+	<string>Maahanmuutto</string>
+	<key>IMMI details</key>
+	<string>Maahanmuuttotietoja</string>
+	<key>INDI</key>
+	<string>Henkilö</string>
+	<key>INDI Record</key>
+	<string>Henkilötietue</string>
+	<key>Illness</key>
+	<string>Sairaus</string>
+	<key>Include Copyright Notices</key>
+	<string>Sisällytä tekijänoikeusilmoitukset</string>
+	<key>Include all</key>
+	<string>Sisällytä kaikki</string>
+	<key>Individual</key>
+	<string>Henkilö</string>
+	<key>Individual Being Researched</key>
+	<string>Tutkittava henkilö</string>
+	<key>Individual Link</key>
+	<string>Henkilölinkki</string>
+	<key>Individual's sex must be known to attach as a spouse to a family</key>
+	<string>Henkilön sukupuoli oltava tunnettu lisättäessä puolisoksi perheeseen</string>
+	<key>Introduction</key>
+	<string>Johdanto</string>
+	<key>Journal</key>
+	<string>Aikakauslehti</string>
+	<key>Keyword(s)</key>
+	<string>Avainsanoja</string>
+	<key>Kind</key>
+	<string>Laji</string>
+	<key>LANG</key>
+	<string>Kieli</string>
+	<key>LIBR</key>
+	<string>Kirjasto</string>
+	<key>LaTeX Content</key>
+	<string>LaTeX sisältö</string>
+	<key>Label Text</key>
+	<string>Nimiöteksti</string>
+	<key>Large Textbook</key>
+	<string>Suuri tekstikirja</string>
+	<key>Last Changed</key>
+	<string>Viimeksi muutettu</string>
+	<key>Left Margin</key>
+	<string>Vasen reunus</string>
+	<key>Line Separation</key>
+	<string>Rivien välistys</string>
+	<key>Link as Husband in a new family</key>
+	<string>Liitä aviomieheksi uuteen perheeseen</string>
+	<key>Link as Wife in a new family</key>
+	<string>Liitä vaimoksi uuteen perheeseen</string>
+	<key>Link as child to new family</key>
+	<string>Liitä lapseksi uuteen perheeseen</string>
+	<key>Link to Repository</key>
+	<string>Linkki säilytyspaikkaan</string>
+	<key>Linked Records</key>
+	<string>Linkatut tietueet</string>
+	<key>Linked Sources</key>
+	<string>Linkatut lähteet</string>
+	<key>Linked to</key>
+	<string>Linkattu</string>
+	<key>Links</key>
+	<string>Linkit</string>
+	<key>Location</key>
+	<string>Sijainti</string>
+	<key>MARB</key>
+	<string>Kuulutukset</string>
+	<key>MARB details</key>
+	<string>Kuulutustietoja</string>
+	<key>MARC</key>
+	<string>Avioliittosopimus</string>
+	<key>MARC details</key>
+	<string>Aviosopimustietoja</string>
+	<key>MARL</key>
+	<string>Avioliittolupa</string>
+	<key>MARL details</key>
+	<string>Vihkilupatietoja</string>
+	<key>MARR</key>
+	<string>Liitto</string>
+	<key>MARR details</key>
+	<string>Vihkimistietoja</string>
+	<key>MARS</key>
+	<string>Avioehto</string>
+	<key>MARS details</key>
+	<string>Avioehtotietoja</string>
+	<key>MEDI</key>
+	<string>Mediatyyppi</string>
+	<key>MSQE</key>
+	<string>Moskeija</string>
+	<key>MSSN</key>
+	<string>Missio</string>
+	<key>MUS</key>
+	<string>Museo</string>
+	<key>Male</key>
+	<string>Mies</string>
+	<key>Male Spouse</key>
+	<string>Miespuoliso</string>
+	<key>Map</key>
+	<string>Kartta</string>
+	<key>Maps</key>
+	<string>Karttoja</string>
+	<key>Married</key>
+	<string>Vihitty</string>
+	<key>Military Service</key>
+	<string>Asepalvelus</string>
+	<key>Miscarriage</key>
+	<string>Keskenmeno</string>
+	<key>Mother</key>
+	<string>Äiti</string>
+	<key>Mother 1's Age</key>
+	<string>Äiti 1:n ikä</string>
+	<key>Mother 2's Age</key>
+	<string>Äiti 2:n ikä</string>
+	<key>Mother's Age</key>
+	<string>Äidin ikä</string>
+	<key>Multimedia</key>
+	<string>Multimedia</string>
+	<key>Multimedia Link</key>
+	<string>Multimedialinkki</string>
+	<key>Multimedia Sizes</key>
+	<string>Multimedia kokoja</string>
+	<key>Multimedia file not found (click to fix)</key>
+	<string>Multimedia tiedostoa ei löydy (kosketus korjaa)</string>
+	<key>NAME</key>
+	<string>Nimi</string>
+	<key>NAME details</key>
+	<string>Nimitietoja</string>
+	<key>NATI</key>
+	<string>Kansallisuus</string>
+	<key>NATI details</key>
+	<string>Kansallisuustedot</string>
+	<key>NATU</key>
+	<string>Naturalisointi</string>
+	<key>NATU details</key>
+	<string>Naturalisointitietoja</string>
+	<key>NCHI</key>
+	<string>Lasten lukumäärä</string>
+	<key>NCHI details</key>
+	<string>Lasten lukumäärätietoja</string>
+	<key>NICK</key>
+	<string>Lempinimi</string>
+	<key>NMR</key>
+	<string>Avioliittojen lukumäärä</string>
+	<key>NMR details</key>
+	<string>Avioliittojen lukumäärätietoja</string>
+	<key>NOTE</key>
+	<string>Huomautuksia</string>
+	<key>NOTE Record</key>
+	<string>Notes Position</string>
+	<key>NPFX</key>
+	<string>Etuliite</string>
+	<key>NSFX</key>
+	<string>Loppuliite</string>
+	<key>New</key>
+	<string>Uusi</string>
+	<key>No image representation. Click to open in another application</key>
+	<string>Ei kuvaesitystä. Kosketus avaa toisella sovelluksella</string>
+	<key>None</key>
+	<string>Ei mitään</string>
+	<key>None known</key>
+	<string>Ei tietoa</string>
+	<key>None of these objects is a portrait</key>
+	<string>Mikään kohteista ei ole kuva</string>
+	<key>Notes Position</key>
+	<string>Huomautuksia näille tiedoille</string>
+	<key>Notes and Sources</key>
+	<string>Lähdetietue</string>
+	<key>Notes on</key>
+	<string>Huomautuksia ja lähteitä</string>
+	<key>Notes on these data</key>
+	<string>Huomautuksia</string>
+	<key>OBJE</key>
+	<string>Multimedia</string>
+	<key>OBJE Record</key>
+	<string>Multimedia kohdetietue</string>
+	<key>OCCU</key>
+	<string>Ammatti</string>
+	<key>OCCU details</key>
+	<string>Ammattitietoja</string>
+	<key>ORDI</key>
+	<string>"Ordinance Process Flag" (LDS)</string>
+	<key>ORDN</key>
+	<string>Papiksi vihkiminen</string>
+	<key>ORDN details</key>
+	<string>Papiksivihkimystietoja</string>
+	<key>Other</key>
+	<string>Muut</string>
+	<key>Other Spouses/Children</key>
+	<string>Muita puolisoita/lapsia</string>
+	<key>Overwrite files in target folder</key>
+	<string>Korvaa tiedostot kohdekansiossa</string>
+	<key>Owner</key>
+	<string>Omistaja</string>
+	<key>PAGE</key>
+	<string>Sivu</string>
+	<key>PEDI</key>
+	<string>Syntyperä</string>
+	<key>PHON</key>
+	<string>Puhelinnumero</string>
+	<key>PLAC</key>
+	<string>Paikka</string>
+	<key>PLAC details</key>
+	<string>Paikkatietoja</string>
+	<key>POST</key>
+	<string>Postinumero</string>
+	<key>PROB</key>
+	<string>Testamentin valvonta</string>
+	<key>PROB details</key>
+	<string>Testamentin valvontatietoja</string>
+	<key>PROP</key>
+	<string>Omaisuus</string>
+	<key>PROP details</key>
+	<string>Omaisuustietoja</string>
+	<key>PUBL</key>
+	<string>Julkaisija</string>
+	<key>Parents</key>
+	<string>Vanhemmat</string>
+	<key>Parents' Family</key>
+	<string>Vanhempien perhe</string>
+	<key>Partner</key>
+	<string>Partneri</string>
+	<key>Paste Event</key>
+	<string>Sijoita tapahtuma</string>
+	<key>Pedigree Chart Settings</key>
+	<string>Syntyperäkaavion asetukset</string>
+	<key>Periodical</key>
+	<string>Aikakausjulkaisu</string>
+	<key>Place Being Researched</key>
+	<string>Tutkittava paikka</string>
+	<key>Place Information</key>
+	<string>Paikkatieto</string>
+	<key>Place Link</key>
+	<string>Paikkalinkki</string>
+	<key>Place Names</key>
+	<string>Paikannimiä</string>
+	<key>Place References</key>
+	<string>Paikkaviitteet</string>
+	<key>Place Web Site</key>
+	<string>Paikan sivusto</string>
+	<key>Points of Interest</key>
+	<string>Kiinnostuksen kohteita</string>
+	<key>Popup Menu Text</key>
+	<string>Ponnahdusvalikon teksti</string>
+	<key>Primary</key>
+	<string>Primaari</string>
+	<key>QUAY</key>
+	<string>Laatu</string>
+	<key>Questionable</key>
+	<string>Kyseenalainen</string>
+	<key>REFN</key>
+	<string>Käyttäjäviitenumero</string>
+	<key>RELA</key>
+	<string>Suhde</string>
+	<key>RELI</key>
+	<string>Uskonto</string>
+	<key>RELI details</key>
+	<string>Uskontotietoja</string>
+	<key>REPO</key>
+	<string>Säilytyspaikka</string>
+	<key>REPO Record</key>
+	<string>Säilytyspaikkatietue</string>
+	<key>RESI</key>
+	<string>Asuinpaikka</string>
+	<key>RESI details</key>
+	<string>Asuinpaikkatietoja</string>
+	<key>RESN</key>
+	<string>Rajoitus</string>
+	<key>RETI</key>
+	<string>Eläkkeelle</string>
+	<key>RETI details</key>
+	<string>Eläköitymistietoja</string>
+	<key>RFN</key>
+	<string>"Record File Number"</string>
+	<key>RIN</key>
+	<string>"Record ID"</string>
+	<key>RLG</key>
+	<string>Palvontapaikka</string>
+	<key>ROLE</key>
+	<string>Rooli tapahtumassa</string>
+	<key>Record Header Box Background</key>
+	<string>Record Header kehyksen tausta</string>
+	<key>Records citing</key>
+	<string>Records citing</string>
+	<key>Reference</key>
+	<string>Viite</string>
+	<key>Reference Citing and Content</key>
+	<string>Reference Citing ja sisältö</string>
+	<key>Repository Address</key>
+	<string>Säilytyspaikan osoite</string>
+	<key>Reseach logs for these data</key>
+	<string>Tutkimusmerkintöjä näille tiedoille</string>
+	<key>Research Logs</key>
+	<string>Tutkimusloki</string>
+	<key>Research Tasks</key>
+	<string>Tutkimustehtäviä</string>
+	<key>Researched Records</key>
+	<string>Tutkitut tietueet</string>
+	<key>Reset</key>
+	<string>Nollaa</string>
+	<key>Residence Date</key>
+	<string>Asuinaika</string>
+	<key>Residence Place</key>
+	<string>Asuinpaikka</string>
+	<key>Reveal this folder in the Finder</key>
+	<string>Näytä tämä kansio Finderissa</string>
+	<key>Right Margin</key>
+	<string>Oikea reunus</string>
+	<key>Roadmap</key>
+	<string>Tiekartta</string>
+	<key>SEX</key>
+	<string>Sukupuoli</string>
+	<key>SLGC</key>
+	<string>LDS "Child Sealing"</string>
+	<key>SLGC details</key>
+	<string>LDS "Child Sealing" tietoja</string>
+	<key>SLGS</key>
+	<string>LDS "Spouse Sealing"</string>
+	<key>SLGS details</key>
+	<string>LDS "Spouse Sealing" tietoja</string>
+	<key>SOUR</key>
+	<string>Lähde</string>
+	<key>SOUR Record</key>
+	<string>Lähdetiedot</string>
+	<key>SOUR details</key>
+	<string>Lähdetietoja</string>
+	<key>SPFX</key>
+	<string>Sukunimen etuliite</string>
+	<key>SSN</key>
+	<string>Sosiaaliturvatunnus</string>
+	<key>SSN details</key>
+	<string>"Social Security Number" tietoja</string>
+	<key>STAE</key>
+	<string>Valtio</string>
+	<key>STAT</key>
+	<string>Status</string>
+	<key>SUBM</key>
+	<string>Luovuttaja</string>
+	<key>SUBM Record</key>
+	<string>Luovuttajatietue</string>
+	<key>SUBN</key>
+	<string>Luovutus</string>
+	<key>SUBN Record</key>
+	<string>Luovutustietue</string>
+	<key>SURN</key>
+	<string>Sukunimi</string>
+	<key>Satellite</key>
+	<string>Satelliitti</string>
+	<key>Sealing</key>
+	<string>Sealing</string>
+	<key>Secondary</key>
+	<string>Toissijainen</string>
+	<key>See Linked Individuals or Families</key>
+	<string>Katso Linkatut henkilöt tai perheet</string>
+	<key>Select Script</key>
+	<string>Valitse skripti</string>
+	<key>Select sex</key>
+	<string>Valitse sukupuoli</string>
+	<key>Select who did the adopting</key>
+	<string>Valitse adoptoija</string>
+	<key>Separation</key>
+	<string>Asumusero</string>
+	<key>Size</key>
+	<string>Koko</string>
+	<key>Son</key>
+	<string>Poika</string>
+	<key>Sort the children</key>
+	<string>Lajittele lapset</string>
+	<key>Sort the events</key>
+	<string>Lajittele tapahtumia</string>
+	<key>Source</key>
+	<string>Lähde</string>
+	<key>Source Data</key>
+	<string>Lähdetieto</string>
+	<key>Source details</key>
+	<string>Lähdetietoja</string>
+	<key>Sources</key>
+	<string>Lähteitä</string>
+	<key>Sources on these data</key>
+	<string>Näiden tietojen lähteitä</string>
+	<key>Spouse</key>
+	<string>Puoliso</string>
+	<key>Spouses</key>
+	<string>Puolisot</string>
+	<key>Static Text</key>
+	<string>Kiinteä teksti</string>
+	<key>Storage</key>
+	<string>Varasto</string>
+	<key>Style</key>
+	<string>Tyyli</string>
+	<key>Style Settings</key>
+	<string>Tyyliasetus</string>
+	<key>Submission Details</key>
+	<string>Luovutustietoja</string>
+	<key>Submitter Address</key>
+	<string>Luovuttajan osoite</string>
+	<key>Submitter, Submission, and Home Records</key>
+	<string>Luovuttaja, luovutus ja koettitietue</string>
+	<key>Summary</key>
+	<string>Yhteenveto</string>
+	<key>TEMP</key>
+	<string>Temppeli</string>
+	<key>TEXT</key>
+	<string>Teksti</string>
+	<key>TIME</key>
+	<string>Aika</string>
+	<key>TITL</key>
+	<string>Aatelisarvo</string>
+	<key>TITL details</key>
+	<string>Aatelisarvotietoja</string>
+	<key>TYPE</key>
+	<string>Tyyppi</string>
+	<key>Table Cell Background</key>
+	<string>Taulukkoruututausta</string>
+	<key>Target Folder</key>
+	<string>Kohdekansio</string>
+	<key>Target Individuals</key>
+	<string>Kohdehenkilöt</string>
+	<key>Task Results</key>
+	<string>Tehtävätuloksia</string>
+	<key>Tasks</key>
+	<string>Tehtäviä</string>
+	<key>Terrain</key>
+	<string>Maasto</string>
+	<key>Text from the Source</key>
+	<string>Lähteen tekstiä</string>
+	<key>The date this record was first created</key>
+	<string>Päivä jona tämä tietue luotiin</string>
+	<key>The line to the right means this individual has documented ancestors.</key>
+	<string>Viiva oikealle tarkoittaa tälle henkilölle on tietoja esivanhemmista</string>
+	<key>Thumbnails Per Row</key>
+	<string>Pienoiskuvia rivillä</string>
+	<key>Title</key>
+	<string>Nimike</string>
+	<key>Top Margin</key>
+	<string>Yläreunus</string>
+	<key>Type of Data in the Source</key>
+	<string>Lähteen tietotyyppi</string>
+	<key>Unknown</key>
+	<string>Tuntematon</string>
+	<key>Unknown spouse</key>
+	<string>Tuntematon puoliso</string>
+	<key>Unmarried Couple</key>
+	<string>Naimaton pari</string>
+	<key>Unpublished</key>
+	<string>Julkaisematon</string>
+	<key>Unreliable</key>
+	<string>Epäluotettava</string>
+	<key>VERS</key>
+	<string>Versio</string>
+	<key>Vital Records</key>
+	<string>Vital Records</string>
+	<key>Volume, etc.</key>
+	<string>Volyymi, jne.</string>
+	<key>WAC</key>
+	<string>LDS Initiatory</string>
+	<key>WAC details</key>
+	<string>"LDS Initiatory" tietoja</string>
+	<key>WIFE</key>
+	<string>Vaimo</string>
+	<key>WIFE 1's Age</key>
+	<string>Vaimo 1:n ikä</string>
+	<key>WIFE 2's Age</key>
+	<string>Vaimo 2:n ikä</string>
+	<key>WIFE's Age</key>
+	<string>Vaimon ikä</string>
+	<key>WILL</key>
+	<string>Testamentti</string>
+	<key>WILL details</key>
+	<string>Testamenttitietoja</string>
+	<key>Web</key>
+	<string>WWW</string>
+	<key>Web Links</key>
+	<string>WWW Linkit</string>
+	<key>Web Page</key>
+	<string>WWW sivu</string>
+	<key>Web Pages</key>
+	<string>WWW sivuja</string>
+	<key>Wife</key>
+	<string>Vaimo</string>
+	<key>Window Background</key>
+	<string>Ikkunatausta</string>
+	<key>Working</key>
+	<string>Tekeillä</string>
+	<key>You can configure which application opens each type of multimedia object.</key>
+	<string>Voit määritellä mikä sovellus avaa kunkin tyyppisen multimedia kohteen.</string>
+	<key>Zoom</key>
+	<string>Zoomaa</string>
+	<key>_ABOUT</key>
+	<string>Tekijästä</string>
+	<key>_ANC</key>
+	<string>Esivanhempia</string>
+	<key>_AUTH</key>
+	<string>Tekijä</string>
+	<key>_BNDS</key>
+	<string>Rajat</string>
+	<key>_BOK Record</key>
+	<string>Kirjan tyylitietue</string>
+	<key>_BOX</key>
+	<string>Nimiö</string>
+	<key>_CODE</key>
+	<string>Koodi</string>
+	<key>_COPY</key>
+	<string>Tekijänoikeus</string>
+	<key>_DATE</key>
+	<string>Päiväys</string>
+	<key>_DES</key>
+	<string>Jälkeläisiä</string>
+	<key>_DESC</key>
+	<string>Kuvaus</string>
+	<key>_DIST</key>
+	<string>Jakelu</string>
+	<key>_EMAIL</key>
+	<string>s-posti</string>
+	<key>_FAM</key>
+	<string>Tutkittu perhe</string>
+	<key>_FFAM</key>
+	<string>Kirjasinperhe</string>
+	<key>_FILE</key>
+	<string>Hakemistopolku</string>
+	<key>_FLDR</key>
+	<string>Tallennuskansio</string>
+	<key>_FONT</key>
+	<string>Kirjasinkoko</string>
+	<key>_FREL</key>
+	<string>Isyyssuhde (FTM)</string>
+	<key>_GOAL</key>
+	<string>Päämäärä</string>
+	<key>_GPS</key>
+	<string>Lev°,Pit°</string>
+	<key>_GTEES</key>
+	<string>Edunsaajat</string>
+	<key>_HME</key>
+	<string>Koettitietue</string>
+	<key>_INDI</key>
+	<string>Tutkittu henkilö</string>
+	<key>_INTRO</key>
+	<string>Johdanto</string>
+	<key>_KEY</key>
+	<string>Avainsanoja</string>
+	<key>_LABEL</key>
+	<string>Nimiö</string>
+	<key>_LINE</key>
+	<string>Rivileveys</string>
+	<key>_LOC</key>
+	<string>Sijainti</string>
+	<key>_LOG</key>
+	<string>Tutkimusmerkintö</string>
+	<key>_LOG Record</key>
+	<string>Tutkimusmerkintö</string>
+	<key>_MEND</key>
+	<string>"Marriage Ending" (FTM)</string>
+	<key>_MILT</key>
+	<string>Asepalvelus (FTM)</string>
+	<key>_MREL</key>
+	<string>Äitiyssuhde (FTM)</string>
+	<key>_MSTAT</key>
+	<string>"Siviilisääty" (FTM)</string>
+	<key>_NOPOI</key>
+	<string>Kätke</string>
+	<key>_NOPOR</key>
+	<string>Ei kuvaa</string>
+	<key>_NTOP</key>
+	<string>Huomautuksia</string>
+	<key>_OBJECT</key>
+	<string>Tavoite</string>
+	<key>_OVER</key>
+	<string>Korvaa tiedostot kansiossa</string>
+	<key>_OWNER</key>
+	<string>Tekijäoikeuden haltija</string>
+	<key>_PAPER</key>
+	<string>Paperikoko</string>
+	<key>_PFACT</key>
+	<string>Tosiasia</string>
+	<key>_PLACE</key>
+	<string>Nimi</string>
+	<key>_PLC Record</key>
+	<string>Paikkatietue</string>
+	<key>_PNOTE</key>
+	<string>Huomautus</string>
+	<key>_POI</key>
+	<string>Nimi</string>
+	<key>_PTOP</key>
+	<string>Muotokuvia</string>
+	<key>_REF</key>
+	<string>Viittaus</string>
+	<key>_RESULTS</key>
+	<string>Tuloksia</string>
+	<key>_SCALE</key>
+	<string>Skaala</string>
+	<key>_SIZE</key>
+	<string>Koko</string>
+	<key>_STATUS</key>
+	<string>Status</string>
+	<key>_STYLE</key>
+	<string>Tyyli</string>
+	<key>_SUMMARY</key>
+	<string>Tutkimusyhteenveto</string>
+	<key>_TASK</key>
+	<string>Tutkimustehtävä</string>
+	<key>_TEX</key>
+	<string>LaTeX sisältö</string>
+	<key>_TEXSTY</key>
+	<string>Style sheet</string>
+	<key>_TSET</key>
+	<string>Automaattiladonta</string>
+	<key>_TTL</key>
+	<string>Nimike</string>
+	<key>_TYPE</key>
+	<string>Lähdetyyppi</string>
+	<key>_UMR</key>
+	<string>Naimaton</string>
+	<key>_URL</key>
+	<string>URL</string>
+	<key>_VALUE</key>
+	<string>Arvo</string>
+	<key>_ZOOM</key>
+	<string>Zoomaa</string>
+	<key>and</key>
+	<string>ja</string>
+	<key>fit</key>
+	<string>sovita</string>
+	<key>in Book</key>
+	<string>teoksessa</string>
+	<key>option click to edit</key>
+	<string>Optiokosketuksella voi muokata</string>
+	<key>syn</key>
+	<string>Synagooga</string>
+	<key>type to enter notes</key>
+	<string>kirjoita huomautuksia</string>
+	<key>version</key>
+	<string>versio</string>
+</dict>
+</plist>

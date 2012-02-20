@@ -1,0 +1,22 @@
+! Show all tags of type #theTag in a group box
+! Label the box with #label
+! #help must be localized
+
+sub ListBlock,#theTag,#image,#help,#menuCmd
+  if #theTag is here
+    newline 3
+    #annTop=#vpos$    cell LinkButton
+    set border none image #image width 24
+	help #help
+    menulink #menuCmd
+    HSkip 2
+    #leftSkip=#hpos$
+	VMoveTo #annTop-3
+    ShowAll #theTag
+    #leftSkip=#leftSkip$
+    newline
+    if #vpos$-#annTop<20
+      newline (20-#vpos$+#annTop)
+    endif
+  endif
+endsub

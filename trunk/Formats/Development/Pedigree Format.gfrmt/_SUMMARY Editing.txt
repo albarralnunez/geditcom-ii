@@ -1,0 +1,7 @@
+if printing
+  hideexcess
+else
+  cell EditPane,local("(type to enter summary of this research)")
+  set Position bottom fraction .3 fontsize 12
+  Help local("Enter overall summary of this research log")
+endif

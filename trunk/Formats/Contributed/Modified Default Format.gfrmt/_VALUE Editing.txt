@@ -1,0 +1,3 @@
+cell EditDate
+TabWidth 1
+help local("Enter additional text information")

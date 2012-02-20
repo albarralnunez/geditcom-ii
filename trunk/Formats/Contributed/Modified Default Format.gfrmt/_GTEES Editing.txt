@@ -1,0 +1,2 @@
+#chelp=local("Enter comma separated list of those granted license to copy the book")
+use _Custom_Help

@@ -1,0 +1,29 @@
+! existing note structure
+if tagexists is true
+
+  newline
+  #tlabel=local(@tag)
+  cell static #tlabel&":"
+  sizetofit
+  set tabwidth -1 alignment right
+  help #tlabel
+  
+  cell LinkButton
+  TextExpression @contents.rec
+  AppendedExpression altview
+  set border no Font "Hyperlink Text"
+  sizetofit -1
+  RecordLink @contents
+  Help local("Click to view alias record")
+
+  ! are there details
+  hideexcess
+
+! no data - an attach button
+else
+  ! button to link to new or existing notes
+  hskip 2  cell CreateLinkButton
+  set border shadowlesssquare width 26 height 26
+  set image "alias" target newifnew
+  help local("Click to attach alias record")
+endif

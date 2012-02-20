@@ -1,0 +1,24 @@
+newline
+#sexPos=#vpos$
+#sexStart=#rightMargin$-#rightSkip-#hpos$-60
+
+HMoveTo #hpos$+#sexStart
+cell LinkButton
+if @contents="M"
+  set text "("&local("Male")&")"
+else if @contents="F"
+  set text "("&local("Female")&")"
+else
+  #theSex=local(@contents)
+  if #theSex=""
+    #theSex=local("SEX")&" "&local("Unknown")
+  endif
+  set text "("&#theSex&")"
+endif
+set border no
+SizeToFit
+MenuLink "Attach Changed Sex"
+#shift=60-#cellWidth$
+shift #shift
+#sexStart+=#shift
+help local("Click to change this person's sex")

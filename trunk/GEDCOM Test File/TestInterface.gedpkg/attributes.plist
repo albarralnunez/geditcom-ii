@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Browser PrintInfo</key>
+	<data>
+	BAtzdHJlYW10eXBlZIHoA4QBQISEhAtOU1ByaW50SW5mbwGEhAhOU09iamVjdACFkoSE
+	hBNOU011dGFibGVEaWN0aW9uYXJ5AISEDE5TRGljdGlvbmFyeQCUhAFpF5KEhIQITlNT
+	dHJpbmcBlIQBKxROU1ZlcnRpY2FsUGFnaW5hdGlvboaShISECE5TTnVtYmVyAISEB05T
+	VmFsdWUAlIQBKoSXlwCGkoSZmQlOU1ByaW50ZXKGkoSEhAlOU1ByaW50ZXIAlJKEmZkL
+	MTkyLjE2OC4xLjOGhpKEmZkWTlNIb3Jpem9udGFsbHlDZW50ZXJlZIaSmpKEmZkUTlNW
+	ZXJ0aWNhbGx5Q2VudGVyZWSGkpqShJmZC05TVG9wTWFyZ2luhpKEm5yEhAFknjSGkoSZ
+	mRVOU0hvcml6b25hbFBhZ2luYXRpb26GkoSbnJ2XAoaShJmZCE5TQ29waWVzhpKEm5yd
+	lwGGkoSZmQ9OU1ByaW50QWxsUGFnZXOGkqqShJmZDk5TUE1QYWdlRm9ybWF0hpKEhIQG
+	TlNEYXRhAJSXgTgdhAdbNzQ4MGNdPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0i
+	VVRGLTgiPz4KPCFET0NUWVBFIHBsaXN0IFBVQkxJQyAiLS8vQXBwbGUvL0RURCBQTElT
+	VCAxLjAvL0VOIiAiaHR0cDovL3d3dy5hcHBsZS5jb20vRFREcy9Qcm9wZXJ0eUxpc3Qt
+	MS4wLmR0ZCI+CjxwbGlzdCB2ZXJzaW9uPSIxLjAiPgo8ZGljdD4KCTxrZXk+Y29tLmFw
+	cGxlLnByaW50LlBhZ2VGb3JtYXQuRm9ybWF0dGluZ1ByaW50ZXI8L2tleT4KCTxkaWN0
+	PgoJCTxrZXk+Y29tLmFwcGxlLnByaW50LnRpY2tldC5jcmVhdG9yPC9rZXk+CgkJPHN0
+	cmluZz5jb20uYXBwbGUuam9idGlja2V0PC9zdHJpbmc+CgkJPGtleT5jb20uYXBwbGUu
+	cHJpbnQudGlja2V0Lml0ZW1BcnJheTwva2V5PgoJCTxhcnJheT4KCQkJPGRpY3Q+CgkJ
+	CQk8a2V5PmNvbS5hcHBsZS5wcmludC5QYWdlRm9ybWF0LkZvcm1hdHRpbmdQcmludGVy
+	PC9rZXk+CgkJCQk8c3RyaW5nPl8xOTJfMTY4XzFfMzwvc3RyaW5nPgoJCQkJPGtleT5j
+	b20uYXBwbGUucHJpbnQudGlja2V0LnN0YXRlRmxhZzwva2V5PgoJCQkJPGludGVnZXI+
+	MDwvaW50ZWdlcj4KCQkJPC9kaWN0PgoJCTwvYXJyYXk+Cgk8L2RpY3Q+Cgk8a2V5PmNv
+	bS5hcHBsZS5wcmludC5QYWdlRm9ybWF0LlBNSG9yaXpvbnRhbFJlczwva2V5PgoJPGRp
+	Y3Q+CgkJPGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0LmNyZWF0b3I8L2tleT4KCQk8
+	c3RyaW5nPmNvbS5hcHBsZS5qb2J0aWNrZXQ8L3N0cmluZz4KCQk8a2V5PmNvbS5hcHBs
+	ZS5wcmludC50aWNrZXQuaXRlbUFycmF5PC9rZXk+CgkJPGFycmF5PgoJCQk8ZGljdD4K
+	CQkJCTxrZXk+Y29tLmFwcGxlLnByaW50LlBhZ2VGb3JtYXQuUE1Ib3Jpem9udGFsUmVz
+	PC9rZXk+CgkJCQk8cmVhbD43MjwvcmVhbD4KCQkJCTxrZXk+Y29tLmFwcGxlLnByaW50
+	LnRpY2tldC5zdGF0ZUZsYWc8L2tleT4KCQkJCTxpbnRlZ2VyPjA8L2ludGVnZXI+CgkJ
+	CTwvZGljdD4KCQk8L2FycmF5PgoJPC9kaWN0PgoJPGtleT5jb20uYXBwbGUucHJpbnQu
+	UGFnZUZvcm1hdC5QTU9yaWVudGF0aW9uPC9rZXk+Cgk8ZGljdD4KCQk8a2V5PmNvbS5h
+	cHBsZS5wcmludC50aWNrZXQuY3JlYXRvcjwva2V5PgoJCTxzdHJpbmc+Y29tLmFwcGxl
+	LmpvYnRpY2tldDwvc3RyaW5nPgoJCTxrZXk+Y29tLmFwcGxlLnByaW50LnRpY2tldC5p
+	dGVtQXJyYXk8L2tleT4KCQk8YXJyYXk+CgkJCTxkaWN0PgoJCQkJPGtleT5jb20uYXBw
+	bGUucHJpbnQuUGFnZUZvcm1hdC5QTU9yaWVudGF0aW9uPC9rZXk+CgkJCQk8aW50ZWdl
+	cj4xPC9pbnRlZ2VyPgoJCQkJPGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0LnN0YXRl
+	RmxhZzwva2V5PgoJCQkJPGludGVnZXI+MDwvaW50ZWdlcj4KCQkJPC9kaWN0PgoJCTwv
+	YXJyYXk+Cgk8L2RpY3Q+Cgk8a2V5PmNvbS5hcHBsZS5wcmludC5QYWdlRm9ybWF0LlBN
+	U2NhbGluZzwva2V5PgoJPGRpY3Q+CgkJPGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0
+	LmNyZWF0b3I8L2tleT4KCQk8c3RyaW5nPmNvbS5hcHBsZS5qb2J0aWNrZXQ8L3N0cmlu
+	Zz4KCQk8a2V5PmNvbS5hcHBsZS5wcmludC50aWNrZXQuaXRlbUFycmF5PC9rZXk+CgkJ
+	PGFycmF5PgoJCQk8ZGljdD4KCQkJCTxrZXk+Y29tLmFwcGxlLnByaW50LlBhZ2VGb3Jt
+	YXQuUE1TY2FsaW5nPC9rZXk+CgkJCQk8cmVhbD4xPC9yZWFsPgoJCQkJPGtleT5jb20u
+	YXBwbGUucHJpbnQudGlja2V0LnN0YXRlRmxhZzwva2V5PgoJCQkJPGludGVnZXI+MDwv
+	aW50ZWdlcj4KCQkJPC9kaWN0PgoJCTwvYXJyYXk+Cgk8L2RpY3Q+Cgk8a2V5PmNvbS5h
+	cHBsZS5wcmludC5QYWdlRm9ybWF0LlBNVmVydGljYWxSZXM8L2tleT4KCTxkaWN0PgoJ
+	CTxrZXk+Y29tLmFwcGxlLnByaW50LnRpY2tldC5jcmVhdG9yPC9rZXk+CgkJPHN0cmlu
+	Zz5jb20uYXBwbGUuam9idGlja2V0PC9zdHJpbmc+CgkJPGtleT5jb20uYXBwbGUucHJp
+	bnQudGlja2V0Lml0ZW1BcnJheTwva2V5PgoJCTxhcnJheT4KCQkJPGRpY3Q+CgkJCQk8
+	a2V5PmNvbS5hcHBsZS5wcmludC5QYWdlRm9ybWF0LlBNVmVydGljYWxSZXM8L2tleT4K
+	CQkJCTxyZWFsPjcyPC9yZWFsPgoJCQkJPGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0
+	LnN0YXRlRmxhZzwva2V5PgoJCQkJPGludGVnZXI+MDwvaW50ZWdlcj4KCQkJPC9kaWN0
+	PgoJCTwvYXJyYXk+Cgk8L2RpY3Q+Cgk8a2V5PmNvbS5hcHBsZS5wcmludC5QYWdlRm9y
+	bWF0LlBNVmVydGljYWxTY2FsaW5nPC9rZXk+Cgk8ZGljdD4KCQk8a2V5PmNvbS5hcHBs
+	ZS5wcmludC50aWNrZXQuY3JlYXRvcjwva2V5PgoJCTxzdHJpbmc+Y29tLmFwcGxlLmpv
+	YnRpY2tldDwvc3RyaW5nPgoJCTxrZXk+Y29tLmFwcGxlLnByaW50LnRpY2tldC5pdGVt
+	QXJyYXk8L2tleT4KCQk8YXJyYXk+CgkJCTxkaWN0PgoJCQkJPGtleT5jb20uYXBwbGUu
+	cHJpbnQuUGFnZUZvcm1hdC5QTVZlcnRpY2FsU2NhbGluZzwva2V5PgoJCQkJPHJlYWw+
+	MTwvcmVhbD4KCQkJCTxrZXk+Y29tLmFwcGxlLnByaW50LnRpY2tldC5zdGF0ZUZsYWc8
+	L2tleT4KCQkJCTxpbnRlZ2VyPjA8L2ludGVnZXI+CgkJCTwvZGljdD4KCQk8L2FycmF5
+	PgoJPC9kaWN0PgoJPGtleT5jb20uYXBwbGUucHJpbnQuc3ViVGlja2V0LnBhcGVyX2lu
+	Zm9fdGlja2V0PC9rZXk+Cgk8ZGljdD4KCQk8a2V5PlBNUFBEUGFwZXJDb2RlTmFtZTwv
+	a2V5PgoJCTxkaWN0PgoJCQk8a2V5PmNvbS5hcHBsZS5wcmludC50aWNrZXQuY3JlYXRv
+	cjwva2V5PgoJCQk8c3RyaW5nPmNvbS5hcHBsZS5qb2J0aWNrZXQ8L3N0cmluZz4KCQkJ
+	PGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0Lml0ZW1BcnJheTwva2V5PgoJCQk8YXJy
+	YXk+CgkJCQk8ZGljdD4KCQkJCQk8a2V5PlBNUFBEUGFwZXJDb2RlTmFtZTwva2V5PgoJ
+	CQkJCTxzdHJpbmc+TGV0dGVyPC9zdHJpbmc+CgkJCQkJPGtleT5jb20uYXBwbGUucHJp
+	bnQudGlja2V0LnN0YXRlRmxhZzwva2V5PgoJCQkJCTxpbnRlZ2VyPjA8L2ludGVnZXI+
+	CgkJCQk8L2RpY3Q+CgkJCTwvYXJyYXk+CgkJPC9kaWN0PgoJCTxrZXk+UE1QUERUcmFu
+	c2xhdGlvblN0cmluZ1BhcGVyTmFtZTwva2V5PgoJCTxkaWN0PgoJCQk8a2V5PmNvbS5h
+	cHBsZS5wcmludC50aWNrZXQuY3JlYXRvcjwva2V5PgoJCQk8c3RyaW5nPmNvbS5hcHBs
+	ZS5qb2J0aWNrZXQ8L3N0cmluZz4KCQkJPGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0
+	Lml0ZW1BcnJheTwva2V5PgoJCQk8YXJyYXk+CgkJCQk8ZGljdD4KCQkJCQk8a2V5PlBN
+	UFBEVHJhbnNsYXRpb25TdHJpbmdQYXBlck5hbWU8L2tleT4KCQkJCQk8c3RyaW5nPkxl
+	dHRlcjwvc3RyaW5nPgoJCQkJCTxrZXk+Y29tLmFwcGxlLnByaW50LnRpY2tldC5zdGF0
+	ZUZsYWc8L2tleT4KCQkJCQk8aW50ZWdlcj4wPC9pbnRlZ2VyPgoJCQkJPC9kaWN0PgoJ
+	CQk8L2FycmF5PgoJCTwvZGljdD4KCQk8a2V5PlBNVGlvZ2FQYXBlck5hbWU8L2tleT4K
+	CQk8ZGljdD4KCQkJPGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0LmNyZWF0b3I8L2tl
+	eT4KCQkJPHN0cmluZz5jb20uYXBwbGUuam9idGlja2V0PC9zdHJpbmc+CgkJCTxrZXk+
+	Y29tLmFwcGxlLnByaW50LnRpY2tldC5pdGVtQXJyYXk8L2tleT4KCQkJPGFycmF5PgoJ
+	CQkJPGRpY3Q+CgkJCQkJPGtleT5QTVRpb2dhUGFwZXJOYW1lPC9rZXk+CgkJCQkJPHN0
+	cmluZz5uYS1sZXR0ZXI8L3N0cmluZz4KCQkJCQk8a2V5PmNvbS5hcHBsZS5wcmludC50
+	aWNrZXQuc3RhdGVGbGFnPC9rZXk+CgkJCQkJPGludGVnZXI+MDwvaW50ZWdlcj4KCQkJ
+	CTwvZGljdD4KCQkJPC9hcnJheT4KCQk8L2RpY3Q+CgkJPGtleT5jb20uYXBwbGUucHJp
+	bnQuUGFnZUZvcm1hdC5QTUFkanVzdGVkUGFnZVJlY3Q8L2tleT4KCQk8ZGljdD4KCQkJ
+	PGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0LmNyZWF0b3I8L2tleT4KCQkJPHN0cmlu
+	Zz5jb20uYXBwbGUuam9idGlja2V0PC9zdHJpbmc+CgkJCTxrZXk+Y29tLmFwcGxlLnBy
+	aW50LnRpY2tldC5pdGVtQXJyYXk8L2tleT4KCQkJPGFycmF5PgoJCQkJPGRpY3Q+CgkJ
+	CQkJPGtleT5jb20uYXBwbGUucHJpbnQuUGFnZUZvcm1hdC5QTUFkanVzdGVkUGFnZVJl
+	Y3Q8L2tleT4KCQkJCQk8YXJyYXk+CgkJCQkJCTxpbnRlZ2VyPjA8L2ludGVnZXI+CgkJ
+	CQkJCTxpbnRlZ2VyPjA8L2ludGVnZXI+CgkJCQkJCTxyZWFsPjc2Ny43NjAwMDk3NjU2
+	MjU8L3JlYWw+CgkJCQkJCTxyZWFsPjU4Ny43NjAwMDk3NjU2MjU8L3JlYWw+CgkJCQkJ
+	PC9hcnJheT4KCQkJCQk8a2V5PmNvbS5hcHBsZS5wcmludC50aWNrZXQuc3RhdGVGbGFn
+	PC9rZXk+CgkJCQkJPGludGVnZXI+MDwvaW50ZWdlcj4KCQkJCTwvZGljdD4KCQkJPC9h
+	cnJheT4KCQk8L2RpY3Q+CgkJPGtleT5jb20uYXBwbGUucHJpbnQuUGFnZUZvcm1hdC5Q
+	TUFkanVzdGVkUGFwZXJSZWN0PC9rZXk+CgkJPGRpY3Q+CgkJCTxrZXk+Y29tLmFwcGxl
+	LnByaW50LnRpY2tldC5jcmVhdG9yPC9rZXk+CgkJCTxzdHJpbmc+Y29tLmFwcGxlLmpv
+	YnRpY2tldDwvc3RyaW5nPgoJCQk8a2V5PmNvbS5hcHBsZS5wcmludC50aWNrZXQuaXRl
+	bUFycmF5PC9rZXk+CgkJCTxhcnJheT4KCQkJCTxkaWN0PgoJCQkJCTxrZXk+Y29tLmFw
+	cGxlLnByaW50LlBhZ2VGb3JtYXQuUE1BZGp1c3RlZFBhcGVyUmVjdDwva2V5PgoJCQkJ
+	CTxhcnJheT4KCQkJCQkJPHJlYWw+LTEyLjIzOTk5MDIzNDM3NTwvcmVhbD4KCQkJCQkJ
+	PHJlYWw+LTEyPC9yZWFsPgoJCQkJCQk8cmVhbD43NzkuNzYwMDA5NzY1NjI1PC9yZWFs
+	PgoJCQkJCQk8cmVhbD42MDA8L3JlYWw+CgkJCQkJPC9hcnJheT4KCQkJCQk8a2V5PmNv
+	bS5hcHBsZS5wcmludC50aWNrZXQuc3RhdGVGbGFnPC9rZXk+CgkJCQkJPGludGVnZXI+
+	MDwvaW50ZWdlcj4KCQkJCTwvZGljdD4KCQkJPC9hcnJheT4KCQk8L2RpY3Q+CgkJPGtl
+	eT5jb20uYXBwbGUucHJpbnQuUGFwZXJJbmZvLlBNQ29uc3RyYWluZWRQYXBlcjwva2V5
+	PgoJCTxkaWN0PgoJCQk8a2V5PmNvbS5hcHBsZS5wcmludC50aWNrZXQuY3JlYXRvcjwv
+	a2V5PgoJCQk8c3RyaW5nPmNvbS5hcHBsZS5qb2J0aWNrZXQ8L3N0cmluZz4KCQkJPGtl
+	eT5jb20uYXBwbGUucHJpbnQudGlja2V0Lml0ZW1BcnJheTwva2V5PgoJCQk8YXJyYXk+
+	CgkJCQk8ZGljdD4KCQkJCQk8a2V5PmNvbS5hcHBsZS5wcmludC5QYXBlckluZm8uUE1D
+	b25zdHJhaW5lZFBhcGVyPC9rZXk+CgkJCQkJPGZhbHNlLz4KCQkJCQk8a2V5PmNvbS5h
+	cHBsZS5wcmludC50aWNrZXQuc3RhdGVGbGFnPC9rZXk+CgkJCQkJPGludGVnZXI+MDwv
+	aW50ZWdlcj4KCQkJCTwvZGljdD4KCQkJPC9hcnJheT4KCQk8L2RpY3Q+CgkJPGtleT5j
+	b20uYXBwbGUucHJpbnQuUGFwZXJJbmZvLlBNUGFwZXJOYW1lPC9rZXk+CgkJPGRpY3Q+
+	CgkJCTxrZXk+Y29tLmFwcGxlLnByaW50LnRpY2tldC5jcmVhdG9yPC9rZXk+CgkJCTxz
+	dHJpbmc+Y29tLmFwcGxlLmpvYnRpY2tldDwvc3RyaW5nPgoJCQk8a2V5PmNvbS5hcHBs
+	ZS5wcmludC50aWNrZXQuaXRlbUFycmF5PC9rZXk+CgkJCTxhcnJheT4KCQkJCTxkaWN0
+	PgoJCQkJCTxrZXk+Y29tLmFwcGxlLnByaW50LlBhcGVySW5mby5QTVBhcGVyTmFtZTwv
+	a2V5PgoJCQkJCTxzdHJpbmc+bmEtbGV0dGVyPC9zdHJpbmc+CgkJCQkJPGtleT5jb20u
+	YXBwbGUucHJpbnQudGlja2V0LnN0YXRlRmxhZzwva2V5PgoJCQkJCTxpbnRlZ2VyPjA8
+	L2ludGVnZXI+CgkJCQk8L2RpY3Q+CgkJCTwvYXJyYXk+CgkJPC9kaWN0PgoJCTxrZXk+
+	Y29tLmFwcGxlLnByaW50LlBhcGVySW5mby5QTVVuYWRqdXN0ZWRQYWdlUmVjdDwva2V5
+	PgoJCTxkaWN0PgoJCQk8a2V5PmNvbS5hcHBsZS5wcmludC50aWNrZXQuY3JlYXRvcjwv
+	a2V5PgoJCQk8c3RyaW5nPmNvbS5hcHBsZS5qb2J0aWNrZXQ8L3N0cmluZz4KCQkJPGtl
+	eT5jb20uYXBwbGUucHJpbnQudGlja2V0Lml0ZW1BcnJheTwva2V5PgoJCQk8YXJyYXk+
+	CgkJCQk8ZGljdD4KCQkJCQk8a2V5PmNvbS5hcHBsZS5wcmludC5QYXBlckluZm8uUE1V
+	bmFkanVzdGVkUGFnZVJlY3Q8L2tleT4KCQkJCQk8YXJyYXk+CgkJCQkJCTxyZWFsPjAu
+	MDwvcmVhbD4KCQkJCQkJPHJlYWw+MC4wPC9yZWFsPgoJCQkJCQk8cmVhbD43NjcuNzYw
+	MDA5NzY1NjI1PC9yZWFsPgoJCQkJCQk8cmVhbD41ODcuNzYwMDA5NzY1NjI1PC9yZWFs
+	PgoJCQkJCTwvYXJyYXk+CgkJCQkJPGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0LnN0
+	YXRlRmxhZzwva2V5PgoJCQkJCTxpbnRlZ2VyPjA8L2ludGVnZXI+CgkJCQk8L2RpY3Q+
+	CgkJCTwvYXJyYXk+CgkJPC9kaWN0PgoJCTxrZXk+Y29tLmFwcGxlLnByaW50LlBhcGVy
+	SW5mby5QTVVuYWRqdXN0ZWRQYXBlclJlY3Q8L2tleT4KCQk8ZGljdD4KCQkJPGtleT5j
+	b20uYXBwbGUucHJpbnQudGlja2V0LmNyZWF0b3I8L2tleT4KCQkJPHN0cmluZz5jb20u
+	YXBwbGUuam9idGlja2V0PC9zdHJpbmc+CgkJCTxrZXk+Y29tLmFwcGxlLnByaW50LnRp
+	Y2tldC5pdGVtQXJyYXk8L2tleT4KCQkJPGFycmF5PgoJCQkJPGRpY3Q+CgkJCQkJPGtl
+	eT5jb20uYXBwbGUucHJpbnQuUGFwZXJJbmZvLlBNVW5hZGp1c3RlZFBhcGVyUmVjdDwv
+	a2V5PgoJCQkJCTxhcnJheT4KCQkJCQkJPHJlYWw+LTEyLjIzOTk5MDIzNDM3NTwvcmVh
+	bD4KCQkJCQkJPHJlYWw+LTEyPC9yZWFsPgoJCQkJCQk8cmVhbD43NzkuNzYwMDA5NzY1
+	NjI1PC9yZWFsPgoJCQkJCQk8cmVhbD42MDA8L3JlYWw+CgkJCQkJPC9hcnJheT4KCQkJ
+	CQk8a2V5PmNvbS5hcHBsZS5wcmludC50aWNrZXQuc3RhdGVGbGFnPC9rZXk+CgkJCQkJ
+	PGludGVnZXI+MDwvaW50ZWdlcj4KCQkJCTwvZGljdD4KCQkJPC9hcnJheT4KCQk8L2Rp
+	Y3Q+CgkJPGtleT5jb20uYXBwbGUucHJpbnQuUGFwZXJJbmZvLnBwZC5QTVBhcGVyTmFt
+	ZTwva2V5PgoJCTxkaWN0PgoJCQk8a2V5PmNvbS5hcHBsZS5wcmludC50aWNrZXQuY3Jl
+	YXRvcjwva2V5PgoJCQk8c3RyaW5nPmNvbS5hcHBsZS5qb2J0aWNrZXQ8L3N0cmluZz4K
+	CQkJPGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0Lml0ZW1BcnJheTwva2V5PgoJCQk8
+	YXJyYXk+CgkJCQk8ZGljdD4KCQkJCQk8a2V5PmNvbS5hcHBsZS5wcmludC5QYXBlcklu
+	Zm8ucHBkLlBNUGFwZXJOYW1lPC9rZXk+CgkJCQkJPHN0cmluZz5MZXR0ZXI8L3N0cmlu
+	Zz4KCQkJCQk8a2V5PmNvbS5hcHBsZS5wcmludC50aWNrZXQuc3RhdGVGbGFnPC9rZXk+
+	CgkJCQkJPGludGVnZXI+MDwvaW50ZWdlcj4KCQkJCTwvZGljdD4KCQkJPC9hcnJheT4K
+	CQk8L2RpY3Q+CgkJPGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0LkFQSVZlcnNpb248
+	L2tleT4KCQk8c3RyaW5nPjAwLjIwPC9zdHJpbmc+CgkJPGtleT5jb20uYXBwbGUucHJp
+	bnQudGlja2V0LnR5cGU8L2tleT4KCQk8c3RyaW5nPmNvbS5hcHBsZS5wcmludC5QYXBl
+	ckluZm9UaWNrZXQ8L3N0cmluZz4KCTwvZGljdD4KCTxrZXk+Y29tLmFwcGxlLnByaW50
+	LnRpY2tldC5BUElWZXJzaW9uPC9rZXk+Cgk8c3RyaW5nPjAwLjIwPC9zdHJpbmc+Cgk8
+	a2V5PmNvbS5hcHBsZS5wcmludC50aWNrZXQudHlwZTwva2V5PgoJPHN0cmluZz5jb20u
+	YXBwbGUucHJpbnQuUGFnZUZvcm1hdFRpY2tldDwvc3RyaW5nPgo8L2RpY3Q+CjwvcGxp
+	c3Q+CoaShJmZDk5TQm90dG9tTWFyZ2luhpKEm5ymnjSGkoSZmRhOU0RldGFpbGVkRXJy
+	b3JSZXBvcnRpbmeGkpqShJmZC05TRmlyc3RQYWdlhpKqkoSZmQ1OU1BhZ2VzQWNyb3Nz
+	hpKqkoSZmQtOU0ZheE51bWJlcoaShJmZAIaShJmZEE5TUHJpbnRQcm90ZWN0ZWSGkpqS
+	hJmZDE5TTGVmdE1hcmdpboaShJucpp4khpKEmZkLTlNQYWdlc0Rvd26GkqqShJmZC05T
+	UHJpbnRUaW1lhpKEhIQGTlNEYXRlAJSegwAAAMXIYy3ChpKEmZkNTlNSaWdodE1hcmdp
+	boaShJucpp4+hpKEmZkNTlNNdXN0Q29sbGF0ZYaSqpKEmZkQTlNKb2JEaXNwb3NpdGlv
+	boaShJmZD05TUHJpbnRTcG9vbEpvYoaShJmZCk5TTGFzdFBhZ2WGkoSbnJ2Xgv///3+G
+	koSZmQpOU1NhdmVQYXRohpK1hoY=
+	</data>
+	<key>Chart PrintInfo</key>
+	<data>
+	BAtzdHJlYW10eXBlZIHoA4QBQISEhAtOU1ByaW50SW5mbwGEhAhOU09iamVjdACFkoSE
+	hBNOU011dGFibGVEaWN0aW9uYXJ5AISEDE5TRGljdGlvbmFyeQCUhAFpG5KEhIQITlNT
+	dHJpbmcBlIQBKxROU1ZlcnRpY2FsUGFnaW5hdGlvboaShISECE5TTnVtYmVyAISEB05T
+	VmFsdWUAlIQBKoSXlwCGkoSZmQlOU1ByaW50ZXKGkoSEhAlOU1ByaW50ZXIAlJKEmZkL
+	MTkyLjE2OC4xLjOGhpKEmZkWTlNIb3Jpem9udGFsbHlDZW50ZXJlZIaShJucnZcBhpKE
+	mZkUTlNWZXJ0aWNhbGx5Q2VudGVyZWSGkqOShJmZC05TVG9wTWFyZ2luhpKEm5yEhAFk
+	nkiGkoSZmRVOU0hvcml6b25hbFBhZ2luYXRpb26GkoSbnJ2XAoaShJmZCE5TQ29waWVz
+	hpKjkoSZmQ9OU1ByaW50QWxsUGFnZXOGkqOShJmZDU5TT3JpZW50YXRpb26GkpqShJmZ
+	Dk5TQm90dG9tTWFyZ2luhpKEm5ynnkiGkoSZmQtOU1BhcGVyU2l6ZYaShJychIQLe0NH
+	U2l6ZT1kZH2fgWQCgRgDhpKEmZkLTlNGaXJzdFBhZ2WGkqOShJmZGE5TRGV0YWlsZWRF
+	cnJvclJlcG9ydGluZ4aSmpKEmZkNTlNQYWdlc0Fjcm9zc4aSo5KEmZkLTlNGYXhOdW1i
+	ZXKGkoSZmQCGkoSZmRBOU1ByaW50UHJvdGVjdGVkhpKakoSZmQ1OU1ByaW50ZXJOYW1l
+	hpKhkoSZmQxOU0xlZnRNYXJnaW6GkoSbnKeeSIaShJmZC05TUHJpbnRUaW1lhpKEhIQG
+	TlNEYXRlAJSegwAAAMXIYy3ChpKEmZkLTlNQYXBlck5hbWWGkoSZmQluYS1sZXR0ZXKG
+	koSZmQ1OU1JpZ2h0TWFyZ2luhpKEm5ynnkiGkoSZmQtOU1BhZ2VzRG93boaSo5KEmZkN
+	TlNNdXN0Q29sbGF0ZYaSo5KEmZkQTlNKb2JEaXNwb3NpdGlvboaShJmZD05TUHJpbnRT
+	cG9vbEpvYoaShJmZD05TU2NhbGluZ0ZhY3RvcoaShJucp54BhpKEmZkKTlNMYXN0UGFn
+	ZYaShJucnZeC////f4aShJmZCk5TU2F2ZVBhdGiGkraGhg==
+	</data>
+	<key>Class</key>
+	<string>GEDCOMDocument</string>
+	<key>Encoding</key>
+	<integer>4</integer>
+	<key>GEDCOM File Name</key>
+	<string>TestInterface.ged</string>
+	<key>Index Column Settings</key>
+	<dict>
+		<key>User Album 2</key>
+		<array>
+			<dict>
+				<key>AltExpression</key>
+				<string></string>
+				<key>Editable</key>
+				<false/>
+				<key>Expression</key>
+				<string>rec</string>
+				<key>Justification</key>
+				<string>Left</string>
+				<key>Label</key>
+				<string>Record Type</string>
+				<key>Width</key>
+				<integer>90</integer>
+			</dict>
+			<dict>
+				<key>AltExpression</key>
+				<string></string>
+				<key>Editable</key>
+				<false/>
+				<key>Expression</key>
+				<string>view</string>
+				<key>Justification</key>
+				<string>Left</string>
+				<key>Label</key>
+				<string>Record Name</string>
+				<key>Width</key>
+				<integer>300</integer>
+			</dict>
+		</array>
+		<key>User Album 3</key>
+		<array>
+			<dict>
+				<key>AltExpression</key>
+				<string></string>
+				<key>Editable</key>
+				<false/>
+				<key>Expression</key>
+				<string>rec</string>
+				<key>Justification</key>
+				<string>Left</string>
+				<key>Label</key>
+				<string>Record Type</string>
+				<key>Width</key>
+				<integer>90</integer>
+			</dict>
+			<dict>
+				<key>AltExpression</key>
+				<string></string>
+				<key>Editable</key>
+				<false/>
+				<key>Expression</key>
+				<string>view</string>
+				<key>Justification</key>
+				<string>Left</string>
+				<key>Label</key>
+				<string>Record Name</string>
+				<key>Width</key>
+				<integer>300</integer>
+			</dict>
+		</array>
+		<key>User Album 5</key>
+		<array>
+			<dict>
+				<key>AltExpression</key>
+				<string></string>
+				<key>Editable</key>
+				<false/>
+				<key>Expression</key>
+				<string>rec</string>
+				<key>Justification</key>
+				<string>Left</string>
+				<key>Label</key>
+				<string>Record Type</string>
+				<key>Width</key>
+				<integer>90</integer>
+			</dict>
+			<dict>
+				<key>AltExpression</key>
+				<string></string>
+				<key>Editable</key>
+				<false/>
+				<key>Expression</key>
+				<string>view</string>
+				<key>Justification</key>
+				<string>Left</string>
+				<key>Label</key>
+				<string>Record Name</string>
+				<key>Width</key>
+				<integer>300</integer>
+			</dict>
+		</array>
+	</dict>
+	<key>Index PrintInfo</key>
+	<data>
+	BAtzdHJlYW10eXBlZIHoA4QBQISEhAtOU1ByaW50SW5mbwGEhAhOU09iamVjdACFkoSE
+	hBNOU011dGFibGVEaWN0aW9uYXJ5AISEDE5TRGljdGlvbmFyeQCUhAFpG5KEhIQITlNT
+	dHJpbmcBlIQBKxROU1ZlcnRpY2FsUGFnaW5hdGlvboaShISECE5TTnVtYmVyAISEB05T
+	VmFsdWUAlIQBKoSXlwCGkoSZmQlOU1ByaW50ZXKGkoSEhAlOU1ByaW50ZXIAlJKEmZkL
+	MTkyLjE2OC4xLjOGhpKEmZkWTlNIb3Jpem9udGFsbHlDZW50ZXJlZIaShJucnZcBhpKE
+	mZkUTlNWZXJ0aWNhbGx5Q2VudGVyZWSGkqOShJmZC05TVG9wTWFyZ2luhpKEm5yEhAFk
+	nkiGkoSZmRVOU0hvcml6b25hbFBhZ2luYXRpb26GkoSbnJ2XAoaShJmZCE5TQ29waWVz
+	hpKjkoSZmQ9OU1ByaW50QWxsUGFnZXOGkqOShJmZDU5TT3JpZW50YXRpb26GkpqShJmZ
+	Dk5TQm90dG9tTWFyZ2luhpKEm5ynnkiGkoSZmQtOU1BhcGVyU2l6ZYaShJychIQLe0NH
+	U2l6ZT1kZH2fgWQCgRgDhpKEmZkLTlNGaXJzdFBhZ2WGkqOShJmZGE5TRGV0YWlsZWRF
+	cnJvclJlcG9ydGluZ4aSmpKEmZkNTlNQYWdlc0Fjcm9zc4aSo5KEmZkLTlNGYXhOdW1i
+	ZXKGkoSZmQCGkoSZmRBOU1ByaW50UHJvdGVjdGVkhpKakoSZmQ1OU1ByaW50ZXJOYW1l
+	hpKhkoSZmQxOU0xlZnRNYXJnaW6GkoSbnKeeSIaShJmZC05TUHJpbnRUaW1lhpKEhIQG
+	TlNEYXRlAJSegwAAAMXIYy3ChpKEmZkLTlNQYXBlck5hbWWGkoSZmQluYS1sZXR0ZXKG
+	koSZmQ1OU1JpZ2h0TWFyZ2luhpKEm5ynnkiGkoSZmQtOU1BhZ2VzRG93boaSo5KEmZkN
+	TlNNdXN0Q29sbGF0ZYaSo5KEmZkQTlNKb2JEaXNwb3NpdGlvboaShJmZD05TUHJpbnRT
+	cG9vbEpvYoaShJmZD05TU2NhbGluZ0ZhY3RvcoaShJucp54BhpKEmZkKTlNMYXN0UGFn
+	ZYaShJucnZeC////f4aShJmZCk5TU2F2ZVBhdGiGkraGhg==
+	</data>
+	<key>Multimedia Root Folders</key>
+	<array>
+		<string>~/Pictures/iPhoto Library/</string>
+	</array>
+	<key>Record Album Listings</key>
+	<array>
+		<dict>
+			<key>Album Name</key>
+			<string>Individuals</string>
+			<key>Album Record Type</key>
+			<string>INDI</string>
+			<key>Album Selected IDs</key>
+			<array>
+				<string>@I1@</string>
+			</array>
+			<key>Album Sorting Array</key>
+			<array>
+				<integer>-1</integer>
+				<string>view</string>
+			</array>
+			<key>Album Type ID</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Album Name</key>
+			<string>Families</string>
+			<key>Album Record Type</key>
+			<string>FAM</string>
+			<key>Album Selected IDs</key>
+			<array>
+				<string>@F2@</string>
+			</array>
+			<key>Album Sorting Array</key>
+			<array>
+				<integer>-1</integer>
+				<string>HUSB.view</string>
+			</array>
+			<key>Album Type ID</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Album Name</key>
+			<string>Notes</string>
+			<key>Album Record Type</key>
+			<string>NOTE</string>
+			<key>Album Selected IDs</key>
+			<array>
+				<string>@N2@</string>
+			</array>
+			<key>Album Sorting Array</key>
+			<array>
+				<integer>-1</integer>
+				<string>view</string>
+			</array>
+			<key>Album Type ID</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Album Name</key>
+			<string>Sources</string>
+			<key>Album Record Type</key>
+			<string>SOUR</string>
+			<key>Album Selected IDs</key>
+			<array>
+				<string>@SR3@</string>
+			</array>
+			<key>Album Sorting Array</key>
+			<array>
+				<integer>-1</integer>
+				<string>view</string>
+			</array>
+			<key>Album Type ID</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Album Name</key>
+			<string>Places</string>
+			<key>Album Record Type</key>
+			<string>_PLC</string>
+			<key>Album Selected IDs</key>
+			<array>
+				<string>@P16@</string>
+			</array>
+			<key>Album Sorting Array</key>
+			<array>
+				<integer>-1</integer>
+				<string>view</string>
+			</array>
+			<key>Album Type ID</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Album Name</key>
+			<string>Multimedia Objects</string>
+			<key>Album Record Type</key>
+			<string>OBJE</string>
+			<key>Album Selected IDs</key>
+			<array>
+				<string>@M2@</string>
+			</array>
+			<key>Album Sorting Array</key>
+			<array>
+				<integer>-1</integer>
+				<string>view</string>
+			</array>
+			<key>Album Type ID</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Album Name</key>
+			<string>Repositories</string>
+			<key>Album Record Type</key>
+			<string>REPO</string>
+			<key>Album Selected IDs</key>
+			<array>
+				<string>@R1@</string>
+			</array>
+			<key>Album Sorting Array</key>
+			<array>
+				<integer>-1</integer>
+				<string>view</string>
+			</array>
+			<key>Album Type ID</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Album Name</key>
+			<string>Submitters</string>
+			<key>Album Record Type</key>
+			<string>SUBM</string>
+			<key>Album Selected IDs</key>
+			<array>
+				<string>@SUBM@</string>
+			</array>
+			<key>Album Sorting Array</key>
+			<array>
+				<integer>-1</integer>
+				<string>view</string>
+			</array>
+			<key>Album Type ID</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Album Name</key>
+			<string>Header</string>
+			<key>Album Record Type</key>
+			<string>HEAD</string>
+			<key>Album Selected IDs</key>
+			<array>
+				<string>HEAD</string>
+			</array>
+			<key>Album Sorting Array</key>
+			<array>
+				<integer>-1</integer>
+				<string>view</string>
+			</array>
+			<key>Album Type ID</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Album Name</key>
+			<string>Submission</string>
+			<key>Album Record Type</key>
+			<string>SUBN</string>
+			<key>Album Selected IDs</key>
+			<array>
+				<string>@SUBN1@</string>
+			</array>
+			<key>Album Sorting Array</key>
+			<array>
+				<integer>-1</integer>
+				<string>view</string>
+			</array>
+			<key>Album Type ID</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Album Name</key>
+			<string>Book Styles</string>
+			<key>Album Record Type</key>
+			<string>_BOK</string>
+			<key>Album Selected IDs</key>
+			<array>
+				<string>@B1@</string>
+			</array>
+			<key>Album Sorting Array</key>
+			<array>
+				<integer>-1</integer>
+				<string>view</string>
+			</array>
+			<key>Album Type ID</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Album Name</key>
+			<string>Research Logs</string>
+			<key>Album Record Type</key>
+			<string>_LOG</string>
+			<key>Album Selected IDs</key>
+			<array>
+				<string>@L2@</string>
+			</array>
+			<key>Album Sorting Array</key>
+			<array>
+				<integer>-1</integer>
+				<string>view</string>
+			</array>
+			<key>Album Type ID</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Album Name</key>
+			<string>Known Residences</string>
+			<key>Album Record IDs</key>
+			<array>
+				<string>@I1@</string>
+				<string>@I4@</string>
+			</array>
+			<key>Album Record Type</key>
+			<string>User Album 2</string>
+			<key>Album Selected IDs</key>
+			<array>
+				<string>@I1@</string>
+			</array>
+			<key>Album Sorting Array</key>
+			<array>
+				<integer>-1</integer>
+				<string>rec</string>
+			</array>
+			<key>Album Type ID</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Album Name</key>
+			<string>Tag Torture Records</string>
+			<key>Album Record IDs</key>
+			<array>
+				<string>@B1@</string>
+				<string>@L3@</string>
+				<string>@P16@</string>
+				<string>@F2@</string>
+				<string>HEAD</string>
+				<string>@I1@</string>
+				<string>@N2@</string>
+				<string>@M2@</string>
+				<string>@R1@</string>
+				<string>@SR3@</string>
+				<string>@SUBM@</string>
+				<string>@SUBN1@</string>
+			</array>
+			<key>Album Record Type</key>
+			<string>User Album 3</string>
+			<key>Album Selected IDs</key>
+			<array>
+				<string>@SR3@</string>
+			</array>
+			<key>Album Sorting Array</key>
+			<array>
+				<integer>-1</integer>
+				<string>rec</string>
+			</array>
+			<key>Album Type ID</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Album Name</key>
+			<string>Characters</string>
+			<key>Album Record IDs</key>
+			<array>
+				<string>@I20@</string>
+				<string>@I19@</string>
+			</array>
+			<key>Album Record Type</key>
+			<string>User Album 5</string>
+			<key>Album Sorting Array</key>
+			<array>
+				<integer>-1</integer>
+				<string>rec</string>
+			</array>
+			<key>Album Type ID</key>
+			<integer>5</integer>
+		</dict>
+	</array>
+	<key>Save Thumbnails</key>
+	<true/>
+	<key>Version</key>
+	<integer>1</integer>
+</dict>
+</plist>

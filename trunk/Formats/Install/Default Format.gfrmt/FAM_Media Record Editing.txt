@@ -1,0 +1,33 @@
+load FAMPanes,TagBlock,ResetTabs
+
+! -------------- Start Template -----------------
+DropTypes INDI,INDICtrl
+GoSub ResetTabs,0
+GoSub FAMPanes,"Media"
+
+! --------- OBJEs -----------
+cell GroupBox,local("Multimedia")
+  width -1
+  newline
+  if OBJE is here
+    Gosub TagBlock,"OBJE","Multimedia"
+    newline
+  else
+    newline -#lineSkip-3
+  endif
+  Show OBJE
+EndGroup
+
+! --------- Other Multimedia
+cell GroupBox,local("Event Multimedia")
+  width -1
+  newline
+  #startVH=#vpos$+#hpos$
+  ShowAll FAMEvents "Media"
+  newline
+  if #startVH=#vpos$+#hpos$
+    cell static,local("None")
+  endif
+EndGroup
+
+hideexcess

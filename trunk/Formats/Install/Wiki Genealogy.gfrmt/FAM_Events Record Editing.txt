@@ -1,0 +1,26 @@
+load ResetTabs,EditingPage
+
+gosub ResetTabs
+
+gosub EditingPage,"Family Events"
+
+cell label,local("Attach")&": "
+sizetofit
+set offset #buttonOffset
+
+cell LinkButton
+image "add"
+set border no width 24
+MenuLink "Attach Event/Attribute"
+help local("Click to add an ordinance")
+
+cell LinkButton
+image "remove"
+set width 24 border no
+MenuLink "Detach Event/Attribute/Link"
+help local("Click to remove an ordinance")
+
+!--------- Events
+ShowAll FAMEvents
+
+hideexcess

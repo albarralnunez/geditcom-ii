@@ -1,0 +1,349 @@
+! #aid is ID to an ancestor
+! Draw cells around line at #xi,#yl
+! if #fath="Y" then output MARR date and place for family #fam
+sub Ancestor,#aid,#xl,#yl,#fath,#fam
+  if #aid=""
+    VMoveTo #yl+#voff
+    #leftSkip=#xl+#inset+1
+    newline
+
+    cell Static
+    text local("BIRT")&":"
+    sizetofit -1
+    newline -2
+    cell Static
+    text local("PLAC")&":"
+    sizetofit -1
+    newline -2
+    cell Static
+    text local("DEAT")&":"
+    sizetofit -1
+    newline -2
+    cell Static
+    text local("PLAC")&":"
+    sizetofit -1
+    if #fath="Y"
+      newline -2
+      cell Static
+      text local("MARR")&":"
+      sizetofit -1
+      newline -2
+      cell Static
+      text local("PLAC")&":"
+      sizetofit -1
+    endif
+  else
+    MoveTo #xl+#inset,#yl-#nameLine+#voff
+    cell LinkButton
+    set width #colWidth height #nameLine border none alignment left
+    set TextExpression @#aid.rec AppendedExpression "altview"
+    set RecordLink #aid font "Name Text"
+    Help local("Click to view pedigree chart for")&" "&@#aid.altview
+
+    #leftSkip=#xl+#inset+1
+    newline
+
+    cell Static
+    text local("BIRT")&":"
+    sizetofit -1
+    cell Expression @#aid.BIRT.DATE
+    set appendedexpression view
+    sizetofit -1
+
+    newline -2
+    cell Static
+    text local("PLAC")&":"
+    sizetofit -1
+    cell Expression @#aid.BIRT.PLAC
+    sizetofit -1
+    set width #xl+#colWidth+#inset+1-#hpos$
+
+    newline -2
+    cell Static
+    text local("DEAT")&":"
+    sizetofit -1
+    cell Expression @#aid.DEAT.DATE
+    set appendedexpression view
+    sizetofit -1
+
+    newline -2
+    cell Static
+    text local("PLAC")&":"
+    sizetofit -1
+    cell Expression @#aid.DEAT.PLAC
+    sizetofit -1
+
+    if #fath="Y"
+      newline -2
+      cell Static
+      text local("MARR")&":"
+      sizetofit -1
+      cell Expression @#fam.MARR.DATE
+      set appendedexpression view
+      sizetofit -1
+
+      newline -2
+      cell Static
+      text local("PLAC")&":"
+      sizetofit -1
+      cell Expression @#fam.MARR.PLAC
+      sizetofit -1
+    endif
+  endif
+
+  #leftSkip=#leftSkip$
+endsub
+
+! page height from printable page height
+#pageHeight=#paperHeight$
+if printing is true
+  #pageHeight-=(#topMargin$+#bottomMargin$)
+endif
+#pageWidth=#rightMargin$-#leftSkip-#rightSkip
+
+! line height for name and details under each name
+#nameLine=15
+#infoLine=12
+
+! space between details text and the next name
+#space=(#pageHeight-40*#infoLine-8*#nameLine)/7
+
+! spacing in generation 3
+#g3gap1=6*#infoLine+#space+#nameLine		! gap between spouses
+#g3gap2=4*#infoLine+#space+#nameLine		! gap between parents
+
+! find all coordinates - lines in generation 3
+#g3[1]=#nameLine
+#g3[2]=#g3[1]+#g3gap1
+#g3[3]=#g3[2]+#g3gap2
+#g3[4]=#g3[3]+#g3gap1
+#g3[5]=#g3[4]+#g3gap2
+#g3[6]=#g3[5]+#g3gap1
+#g3[7]=#g3[6]+#g3gap2
+#g3[8]=#g3[7]+#g3gap1
+
+! lines in generation 2
+#g2[1]=(#g3[1]+#g3[2])/2
+#g2[2]=(#g3[3]+#g3[4])/2
+#g2[3]=(#g3[5]+#g3[6])/2
+#g2[4]=(#g3[7]+#g3[8])/2
+
+! lines in generation 1
+#g1[1]=(#g2[1]+#g2[2])/2
+#g1[2]=(#g2[3]+#g2[4])/2
+
+! horizontal location
+#inset=5
+#colWidth=#pageWidth/3-#inset-1
+#h[0]=1
+#h[1]=#pageWidth/3
+#h[2]=2*#h[1]
+#h[3]=#pageWidth
+
+DisplayWidth #pageWidth+#leftSkip+#rightSkip
+ResizeWindow true
+
+newline
+#voff=#vpos$
+cell static
+set font "Name Text"
+text local("Pedigree Chart")&": "&@this.altview
+sizetofit
+
+newline
+cell static
+set font "Name Text"
+text local("DATE")&": "&#today$
+sizetofit
+
+! Draw all lines in the Pedigree chart
+VMoveTo #voff
+cell Palette
+set width #pageWidth height #g3[8]+4
+PalMoveTo #h[0],#g1[1]
+PalLineTo #h[1],#g1[1]
+PalLineTo #h[1],#g2[1]
+PalLineTo #h[2],#g2[1]
+PalLineTo #h[2],#g3[1]
+PalLineTo #h[3],#g3[1]
+
+PalMoveTo #h[2],#g2[1]
+PalLineTo #h[2],#g3[2]
+PalLineTo #h[3],#g3[2]
+
+PalMoveTo #h[1],#g1[1]
+PalLineTo #h[1],#g2[2]
+PalLineTo #h[2],#g2[2]
+PalLineTo #h[2],#g3[3]
+PalLineTo #h[3],#g3[3]
+
+PalMoveTo #h[2],#g2[2]
+PalLineTo #h[2],#g3[4]
+PalLineTo #h[3],#g3[4]
+
+PalMoveTo #h[0],#g1[1]
+PalLineTo #h[0],#g1[2]
+PalLineTo #h[1],#g1[2]
+PalLineTo #h[1],#g2[3]
+PalLineTo #h[2],#g2[3]
+PalLineTo #h[2],#g3[5]
+PalLineTo #h[3],#g3[5]
+
+PalMoveTo #h[2],#g2[3]
+PalLineTo #h[2],#g3[6]
+PalLineTo #h[3],#g3[6]
+
+PalMoveTo #h[1],#g1[2]
+PalLineTo #h[1],#g2[4]
+PalLineTo #h[2],#g2[4]
+PalLineTo #h[2],#g3[7]
+PalLineTo #h[3],#g3[7]
+
+PalMoveTo #h[2],#g2[4]
+PalLineTo #h[2],#g3[8]
+PalLineTo #h[3],#g3[8]
+
+! Father and Mother
+GoSub Ancestor,@FAMC.HUSB,#h[0],#g1[1],"Y",@FAMC
+GoSub Ancestor,@FAMC.WIFE,#h[0],#g1[2],"N",""
+
+! Paternal GrandParents
+#afam=@FAMC.HUSB.FAMC
+GoSub Ancestor,@#afam.HUSB,#h[1],#g2[1],"Y",#afam
+GoSub Ancestor,@#afam.WIFE,#h[1],#g2[2],"N",""
+
+! Maternal GrandParents
+#afam=@FAMC.WIFE.FAMC
+GoSub Ancestor,@#afam.HUSB,#h[1],#g2[3],"Y",#afam
+GoSub Ancestor,@#afam.WIFE,#h[1],#g2[4],"N",""
+
+! Paternal Paternal Great GrandParents
+#afam=@FAMC.HUSB.FAMC.HUSB.FAMC
+GoSub Ancestor,@#afam.HUSB,#h[2],#g3[1],"Y",#afam
+GoSub Ancestor,@#afam.WIFE,#h[2],#g3[2],"N",""
+
+! Paternal Maternal Great GrandParents
+#afam=@FAMC.HUSB.FAMC.WIFE.FAMC
+GoSub Ancestor,@#afam.HUSB,#h[2],#g3[3],"Y",#afam
+GoSub Ancestor,@#afam.WIFE,#h[2],#g3[4],"N",""
+
+! Maternal Paternal Great GrandParents
+#afam=@FAMC.WIFE.FAMC.HUSB.FAMC
+GoSub Ancestor,@#afam.HUSB,#h[2],#g3[5],"Y",#afam
+GoSub Ancestor,@#afam.WIFE,#h[2],#g3[6],"N",""
+
+! Maternal Maternal Great GrandParents
+#afam=@FAMC.WIFE.FAMC.WIFE.FAMC
+GoSub Ancestor,@#afam.HUSB,#h[2],#g3[7],"Y",#afam
+GoSub Ancestor,@#afam.WIFE,#h[2],#g3[8],"N",""
+
+! Page lines
+if printing is false
+  #pline=#paperWidth$
+  Repeat
+    if #pline>=#pageWidth
+      break
+    endif
+    MoveTo #pline,#voff
+    cell Palette
+    set width 2 height #pageHeight
+    PalLineWidth .5
+    PalDrawColor red
+    PalMoveTo 1,0
+    PalLineTo 1,#pageHeight
+    #pline+=#paperWidth$
+    Help local("Page dividing line (will not appear when printed)")
+  EndRepeat
+endif
+
+! Individual
+if printing is true
+  #midLine=(#g1[1]+#g1[2])/2
+  MoveTo #leftSkip,#midLine+#voff
+  cell Palette
+  set width #colWidth height 2
+  PalMoveTo 0,1
+  PalLineTo #colWidth,1
+
+  GoSub Ancestor @this,#h[0],#midLine,"Y",@FAMS
+  newline 6
+
+else
+  #leftSkip=#leftSkip$+1
+  #eZone =1.5*#colWidth
+  VMoveTo #g2[2]+#g3gap2-#nameLine
+  Show NAME
+  Show BIRT
+  Show DEAT
+
+  #leftSkip=#leftSkip+1
+  newline
+  cell Static
+  text local("MARR")&":"
+  sizetofit -1
+  cell Expression @FAMS.MARR.DATE
+  set appendedexpression view
+  sizetofit -1
+
+  newline -2
+  cell Static
+  text local("PLAC")&":"
+  sizetofit -1
+  cell Expression @FAMS.MARR.PLAC
+  sizetofit -1
+
+  #leftSkip=#leftSkip$
+endif
+
+! link to first spouse
+newline 6
+HMoveTo #h[0]+#inset
+cell LinkButton
+set width #colWidth height #nameLine border none alignment left
+set TextExpression @spouse.rec AppendedExpression "altview"
+set RecordLink @spouse font "Name Text"
+Help local("Click to view pedigree chart for")&" "&@spouse.altview
+
+! Line under the spouse
+newline 2
+cell Palette
+set width 0.9*#colWidth height 2
+PalMoveTo 0,1
+PalLineTo 0.9*#colWidth,1
+
+! Spouse label
+ReadAll "#spses" from @FAMS
+#leftSkip=#h[0]+#inset+2
+newline 3
+if printing is true
+  cell Static
+  set width 0.9*#colWidth border none
+  text local("Spouse")
+  if #spses[0]>1
+    text " (1 "&local("of")&" "&#spses[0]&")"
+  endif
+  sizetofit -1
+else
+  if #spses[0]=0
+    cell Static
+    set width 0.9*#colWidth border none
+    text local("Spouse")
+  else
+    Repeat "#i",1,#spses[0]
+      newline -2
+      cell LinkButton
+      text local("FAM")
+      if #spses[0]>1
+        text " ("&#i&" "&local("of")&" "&#spses[0]&")"
+      endif
+      set RecordLink #spses[#i] border none font "Static Text" fontColor blue
+      #famID=#spses[#i]
+      help local("Click to view family chart for")&" "&@#famID.altview
+      sizetofit
+    endRepeat
+  endif
+endif
+
+HideExcess
+
+

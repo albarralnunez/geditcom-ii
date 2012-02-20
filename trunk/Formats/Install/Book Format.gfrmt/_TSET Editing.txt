@@ -1,0 +1,6 @@
+load BookCheckBox
+if printing is false
+  hskip 10
+endif
+gosub BookCheckBox,local(@tag),@contents
+help local("Check to  automatically typeset the book, if proper tools are availabls")

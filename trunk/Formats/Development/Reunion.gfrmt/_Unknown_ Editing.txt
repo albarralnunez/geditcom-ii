@@ -1,0 +1,12 @@
+! Indent and put up label
+NewLine
+#name=string(@tag)
+if #name<>""
+  cell static #name&": "
+else
+  cell static @level&" "&@tag&" "
+endif
+sizetofit
+
+cell EditValue
+set Width -1 border none

@@ -1,0 +1,38 @@
+hskip 0
+#space=#rightMargin$-#hpos$-50
+if @this.FAMS=""
+  ! edit field with value
+  cell PopupMenuEdit
+  offset 7
+  if @contents="Male"
+    MenuItems local("Male")&":Male"
+  else
+    MenuItems local("Male")&":M"
+  endif
+  if @contents="Female"
+    MenuItems local("Female")&":Female"
+  else
+    MenuItems local("Female")&":F"
+  endif
+  MenuItems local("Unknown")&"::"
+  set border shadowlesssquare
+  SizeToFit
+  set height 22
+  help local("Select sex")
+else
+  cell LinkButton
+  offset 7
+  if @contents="M"
+    set text local("Male")
+  else if @contents="F"
+    set text local("Female")
+  else
+    set text local(@contents)
+  endif
+  set border shadowlesssquare
+  SizeToFit 3
+  MenuLink "Attach Changed Sex"
+  help local("Click to change this person's sex")
+endif
+shift #space-#cellWidth$
+

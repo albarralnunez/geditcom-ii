@@ -1,0 +1,4 @@
+hskip 10
+cell CheckBoxEdit,local("Auto Typeset")
+sizetofit
+help local("Check to automatically typeset the book, if proper tools are available")

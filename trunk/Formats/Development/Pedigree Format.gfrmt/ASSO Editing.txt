@@ -1,0 +1,21 @@
+newline
+cell static local(@tag)&":"
+sizetofit
+set tabwidth 1 alignment right
+  
+cell LinkButton
+TextExpression @contents.rec
+AppendedExpression view
+set border no Font "Hyperlink Text" alignment left
+sizetofit -1
+RecordLink @contents
+Help local("Click to attach associated record")
+
+! are there details?
+ClearTabs
+SetTab 180
+Show RELA
+ShowAll NOTE "label"
+ShowAll SOUR "label"
+ClearTabs
+SetTab #assoTab

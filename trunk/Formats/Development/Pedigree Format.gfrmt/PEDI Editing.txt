@@ -1,0 +1,7 @@
+! popup menu
+cell PopupMenuEditMenuItems local("BIRT")&"::"MenuItems local("ADOP")&":adopted"MenuItems local("Foster")&":foster"MenuItems local("Sealing")&":sealing"
+SizeToFit
+#leftPedi=#rightMargin$-#rightSkip-#cellWidth$-21
+shift #leftPedi-#hpos$
+help local("Click to change relationship to parents")
+border shadowlesssquare

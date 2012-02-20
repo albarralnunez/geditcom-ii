@@ -1,0 +1,9 @@
+load LevTag
+
+gosub LevTag
+
+! popup menu
+cell PopupMenuEdit
+MenuItems local("Book")&":book"MenuItems local("Article")&":article"MenuItems local("Web Page")&":web page"MenuItems local("in Book")&":in book"MenuItems local("Vital Records")&":vital records"MenuItems local("Unpublished")&":unpublished"MenuItems local("General")&"::"help local("Click to enter type of source")
+SizeToFit
+set offset #popupOffset border none controlsize small height #defaultHeight$

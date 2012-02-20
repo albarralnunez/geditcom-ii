@@ -1,0 +1,9 @@
+load LineLabel
+
+! Label and edit a date field
+gosub LineLabel local("DATE")
+offset #editOffset
+
+cell EditDate
+set Width -1 border no
+help local("Enter a valid date")

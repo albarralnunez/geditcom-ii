@@ -1,0 +1,66 @@
+load LineLabel,RecordChildLink
+
+! get #useTag for parent's sex and localize #parent=(Husband, Wife, Father, or Mother)
+#useTag=@tag
+#sex=""
+if @contents is validlink
+  #sex=@contents.SEX
+else
+  if @tag="HUSB"
+    #sex=@this.HUSB.SEX
+  else
+    #sex=@this.WIFE.SEX
+  endif
+endif
+if #sex="M"
+  #useTag="HUSB"
+else if #sex="F"
+  #useTag="WIFE"
+else if @tag="HUSB"
+  #sex="M"
+else
+  #sex="F"
+endif
+if @this._UMR=""
+  #parent=#useTag
+  if #useTag="HUSB"
+    #ageParent="Husband"
+  else
+    #ageParent="Wife"
+  endif
+else
+  if #useTag="HUSB"
+    #parent="Father"
+  else
+    #parent="Mother"
+  endif
+endif
+
+if #parentTag$="FAM"
+  gosub LineLabel,local(#parent)
+  fontsize 14
+  sizetofit
+
+  if local("<LANG>")="French"
+    #parent="the "&#parent
+  endif
+
+  if @contents is validlink
+    gosub RecordChildLink local("Click to view record for")&" "&local(#parent),"parent"
+  else
+	cell static,"<"&local("Unknown")&">"
+  endif
+  fontsize 14
+  sizetofit -1
+
+else
+  ! ages in family event
+  if #useTag=@tag
+    #agelab=local(#ageParent&"'s Age")
+  else if #useTag="WIFE"
+    #agelab=local(#ageParent&" 1's Age")
+  else
+    #agelab=local(#ageParent&" 2's Age")
+  endif
+  Show AGE #agelab
+endif

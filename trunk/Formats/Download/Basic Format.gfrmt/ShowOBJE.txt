@@ -1,0 +1,15 @@
+! If OBJE links are present, indent for current level and show
+! them using number per line in the editing preferences
+sub ShowOBJE
+  if OBJE is here
+    newline
+    tab (@level-1)
+    cell static,local("Multimedia")&":"
+    sizetofit
+    #oldSkip=#leftSkip
+    #leftSkip=#hpos$+#tabSpacing
+    newline
+    showAll OBJE
+    #leftSkip=#oldSkip
+  endif
+endSub

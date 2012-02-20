@@ -1,0 +1,4 @@
+show VERS
+ClearTabs
+settab 170
+show FORM

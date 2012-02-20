@@ -1,0 +1,126 @@
+load INDIPanes,ResetTabs,ListBlock,References,ToolBtn
+sub TableTabs,#tabKey
+  ClearTabs
+  #lineSkip=2
+  #cellSkip=2
+  #tableWidth=#rightMargin$-#rightSkip-#hpos$-#cellSkip-21
+  #nameWidth=(#tableWidth-2*#cellSkip-20)/2
+  if #nameWidth>180
+    #nameWidth=180
+  endif
+  if #tabKey=1
+    SetTab #habs$+#nameWidth,#habs$+#nameWidth+20,#habs$+#tableWidth
+  else if #tabKey=2
+    SetTab #habs$+#nameWidth+20,#habs$+#tableWidth-20,#habs$+#tableWidth
+  else if #tabKey=3
+    SetTab #habs$+#nameWidth+20,#habs$+#tableWidth
+  endif
+  #first="yes"
+endsub
+
+! -------------- Start Template -----------------
+
+GoSub ResetTabs
+#sex=@SEX
+
+! --------- Name -----------
+#oldWidth=#rightMargin$
+DisplayWidth #oldWidth+#rightSkip+1
+newline -#topMargin$-1
+hskip -#leftSkip-1
+cell GroupBox
+border line
+titleposition none
+cellbackground "Record Header Box Background"
+width -1
+
+! -------------- Mini Toolbar -----------------
+moveto 1,1
+GoSub INDIPanes,"Events"
+
+newline 6
+Show NAME #rightMargin$-265
+Show SEX
+Show RESN
+if NAME is here
+  newline
+  ShowAll NAME #rightMargin$-265
+endif
+EndGroup
+
+DisplayWidth #oldWidth
+
+! --------- Birth and Death -----------
+newline
+cell label local("BIRT")
+SizeToFit
+newline -3
+cell GroupBox
+titleposition abovetop
+set width -1 border line titleposition none
+
+show BIRT
+showAll BIRT
+
+MoveTo #leftSkip,#birtBottom
+showAll FAMC
+
+EndGroup
+
+show DEAT
+showAll DEAT
+
+! --------- Events and attributes --------------
+cell label,local("Events and Attributes")
+SizeToFit 12
+
+cell LinkButton
+image "plus"
+set width 24 border no
+MenuLink "Attach Event/Attribute"
+help local("Click to add an event")
+
+cell LinkButton "-"
+image "minus"
+set width 24 border no
+MenuLink "Detach Event/Attribute/Link"
+help local("Click to remove an event")
+
+newline -6
+cell GroupBox
+set width -1 border line titleposition none
+
+newline -#lineSkip-3
+GoSub TableTabs,1
+ShowAll INDIEvents
+ShowAll INDIOrdinances
+
+newline
+GoSub TableTabs,2
+ShowAll RESI
+
+newline
+GoSub TableTabs,3
+ShowAll INDIAttributes
+
+#lineSkip=#lineSkip$
+#cellSkip=#cellSkip$
+
+EndGroup
+GoSub ResetTabs
+
+! -------- Additional Data ------------
+if CHAN is here
+  ClearTabs
+  SetTab 150,240,330
+  cell label,local("Additional Data")
+  SizeToFit
+  newline -3
+  cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-3
+  ShowAll CHAN
+  EndGroup
+endif
+
+hideexcess

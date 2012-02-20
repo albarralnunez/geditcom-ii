@@ -1,0 +1,19 @@
+load ResetTabs,LineLabel
+
+! Label and editing field
+newline
+if #msg="event"
+  gosub LineLabel,local(@tag)
+else
+  ClearTabs
+  SetTab #labelWidth+24
+  gosub LineLabel,local(@tag)
+endif
+set offset #editOffset
+
+cell EditValue
+set Width -1 border none
+help local("Enter latitude and longitude (e.g., 45.3N, 112.3W)")
+set ScriptLink "Open_Location_in_GeoHack" ScriptType format
+
+gosub ResetTabs

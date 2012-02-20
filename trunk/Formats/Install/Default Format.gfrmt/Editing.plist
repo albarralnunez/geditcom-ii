@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Colors</key>
+	<dict>
+		<key>Editing Background</key>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWE
+		AWMBhARmZmZmAQEBAYY=
+		</data>
+		<key>Record Header Box Background</key>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWE
+		AWMBhARmZmZmgyZrRj+DOEpNP4M4elg/AYY=
+		</data>
+		<key>Table Cell Background</key>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWE
+		AWMBhARmZmZmg7SkJD+Dzv8uP4McGkA/AYY=
+		</data>
+		<key>Window Background</key>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWE
+		AWMBhARmZmZmg1+ZXj+DWHNiP4OTDWk/AYY=
+		</data>
+	</dict>
+	<key>Fonts</key>
+	<dict>
+		<key>Bold Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSyEBVs0NGNdBgAAACQAAAD//kwAdQBjAGkAZABhAEcA
+			cgBhAG4AZABlAC0AQgBvAGwAZACEAWYMhAFjAJgBmACYAIY=
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMDhAJmZgABhg==
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Button Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSSEBVszNmNdBgAAABoAAAD//kwAdQBjAGkAZABhAEcA
+			cgBhAG4AZABlAAAAhAFmC4QBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmAAAAAYY=
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Check Box Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSSEBVszNmNdBgAAABoAAAD//kwAdQBjAGkAZABhAEcA
+			cgBhAG4AZABlAAAAhAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmAAAAAYY=
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Editing Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSSEBVszNmNdBgAAABoAAAD//kwAdQBjAGkAZABhAEcA
+			cgBhAG4AZABlAAAAhAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMDhAJmZgABhg==
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>GEDCOM Extension Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSSEBVszNmNdBgAAABoAAAD//kwAdQBjAGkAZABhAEcA
+			cgBhAG4AZABlAAAAhAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmg1bJCzyDdNf+PoMBs/k8AYY=
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Hyperlink Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSSEBVszNmNdBgAAABoAAAD//kwAdQBjAGkAZABhAEcA
+			cgBhAG4AZABlAAAAhAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmgyqUUT2DYOQcPQEBhg==
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Label Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSSEBVszNmNdBgAAABoAAAD//kwAdQBjAGkAZABhAEcA
+			cgBhAG4AZABlAAAAhAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmAAAAAYY=
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Popup Menu Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSSEBVszNmNdBgAAABoAAAD//kwAdQBjAGkAZABhAEcA
+			cgBhAG4AZABlAAAAhAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmAAAAAYY=
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Static Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaSSEBVszNmNdBgAAABoAAAD//kwAdQBjAGkAZABhAEcA
+			cgBhAG4AZABlAAAAhAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmAAAAAYY=
+			</data>
+			<integer>0</integer>
+		</array>
+	</dict>
+	<key>Variables</key>
+	<array>
+		<array>
+			<string>Left Margin</string>
+			<string>#leftSkip</string>
+			<string>Number</string>
+			<string>10</string>
+			<integer>1</integer>
+		</array>
+		<array>
+			<string>Right Margin</string>
+			<string>#rightSkip</string>
+			<string>Number</string>
+			<string>10</string>
+			<integer>2</integer>
+		</array>
+		<array>
+			<string>Top Margin</string>
+			<string>#topMargin$</string>
+			<string>Number</string>
+			<string>10</string>
+			<integer>3</integer>
+		</array>
+		<array>
+			<string>Bottom Margin</string>
+			<string>#bottomMargin$</string>
+			<string>Number</string>
+			<string>10</string>
+			<integer>4</integer>
+		</array>
+		<array>
+			<string>Default Cell Width</string>
+			<string>#cellWidth$</string>
+			<string>Number</string>
+			<string>72</string>
+			<integer>5</integer>
+		</array>
+		<array>
+			<string>Default Cell Height</string>
+			<string>#cellHeight$</string>
+			<string>Number</string>
+			<string>22</string>
+			<integer>6</integer>
+		</array>
+		<array>
+			<string>Line Separation</string>
+			<string>#lineSkip</string>
+			<string>Number</string>
+			<string>3</string>
+			<integer>7</integer>
+		</array>
+		<array>
+			<string>Cell Separation</string>
+			<string>#cellSkip</string>
+			<string>Number</string>
+			<string>2</string>
+			<integer>8</integer>
+		</array>
+		<array>
+			<string>Multimedia Sizes</string>
+			<string></string>
+			<string>Group</string>
+			<string></string>
+			<integer>9</integer>
+		</array>
+		<array>
+			<string>Thumbnails Per Row</string>
+			<string>#mmPerRow</string>
+			<string>Number</string>
+			<string>4</string>
+			<integer>11</integer>
+		</array>
+		<array>
+			<string>Notes Position</string>
+			<string>#posNotes</string>
+			<string>Number</string>
+			<string>2</string>
+			<integer>12</integer>
+		</array>
+		<array>
+			<string>Pedigree Chart Settings</string>
+			<string>#varName</string>
+			<string>Group</string>
+			<string>0</string>
+			<integer>13</integer>
+		</array>
+		<array>
+			<string>Chart Box Width</string>
+			<string>#boxWidth</string>
+			<string>Number</string>
+			<string>200</string>
+			<integer>14</integer>
+		</array>
+		<array>
+			<string>Chart Box Padding</string>
+			<string>#boxPadding</string>
+			<string>Number</string>
+			<string>3</string>
+			<integer>15</integer>
+		</array>
+		<array>
+			<string>Chart Column Spacing</string>
+			<string>#boxSpacing</string>
+			<string>Number</string>
+			<string>20</string>
+			<integer>16</integer>
+		</array>
+		<array>
+			<string>Chart Row Spacing</string>
+			<string>#boxRowsep</string>
+			<string>Number</string>
+			<string>12</string>
+			<integer>17</integer>
+		</array>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,7 @@
+load LevTag
+
+gosub LevTag
+
+cell PopupMenuEdit
+MenuItems "US Letter","A4"help local("Click to select paper size for your LaTeX installation")set controlsize small border no offset #popupOffset 
+sizetofit

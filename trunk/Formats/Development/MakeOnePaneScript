@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# copy to new format file
+#cd ~/Library/Application\ Support/GEDitCOMII/Formats/Install
+cp -R Default\ Format.gfrmt Default\ One\ Pane\ Format.gfrmt
+
+# remove .svn folders
+cd Default\ One\ Pane\ Format.gfrmt
+sudo rm -r .svn images/.svn
+
+# remove pane templates for INDI Records
+mv "INDI_All Record Editing.txt" temp.txt
+rm "INDI Record Editing.txt" INDI_*\ Record\ Editing.txt
+mv temp.txt INDI\ Record\ Editing.txt
+
+# remove pane templates for FAM Records
+mv "FAM_All Record Editing.txt" temp.txt
+rm "FAM Record Editing.txt" FAM_*\ Record\ Editing.txt
+mv temp.txt FAM\ Record\ Editing.txt
+
+# remove pane templates for OBJE Records
+mv "OBJE_All Record Editing.txt" temp.txt
+rm "OBJE Record Editing.txt" OBJE_*\ Record\ Editing.txt
+mv temp.txt OBJE\ Record\ Editing.txt

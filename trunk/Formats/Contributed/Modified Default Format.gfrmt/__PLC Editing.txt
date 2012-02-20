@@ -1,0 +1,1 @@
+use LinkAttach local("Click to view place record"),local("Place Link"),local("Click to attach link to a place record")

@@ -1,0 +1,82 @@
+load ResetTabs,SectionLabel,TagBlock,RefLinks
+
+DropTypes NOTE,OBJE,REPO,INDI,FAM
+gosub ResetTabs
+
+! -------------- Start Template -----------------
+gosub SectionLabel local("Source Details")
+
+! _TYPE is custom GCII tag. It is used to determine which tags
+! are shown an in which order. The templates for each tag may
+! also adjust their label depending on _TYPE
+
+#type=@_TYPE
+Show _TYPEif #type="article"
+  Show AUTH
+  Show TITL
+  Show ABBR
+
+else if #type="web page"
+  ! Display link to the web page and edit in a child window
+  NewLine
+  cell label,local("Web Page")&": "
+  offset #editOffset
+  sizetofit
+
+  ! link to web site
+  hskip 0  #edge=#rightMargin$-#rightSkip-24-#cellSkip
+  cell Multimedia
+  set width #edge-#hpos$ alignment left
+  set url @_URL font "Hyperlink Text"
+  TextExpression @_URL
+  set help local("Click to open in browser")
+  ! rest in a child window
+  cell StructuresLink,URLDetails
+  set image "more" border no
+  sizetofit
+  shift 24-#cellWidth$
+  LinkAll _URL
+  help local("Click button to change the label")
+
+  Show TITL
+  Show ABBR
+  Show AUTH
+
+else
+  Show TITL
+  Show ABBR
+  Show AUTH
+
+endif
+Show PUBL
+Show _DATE
+Show _URL
+
+! Links to repository records (if any)
+ShowAll REPO
+
+! -------------- Citing Records -----------------Gosub RefLinks,local("Citing Records"),local("All Citing Records")
+
+! -------------- Data and Text -----------------
+! TEXT (in separate editing pane) and DATA
+gosub SectionLabel ("Data and Text")
+
+ShowAll DATA
+if printing
+  NewLine
+  cell label local("TEXT")&": "
+  sizetofit
+
+  cell ExpressionField,@TEXT
+  set Width -1 border none minheight 1 alignment justify
+  sizetofit
+endif
+Show TEXT
+
+! -------------- Notes and Multimedia -----------------Gosub TagBlock,"NOTE",local("NOTE")
+Gosub TagBlock,"OBJE",local("OBJE")
+! -------------- Additional Data  -----------------
+! Remaining valid tags are REFN, RIN, and CHAN
+if more
+  gosub SectionLabel local("Additional Data")
+endif

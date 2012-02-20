@@ -1,0 +1,9 @@
+load LevTag
+
+gosub LevTag
+
+! edit field with value
+cell CheckBoxEdit local("Event occurred")
+sizetofit
+set height #defaultHeight$ controlsize small offset #checkOffset
+help local("Check if event occurred but nothing else known")&" ("&local(@tag)&")"

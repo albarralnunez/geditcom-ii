@@ -1,0 +1,10 @@
+newline
+cell static,local(@tag)&":"
+set tabwidth -1 alignment right
+
+! popup menu
+cell PopupMenuEdit
+set offset -2MenuItems local("Full Page")&":Full Page"
+MenuItems local("Large Textbook")&":Large Textbook"
+MenuItems local("Hardcover Novel")&":Hardcover Novel"SizeToFit
+help local("Click to select page size for text content")

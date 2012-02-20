@@ -1,0 +1,36 @@
+if #hasLabel!="YES"
+  #leftSkip=#hangSkip
+  NewLine 9  cell label local(#hasLabel)
+  set width -1 font "Section Label"
+  #leftSkip=#leftSkip$
+  #hasLabel="YES"
+endif
+
+newline 3
+cell label local(@tag)&": "
+set font "Bold Label" height 25
+sizetofit
+
+if @contents="Y"
+  cell static "("&local("yes")&") "
+  set offset 4
+  sizetofit
+endif
+
+show DATE
+
+NewLine -4
+tab
+#leftSkip=#hpos$
+
+showall PLACif @rec=INDI  ShowAll AGEendif
+ShowAll TYPEShowAll ADDRif @tag=RESI  ShowAll PHONendifShowAll CAUSShowAll AGNCif @rec=FAM
+  ShowAll AGE  ShowAll HUSB  ShowAll WIFEendif
+if @tag=BIRT
+  ShowAll FAMC
+else if @tag=ADOP
+  ShowAll FAMC ADOP
+else if @tag=CHR
+  ShowAll FAMC
+endif
+showall OBJEshowAll SOURshowAll NOTE

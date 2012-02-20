@@ -1,0 +1,61 @@
+load ResetTabs,ABSectionLabel
+
+DropTypes INDI
+gosub ResetTabs
+
+! -------------- Linked individuals -----------------
+gosub ABSectionLabel,local("Notes On The Following Inidividuals:"),"","","","",""
+
+#leftSkip=#leftSkip$+18
+#numIndi=0
+#ref=1
+Repeat
+  #cite=@_REF.i.#ref
+  if #cite=""
+    break
+  endif
+  if @#cite.rec="INDI"
+    #numIndi+=1
+    Newline
+    cell LinkButton
+    set TextExpression @#cite.rec AppendedExpression view
+    set RecordLink #cite
+    set font "Hyperlink Text" border none alignment left
+    sizetofit
+    set help local("Click to view individual record")
+  endif
+  #ref+=1
+  if #numIndi>2
+    break
+  endif
+EndRepeat
+
+! If more than 3 (from above loop), then button to see the rest
+if #cite<>""
+  NewLine
+  cell LinkButton local("All Citing Records")
+  set menulink "Referenced By" border shadowlesssquare
+  sizetofit 12
+  help local("Click for list of all citing records")
+endif
+
+! Report if none
+if #numIndi=0
+  newline
+  cell static
+  set text local("No individual records are linked to these notes")
+  sizetofit
+endif
+
+#leftSkip=#leftSkip$
+
+if printing is true
+  gosub ABSectionLabel local("NOTE"),"","","","",""
+  cell ExpressionField,@CONC
+  set width -1 minheight 44 alignment justify border none
+  sizetofit
+else
+  Show CONC
+endif
+
+hideexcess

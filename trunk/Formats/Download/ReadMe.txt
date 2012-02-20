@@ -1,0 +1,1 @@
+This folder has user interface formats written by geditcom.com that are available on http://www.geditcomm.com but not included in the default installation package.

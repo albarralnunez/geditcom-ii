@@ -1,0 +1,4 @@
+sub ResetTabs,#plusTab
+  ClearTabs
+  SetTab 100+#plusTab,190+#plusTab,280+#plusTab
+endsub

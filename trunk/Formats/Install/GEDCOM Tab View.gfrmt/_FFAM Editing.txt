@@ -1,0 +1,10 @@
+load LevTag
+
+gosub LevTag
+
+! popup menu
+cell PopupMenuEdit
+MenuItems "Computer Modern Roman","Times","Palatino","Bookman"
+MenuItems "New Century Schoolbook","Charter","Helvetica","Avant-Garde"
+MenuItems "Zapf Chancery"help local("Click to select font family for the book")set controlsize small border no offset #popupOffset 
+sizetofit

@@ -1,0 +1,12 @@
+! label for new section and hangSkip instead of leftSkip
+! #preSkip is space before label
+! repeated in TagBlock, Event, Attribute, and Ordinance for speed
+
+sub SectionLabel #labelText,#preSkip
+  #leftSkip=#hangSkip
+  NewLine #preSkip  cell label local(#labelText)
+  set width -1 font "Section Label"
+  #leftSkip=#leftSkip$
+  Height 25
+  newline -2
+endsub

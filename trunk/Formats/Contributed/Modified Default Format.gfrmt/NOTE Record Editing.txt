@@ -1,0 +1,36 @@
+!SJGR changed to create panes for note records
+
+load TagBlock,ResetTabs,RefLinks,AttachData,NOTEPanes
+
+! -------------- Start Template -----------------
+GoSub NOTEPanes,""
+GoSub ResetTabs,0
+DropTypes INDI,FAM
+
+
+if printing is false
+  #fraction=375/#rightMargin$
+  show CONC "note"          !1-#fraction
+ ! if #rightMargin$<375
+  !  if #posNotes>2.5
+  !    DisplayWidth 375
+  !  else if #posNotes=1
+  !    DisplayWidth 375
+  !  endif
+ ! endif
+endif
+
+
+
+! --------- The notes -----------
+if printing
+  cell ExpressionField,@CONC
+  set Width -1 border none
+  set minHeight 15
+  sizetofit 3
+  show CONC
+endif
+
+hideexcess
+
+

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ANUL</key>
+	<array>
+		<string>ANUL</string>
+	</array>
+	<key>CENS</key>
+	<array>
+		<string>CENS</string>
+	</array>
+	<key>DIV</key>
+	<array>
+		<string>DIV</string>
+	</array>
+	<key>DIVF</key>
+	<array>
+		<string>DIVF</string>
+	</array>
+	<key>ENGA</key>
+	<array>
+		<string>ENGA</string>
+	</array>
+	<key>EVEN</key>
+	<array>
+		<string>Generic Event</string>
+	</array>
+	<key>MARB</key>
+	<array>
+		<string>MARB</string>
+	</array>
+	<key>MARC</key>
+	<array>
+		<string>MARC</string>
+	</array>
+	<key>MARL</key>
+	<array>
+		<string>MARL</string>
+	</array>
+	<key>MARR</key>
+	<array>
+		<string>MARR</string>
+	</array>
+	<key>MARS</key>
+	<array>
+		<string>MARS</string>
+	</array>
+	<key>NCHI</key>
+	<array>
+		<string>NCHI</string>
+	</array>
+	<key>REFN</key>
+	<array>
+		<string>REFN</string>
+	</array>
+	<key>SLGS</key>
+	<array>
+		<string>LDS Spouse Sealing</string>
+	</array>
+</dict>
+</plist>

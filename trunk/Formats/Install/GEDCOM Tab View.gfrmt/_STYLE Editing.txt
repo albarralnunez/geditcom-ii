@@ -1,0 +1,10 @@
+load LevTag
+
+gosub LevTag
+
+! popup menu
+cell PopupMenuEdit
+MenuItems local("Roadmap")&":Roadmap"MenuItems local("Satellite")&":Satellite"MenuItems local("Hybrid")&":Hybrid"MenuItems local("Terrain")&":Terrain"set controlsize small border no offset #popupOffset 
+sizetofit
+SizeToFit
+help local("Click to select initial map style")

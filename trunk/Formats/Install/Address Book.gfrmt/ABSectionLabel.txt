@@ -1,0 +1,54 @@
+! label for new section and hangSkip instead of leftSkip
+! #labelText and #...Help text should be localized already
+
+sub ABSectionLabel #labelText,#plusBtn,#plusHelp,#minusBtn,#minusHelp,#minusTag
+  #leftSkip=#hangSkip
+
+  NewLine 6
+  cell Palette
+  set width -1 height 4
+  PalLineWidth 3
+  PalDrawColor "Section Lines"
+  PalMoveTo 0,0
+  PalLineTo #cellWidth$,0
+
+  #leftSkip=#leftSkip$
+
+  newline
+
+  ! Optional + and - buttons, but not if printing
+  if printing is false
+    if #plusBtn!=""
+      cell LinkButton
+      set image AddButton border none
+      sizetofit
+      offset #buttonOffset
+      Help #plusHelp
+      if #plusBtn="Add_Residence"
+        set ScriptLink "Add_Residence" ScriptType format
+      else if #plusBtn="Add_URL_Email"
+        set ScriptLink "Add_URL_Email" ScriptType format ScriptMessage #urlLoc
+      else
+        menulink #plus
+      endif
+    endif
+
+    if #minusBtn!=""
+      cell LinkButton
+      set image MinusButton border none
+      sizetofit
+      offset #buttonOffset
+      if #minusBtn="Remove_Tag"
+        ScriptLink Remove_Tag
+        ScriptType format
+        ScriptMessage #minusTag
+      else
+        menulink #minusBtn
+      endif
+      Help #minusHelp
+    endif
+  endif
+
+  hskip 6  cell label #labelText
+  sizetofit 
+endsub

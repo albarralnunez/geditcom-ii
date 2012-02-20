@@ -1,0 +1,10 @@
+load LevTag
+
+gosub LevTag
+
+! popup menu
+cell PopupMenuEdit
+MenuItems "9","10","11","12","14"
+SizeToFit -1
+help local("Click to select font size for the book")set controlsize small border no offset #popupOffset 
+sizetofit

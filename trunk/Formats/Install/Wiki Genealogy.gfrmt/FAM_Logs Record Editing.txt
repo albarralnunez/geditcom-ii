@@ -1,0 +1,3 @@
+load ResetTabs,EditingPage,AttachMenu,LogsEditing
+
+gosub LogsEditing

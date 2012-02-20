@@ -1,0 +1,5 @@
+! #theLabel should already be localized
+sub LineLabel #theLabel
+  cell static #theLabel&":"
+  set tabwidth -1 alignment right
+endSub

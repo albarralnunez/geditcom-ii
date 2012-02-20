@@ -1,0 +1,61 @@
+load LineLabel,WikiSection,WebLinks,ShowOBJE
+
+if #msg="wiki"
+
+  newline
+  cell static,"◾"
+  set fontcolor "Block Color" offset 3
+  sizetofit
+
+  hskip 0
+  #leftSkip=#hpos$
+
+  cell StaticField
+  set width -1 minheight 10 border none lineheight #lineMult
+
+  if _GOAL is here
+    text "The goal of this research task is: "&@_GOAL&". "
+  else
+    text "This research task has no specfic goal. "
+  endif
+  if _DATE is here
+    text "It was started on "&@_DATE.user&". "
+  endif
+  if _STATUS is here
+    text "Its current status is "&@_STATUS&". "
+  endif
+  sizetofit
+
+  if _RESULTS is here
+    NewLine
+    cell ExpressionField,@_RESULTS
+    set Width -1 border none minheight 1 alignment justify lineheight #lineMult
+    sizetofit
+  endif
+
+  #leftSkip=#leftSkip$
+
+else
+
+  newline
+  cell GroupBox,local("Research Task")
+  set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+  show _GOAL
+  show _DATE
+  show _STATUS
+  show _RESULTS  showAll NOTE
+  showAll SOUR  gosub ShowOBJE 2
+
+  newline 5
+  cell static,local("Attach")&": "
+  sizetofit
+  Show NOTE
+  Show SOUR
+  Show OBJE
+
+  EndGroup
+
+endif
+
+hideexcess

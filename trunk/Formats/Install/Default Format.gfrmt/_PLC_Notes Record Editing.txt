@@ -1,0 +1,39 @@
+load PlacePanes,ResetTabs,ListBlock,References,AttachData
+
+! -------------- Start Template -----------------
+GoSub ResetTabs,0
+GoSub PlacePanes,"Notes","1"
+
+! --------- NOTEs, SOURs, and _LOGs -----------
+gosub References,"_LOG"
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+  width -1
+  newline -#lineSkip-3
+  #lineSkip=0
+  Show NOTE
+  Show SOUR
+  Show _LOG
+  gosub AttachData
+EndGroup
+#lineSkip=#lineSkip$
+
+! -------- Additional Data ------------
+if REFN|RIN|CHAN is here
+  ClearTabs
+  gosub ResetTabs,50
+  cell GroupBox,local("Additional Data")
+    width -1
+    newline
+    ShowAll CHAN
+    ShowALl REFN
+    ShowAll RIN
+  EndGroup
+endif
+
+hideexcess
+
+optionalTag RIN,local(RIN)
+optionalTag REFN,local(REFN)
+optionalTag,REFN,local("Keyword(s)"), ,"TYPE Keyword(s)"

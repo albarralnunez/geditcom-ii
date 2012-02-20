@@ -1,0 +1,6 @@
+load BookCheckBox
+
+Newline
+tab
+gosub BookCheckBox,local(@tag),@contents
+help local("Check to overwrite files in target folder rather then creating a new folder")

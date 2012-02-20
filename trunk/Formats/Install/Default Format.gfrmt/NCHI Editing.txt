@@ -1,0 +1,12 @@
+if @rec=INDI
+  use Attribute
+
+else
+  ! one NCHI field at end of children list in FAM record  cell static,local(@tag)&":"
+  set alignment right tabwidth 1 offset 4
+
+  ! edit field with value
+  cell EditValue
+  set Width 72 offset 2
+  help local("Enter number of children")
+endif

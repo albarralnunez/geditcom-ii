@@ -1,0 +1,83 @@
+load TagBlock,ResetTabs,RefLinks,AttachData,NOTEPanes
+
+! -------------- Start Template -----------------
+GoSub NOTEPanes,"Other"
+GoSub ResetTabs,0
+DropTypes INDI,FAM
+ 
+
+!if printing is false
+!  #fraction=375/#rightMargin$
+!  show CONC 1-#fraction
+ ! if #rightMargin$<375
+!    if #posNotes>2.5
+!      DisplayWidth 375
+ !   else if #posNotes=1
+ !     DisplayWidth 375
+ !   endif
+ ! endif
+!endif
+
+hide CONC
+! --------- Cross referecnes -----------
+!#oldWidth=#rightMargin$
+!DisplayWidth #oldWidth+#rightSkip+1
+!newline -#topMargin$-1
+!hskip -#leftSkip-1
+cell GroupBox,local("Linked Records")
+width -1
+
+newline -6
+cell label,local("Notes on")&":"
+sizetofit
+set tabwidth 1 alignment right
+
+gosub RefLinks,"",local("All Notated Records")
+
+#leftSkip=#leftSkip$
+#lineSkip=#lineSkip$
+EndGroup
+
+DisplayWidth #oldWidth
+
+! --------- The notes -----------
+if printing
+  cell ExpressionField,@CONC
+  set Width -1 border none
+  set minHeight 15
+  sizetofit 3
+  show CONC
+endif
+
+! --------- SOURs -----------
+Gosub TagBlock,"SOUR","Sources"
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach Source")
+width -1
+newline -#lineSkip-3
+#lineSkip=0
+Show SOUR
+gosub AttachData
+EndGroup
+#lineSkip=#lineSkip$
+
+! only legal stuff left is REFN, RIN, and CHAN
+if more
+  ClearTabs
+  gosub ResetTabs,50
+  cell GroupBox,local("Additional Data")
+  width -1
+  Show _DIST "label"
+  ShowAll CHAN
+  !ShowAll all
+  EndGroup
+endif
+
+HideExcess
+
+optionalTag RIN,local(RIN)
+optionalTag REFN,local(REFN)
+optionalTag,REFN,local("Keyword(s)"), ,"TYPE Keyword(s)"
+
+

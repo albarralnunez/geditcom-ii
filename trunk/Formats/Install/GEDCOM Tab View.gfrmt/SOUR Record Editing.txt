@@ -1,0 +1,19 @@
+load ResetTabs
+
+! set tabs and change background if printing
+gosub ResetTabs
+if printing
+  background "Print Background"
+  #lineSkip=0
+endif
+
+! display record ID in static cell
+cell static "0 "&@rec&" "&@contents
+set font "Record Title Text"
+sizetofit
+set height #defaultHeight$
+#localKey=@rec&" Record"
+help local(#localKey)
+
+! Make sure important data comes first
+show _TYPE

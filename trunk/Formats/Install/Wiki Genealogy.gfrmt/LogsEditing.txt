@@ -1,0 +1,25 @@
+! display research logs for a record and allow to attach more
+! called from other *_Logs Recording Editing templates
+! caller must load ResetTabs,AttachMenu,EditingPage,LogsEditing
+
+sub LogsEditing
+  droptypes _LOG
+
+  gosub ResetTabs
+
+  gosub EditingPage,"Research Logs"
+
+  Gosub AttachMenu "Attach Research Log","Click to add a research log","Detach Event/Attribute/Link","Click to remove a research log"
+
+  !--------- Research logs
+  if _LOG is here
+    newline
+    cell GroupBox,"Research Logs"
+    set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+    ShowAll _LOG "Edit"
+    EndGroup
+  endif
+
+  hideexcess
+
+endSub

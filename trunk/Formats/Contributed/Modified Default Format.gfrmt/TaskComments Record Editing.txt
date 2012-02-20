@@ -1,0 +1,80 @@
+!SJGR Changed from default to allow linking to families and individuals here
+
+load TagBlock,ResetTabs,ListBlock,References
+
+! New line to enable dropping of individual records
+droptypes INDI
+
+! --------- Name -----------
+#oldWidth=#rightMargin$
+DisplayWidth #oldWidth+#rightSkip+1
+newline -#topMargin$-1
+hskip -#leftSkip-1
+cell GroupBox
+border line
+titleposition none
+cellbackground "Record Header Box Background"
+width -1
+
+newline -3
+cell static
+set width -1
+text @contents
+EndGroup
+
+DisplayWidth #oldWidth
+
+! --------- The Results -----------
+if printing
+  if _RESULTS is here
+    cell GroupBox,local("Task Results")
+    width -1
+    cell ExpressionField,@_RESULTS
+    set width -1
+    set minHeight 15 height 200
+    sizetofit 3
+    showAll _RESULTS
+    EndGroup
+  endif
+else
+  Show _RESULTS
+endif
+GoSub ResetTabs,0
+
+! --------- NOTEs and OBJEs -----------
+#objdone=""
+gosub TagBlock,"OBJE","Multimedia"
+gosub References,""
+
+
+!Add a bit to allow links to individuals and families here (SJGR)
+! --------- Record links -----------
+if _FAM|_INDI is here
+  cell GroupBox,local("Researched Records")
+  width -1
+  newline -4
+  ShowAll _INDI
+  ShowAll _FAM
+  EndGroup
+endif
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+width -1
+newline -#lineSkip-3
+#lineSkip=0
+Show NOTE
+Show OBJE
+Show SOUR
+! Two ne lines to show linked individuals and families
+Show _INDI
+Show _FAM
+EndGroup
+#lineSkip=#lineSkip$
+
+DisplayHeight <600
+DisplayHeight >400
+
+!Add another bit to allow links to individuals and families here (SJGR)
+optionaltag _INDI,local("Individual Being Researched")
+optionaltag _FAM,local("Family Being Researched")

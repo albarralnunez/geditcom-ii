@@ -1,0 +1,1 @@
+This folder has scripts that generate reports and output them to the MS Word application. They require that Application to compile and run.

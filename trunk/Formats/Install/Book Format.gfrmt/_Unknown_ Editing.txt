@@ -1,0 +1,8 @@
+load LineLabel
+
+! Label and editing field
+gosub LineLabel local(@tag)
+offset #editOffset
+
+cell EditValue
+set Width -1 border no

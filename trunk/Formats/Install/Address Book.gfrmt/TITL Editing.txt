@@ -1,0 +1,10 @@
+load LineLabel
+
+! last one is in OBJE record
+newline
+gosub LineLabel,local("Title")
+set offset #editOffset border none
+
+cell EditValue
+set Width -1 border none
+help local("This text can be edited by clicking in the field and typing")

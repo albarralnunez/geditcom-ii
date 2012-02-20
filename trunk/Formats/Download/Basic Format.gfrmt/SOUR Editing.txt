@@ -1,0 +1,29 @@
+load RecordChildLink,LineLabel,ShowOBJE
+
+if @rec="HEAD"
+  ! In HEAD, SOUR is about the application that created the data
+  ! and about the data
+  gosub LineLabel,local("Software")
+  offset #editOffset
+  cell EditValue
+  set width -1
+
+  ! Subordinate data in preferred order
+  ShowAll VERS
+  ShowAll NAME
+  ShowAll CORP
+  ShowAll DATA
+  
+else
+  ! label and link to a source record
+  gosub LineLabel,local(@tag)
+  gosub RecordChildLink local("Click to view and edit source"),"child"
+
+  ! Possible subordinate data  ShowAll PAGE
+  ShowAll EVEN  ShowAll DATA  ShowAll QUAY
+
+  ! NOTE and OBJE at the end  ShowAll NOTE
+  gosub ShowOBJE
+
+endif
+

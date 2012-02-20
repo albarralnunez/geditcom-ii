@@ -1,0 +1,59 @@
+! Indent and put up label
+NewLine
+
+#loc=#vpos$
+cell static
+set tabwidth 1 alignment right
+set #type=@this._TYPE
+if #type="article"
+  text local("Journal")&",  "
+  
+  newline -8
+  cell static,local("Periodical,")&"  "
+  set tabwidth 1 alignment right
+
+  newline -8
+  cell static,local("Volume, etc.")&":"
+  set tabwidth 1 alignment right
+
+  MoveTo 0,#loc
+  tab 1
+  hskip #cellSkip$
+else if #type="in book"
+  text local("Chapter")&",  "
+  
+  newline -8
+  cell static,local(@tag)&",  "
+  set tabwidth 1 alignment right
+
+  newline -8
+  cell static,local("Editor, etc.")&":"
+  set tabwidth 1 alignment right
+
+  MoveTo 0,#loc
+  tab 1
+  hskip #cellSkip$
+else if #type="unpublished"
+  text local("Comments")&":"
+else if #type="vital records"
+  text local("Storage")&",  "
+  
+  newline -8
+  cell static,local(@tag)&":"
+  set tabwidth 1 alignment right
+
+  MoveTo 0,#loc
+  tab 1
+  hskip #cellSkip$
+else
+  text local(@tag)&":"
+endif
+
+! edit field with value
+cell EditField
+set Width -1 Height 64
+if printing
+  set minHeight 15
+  sizetofit 3
+endif
+help local("Enter publisher details or other indicated information")

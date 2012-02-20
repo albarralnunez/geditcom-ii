@@ -1,0 +1,17 @@
+! show changed dat
+NewLine
+
+Cell static,local("Last Changed")&":"
+set Alignment right tabwidth 1
+
+Cell Expression @DATE
+AppendedExpression view
+SizeToFit 24
+
+! add the time
+Cell static,local(TIME)&":"
+SizeToFit
+Cell Expression @DATE.TIME
+SizeToFit 24
+
+HideExcess

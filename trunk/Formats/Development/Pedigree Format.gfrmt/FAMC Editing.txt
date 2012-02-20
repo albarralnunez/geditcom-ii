@@ -1,0 +1,50 @@
+if #parentTag$="INDI"
+
+  ! marriage button
+  cell static
+  text local("Parents")&": "
+  set alignment right tabwidth 1
+
+  cell LinkButton
+  RecordLink @contents
+  TextExpression @contents.rec
+  AppendedExpression altview
+  set font "Hyperlink Text"
+  set border no alignment left
+  sizetofit -1  help local("Click to view parents' family record")
+
+  show PEDI
+
+else
+  if tagexists is true
+    newline
+    cell static local("FAM")&":"
+    sizetofit
+    set tabwidth 1 alignment right
+
+    cell LinkButton
+    RecordLink @contents
+    TextExpression @contents.rec
+    AppendedExpression view
+    set font "Hyperlink Text" border no
+    sizetofit -1    help local("Click to view family record")
+
+    if #msg="ADOP"
+	  show ADOP
+    endif
+
+  else
+    ! button to link to family
+    newline
+    tab 1
+    hskip #cellSkip    cell CreateLinkButton
+    set border shadowlesssquare
+    text local("Link to Family")
+    sizetofit
+    help local("Click to link to an existing family record")
+  endif
+
+endif
+
+! hide this data
+hideexcess

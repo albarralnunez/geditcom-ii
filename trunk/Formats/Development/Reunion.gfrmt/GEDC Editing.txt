@@ -1,0 +1,8 @@
+NewLinecell static local(@tag)&": "
+sizetofit
+  
+NewLine
+tab
+#leftSkip=#hpos$
+
+ShowAll VERSShowAll FORM

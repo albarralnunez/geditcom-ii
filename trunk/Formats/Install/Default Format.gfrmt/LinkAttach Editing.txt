@@ -1,0 +1,35 @@
+! must pass two parameters
+!  #use if localized help text for the link
+!  #use1 is localized text for attach button
+!  #use2 is localized text for attach button help
+!  #use3 (if present) is image name
+
+! existing link
+if tagexists is true
+  newline
+  cell LinkButton
+  TextExpression @contents.rec
+  AppendedExpression view
+  set border no Font "Hyperlink Text"
+  sizetofit
+  RecordLink @contents
+  Help #use
+! no notes - an attach button
+else
+  ! button to link to new or existing notes
+  hskip 2  cell CreateLinkButton
+  if #usenum>3
+    set border shadowlesssquare width 26 height 26
+    image #use3
+  else
+    text #use1
+    set border shadowlesssquare
+    sizetofit
+  endif
+  if @tag="_LOG"
+    set target child
+  else
+    set target childifnew
+  endif
+  help #use2
+endif

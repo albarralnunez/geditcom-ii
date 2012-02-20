@@ -1,0 +1,1 @@
+This folder scripts that can repair known issues in GEDCOM files for various sources.

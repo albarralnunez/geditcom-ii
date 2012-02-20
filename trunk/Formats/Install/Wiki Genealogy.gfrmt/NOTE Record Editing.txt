@@ -1,0 +1,35 @@
+load ResetTabs,WikiSection,RefLinks,ExtraSections,RecordTitle
+
+DropTypes SOUR,INDI,FAM
+gosub ResetTabs
+
+! Large title at the top of a record
+GoSub RecordTitle,local("NOTE Record")
+
+! -------------- Start Template -----------------
+if @_REF!=""
+  #sectionCount+=2
+  gosub RefLinks,local("Notes on:"),local("All Notated Records")
+endif
+
+! -------------- Notes text ------------------
+#sectionCount+=2
+GoSub WikiSection,local("Notes Text"),"Text"
+
+cell ExpressionField,@CONC
+set width -1 border none minheight 1 alignment justify lineheight #lineMult
+sizetofit
+
+!-------- Sources
+#recSections[#sectionCount]=local("Sources")
+#recSections[#sectionCount+1]="Sources"
+#sectionCount+=2
+#sourceNumber=1
+if SOUR is here
+  GoSub WikiSection,local("Sources"),"Sources"
+  ShowAll SOUR "wiki"
+endif
+
+! Additional Datahideexcess
+
+GoSub ExtraSections

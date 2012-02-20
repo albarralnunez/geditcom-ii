@@ -1,0 +1,63 @@
+! #mgnText is text to left of first cited record (localized)
+! #allText is text of button linked to "Referenced By" menu command (localized)
+sub RefLinks #mgnText,#allText
+  ! links to citing refes in child window
+  #cite1=@_REF
+  if #cite1<>""
+    if #mgnText<>""
+      NewLine
+      cell static,#mgnText&":"
+      sizetofit
+      set tabwidth -1 alignment right
+    endif
+
+    cell LinkButton
+    TextExpression @_REF.rec
+    AppendedExpression view
+    RecordLink #cite1
+    set font "Hyperlink Text" border none alignment left
+    sizetofit -1
+	help local("Click to see citing record")
+  endif
+
+  #cite2=@_REF.i.2
+  if #cite2<>""
+    NewLine
+    tab 1
+    hskip #cellSkip
+    cell LinkButton
+    TextExpression @#cite2.rec
+    AppendedExpression view
+    RecordLink #cite2
+    set font "Hyperlink Text" border none alignment left
+    sizetofit -1
+	help local("Click to see citing record")
+  endif
+
+  #cite3=@_REF.i.3
+  if #cite3<>""
+    NewLine
+    tab 1
+    hskip #cellSkip
+    cell LinkButton
+    TextExpression @#cite3.rec
+    AppendedExpression view
+    RecordLink #cite3
+    set font "Hyperlink Text" border none alignment left
+    sizetofit -1
+	help local("Click to see citing record")
+  endif
+
+  #cite4=@_REF.i.4
+  if #cite4<>""
+    NewLine
+    tab 1
+    hskip #cellSkip
+    cell LinkButton #allText
+    set border shadowlesssquare
+    sizetofit -1
+    menulink "Referenced By"
+	help local("Click to see all citing records")
+  endif
+endsub
+

@@ -1,0 +1,6 @@
+! Link to note record or use field editor
+if @contents is validlink
+  use RecordLink
+else
+  use Field 10
+endif

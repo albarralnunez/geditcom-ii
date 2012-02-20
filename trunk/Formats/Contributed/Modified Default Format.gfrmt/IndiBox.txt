@@ -1,0 +1,84 @@
+!SJGR Changed to display key individual differently in pedigree layout
+
+sub IndiBox,#rec,#boxLabel,#altLabel,#expectSex
+  ! take one of the two labels
+  if #rec!=""
+    if @#rec.SEX!=#expectSex
+      #boxLabel=#altLabel
+	endif
+  endif
+  #boxTop=#vpos$
+  #boxLeft=#hpos$
+  cell GroupBox,#boxLabel
+  set width #boxWidth font "Label Text"
+  !SJGR set border line
+  if #rec=@this
+	set cellbackground "Main Individual Background"
+  endif
+
+  #fldWidth=#boxWidth-2*#boxPadding
+  #rightSkip=#boxPadding
+  #leftSkip=#boxPadding
+  newline -9
+
+  if #rec!=""
+    cell expression,@#rec.rec
+    appendedExpression altview
+    set width #fldWidth
+
+if #rec=@this  !SJGR
+set font "Prime Individual"
+endif
+
+    newline
+    cell expression,@#rec.BIRT.DATE
+    set width #fldWidth AppendedExpression view
+
+    newline
+    cell expression @#rec.BIRT.PLAC
+    set width #fldWidth
+
+  else
+    cell static
+    set width #fldWidth height 3*#defaultHeight$+2*#lineSkip
+  endif
+
+  newline 
+  cell static
+  set height 2
+
+  EndGroup
+
+  hskip 0
+  #moreAncest="No"
+  if #hpos$>#col[3]
+    if #rec!=""
+      if @#rec.FAMC!=""
+        cell Palette
+        set width #boxSpacing/2 height #boxHeight
+	    PalLineWidth 2
+        PalMoveTo 0,#boxHeight/2
+        PalLine #boxSpacing,0
+        #moreAncest="Yes"
+      endif
+    endif
+  endif
+
+  #leftSkip=#leftSkip$
+  #rightSkip=#rightSkip$
+
+  newline 0
+  #boxHeight=#vpos$-#boxTop
+  if #rec!=""
+	if #rec!=@this
+      MoveTo #boxLeft,#boxTop+17
+      cell LinkButton
+      set width #boxWidth height #boxHeight-15 RecordLink #rec border none
+	  help local("Click to promote this individual to top-left and view ancestral pedigree")
+	  if #moreAncest="Yes"
+		help ". "&local("The line to the right means this individual has documented ancestors.")
+      endif
+	endif
+  endif
+
+endSub

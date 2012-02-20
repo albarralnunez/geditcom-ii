@@ -1,0 +1,32 @@
+!SJGR changed from default to slightly increase height
+
+! Indent and put up label
+NewLine 
+#tlabel=local(@tag)
+cell static,local(@tag)&":"
+set tabwidth 1 alignment right
+help #tlabel
+
+! edit field with value
+cell EditField
+set Width -1
+if #usenum>0
+  set Height 20*#use !Changed from 16  SJGR
+else
+  set Height 20*5 !Changed from 16  SJGR
+endif
+if printing
+  set minHeight 15
+  sizetofit 3
+endif
+
+help local("Edit the text for")&" "&local(@tag)
+
+!subordinate data
+if more
+  newline
+  tab 1
+  ClearTabs
+  SetTab #hpos$+30
+  HMoveTo #leftSkip$
+endif

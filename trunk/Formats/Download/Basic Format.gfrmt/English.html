@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=ISO-8859-1">
+  <title>GEDitCOM II Basic Format Help</title>
+  <link rel="stylesheet" type="text/css" href="help.css"></head>
+
+<body><h1>Basic Format</h1>
+
+<p>This format is designed as a template for developing new formats. It takes care and most of the behind-the-sign tasks (<i>i.e.</i>, dealing with links, displaying multimedia, handling family links, <i>etc.</i>) freeing you to concentrate on the display of the genealogy data.
+</p>
+
+<h2>Creating a Format</h2>
+
+<p>To create your own custom format starting from the &quot;Basic Format,&quot; you normally use the following steps:
+
+<ol>
+
+<li>Make a copy of the &quot;Basic Format,&quot; and move it to the <b>GEDitCOM II</b> library in your home directory (to the folder <code>~/Library/Application Support/GEDitCOMII/Formats</code>)</li>
+
+<li>Open the new format in the <b>GEDitCOM Editor</b></li>
+
+<li>Pick fonts, colors, and allowed editing options using the &quot;Editing Fonts,&quot; &quot;Editing Colors,&quot; and &quot;Editing Properties&quot; defined in the <a href="#properties">Properties section</a>.
+</li>
+
+<li>Decide how you want the <a href="#appear">data to appear</a> and then make changes to certain <a href="#special">special templates</a> and <a href="#subs">subroutines</a> to create your layout. Most of the work in writing a new format takes place in this step.
+</li>
+
+<li>To change more things (such as styles of buttons, use of images, type of editing fields, etc.), see the <a href="#details">format details section</a> on templates that use certain interface elements.
+</li>
+
+<li>Add support for <a href="#lang">multiple languages</a> (if you can)</li>
+
+<li>Document your format by writing <a href="#help">help information</a>.
+
+<li>Test in <b>GEDitCOM II</b> with a robust file.</li>
+
+</ol>
+
+<h2><a name="appear"></a>Display Layout Options</h2>
+
+<p>The &quot;Basic Format&quot; starts as simple as possible by displaying all data for each record in a single window. Normally you will want to change this layout such as putting parts of the records in sepearate panes (see &quot;Default Format&quot; and &quot;Pedigree Format&quot; for examples) or certain details in child windows (see events in the &quot;Default Format&quot; for an example).</p>
+
+<p>It is recommended that you stay in the single window view at first and work on colors, fonts, and styles of various elements. Once that is acceptable, you can start moving data to new places. You can divide records into panes by writing new record editing templates for each pane (see <b>GEDitCOM Editor</b> help for details on using panes). You can change events and other types of data by editing their <a href="#special">special templates</a>. To move such data to child windows, you write record editing templates for those windows that are called from certain templates using <code>StructuresLink</code> cells (see <b>GEDitCOM Editor</b> help for details on <code>StructuresLink</code> cells).
+</p>
+
+<h2><a name="special"></a>Special Templates</h2>
+
+<p>The following templates handle many types of special GEDCOM elements. You can edit these templates to change the ways these generic elements are displayed.</p>
+
+<dl>
+
+<dt>_Unknown_ Editing</dt>
+<dd>This is the default template for any GEDCOM data that is not handled by a custom template. The default implementation displays a label (based on the tag name for the GEDCOM data) and provides a one-line, text-editing field.
+</dd>
+
+<dt>Event Editing</dt>
+<dd>All individual and family event structures use this template. The default implementation displays all subordinate data for each type of event right in the window. You will usually want to change this style.
+</dd>
+
+<dt>Attribute Editing</dt>
+<dd>All individual attribute structures use this template. The default implementation displays all subordinate data for each type of attribute right in the window. You will usually want to change this style.
+</dd>
+
+<dt>Ordinance Editing</dt>
+<dd>All individual and family LDS ordinance structures use this template. The default implementation displays all subordinate data for each type of ordinance right in the window. You will usually want to change this style.
+</dd>
+
+<dt>RecordLink Editing</dt>
+<dd>Several GEDCOM tags have a value that links to another record (<i>i.e.</i>, a record ID) and no subordinate data (<i>e.g.</i>, <code>ALIA</code>, <code>SUBM</code>, <code>_LOG</code>, <i>etc.</i>). This template labels the type of link and has a clickable link to the record.
+</dd>
+
+<dt>CHIL Editing</dt>
+<dd>This template handles display of children in a family record. The template is called for each child and each call displays one child. The default implementation displays a three-column table with name, sex, and birthdate. You can edit this template to change the table or design an alternate way to display children.
+</dd>
+
+<dt>OBJE Editing</dt>
+<dd>The display of multimedia links in a record is a difficult task. This template handles the task and provides a default implementation that may be acceptable for most formats. It displays thumbnails of linked images. The thumbnails will be arrange with some number per row. Clicking the thumbnail will open the multimedia objects' record. The number is a user preference called <a href="#tpr">Thumbnails Per Row</a>. For multimedia as links to web sites, this template displays a hyperlink to the web site and an &quot;info&quot; icon to open the multimedia record for editing. If you prefer a different layout for multimedia, you can change this template. 
+</dd>
+
+</dl>
+
+<h2><a name="subs"></a>Important Subroutines</h2>
+
+<p>To make this format easier to modify, tasks that are used in two or more tempaltes are done in subroutines. Thus editing these subroutines changes that display feature througout the format. This section lists the important subroutines and which templates call those subroutines.
+</p>
+
+<dl>
+
+<dt>SectionLabel</dt>
+<dd>The display for each type of GEDCOM record is divided into sections. Each section is labeled by calling this subrountine. The default implement draws horizontal lines and outputs section label in bold font.
+</dd>
+
+<dt>LineLabel</dt>
+<dd>Most of the &quot;Basic Format&quot; outputs GEDCOM data with a label appropriate for that data. This subroutine displays that label. It is called by: <code>ADDR, ADOP, AGE, ASSO, AUTH, Attribute, CHAN, CHAR, DATA, DATE, EVEN, Event, FAMC, FAMS, GEDC, HUSB, NAME, NOTE, Ordinance, PEDI, PLAC, PUBL, QUAY, REFN, REPO, RESN, RecordLink, SEX, SOUR, STAT, TEXT, TITL, _FILE, _TYPE, _Unknown_ Editing</code>.
+</dd>
+
+<dt>RecordChildLink</dt>
+<dd>Some GEDCOM data is relevant to other records. This subroutine displays a link to another record and that link can open the other record in the same window, a child window, or a new window. It is called by: <code>ASSO, FAMC, FAMS, HUSB, NOTE, REPO, RecordLink, SOUR Editing</code>.
+</dd>
+
+<dt>ShowOBJE</dt>
+<dd>Multimedia objects can be linked to the main level of records or to subordinate data (<i>e.g.</i>, link to a birth certificate in a birth event). This subroutine handles display of multimedia in subordinate data. Is is called by: <code>Attribute Editing, Event Editing, SOUR Editing</code>.
+</dd>
+
+<dt>RefLinks</dt>
+<dd>Notes, Sources, and Multimedia Objects may be linked to many records. This subroutine creates a list of records that cite a note, source, or multimedia record. It is called by: <code>NOTE Record Editing, OBJE Record Editing, SOUR Record Editing</code>.
+</dd>
+
+<dt>ResetTabs</dt>
+<dd>This subroutine is called at the beginning of every &quot;Record Editing&quot; template to set up default tabs. The default tabs are a series of tabs spaced by the user preference for <a href="levind">Level Indentation</a>. This subroutine is also called in templates that might temporary change the tabs, such as when creating a table.
+</dd>
+
+<dt>TagBlock</dt>
+<dd>Many records link to supporting records for notes, sources, and research logs. This subroutine outputs all such links at the current level and provides links to the supporting records. It is called by many &quot;Record Editing&quot; templates.
+</dd>
+
+</dl>
+
+<h2><a name="properties"></a>Basic Format Properties (or Preferences)</h2>
+
+<ul>
+
+<li>You change the format's fonts (and their colors) using the <b>GEDitCOM II</b> preferences. The available fonts are:
+<ul>
+
+<li><b>Section Label</b>: Text used for major sections of the record data.
+
+<li><b>Label Text</b>: Prominent labels for genealogy data.
+
+<li><b>Static Text</b>: Lower-level text labels.
+
+<li><b>Editing Text</b>: The text used in editing fields.
+
+<li><b>Button Text</b>: The text for buttons.
+
+<li><b>Check Box Text</b>: The text next to check boxes.
+
+<li><b>Popup Menu Text</b>: The text used in pop-up menus.
+
+<li><b>Hyperlink Text</b>: The text used for clickable links between records and for links to web sites.
+
+</ul>
+</li>
+
+<li>You change the format's colors using the <b>GEDitCOM II</b> preferences.
+The available colors are:
+
+<ul>
+
+<li><b>Window Background</b>: Background color of the window (white is best for printing)
+
+<li><b>Editing Background</b>: Background color of editing fields (matching the window background color is best for printing).
+<li>Font Colors: Each font described above can have it's own color and is set when editing the font.
+
+</ul>
+
+</li>
+
+<li>The custom options in the &quot;Editing&quot; section of the <b>GEDitCOM II</b> preferences are:
+
+<ul>
+
+<li><b>Section Label's Left Margin</b>: Set the left margin for the section labels within each record.
+</li>
+
+<li><a name="levind"></a><b>Level Indentation</b>: Subordinate data is indented further from the root level data. Use this setting to select the indentation per level.
+</li>
+
+<li><b>Vertical Shift of Edit Field Labels</b>: Extra shift added to all labels before text editing fields. It is normally 3, but might need to be different. If you change fonts and the labels and the text fields do not line up well, adjust this value to realign them; positive shifts the label down while negative shifts it up.
+</li>
+
+<li><b>Vertical Shift of Button Labels</b>: Extra shift added to all labels before buttons and popup menus. It is normally 3, but might need to be different. If you change fonts and the labels and buttons do not line up well, adjust this value to realign them; positive shifts the label down while negative shifts it up.
+</li>
+
+<li><a name="tpr"></a><b>Thumbnails Per Row</b>: Linked multimedia objects are displayed as thumbnails in the linking record. This option determines the number of thumbnails per row in the display and thus can be used to control the size of the thumbnail images.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;To spped up display of thumbnails, GEDitCOM II generates small thumbnails for each multimedia object containing an image. These thumbnails look fine when the links are small. If the links get large (<i>e.g.</i>, when using one thumbnail per row), this format will use the full scale image rather than the internal thumbnails. The image quality will be good, but it might slow down access to records with lots of linked images. To maximize speed when opening such records, it is best to increase this setting to at least 2 and you may need 3 or more if using a large monitor with large record windows.
+</li>
+
+<li><b>Multimedia Full Size</b>: Images in multimedia records will display at the full size of the image in the file (which can be scaled using the scale menu). The larger dimension of the image, however, will never exceed the window width or this &quot;Multimedia Full Size&quot; setting, whichever is smaller.
+</li>
+
+</ul>
+</ul>
+
+<h2><a name="details"></a>Details on Interface Elements</h2>
+
+<p>If you want to customize interface features such as use of images, style of buttons, style of editing fields, etc., you need to edit all templates that use those features. This section summarizes various interface elements and which templates use them:
+</p>
+
+<dl>
+
+<dt>Use Images in the Format</dt>
+<dd>The &quot;Basic Format&quot; includes several image icons. This images are used in: <code>REFN, RESN, OBJE Editing, SOUR Record Editing</code>.</dd>
+
+<dt>CheckBoxEdit cells are defines</dt>
+<dd>The following template use check boxs for editing: <code>Event, Ordinance, _NOPOR Editing</code>.</dd>
+
+<dt>Popup menu is defines</dt>
+<dd>The following formats use pop-up menus that use the default border for such menus: <code>ADOP, PEDI, QUAY, SEX, STAT_TYPE Editing</code>.</dd>
+
+<dt>Buttons with borders</dt>
+<dd>The following formats have buttons that use the default border for buttons: <code>SEX, _FILE Editing,
+sub RefLinks</code>.</dd>
+
+<dt>EditValue cells are defined</dt>
+<dd>The following templates use editing fields with the default text field border: <code>AGE, Attribute, DATA, DATE (EditDate cell), EVEN, FORM, NAME (EditName cell), PLAC, REFN, SOUR, TITL, VERS, _Unknown_ Editing</code>. A couple of the few use analagous cells that are special cased of EditValue cells.</dd>
+
+<dt>EditField cells are defined</dt>
+<dd>The following templates define multiple-line text editing fields with a default border: <code>ADDR, AUTH, NOTE, PUBL, TITL</code>.</dd>
+
+<dt>EditPane cells are defined</dt>
+<dd>The following templates define a text-editing pane for editing more text. Such windows can have onlyone text editing pane: <code>TEXT, CONC</code>.</dd>
+
+<dt>Static Cells are defined</dt>
+<dd>The following templates provide labels using Static cells rather then Label cells: <code>CHAN, CHAR, CHIL, FAMC, FAMS, HUSB, REFN, RecordLink,TEXT, _Unknown_ Editing, sub RecordChildLink, sub ShowOBJE</code>.</dd>
+
+<dt>Special Cases for Printing</dt>
+<dd>EditPane cells do not print well, which means those templates need a special case to format output for printing. The following templates has special printing instructions: <code>CONC, NOTE, TEXT Editing, NOTE Record, SOUR Record Editing</code>. These templates convert EditPane to in-line printing fields.</dd>
+
+</dl>
+
+<h2><a name="lang"></a>Alternate Languages</h2>
+
+<p>The &quot;Basic Format&quot; has English, French, and Swedish languages. If you create new text elements, you should provide translations into all languages, or remove languages you are not planning to support. (see <b>GEDitCOM Editor</b> help for details on supporting multiple languages).
+</p>
+
+<h2><a name="help"></a>Write Help Information fot the Format</h2>
+
+<p>You should replace this help information is help information for your new format. This help is only in English. If desired, you can provide a translation of the help by creating a new documentation file for each language. (see <b>GEDitCOM Editor</b> help for details on supporting multiple languages).
+</p>
+
+</html>

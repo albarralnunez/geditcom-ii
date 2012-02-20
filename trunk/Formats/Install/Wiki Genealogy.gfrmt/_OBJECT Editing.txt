@@ -1,0 +1,9 @@
+load LineLabel
+
+gosub LineLabel,local(@tag)
+set offset #editOffset
+sizetofit
+
+! editing field
+cell EditField
+set width -1

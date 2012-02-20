@@ -1,0 +1,15 @@
+! static text with level and tabNewLine
+cell static,local(@tag)&":"
+set tabwidth 1 alignment right Offset 1
+
+! link to REPO
+cell LinkButton
+TextExpression @contents.rec
+AppendedExpression view
+set border no Font "Hyperlink Text" width -1 alignment left
+RecordLink @contents
+Help local("Click to view Repository record")
+
+ClearTabs
+SetTab 110
+Show CALN

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>(and others)</key>
+	<string>(et d'autres)</string>
+	<key>&lt;LANG&gt;</key>
+	<string>French</string>
+	<key>All Notated Records</key>
+	<string>Tous Fiches Notées</string>
+	<key>BIRT</key>
+	<string>Né</string>
+	<key>Bottom Margin</key>
+	<string>Marge du bas</string>
+	<key>Button Text</key>
+	<string>Texte du bouton</string>
+	<key>Cell Separation</key>
+	<string>Séparation des cellules</string>
+	<key>Chart Format Settings</key>
+	<string>Préférences pour le format graphique</string>
+	<key>Check Box Text</key>
+	<string>Texte de la boîte à cocher</string>
+	<key>Child</key>
+	<string>Enfant</string>
+	<key>Children</key>
+	<string>Enfants</string>
+	<key>Click to see all citing records</key>
+	<string>Cliquez pour voir tous les fiches citées</string>
+	<key>Click to see citing record</key>
+	<string>Cliquer pour voir la fiche de citation</string>
+	<key>Click to set task status</key>
+	<string>Cliquez pour establecer état de travail</string>
+	<key>Click to view family chart for</key>
+	<string>Cliquez pour visualiser le tableau de la famille pour</string>
+	<key>Click to view pedigree chart for</key>
+	<string>Cliquez pour voir tableau généalogique pour</string>
+	<key>Click to view pedigree or family chart for</key>
+	<string>Cliquez pour voir tableau généalogique ou le tableau de la famille pour</string>
+	<key>DATE</key>
+	<string>Date</string>
+	<key>DEAT</key>
+	<string>Mort</string>
+	<key>Daughter</key>
+	<string>Fille</string>
+	<key>Default Cell Height</key>
+	<string>Hauteur de cellule par défaut</string>
+	<key>Default Cell Width</key>
+	<string>Lageur de cellule par défaut</string>
+	<key>Default Settings</key>
+	<string>Préférences par défaut</string>
+	<key>Details Text</key>
+	<string>Texte pour les détails</string>
+	<key>Done</key>
+	<string>Fini</string>
+	<key>Edit</key>
+	<string>Éditer</string>
+	<key>Editing Background</key>
+	<string>Fond de la fenêtre d'édition</string>
+	<key>Editing Text</key>
+	<string>Texte à éditer</string>
+	<key>FAM</key>
+	<string>Famille</string>
+	<key>Failed</key>
+	<string>Manqué</string>
+	<key>Family Chart</key>
+	<string>Tableau de la famille</string>
+	<key>Father</key>
+	<string>Père</string>
+	<key>Genealogy Notes</key>
+	<string>Notes sur la généalogie</string>
+	<key>HEAD Record</key>
+	<string>En-têtes</string>
+	<key>HUSB</key>
+	<string>Époux</string>
+	<key>Individual Label Offset</key>
+	<string>Offset de labels sous les individus</string>
+	<key>Individual Label Width</key>
+	<string>Largeur de labels sous les individus</string>
+	<key>Label Text</key>
+	<string>Label de la section</string>
+	<key>Left Margin</key>
+	<string>Marge de gauche</string>
+	<key>Line Separation</key>
+	<string>Ligne de séparation</string>
+	<key>MARR</key>
+	<string>Marié</string>
+	<key>Margin Settings</key>
+	<string>Préférences pour les marges</string>
+	<key>Mother</key>
+	<string>Mère</string>
+	<key>Name Text</key>
+	<string>Texte pour les noms</string>
+	<key>New</key>
+	<string>Nouveau</string>
+	<key>Notes Editing Text</key>
+	<string>Texte pour éditer des notes</string>
+	<key>Notes Text</key>
+	<string>Texte pour les notes</string>
+	<key>Notes on</key>
+	<string>Notes sur</string>
+	<key>OBJE Record</key>
+	<string>fiches de l'objet multimdia</string>
+	<key>Other Spouses</key>
+	<string>Autre époux</string>
+	<key>PLAC</key>
+	<string>Lieu</string>
+	<key>Page dividing line (will not appear when printed)</key>
+	<string>Page ligne de séparation (n'apparaîtra pas lors de l'impression)</string>
+	<key>Pedigree Chart</key>
+	<string>Tableau généalogique</string>
+	<key>Please switch to a different format, such as the 'Default Format,' to edit this kind of record.</key>
+	<string>Passer à un format différent, tel que le 'Default Format,' pour modifier ce genre de dossier.</string>
+	<key>Popup Menu Text</key>
+	<string>Texte du menu contextuel</string>
+	<key>REPO Record</key>
+	<string>fiches du dépôt</string>
+	<key>Research Log</key>
+	<string>Enregistrement recherche</string>
+	<key>Research Log on</key>
+	<string>Enregistrement recherche sur</string>
+	<key>Right Margin</key>
+	<string>Marge de droite</string>
+	<key>SOUR Record</key>
+	<string>fiches de la source</string>
+	<key>SUBM Record</key>
+	<string>fiches du soumetteur</string>
+	<key>SUBN Record</key>
+	<string>fiches de soumission</string>
+	<key>Son</key>
+	<string>Fils</string>
+	<key>Spouse</key>
+	<string>Épouse</string>
+	<key>Static Text</key>
+	<string>Texte statique</string>
+	<key>Summary</key>
+	<string>Sommaire</string>
+	<key>Tasks</key>
+	<string>Travails d’investigation</string>
+	<key>The 'Chart Format' is not set up for display or editing of</key>
+	<string>Le 'Format Graphique' n'est pas mis en place pour l'édition de</string>
+	<key>Top Margin</key>
+	<string>Marge du haut</string>
+	<key>Unknown</key>
+	<string>Inconnu</string>
+	<key>WIFE</key>
+	<string>Épouse</string>
+	<key>Window Background</key>
+	<string>Fond de fenêtre</string>
+	<key>Working</key>
+	<string>Actif</string>
+	<key>_BOK Record</key>
+	<string>Fiches de la format de livre</string>
+	<key>_OBJECT</key>
+	<string>Objectif</string>
+	<key>_PLC Record</key>
+	<string>Fiches du lieu</string>
+	<key>_RESULTS</key>
+	<string>Résultats</string>
+	<key>_STATUS</key>
+	<string>État</string>
+	<key>_SUMMARY</key>
+	<string>Sommaire de Recherche</string>
+	<key>of</key>
+	<string>sur</string>
+</dict>
+</plist>

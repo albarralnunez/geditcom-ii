@@ -1,0 +1,42 @@
+load ResetTabs,SectionLabel,TagBlock
+
+#hasLabel="YES"
+gosub ResetTabs
+
+! -------------- Start Template -----------------
+DropTypes SOUR,NOTE,OBJE,INDI,FAM,_LOG,SUBM
+gosub SectionLabel "Personal Details",0
+Show NAME @this.SEXShowAll NAMEShowAll SEX
+
+ShowAll BIRTShowAll DEAT
+
+!--------- Family as spouse
+if FAMS is here  gosub SectionLabel "Spouses and Children",9
+  newline 3
+  ShowAll FAMS
+endif
+!--------- Family as child
+if FAMC is here  gosub SectionLabel "Parents",9
+  newline 3
+  ShowAll FAMC
+endif
+
+!--------- Events and attributes
+#hasLabel="Individual Events and Attributes"
+ShowAll INDIEvents
+ShowAll INDIAttributes
+
+!--------- Ordinances
+#hasLabel="Individual Ordinances"
+ShowAll INDIOrdinances
+
+! --------- NOTEs, SOURs, OBJEs, and _LOGs -----------
+Gosub TagBlock,"NOTE","NOTE"
+Gosub TagBlock,"SOUR","Sources"
+Gosub TagBlock,"OBJE","OBJE"
+Gosub TagBlock,"_LOG","Research Logs"
+
+! --------- The Rest
+if more
+  gosub SectionLabel "Additional Data",9
+endif

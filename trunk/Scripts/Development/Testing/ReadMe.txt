@@ -1,0 +1,1 @@
+This folder has scripts written by for testing scripting of geditcom scripting features during development. A coupled of embedded in geditcom and run as scripts by code.

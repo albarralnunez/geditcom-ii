@@ -1,0 +1,23 @@
+load ListBlock,References,ToolBtn,ToolBar
+
+! --------- Toolbar -----------
+GoSub ToolBar "","N","S","L",""
+
+! Start template
+Title @this.altview&" - "&local("NAME details")
+
+! Name Details
+cell label,local("Name Parts")
+SizeToFit
+newline -3
+cell GroupBox
+set width -1 border line titleposition none
+newline -#lineSkip-3
+SetTab 120
+Show NPFXShow GIVNShow NICKShow SPFXShow SURNShow NSFX
+EndGroup
+
+! --------- NOTE, SOUR, and _LOG ----------
+gosub References,"_LOG"
+
+resizeWindow yes

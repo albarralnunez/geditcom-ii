@@ -1,0 +1,8 @@
+cell CheckBoxEdit,local("Include Copyright Notices")
+sizetofit
+help local("Check to include copyright notices on back of title page")
+
+cleartabs
+settab 140
+Show _OWNER
+Show _GTEES

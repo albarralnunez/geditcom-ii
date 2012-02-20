@@ -1,0 +1,17 @@
+if #msg="label"
+  NewLine
+  cell static local(@tag)&": "
+  sizetofit
+
+  ! edit field with value
+  cell EditDate
+  set Width -1
+  set border none
+
+else
+  ! edit field with value on same line and more offset
+  cell EditDate
+  set Width -1 offset 4
+  set border none
+
+endif

@@ -1,0 +1,72 @@
+load FAMMember
+
+newline
+gosub FAMMember local(@tag)&": ",@contents
+
+! father
+newline
+tab
+cell Static
+text local("Father")&":"
+set font "Details Text"
+sizetofit
+#father=@contents.FAMC.HUSB
+if #father!=""
+  cell LinkButton
+  set border none alignment left
+  set TextExpression @#father.rec AppendedExpression "altview"
+  set RecordLink #aid font "Name Text"
+  Help local("Click to view pedigree chart for")&" "&@#father.altview
+  sizetofit
+  set tabwidth 1 offset -1
+else
+  tab 1
+endif
+
+! Mother
+cell Static
+text local("Mother")&":"
+set font "Details Text"
+sizetofit
+#mother=@contents.FAMC.WIFE
+if #mother!=""
+  cell LinkButton
+  set border none alignment left
+  set TextExpression @#mother.rec AppendedExpression "altview"
+  set RecordLink #aid font "Name Text"
+  Help local("Click to view pedigree chart for")&" "&@#mother.altview
+  sizetofit
+  set tabwidth 1 offset -1
+endif
+
+! Other spouses
+ReadAll "#fams" from @contents.FAMS
+newline
+tab 1
+cell static local("Other Spouses")&": "
+set font "Details Text"
+sizetofit
+hskip 0
+
+#leftSkip=#hpos$
+repeat "#i",1,#fams[0]
+  #fam=#fams[#i]
+  if #fam==@this
+    continue
+  endif
+  cell LinkButton
+  set border none alignment left
+  #spouseRec=@contents.spouse.i.#i
+  if #spouseRec=""
+    set text local("Unknown")
+  else
+    set TextExpression @#spouseRec.rec AppendedExpression "altview"
+  endif
+  set RecordLink #fam font "Name Text"
+  Help local("Click to view family chart for")&" "&@#fam.altview
+  sizetofit
+  set offset -1
+  newline
+endrepeat
+
+#leftSkip=#leftSkip$

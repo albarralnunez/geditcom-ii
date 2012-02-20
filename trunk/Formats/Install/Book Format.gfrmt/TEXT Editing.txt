@@ -1,0 +1,31 @@
+load LineLabel
+
+if @rec="SOUR"
+  if printing
+    ! if printing, was displayed in parent in ExpressionField
+  else
+    ! TEXT at level 1 in SOUR record - explain to use the editing panel
+    gosub LineLabel local(@tag)
+    cell Static,local("see editing pane at bottom of the window")
+    sizetofit -1
+
+    cell EditPane,"("&local("TEXT_HELP")&")"
+    set Position bottom fraction .3
+    help local("TEXT_HELP")
+  endif
+
+else
+  ! Source details field
+  gosub LineLabel local(@tag)
+  offset #editOffset
+  
+  cell EditField
+  set Width -1 border no offset 2-#editOffset
+  if printing
+    set minheight #defaultHeight$
+  else
+    set minheight 44 maxheight 128
+  endif
+  sizetofit
+
+endif

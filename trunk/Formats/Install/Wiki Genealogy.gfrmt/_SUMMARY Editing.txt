@@ -1,0 +1,13 @@
+load LineLabel
+
+newline 3
+gosub LineLabel,"Summary"
+set fontsize 14
+sizetofit
+
+newline 3
+#fldHeight=#displayHeight$-#vpos$-#bottomMargin$
+cell Editfield
+width -1
+height #fldHeight
+help local("Enter free-format notes or html content")

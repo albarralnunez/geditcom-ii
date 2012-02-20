@@ -1,0 +1,57 @@
+load FAMLines
+
+DisplayWidth #paperWidth$+#leftSkip+#rightSkip
+ResizeWindow true
+
+newline
+cell static
+set font "Name Text"
+text local("Family Chart")&": "&@this.altview
+sizetofit
+
+settab #leftSkip+10,#leftSkip+#paperWidth$/2
+
+! husband and wife
+gosub FAMLines 2
+Show HUSB
+gosub FAMLines 1
+Show WIFE
+
+gosub FAMLines 1
+newline
+tab 1
+#leftSkip=#hpos$
+if printing is false
+  newline 3
+  Show MARR
+else
+  cell Static
+  text local("MARR")&":"
+  set font "Details Text"
+  sizetofit -1
+  cell Expression @MARR.DATE.user
+  set font "Details Text"
+  sizetofit -1
+
+  newline
+  cell Static
+  text local("PLAC")&":"
+  sizetofit -1
+  cell Expression @MARR.PLAC
+  set font "Details Text"
+  sizetofit -1
+endif
+#leftSkip=#leftSkip$
+
+! children
+gosub FAMLines 2
+cell label local("Children")
+gosub FAMLines 1
+
+#chilNum=0
+ShowAll CHIL
+if #chilNum=0
+  Show CHIL
+endif
+
+HideExcess

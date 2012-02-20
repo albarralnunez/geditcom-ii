@@ -1,0 +1,25 @@
+load ResetTabs,SectionLabel,TagBlock
+
+DropTypes NOTE
+gosub ResetTabs
+
+! -------------- Repository Details --------------
+gosub SectionLabel local("Repository Details")
+showall NAMEshowall ADDR
+showall _GPSshowall PHON
+showall _URL
+showall _EMAIL
+
+if printing is false  newline
+  cell LinkButton
+  set text local("Linked Sources") border shadowlesssquare
+  sizetofit
+  menulink "Referenced By"
+endif
+
+! -------------- Notes --------------Gosub TagBlock,"NOTE",local("NOTE")
+! -------------- Additional Data --------------
+! Remaining tags are REFN, RIN, CHAN
+if more
+  gosub SectionLabel local("Additional Data")
+endif

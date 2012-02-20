@@ -1,0 +1,8 @@
+! static text with level and tab
+  cell static,local(@tag)&":"
+  set width 50 alignment right
+
+! edit field with value
+cell EditValue
+set Width 40 Offset -2
+help local("Enter height of multimedia")

@@ -1,0 +1,34 @@
+load ListBlock,References
+
+! Start template
+#tagKey="NAME details"
+Title @this.altview&" - "&local(#tagKey)
+
+! Name Details
+cell GroupBox,local(#tagKey)
+width -1
+SetTab 120
+cell label,"Soundex:"
+set tabwidth 1 alignment right
+!cell static,@contents
+cell static soundex(@this.NAME.surname)
+set width -1
+
+Show NPFXShow GIVNShow NICKShow SPFXShow SURNShow NSFX
+EndGroup
+
+! --------- NOTE, SOUR, and _LOG ----------
+gosub References,"_LOG"
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+width -1
+newline -#lineSkip-3
+#lineSkip=0
+Show NOTE
+Show SOUR
+Show _LOG
+EndGroup
+#lineSkip=#lineSkip$
+
+resizeWindow yes

@@ -1,0 +1,1 @@
+This folder has scripts that generate reports and output them to the Page application. The require that Application to compile and run.

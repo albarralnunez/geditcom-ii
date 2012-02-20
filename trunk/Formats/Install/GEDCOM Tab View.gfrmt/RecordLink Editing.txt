@@ -1,0 +1,12 @@
+load LevTag
+
+gosub LevTag
+
+! edit field with value
+cell LinkButton
+set text,@contents&" ("&local("Link to")&" "&@contents.altview.trunc&")"
+set recordlink @contents border no font "Hyperlink Text"
+SizeToFit
+set height #defaultHeight$ offset #linkOffset
+#localKey=@contents.rec&" Record"
+help local("Click to open")&" "&local(#localKey)

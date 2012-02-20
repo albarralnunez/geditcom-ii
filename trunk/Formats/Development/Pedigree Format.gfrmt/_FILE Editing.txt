@@ -1,0 +1,41 @@
+! static text with level and tabNewLine
+cell static
+set tabwidth 1 alignment right
+
+! leave room for change button
+#buttonWidth=100
+if #msg="url"
+  set text "URL:"
+
+  hskip 0
+  #edge=#rightMargin$-#rightSkip-#cellSkip-#buttonWidth
+
+  cell EditFile
+  set autoreload yes
+  set Width #edge-#hpos$ Offset -2
+  help local("Edit the URL for this web site link")
+  #btnHelp="Click to change URL or convert to a multimedia file link"
+else
+  set text local(@tag)&":"
+  set offset 1
+
+  hskip 0
+  #edge=#rightMargin$-#rightSkip-#cellSkip-#buttonWidth
+
+  cell LinkButton,@contents
+  if #msg=""
+    #msg="?"
+  endif
+  set text " ("&local("Kind")&": "&#msg&")"
+  set border none font "Static Text" offset -2 alignment left
+  set Width #edge-#hpos$
+  MenuLink "Attach Multimedia"
+  help local("File path; click to change it")
+  #btnHelp="Click to change the file path, file kind, or convert to a URL link"
+endif
+
+cell LinkButton
+set text local("Change")&"..."
+set border shadowlesssquare width -1 offset -2
+MenuLink "Attach Multimedia"
+help local(#btnHelp)

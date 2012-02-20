@@ -1,0 +1,7 @@
+load LevTag
+
+gosub LevTag
+cell CheckBoxEdit local("Auto Typeset")
+set height #defaultHeight$ controlsize small offset #checkOffset
+help local("Check to automatically typeset the book, if proper tools are available")
+sizetofit

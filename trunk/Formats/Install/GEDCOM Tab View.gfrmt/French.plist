@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>&lt;LANG&gt;</key>
+	<string>French</string>
+	<key>ABBR</key>
+	<string>Titre abrégé</string>
+	<key>ADDR</key>
+	<string>Adresse</string>
+	<key>ADOP</key>
+	<string>Adoption</string>
+	<key>ADR1</key>
+	<string>1ière ligne d’adresse</string>
+	<key>ADR2</key>
+	<string>2ième ligne d’adresse</string>
+	<key>AFN</key>
+	<string>Numéro atribué au Fichier Ancestral</string>
+	<key>AGE</key>
+	<string>Age</string>
+	<key>AGNC</key>
+	<string>Agence</string>
+	<key>ALIA</key>
+	<string>Pseudonyme</string>
+	<key>ANCE</key>
+	<string>Générations d’ancêtres</string>
+	<key>ANCI</key>
+	<string>Recherche ancêtres</string>
+	<key>ANUL</key>
+	<string>Annulation</string>
+	<key>ASSO</key>
+	<string>Association</string>
+	<key>AUTH</key>
+	<string>Auteur</string>
+	<key>Adopted</key>
+	<string>Adopté</string>
+	<key>Article</key>
+	<string>Article</string>
+	<key>BAPL</key>
+	<string>LDS "Baptism”</string>
+	<key>BAPM</key>
+	<string>Baptême</string>
+	<key>BARM</key>
+	<string>Bar Mitzvah</string>
+	<key>BASM</key>
+	<string>Bas Mitzvah</string>
+	<key>BIRT</key>
+	<string>Naissance</string>
+	<key>BLES</key>
+	<string>Bénédiction</string>
+	<key>BLOB</key>
+	<string>Données Codées</string>
+	<key>BURI</key>
+	<string>Enterrement</string>
+	<key>Book</key>
+	<string>Livre</string>
+	<key>Bottom Margin</key>
+	<string>Marge de bas</string>
+	<key>Button Text</key>
+	<string>Texte de Bouton</string>
+	<key>CALN</key>
+	<string>Numéro de référence</string>
+	<key>CAST</key>
+	<string>Nom de Caste</string>
+	<key>CAUS</key>
+	<string>Cause</string>
+	<key>CENS</key>
+	<string>Recensement</string>
+	<key>CHAN</key>
+	<string>Modifié</string>
+	<key>CHAR</key>
+	<string>Jeu de caractères</string>
+	<key>CHIL</key>
+	<string>Enfant</string>
+	<key>CHR</key>
+	<string>Baptême (CHR)</string>
+	<key>CHRA</key>
+	<string>Baptême à l’âge adulte</string>
+	<key>CITY</key>
+	<string>Ville</string>
+	<key>CONC</key>
+	<string>Concaténation</string>
+	<key>CONF</key>
+	<string>Confirmation</string>
+	<key>CONL</key>
+	<string>LDS "Confirmation”</string>
+	<key>CONT</key>
+	<string>Continuation</string>
+	<key>COPR</key>
+	<string>Droit d'auteur</string>
+	<key>CORP</key>
+	<string>Société</string>
+	<key>CREM</key>
+	<string>Crémation</string>
+	<key>CTRY</key>
+	<string>Pays</string>
+	<key>Cell Separation</key>
+	<string>Séparateur de Cellules</string>
+	<key>Character set can only be changed when extracting a GEDCOM file</key>
+	<string>Jeu de caractères ne peut être modifiés lors de l'extraction du fichier GEDCOM</string>
+	<key>Check Box Text</key>
+	<string>Texte de Check Box</string>
+	<key>Check if event occurred but nothing else known</key>
+	<string>Cochez si l'événement s'est produit, mais rien de plus est connu</string>
+	<key>Click to change relationship to parents</key>
+	<string>Cliquez pour changer rapport àux parents</string>
+	<key>Click to change this person's sex</key>
+	<string>Cliquez pour changer le sex de cette personne</string>
+	<key>Click to enter quality of this source</key>
+	<string>Cliquez pour entrer qualité de cette source</string>
+	<key>Click to enter type of source</key>
+	<string>Cliquez pour entrer type de source</string>
+	<key>Click to open</key>
+	<string>Cliquez pour ouvrir</string>
+	<key>Creation Date</key>
+	<string>Date de Création</string>
+	<key>DATA</key>
+	<string>Données</string>
+	<key>DATE</key>
+	<string>Date</string>
+	<key>DEAT</key>
+	<string>Décès</string>
+	<key>DESC</key>
+	<string>Générations de descendants</string>
+	<key>DESI</key>
+	<string>Recherche descendant (o niveau d'intérêt en les descendants)</string>
+	<key>DEST</key>
+	<string>Fichier de Destination</string>
+	<key>DIV</key>
+	<string>Divorce</string>
+	<key>DIVF</key>
+	<string>Divorce introduit</string>
+	<key>DSCR</key>
+	<string>Description physique</string>
+	<key>Default Cell Height</key>
+	<string>Hauteur par défaut des cellule</string>
+	<key>Default Cell Width</key>
+	<string>Largeur des celdas par défaut</string>
+	<key>EDUC</key>
+	<string>Éducation</string>
+	<key>EMIG</key>
+	<string>Émigration</string>
+	<key>ENDL</key>
+	<string>LDS "Endowment”</string>
+	<key>ENGA</key>
+	<string>Fiançailles</string>
+	<key>EVEN</key>
+	<string>Événement</string>
+	<key>Editing Background</key>
+	<string>Fond de Editeur</string>
+	<key>Editing Text</key>
+	<string>Edición de Texte</string>
+	<key>Enter a valid date</key>
+	<string>Entrez un date valide</string>
+	<key>Enter text for</key>
+	<string>Entrez le texte de</string>
+	<key>Event occurred</key>
+	<string>L'événement s'est produit</string>
+	<key>FAM</key>
+	<string>Famille</string>
+	<key>FAM Record</key>
+	<string>Enregistrement familial</string>
+	<key>FAMC</key>
+	<string>Famille comme Enfant</string>
+	<key>FAMF</key>
+	<string>Fichier familial</string>
+	<key>FAMS</key>
+	<string>Famille comme Epou(x)(se)</string>
+	<key>FCOM</key>
+	<string>Première Communion</string>
+	<key>FILE</key>
+	<string>Nom du fichier</string>
+	<key>FORM</key>
+	<string>Forme</string>
+	<key>Female</key>
+	<string>Féminin</string>
+	<key>Foster</key>
+	<string>Nourricié</string>
+	<key>GEDC</key>
+	<string>Details sur le format GEDCOM</string>
+	<key>GIVN</key>
+	<string>Prénom</string>
+	<key>GRAD</key>
+	<string>Diplôme</string>
+	<key>General</key>
+	<string>General</string>
+	<key>Generic Event</key>
+	<string>Evénement Générique</string>
+	<key>HEAD</key>
+	<string>Enregistrement d’en-tête</string>
+	<key>HEAD Record</key>
+	<string>Enregistrement d’en-tête</string>
+	<key>HUSB</key>
+	<string>Époux</string>
+	<key>Hyperlink Text</key>
+	<string>Texte Hyperlien</string>
+	<key>IDNO</key>
+	<string>Numéro national</string>
+	<key>IMMI</key>
+	<string>Immigration</string>
+	<key>INDI</key>
+	<string>Individuel</string>
+	<key>INDI Record</key>
+	<string>Enregistrement individuel</string>
+	<key>LANG</key>
+	<string>Langue</string>
+	<key>LDS Spouse Sealing</key>
+	<string>LDS "Spouse Sealing”</string>
+	<key>Label Text</key>
+	<string>Texte d’Etiquette</string>
+	<key>Last Changed</key>
+	<string>Dernier changement</string>
+	<key>Left Margin</key>
+	<string>Marge gauche</string>
+	<key>Line Separation</key>
+	<string>Séparateur de lignes</string>
+	<key>Link to</key>
+	<string>Lien vers</string>
+	<key>MARB</key>
+	<string>Bans de mariage</string>
+	<key>MARC</key>
+	<string>Contrat de mariage</string>
+	<key>MARL</key>
+	<string>License de mariage</string>
+	<key>MARR</key>
+	<string>Mariage</string>
+	<key>MARS</key>
+	<string>Arrangements patrimoniaux</string>
+	<key>MEDI</key>
+	<string>Type de média</string>
+	<key>Male</key>
+	<string>Masculin</string>
+	<key>NAME</key>
+	<string>Nom</string>
+	<key>NATI</key>
+	<string>Nationalité</string>
+	<key>NATU</key>
+	<string>Naturalisation</string>
+	<key>NCHI</key>
+	<string>Nombre d’enfants</string>
+	<key>NICK</key>
+	<string>Surnom</string>
+	<key>NMR</key>
+	<string>Nombre de mariages</string>
+	<key>NOTE</key>
+	<string>Notes</string>
+	<key>NOTE Record</key>
+	<string>Enregistrement des Notes</string>
+	<key>NPFX</key>
+	<string>Préfixe</string>
+	<key>NSFX</key>
+	<string>Suffixe</string>
+	<key>OBJE</key>
+	<string>Objet multimédia</string>
+	<key>OBJE Record</key>
+	<string>Enregistrement objet multimédia</string>
+	<key>OCCU</key>
+	<string>Profession</string>
+	<key>ORDI</key>
+	<string>Indicateur “Ordinance Process”</string>
+	<key>ORDN</key>
+	<string>Ordination</string>
+	<key>Ordinance occurred</key>
+	<string>Ordinance occurred</string>
+	<key>PAGE</key>
+	<string>Page</string>
+	<key>PEDI</key>
+	<string>Pedigree</string>
+	<key>PHON</key>
+	<string>Téléphone</string>
+	<key>PLAC</key>
+	<string>Lieu</string>
+	<key>POST</key>
+	<string>Code postal</string>
+	<key>PROB</key>
+	<string>Homologation</string>
+	<key>PROP</key>
+	<string>Possessions</string>
+	<key>PUBL</key>
+	<string>Éditeur</string>
+	<key>Popup Menu Text</key>
+	<string>Texte du menu contextuel</string>
+	<key>Primary</key>
+	<string>Primary</string>
+	<key>Print Background</key>
+	<string>Fond d'impression</string>
+	<key>QUAY</key>
+	<string>Qualité</string>
+	<key>Questionable</key>
+	<string>Questionable</string>
+	<key>REFN</key>
+	<string>Numéro de référence</string>
+	<key>RELA</key>
+	<string>Rapport</string>
+	<key>RELI</key>
+	<string>Religion</string>
+	<key>REPO</key>
+	<string>Dépositaire de l'information</string>
+	<key>REPO Record</key>
+	<string>Enregistrement lier de dépôt</string>
+	<key>RESI</key>
+	<string>Résidence</string>
+	<key>RESN</key>
+	<string>Restriction</string>
+	<key>RETI</key>
+	<string>Retraite</string>
+	<key>RFN</key>
+	<string>Numéro de référence</string>
+	<key>RIN</key>
+	<string>Clé d’identification</string>
+	<key>ROLE</key>
+	<string>Rôle dans l’événement</string>
+	<key>Right Margin</key>
+	<string>Marge Droite</string>
+	<key>SEX</key>
+	<string>Sexe</string>
+	<key>SLGC</key>
+	<string>LDS “Child Sealing”</string>
+	<key>SLGS</key>
+	<string>LDS "Spouse Sealing”</string>
+	<key>SOUR</key>
+	<string>Source</string>
+	<key>SOUR Record</key>
+	<string>Enregistrement source</string>
+	<key>SPFX</key>
+	<string>Préfixe du nom</string>
+	<key>SSN</key>
+	<string>Numéro de sécurite sociale</string>
+	<key>STAE</key>
+	<string>État</string>
+	<key>STAT</key>
+	<string>État</string>
+	<key>SUBM</key>
+	<string>Soumetteur</string>
+	<key>SUBM Record</key>
+	<string>Fiche de soumetteur</string>
+	<key>SUBN</key>
+	<string>Soumission</string>
+	<key>SUBN Record</key>
+	<string>Enregistrement soumission (LDS)</string>
+	<key>SURN</key>
+	<string>Nom de famille</string>
+	<key>Sealing</key>
+	<string>Sealing</string>
+	<key>Secondary</key>
+	<string>Secondaire</string>
+	<key>Select sex</key>
+	<string>Seleccionez sexe</string>
+	<key>Static Text</key>
+	<string>Texte Statique</string>
+	<key>TEMP</key>
+	<string>Temple</string>
+	<key>TEXT</key>
+	<string>Texte</string>
+	<key>TIME</key>
+	<string>Heure</string>
+	<key>TITL</key>
+	<string>Titre</string>
+	<key>TYPE</key>
+	<string>Type</string>
+	<key>Tab Spacing</key>
+	<string>Espacement des onglets</string>
+	<key>The date this record was first created</key>
+	<string>La date que cette fiche a été d’abord créé</string>
+	<key>Top Margin</key>
+	<string>Haut marge</string>
+	<key>Unknown</key>
+	<string>Inconnu</string>
+	<key>Unpublished</key>
+	<string>Non publié</string>
+	<key>Unreliable</key>
+	<string>Unreliable</string>
+	<key>VERS</key>
+	<string>Version</string>
+	<key>Vital Records</key>
+	<string>Registres d'etat-civil</string>
+	<key>WAC</key>
+	<string>LDS Initiatory</string>
+	<key>WIFE</key>
+	<string>Épouse</string>
+	<key>WILL</key>
+	<string>Testament</string>
+	<key>Web Page</key>
+	<string>Page Web</string>
+	<key>Window Background</key>
+	<string>Fond de fenêtre</string>
+	<key>_ABOUT</key>
+	<string>A propos de l'auteur</string>
+	<key>_ANC</key>
+	<string>Ancêtres</string>
+	<key>_AUTH</key>
+	<string>Auteur</string>
+	<key>_BNDS</key>
+	<string>Limites</string>
+	<key>_BOK Record</key>
+	<string>Book Style Record</string>
+	<key>_BOX</key>
+	<string>Label</string>
+	<key>_CODE</key>
+	<string>Code</string>
+	<key>_COPY</key>
+	<string>Droit d'auteur</string>
+	<key>_DATE</key>
+	<string>Date</string>
+	<key>_DES</key>
+	<string>Descendants</string>
+	<key>_DESC</key>
+	<string>Description</string>
+	<key>_DIST</key>
+	<string>Distribution</string>
+	<key>_EMAIL</key>
+	<string>E-mail</string>
+	<key>_FAM</key>
+	<string>Famille</string>
+	<key>_FFAM</key>
+	<string>Font Family</string>
+	<key>_FILE</key>
+	<string>Nom complet du fichier</string>
+	<key>_FLDR</key>
+	<string>Save Folder</string>
+	<key>_FONT</key>
+	<string>Font Size</string>
+	<key>_FREL</key>
+	<string>Relation paternelle (FTM)</string>
+	<key>_GOAL</key>
+	<string>But</string>
+	<key>_GPS</key>
+	<string>Lat,Lon</string>
+	<key>_GTEES</key>
+	<string>Grantees</string>
+	<key>_HME</key>
+	<string>Base</string>
+	<key>_INDI</key>
+	<string>Individuel</string>
+	<key>_INTRO</key>
+	<string>Introduction d'un Livre</string>
+	<key>_KEY</key>
+	<string>Mots clés</string>
+	<key>_LABEL</key>
+	<string>Label</string>
+	<key>_LINE</key>
+	<string>Line Spread</string>
+	<key>_LOC</key>
+	<string>Lieu</string>
+	<key>_LOG</key>
+	<string>Enregistrement recherche</string>
+	<key>_LOG Record</key>
+	<string>Enregistrement recherche</string>
+	<key>_MEND</key>
+	<string>Fin du mariage (FTM)</string>
+	<key>_MILT</key>
+	<string>Militaire (FTM)</string>
+	<key>_MREL</key>
+	<string>Relation maternelle (FTM)</string>
+	<key>_MSTAT</key>
+	<string>État du mariage (FTM)</string>
+	<key>_NOPOI</key>
+	<string>Cacher</string>
+	<key>_NOPOR</key>
+	<string>Aucun portrait</string>
+	<key>_NTOP</key>
+	<string>Remarques</string>
+	<key>_OBJECT</key>
+	<string>Objectif</string>
+	<key>_OVER</key>
+	<string>Overwrite files in target folder</string>
+	<key>_OWNER</key>
+	<string>Copyright Owner</string>
+	<key>_PAPER</key>
+	<string>Taille du papier</string>
+	<key>_PFACT</key>
+	<string>D'information</string>
+	<key>_PLACE</key>
+	<string>Nom</string>
+	<key>_PLC Record</key>
+	<string>Place Record</string>
+	<key>_PNOTE</key>
+	<string>Commentaire</string>
+	<key>_POI</key>
+	<string>Nom</string>
+	<key>_PTOP</key>
+	<string>Portraits</string>
+	<key>_REF</key>
+	<string>Référence croisée</string>
+	<key>_RESULTS</key>
+	<string>Résultats</string>
+	<key>_SCALE</key>
+	<string>Échelle</string>
+	<key>_SIZE</key>
+	<string>Taille</string>
+	<key>_STATUS</key>
+	<string>État</string>
+	<key>_STYLE</key>
+	<string>Style</string>
+	<key>_SUMMARY</key>
+	<string>Sommaire de Recherche</string>
+	<key>_TASK</key>
+	<string>Travail d’investigation</string>
+	<key>_TEX</key>
+	<string>LaTeX Content</string>
+	<key>_TEXSTY</key>
+	<string>Style Sheet</string>
+	<key>_TSET</key>
+	<string>Auto Typeset</string>
+	<key>_TTL</key>
+	<string>Titre</string>
+	<key>_TYPE</key>
+	<string>Type de source</string>
+	<key>_UMR</key>
+	<string>Célibataire</string>
+	<key>_URL</key>
+	<string>URL</string>
+	<key>_VALUE</key>
+	<string>Valeur</string>
+	<key>_ZOOM</key>
+	<string>Pour Zoomer</string>
+	<key>in Book</key>
+	<string>en Livre</string>
+</dict>
+</plist>

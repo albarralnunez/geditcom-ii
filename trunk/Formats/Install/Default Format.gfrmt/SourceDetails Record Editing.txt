@@ -1,0 +1,42 @@
+load TagBlock,AttachData,ListBlock,References
+
+! Start template
+#tagKey="SOUR details"
+Title @this.altview&" - "&local(#tagKey)
+cell GroupBox local(#tagKey)
+width -1
+SetTab 120
+
+Show PAGE
+show DATA
+ShowAll EVEN
+show QUAY
+
+EndGroup
+
+! --------- NOTEs and OBJEs -----------
+gosub TagBlock,"OBJE",local("Multimedia")
+if NOTE is here
+  cell GroupBox,local("NOTE")
+  width -1
+  newline -#lineSkip-3
+  #lineSkip=-2
+  Gosub ListBlock,"NOTE","notes",local("Notes on these data"),"Attach Notes"
+  #lineSkip=#lineSkip$
+  EndGroup
+endif
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+width -1
+newline -#lineSkip-3
+#lineSkip=0
+Show NOTE
+Show OBJE
+GoSub AttachData
+EndGroup
+#lineSkip=#lineSkip$
+
+optionaltag EVEN,local("Event type cited"),"event type"
+
+DisplayHeight <600

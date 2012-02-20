@@ -1,0 +1,97 @@
+! SJGR Added buttons to copy and paste sources
+
+! special case for header
+if @rec=HEAD
+  ! static text with level and tab  NewLine
+  #tlabel=local("System ID")
+  cell static,#tlabel&":"
+  set tabwidth 1 alignment right
+  help #tlabel
+
+  ! edit field with value
+  cell EditValue
+  set Width -1 Offset -2
+  help local("Enter approved system ID code")
+
+  show NAME
+  show VERS
+  show CORP
+  show DATA
+
+else
+  ! existing note structure
+  if tagexists is true
+
+    ! link to SOUR record
+    if @contents is validlink
+      if #msg="label"
+        newline
+        cell static,local("Source")&":"
+		sizetofit
+        set alignment right tabwidth 1
+      else
+        newline
+	    cell label,"• "
+	    SizeToFit
+      endif
+
+      cell StructuresLink,SourceDetails
+      set border no
+      if more
+        set image "details_here"
+      else
+        set image "details"
+      endif
+      SizeToFit
+      LinkAll all
+      help local("Click for source details specific to this record")
+
+      cell LinkButton
+      TextExpression @contents.rec
+      AppendedExpression view
+      !Watch @contents.viewTag
+      set border no Font "Hyperlink Text" width -1 alignment left
+      RecordLink @contents
+      target child
+	  sizetofit -1
+      Help local("Click to view and edit source")
+
+      ! need support for source details
+      hideexcess
+
+    ! embedded source
+    else
+      newline
+      cell static,local("(Embedded source - reopen file to fix)")
+      sizetofit -1
+      hideexcess
+    endif
+
+! no source - an attach button
+  else
+  
+    ! button to link to new or existing notes
+    hskip 2    cell CreateLinkButton
+    set border shadowlesssquare width 28 height 28 target childifnew
+    image "source"
+    imagewidth 24
+    help local("Click to attach source")
+    
+    !hskip 2    !cell LinkButton
+    !set border shadowlesssquare width 52 height 28
+    !image "CopySour"
+    !imageheight 24
+    !ScriptType Format
+    !ScriptLink "CopySources"
+    !help local("Click to copy one or more sources")
+    
+    !hskip 2    !cell LinkButton
+    !set border shadowlesssquare width 52 height 28
+    !image "PasteSour"
+    !imageheight 24
+    !ScriptType Format
+    !ScriptLink "PasteSources"
+    !help local("Click to paste one or more sources")
+  endif
+
+endif

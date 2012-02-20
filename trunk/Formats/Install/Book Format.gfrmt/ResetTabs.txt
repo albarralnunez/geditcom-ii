@@ -1,0 +1,8 @@
+sub ResetTabs
+  ClearTabs
+  #tabStop=#leftSkip
+  Repeat "#i",1,6
+    #tabStop+=#tabSpacing
+  	SetTab #tabStop
+  EndRepeat
+endsub

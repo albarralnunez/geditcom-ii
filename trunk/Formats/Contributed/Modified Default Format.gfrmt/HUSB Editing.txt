@@ -1,0 +1,128 @@
+!SJGR changed from default to add date ranges to links
+!indication of further ancesters changed from + to an arrow
+
+! get labels
+#useTag=@tag
+#sex=""
+if @contents is validlink
+  #sex=@contents.SEX
+else
+  if @tag="HUSB"
+    #sex=@this.HUSB.SEX
+  else
+    #sex=@this.WIFE.SEX
+  endif
+endif
+
+! #useTag will be HUSB or WIFE for sex of this spouse
+if #sex="M"
+  #useTag="HUSB"
+else if #sex="F"
+  #useTag="WIFE"
+else if @tag="HUSB"
+  #sex="M"
+else
+  #sex="F"
+endif
+
+! #label is non-localized label (HUSB, WIFE, Father, or Mother)
+if @this._UMR=""
+  #label=#useTag
+else
+  if #useTag="HUSB"
+    #label="Father"
+  else
+    #label="Mother"
+  endif
+endif
+
+! links in family record
+newline
+if @level=1
+  ! label
+  cell static,local(#label)&":"
+  set tabwidth 1 alignment right
+  
+! lines inserted to calculate text required for links including dates SJGR
+#dates=@contents.BIRT.DATE.span
+if @contents.FAMC.HUSB!=""
+#pname=@contents.NAME.altview&" ↑ "
+else
+if @contents.FAMC.WIFE!=""
+#pname=@contents.NAME.altview&" ↑ "
+else
+#pname=@contents.NAME.altview&"  "
+endif
+endif
+if #dates<>""
+#preqtxt=#pname&"("&#dates&")"
+else 
+#preqtxt=#pname
+endif
+
+  ! link to spouse or to attach a spouse
+  if @contents is validlink
+    cell LinkButton
+    RecordLink @contents
+    Text #preqtxt
+    !TextExpression @contents.NAME
+    !AppendedExpression altview
+    !if @contents.FAMC!=""
+    !  Format "%@+"
+    !endif
+    set font "Hyperlink Text"
+    set border no alignment left
+    sizetofit
+    #bwidth=#rightMargin$-#rightSkip-100-#cellSkip-#hpos$
+    if #cellWidth$>#bwidth
+      width #bwidth
+    endif
+    ! #label will be HUSB, WIFE, Father, or Mther
+    #helpKey="Click to view "&#label&"'s record"    help local(#helpKey)
+
+    #parents=@contents.FAMC
+    if #parents!=""
+      cell LinkButton,local("Parents' Family")
+      RecordLink #parents
+      set border shadowlesssquare offset -3
+      sizetofit
+      shift #rightMargin$-#rightSkip-#cellWidth$-#hpos$
+      help local("Click to view parents' family record")
+    endif
+
+  else if @contents!=""
+    cell LinkButton
+    text local("<Unknown> - click to detach broken link")
+    set border shadowlesssquare offset -3
+    sizetofit
+    if @tag="HUSB"
+      MenuLink "Detach Husband"
+    else
+      MenuLink "Detach Wife"
+    endif
+
+  else
+    #tagKey="Attach "&#label
+    cell LinkButton,local(#tagKey)
+    set border shadowlesssquare offset -3
+    sizetofit
+    if @tag="HUSB"
+      MenuLink "Attach Husband"
+    else
+      MenuLink "Attach Wife"
+    endif
+
+  endif
+
+else
+  ! ages in family event
+  ! #label will be HUSB, WIFE, Father, or Mother
+  if #useTag=@tag
+    #ageKey=#label&"'s Age"
+  else if #useTag="WIFE"
+    #ageKey=#label&" 1's Age"
+  else
+    #ageKey=#label&" 2's Age"
+  endif
+  Show AGE local(#ageKey)
+endif

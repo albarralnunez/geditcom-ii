@@ -1,0 +1,41 @@
+! static text with level and tab
+NewLine
+cell static,local(@tag)&":"
+set tabwidth 1 alignment right
+
+! edit field with value
+cell PopupMenuEdit
+set Width 200
+help local("Click to enter ordinance status")
+
+
+MenuItems "[Unspecified]::"
+
+if #msg="SLGC"
+  MenuItems "BIC [Born in convenant]:BIC"
+else if #msg="SLGS"
+  MenuItems Canceled:CANCELED
+else
+  MenuItems Child:CHILD
+endif
+
+MenuItems Cleared:CLEARED,Completed:COMPLETED,Done:DONE
+
+if #msg="SLGS"
+  MenuItems "DNS [Do not seal]:DNS"
+  MenuItems "DNS-CAN:DNS/CAN"
+  MenuItems Excluded:EXCLUDED
+else if #msg="SLGC"
+  MenuItems "DNS [Do not seal]:DNS"
+  MenuItems Excluded:EXCLUDED
+else
+  MenuItems Excluded:EXCLUDED,Infant:INFANT
+endif
+MenuItems "In Process:INPROCESS","Pre-1970:PRE-1970"
+MenuItems Qualified:QUALIFIED
+
+if #msg<>"SLGS"
+  MenuItems Stillborn:STILLBORN
+endif
+
+MenuItems Submitted:SUBMITTED,Uncleared:UNCLEARED

@@ -1,0 +1,2 @@
+#maxScale=5
+use _SCALE

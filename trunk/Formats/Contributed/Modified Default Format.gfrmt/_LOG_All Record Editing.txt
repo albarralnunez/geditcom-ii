@@ -1,0 +1,122 @@
+!SJGR Changed to list attached records in separate blocks
+
+load TagBlock,ResetTabs,ListBlock,References,AttachData,_LOGPanes
+
+! -------------- Start Template -----------------
+DropTypes INDI,FAM,_PLC
+GoSub ResetTabs,0
+GoSub _LOGPanes,"All"
+
+! --------- Record links -----------
+if _INDI is here
+  cell GroupBox,local("Researched Individuals")
+    width -1
+    newline -4
+    ShowAll _INDI
+  EndGroup
+endif
+
+if _FAM is here
+  cell GroupBox,local("Researched Families")
+    width -1
+    newline -4
+    ShowAll _FAM
+  EndGroup
+endif
+
+if __PLC is here
+  cell GroupBox,local("Researched Places")
+    width -1
+    newline -4
+    ShowAll __PLC
+  EndGroup
+endif
+
+
+! --------- Tasks --------------
+cell GroupBox,local("Research Tasks")
+  width -1
+
+  newline
+  ClearTabs
+  #lineSkip=2
+  #cellSkip=2
+  #tableWidth=#rightMargin$-#rightSkip-#hpos$-21
+  SetTab #habs$,#habs$+0.3*#tableWidth
+  SetTab #habs$+0.75*#tableWidth,#habs$+#tableWidth
+  #first="yes"
+  ShowAll _TASK
+
+  #lineSkip=#lineSkip$
+  #cellSkip=#cellSkip$
+
+  newline -3
+  cell LinkButton
+  image "plus"
+  set width 24 border no
+  MenuLink "Attach Optional Data"
+  help local("Click to attach new research task")
+
+  cell LinkButton "-"
+  image "minus"
+  set width 24 border no
+  MenuLink "Detach Event/Attribute/Link"
+  help local("Click to detach research task")
+
+EndGroup
+GoSub ResetTabs,0
+
+! --------- SUMMARY -----------
+if printing
+  if _SUMMARY is here
+    cell GroupBox,local("Summary")
+      width -1
+      cell ExpressionField,@_SUMMARY
+      set width -1
+      set minHeight 15 height 200
+      sizetofit 3
+      showAll _SUMMARY
+    EndGroup
+  endif
+else
+  show _SUMMARY .3
+endif
+
+! perhaps should only allow notes and source subordinate to a task
+
+! --------- NOTEs, SOURs, OBJEs and _LOGs -----------
+#objdone=""
+Gosub TagBlock,"OBJE","Multimedia"
+gosub References,""
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+  width -1
+  newline -#lineSkip-3
+  #lineSkip=0
+  Show OBJE
+  Show NOTE
+  Show SOUR
+  gosub AttachData
+EndGroup
+#lineSkip=#lineSkip$
+
+! -------- Additional Data ------------
+if more is true
+  ClearTabs
+  gosub ResetTabs,50
+  cell GroupBox,local("Additional Data")
+    width -1
+    ShowAll CHAN
+    !ShowAll all
+  EndGroup
+endif
+
+HideExcess
+
+optionaltag _TASK,local("_TASK"),"","_GOAL New Task"
+optionaltag _INDI,local("Individual Being Researched")
+optionaltag _FAM,local("Family Being Researched")
+optionaltag __PLC,local("Place Being Researched")
+
+

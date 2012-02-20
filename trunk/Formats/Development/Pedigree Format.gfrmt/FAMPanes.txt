@@ -1,0 +1,11 @@
+sub FAMPanes,#thisPane
+	cell PaneBar
+	AddPane local("Family Chart"),""
+	AddPane local("Events and Other"),"Details"
+	AddPane local("Multimedia"),"Media"
+	set selected #thisPane border smallsquare
+	sizetofit
+	set height #cellHeight$+1		! needed for Tiger
+	help local("Click to view section of this family's data")
+	#brdr="shadowlesssquare"
+endSub

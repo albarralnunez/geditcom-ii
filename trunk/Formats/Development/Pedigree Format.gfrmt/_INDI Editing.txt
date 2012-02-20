@@ -1,0 +1,1 @@
+use LinkAttach local("Click to view individual record"),local("Individual Link"),local("Click to attach link to an individual record")

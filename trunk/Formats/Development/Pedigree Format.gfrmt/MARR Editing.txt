@@ -1,0 +1,19 @@
+load HLine,DrawEdges
+
+if #msg="inChart"
+  gosub HLine,2
+
+  if @this._UMR=""
+    newline
+    #marrStart=#vpos$
+    Show DATE "MARR"
+    !#vloc=#vpos$
+    Show PLAC @tag
+
+    gosub DrawEdges,#marrStart
+  endif
+  hideexcess
+
+else
+  use Event
+endif

@@ -1,0 +1,16 @@
+load LineLabel,SectionLabel,BookCheckBox
+
+if #hasLabel!="YES"
+  gosub SectionLabel #hasLabel
+  #hasLabel="YES"
+endif
+
+! label and checkbox
+gosub LineLabel,local(@tag)
+offset #buttonOffset
+gosub BookCheckBox,"",@contents
+help local("Check if event occurred but nothing else known")
+
+showall DATE
+showAll TEMPshowAll PLACshowAll STATshowAll QUALshowAll SOURshowAll NOTE
+if @tag=SLGC  ShowAll FAMC SLGCendif

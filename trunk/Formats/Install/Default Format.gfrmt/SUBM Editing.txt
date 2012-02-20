@@ -1,0 +1,28 @@
+! existing submitter structure
+if tagexists is true
+  newline
+  #tlabel=local(@tag)
+  cell static #tlabel&":"
+  sizetofit
+  if @tag=="SUBM"
+    set tabwidth -1 alignment right
+  endif
+  help #tlabel
+
+  cell LinkButton
+  TextExpression @contents.rec
+  AppendedExpression view
+  set border no Font "Hyperlink Text" 
+  sizetofit -1
+  RecordLink @contents
+  Help local("Click to view Submitter record")
+
+! no data - an attach button
+else
+  ! button to link to new or existing notes
+  hskip 2  cell CreateLinkButton
+  set border shadowlesssquare height 24
+  set text local(@tag) target newifnew
+  sizetofit
+  help local("Click to attach link to submitter record")
+endif

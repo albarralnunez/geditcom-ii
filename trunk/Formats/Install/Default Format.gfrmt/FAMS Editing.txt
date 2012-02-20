@@ -1,0 +1,149 @@
+! set an expression to display this name and add "+" if there
+! are ancestors
+sub NameWithAncestors,#mate
+  TextExpression @#mate.NAME
+  AppendedExpression altview
+  if @#mate.FAMC!=""
+    Format "%@ ↑"
+  endif
+  set font "Hyperlink Text"  set border no alignment left
+  sizetofit -1
+  help local("Click to view spouse's record")
+endsub
+
+! set an expression to display this name and add "+" if there
+! are descendants or - if spouse
+sub NameWithDescendants,#chil
+  cell LinkButton
+  RecordLink #chil
+  TextExpression @#chil.NAME
+  AppendedExpression altview
+  #hasSpouse=""
+  RepeatWith "#family" from @#chil.FAMS
+    if @#family.CHIL!=""
+      Format "↓ %@"
+      #hasSpouse=""
+      break
+    endif
+    if @#family.HUSB=#chil
+      if @#family.WIFE!=""
+        #hasSpouse="= %@"
+      endif
+    else
+      if @#family.HUSB!=""
+        #hasSpouse="= %@"
+      endif
+    endif
+  EndRepeat
+  if #hasSpouse!=""
+    Format #hasSpouse
+  endif
+  set font "Hyperlink Text"  set border no alignment left
+  sizetofit -1
+  help local("Click to view child's record")
+endsub
+
+if tagexists is true
+  ClearTabs
+  #midtab=(#famLabelEnd+#rightMargin$-#rightSkip)/2
+  SetTab #famLabelEnd,#midtab
+
+  ! marriage button  NewLine  cell LinkButton
+  set image "family"
+  set width 25 height 22 border shadowlesssquare
+  RecordLink @contents
+  TextExpression @contents.rec
+  Autoreload yes
+  help local("Click to view family record")
+
+  cell static
+  #spouseID=@contents.HUSB
+  if #spouseID=@id
+    #spouseID=@contents.WIFE
+  endif
+
+  ! get sex of spouse
+  if #spouseID!=""
+    #sex=@#spouseID.SEX
+  else
+    #sex=@this.SEX
+    if #sex="F"
+      #sex="M"
+    else
+      #sex="F"
+    endif
+  endif
+
+  ! get label
+  if #sex="F"
+    if @contents._UMR=""
+      #spouse=local("WIFE")
+    else
+      #spouse=local("Partner")
+    endif
+  else
+    if @contents._UMR=""
+      #spouse=local("HUSB")
+    else
+      #spouse=local("Partner")
+    endif
+  endif
+  text #spouse&":"
+  sizetofit
+  #textSkip=#cellHeight$-22	! skip needed for text to align accounting for icon
+  set tabwidth 1 alignment right
+
+  ! spouse name and link
+  if #spouseID is validlink    cell LinkButton    RecordLink #spouseID    gosub NameWithAncestors #spouseID
+  else
+    cell static "<"&local("Unknown")&">"
+    sizetofit
+  endif
+
+  ! list of children
+  #col=0
+  RepeatWith "#child" from @contents.CHIL
+    if #col=0
+      newline #textSkip
+      cell static,local("Children")&":"
+      sizetofit
+      set tabwidth 1 alignment right
+      #col=1
+    else if #habs$+#cellWidth$<#midtab
+      tab 1
+    else
+      newline
+      tab 1
+      hskip #cellSkip
+    endif
+    gosub NameWithDescendants,#child
+  EndRepeat
+
+  ! notes might be left
+  newline
+  ShowAll NOTE "label"
+
+else
+  ! button to link to family
+  #sex=@this.SEX
+  if #sex!=""
+    cell LinkButton
+    set border shadowlesssquare
+    if #sex="M"
+      text local("Link as Husband in a new family")
+      MenuLink "Attach As Husband in New Family"
+      help local("Click to link as husband of a newly created family")
+    else
+      text local("Link as Wife in a new family")
+      MenuLink "Attach As Wife in New Family"
+      help local("Click to link as wife of a newly created family")
+    endif
+    sizetofit
+    set height 24
+  else
+    cell static,local("Individual's sex must be known to attach as a spouse to a family")
+    set width -1
+  endif
+
+endif
+

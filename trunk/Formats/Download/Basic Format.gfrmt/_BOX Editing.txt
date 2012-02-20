@@ -1,0 +1,31 @@
+load LineLabel
+
+gosub LineLabel local(@tag)
+offset #editOffset
+cell EditValue
+set Width -1
+help local("Enter title for this bounding box")
+
+! bounding box and optional
+ShowAll _BNDS
+Show _STYLE
+ShowAll _PNOTE
+
+! Map
+if tagexists
+  NewLine 3
+  #rectWidth=400
+  #rectHeight=#rectWidth/1.62
+  Hskip (6.5*72-#rectWidth)/2
+  cell ExpressionField @this._BOX.i.#boxnum
+  set border line Width #rectWidth Height #rectHeight
+  set Width #rectWidth Height #rectHeight
+
+  if _POI is here
+    NewLine 3
+    gosub LineLabel local("Points of Interest")
+    set width -1
+    ShowAll _POI
+  endif  
+endif
+

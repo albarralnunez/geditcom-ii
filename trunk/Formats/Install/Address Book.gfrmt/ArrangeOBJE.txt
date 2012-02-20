@@ -1,0 +1,89 @@
+! Arrange multimedia
+sub ArrangeOBJE
+  #numURLs[0]=0
+  #numOBJEs=0
+
+  if "OBJE" is here
+	! Show images and log URLs
+    if @level=0
+      #leftSkip=#leftSkip$+6
+      newline
+    endif
+    ShowAll OBJE
+    if @level=0
+      if #numOBJEs>0
+	    Show _NOPOR
+        #leftSkip=#leftSkip$
+      endif
+    endif
+  endif
+
+  #phelp=local("Click to add URL or Email address")
+  if @level=0
+    #urlLoc=0
+	#rhelp=local("Click to remove URL or Email address")
+    if #numURLs[0]>0
+      #mscript="Remove_Tag"
+    else
+      #mscript=""
+    endif
+    Gosub ABSectionLabel local("URLs & Email Addresses"),"Add_URL_Email",#phelp,#mscript,#phelp,"URL"
+    #leftSkip=#leftSkip$+6
+  else
+    #leftSkip=0
+	newline
+    if printing is false
+      cell LinkButton
+      set image AddButton border none
+      sizetofit
+      offset #buttonOffset
+      Help local("Click to add URL or Email address for this residence")
+      set ScriptLink "Add_URL_Email" ScriptType format ScriptMessage #resnum
+
+      if #numURLs[0]>0
+        cell LinkButton
+        set image MinusButton border none
+        sizetofit
+        offset #buttonOffset
+        Help local("Click to remove URL or Email address from this residence")
+        set ScriptLink "Remove_RESI_Tag" ScriptType format ScriptMessage #resnum&" URL"
+      endif
+    endif
+
+    gosub LineLabel,local("URLs & Emails")
+    offset #editOffset
+    hskip 5
+    #leftSkip=#hpos$
+  endif
+
+  if #numURLs[0]>0
+    repeat "#i",1,#numURLs[0]
+      newline
+      cell Multimedia
+      #objeID=#numURLs[#i]
+      set url @#objeID._FILE font "Hyperlink Text"
+      if @#objeID.TITL<>""
+        TextExpression @#objeID.TITL
+      else
+        TextExpression @#objeID._FILE
+      endif
+      set objectImage @#objeID imageposition left imageheight 22
+      sizetofit -1
+      set height 22
+      set help local("Click to open this URL or Email in browser or email program")
+
+      ! rest in a child window
+      if printing is false
+        HMoveTo #rightMargin$-#rightSkip-21-#cellSkip
+        cell LinkButton
+        set border no width -1 image "details_here"
+        RecordLink @#objeID
+		set target child
+        sizetofit
+        Help local("Click to view multimedia record for thus URL or Email address")
+      endif
+    endrepeat
+  endif  
+  #leftSkip=0
+
+endSub

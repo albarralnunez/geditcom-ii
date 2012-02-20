@@ -1,0 +1,22 @@
+
+Show DATE @tag
+#hloc=#hpos$
+#vloc=#vpos$
+Show PLAC @tag
+newline
+#birtBottom=#vpos$
+
+! rest in a child window
+MoveTo #hloc,#vloc
+cell StructuresLink,BirthDeathDetails,BIRT
+set border no
+if more
+  set image "details_here"
+else
+  set image "details"
+endif
+SizeToFit
+LinkAll all
+
+#tagKey=@tag&" details"
+help local("Click to edit")&": "&local(#tagKey)

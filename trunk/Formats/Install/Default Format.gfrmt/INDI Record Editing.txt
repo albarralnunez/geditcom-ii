@@ -1,0 +1,40 @@
+load TagBlock,ResetTabs,ListBlock,References,AttachData,INDIPanes
+
+! -------------- Start Template -----------------
+GoSub INDIPanes,""
+GoSub ResetTabs,0
+
+! --------- Birth and Death -----------
+show BIRT box
+showAll BIRT box
+show DEAT box
+showAll DEAT box
+
+! To show existing individual events but none if no event,
+! add one line for each (except RESI) like: 
+!ShowAll BURI
+
+! To show existing individual events and blank fields if no event,
+! add two lines for each (except RESI) like:
+!Show BAPM box
+!ShowAll BAPM box
+
+! --------- Parent links -----------
+#famLabelEnd=120
+cell GroupBox,local("Parents")
+  width -1
+  NewLine -3
+  Show FAMC
+  ShowAll FAMC
+EndGroup
+
+! --------- Spouse/Family links -----------
+cell GroupBox,local("Spouses")
+  width -1
+  NewLine -3
+  Show FAMS
+  ShowAll FAMS
+EndGroup
+
+
+hideexcess

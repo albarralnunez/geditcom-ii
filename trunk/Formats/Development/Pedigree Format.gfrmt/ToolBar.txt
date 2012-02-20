@@ -1,0 +1,34 @@
+sub ToolBar #mm,#nt,#sr,#rl,#od
+
+	#oldWidth=#rightMargin$
+	DisplayWidth #oldWidth+#rightSkip+1
+	newline -#topMargin$-1
+	hskip -#leftSkip-1
+	cell GroupBox
+		border line
+		titleposition none
+		cellbackground "Record Header Box Background"
+		width -1
+
+		newline -3
+    	if #mm!=""
+			gosub ToolBtn,"Attach Multimedia","multimedia",local("Click to attach multimedia object")
+		endif
+  	  	if #nt!=""
+			gosub ToolBtn,"Attach Notes","notes",local("Click to attach notes")
+		endif
+    	if #sr!=""
+			gosub ToolBtn,"Attach Source","source",local("Click to attach source")
+		endif
+    	if #rl!=""
+			gosub ToolBtn,"Attach Research Log","researchlog",local("Click to attach research log")
+		endif
+    	if #od!=""
+			gosub ToolBtn,"Attach Optional Data","plus",local("Click to attach optional data")
+		endif
+
+	EndGroup
+
+	DisplayWidth #oldWidth
+
+endSub

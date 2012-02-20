@@ -1,0 +1,8 @@
+load LineLabel
+
+gosub LineLabel,local(@tag)
+offset #buttonOffset
+
+! popup menu
+cell PopupMenuEditMenuItems local("Birth")&"::"MenuItems local("Adopted")&":adopted"MenuItems local("Foster")&":foster"MenuItems local("Sealing")&":sealing"help local("Click to enter child pedigree status")SizeToFit
+

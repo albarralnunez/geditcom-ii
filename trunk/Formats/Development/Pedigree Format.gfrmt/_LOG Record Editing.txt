@@ -1,0 +1,128 @@
+load ListBlock,TagBlock,ResetTabs,References,ToolBtn
+
+! -------------- Start Template -----------------
+DropTypes INDI,FAM
+GoSub ResetTabs
+
+! --------- Name -----------
+#oldWidth=#rightMargin$
+DisplayWidth #oldWidth+#rightSkip+1
+newline -#topMargin$-1
+hskip -#leftSkip-1
+cell GroupBox
+border line
+titleposition none
+cellbackground "Record Header Box Background"
+width -1
+
+! -------------- Mini Toolbar -----------------
+newline -3
+gosub ToolBtn,"Attach Multimedia","multimedia",local("Click to attach multimedia object")
+gosub ToolBtn,"Attach Notes","notes",local("Click to attach notes")
+gosub ToolBtn,"Attach Source","source",local("Click to attach source")
+gosub ToolBtn,"Attach Optional Data","plus",local("Click to attach optional data")
+
+newline 3
+Show _TTL
+Show _OBJECT
+ShowAll _OBJECT
+EndGroup
+
+DisplayWidth #oldWidth
+
+! --------- Record links -----------
+if _FAM|_INDI is here
+  cell label,local("Researched Records")
+  SizeToFit
+  newline -3
+  cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-9
+  #lineSkip=0
+  ShowAll _INDI
+  ShowAll _FAM
+  EndGroup
+  #lineSkip=#lineSkip$
+endif
+
+! --------- Tasks --------------
+cell label,local("Research Tasks")
+SizeToFit
+
+cell LinkButton
+image "plus"
+set width 24 border no
+MenuLink "Attach Optional Data"
+help local("Click to attach new research task")
+
+cell LinkButton "-"
+image "minus"
+set width 24 border no
+MenuLink "Detach Event/Attribute/Link"
+help local("Click to detach research task")
+
+newline -6
+cell GroupBox
+set width -1 border line titleposition none
+
+newline -#lineSkip-3
+ClearTabs
+#lineSkip=2
+#cellSkip=2
+#tableWidth=#rightMargin$-#rightSkip-#hpos$-21
+SetTab #habs$,#habs$+0.3*#tableWidth
+SetTab #habs$+0.75*#tableWidth,#habs$+#tableWidth
+#first="yes"
+ShowAll _TASK
+
+#lineSkip=#lineSkip$
+#cellSkip=#cellSkip$
+
+EndGroup
+GoSub ResetTabs
+
+! --------- SUMMARY -----------
+if printing
+  if _SUMMARY is here
+    cell label,local("_SUMMARY")
+    SizeToFit
+    newline -3
+    cell GroupBox
+    set width -1 border line titleposition nont    newline -#lineSkip-3
+    cell ExpressionField,@_SUMMARY
+    set width -1 minHeight 15
+    sizetofit 3
+    showAll _SUMMARY
+    EndGroup
+  endif
+else
+  show _SUMMARY
+endif
+
+! perhaps should only allow notes and source subordinate to a task
+
+! --------- NOTEs, SOURs, OBJEs and _LOGs -----------
+Gosub TagBlock,"OBJE",local("Multimedia")
+gosub References,""
+
+! -------- Additional Data ------------
+if more is true
+  ClearTabs
+  SetTab 150,240,330
+  cell label,local("Additional Data")
+  SizeToFit
+  newline -3
+  cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-3
+  ShowAll CHAN
+  ShowAll all
+  EndGroup
+endif
+
+optionaltag _TASK,local("_TASK"),"","_GOAL New Task"
+optionaltag _INDI,local("Individual Being Researched")
+optionaltag _FAM,local("Family Being Researched")
+
+DropTypes OBJE,NOTE,SOUR
+

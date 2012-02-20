@@ -1,0 +1,64 @@
+load ResetTabs,SectionLabel,TagBlock,RefLinks
+
+gosub ResetTabs
+
+! -------------- Start Template -----------------
+DropTypes SOUR,NOTE
+gosub SectionLabel "Multimedia Object Details",0
+#title=@TITL
+#path=@_FILE
+#form=@FORM
+
+ShowAll TITL
+ShowAll _FILE
+ShowAll FORM
+
+newline
+cell Multimedia
+#padding=5
+set objectImage @this mmFormat #form width -1
+set imageposition imageonly 
+#mmRatio=#imageHeight$/#imageWidth$
+#posHeight=#mmHeight-2*#padding
+#posWidth=#cellWidth$-2*#padding
+#cellRatio=#posHeight/#posWidth
+if #mmRatio<#cellRatio
+  if #posWidth<#imageWidth$
+    set imagewidth #posWidth
+  endif
+else
+  if #posHeight<#imageHeight$
+    set imageheight #posHeight
+  endif
+endif
+set height #imageHeight$+2*#padding
+if #imageType$="noimage"
+  set text local("No image representation. Click to open in another application")
+  set font "Static Text" imageposition left alignment left
+  set imageHeight 32 height 32
+else if #imageType$="url"
+  set url #path width -1 font "Hyperlink Text"
+  if #title<>""
+    text #title
+  else
+    text #path
+  endif
+  set imageposition left alignment left
+  set imageHeight 32 height 32
+  set help local("Click to open in browser") 
+else if #imageType$="notfound"
+  set text " "&local("Multimedia file not found (click to fix)")
+  set font "Static Text" imageposition left alignment left
+  set MenuLink "Attach Multimedia"
+  set imageHeight 32 height 32
+endif
+
+! --------- NOTEs, SOURs, OBJEs, and _LOGs -----------
+GoSub RefLinks,"Linked Records","All Linked Records",9
+Gosub TagBlock,"NOTE","NOTE"
+Gosub TagBlock,"SOUR","Sources"
+Gosub TagBlock,"_LOG","Research Logs"
+! --------- The Rest
+if more
+  gosub SectionLabel "Additional Data",9
+endif

@@ -1,0 +1,149 @@
+load RecordChildLink,LineLabel,EventDate
+
+sub parent #parID,#parName
+  ! label  newline
+  tab @level
+  #sex=@#parID.SEX
+  if #sex="F"
+    #parName=local("Mother")
+  else if #sex="M"
+    #parName=local("Father")
+  endif
+  cell static #parName&": "
+  sizetofit
+  cell LinkButton  if #parID!=""    TextExpression @#parID.NAME
+    AppendedExpression altview
+    RecordLink #parID
+	set font "Hyperlink Text"
+    help local("Click to view record for")&" "&local(#parName)  else    set text "<"&local("Unknown")&">"
+  endif
+  set border no alignment left
+  sizetofit -1
+endsub
+
+sub wikiParent #parID,#parname
+  if #parID!=""
+    GoSub EventDate,#parname&" was born",@#parID.BIRT.DATE.user,@#parID.BIRT.PLAC
+    if #etext!=""
+      #ftext=#etext
+      #dname=" and died"
+    else
+      #ftext=""
+      #dname=#parname&" died"
+    endif
+    GoSub EventDate,#dname,@#parID.DEAT.DATE.user,@#parID.DEAT.PLAC
+    #ftext&=#etext
+    if #ftext!=""
+      text #ftext&". "
+    endif
+  endif
+endsub
+
+! --------- Template starts here
+
+if #msg="wiki"
+
+  newline
+  cell StaticField
+  set width -1 minheight 10 border none lineheight #lineMult
+
+  #father=@contents.HUSB
+  #fname=""
+  #mother=@contents.WIFE
+  #mname=""
+  #fpedi=lowercase(@PEDI)
+  if #fpedi!=""
+    #fpedi&=" "
+  endif
+  if #father!=""
+    #fname=@#father.altview
+    text #Pronoun&" is the "&#fpedi&"child of "&#fname
+    if #mother!=""
+      #mname=@#mother.altview
+      text " and "&#mname
+    endif
+    text ". "
+  else if #mother!=""
+    #mname=@#mother.altview
+    text #Pronoun&" is the "&#fpedi&"child of "&#mname&". "
+  endif
+
+  GoSub wikiParent,#father,#fname
+  GoSub wikiParent,#mother,#mname
+
+sizetofit
+
+newline
+
+hskip 18
+cell static,local("See also")&":"
+font "Static Italic Text"
+sizetofit
+
+hskip 0
+#leftSkip=#hpos$
+cell LinkButton
+set font "Hyperlink Text" RecordLink @contents PaneID "" border none
+text @contents.altview
+sizetofit
+
+if #father!=""
+  cell static " "&local("and")&" "
+  sizetofit
+  cell LinkButton
+  set font "Hyperlink Text" RecordLink #father PaneID "" border none
+  text @#father.altview
+  sizetofit
+endif
+
+if #mother!=""
+  cell static " "&local("and")&" "
+  sizetofit
+  cell LinkButton
+  set font "Hyperlink Text" RecordLink #mother PaneID "" border none
+  text @#mother.altview
+  sizetofit
+endif
+
+else
+
+if #parentTag$="INDI"
+  newline
+  #topX=#hpos$+#cellWidth$+#cellSkip
+  #topY=#vpos$
+  show PEDI
+  MoveTo #topX,#topY
+
+  gosub LineLabel local("Parents")
+  gosub RecordChildLink local("Click to view family record"),"parent"
+
+  ! in INDI record, show parents, pedigree, and nots
+  gosub parent,@contents.HUSB,local("Father")  gosub parent,@contents.WIFE,local("Mother")  showAll PEDI  showAll NOTE
+
+else
+  if tagexists is true
+    gosub LineLabel local("Parents")
+    gosub RecordChildLink local("Click to view family record"),"parent"
+
+    if #msg="ADOP"
+	  show ADOP
+    else
+      hideexcess
+    endif
+
+  else
+    cell CreateLinkButton
+    set image family border no
+    sizetofit
+	Autoreload yes
+    help local("Click to link to family record")
+    hskip 5
+  endif
+
+else
+  ! should not be any subordinate data, but hide in case
+  hideexcess
+
+endif
+
+endif

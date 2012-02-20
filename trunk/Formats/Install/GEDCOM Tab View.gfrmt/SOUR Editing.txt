@@ -1,0 +1,11 @@
+if @rec="HEAD"
+  use _Unknown_
+
+else
+  ! Link to source record just normal text
+  if @contents is validlink
+    use RecordLink
+  else
+    use Field 5
+  endif
+endif

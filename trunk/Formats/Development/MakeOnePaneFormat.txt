@@ -1,0 +1,13 @@
+Creating Default One-Pane Format
+
+1. sudo ./MarkOnePaneScript in folder with Default Format, which does the following
+    a. Duplicate "Default Format" and rename it
+    b. Remove .svn folders in main and images folders with sudo rm. -r .svn
+    c. Delete INDI_* and INDI record editing, except for INDI_All, which
+       should be renamed to INDI in the Record Editing templates.
+    d. Repeat for FAM
+    e. Repeat for OBJE
+
+2. Remove cell PaneBar section (including MoveTo 1,1) from INDIPanes subroutine and change newLine 5 to newLine
+3. Repeat for FAMPanes
+4. Repeat for OBJEPanes

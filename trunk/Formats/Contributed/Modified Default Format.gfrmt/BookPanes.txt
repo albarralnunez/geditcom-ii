@@ -1,0 +1,31 @@
+sub BookPanes,#thisPane
+	! --------- Name -----------
+	#oldWidth=#rightMargin$
+	DisplayWidth #oldWidth+#rightSkip+1
+	newline -#topMargin$-1
+	hskip -#leftSkip-1
+	cell GroupBox
+	border line
+	titleposition none
+	cellbackground "Record Header Box Background"
+	width -1
+
+	moveto 1,1
+
+	cell PaneBar
+	AddPane local("Style"),""
+	AddPane local("Introduction"),"Intro"
+	AddPane local("About"),"About"
+	AddPane local("Advanced"),"Advanced"
+	set selected #thisPane
+	sizetofit
+	set height #cellHeight$+1		! needed for Tiger
+	shift (#rightMargin$-#hpos$-#cellWidth$)/2
+	help local("Click to view section of this book style's data")
+
+	newline 5
+	Show _DESC
+	EndGroup
+
+	DisplayWidth #oldWidth
+endSub

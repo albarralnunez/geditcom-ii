@@ -1,0 +1,29 @@
+load ResetTabs,EditingPage
+
+gosub EditingPage,"Repository Details"
+
+newline
+gosub ResetTabs
+
+!--------- Personal Details
+cell GroupBox,local("Repository Details")
+set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+show NAMEshow ADDR
+show _GPSshowall PHON
+show PHON
+showall _EMAIL
+show _EMAIL
+showall _URL
+show _URL
+
+newline 3
+cell LinkButton
+set text local("See Sources in this Repository") border shadowlesssquare
+sizetofit
+set border shadowlesssquare menulink "Referenced By"
+
+
+EndGroup
+
+HideExcess

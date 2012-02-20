@@ -1,0 +1,224 @@
+load ResetTabs,LineLabel,ABSectionLabel
+
+! #label should already be localized
+sub Show_Tag #label,#value
+  if #value!=""
+
+    newline
+    gosub LineLabel,#label
+
+    cell static,#value
+    set Width -1 border none
+    sizetofit
+
+  endif
+endSub
+
+! #label should already be localized
+sub Show_Field #label,#value
+  if #value!=""
+
+    newline
+    gosub LineLabel,#label
+
+    cell staticfield
+    text #value
+    set Width -1 border none minheight 22
+    sizetofit
+
+  endif
+endSub
+
+sub Show_Image #obje
+  #padding=3
+  if @#obje.FORM="url"
+    #numURLs[0]+=1
+    #iu=#numURLs[0]
+    #numURLs[#iu]=#obje
+  else
+    #numOBJEs+=1
+    
+    if #numOBJEs=1
+      newline
+      gosub LineLabel,local("Multimedia")
+      hskip 5
+      #leftSkip=#hpos$
+    endif
+
+    #thumbW=int((#rightMargin$-#rightSkip-#leftSkip-(#mmPerRow-1)*#cellSkip)/#mmPerRow)
+	#thumbH=#thumbW/1.61
+    cell LinkButton
+	set width #thumbW height #thumbH
+    if #thumbW<2.6*#thumbnailSize$
+	  objectImage #obje
+	else
+	  objectFull #obje
+	endif
+    #mmRatio=#imageHeight$/#imageWidth$
+    #posWidth=#thumbW-2*#padding
+    #posHeight=#thumbH-#padding-22
+    #cellRatio=#posHeight/#posWidth
+    if #mmRatio<#cellRatio
+      if #posWidth<#imageWidth$
+        set imagewidth #posWidth
+      endif
+    else
+      if #posHeight <#imageHeight$
+        set imageheight #posHeight
+      endif
+    endif
+
+	! title in the same button
+	TextExpression @#obje.rec
+	AppendedExpression view
+	autoreload yes
+	if @#obje.TITL=""
+	  text @#obje._FILE
+	else
+	  text @#obje.TITL
+	endif
+
+	set imageposition above
+    set border shadowlesssquare target child
+    RecordLink #obje
+    Help local("Click to view and edit multimedia object")
+  endif
+endsub
+
+sub Show_RESI #theID,#theType
+  ReadAll "#resis" from @#theID.RESI
+  #prevSkip=#leftSkip
+
+  Repeat "#i",1 #resis[0]
+
+    newline 5
+    cell GroupBox
+    set width -1 border line titleposition none
+    set bordercolor "Box Lines"
+
+    #leftSkip=0
+    newline -9
+    cell static local(#theType)&", "&local(RESI)&" #"&#i&": "
+    sizetofit
+
+	cell LinkButton
+	TextExpression @#theID.rec
+	AppendedExpression view
+	set border no Font "Hyperlink Text" alignment left
+	set RecordLink #theID
+	sizetofit -1
+	Help local("Click to open this individual and edit this residence")
+
+	gosub Show_Tag local("PLAC"),@#theID.RESI.i.#i.PLAC
+    ClearTabs
+    SetTab #labelWidth+24
+	gosub Show_Tag local("FORM"),@#theID.RESI.i.#i.PLAC.FORM
+	gosub Show_Tag local("_GPS"),@#theID.RESI.i.#i.PLAC._GPS
+	gosub ResetTabs
+	gosub Show_Tag local("DATE"),@#theID.RESI.i.#i.DATE.user
+	gosub Show_Field local("AGE"),@#theID.RESI.i.#i.AGE
+	gosub Show_Tag local("ADDR"),@#theID.RESI.i.#i.ADDR
+	gosub Show_Tag local("ADR1"),@#theID.RESI.i.#i.ADDR.ADR1
+	gosub Show_Tag local("ADR2"),@#theID.RESI.i.#i.ADDR.ADR2
+	gosub Show_Tag local("CITY"),@#theID.RESI.i.#i.ADDR.CITY
+	gosub Show_Tag local("STAE"),@#theID.RESI.i.#i.ADDR.STAE
+	gosub Show_Tag local("CTRY"),@#theID.RESI.i.#i.ADDR.CTRY
+	gosub Show_Tag local("_GPS"),@#theID.RESI.i.#i._GPS
+
+    RepeatWith "#ph" from @#theID.RESI.i.#i.PHON
+	  gosub Show_Tag local("PHON"),#ph
+    EndRepeat
+
+	#numURLs[0]=0
+	#numOBJEs=0
+    RepeatWith "#obje" from @#theID.RESI.i.#i.OBJE
+	  gosub Show_Image #obje
+    EndRepeat
+
+    #leftSkip=0
+    if #numURLs[0]>0
+      newline
+      gosub LineLabel,local("URLs & Emails")
+      hskip 5
+      #leftSkip=#hpos$
+      repeat "#iu",1,#numURLs[0]
+        newline
+        cell Multimedia
+        #objeID=#numURLs[#iu]
+        set url @#objeID._FILE font "Hyperlink Text"
+        if @#objeID.TITL<>""
+          TextExpression @#objeID.TITL
+        else
+          TextExpression @#objeID._FILE
+        endif
+        set objectImage @#objeID imageposition left imageheight 22
+        sizetofit -1
+        set height 22
+        set help local("Click to open this URL or Email in browser or email program")
+
+        ! rest in a child window
+        if printing is false
+          HMoveTo #rightMargin$-#rightSkip-21-#cellSkip
+          cell LinkButton
+          set border no width -1 image "details_here"
+          RecordLink @#objeID
+		  set target child
+		  sizetofit
+          Help local("Click to view multimedia record for thus URL or Email address")
+        endif
+      endrepeat
+      #leftSkip=0
+    endif
+
+    #numNOTE=0
+    RepeatWith "#ntr" from @#theID.RESI.i.#i.NOTE
+      #numNOTE+=1
+      if #numNOTE=1
+        newline
+        gosub LineLabel,local("NOTE")
+		set offset 1
+        hskip 5
+        #leftSkip=#hpos$
+      endif
+      cell ExpressionField @#ntr.CONC
+	  set width -1
+      set MinHeight 22 border no offset 2
+      sizetofit 3
+    EndRepeat
+
+    EndGroup
+
+    #leftSkip=#prevSkip
+
+  EndRepeat
+endSub
+
+gosub ResetTabs
+
+! -------------- Family Details
+gosub ABSectionLabel local("Family Group"),"","","","",""
+
+#husb=@HUSB
+#wife=@WIFEShow HUSB
+#husbType=#parentTypeShow WIFE
+#wifeType=#parentType! --------- Residences --------------
+gosub ABSectionLabel local("Known Family Residences"),"","","","",""
+
+#leftSkip=#leftSkip$+18
+#lineSkip=1
+
+if #husb!=""
+  gosub Show_RESI #husb,#husbType
+endif
+if #wife!=""
+  gosub Show_RESI #wife,#wifeType
+endif
+
+#chilNum=0
+RepeatWith "#ch" from @CHIL
+  #chilNum+=1
+  gosub Show_RESI #ch,local("Child")&" #"&#chilNum
+EndRepeat
+
+
+hideexcess

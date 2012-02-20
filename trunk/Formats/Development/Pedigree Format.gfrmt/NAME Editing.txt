@@ -1,0 +1,29 @@
+! edit name
+if #msgnum>0
+  newline
+  cell static,local("NAME")&":"
+  SizeToFit
+  Offset 2
+
+  cell EditName
+  set Width #msg
+  help local("Enter name using slashes for surname if needed")
+  set ScriptLink "Make_UPPERCASE_NAME" ScriptType "format"
+  set ScriptLink "Make_Uppercase_SURNAME" ScriptType "format"
+  set ScriptLink "Make_Titlecase_Name" ScriptType "format"
+
+  cell StructuresLink,NameDetails
+  set border no
+  if more
+    set image "details_here"
+  else
+    set image "details"
+  endif
+  SizeToFit
+  LinkAll all
+
+  #tagKey=@tag&" details"
+  help local("Click to edit")&": "&local(#tagKey)
+else  use _Unknown_endif
+
+hideexcess

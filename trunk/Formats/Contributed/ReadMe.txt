@@ -1,0 +1,1 @@
+This folder has user interface formats contributed by GEDitCOM II users.

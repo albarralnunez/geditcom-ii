@@ -1,0 +1,17 @@
+! Show all tags of type #theTag in a section
+! Label the box with #label which is already localized
+
+sub TagBlock,#theTag,#label
+  if #theTag is here
+    gosub SectionLabel #label
+    ShowAll #theTag
+
+    if #theTag="OBJE"
+      if @rec="INDI"
+        show _NOPOR
+      else if @rec="FAM"
+        show _NOPOR
+      endif
+    endif
+  endif
+endsub

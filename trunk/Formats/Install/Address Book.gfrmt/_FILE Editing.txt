@@ -1,0 +1,43 @@
+load LineLabel
+
+! leave room for change button
+#buttonWidth=100#edge=#rightMargin$-#rightSkip-#cellSkip-#buttonWidth
+
+if #msg="url"
+  newline
+  gosub LineLabel,"URL"
+  offset #buttonOffset
+
+  cell LinkButton,@contents
+  set border no alignment left offset #buttonOffset
+  set MenuLink "Attach Multimedia"
+  sizetofit -1
+  help local("Click to change URL or convert to a multimedia file link")
+  #btnHelp="Click to change URL or convert to a multimedia file link"
+
+else
+  newline
+  gosub LineLabel,local(@tag)
+  set offset #buttonOffset
+
+  hskip 0
+
+  cell LinkButton,@contents
+  if #msg=""
+    #msg="?"
+  endif
+  set text " ("&local("Kind")&": "&#msg&")"
+  set border none font "Static Text" alignment left offset #buttonOffset
+  set MenuLink "Attach Multimedia"
+  sizetofit -1
+  help local("Click to change the file path, file kind, or convert to a URL link")
+  #btnHelp="Click to change the file path, file kind, or convert to a URL link"
+endif
+
+HMoveTo #edge
+cell LinkButton
+set text local("Change")&"..."
+set MenuLink "Attach Multimedia" border shadowlesssquare
+sizetofit
+set shift #buttonWidth-#cellWidth$
+help local(#btnHelp)

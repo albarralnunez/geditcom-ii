@@ -1,0 +1,24 @@
+! DATA in SOUR Record, HEAD Record, and source details
+
+NewLinecell static local(@tag)&": "
+sizetofit
+
+if @rec="HEAD"
+  cell EditValue
+  set width -1 border none
+endif
+  
+NewLine
+tab
+#leftSkip=#hpos$
+
+if @rec="SOUR"
+  ShowAll EVEN  ShowAll AGNC
+  ShowAll NOTE
+else
+  ShowAll DATE "label"
+  if @rec="HEAD"
+    ShowAll COPR
+  else    ShowAll TEXT
+  endif
+endif

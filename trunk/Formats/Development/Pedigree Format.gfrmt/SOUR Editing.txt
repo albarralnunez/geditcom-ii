@@ -1,0 +1,64 @@
+! special case for header
+if @rec=HEAD
+  ! static text with level and tab  NewLine
+  cell static,local("System ID")&":"
+  set tabwidth 1 alignment right
+
+  ! edit field with value
+  cell EditValue
+  set Width -1 Offset -2
+  help local("Enter approved system ID code")
+
+  show NAME
+  show VERS
+  show CORP
+  show DATA
+
+else
+  ! link to SOUR record
+  if @contents is validlink
+    if #msg="label"
+      newline
+      cell static,local("Source")&":"
+	  sizetofit
+      set alignment right tabwidth 1
+    else
+      newline
+      cell static,local("bullet")
+ 	  SizeToFit
+    endif
+
+    cell StructuresLink,SourceDetails
+    set border no
+    if more
+      set image "details_here"
+    else
+      set image "details"
+    endif
+    SizeToFit
+    set height 24
+    LinkAll all
+    help local("Click for source details specific to this record")
+
+    cell LinkButton
+    TextExpression @contents.rec
+    AppendedExpression view
+    !Watch @contents.viewTag
+    set border no Font "Hyperlink Text" alignment left
+    sizetofit -1
+    RecordLink @contents
+    target child
+    Help local("Click to view and edit source")
+
+    ! need support for source details
+    hideexcess
+
+  ! embedded source
+  else
+    newline
+    cell static,local("(Embedded source - reopen file to fix)")
+    set width -1 offset 3
+    hideexcess
+  endif
+
+endif

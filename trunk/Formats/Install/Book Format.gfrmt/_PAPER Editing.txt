@@ -1,0 +1,10 @@
+load LineLabel
+
+! labeled popup menu
+gosub LineLabel local(@tag)
+offset #buttonOffset
+
+! popup menu
+cell PopupMenuEdit
+set border noMenuItems "US Letter","A4"SizeToFit
+help local("Click to select paper size for your LaTeX installation")

@@ -1,0 +1,96 @@
+load ResetTabs,RecordTitle,WikiSection,WebLinks,ExtraSections
+
+DropTypes SOUR,NOTE,OBJE,INDI,FAM
+#hasLabel="YES"
+gosub ResetTabs
+
+! -------------- Repository Details --------------
+gosub RecordTitle local("Research Log Record")
+
+! -------------- Title
+#sectionCount+=2
+GoSub WikiSection,local("Log Title"),"Details"
+
+newline
+cell StaticField
+set width -1 minheight 10 border none lineheight #lineMult
+if _TTL is here
+  text "The title of this research log is "&@_TTL&". "
+else
+  text "This research log is untitled. "
+endif
+if _OBJECT is here
+  text "The objective is: "&@_OBJECT
+endif
+
+sizetofit
+
+! ---- Links to records (if any) ------
+if _INDI|_FAM is here
+  #sectionCount+=2
+  GoSub WikiSection,local("Researched Records"),""
+  ShowAll _INDI
+  ShowAll _FAM
+endif
+
+! -------------- Tasks
+#recSections[#sectionCount]=local("Tasks")
+#recSections[#sectionCount+1]="Tasks"
+#sectionCount+=2
+if _TASK is here
+  GoSub WikiSection,local("Tasks"),"Tasks"
+  showAll _TASK "wiki"
+endif
+
+! -------------- Summary
+#recSections[#sectionCount]=local("Summary")
+#recSections[#sectionCount+1]="Details"
+#sectionCount+=2
+if _SUMMARY is here
+  GoSub WikiSection,local("Summary"),"Details"
+
+  NewLine
+  cell ExpressionField,@_SUMMARY
+  set Width -1 border none minheight 1 alignment justify
+  sizetofit
+endif
+
+!--------- Notes
+#recSections[#sectionCount]=local("Notes")
+#recSections[#sectionCount+1]="Notes"
+#sectionCount+=2
+if NOTE is here
+  GoSub WikiSection,local("Notes"),"Notes"
+  ShowAll NOTE "wiki"
+endif
+
+!-------- Sources
+#recSections[#sectionCount]=local("Sources")
+#recSections[#sectionCount+1]="Sources"
+#sectionCount+=2
+#sourceNumber=1
+if SOUR is here
+  GoSub WikiSection,local("Sources"),"Sources"
+  ShowAll SOUR "wiki"
+endif
+
+!-------- Multimedia
+#recSections[#sectionCount]=local("Multimedia")
+#recSections[#sectionCount+1]="Media"
+#sectionCount+=2
+if OBJE is here
+  GoSub WikiSection,local("Multimedia"),"Media"
+  newline 3
+  #numURLs[0]=0
+  ShowAll OBJE
+  if #numURLs[0]>0
+    GoSub WebLinks,"wiki"
+  endif
+endif
+
+hideexcess
+
+gosub ExtraSections
+
+optionaltag _INDI,local("Individual Being Researched")
+optionaltag _FAM,local("Family Being Researched")

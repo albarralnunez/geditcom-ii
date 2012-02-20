@@ -1,0 +1,8 @@
+if printing is false
+  newline 2
+  tab @level-1
+  cell CheckBoxEdit,local(@tag)
+  set autoreload yes
+  sizetofit
+  help local("Check this box to hide the point of interest on the map")
+endif

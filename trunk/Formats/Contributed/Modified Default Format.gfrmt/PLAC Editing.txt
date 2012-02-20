@@ -1,0 +1,63 @@
+!SJGR different to default to cope with place details in main window which was originally done before it was part of the default and was done a slightly different way
+
+if @rec=HEAD
+  NewLine
+  cell static,local("Default Place Hierarchy")&":"
+  set width -1
+  Show FORM
+
+else if @rec=SOUR
+  use _Unknown_
+
+else if #msg="Event"
+  ! edit field with value
+  moveto #hpos$, #vpos$-2  !Slightly reposition as new drop down fields don't line up with editing fields exactly  SJGR
+  cell editvalue
+  set tabwidth 1 width #cellWidth$+2
+  help local("Enter place for this event")
+
+cell static
+  set width 21 alignment center border square height 21 offset 2
+  ! cellBackground "Table Cell Background"
+  
+ ! link to place record
+ if tag exists    if @contents.p._BOX._BNDS!=""
+      #pim="urllink"
+    else if @contents.p._URL!=""
+      #pim="urllink"
+    else
+      #pim="GPS"
+    endif
+hskip -23
+  cell LinkButton
+  set width 21 border shadowlesssquare
+  set image #pim imageheight 17 offset 2 target child
+  RecordLink "place"
+  help local("Click to view and edit place record")
+endif
+
+
+else
+  #edge=#rightMargin$-#rightSkip-21-#cellSkip
+  NewLine
+  cell static,local(@tag)&":"
+  set tabwidth 1 alignment right
+  ! edit field with value  cell editvalue
+  set Width #edge-#hpos$ Offset -2
+  help local("Enter place for this event")
+
+  ! link to place record
+  if tag exists    if @contents.p._BOX._BNDS!=""
+      #pim="urllink"
+    else if @contents.p._URL!=""
+      #pim="urllink"
+    else
+      #pim="GPS"
+    endif
+    cell LinkButton
+  set width 20 border none
+  set image #pim imageheight 21 offset -1 target child
+  RecordLink "place"
+  help local("Click to view and edit place record")
+  endif
+endif

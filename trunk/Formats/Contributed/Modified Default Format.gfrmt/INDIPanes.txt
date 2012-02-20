@@ -1,0 +1,44 @@
+sub INDIPanes,#thisPane
+	! --------- Name -----------
+	#oldWidth=#rightMargin$
+	DisplayWidth #oldWidth+#rightSkip+1
+	newline -#topMargin$-1
+	hskip -#leftSkip-1
+	cell GroupBox
+	border line
+	titleposition none
+	cellbackground "Record Header Box Background"
+	width -1
+
+	moveto 1,1
+
+	cell PaneBar
+	AddPane local("Individual"),""
+	#nevt=@count.INDIEvents+@count.INDIAttributes+@count.INDIOrdinances
+	AddPane local("Events")&" ("&#nevt&")","Events"
+	AddPane local("PEDI"),"Pedi"
+	AddPane local("Multimedia")&" ("&@countAll.OBJE&")","Media"
+	#plab=local("NOTE")&" ("&@count.NOTE&") "&local("and")
+	#plab&=" "&local("Sources")&" ("&@count.SOUR&")"
+	AddPane #plab,"Notes"
+	AddPane local("Other"),"Other"
+    AddPane local("All"),"All"
+	set selected #thisPane
+	sizetofit
+	set height #cellHeight$+1		! needed for Tiger
+	shift (#rightMargin$-#hpos$-#cellWidth$)/2
+	help local("Click to view section of this individual's data")
+
+	newline 5
+	Show NAME #rightMargin$-265
+	Show SEX
+	Show RESN
+	if NAME is here
+  		newline
+  		ShowAll NAME #rightMargin$-265
+	endif
+	EndGroup
+
+	DisplayWidth #oldWidth
+
+endSub

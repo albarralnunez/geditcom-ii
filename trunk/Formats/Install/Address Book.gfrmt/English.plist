@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>&lt;LANG&gt;</key>
+	<string>English</string>
+	<key>ADDR</key>
+	<string>Address</string>
+	<key>ADR1</key>
+	<string>Address Line 1</string>
+	<key>ADR2</key>
+	<string>Address Line 2</string>
+	<key>AGE</key>
+	<string>Age</string>
+	<key>Add</key>
+	<string>Add</string>
+	<key>Add New Residence</key>
+	<string>Add New Residence</string>
+	<key>Add Phone Number</key>
+	<string>Add Phone Number</string>
+	<key>Add URL or Email</key>
+	<string>Add URL or Email</string>
+	<key>Address Book</key>
+	<string>Address Book</string>
+	<key>Address Book Settings</key>
+	<string>Address Book Settings</string>
+	<key>All Citing Records</key>
+	<string>All Citing Records</string>
+	<key>BIRT</key>
+	<string>Born</string>
+	<key>Bottom Margin</key>
+	<string>Bottom Margin</string>
+	<key>Box Lines</key>
+	<string>Box Lines</string>
+	<key>Button Text</key>
+	<string>Button Text</string>
+	<key>CITY</key>
+	<string>City</string>
+	<key>CTRY</key>
+	<string>Country</string>
+	<key>Cancel</key>
+	<string>Cancel</string>
+	<key>Cell Separation</key>
+	<string>Cell Separation</string>
+	<key>Change</key>
+	<string>Change</string>
+	<key>Check Box Text</key>
+	<string>Check Box Text</string>
+	<key>Check this box to indicate none of the images linked to this record is a portrait.</key>
+	<string>Check this box to indicate none of the images linked to this record is a portrait.</string>
+	<key>Child</key>
+	<string>Child</string>
+	<key>Click 'Edit' button to view and edit these notes</key>
+	<string>Click 'Edit' button to view and edit these notes</string>
+	<key>Click and type to edit the name or control click to change the name case</key>
+	<string>Click and type to edit the name or control click to change the name case</string>
+	<key>Click for list of all citing records</key>
+	<string>Click for list of all citing records</string>
+	<key>Click to add URL or Email address</key>
+	<string>Click to add URL or Email address</string>
+	<key>Click to add URL or Email address for this residence</key>
+	<string>Click to add URL or Email address for this residence</string>
+	<key>Click to add a new residence</key>
+	<string>Click to add a new residence</string>
+	<key>Click to add address details in separate lines</key>
+	<string>Click to add address details in separate lines</string>
+	<key>Click to add another phone number for this residence</key>
+	<string>Click to add another phone number for this residence</string>
+	<key>Click to add latitude and longitude</key>
+	<string>Click to add latitude and longitude</string>
+	<key>Click to add place hierarchy or place latitude and longitude</key>
+	<string>Click to add place hierarchy or place latitude and longitude</string>
+	<key>Click to attach a new multimedia object</key>
+	<string>Click to attach a new multimedia object</string>
+	<key>Click to attach a new set of notes</key>
+	<string>Click to attach a new set of notes</string>
+	<key>Click to attach multimedia object for this residence</key>
+	<string>Click to attach multimedia object for this residence</string>
+	<key>Click to attach notes about this residence</key>
+	<string>Click to attach notes about this residence</string>
+	<key>Click to change URL or convert to a multimedia file link</key>
+	<string>Click to change URL or convert to a multimedia file link</string>
+	<key>Click to change record restriction</key>
+	<string>Click to change record restriction</string>
+	<key>Click to change the file path, file kind, or convert to a URL link</key>
+	<string>Click to change the file path, file kind, or convert to a URL link</string>
+	<key>Click to change this person's sex</key>
+	<string>Click to change this person's sex</string>
+	<key>Click to export this individual to a vCard file</key>
+	<string>Click to export this individual to a vCard file</string>
+	<key>Click to link this record to a multmedia object.</key>
+	<string>Click to link this record to a multmedia object.</string>
+	<key>Click to move all individuals with known residences to an album named 'Known Residences'</key>
+	<string>Click to move all individuals with known residences to an album named 'Known Residences'</string>
+	<key>Click to open in a helper application.</key>
+	<string>Click to open in a helper application.</string>
+	<key>Click to open this URL or Email in browser or email program</key>
+	<string>Click to open this URL or Email in browser or email program</string>
+	<key>Click to open this individual and edit this residence</key>
+	<string>Click to open this individual and edit this residence</string>
+	<key>Click to remove URL or Email address</key>
+	<string>Click to remove URL or Email address</string>
+	<key>Click to remove URL or Email address from this residence</key>
+	<string>Click to remove URL or Email address from this residence</string>
+	<key>Click to remove a multimedia object</key>
+	<string>Click to remove a multimedia object</string>
+	<key>Click to remove a residence</key>
+	<string>Click to remove a residence</string>
+	<key>Click to remove a set of notes</key>
+	<string>Click to remove a set of notes</string>
+	<key>Click to remove multimedia object from this residence</key>
+	<string>Click to remove multimedia object from this residence</string>
+	<key>Click to remove set of notes from this residence</key>
+	<string>Click to remove set of notes from this residence</string>
+	<key>Click to remove this phone number</key>
+	<string>Click to remove this phone number</string>
+	<key>Click to set image scaling</key>
+	<string>Click to set image scaling</string>
+	<key>Click to view and edit multimedia object</key>
+	<string>Click to view and edit multimedia object</string>
+	<key>Click to view and edit notes</key>
+	<string>Click to view and edit notes</string>
+	<key>Click to view individual record</key>
+	<string>Click to view individual record</string>
+	<key>Click to view multimedia record for thus URL or Email address</key>
+	<string>Click to view multimedia record for thus URL or Email address</string>
+	<key>Click to view record for</key>
+	<string>Click to view record for</string>
+	<key>DATE</key>
+	<string>Date</string>
+	<key>DEAT</key>
+	<string>Died</string>
+	<key>Default Cell Height</key>
+	<string>Default Cell Height</string>
+	<key>Default Cell Width</key>
+	<string>Default Cell Width</string>
+	<key>Details</key>
+	<string>Details</string>
+	<key>Edit</key>
+	<string>Edit</string>
+	<key>Editing Background</key>
+	<string>Editing Background</string>
+	<key>Editing Text</key>
+	<string>Editing Text</string>
+	<key>Embedded multimedia (reopen file to fix)</key>
+	<string>Embedded multimedia (reopen file to fix)</string>
+	<key>Enter URL (beginning in 'http') or Email address (containing '@')</key>
+	<string>Enter URL (beginning in 'http') or Email address (containing '@')</string>
+	<key>Enter latitude and longitude (e.g., 45.3N, 112.3W)</key>
+	<string>Enter latitude and longitude (e.g., 45.3N, 112.3W)</string>
+	<key>Export vCard</key>
+	<string>Export vCard</string>
+	<key>FAM records</key>
+	<string>Family records</string>
+	<key>FORM</key>
+	<string>Hierarchy</string>
+	<key>Family Group</key>
+	<string>Family Group</string>
+	<key>Father</key>
+	<string>Father</string>
+	<key>Female</key>
+	<string>Female</string>
+	<key>Find Individuals with Residences</key>
+	<string>Find Individuals with Residences</string>
+	<key>HEAD records</key>
+	<string>the Header Record</string>
+	<key>HUSB</key>
+	<string>Husband</string>
+	<key>Hyperlink Text</key>
+	<string>Hyperlink Text</string>
+	<key>INDI records</key>
+	<string>Individual records</string>
+	<key>It is now in the 'Known Residences' album</key>
+	<string>It is now in the 'Known Residences' album</string>
+	<key>Kind</key>
+	<string>Kind</string>
+	<key>Known Family Residences</key>
+	<string>Known Family Residences</string>
+	<key>Known Residences</key>
+	<string>Known Residences</string>
+	<key>Label Text</key>
+	<string>Section Label</string>
+	<key>Label Width</key>
+	<string>Label Width</string>
+	<key>Left Margin</key>
+	<string>Left Margin</string>
+	<key>Line Separation</key>
+	<string>Line Separation</string>
+	<key>Male</key>
+	<string>Male</string>
+	<key>Margin Settings</key>
+	<string>Margin Settings</string>
+	<key>Mother</key>
+	<string>Mother</string>
+	<key>Multimedia</key>
+	<string>Multimedia</string>
+	<key>Multimedia Object</key>
+	<string>Multimedia Object</string>
+	<key>Multimedia file not found (click to fix)</key>
+	<string>Multimedia file not found (click to fix)</string>
+	<key>NOTE</key>
+	<string>Notes</string>
+	<key>NOTE records</key>
+	<string>Note records</string>
+	<key>NOTES_HELP</key>
+	<string>Enter free-format or html text</string>
+	<key>Name Font</key>
+	<string>Name Font</string>
+	<key>New Address</key>
+	<string>New Address</string>
+	<key>No image representation. Click to open in another application</key>
+	<string>No image representation. Click to open in another application</string>
+	<key>No individual records are linked to these notes</key>
+	<string>No individual records are linked to these notes</string>
+	<key>No individuals with known residences were found</key>
+	<string>No individuals with known residences were found</string>
+	<key>None of these objects is a portrait</key>
+	<string>None of these objects is a portrait</string>
+	<key>Notes On The Following Inidividuals:</key>
+	<string>Notes On The Following Inidividuals:</string>
+	<key>OBJE</key>
+	<string>Multimedia</string>
+	<key>OBJE records</key>
+	<string>Multimedia Object records</string>
+	<key>OK</key>
+	<string>OK</string>
+	<key>One individual with residences was found</key>
+	<string>One individual with residences was found</string>
+	<key>PHON</key>
+	<string>Phone Number</string>
+	<key>PLAC</key>
+	<string>Place</string>
+	<key>POST</key>
+	<string>Postal Code</string>
+	<key>Please switch to a different format, such as the 'Default Format,' to edit this kind of record.</key>
+	<string>Please switch to a different format, such as the 'Default Format,' to edit this kind of record.</string>
+	<key>Popup Menu Text</key>
+	<string>Popup Menu Text</string>
+	<key>REPO records</key>
+	<string>Repository records</string>
+	<key>RESI</key>
+	<string>Residence</string>
+	<key>Remove Phone Number</key>
+	<string>Remove Phone Number</string>
+	<key>Remove URL or Email</key>
+	<string>Remove URL or Email</string>
+	<key>Remove a Residence</key>
+	<string>Remove a Residence</string>
+	<key>Remove a multimedia object</key>
+	<string>Remove a Multimedia Object</string>
+	<key>Remove notes</key>
+	<string>Remove Notes</string>
+	<key>Residence with no place or address</key>
+	<string>Residence with no place or address</string>
+	<key>Right Margin</key>
+	<string>Right Margin</string>
+	<key>SOUR records</key>
+	<string>Source records</string>
+	<key>STAE</key>
+	<string>State</string>
+	<key>SUBM records</key>
+	<string>Submitter records</string>
+	<key>SUBN records</key>
+	<string>Submission records</string>
+	<key>Section Line Left Margin</key>
+	<string>Section Line Left Margin</string>
+	<key>Section Lines</key>
+	<string>Lines Between Sections</string>
+	<key>Select URL or Email address to remove</key>
+	<string>Select URL or Email address to remove</string>
+	<key>Select multimedia object to remove</key>
+	<string>Select multimedia object to remove</string>
+	<key>Select notes to remove</key>
+	<string>Select notes to remove</string>
+	<key>Select residence to remove</key>
+	<string>Select residence to remove</string>
+	<key>Select sex</key>
+	<string>Select sex</string>
+	<key>Size</key>
+	<string>Size</string>
+	<key>Static Text</key>
+	<string>Static Text</string>
+	<key>TEXT</key>
+	<string>Text</string>
+	<key>TITL</key>
+	<string>Title</string>
+	<key>TYPE</key>
+	<string>Type</string>
+	<key>The 'Address Book' format is not set up for editing of</key>
+	<string>The 'Address Book' format is not set up for editing of</string>
+	<key>The entered text does not appear to be a URL or an email address.</key>
+	<string>The entered text does not appear to be a URL or an email address.</string>
+	<key>They are now all in the 'Known Residences' album</key>
+	<string>They are now all in the 'Known Residences' album</string>
+	<key>This individual does not have any data of that type to remove</key>
+	<string>This individual does not have any data of that type to remove</string>
+	<key>This text can be edited by clicking in the field and typing</key>
+	<string>This text can be edited by clicking in the field and typing</string>
+	<key>Thumbnails Per Row</key>
+	<string>Thumbnails Per Row</string>
+	<key>Title</key>
+	<string>Title</string>
+	<key>Top Margin</key>
+	<string>Top Margin</string>
+	<key>URLs &amp; Email Addresses</key>
+	<string>URLs &amp; Email Addresses</string>
+	<key>URLs &amp; Emails</key>
+	<string>URLs &amp; Emails</string>
+	<key>URLs must begin in 'http' and email addresses must contain '@'</key>
+	<string>URLs must begin in 'http' and email addresses must contain '@'</string>
+	<key>Unknown</key>
+	<string>Unknown</string>
+	<key>Utilities</key>
+	<string>Utilities</string>
+	<key>Vertical Shift of Button Labels</key>
+	<string>Vertical Shift of Button Labels</string>
+	<key>Vertical Shift of Edit Field Labels</key>
+	<string>Vertical Shift of Edit Field Labels</string>
+	<key>WIFE</key>
+	<string>Wife</string>
+	<key>When checked it will prevent non-portrait images from appearing in family trees.</key>
+	<string>When checked it will prevent non-portrait images from appearing in family trees.</string>
+	<key>Window Background</key>
+	<string>Window Background</string>
+	<key>You can configure which application opens each type of multimedia object.</key>
+	<string>You can configure which application opens each type of multimedia object.</string>
+	<key>You can control click for editing options when using HTML text</key>
+	<string>You can control click for editing options when using HTML text.</string>
+	<key>_BOK</key>
+	<string>Book Style</string>
+	<key>_BOK records</key>
+	<string>Book Style records</string>
+	<key>_FILE</key>
+	<string>File Path</string>
+	<key>_GPS</key>
+	<string>Lat,Lon</string>
+	<key>_KEY</key>
+	<string>Keywords</string>
+	<key>_LOC</key>
+	<string>Location</string>
+	<key>_LOG records</key>
+	<string>Research Log records</string>
+	<key>_PLC</key>
+	<string>Place</string>
+	<key>_PLC records</key>
+	<string>Place records</string>
+	<key>_SCALE</key>
+	<string>Scale</string>
+	<key>address line</key>
+	<string>address line</string>
+	<key>city</key>
+	<string>city</string>
+	<key>city, county, state, country</key>
+	<string>city, county, state, country</string>
+	<key>country</key>
+	<string>country</string>
+	<key>fit</key>
+	<string>fit</string>
+	<key>individuals with residences were found</key>
+	<string>individuals with residences were found</string>
+	<key>postal code</key>
+	<string>postal code</string>
+	<key>state</key>
+	<string>state</string>
+	<key>the Father</key>
+	<string>the father</string>
+	<key>the HUSB</key>
+	<string>the husband</string>
+	<key>the Mother</key>
+	<string>the mother</string>
+	<key>the WIFE</key>
+	<string>the wife</string>
+</dict>
+</plist>

@@ -1,0 +1,81 @@
+!SJGR Changed to include age calculation where appropriate
+
+load TagBlock,AttachData,ListBlock,References,CalcAge
+
+gosub CalcAge
+
+
+! BIRT, DEAT, or MARR
+#eventTag=@contents
+
+#tagKey=#eventTag&" details"
+Title @this.altview&" - "&local(#tagKey)
+cell GroupBox,local(#tagKey)
+width -1
+SetTab 130
+
+! static text event date and place
+NewLine
+cell static,local("DATE")&":"
+set tabwidth 1 alignment right
+cell expression,@parent.DATE
+set Width -1 AppendedExpression view
+
+NewLine
+cell static,local("PLAC")&":"
+set tabwidth 1 alignment right
+cell expression,@parent.PLAC
+set Width -1
+
+if #eventTag="BIRT"  Show ADDR  ShowAll TYPE  ShowAll AGNCelse if #eventTag="DEAT"  Show ADDR
+  Show AGE  Show CAUS
+  ShowAll TYPE  ShowAll AGNCelse  Show ADDR
+  ShowAll TYPE  ShowAll AGNC  showAll HUSB  ShowAll WIFEendif
+
+! Family link in Birth events
+#attachFAMC=0
+if #eventTag=BIRT
+  if FAMC is Here    showall FAMC "BIRT"
+  else
+    #attachFAMC=1  endifendif
+EndGroup
+! --------- NOTEs, SOURs, and OBJEs -----------
+#objdone=""
+gosub TagBlock,"OBJE",local("Multimedia")
+gosub References,"_LOG"
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+width -1
+newline -#lineSkip-3
+#lineSkip=0
+Show NOTE
+Show SOUR
+Show OBJE
+Show _LOG
+if #attachFAMC=1
+  Show FAMC "BIRT"
+endif
+GoSub AttachData
+EndGroup
+#lineSkip=#lineSkip$
+
+optionaltag AGNC,local("AGNC"),local("AGNC")
+optionaltag TYPE,local("TYPE"),local("TYPE")
+if @rec=FAM
+  if @this.WIFE.SEX="M"
+    optionaltag HUSB,local("HUSB 1's Age"),"","AGE age"
+    optionaltag WIFE,local("HUSB 2's Age"),"","AGE age"
+  else if @this.HUSB.SEX="F"
+    optionaltag HUSB,local("WIFE 1's Age"),"","AGE age"
+    optionaltag WIFE,local("WIFE 2's Age"),"","AGE age"
+  else
+    optionaltag HUSB,local("HUSB's Age"),"","AGE age"
+    optionaltag WIFE,local("WIFE's Age"),"","AGE age"
+  endif
+endif
+
+resizewindow yes
+
+
+

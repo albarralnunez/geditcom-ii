@@ -1,0 +1,2 @@
+resizeWindow yes
+Show _SUMMARY

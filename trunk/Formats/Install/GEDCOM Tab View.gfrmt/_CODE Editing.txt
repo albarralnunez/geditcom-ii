@@ -1,0 +1,13 @@
+load LevTag
+
+gosub LevTag
+
+! popup menu
+cell PopupMenuEdit
+set autoreload yes
+MenuItems "BTL","BUR","CH","CMTY","CTHSE","CTRM","CTRR","DIP"
+MenuItems "GOVL","GRVE","HSP","LIBR","MSQE","MSSN","MUS"
+MenuItems local("(none)")&"::"
+MenuItems "RESI","RLG","syn","TMPL"help local("Click to enter type of this point of interest")set controlsize small border no offset #popupOffset 
+sizetofit
+

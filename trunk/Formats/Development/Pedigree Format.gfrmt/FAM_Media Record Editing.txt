@@ -1,0 +1,51 @@
+load ListBlock,FAMPanes,ResetTabs,TagBlock,ToolBtn
+
+! --------- Toolbar -----------
+#oldWidth=#rightMargin$
+DisplayWidth #oldWidth+#rightSkip+1
+newline -#topMargin$-1
+hskip -#leftSkip-1
+cell GroupBox
+border line
+titleposition none
+cellbackground "Record Header Box Background"
+width -1
+
+moveto 1,1
+gosub FAMPanes,"Media"
+hskip 10
+gosub ToolBtn,"Attach Multimedia","multimedia",local("Click to attach multimedia object")
+
+newline
+#halign=#hpos$
+Show HUSB link
+newline -4
+hmoveto #halign
+Show WIFE link
+
+EndGroup
+
+DisplayWidth #oldWidth
+
+GoSub ResetTabs
+
+! --------- OBJE -----------
+Gosub TagBlock,"OBJE",local("Multimedia")
+
+! -------- Additional Data ------------
+if CHAN is here
+  ClearTabs
+  SetTab 150,240,330
+  cell label,local("Additional Data")
+  SizeToFit
+  newline -3
+  cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-3
+  ShowAll CHAN
+  EndGroup
+endif
+
+DropTypes OBJE
+
+hideexcess

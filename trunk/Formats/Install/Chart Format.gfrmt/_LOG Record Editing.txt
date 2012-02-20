@@ -1,0 +1,60 @@
+load FAMLines
+
+DisplayWidth #paperWidth$+#leftSkip+#rightSkip
+ResizeWindow true
+
+settab #leftSkip+0.75*#paperWidth$
+
+! Title
+show _TTL
+
+! Objective
+gosub FAMLines 1
+show _OBJECT
+
+! research on
+gosub FAMLines 2
+if _FAM|_INDI is here
+  newline
+  cell static,local("Research Log on")&": "
+  set font "Details Text"
+  sizetofit
+  hskip 0
+  #leftSkip=#hpos$
+  ShowAll _INDI
+  ShowAll _FAM
+  #leftSkip=#leftSkip$
+  gosub FAMLines 2
+endif
+
+! The Tasks
+cell label,local("Tasks")
+sizetofit
+
+#taskNum=0
+ShowAll _TASK
+if #taskNum=0
+  Show _TASK
+endif
+
+! The Tasks
+gosub FAMLines 2
+cell label,local("_SUMMARY")
+sizetofit
+gosub FAMLines 1
+newline 3
+
+! button to edit
+if printing is false
+  cell StructuresLink "Log_Summary"
+  set text local("Edit") border shadowlesssquare
+  sizetofit
+  linkall _SUMMARY
+endif
+
+cell ExpressionField,@this._SUMMARY
+set width -1 font "Details Text" border none
+sizetofit
+
+
+hideexcess

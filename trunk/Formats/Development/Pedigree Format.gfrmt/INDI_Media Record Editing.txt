@@ -1,0 +1,57 @@
+load ListBlock,INDIPanes,TagBlock,ResetTabs,ToolBtn
+
+! -------------- Start Template -----------------
+
+GoSub ResetTabs
+#sex=@SEX
+
+! --------- Name -----------
+#oldWidth=#rightMargin$
+DisplayWidth #oldWidth+#rightSkip+1
+newline -#topMargin$-1
+hskip -#leftSkip-1
+cell GroupBox
+border line
+titleposition none
+cellbackground "Record Header Box Background"
+width -1
+
+! -------------- Mini Toolbar -----------------
+moveto 1,1
+GoSub INDIPanes,"Media"
+hskip 10
+gosub ToolBtn,"Attach Multimedia","multimedia",local("Click to attach multimedia object")
+
+newline 3
+Show NAME #rightMargin$-265
+Show SEX
+Show RESN
+if NAME is here
+  newline
+  ShowAll NAME #rightMargin$-265
+endif
+EndGroup
+
+DisplayWidth #oldWidth
+
+! --------- OBJEs -----------
+Gosub TagBlock,"OBJE",local("Multimedia")
+
+! -------- Additional Data ------------
+if CHAN is here
+  ClearTabs
+  SetTab 150,240,330
+  cell label,local("Additional Data")
+  SizeToFit
+  newline -3
+  cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-3
+  ShowAll CHAN
+  EndGroup
+endif
+
+DropTypes OBJE
+
+hideExcess
+

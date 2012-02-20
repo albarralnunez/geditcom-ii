@@ -1,0 +1,33 @@
+! existing note structure
+if tagexists is true
+
+  newline
+  cell static local(@tag)&":"
+  sizetofit
+  set tabwidth 1 alignment right
+  
+  cell LinkButton
+  TextExpression @contents.rec
+  AppendedExpression view
+  set border no Font "Hyperlink Text"
+  sizetofit -1
+  RecordLink @contents
+  Help local("Click to view associated record")
+
+  ! are there details?
+  ClearTabs
+  SetTab 180
+  Show RELA
+  ShowAll NOTE "label"
+  ShowAll SOUR "label"
+  ClearTabs
+  SetTab #assoTab
+
+! no data - an attach button
+else
+  ! button to link to new or existing notes
+  hskip 2  cell CreateLinkButton
+  set border shadowlesssquare width 26 height 26
+  image "association"
+  help local("Click to attach associated record")
+endif

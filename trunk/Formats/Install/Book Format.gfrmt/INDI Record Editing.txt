@@ -1,0 +1,54 @@
+load ResetTabs,SectionLabel,TagBlock
+
+DropTypes SOUR,NOTE,OBJE,INDI,FAM,_LOG,SUBM,INDICtrl
+
+#hasLabel="YES"
+gosub ResetTabs
+
+!--------- Personal Details
+gosub SectionLabel local("Personal Details")
+
+! NAME and SEX
+Show SEX
+Show NAME
+ShowAll NAMEShowAll RESN
+
+! --------- Birth and Death
+#hasLabel=local("Birth and Death Information")
+ShowAll BIRTShowAll DEAT
+
+!--------- Family as spouse
+if FAMS is here  gosub SectionLabel local("Spouses and Children")
+  ShowAll FAMS
+endif
+!--------- Family as child
+if FAMC is here  gosub SectionLabel local("Parents")
+  ShowAll FAMC
+endif
+
+!--------- Events and attributes
+#hasLabel=local("Individual Events")
+ShowAll INDIEvents
+
+!--------- Events and attributes
+#hasLabel=local("Individual Attributes")
+ShowAll INDIAttributes
+
+!--------- Ordinances
+#hasLabel=local("Individual Ordinances")
+ShowAll INDIOrdinances
+
+! --------- NOTEs, SOURs, OBJEs, and _LOGs -----------
+Gosub TagBlock,"NOTE",local("NOTE")
+Gosub TagBlock,"SOUR",local("Sources")
+if "OBJE" is here
+  gosub SectionLabel local("OBJE")
+  showall OBJE
+  show _NOPOR
+endif
+Gosub TagBlock,"_LOG",local("Research Logs")
+
+! --------- The Rest
+if more
+  gosub SectionLabel local("Additional Data")
+endif

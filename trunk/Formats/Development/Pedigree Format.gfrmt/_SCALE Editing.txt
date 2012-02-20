@@ -1,0 +1,7 @@
+newline
+cell static,local(@tag)&":"
+set tabwidth 1 alignment right
+
+! popup menu
+cell PopupMenuEditMenuItems "25%:.25"MenuItems "50%:.5"MenuItems "75%:.75"MenuItems "100%::"MenuItems "125%:1.25"MenuItems "150%:1.5"MenuItems "200%:2"MenuItems "300%:3"MenuItems "400%:4"help local("Click to set image scaling")
+set Autoreload YES border shadowlesssquareSizeToFit

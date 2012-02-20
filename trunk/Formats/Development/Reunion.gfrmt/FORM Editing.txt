@@ -1,0 +1,17 @@
+! static text with level and tabNewLine
+#name=string(@tag)
+if #name<>""
+  cell static #name&": "
+else
+  cell static @level&" "&@tag&" "
+endif
+sizetofit
+
+! edit field with value
+if @rec="OBJE"
+  cell EditFile
+  set autoreload yes
+else
+  cell EditValue
+endif
+set Width -1 border none

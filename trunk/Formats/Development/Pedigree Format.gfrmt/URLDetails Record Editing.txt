@@ -1,0 +1,13 @@
+Title @this.altview&" - "&local("Web Page")
+
+SetTab 90
+
+! show form
+cell label,local("Web Site Address")
+SizeToFit
+newline -3cell GroupBox
+set width -1 border line titleposition none
+newline -#lineSkip-3
+Show _URL "here"
+EndGroup
+resizeWindow yes

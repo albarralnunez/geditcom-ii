@@ -1,0 +1,43 @@
+load ListBlock,References
+
+! INDIOrdinances and FAMOrdinances
+#eventTag=@contents
+
+#tagKey=#eventTag&" details"
+Title @this.altview&" - "&local(#tagKey)
+cell GroupBox,local(#tagKey)
+width -1
+SetTab 120
+
+  ! static text event dateNewLine
+cell static,local("DATE")&":"
+set tabwidth 1 alignment right
+cell expression,@parent.DATE
+set Width -1 AppendedExpression view
+
+NewLine
+cell static,local("PLAC")&":"
+set tabwidth 1 alignment right
+cell expression,@parent.PLAC
+set Width -1 AppendedExpression view
+
+Show TEMPShow STAT #eventTag
+
+EndGroup
+
+! --------- NOTEs, SOURs, and logs -----------
+gosub References,"_LOG"
+
+! --------- Attach links
+newline
+cell GroupBox,local("Attach")
+width -1
+newline -#lineSkip-3
+#lineSkip=0
+Show NOTE
+Show SOUR
+Show _LOG
+EndGroup
+#lineSkip=#lineSkip$
+
+resizeWindow yes

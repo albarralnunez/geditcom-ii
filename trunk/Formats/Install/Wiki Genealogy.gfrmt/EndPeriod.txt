@@ -1,0 +1,13 @@
+! if has content, appended to cell and end with period
+sub EndPeriod,#fnote
+  if #fnote!=""
+    text #fnote
+    #c2=length(#fnote)
+    #lc=chars(#c2&"\"&#c2&"\"&#fnote)
+    if #lc!="."
+      text ". "
+    else
+      text " "
+    endif
+  endif
+endSub

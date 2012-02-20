@@ -1,0 +1,23 @@
+if @rec!="INDI"
+  newline
+  cell static local(@tag)&": "
+  set border none
+  sizetofit
+
+  cell editValue
+  set width -1 border none
+
+else
+  Cell EditName
+  set border none height 20
+  set width #rightMargin$-#leftSkip-100
+  set font "Name Editing Text"
+  if #msgnum>0
+    cell static
+    set width -1 alignment right    if #msg="M"      Text "("&local("Male")&")"    else if #msg="F"       Text "("&local("Female")&")"   else      Text "("&local("Sex unknown")&")"      endif    endif
+  endif
+
+  newline
+  tab
+  #leftSkip=#hpos$
+  ShowAll NPFX  ShowAll GIVN  ShowAll NICK  ShowAll SPFX  ShowAll SURN  ShowAll NSFX  ShowAll SOUR  ShowAll NOTEendif

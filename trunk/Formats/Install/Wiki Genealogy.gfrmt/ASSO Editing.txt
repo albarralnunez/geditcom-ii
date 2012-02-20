@@ -1,0 +1,11 @@
+load RecordChildLink,LineLabel
+
+! Label and link
+gosub LineLabel local(@tag)
+gosub RecordChildLink local("Click to view associated record"),"parent"
+
+! Possible subordinate data
+ShowAll TYPE
+ShowAll RELA
+ShowAll SOUR
+ShowAll NOTE

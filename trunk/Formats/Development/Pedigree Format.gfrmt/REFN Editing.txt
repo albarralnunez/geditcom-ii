@@ -1,0 +1,46 @@
+! static text with level and tab
+NewLine
+if @TYPE="Creation Date"
+  cell static,local("Creation Date")&":"
+  set tabwidth 1 alignment right
+  cell static,@contents
+  set width -1
+  help local("The date this record was first created")
+  hideExcess
+
+else if @TYPE="Created"
+  cell static,local("Creation Date")&":"
+  set tabwidth 1 alignment right
+  cell static,@contents
+  set width -1
+  help local("The date this record was first created")
+  hideExcess
+
+else
+  if @TYPE=""
+    cell static,local(@tag)&":"
+  else
+    cell Expression,@TYPE
+	localize true
+    set format "%@:"
+  endif
+  set tabwidth 1 alignment right
+  help local("Click info button to customize this label")
+
+  ! edit field with value
+  #edge=#rightMargin$-#rightSkip-21-#cellSkip
+  cell editvalue
+  set Width #edge-#hpos$ Offset -2
+
+  ! rest in a child window
+  cell StructuresLink,REFNLabel
+  set border no width -1
+  set Offset -2
+  if more
+    set image "details_here"
+  else
+    set image "details"
+  endif
+  LinkAll all
+  help local("Click to customize the label")
+endif

@@ -1,0 +1,25 @@
+tell application "GEDitCOM II"	set message visible to false
+	
+	-- line 1 is the tag, 2 is text for missing text on line 1
+	-- 3 is prompt, 4 is undo mssage
+	set sm to scriptMessage	set theTag to paragraph 1 of sm
+	set noName to paragraph 2 of sm
+	set inPrmpt to paragraph 3 of sm
+	set inUndo to paragraph 4 of sm
+	--if count of paragraphs in sm > 4
+	  --set urlnum to paragraph 5 of sm
+	--else
+	  --set urlnum to 0
+	--end if
+	
+	set locNoName to local string for key noName	set locOK to local string for key "OK"	set locCancel to local string for key "Cancel"	tell front document		set recRef to key record		tell recRef			set currentTags to every structure whose name is theTag			-- check for none			set numTags to (count of currentTags)			if numTags = 0 then return		end tell				-- list for selection		set listTags to {}		repeat with i from 1 to numTags			set oneTag to item i of currentTags			set tcontents to contents of oneTag			if tcontents is not "" then				set end of listTags to tcontents			else				set end of listTags to locNoName			end if		end repeat				-- pick one		set prmpt to local string for key inPrmpt		set undact to local string for key inUndo		set rem to user choice prompt prmpt list items listTags buttons {locOK, locCancel}		if item 1 of rem is locCancel then return		set whichOne to item 1 of item 3 of rem		set theRef to item whichOne of currentTags				-- delete it		begin undo		delete theRef		end undo action undact
+		
+		-- is new pane needed? (but causes problems when in child window)
+		--set urlnum to urlnum as integer
+		--if urlnum>0 then
+		    --tell recRef
+		        --if urlnum=numTags
+		            --show browserpane with id "WebAll"
+		        --end if
+		    --end tell
+		--end if	end tellend tell

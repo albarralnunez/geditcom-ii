@@ -1,0 +1,15 @@
+! existing cross reference
+if tagexists is true
+
+  cell LinkButton
+  TextExpression @contents.rec
+  AppendedExpression view
+  set border no Font "Hyperlink Text" width -1 alignment left
+  RecordLink @contents
+  Help local("Click to view cited record")
+
+! no cross link
+else
+  ! static text with level and tab  cell static,local("<no linked records>")
+  width -1
+endif

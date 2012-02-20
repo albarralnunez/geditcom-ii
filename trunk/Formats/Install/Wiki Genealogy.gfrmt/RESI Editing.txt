@@ -1,0 +1,53 @@
+load WikiSection,MiniDetail,ShowImageBox,EventDate
+
+if #msg="wiki"
+
+  if #hasLabel!="YES"
+    gosub WikiSection,#hasLabel,"RESI"
+    #hasLabel ="YES"
+  endif
+
+  newline
+  if #vpos$>#boxend
+    DisplayWidth #oldWidth
+  endif
+
+  if #rightMargin$>=#oldWidth
+    #objeID=@OBJE
+    if #objeID is validlink
+      if @#objeID.FORM<>"url"
+        gosub ShowImageBox #objeID
+      endif
+    endif
+  endif
+
+  newline
+  cell static,"◾"
+  set fontcolor "Block Color" offset 3
+  sizetofit
+
+  hskip 0
+  #leftSkip=#hpos$
+
+  cell StaticField
+  set width -1 minheight 10 border none lineheight #lineMult
+  GoSub EventDate,#ePrefix&" resided",@DATE.user,@PLAC
+  if #etext!=""
+    text #etext&". "
+    text "This residence had the following address. "
+  else
+    text #ePrefix&" lived in the residence at the following address. "
+  endif
+  sizetofit
+
+  Show ADDR "wiki"
+
+  ShowAll NOTE "wiki"
+
+  #ePrefix=#Pronoun
+
+  hideexcess
+
+else
+  use Attribute
+endif

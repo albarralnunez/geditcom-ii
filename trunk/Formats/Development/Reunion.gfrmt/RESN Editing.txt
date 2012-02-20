@@ -1,0 +1,10 @@
+newline
+cell static,local(@tag)&": "
+sizetofit
+
+cell LinkButton
+set border no width -1 alignment left offset -1
+set font "Hyperlink Text" TextExpression @this.RESN
+MenuLink "Attach Restriction"
+help local("Click to change record restriction")
+

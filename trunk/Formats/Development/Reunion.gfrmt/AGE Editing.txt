@@ -1,0 +1,7 @@
+if #msg!="nolabel"
+  NewLine  cell static local(@tag)&": "
+  sizetofit
+endif
+
+cell EditValue
+set border none width -1

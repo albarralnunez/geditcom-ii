@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>100%</key>
+	<string>100%</string>
+	<key>125%</key>
+	<string>125%</string>
+	<key>150%</key>
+	<string>150%</string>
+	<key>200%</key>
+	<string>200%</string>
+	<key>25%</key>
+	<string>25%</string>
+	<key>300%</key>
+	<string>300%</string>
+	<key>400%</key>
+	<string>400%</string>
+	<key>50%</key>
+	<string>50%</string>
+	<key>75%</key>
+	<string>75%</string>
+	<key>&lt;LANG&gt;</key>
+	<string>Swedish</string>
+	<key>ABBR</key>
+	<string>Kort Rubrik</string>
+	<key>ADDR</key>
+	<string>Adress</string>
+	<key>ADOP</key>
+	<string>Adoption</string>
+	<key>ADR1</key>
+	<string>Adress Linje 1</string>
+	<key>ADR2</key>
+	<string>Adress Rad 2</string>
+	<key>AFN</key>
+	<string>Ansedel Nummer</string>
+	<key>AGE</key>
+	<string>Ålder</string>
+	<key>AGNC</key>
+	<string>Agentur</string>
+	<key>ALIA</key>
+	<string>Alias</string>
+	<key>ANCE</key>
+	<string>Generationer av Förfäder</string>
+	<key>ANCI</key>
+	<string>Inlämnare med intresse för anorna</string>
+	<key>ANUL</key>
+	<string>Annulering</string>
+	<key>ASSO</key>
+	<string>Förening / Samfund</string>
+	<key>AUTH</key>
+	<string>Upphovsman</string>
+	<key>Additional Data</key>
+	<string>Ytterligare Data</string>
+	<key>Adopted</key>
+	<string>Adopterad</string>
+	<key>Adopted by both parents</key>
+	<string>Adopterad av båda föräldrarna</string>
+	<key>Adopted by father</key>
+	<string>Adopterad av fadern</string>
+	<key>Adopted by mother</key>
+	<string>Adopterad av modern</string>
+	<key>All Citing Records</key>
+	<string>Alla personkort koplade till denna källa</string>
+	<key>All Linked Records</key>
+	<string>Alla Länkade Personkort</string>
+	<key>All Notated Records</key>
+	<string>Alla Noterade Uppgifter</string>
+	<key>Anyone</key>
+	<string>Vem som helst</string>
+	<key>Article</key>
+	<string>Artikel</string>
+	<key>BAPL</key>
+	<string>LDS Dop</string>
+	<key>BAPM</key>
+	<string>Dop</string>
+	<key>BARM</key>
+	<string>Bar Mitzvah</string>
+	<key>BASM</key>
+	<string>Bas Mitzvah</string>
+	<key>BIC [Born in convenant]</key>
+	<string>BIC [Born in convenant]</string>
+	<key>BIRT</key>
+	<string>Födelse</string>
+	<key>BLES</key>
+	<string>Välsignelse</string>
+	<key>BLOB</key>
+	<string>Kodade Data</string>
+	<key>BTL</key>
+	<string>Slagfält</string>
+	<key>BUR</key>
+	<string>Begravningsplats</string>
+	<key>BURI</key>
+	<string>Begravning</string>
+	<key>Basic Format Settings</key>
+	<string>Grundformat Inställning</string>
+	<key>Birth</key>
+	<string>Födelse</string>
+	<key>Birth Date</key>
+	<string>Födelse Datum</string>
+	<key>Birth and Death Information</key>
+	<string>Födelse och Död</string>
+	<key>Book</key>
+	<string>Bok</string>
+	<key>Book Format Settings</key>
+	<string>Bokformat Inställning</string>
+	<key>Bottom Margin</key>
+	<string>Nedersta Marginalen</string>
+	<key>Button Text</key>
+	<string>Knapp Text</string>
+	<key>CALN</key>
+	<string>ISBN nummer</string>
+	<key>CAST</key>
+	<string>Caste Name</string>
+	<key>CAUS</key>
+	<string>Orsak</string>
+	<key>CENS</key>
+	<string>Cencus</string>
+	<key>CH</key>
+	<string>Kyrka</string>
+	<key>CHAN</key>
+	<string>Senast Ändrad</string>
+	<key>CHAR</key>
+	<string>Typsnitt</string>
+	<key>CHIL</key>
+	<string>Barn</string>
+	<key>CHR</key>
+	<string>Dop</string>
+	<key>CHRA</key>
+	<string>Vuxen dop</string>
+	<key>CITY</key>
+	<string>Stad</string>
+	<key>CMTY</key>
+	<string>Kyrkogård</string>
+	<key>CONC</key>
+	<string>Sammanlänkning</string>
+	<key>CONF</key>
+	<string>Konfirmation</string>
+	<key>CONL</key>
+	<string>LDS Confirmation</string>
+	<key>CONT</key>
+	<string>Fortsättning</string>
+	<key>COPR</key>
+	<string>Copyright</string>
+	<key>CORP</key>
+	<string>Organisation</string>
+	<key>CREM</key>
+	<string>Kremering</string>
+	<key>CTHSE</key>
+	<string>Courthouse</string>
+	<key>CTRM</key>
+	<string>Medical Center</string>
+	<key>CTRR</key>
+	<string>Religious Center</string>
+	<key>CTRY</key>
+	<string>Land</string>
+	<key>Canceled</key>
+	<string>Avbruten</string>
+	<key>Cell Separation</key>
+	<string>Cell Delning</string>
+	<key>Change</key>
+	<string>Ändra</string>
+	<key>Chapter</key>
+	<string>Kapittel</string>
+	<key>Check Box Text</key>
+	<string>Text i Markeringsruta</string>
+	<key>Check if event occurred but nothing else known</key>
+	<string>Markera om händelsen inträffat men inget annat är känt</string>
+	<key>Check this box to indicate none of the images linked to this record is a portrait.</key>
+	<string>Markera denna box för att visa att ingen bild som som är länkad till denna post är ett porträtt</string>
+	<key>Children</key>
+	<string>Barn</string>
+	<key>Citing Records</key>
+	<string>Användare av Källan</string>
+	<key>Cleared</key>
+	<string>Rensad</string>
+	<key>Click button to change the label</key>
+	<string>Klicka på knappen för att ändra etiketten</string>
+	<key>Click for list of all citing records</key>
+	<string>Klicka för lista över alla kopplade personkort</string>
+	<key>Click to change URL or convert to a multimedia file link</key>
+	<string>Klicka för att ändra URL eller ändra till multimedia länk</string>
+	<key>Click to change record restriction</key>
+	<string>Klicka för att ändra restriktioner beträffande uppgifterna</string>
+	<key>Click to change the file path, file kind, or convert to a URL link</key>
+	<string>Klicka för att ändra fil länk, filtyp, eller konvertera till en URL länk</string>
+	<key>Click to change this person's sex</key>
+	<string>Klicka för att ändra denna persons kön</string>
+	<key>Click to enter child pedigree status</key>
+	<string>Klicka för att lägga in barns släktskap</string>
+	<key>Click to enter quality of this source</key>
+	<string>Klicka för att sätta i kvalitén på denna källa</string>
+	<key>Click to enter status of this ordinance</key>
+	<string>Klicka för att lägga in status för denna förordning</string>
+	<key>Click to enter type of source</key>
+	<string>Klicka för att lägga in typ av källa</string>
+	<key>Click to link this record to a multmedia object.</key>
+	<string>Klicka för att länka denna uppgift till ett multimedia objekt</string>
+	<key>Click to open in a helper application.</key>
+	<string>Klicka för att öppna i ett hjälp program</string>
+	<key>Click to open in browser</key>
+	<string>Klicka för att öppna i Webläsare</string>
+	<key>Click to open this URL link in your browser application.</key>
+	<string>Klicka för att öppna denna URL länk i webbläsaren</string>
+	<key>Click to set image scaling</key>
+	<string>Klicka för att ställa Skaländrings</string>
+	<key>Click to set task status</key>
+	<string>Klicka för att ställa aktivitetsstatus</string>
+	<key>Click to view alias record</key>
+	<string>Klicka för att se alias Personkort</string>
+	<key>Click to view and edit multimedia object</key>
+	<string>Klicka för att se och ändra multimedia objekt</string>
+	<key>Click to view and edit notes</key>
+	<string>Klicka för att se och ändra notering</string>
+	<key>Click to view and edit repository</key>
+	<string>Klicka för att se och ändra reposorie</string>
+	<key>Click to view and edit source</key>
+	<string>Klicka för att se och redigera källa</string>
+	<key>Click to view associated record</key>
+	<string>Klicka för att se associerad uppgift</string>
+	<key>Click to view child's record</key>
+	<string>Klicka för att se barnets personkort</string>
+	<key>Click to view citing record</key>
+	<string>Klicka för att se personkort koplade till denna källa</string>
+	<key>Click to view family record</key>
+	<string>Klicka för att se familje uppgifter</string>
+	<key>Click to view home record</key>
+	<string>Klicka för att se hemkortet</string>
+	<key>Click to view individual record</key>
+	<string>Klicka för att se individuella uppgifter</string>
+	<key>Click to view record for</key>
+	<string>Klicka för att se personkort för</string>
+	<key>Click to view referencing record</key>
+	<string>Klicka för att se referens uppgifter</string>
+	<key>Click to view research log record</key>
+	<string>Klicka för att se forskningslog</string>
+	<key>Click to view spouse's record</key>
+	<string>Klicka för att se partnerns personkort</string>
+	<key>Click to view submission record</key>
+	<string>Klicka för att se LDS Submission record</string>
+	<key>Click to view submitter record</key>
+	<string>Klicka för att se uppgifter o uppgiftslämnare</string>
+	<key>Click to view submitter with ancestor interest</key>
+	<string>Klicka för att se Inlämnare med intresse för anorna</string>
+	<key>Click to view submitter with descendants interest</key>
+	<string>Klicka för att se Inlämnare med intresse för ättlingarna</string>
+	<key>Comments</key>
+	<string>Kommentarer</string>
+	<key>Completed</key>
+	<string>Slutförd</string>
+	<key>Creation Date</key>
+	<string>Skapad</string>
+	<key>DATA</key>
+	<string>Data</string>
+	<key>DATE</key>
+	<string>Datum</string>
+	<key>DEAT</key>
+	<string>Död</string>
+	<key>DESC</key>
+	<string>Generationer av Ättlingar</string>
+	<key>DESI</key>
+	<string>Inlämnare med intresse för ättlingarna</string>
+	<key>DEST</key>
+	<string>Destinations Fil</string>
+	<key>DIP</key>
+	<string>Diplomatic Facility</string>
+	<key>DIV</key>
+	<string>Skillsmässa</string>
+	<key>DIVF</key>
+	<string>Skillsmässo Fält</string>
+	<key>DNS [Do not seal]</key>
+	<string>DNS [Försegla inte]</string>
+	<key>DNS-CAN</key>
+	<string>LDS DNS-CAN</string>
+	<key>DSCR</key>
+	<string>Fysisk Beskrivning</string>
+	<key>Daughter</key>
+	<string>Dotter</string>
+	<key>Default Cell Height</key>
+	<string>Standard Cell Höjd</string>
+	<key>Default Cell Width</key>
+	<string>Standard Cell Bredd</string>
+	<key>Default Settings</key>
+	<string>Standard Inställning</string>
+	<key>Description</key>
+	<string>Beskrivning</string>
+	<key>Details</key>
+	<string>Detaljer</string>
+	<key>Done</key>
+	<string>Färdig</string>
+	<key>EDUC</key>
+	<string>Utbildning</string>
+	<key>EMIG</key>
+	<string>Emigration</string>
+	<key>ENDL</key>
+	<string>LDS Donation</string>
+	<key>ENGA</key>
+	<string>Förlovning</string>
+	<key>EVEN</key>
+	<string>Händelse</string>
+	<key>Editing Background</key>
+	<string>Redigerings Bakgrund</string>
+	<key>Editing Text</key>
+	<string>Redigeringsbar Text</string>
+	<key>Embedded multimedia (reopen file to fix)</key>
+	<string>Inbäddad multimedia (öppna filen för reparation)</string>
+	<key>Enter a valid date</key>
+	<string>Skriv in ett giltig datum</string>
+	<key>Enter custom label for the user reference entry</key>
+	<string>Skriv in nytt användare referens nummer</string>
+	<key>Enter event types cited</key>
+	<string>Lägg in kopplade typer av händelser</string>
+	<key>Enter web site address</key>
+	<string>Skriv in web site adress</string>
+	<key>Events</key>
+	<string>Händelser</string>
+	<key>Excluded</key>
+	<string>Utesluten</string>
+	<key>FAM Record</key>
+	<string>Familje Uppgifter</string>
+	<key>FAMC</key>
+	<string>Familj som Barn</string>
+	<key>FAMF</key>
+	<string>Familje Fil</string>
+	<key>FAMS</key>
+	<string>Familj som Partners</string>
+	<key>FCOM</key>
+	<string>Första Nattvardsgång</string>
+	<key>FILE</key>
+	<string>Fil</string>
+	<key>FORM</key>
+	<string>Formulär</string>
+	<key>Failed</key>
+	<string>Misslyckades</string>
+	<key>Family</key>
+	<string>Familj</string>
+	<key>Family Details</key>
+	<string>Familje Detaljer</string>
+	<key>Family Events</key>
+	<string>Familje Händelser</string>
+	<key>Family Ordinances</key>
+	<string>LDS Family Ordinances</string>
+	<key>Father</key>
+	<string>Fader</string>
+	<key>Father 2's Age</key>
+	<string>Fader 2's Ålder</string>
+	<key>Father's Age</key>
+	<string>Faderns Ålder</string>
+	<key>Female</key>
+	<string>Kvinna</string>
+	<key>Foster</key>
+	<string>Foster</string>
+	<key>GEDC</key>
+	<string>GEDCOM Version</string>
+	<key>GIVN</key>
+	<string>Förnamn</string>
+	<key>GOVL</key>
+	<string>Government Building</string>
+	<key>GRAD</key>
+	<string>Examen</string>
+	<key>GRVE</key>
+	<string>Museet</string>
+	<key>General</key>
+	<string>Allmän</string>
+	<key>Generic Event</key>
+	<string>Generisk Händelse</string>
+	<key>HEAD Record</key>
+	<string>Uppgifter om Filen</string>
+	<key>HSP</key>
+	<string>Sjukhus</string>
+	<key>HUSB</key>
+	<string>Make</string>
+	<key>Header Details</key>
+	<string>Rubrik Detaljer</string>
+	<key>Husband 2's Age</key>
+	<string>Make 2's Ålder</string>
+	<key>Husband's Age</key>
+	<string>Makens Ålder</string>
+	<key>Hybrid</key>
+	<string>Hybrid</string>
+	<key>Hyperlink Text</key>
+	<string>Hyperlink Text</string>
+	<key>IDNO</key>
+	<string>Personnummer</string>
+	<key>IMMI</key>
+	<string>Imigration</string>
+	<key>INDI Record</key>
+	<string>Individuella Uppgifter</string>
+	<key>In Book</key>
+	<string>Från Bok</string>
+	<key>In Process</key>
+	<string>Pågående</string>
+	<key>Individual Attributes</key>
+	<string>Särskilda Uppgifter</string>
+	<key>Individual Events</key>
+	<string>Personliga Händelser</string>
+	<key>Individual Ordinances</key>
+	<string>LDS Individual Ordinances</string>
+	<key>Infant</key>
+	<string>LDS Infant</string>
+	<key>Invalid Link</key>
+	<string>Ogiltig Länk</string>
+	<key>Journal</key>
+	<string>Journal</string>
+	<key>Kind</key>
+	<string>Typ</string>
+	<key>LANG</key>
+	<string>Språk</string>
+	<key>LDS Spouse Sealing</key>
+	<string>LDS Spouse Sealing</string>
+	<key>LIBR</key>
+	<string>Bibliotek</string>
+	<key>Label Text</key>
+	<string>Text på Etikett</string>
+	<key>Left Margin</key>
+	<string>Vänster Marginal</string>
+	<key>Level Indentation</key>
+	<string>Indrag</string>
+	<key>Line Separation</key>
+	<string>Linje Delning</string>
+	<key>Linked Records</key>
+	<string>Länkade personkort</string>
+	<key>Linked Sources</key>
+	<string>Länkade källor</string>
+	<key>Location</key>
+	<string>Plats</string>
+	<key>MARB</key>
+	<string>Lysning</string>
+	<key>MARC</key>
+	<string>Äktenskapsförord</string>
+	<key>MARL</key>
+	<string>Äktenskapsintyg</string>
+	<key>MARR</key>
+	<string>Vigsel</string>
+	<key>MARS</key>
+	<string>Äktenskaps Avtal</string>
+	<key>MEDI</key>
+	<string>Typ av Media</string>
+	<key>MSQE</key>
+	<string>Moské</string>
+	<key>MSSN</key>
+	<string>Uppdrag</string>
+	<key>MUS</key>
+	<string>Museet</string>
+	<key>Male</key>
+	<string>Man</string>
+	<key>Maps</key>
+	<string>Kartor</string>
+	<key>Margin Settings</key>
+	<string>Inställning av Marginal</string>
+	<key>Mother</key>
+	<string>Moder</string>
+	<key>Mother 1's Age</key>
+	<string>Moder 1's Ålder</string>
+	<key>Mother's Age</key>
+	<string>Moderns Ålder</string>
+	<key>Multimedia</key>
+	<string>Multimedia</string>
+	<key>Multimedia Object Details</key>
+	<string>Objekt Detaljer för Multimedia</string>
+	<key>Multimedia file not found (click to fix)</key>
+	<string>Multimediafil ej hittad (klicka för att fixa)</string>
+	<key>NAME</key>
+	<string>Namn</string>
+	<key>NATI</key>
+	<string>Nationalitet</string>
+	<key>NATU</key>
+	<string>Medborgarskap</string>
+	<key>NCHI</key>
+	<string>Antal Barm</string>
+	<key>NICK</key>
+	<string>Smeknamn</string>
+	<key>NMR</key>
+	<string>Antal giftomål</string>
+	<key>NOTE</key>
+	<string>Notering</string>
+	<key>NOTE Record</key>
+	<string>Register över Noteringar</string>
+	<key>NOTES_HELP</key>
+	<string>Sätt in fritt format eller html text</string>
+	<key>NPFX</key>
+	<string>Prefix</string>
+	<key>NSFX</key>
+	<string>Suffix</string>
+	<key>New</key>
+	<string>Ny</string>
+	<key>No image representation. Click to open in another application</key>
+	<string>Igen visning av bild. Klicka för att öppna i annat program</string>
+	<key>None of these objects is a portrait</key>
+	<string>Inget av dessa objekt är ett porträtt</string>
+	<key>Notes on:</key>
+	<string>Uppgifter om:</string>
+	<key>OBJE</key>
+	<string>Multimedia</string>
+	<key>OBJE Record</key>
+	<string>Multimedia objekt</string>
+	<key>OCCU</key>
+	<string>Yrke</string>
+	<key>ORDI</key>
+	<string>LDS Ordinance Process Flag</string>
+	<key>ORDN</key>
+	<string>Ordination</string>
+	<key>Other</key>
+	<string>Andra</string>
+	<key>Owner</key>
+	<string>Ägare</string>
+	<key>PAGE</key>
+	<string>sida</string>
+	<key>PEDI</key>
+	<string>Stamtavla</string>
+	<key>PHON</key>
+	<string>Telefonnummer</string>
+	<key>PLAC</key>
+	<string>Plats</string>
+	<key>POST</key>
+	<string>Postnummer</string>
+	<key>PROB</key>
+	<string>Fastighetsdelning</string>
+	<key>PROP</key>
+	<string>Ägodelar</string>
+	<key>PUBL</key>
+	<string>Utgivare</string>
+	<key>Parents</key>
+	<string>Föräldrar</string>
+	<key>Partner</key>
+	<string>Partner</string>
+	<key>Personal Details</key>
+	<string>PERSONKORT</string>
+	<key>Place Hierarchy</key>
+	<string>Plats Ordning</string>
+	<key>Popup Menu Text</key>
+	<string>Popup Meny Text</string>
+	<key>Pre-1970</key>
+	<string>Före 1970</string>
+	<key>Primary</key>
+	<string>Primär</string>
+	<key>QUAY</key>
+	<string>Kvalité</string>
+	<key>Qualified</key>
+	<string>Kvalificerad</string>
+	<key>Questionable</key>
+	<string>Tveksam</string>
+	<key>REFN</key>
+	<string>Användarens Referens Nummer</string>
+	<key>RELA</key>
+	<string>Relation</string>
+	<key>RELI</key>
+	<string>Religion</string>
+	<key>REPO</key>
+	<string>Responsorie</string>
+	<key>REPO Record</key>
+	<string>Responsorie Register</string>
+	<key>RESI</key>
+	<string>Bostad</string>
+	<key>RESN</key>
+	<string>Restriktioner</string>
+	<key>RETI</key>
+	<string>Pension</string>
+	<key>RFN</key>
+	<string>Uppgiftens Fil Nummer</string>
+	<key>RIN</key>
+	<string>Uppgifts ID</string>
+	<key>RLG</key>
+	<string>Religious Site</string>
+	<key>ROLE</key>
+	<string>Roll i händelsen</string>
+	<key>Repository Details</key>
+	<string>Responsorie Detaljer</string>
+	<key>Research Log</key>
+	<string>Forskning Log</string>
+	<key>Research Logs</key>
+	<string>Forsknings Log</string>
+	<key>Research Tasks</key>
+	<string>Forskninguppgifter</string>
+	<key>Researched Records</key>
+	<string>Forskat Uppgifter</string>
+	<key>Right Margin</key>
+	<string>Höger Marginal</string>
+	<key>SEX</key>
+	<string>Kön</string>
+	<key>SLGC</key>
+	<string>LDS Child Sealing</string>
+	<key>SLGS</key>
+	<string>LDS Partnerskap</string>
+	<key>SOUR</key>
+	<string>Källa</string>
+	<key>SOUR Record</key>
+	<string>Käll uppgift</string>
+	<key>SPFX</key>
+	<string>Förstavelse  före Efternamn</string>
+	<key>SSN</key>
+	<string>Social Security Number (USA)</string>
+	<key>STAE</key>
+	<string>Län</string>
+	<key>STAT</key>
+	<string>Status</string>
+	<key>SUBM</key>
+	<string>Inlämnare</string>
+	<key>SUBM Record</key>
+	<string>Uppgift om Inlämnare</string>
+	<key>SUBN</key>
+	<string>Innehåll</string>
+	<key>SUBN Record</key>
+	<string>LDS Submission Record</string>
+	<key>SURN</key>
+	<string>Efternamn</string>
+	<key>Satellite</key>
+	<string>Satellit</string>
+	<key>Sealing</key>
+	<string>LDS Sealing</string>
+	<key>Secondary</key>
+	<string>Sekundär</string>
+	<key>Section Label</key>
+	<string>Sektions Etikett</string>
+	<key>Section Label's Left Margin</key>
+	<string>Etikettens Vänster Marginal</string>
+	<key>Size</key>
+	<string>Storlek</string>
+	<key>Software</key>
+	<string>Mjukvara</string>
+	<key>Son</key>
+	<string>Son</string>
+	<key>Source Details</key>
+	<string>Detaljer om Källan</string>
+	<key>Sources</key>
+	<string>Källa</string>
+	<key>Spouses and Children</key>
+	<string>Partners och Barn</string>
+	<key>Static Text</key>
+	<string>Statisk Text</string>
+	<key>Stillborn</key>
+	<string>Dödfödd</string>
+	<key>Storage</key>
+	<string>Lager</string>
+	<key>Submitted</key>
+	<string>Inlämnad</string>
+	<key>Submitter Details</key>
+	<string>Detaljer on Inlämnare</string>
+	<key>TEMP</key>
+	<string>Helgedom</string>
+	<key>TEXT</key>
+	<string>Text</string>
+	<key>TEXT_HELP</key>
+	<string>Skriv in text från källan</string>
+	<key>TIME</key>
+	<string>Tid</string>
+	<key>TITL</key>
+	<string>Adels Titel</string>
+	<key>TYPE</key>
+	<string>Typ</string>
+	<key>Terrain</key>
+	<string>Terräng</string>
+	<key>The date this record was first created</key>
+	<string>Datum då denna uppgift skapades</string>
+	<key>Thumbnails Per Row</key>
+	<string>Thumbnails Per Rad</string>
+	<key>Time</key>
+	<string>Timme</string>
+	<key>Title</key>
+	<string>Rubrik</string>
+	<key>Top Margin</key>
+	<string>Översta Marginalen</string>
+	<key>Uncleared</key>
+	<string>LDS Uncleared</string>
+	<key>Unknown</key>
+	<string>Okänd</string>
+	<key>Unpublished</key>
+	<string>Inte publicerat</string>
+	<key>Unreliable</key>
+	<string>Opålitlig</string>
+	<key>VERS</key>
+	<string>Version</string>
+	<key>Vertical Shift of Button Labels</key>
+	<string>Växla Etiketten för Knapp Vertikalt</string>
+	<key>Vertical Shift of Edit Field Labels</key>
+	<string>Växla Etiketten för Redigeringsfältet Vertikalt</string>
+	<key>Vital Records</key>
+	<string>Huvud Uppgifter</string>
+	<key>Volume</key>
+	<string>Volym</string>
+	<key>WAC</key>
+	<string>LDS Initiatory</string>
+	<key>WIFE</key>
+	<string>Hustru</string>
+	<key>WILL</key>
+	<string>Testamente</string>
+	<key>Web Page</key>
+	<string>Web sida</string>
+	<key>Websites</key>
+	<string>WWW sidor</string>
+	<key>When checked it will prevent non-portrait images from appearing in family trees.</key>
+	<string>Om markerad förhindras bilder som inte är porträtt att visas i familje träd</string>
+	<key>Wife 1's Age</key>
+	<string>Hustru 1's Ålder</string>
+	<key>Wife's Age</key>
+	<string>Hustruns Ålder</string>
+	<key>Window Background</key>
+	<string>Fönster Bakgrund</string>
+	<key>Working</key>
+	<string>Aktiva</string>
+	<key>You can configure which application opens each type of multimedia object.</key>
+	<string>Du kan ställa in vilket program som skall öppna varje typ av multimedia objekt</string>
+	<key>[Unspecified]</key>
+	<string>[Ospecifierad]</string>
+	<key>_ABOUT</key>
+	<string>Om författaren</string>
+	<key>_ANC</key>
+	<string>Anor</string>
+	<key>_AUTH</key>
+	<string>Författare</string>
+	<key>_BNDS</key>
+	<string>Gränser</string>
+	<key>_BOK Record</key>
+	<string>Book Style Record</string>
+	<key>_BOX</key>
+	<string>Rubrik</string>
+	<key>_CODE</key>
+	<string>Kod</string>
+	<key>_COPY</key>
+	<string>Upphovsrätt</string>
+	<key>_DATE</key>
+	<string>Datum</string>
+	<key>_DES</key>
+	<string>Ättlingar</string>
+	<key>_DESC</key>
+	<string>Beskrivning</string>
+	<key>_DIST</key>
+	<string>Utdelning</string>
+	<key>_EMAIL</key>
+	<string>E-mail</string>
+	<key>_FAM</key>
+	<string>Familj</string>
+	<key>_FFAM</key>
+	<string>Font Family</string>
+	<key>_FILE</key>
+	<string>Filsträng</string>
+	<key>_FLDR</key>
+	<string>Save Folder</string>
+	<key>_FONT</key>
+	<string>Font Size</string>
+	<key>_GOAL</key>
+	<string>Mål</string>
+	<key>_GPS</key>
+	<string>Lat,Lon</string>
+	<key>_GTEES</key>
+	<string>Grantees</string>
+	<key>_HME</key>
+	<string>Hemkort</string>
+	<key>_INDI</key>
+	<string>Individuella</string>
+	<key>_INTRO</key>
+	<string>Introduktion</string>
+	<key>_KEY</key>
+	<string>Nyckelord</string>
+	<key>_LABEL</key>
+	<string>Label</string>
+	<key>_LINE</key>
+	<string>Radbredd</string>
+	<key>_LOC</key>
+	<string>Plats</string>
+	<key>_LOG</key>
+	<string>Forsknings Log</string>
+	<key>_LOG Record</key>
+	<string>Uppgift från Forsknings Log</string>
+	<key>_NOPOI</key>
+	<string>Göm</string>
+	<key>_NTOP</key>
+	<string>Notering</string>
+	<key>_OBJECT</key>
+	<string>Mål</string>
+	<key>_OVER</key>
+	<string>Ersätt filer i mappen</string>
+	<key>_OWNER</key>
+	<string>Copyright Owner</string>
+	<key>_PAPER</key>
+	<string>Papperstorlek</string>
+	<key>_PFACT</key>
+	<string>Fakta</string>
+	<key>_PLACE</key>
+	<string>Namn</string>
+	<key>_PLC Record</key>
+	<string>Place Record</string>
+	<key>_PNOTE</key>
+	<string>Komment</string>
+	<key>_POI</key>
+	<string>Namn</string>
+	<key>_PTOP</key>
+	<string>Portraits</string>
+	<key>_REF</key>
+	<string>Kors Referens</string>
+	<key>_RESULTS</key>
+	<string>Resultater</string>
+	<key>_SCALE</key>
+	<string>Skala</string>
+	<key>_SIZE</key>
+	<string>Storlek</string>
+	<key>_STATUS</key>
+	<string>Status</string>
+	<key>_STYLE</key>
+	<string>Stil</string>
+	<key>_SUMMARY</key>
+	<string>Forsknings Summering</string>
+	<key>_TASK</key>
+	<string>Forsknings Uppgift</string>
+	<key>_TEX</key>
+	<string>LaTeX innehåll</string>
+	<key>_TEXSTY</key>
+	<string>Style Sheet</string>
+	<key>_TSET</key>
+	<string>Auto Typeset</string>
+	<key>_TTL</key>
+	<string>Rubrik</string>
+	<key>_TYPE</key>
+	<string>Källa Typ</string>
+	<key>_UMR</key>
+	<string>Ogift</string>
+	<key>_URL</key>
+	<string>Web sida</string>
+	<key>_VALUE</key>
+	<string>Värde</string>
+	<key>_ZOOM</key>
+	<string>Zooma</string>
+	<key>born</key>
+	<string>född</string>
+	<key>fit</key>
+	<string>passar</string>
+	<key>page</key>
+	<string>Sida</string>
+	<key>see editing pane at bottom of the window</key>
+	<string>se redigerings ruta i fönstrets underkant</string>
+	<key>syn</key>
+	<string>Synagoga</string>
+	<key>the Father</key>
+	<string>Fadern</string>
+	<key>the HUSB</key>
+	<string>Maken</string>
+	<key>the Mother</key>
+	<string>Modern</string>
+	<key>the WIFE</key>
+	<string>Hustrun</string>
+	<key>yes</key>
+	<string>ja</string>
+</dict>
+</plist>

@@ -1,0 +1,35 @@
+load ResetTabs,RecordTitle,WikiSection,WebLinks,ExtraSections
+
+DropTypes OBJE
+gosub ResetTabs
+
+! -------------- Repository Details --------------
+gosub RecordTitle local("Submitter Record")
+!--------- Personal Details
+#sectionCount+=2
+GoSub WikiSection,local("Submitter Details"),"Details"
+
+Show NAME "wiki"
+ShowAll ADDR "wiki"
+ShowAll _GPS "wiki"
+ShowAll PHON "wiki"
+ShowAll _EMAIL "wiki"
+showall LANG "wiki"
+
+!-------- Multimedia
+#recSections[#sectionCount]=local("Multimedia")
+#recSections[#sectionCount+1]="Media"
+#sectionCount+=2
+if OBJE is here
+  GoSub WikiSection,local("Multimedia"),"Media"
+  newline 3
+  #numURLs[0]=0
+  ShowAll OBJE
+  if #numURLs[0]>0
+    GoSub WebLinks,"wiki"
+  endif
+endif
+
+hideexcess
+
+GoSub ExtraSections

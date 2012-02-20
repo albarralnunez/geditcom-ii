@@ -1,0 +1,18 @@
+sub DrawEdges,#edgeStart
+  newline
+  #edgeHeight=#vpos$-#edgeStart
+  MoveTo #leftSkip,#edgeStart
+  cell Palette
+  set height #edgeHeight width 2
+  PalLineWidth 2
+  PalMoveTo 1,0
+  PalLine 0,#edgeHeight
+
+  MoveTo #rightMargin$-#rightSkip-2,#edgeStart
+  cell Palette
+  set height #edgeHeight width 2
+  PalLineWidth 2
+  PalMoveTo 1,0
+  PalLine 0,#edgeHeight
+  newline
+endSub

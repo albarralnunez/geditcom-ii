@@ -1,0 +1,13 @@
+! Show all tags of type #theTag in a section
+! Label the box with #label
+
+sub TagBlock,#theTag,#label
+  if #theTag is here
+    #leftSkip=#hangSkip
+    NewLine 9    cell label local(#label)
+    set width -1 font "Section Label"
+    #leftSkip=#leftSkip$
+    newline 3
+    ShowAll #theTag
+  endif
+endsub

@@ -1,0 +1,19 @@
+load SectionLabel,LineLabel,ShowOBJE
+
+if #hasLabel!="YES"
+  gosub SectionLabel #hasLabel
+  #hasLabel="YES"
+endif
+
+! Label and editing field
+gosub LineLabel local(@tag)
+offset #editOffset
+
+cell EditValue
+set Width -1
+
+showall _DATE
+showall _STATUS
+showall _GOAL
+showall _RESULTSgosub ShowOBJE
+showAll SOURshowAll NOTE

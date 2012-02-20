@@ -1,0 +1,98 @@
+load TagBlock,AttachData,ListBlock,References
+
+! INDIEvents, INDIOrdinances, FAMEvents, FAMOrdinances
+#eventTag=@contents
+
+#eName=""
+if #eventTag="EVEN"
+  #eName=@TYPE
+endif
+
+! If has EVEN.TYPE then use it (don't localize)
+if #eName!=""
+  if local("<LANG>")="English"
+    Title @this.altview&" - "&#eName&" details"
+    cell GroupBox,#eName&" details"
+  else
+    #langText=local("Details on")&" "&#eName
+	Title @this.altview&" - "&#langText
+    cell GroupBox,#langText
+  endif
+else
+  #langKey=#eventTag&" details"
+  #eName=local(#langKey)
+  Title @this.altview&" - "&#eName
+  cell GroupBox,#eName
+endif
+width -1
+SetTab 120
+
+! show date and placeNewLine
+cell static,local("DATE")&":"
+set tabwidth 1 alignment right
+cell expression,@parent.DATE
+set Width -1 AppendedExpression view
+
+NewLine
+cell static,local("PLAC")&":"
+set tabwidth 1 alignment right
+cell expression,@parent.PLAC
+set Width -1 AppendedExpression view
+
+if #eventTag="BIRT"
+  Show ADDR
+  ShowAll _GPS
+  ShowAll TYPE
+  ShowAll AGNC
+else if #eventTag="DEAT"
+  Show ADDR
+  ShowAll _GPS
+  Show AGE  Show CAUS
+  ShowAll TYPE  ShowAll AGNCelse  if @rec=INDI    Show AGE  endif
+  Show TYPE  ShowAll TYPE  Show ADDR
+  ShowAll _GPS  ShowAll CAUS  ShowAll AGNCendif
+if @rec=FAM
+  ShowAll AGE  ShowAll HUSB  ShowAll WIFEendif
+
+! Show family linksif #eventTag="ADOP"  #attachFAMC=1else if #eventTag="CHR"  #attachFAMC=1
+else if #eventTag="BIRT"  #attachFAMC=1
+else  #attachFAMC=0endifif #attachFAMC=1  if FAMC is Here    ShowAll FAMC #eventTag    #attachFAMC=0  endifendif
+EndGroup! --------- NOTEs, SOURs, _LOG, and OBJEs -----------
+gosub TagBlock,"OBJE",local("Multimedia")
+gosub References,"_LOG"
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+width -1
+newline -#lineSkip-3
+#lineSkip=0
+Show NOTE
+Show SOUR
+Show OBJE
+Show _LOG
+if #attachFAMC=1
+  Show FAMC #eventTag
+endif
+GoSub AttachData
+EndGroup
+#lineSkip=#lineSkip$
+
+optionaltag AGNC,local("AGNC"),local("AGNC")
+optionaltag CAUS,local("CAUS"),local("CAUS")
+optionaltag TYPE,local("TYPE"),local("TYPE")
+if @rec=FAM
+  if @this.WIFE.SEX="M"
+    optionaltag HUSB,local("HUSB 1's Age"),"","AGE age"
+    optionaltag WIFE,local("HUSB 2's Age"),"","AGE age"
+  else if @this.HUSB.SEX="F"
+    optionaltag HUSB,local("WIFE 1's Age"),"","AGE age"
+    optionaltag WIFE,local("WIFE 2's Age"),"","AGE age"
+  else
+    optionaltag HUSB,local("HUSB's Age"),"","AGE age"
+    optionaltag WIFE,local("WIFE's Age"),"","AGE age"
+  endif
+endif
+optionaltag _GPS,local("_GPS"),""
+
+resizewindow yes
+

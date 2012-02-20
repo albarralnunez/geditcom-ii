@@ -1,0 +1,48 @@
+!SJGR Changed to list attached records in separate blocks
+
+load TagBlock,ResetTabs,ListBlock,References,AttachData,_LOGPanes
+
+! -------------- Start Template -----------------
+DropTypes INDI,FAM,_PLC
+GoSub ResetTabs,0
+GoSub _LOGPanes,"Other"
+
+! --------- Record links -----------
+if _INDI is here
+  cell GroupBox,local("Researched Individuals")
+    width -1
+    newline -4
+    ShowAll _INDI
+  EndGroup
+endif
+
+if _FAM is here
+  cell GroupBox,local("Researched Families")
+    width -1
+    newline -4
+    ShowAll _FAM
+  EndGroup
+endif
+
+if __PLC is here
+  cell GroupBox,local("Researched Places")
+    width -1
+    newline -4
+    ShowAll __PLC
+  EndGroup
+endif
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+  width -1
+  newline -#lineSkip-3
+  gosub AttachData
+EndGroup
+#lineSkip=#lineSkip$
+
+
+optionaltag _INDI,local("Individual Being Researched")
+optionaltag _FAM,local("Family Being Researched")
+optionaltag __PLC,local("Place Being Researched")
+
+HideExcess

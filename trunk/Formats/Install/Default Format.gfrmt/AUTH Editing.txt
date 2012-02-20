@@ -1,0 +1,20 @@
+! Indent and put up label
+NewLine
+
+cell static
+set #type=@this._TYPE
+if #type="vital records"
+  text local("Location")&":"
+else
+  text local(@tag)&":"
+endif
+set tabwidth -1 alignment right
+
+! edit field with value
+cell EditField
+set Width -1 Offset -2 Height 44
+if printing
+  set minHeight 15
+  sizetofit 3
+endif
+help local("Enter authors for this source")

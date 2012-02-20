@@ -1,0 +1,18 @@
+load ResetTabs,SectionLabel,TagBlock,RefLinks
+
+gosub ResetTabs
+
+! -------------- Start Template -----------------
+DropTypes SOUR
+gosub RefLinks,"Notes on:","All Notated Records",0
+
+if printing
+  gosub SectionLabel "NOTE",9
+endif
+Show CONC
+
+! ------ blocksGosub TagBlock,"SOUR","Sources"
+! --------- The Rest
+if more
+  gosub SectionLabel "Additional Data",9
+endif

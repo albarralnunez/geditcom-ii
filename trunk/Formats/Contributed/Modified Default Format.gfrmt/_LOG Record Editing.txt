@@ -1,0 +1,42 @@
+load TagBlock,ResetTabs,ListBlock,References,AttachData,_LOGPanes
+
+! -------------- Start Template -----------------
+GoSub ResetTabs,0
+GoSub _LOGPanes,""
+
+! --------- Tasks --------------
+cell GroupBox,local("Research Tasks")
+  width -1
+
+  newline
+  ClearTabs
+  #lineSkip=2
+  #cellSkip=2
+  #tableWidth=#rightMargin$-#rightSkip-#hpos$-21
+  SetTab #habs$,#habs$+0.3*#tableWidth
+  SetTab #habs$+0.75*#tableWidth,#habs$+#tableWidth
+  #first="yes"
+  ShowAll _TASK
+
+  #lineSkip=#lineSkip$
+  #cellSkip=#cellSkip$
+
+  newline -3
+  cell LinkButton
+  image "plus"
+  set width 24 border no
+  MenuLink "Attach Optional Data"
+  help local("Click to attach new research task")
+
+  cell LinkButton "-"
+  image "minus"
+  set width 24 border no
+  MenuLink "Detach Event/Attribute/Link"
+  help local("Click to detach research task")
+
+EndGroup
+GoSub ResetTabs,0
+
+optionaltag _TASK,local("_TASK"),"","_GOAL New Task"
+
+hideexcess

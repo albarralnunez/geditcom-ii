@@ -1,0 +1,7 @@
+load LevTag
+
+gosub LevTag
+cell CheckBoxEdit local("Include Copyright Notices")
+sizetofit
+set height #defaultHeight$ controlsize small offset #checkOffset
+help local("Check to include copyright notices")

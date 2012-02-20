@@ -1,0 +1,1 @@
+This folder has miscellaneous scripts contributed by GEDitCOM users.

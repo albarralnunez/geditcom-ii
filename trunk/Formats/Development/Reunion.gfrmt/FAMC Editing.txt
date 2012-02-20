@@ -1,0 +1,26 @@
+sub parent #parID,#parName
+  ! label  newline  cell label local(#parName)&": "  sizetofit  cell LinkButton  if #parID!=""    TextExpression @#parID.NAME
+    AppendedExpression altview
+    RecordLink #parID
+    help local("Click to view record for")&" "&local(#parName)  else    set text "<"&local("Unknown")&">"
+    RecordLink @contents    help local("Click to view family record")  endif
+  set font "Hyperlink Text" border no offset -1 width -1
+  set alignment left
+endsub
+
+gosub parent,@contents.HUSB,"Father"gosub parent,@contents.WIFE,"Mother"NewLine
+tab
+#leftSkip=#hpos$
+
+if #msg=""
+  showAll PEDI  showAll NOTE
+else
+  #adopBy=@ADOP
+  if #adopBy!=""
+    newline
+    cell static
+    set width -1
+    if #adopBy=HUSB
+      text local("Adopted by father")    else if #adopBy=WIFE      text local("Adopted by mother")    else      text local("Adopted by both parents")    endif
+  endif  HideExcess
+endif

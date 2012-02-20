@@ -1,0 +1,138 @@
+Load ListBlock,ResetTabs,RefLinks,References,ToolBtn,OBJEPanes
+
+! -------------- Start Template -----------------
+GoSub ResetTabs
+DropTypes INDI,FAM
+
+#title=@TITL
+#path=@_FILE
+#form=@FORM
+
+Gosub OBJEPanes,"All","Yes"
+
+cell label,local("Multimedia Link")
+SizeToFit
+newline -3
+cell GroupBox
+set width -1 border line titleposition none
+
+newline -#lineSkip-3
+if #form="url"
+  tab 1
+  cell Multimedia
+  set url #path font "Hyperlink Text"
+  if #title<>""
+    text #title
+  else
+    text #path
+  endif
+  set objectImage @this imageposition left
+  sizetofit
+  set alignment left height #imageHeight$
+  set help local("Click to open this URL link in you web browser") 
+else
+  newline
+  cell Multimedia
+  #padding=5
+  set objectFull @this mmFormat #form width -1
+  set imageposition imageonly
+
+  ! max width is available space, but not more then #mmHeight
+  ! max height from user preference
+  #maxWidth=#cellWidth$-2*#padding
+  if #maxWidth>#mmHeight
+	#maxWidth=#mmHeight-2*#padding
+  endif
+  #maxHeight=#mmHeight-2*#padding
+
+  ! set size by to large dimension of the picture
+  #mmRatio=#imageHeight$/#imageWidth$
+  if #mmRatio<1
+	! wider than tall
+	if #maxWidth>#scale*#imageWidth$
+	  set imageWidth #scale*#imageWidth$
+    else
+	  set imageWidth #maxWidth
+    endif
+  else
+    ! taller than wide
+    if #maxHeight>#scale*#imageHeight$
+      set imageHeight #scale*#imageHeight$
+	else
+      set imageheight #maxHeight
+    endif
+  endif
+
+  ! finally, set cell height to final height
+  set height #imageHeight$+2*#padding
+
+  ! handle non-image objects
+  if #imageType$="noimage"
+    set text local("No image representation. Click to open in another application")
+    set font "Static Text" imageposition left alignment left
+    help local("Click to open in a helper application.")
+	help " "&local("You can configure which application opens each type of multimedia object.")
+  else if #imageType$="notfound"
+    set text " "&local("Multimedia file not found (click to fix)")
+    set font "Static Text" imageposition left alignment left
+    set MenuLink "Attach Multimedia"
+	help local("Click to link this record to a multmedia object.")
+  else if #imageType$="image"
+    help local("Click to open in a helper application.")
+	help " "&local("You can configure which application opens each type of multimedia object.")
+  else
+    !thumbnail
+    help local("Click to view multimedia record")
+    set recordlink @this paneID "All"
+  endif
+endif
+
+newline 6
+Show _LOC
+ShowAll _LOC
+Show _KEY
+ShowAll _KEY
+Show _FILE #form
+ShowAll FORM
+if #form!="url"
+  Show _SCALE
+else
+  Hide _SCALE
+endif
+
+EndGroup
+
+! --------- NOTEs, SOURs, OBJEs, and _LOGs -----------
+if @_REF<>""
+  cell label,local("Linked Records")
+  SizeToFit
+  newline -3
+  cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-3
+  gosub RefLinks,"Linked to","All Linked Record"
+  EndGroup
+endif
+gosub References,"_LOG"
+
+! -------- Additional Data ------------
+if more is true
+  ClearTabs
+  SetTab 150,240,330
+  cell label,local("Additional Data")
+  SizeToFit
+  newline -3
+  cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-3
+  ShowAll CHAN
+  ShowAll all
+  EndGroup
+endif
+
+optionalTag RIN,local(RIN)
+optionalTag REFN,local(REFN)
+optionalTag _KEY,local(_KEY)
+
+DropTypes NOTE,SOUR,LOG
+

@@ -1,0 +1,27 @@
+load ListOptionals
+
+cell static,#numpoi&". "&local(@tag)&":"
+sizetofit
+SetTab #hpos$+#cellWidth$+25
+set tabwidth 1 alignment right
+
+cell EditValue
+set Width #rightMargin$-#hpos$-75 Offset -2
+help local("Enter name for this point of interest")
+
+Show _NOPOI
+
+NewLine
+tab 1
+ClearTabs
+SetTab #habs$+24
+HMoveTo #leftSkip
+
+Show _GPS
+Show _CODE
+  
+gosub ListOptionals _PNOTE,_URL,"","",""
+Show _OPTIONAL_TAGS
+
+ShowAll _URL "poi"
+ShowAll _PNOTE

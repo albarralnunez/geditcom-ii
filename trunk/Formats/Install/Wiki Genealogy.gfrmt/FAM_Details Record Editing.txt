@@ -1,0 +1,40 @@
+load ResetTabs,EditingPage
+
+DropTypes INDICtrl
+
+gosub EditingPage,"Family Details"
+
+newline
+#hasLabel="YES"
+gosub ResetTabs
+
+!--------- Personal Details
+cell GroupBox,local("Family Details")
+set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+! NAME and SEX
+Show HUSB
+Show WIFE
+
+EndGroup
+
+if @_UMR="Y"
+  cell GroupBox,local("Marriage")
+  set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+  cell static,"Unmarried Couple"
+  set offset #buttonOffset
+  sizetofit
+
+  hskip 5
+  cell LinkButton,"Change"
+  set border shadowlesssquare menulink "Attach Married Status"
+  sizetofit
+
+  EndGroup
+
+else
+  Show MARR
+endif
+
+HideExcess

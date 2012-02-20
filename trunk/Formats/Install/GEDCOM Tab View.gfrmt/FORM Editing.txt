@@ -1,0 +1,16 @@
+load LevTag,ShowMemo
+
+gosub LevTag
+
+! edit field with value
+if @rec="OBJE"
+  cell EditFile
+  set autoreload yes
+else
+  cell EditValue
+endif
+sizetofit
+set Width -1 border none height #defaultHeight$ offset #editLineOffset
+help local("Enter text for")&": "&local(@tag)
+
+gosub ShowMemo,@_MEMO

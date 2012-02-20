@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Colors</key>
+	<dict>
+		<key>Editing Background</key>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWE
+		AWMBhARmZmZmAQEBAYY=
+		</data>
+		<key>Print Background</key>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWE
+		AWMDhAJmZgEBhg==
+		</data>
+		<key>Window Background</key>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWE
+		AWMDhAJmZgEBhg==
+		</data>
+	</dict>
+	<key>Fonts</key>
+	<dict>
+		<key>Button Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaRiEBVsyNGNdBgAAABAAAAD//kMAbwB1AHIAaQBlAHIA
+			hAFmC4QBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmg4GAAD8AAAGG
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Check Box Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaRiEBVsyNGNdBgAAABAAAAD//kMAbwB1AHIAaQBlAHIA
+			hAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmg4GAAD8AAAGG
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Editing Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaRiEBVsyNGNdBgAAABAAAAD//kMAbwB1AHIAaQBlAHIA
+			hAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMDhAJmZgABhg==
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Hyperlink Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaRiEBVsyNGNdBgAAABAAAAD//kMAbwB1AHIAaQBlAHIA
+			hAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmgyqUUT2DYOQcPQEBhg==
+			</data>
+			<integer>1</integer>
+		</array>
+		<key>Label Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaRiEBVsyNGNdBgAAABAAAAD//kMAbwB1AHIAaQBlAHIA
+			hAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmAIOBgAA/g4GAgD4Bhg==
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Level Number Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaRiEBVsyNGNdBgAAABAAAAD//kMAbwB1AHIAaQBlAHIA
+			hAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmAQAAAYY=
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Popup Menu Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaRiEBVsyNGNdBgAAABAAAAD//kMAbwB1AHIAaQBlAHIA
+			hAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmg4GAAD8AAAGG
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Record Title Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaRiEBVsyNGNdBgAAABAAAAD//kMAbwB1AHIAaQBlAHIA
+			hAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmg4GAgD4Ag4GAAD8Bhg==
+			</data>
+			<integer>0</integer>
+		</array>
+		<key>Static Text</key>
+		<array>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAZOU0ZvbnQehIQITlNPYmpl
+			Y3QAhYQBaRiEBVsyNGNdBgAAABAAAAD//kMAbwB1AHIAaQBlAHIA
+			hAFmDIQBYwCYAZgAmACG
+			</data>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmg4GAAD8AAAGG
+			</data>
+			<integer>0</integer>
+		</array>
+	</dict>
+	<key>Variables</key>
+	<array>
+		<array>
+			<string>Left Margin</string>
+			<string>#leftSkip</string>
+			<string>Number</string>
+			<string>10</string>
+			<integer>1</integer>
+		</array>
+		<array>
+			<string>Right Margin</string>
+			<string>#rightSkip</string>
+			<string>Number</string>
+			<string>10</string>
+			<integer>2</integer>
+		</array>
+		<array>
+			<string>Top Margin</string>
+			<string>#topMargin$</string>
+			<string>Number</string>
+			<string>10</string>
+			<integer>3</integer>
+		</array>
+		<array>
+			<string>Bottom Margin</string>
+			<string>#bottomMargin$</string>
+			<string>Number</string>
+			<string>10</string>
+			<integer>4</integer>
+		</array>
+		<array>
+			<string>Default Cell Width</string>
+			<string>#cellWidth$</string>
+			<string>Number</string>
+			<string>72</string>
+			<integer>5</integer>
+		</array>
+		<array>
+			<string>Default Cell Height</string>
+			<string>#cellHeight$</string>
+			<string>Number</string>
+			<string>18</string>
+			<integer>6</integer>
+		</array>
+		<array>
+			<string>Line Separation</string>
+			<string>#lineSkip</string>
+			<string>Number</string>
+			<string>0</string>
+			<integer>7</integer>
+		</array>
+		<array>
+			<string>Cell Separation</string>
+			<string>#cellSkip</string>
+			<string>Number</string>
+			<string>5</string>
+			<integer>8</integer>
+		</array>
+		<array>
+			<string>GEDCOM Tab View Settings</string>
+			<string></string>
+			<string>Group</string>
+			<string></string>
+			<integer>9</integer>
+		</array>
+		<array>
+			<string>Tab Spacing</string>
+			<string>#tabWidth</string>
+			<string>Number</string>
+			<string>20</string>
+			<integer>10</integer>
+		</array>
+		<array>
+			<string>Editing Line Offset</string>
+			<string>#editLineOffset</string>
+			<string>Number</string>
+			<string>-2</string>
+			<integer>11</integer>
+		</array>
+		<array>
+			<string>Editing Field Offset</string>
+			<string>#editFieldOffset</string>
+			<string>Number</string>
+			<string>1</string>
+			<integer>12</integer>
+		</array>
+		<array>
+			<string>Popup Menu Offset</string>
+			<string>#popupOffset</string>
+			<string>Number</string>
+			<string>-3</string>
+			<integer>13</integer>
+		</array>
+		<array>
+			<string>Check Box Offset</string>
+			<string>#checkOffset</string>
+			<string>Number</string>
+			<string>-3</string>
+			<string>14</string>
+		</array>
+		<array>
+			<string>Link Text Offset</string>
+			<string>#linkOffset</string>
+			<string>Number</string>
+			<string>-3</string>
+			<string>15</string>
+		</array>
+	</array>
+</dict>
+</plist>

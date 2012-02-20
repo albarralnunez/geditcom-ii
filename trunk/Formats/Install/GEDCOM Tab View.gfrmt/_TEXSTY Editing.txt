@@ -1,0 +1,8 @@
+load LevTag
+
+gosub LevTag
+
+! popup menu
+cell PopupMenuEdit
+MenuItems "Default"MenuItems "Ruled Sections"help local("Click to select style for various elements in the book")set controlsize small border no offset #popupOffset 
+sizetofit

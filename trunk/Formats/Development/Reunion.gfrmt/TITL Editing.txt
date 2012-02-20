@@ -1,0 +1,5 @@
+if @rec="INDI"
+  use Attribute
+else
+  use _Unknown_
+endif

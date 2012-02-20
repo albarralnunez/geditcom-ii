@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>&lt;LANG&gt;</key>
+	<string>French</string>
+	<key>ADDR</key>
+	<string>Adresse</string>
+	<key>ADR1</key>
+	<string>1re ligne de l'adresse</string>
+	<key>ADR2</key>
+	<string>2me ligne de l'adresse</string>
+	<key>AGE</key>
+	<string>Âge</string>
+	<key>Add</key>
+	<string>Ajouter</string>
+	<key>Add New Residence</key>
+	<string>Ajouter nouvelle résidence</string>
+	<key>Add Phone Number</key>
+	<string>Ajouter numéro de téléphone</string>
+	<key>Add URL or Email</key>
+	<string>Ajouter une URL ou une E-mail</string>
+	<key>Address Book</key>
+	<string>Carnet d'Adresses</string>
+	<key>Address Book Settings</key>
+	<string>Préférences du Address Book</string>
+	<key>All Citing Records</key>
+	<string>Toutes les fiches de citation</string>
+	<key>BIRT</key>
+	<string>Né</string>
+	<key>Bottom Margin</key>
+	<string>Marge du bas</string>
+	<key>Box Lines</key>
+	<string>Lignes pour les boîtes</string>
+	<key>Button Text</key>
+	<string>Texte du bouton</string>
+	<key>CITY</key>
+	<string>Ville</string>
+	<key>CTRY</key>
+	<string>Pays</string>
+	<key>Cancel</key>
+	<string>Annuler</string>
+	<key>Cell Separation</key>
+	<string>Séparation des cellules</string>
+	<key>Change</key>
+	<string>Changer</string>
+	<key>Check Box Text</key>
+	<string>Texte de la boîte à cocher</string>
+	<key>Check this box to indicate none of the images linked to this record is a portrait.</key>
+	<string>Cocher cette case pour indiquer qu'aucune des images liées à cette fiche n'est un portrait</string>
+	<key>Child</key>
+	<string>Enfant</string>
+	<key>Click 'Edit' button to view and edit these notes</key>
+	<string>Cliquez sur le bouton "Modifier" pour voir et éditer ces notes</string>
+	<key>Click and type to edit the name or control click to change the name case</key>
+	<string>Cliquez et tapez sur le clavier pour modifier le nom ou faites contrôle clique pour changer la casse du nom</string>
+	<key>Click for list of all citing records</key>
+	<string>Cliquer pour la liste de tous les</string>
+	<key>Click to add URL or Email address</key>
+	<string>Cliquez pour ajouter l'URL ou l'adresse mail</string>
+	<key>Click to add URL or Email address for this residence</key>
+	<string>Cliquez pour ajouter l'URL ou l'adresse e-mail pour cette résidence</string>
+	<key>Click to add a new residence</key>
+	<string>Cliquez pour ajouter une nouvelle résidence</string>
+	<key>Click to add address details in separate lines</key>
+	<string>Cliquez pour ajouter les informations d'adresse sur des lignes séparées</string>
+	<key>Click to add another phone number for this residence</key>
+	<string>Cliquez pour ajouter un autre numéro de téléphone pour cette résidence</string>
+	<key>Click to add latitude and longitude</key>
+	<string>Cliquez pour ajouter la latitude et la longitude</string>
+	<key>Click to add place hierarchy or place latitude and longitude</key>
+	<string>Cliquez pour ajouter hiérarchie du lieu ou la latitude et la longitude</string>
+	<key>Click to attach a new multimedia object</key>
+	<string>Cliquez pour joindre un nouvel objet multimédia</string>
+	<key>Click to attach a new set of notes</key>
+	<string>Cliquez pour fixer une nouvelle série de notes</string>
+	<key>Click to attach multimedia object for this residence</key>
+	<string>Cliquez pour joindre objet multimédia pour cette résidence</string>
+	<key>Click to attach notes about this residence</key>
+	<string>Cliquez pour joindre des notes à propos de cette résidence</string>
+	<key>Click to change URL or convert to a multimedia file link</key>
+	<string>Cliquer pour changer le lien hypertexte (URL) ou pour le convertir en un lien de fichier multimédia</string>
+	<key>Click to change record restriction</key>
+	<string>Cliquer pour changer la restriction de la fiche</string>
+	<key>Click to change the file path, file kind, or convert to a URL link</key>
+	<string>Cliquer pour changer le chemin du fichier, le type du fichier, ou pour le convertir en un lien hypertexte (URL)</string>
+	<key>Click to change this person's sex</key>
+	<string>Cliquez pour changement de sexe de cette personne</string>
+	<key>Click to export this individual to a vCard file</key>
+	<string>Cliquez pour l'exportation de cette personne dans un fichier vCard</string>
+	<key>Click to link this record to a multmedia object.</key>
+	<string>Cliquer pour lier cette fiche à un objet multimédia</string>
+	<key>Click to move all individuals with known residences to an album named 'Known Residences'</key>
+	<string>Cliquez pour faire tous les individus avec des résidences connus un album nommé 'Résidences Connus'</string>
+	<key>Click to open in a helper application.</key>
+	<string>Cliquer pour ouvrir avec une application externe</string>
+	<key>Click to open this URL or Email in browser or email program</key>
+	<string>Cliquez pour ouvrir cette URL dans le navigateur ou par courriel ou d'un programme e-mail</string>
+	<key>Click to open this individual and edit this residence</key>
+	<string>Cliquez pour ouvrir cet individu et de éditer cette résidence</string>
+	<key>Click to remove URL or Email address</key>
+	<string>Cliquez pour supprimer URL ou une adresse e-mail</string>
+	<key>Click to remove URL or Email address from this residence</key>
+	<string>Cliquez pour supprimer URL ou l'adresse e-mail de cette résidence</string>
+	<key>Click to remove a multimedia object</key>
+	<string>Cliquez sur pour supprimer un objet multimédia</string>
+	<key>Click to remove a residence</key>
+	<string>Cliquez pour retirer un résidence</string>
+	<key>Click to remove a set of notes</key>
+	<string>Cliquez sur pour supprimer un ensemble de notes</string>
+	<key>Click to remove multimedia object from this residence</key>
+	<string>Cliquez pour supprimer objet multimédia de ce résidence</string>
+	<key>Click to remove set of notes from this residence</key>
+	<string>Cliquez pour supprimer série de notes de ce résidence</string>
+	<key>Click to remove this phone number</key>
+	<string>Cliquez pour supprimer ce numéro de téléphone</string>
+	<key>Click to set image scaling</key>
+	<string>Cliquez pour définir échelle de l'image</string>
+	<key>Click to view and edit multimedia object</key>
+	<string>Cliquer pour voir et éditer l'objet multimedia</string>
+	<key>Click to view and edit notes</key>
+	<string>Cliquer pour voir et éditer les notes</string>
+	<key>Click to view individual record</key>
+	<string>Cliquez pour voir fiche d’individu</string>
+	<key>Click to view multimedia record for thus URL or Email address</key>
+	<string>Cliquez pour voir l'enregistrements multimédias pour cette URL ou une adresse e-mail</string>
+	<key>Click to view record for</key>
+	<string>Cliquer pour voir la fiche pour</string>
+	<key>DATE</key>
+	<string>Date</string>
+	<key>DEAT</key>
+	<string>Mort</string>
+	<key>Default Cell Height</key>
+	<string>Hauteur de cellule par défaut</string>
+	<key>Default Cell Width</key>
+	<string>Lageur de cellule par défaut</string>
+	<key>Details</key>
+	<string>Détails</string>
+	<key>Edit</key>
+	<string>Éditer</string>
+	<key>Editing Background</key>
+	<string>Fond de la fenêtre d'édition</string>
+	<key>Editing Text</key>
+	<string>Texte à éditer</string>
+	<key>Embedded multimedia (reopen file to fix)</key>
+	<string>Objet multimédia inclus (rouvrir le fichier pour réparer)</string>
+	<key>Enter URL (beginning in 'http') or Email address (containing '@')</key>
+	<string>Entrez l'URL (à partir de "http") ou l'adresse e-mail (contenant '@')</string>
+	<key>Enter latitude and longitude (e.g., 45.3N, 112.3W)</key>
+	<string>Entrez la latitude et la longitude (par example, 45.3N, 112.3W)</string>
+	<key>Export vCard</key>
+	<string>Exporter une vCard</string>
+	<key>FAM records</key>
+	<string>enregistrements familial</string>
+	<key>FORM</key>
+	<string>Hiérarchie</string>
+	<key>Family Group</key>
+	<string>Groupe familial</string>
+	<key>Father</key>
+	<string>Père</string>
+	<key>Female</key>
+	<string>Femme</string>
+	<key>Find Individuals with Residences</key>
+	<string>Trouver des personnes avec des résidences</string>
+	<key>HEAD records</key>
+	<string>En-tête</string>
+	<key>HUSB</key>
+	<string>Époux</string>
+	<key>Hyperlink Text</key>
+	<string>Lien hypertexte</string>
+	<key>INDI records</key>
+	<string>fiches individuelle</string>
+	<key>It is now in the 'Known Residences' album</key>
+	<string>Il est maintenant dans l'album 'Résidences Connus'</string>
+	<key>Kind</key>
+	<string>Type</string>
+	<key>Known Family Residences</key>
+	<string>Résidences Famille Connue</string>
+	<key>Known Residences</key>
+	<string>Résidences Connus</string>
+	<key>Label Text</key>
+	<string>Label de la section</string>
+	<key>Label Width</key>
+	<string>Largeur des étiquettes</string>
+	<key>Left Margin</key>
+	<string>Marge de gauche</string>
+	<key>Line Separation</key>
+	<string>Ligne de séparation</string>
+	<key>Male</key>
+	<string>Masculin</string>
+	<key>Margin Settings</key>
+	<string>Préférences pour les marges</string>
+	<key>Mother</key>
+	<string>Mère</string>
+	<key>Multimedia</key>
+	<string>Multimédia</string>
+	<key>Multimedia Object</key>
+	<string>Objet multimédia</string>
+	<key>Multimedia file not found (click to fix)</key>
+	<string>Ficher multimedia non trouvé (cliquer pour réparer le lien)</string>
+	<key>NOTE</key>
+	<string>Notes</string>
+	<key>NOTE records</key>
+	<string>fiches de la note</string>
+	<key>NOTES_HELP</key>
+	<string>Entrer format-libre ou texte html</string>
+	<key>Name Font</key>
+	<string>Police pour noms</string>
+	<key>New Address</key>
+	<string>Nouvelle adresse</string>
+	<key>No image representation. Click to open in another application</key>
+	<string>Pas de visualisation d'image. Cliquer pour l'ouvrir dans une autre application</string>
+	<key>No individual records are linked to these notes</key>
+	<string>Aucun des dossiers individuels sont liés à ces notes</string>
+	<key>No individuals with known residences were found</key>
+	<string>Aucune des personnes avec des résidences connus ont été trouvés</string>
+	<key>None of these objects is a portrait</key>
+	<string>Aucun de ces objets n'est un portrait</string>
+	<key>Notes On The Following Inidividuals:</key>
+	<string>Notes sur le Individuels suivants:</string>
+	<key>OBJE</key>
+	<string>Objet multimédia</string>
+	<key>OBJE records</key>
+	<string>fiches de l'objet multimdia</string>
+	<key>OK</key>
+	<string>OK</string>
+	<key>One individual with residences was found</key>
+	<string>Un individu dont les résidences ont été trouvés</string>
+	<key>PHON</key>
+	<string>Numéro de téléphone</string>
+	<key>PLAC</key>
+	<string>Lieu</string>
+	<key>POST</key>
+	<string>Code postal</string>
+	<key>Please switch to a different format, such as the 'Default Format,' to edit this kind of record.</key>
+	<string>Passer à un format différent, tel que le 'Default Format,' pour modifier ce genre de dossier.</string>
+	<key>Popup Menu Text</key>
+	<string>Texte du menu contextuel</string>
+	<key>REPO records</key>
+	<string>fiches du dépôt</string>
+	<key>RESI</key>
+	<string>Résidence</string>
+	<key>Remove Phone Number</key>
+	<string>Supprimer un numéro de téléphone</string>
+	<key>Remove URL or Email</key>
+	<string>Supprimer URL ou adress e-mail</string>
+	<key>Remove a Residence</key>
+	<string>Supprimer une résidence</string>
+	<key>Remove a multimedia object</key>
+	<string>Supprimer un objet multimédia</string>
+	<key>Remove notes</key>
+	<string>Supprimer des notes</string>
+	<key>Residence with no place or address</key>
+	<string>Résidence sans place et sans adresse</string>
+	<key>Right Margin</key>
+	<string>Marge de droite</string>
+	<key>SOUR records</key>
+	<string>fiches de la source</string>
+	<key>STAE</key>
+	<string>État</string>
+	<key>SUBM records</key>
+	<string>fiches du soumetteur</string>
+	<key>SUBN records</key>
+	<string>fiches de soumission</string>
+	<key>Section Line Left Margin</key>
+	<string>Marge de gauche pour les lignes entre les sections</string>
+	<key>Section Lines</key>
+	<string>Les lignes entre les sections</string>
+	<key>Select URL or Email address to remove</key>
+	<string>Sélectionnez URL ou adresse e-mail à supprimer</string>
+	<key>Select multimedia object to remove</key>
+	<string>Sélectionnez un multimédia objet à supprimer</string>
+	<key>Select notes to remove</key>
+	<string>Sélectionnez des notes à supprimer</string>
+	<key>Select residence to remove</key>
+	<string>Sélectionnez une résidence à supprimer</string>
+	<key>Select sex</key>
+	<string>Seleccionez sexe</string>
+	<key>Size</key>
+	<string>Taille</string>
+	<key>Static Text</key>
+	<string>Texte statique</string>
+	<key>TEXT</key>
+	<string>Texte</string>
+	<key>TITL</key>
+	<string>Titre</string>
+	<key>TYPE</key>
+	<string>Type</string>
+	<key>The 'Address Book' format is not set up for editing of</key>
+	<string>Le format 'Address Book' n'est pas mis en place pour l'édition de</string>
+	<key>The entered text does not appear to be a URL or an email address.</key>
+	<string>Le texte entré ne semble pas être une URL ou une adresse e-mail.</string>
+	<key>They are now all in the 'Known Residences' album</key>
+	<string>Tous sont maintenant dans l'album 'Résidences connus'</string>
+	<key>This individual does not have any data of that type to remove</key>
+	<string>Cette personne ne dispose pas de données de ce type de supprimer</string>
+	<key>This text can be edited by clicking in the field and typing</key>
+	<string>Ce texte peut être modifié en cliquant dans le domaine et en tapant</string>
+	<key>Thumbnails Per Row</key>
+	<string>Vignettes par ligne</string>
+	<key>Title</key>
+	<string>Titre</string>
+	<key>Top Margin</key>
+	<string>Marge du haut</string>
+	<key>URLs &amp; Email Addresses</key>
+	<string>URLs et Adresses Email</string>
+	<key>URLs &amp; Emails</key>
+	<string>URLs et Emails</string>
+	<key>URLs must begin in 'http' and email addresses must contain '@'</key>
+	<string>URLs doit commencer en 'http' et adresses e-mail doit contenir '@'</string>
+	<key>Unknown</key>
+	<string>Inconnu</string>
+	<key>Utilities</key>
+	<string>Utilitaires</string>
+	<key>Vertical Shift of Button Labels</key>
+	<string>Décalage vertical du label du bouton</string>
+	<key>Vertical Shift of Edit Field Labels</key>
+	<string>Décalage vertical du label du domaine de texte</string>
+	<key>WIFE</key>
+	<string>Épouse</string>
+	<key>When checked it will prevent non-portrait images from appearing in family trees.</key>
+	<string>Quand cette case est cochée les images qui ne sont pas des portraits n'apparaîtrons pas dans les arbres familiaux.</string>
+	<key>Window Background</key>
+	<string>Fond de fenêtre</string>
+	<key>You can configure which application opens each type of multimedia object.</key>
+	<string>Vous pouvez choisir quelle application ouvre chaque type d'objet multimédia.</string>
+	<key>You can control click for editing options when using HTML text</key>
+	<string>Vous pouvez cliquer pour le contrôle des options d'édition lors de l'utilisation du texte HTML.</string>
+	<key>_BOK</key>
+	<string>Format de livre</string>
+	<key>_BOK records</key>
+	<string>fiches de la format de livre</string>
+	<key>_FILE</key>
+	<string>Nom complet du fichier</string>
+	<key>_GPS</key>
+	<string>Lat,Lon</string>
+	<key>_KEY</key>
+	<string>Les mots clés</string>
+	<key>_LOC</key>
+	<string>Location</string>
+	<key>_LOG records</key>
+	<string>fiches du journal de recherches</string>
+	<key>_PLC</key>
+	<string>Lieu</string>
+	<key>_PLC records</key>
+	<string>fiches du lieu</string>
+	<key>_SCALE</key>
+	<string>Échelle</string>
+	<key>address line</key>
+	<string>ligne de l'adresse</string>
+	<key>city</key>
+	<string>ville</string>
+	<key>city, county, state, country</key>
+	<string>ville, comté, état, pays</string>
+	<key>country</key>
+	<string>pays</string>
+	<key>fit</key>
+	<string>ajustement</string>
+	<key>individuals with residences were found</key>
+	<string>personnes avec des résidences ont été trouvés</string>
+	<key>postal code</key>
+	<string>code postal</string>
+	<key>state</key>
+	<string>état</string>
+	<key>the Father</key>
+	<string>le père</string>
+	<key>the HUSB</key>
+	<string>l'époux</string>
+	<key>the Mother</key>
+	<string>la mère</string>
+	<key>the WIFE</key>
+	<string>l'épouse</string>
+</dict>
+</plist>

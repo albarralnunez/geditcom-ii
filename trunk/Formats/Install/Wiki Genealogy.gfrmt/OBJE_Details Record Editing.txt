@@ -1,0 +1,34 @@
+load ResetTabs,EditingPage
+
+gosub EditingPage,"Multimedia Details"
+
+newline
+gosub ResetTabs
+
+!--------- Personal Details
+cell GroupBox,local("Multimedia Details")
+set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+#form=@FORM
+
+newline 6
+Show TITL
+ShowAll TITL
+Show _LOC
+Show _DATE
+Show _KEY
+
+! The file is displayed along with form with button for sheet to attach a different file
+Show _FILE #form
+
+if #form!="url"
+  Show _SCALE
+else
+  Hide _SCALE
+endif
+
+show _DIST "label"
+
+endgroup
+
+hideexcess

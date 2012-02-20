@@ -1,0 +1,16 @@
+DropTypes SUBM
+settab 200
+
+cell label,local("Submission Details")
+SizeToFit
+newline -3
+cell GroupBox
+set width -1 border line titleposition none
+newline -#lineSkip-3
+if SUBM is here
+  showAll SUBM
+  newline 3
+endif
+show FAMFshow TEMPshow ANCEshow DESCshow ORDI
+show RIN
+EndGroup

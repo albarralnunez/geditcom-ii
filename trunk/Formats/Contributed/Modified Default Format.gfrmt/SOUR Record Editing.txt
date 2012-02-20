@@ -1,0 +1,161 @@
+load TagBlock,ResetTabs,RefLinks,AttachData
+
+! -------------- Start Template -----------------
+DropTypes REPO,INDI,FAM
+GoSub ResetTabs,0
+
+! ---------- Type -----------
+#oldWidth=#rightMargin$
+DisplayWidth #oldWidth+#rightSkip+1
+newline -#topMargin$-1
+hskip -#leftSkip-1
+cell GroupBox
+border line
+titleposition none
+cellbackground "Record Header Box Background"
+width -1
+#type=@_TYPE
+if #type=""
+  #type="book"
+endif
+show _TYPE
+EndGroup
+
+! --------- Title -----------
+DisplayWidth #oldWidth
+
+! --------- Reference Details ---------
+ClearTabs
+SetTab 120
+cell GroupBox,local("Reference")
+width -1
+
+if #type="article"
+  Show AUTH
+  ShowAll AUTH
+  Show TITL
+  ShowAll TITL
+  Show ABBR
+  ShowAll ABBR
+  Show PUBL
+  ShowAll PUBL
+  Show _DATE
+  ShowAll _DATE
+  ShowAll _URL
+else if #type="web page"
+  NewLine
+  cell static,local("Web Page")&":"
+  set tabwidth 1 alignment right font "GEDCOM Extension Text"
+  Show _URL "here"
+  Show TITL
+  ShowAll TITL
+  Show ABBR
+  ShowAll ABBR
+  Show AUTH
+  ShowAll AUTH
+  Show PUBL
+  ShowAll PUBL
+  Show _DATE
+  ShowAll _DATE
+else
+  Show TITL
+  ShowAll TITL
+  Show ABBR
+  ShowAll ABBR
+  Show AUTH
+  ShowAll AUTH
+  Show PUBL
+  ShowAll PUBL
+  Show _DATE
+  ShowAll _URL
+endif
+
+EndGroup
+
+! --------- NOTEs, OBJEs -----------
+cell GroupBox,local("Reference Citing and Content")
+width -1
+
+GoSub RefLinks,local("Cited by"),local("All Citing Records")
+
+! content in a child window
+newline
+
+if TEXT is here
+  #insertText="YES"
+else
+  #insertText="NO"
+endif
+
+newline
+cell static,local("Edit")&":"
+set tabwidth 1 alignment right offset 3
+
+cell StructuresLink,SourceContent
+set text local("Content and Text from the Source") border shadowlesssquare
+sizetofit
+LinkAll DATA,TEXT
+help local("Click to see content and enter text from this source")
+
+if #insertText="YES"
+  newline
+  cell static,local("TEXT")&":"
+  set alignment right tabwidth 1
+
+  cell ExpressionField @this.TEXT
+  set width -1 height 30 maxheight 480
+  sizetofit 3
+endif
+
+EndGroup
+
+
+! --------- NOTEs, OBJEs -----------
+Gosub TagBlock,"NOTE","NOTE"
+Gosub TagBlock,"OBJE","Multimedia"
+
+! --------- Repository ---------
+GoSub ResetTabs,0
+
+#repo=@REPO
+if REPO is here
+  cell GroupBox,local("REPO")
+  width -1
+  ShowAll REPO
+  EndGroup
+Endif
+
+
+! --------- Attach links
+newlinecell GroupBox,local("Attach")
+width -1
+newline -#lineSkip-3
+#lineSkip=0
+Show OBJE
+Show NOTE
+
+if #repo=""
+  Show REPO
+endif
+gosub AttachData
+EndGroup
+#lineSkip=#lineSkip$
+
+! -------- Additional Data ------------
+if more is true
+  ClearTabs
+  gosub ResetTabs,50
+  cell GroupBox,local("Additional Data")
+  width -1
+  ShowAll CHAN
+  ShowAll all
+  EndGroup
+endif
+
+optionalTag RIN,local(RIN)
+optionalTag REFN,local(REFN)
+optionalTag REPO,local(REPO)
+optionalTag,REFN,local("Keyword(s)"), ,"TYPE Keyword(s)"
+
+dropTypes REPO
+

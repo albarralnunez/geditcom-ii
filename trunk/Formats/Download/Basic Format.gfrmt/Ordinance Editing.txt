@@ -1,0 +1,15 @@
+load LineLabel SectionLabel
+
+if #hasLabel!="YES"
+  gosub SectionLabel #hasLabel
+  #hasLabel="YES"
+endif
+
+! label and checkbox
+gosub LineLabel,local(@tag)
+offset #buttonOffset
+cell CheckBoxEdit
+
+showall DATE
+showAll TEMPshowAll PLACshowAll STATshowAll QUALshowAll SOURshowAll NOTE
+if @tag=SLGC  ShowAll FAMC SLGCendif

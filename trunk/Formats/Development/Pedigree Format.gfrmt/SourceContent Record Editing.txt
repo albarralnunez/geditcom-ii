@@ -1,0 +1,30 @@
+load ResetTabs
+GoSub ResetTabs
+
+! -------- Data --------
+cell label,local("Type of Data in the Source")
+SizeToFit
+newline -3
+cell GroupBox
+set width -1 border line titleposition none
+newline -#lineSkip-3
+Show DATA
+EndGroup
+
+if printing
+  cell label,local("Text from the the Source")
+  SizeToFit
+  newline -3
+  cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-3
+  cell ExpressionField,@TEXT
+  set Width -1 minheight 15
+  sizetofit 3
+  Show TEXT
+  EndGroup
+else
+  Show TEXT
+endif
+
+DisplayHeight <600

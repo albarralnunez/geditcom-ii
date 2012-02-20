@@ -1,0 +1,102 @@
+load ListBlock,TagBlock,ResetTabs,ToolBtn
+
+! -------------- Start Template -----------------
+
+GoSub ResetTabs
+
+! --------- Name -----------
+#oldWidth=#rightMargin$
+DisplayWidth #oldWidth+#rightSkip+1
+newline -#topMargin$-1
+hskip -#leftSkip-1
+cell GroupBox
+border line
+titleposition none
+cellbackground "Record Header Box Background"
+width -1
+
+newline -3
+gosub ToolBtn,"Attach Notes","notes",local("Click to attach notes")
+gosub ToolBtn,"Attach Optional Data","plus",local("Click to attach optional data")
+
+newline 3
+Show NAME
+EndGroup
+
+DisplayWidth #oldWidth
+
+! --------- Address -----------
+ClearTabs
+SetTab 150,240,330
+newline
+cell label,local("Repository Address")
+SizeToFit
+newline -3cell GroupBox
+set width -1 border line titleposition none
+newline -#lineSkip-3
+Show ADDR
+ShowAll PHON
+Show PHON
+
+! link to web site
+if _URL is here
+  newline
+  cell static,local("Web Page")&":"
+  set tabwidth 1 alignment right
+
+  hskip 0  #edge=#rightMargin$-#rightSkip-21-#cellSkip
+  cell Multimedia
+  set Width #edge-#hpos$ alignment left offset -3
+  set url @_URL font "Hyperlink Text" autoreload yes
+  TextExpression @_URL
+  Text @_URL
+  set help local("Click to open in browser")
+  ! rest in a child window
+  cell StructuresLink,URLDetails
+  set border no width -1
+  if @contents!=""
+    set image "details_here"
+  else
+    set image "details"
+  endif
+  LinkAll _URL
+  help local("Click to enter web site")
+endif
+
+Show _EMAIL
+ShowAll _EMAIL
+
+newline
+tab 1
+hskip #cellSkip
+cell LinkButton
+set text local("Linked Sources") border shadowlesssquare
+sizetofit -12
+menulink "Referenced By"
+
+EndGroup
+Gosub ResetTabs
+
+! --------- NOTEs -----------
+Gosub TagBlock,"NOTE",local("Notes")
+
+! -------- Additional Data ------------
+if more is true
+  ClearTabs
+  SetTab 150,240,330
+  cell label,local("Additional Data")
+  SizeToFit
+  newline -3
+  cell GroupBox
+  set width -1 border line titleposition none
+  newline -#lineSkip-3
+  ShowAll CHAN
+  ShowAll all
+  EndGroup
+endif
+
+optionalTag RIN,local(RIN)
+optionalTag REFN,local(REFN)
+optionalTag,_URL,local("Web Page"),"http://www.website.com"
+DropTypes NOTE
+
