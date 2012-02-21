@@ -1599,7 +1599,7 @@ class GlobalCoordinate :
                 
 # find km per degree of longitude and given latitude (in degrees)
 def kmPerLongitudeDegree(atLat) :
-    lat = atLat*0.0174533            # convert to radians (pi/180)
+    lat = atLat*0.01745329      # convert to radians (pi/180)
     clat = math.cos(lat)
     a = clat*clat*0.0000761524;		 # number is sin(pi/180)^2
     c = 2. * math.atan(math.sqrt(a/(1-a)))
@@ -1609,22 +1609,24 @@ def kmPerLongitudeDegree(atLat) :
 def kmPerLatitudeDegree() :
     return 111.195
 
-# chord distance on a sphere
+# arc distance on surface of earth in km
 # pt1 and pt2 are [lat,lon] pairs
-def kmChordSeparation(pt1,pt2) :
-    lat1 = pt1[0]*0.0174533        # convert to radians (pi/180)
-    sinlat1 = math.sin(lat1)
-    lon1 = pt1[1]*0.0174533
-    x1 = sinlat1*math.sin(lon1)
-    y1 = sinlat1*math.cos(lon1)
-    z1 = math.cos(lat1)
-    lat2 = pt2[0]*0.0174533        # convert to radians (pi/180)
-    sinlat2 = math.sin(lat2)
-    lon2 = pt2[1]*0.0174533
-    dx = sinlat2*math.sin(lon2)-x1
-    dy = sinlat2*math.cos(lon2)-y1
-    dz = math.cos(lat2)-z1
-    return 6371*math.sqrt(dx*dx + dy*dy + dz*dz) # 6731 is radius of earth in km
+def kmDistanceBetween(pt1,pt2):
+    # phi = 90 - latitude
+    phi1 = (90.0 - pt1[0])*0.01745329
+    phi2 = (90.0 - pt2[0])*0.01745329
+        
+    # theta = longitude
+    theta1 = pt1[1]*0.01745329
+    theta2 = pt2[1]*0.01745329
+        
+    # For two locations in spherical coordinates 
+    # (1, theta1, phi1) and (1, theta2, phi2)
+    # cosine( arc length ) = 
+    #    sin phi1 sin phi2 cos(theta1-theta2) + cos phi1 cos phi2
+    alcos = (math.sin(phi1)*math.sin(phi2)*math.cos(theta1 - theta2) + 
+           math.cos(phi1)*math.cos(phi2))
+    return math.acos(alcos)*6731      # 6731 is radius of earth in km
 
 # Take list of comma-separated lat, lon, and distance numbers
 # and return list of GlobalCoordinate objects
