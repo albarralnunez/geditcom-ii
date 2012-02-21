@@ -748,7 +748,7 @@ def FirstMapCentroid(plc):
 #--------------------------- Map Creating Utilities
 
 # height if map element in pixels
-# rect = [S, N, W, E] of bounding box as floats
+# rect = [S, W, N, E] of bounding box as floats
 # mapPOIs = java script code with pois
 # mapBB = [stroke color, opacity, fill color, opacity] or None to omit
 # style = ROADMAP, 
@@ -776,8 +776,8 @@ def createJSMap(height,rect,mapPOIs=None,mapBB=None,clickLatLon=False,mapStyle="
     html.append("<script type='text/javascript'>")
     html.append("window.onload = function ()")
     html.append("{   s = "+'{0:.6g}'.format(rect[0])+";")
-    html.append("    n = "+'{0:.6g}'.format(rect[1])+";")
-    html.append("    w = "+'{0:.6g}'.format(rect[2])+";")
+    html.append("    n = "+'{0:.6g}'.format(rect[2])+";")
+    html.append("    w = "+'{0:.6g}'.format(rect[1])+";")
     html.append("    e = "+'{0:.6g}'.format(rect[3])+";")
     html.append("    sw = new google.maps.LatLng(s, w);")
     html.append("    ne = new google.maps.LatLng(n, e);")
@@ -1599,7 +1599,7 @@ class GlobalCoordinate :
                 
 # find km per degree of longitude and given latitude (in degrees)
 def kmPerLongitudeDegree(atLat) :
-    lat = atLat*0.0174533            #convert to radians (pi/180)
+    lat = atLat*0.0174533            # convert to radians (pi/180)
     clat = math.cos(lat)
     a = clat*clat*0.0000761524;		 # number is sin(pi/180)^2
     c = 2. * math.atan(math.sqrt(a/(1-a)))
@@ -1608,6 +1608,23 @@ def kmPerLongitudeDegree(atLat) :
 # find km per degree of latitude (longitude does not matter)
 def kmPerLatitudeDegree() :
     return 111.195
+
+# chord distance on a sphere
+# pt1 and pt2 are [lat,lon] pairs
+def kmChordSeparation(pt1,pt2) :
+    lat1 = pt1[0]*0.0174533        # convert to radians (pi/180)
+    sinlat1 = math.sin(lat1)
+    lon1 = pt1[1]*0.0174533
+    x1 = sinlat1*math.sin(lon1)
+    y1 = sinlat1*math.cos(lon1)
+    z1 = math.cos(lat1)
+    lat2 = pt2[0]*0.0174533        # convert to radians (pi/180)
+    sinlat2 = math.sin(lat2)
+    lon2 = pt2[1]*0.0174533
+    dx = sinlat2*math.sin(lon2)-x1
+    dy = sinlat2*math.cos(lon2)-y1
+    dz = math.cos(lat2)-z1
+    return 6371*math.sqrt(dx*dx + dy*dy + dz*dz) # 6731 is radius of earth in km
 
 # Take list of comma-separated lat, lon, and distance numbers
 # and return list of GlobalCoordinate objects
@@ -1658,12 +1675,11 @@ def GetLatLonCentroid(gpsStr) :
 
 # Take list of GPS coordinates
 # If two or three, assume lat,lon centroid in first two
-#    thirs (if there) is size of box
+#    third (if there) is size of box, otherwise size=5km
 # If four or more, assume two pairs of lat lon
-# Return coordinates for [s, n, w, e]
+# Return coordinates for [s, w, n, e]
 # If fails return error message in one-element list
 # No checking that lat or lon are actually lat or lon
-# Move to module to hard code in AppleScript (better)
 def GetBoundingBox(gpsStr) :
     gpsGCs = DecodeLatLonList(gpsStr)
     if len(gpsGCs)==0 : return ["No latitude or longitudes were found in the text"]
@@ -1678,22 +1694,17 @@ def GetBoundingBox(gpsStr) :
             spanLat = 5.
         spanLong = 0.5*spanLat/kmPerLongitudeDegree(gpsGCs[0].coordinate)
         spanLat = 0.5*spanLat/kmPerLatitudeDegree()
-        return [gpsGCs[0].coordinate-spanLat,gpsGCs[0].coordinate+spanLat,\
-        gpsGCs[1].coordinate-spanLong,gpsGCs[1].coordinate+spanLong]
+        return [gpsGCs[0].coordinate-spanLat,gpsGCs[1].coordinate-spanLong,\
+        gpsGCs[0].coordinate+spanLat,gpsGCs[1].coordinate+spanLong]
     else :
+        # switch s and n if backwards, but not w and e (may span -180)
         if gpsGCs[0].coordinate<gpsGCs[2].coordinate :
             s = gpsGCs[0]
             n = gpsGCs[2]
         else :
             s = gpsGCs[2]
             n = gpsGCs[0]
-        if gpsGCs[1].coordinate<gpsGCs[3].coordinate :
-            w = gpsGCs[1]
-            e = gpsGCs[3]
-        else :
-            w = gpsGCs[3]
-            e = gpsGCs[1]
-        return [s.coordinate,n.coordinate,w.coordinate,e.coordinate]
+        return [s.coordinate,gpsGCs[1].coordinate,n.coordinate,gpsGCs[3].coordinate]
 
 #--------------------------- User Interation
 
