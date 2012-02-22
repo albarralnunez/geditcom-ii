@@ -194,10 +194,6 @@
 			<string>Places</string>
 			<key>Album Record Type</key>
 			<string>_PLC</string>
-			<key>Album Selected IDs</key>
-			<array>
-				<string>@P3@</string>
-			</array>
 			<key>Album Sorting Array</key>
 			<array>
 				<integer>-1</integer>
@@ -213,7 +209,7 @@
 			<string>OBJE</string>
 			<key>Album Selected IDs</key>
 			<array>
-				<string>@M1@</string>
+				<string>@M11@</string>
 			</array>
 			<key>Album Sorting Array</key>
 			<array>
@@ -352,6 +348,14 @@
 			</array>
 			<key>Album Type ID</key>
 			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Album Name</key>
+			<string>Reports</string>
+			<key>Album Record Type</key>
+			<string>_RPT</string>
+			<key>Album Type ID</key>
+			<integer>3</integer>
 		</dict>
 	</array>
 	<key>Save Thumbnails</key>

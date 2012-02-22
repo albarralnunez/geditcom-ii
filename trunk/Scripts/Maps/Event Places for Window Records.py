@@ -97,11 +97,11 @@ def AddRecPlaces(rec,rEvents,rVerb,pbox) :
 def CheckRange(lat,lon) :
     global bbox
     if bbox==None :
-        bbox = [lat-.1,lat+.1,lon-.1,lon+.1]
+        bbox = [lat-.1,lon,lat+.1,lon]
     else :
         if lat < bbox[0] : bbox[0] = lat
-        if lat > bbox[1] : bbox[1] = lat
-        if lon < bbox[2] : bbox[2] = lon
+        if lat > bbox[2] : bbox[2] = lat
+        if lon < bbox[1] : bbox[1] = lon
         if lon > bbox[3] : bbox[3] = lon
   
 ################### Main Script

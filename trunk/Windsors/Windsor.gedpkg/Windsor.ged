@@ -72,8 +72,10 @@
 2 NOTE @N40@
 1 DEAT
 2 DATE 30 MAR 2002
-2 PLAC Royal Lodge, Windsor, England
+2 PLAC Old Windsor, Berkshire, England
+2 ADDR Royal Lodge
 2 AGE 101
+2 _GPS (51.439, -0.6068)
 1 FAMS @F1@
 1 CHR
 2 DATE 23 Sep 1900
@@ -81,8 +83,8 @@
 1 TITL Lady
 1 NOTE @N4@
 1 CHAN
-2 DATE 9 NOV 2011
-3 TIME 08:44:19
+2 DATE 21 FEB 2012
+3 TIME 11:46:53
 1 OBJE @M18@
 1 RESI
 2 DATE From 1920 to 2002
@@ -113,13 +115,14 @@
 2 PLAC Marylebone, London, England
 2 ADDR 27 Welbech St.
 2 NOTE @N33@
+2 _GPS (51.5183, -0.1494)
 1 FAMS @F5@
 1 DSCR Red hair.
 1 TITL Duchess of York
 1 NOTE @N2@
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 22:48:34
+2 DATE 21 FEB 2012
+3 TIME 12:16:16
 1 OBJE @M16@
 0 @I28@ INDI
 1 NAME Autumn /Kelly/
@@ -135,11 +138,11 @@
 1 SEX M
 1 BIRT
 2 DATE 1 MAR 1955
-2 PLAC Camberwell, South London
+2 PLAC Camberwell, Southwark, London, England
 1 FAMS @F8@
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 23:34:35
+2 DATE 21 FEB 2012
+3 TIME 11:30:56
 1 OBJE @M27@
 0 @I26@ INDI
 1 NAME Catherine Elizabeth /Middleton/
@@ -160,26 +163,29 @@
 1 SEX M
 1 BIRT
 2 DATE 17 DEC 2007
-2 PLAC Surrey, England
-2 ADDR Frimley Park Hospital
+2 PLAC Frimley, Surrey, England
+2 ADDR Frimley Park NHS Hospital
+2 _GPS (51.319670, -0.74156)
 1 FAMC @F7@
 1 REFN 9 OCT 2011 23:38:14
 2 TYPE Creation Date
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 23:43:55
+2 DATE 21 FEB 2012
+3 TIME 12:25:10
 1 OBJE @M29@
 0 @I24@ INDI
 1 NAME Louise Alice Elizabeth Mary /Mountbatten-Windsor/
 1 SEX M
 1 BIRT
 2 DATE 8 NOV 2003
-2 PLAC Frimley Park NHS Hospital, Surrey, England
+2 PLAC Frimley, Surrey, England
+2 ADDR Frimley Park NHS Hospital
+2 _GPS (51.319670, -0.74156)
 1 FAMC @F7@
 1 REFN USR 27 Nov 2003 1
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 23:44:44
+2 DATE 21 FEB 2012
+3 TIME 11:35:41
 1 OBJE @M30@
 0 @I5@ INDI
 1 NAME Phillip /Mountbatten/
@@ -200,12 +206,12 @@
 1 SEX M
 1 BIRT
 2 DATE 22 Sep 1948
-2 PLAC Tetbury, Gloucestershire
+2 PLAC Tetbury, Cotswold District, Gloucestershire, England
 1 FAMS @F6@
 1 NOTE @N29@
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 23:32:32
+2 DATE 21 FEB 2012
+3 TIME 11:48:19
 1 OBJE @M26@
 0 @I20@ INDI
 1 NAME Peter Mark Andrew /Phillips/
@@ -213,12 +219,14 @@
 1 FAMS @F12@
 1 BIRT
 2 DATE 15 Nov 1977
-2 PLAC St. Mary's Hosp., Paddington, London, England
+2 PLAC Paddington, London, England
+2 ADDR St. Mary's Hospital
 2 NOTE @N30@
+2 _GPS (51.5174, -0.1741)
 1 FAMC @F6@
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 23:29:35
+2 DATE 21 FEB 2012
+3 TIME 11:11:32
 1 OBJE @M25@
 0 @I29@ INDI
 1 NAME Savannah /Phillips/
@@ -237,23 +245,25 @@
 1 FAMS @F11@
 1 BIRT
 2 DATE 15 May 1981
-2 PLAC St. Mary's Hosp., Paddington, London, England
+2 PLAC Paddington, London, England
+2 ADDR St. Mary's Hospital
+2 _GPS (51.5174, -0.1741)
 1 FAMC @F6@
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 23:27:24
+2 DATE 21 FEB 2012
+3 TIME 11:11:50
 1 OBJE @M24@
 0 @I22@ INDI
 1 NAME Sophie /Rhys-Jones/
 1 SEX F
 1 BIRT
 2 DATE 20 JAN 1965
-2 PLAC Oxford, England
+2 PLAC Oxford, Oxfordshire, England
 1 FAMS @F7@
 1 TITL HRH The Countess of Wessex
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 23:36:18
+2 DATE 21 FEB 2012
+3 TIME 11:26:02
 1 OBJE @M28@
 0 @I10@ INDI
 1 NAME Diana Frances /Spencer/
@@ -305,7 +315,9 @@
 1 SEX F
 1 BIRT
 2 DATE 15 Aug 1950
-2 PLAC Clarence House, St. James, England
+2 PLAC Westminster, London, England
+2 ADDR Clarence House
+2 _GPS (51.5039, -0.1384)
 1 FAMS @F6@
 1 FAMS @F8@
 1 FAMC @F2@
@@ -317,23 +329,25 @@
 2 DATE JUN 1987
 1 NOTE @N27@
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 22:42:03
+2 DATE 21 FEB 2012
+3 TIME 11:56:35
 1 OBJE @M14@
 0 @I18@ INDI
 1 NAME Beatrice Elizabeth Mary /Windsor/
 1 SEX F
 1 BIRT
 2 DATE 8 Aug 1988
-2 PLAC Portland Hospital, London, England
+2 PLAC Westminster, London, England
+2 ADDR The Portland Hospital for Women and Children
 2 NOTE @N35@
+2 _GPS (51.5231, -0.1444)
 1 FAMC @F5@
 1 TITL Princess
 1 NOTE @N34@
 1 REFN JAN 4 Oct 1998
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 22:44:37
+2 DATE 21 FEB 2012
+3 TIME 11:18:28
 1 OBJE @M19@
 0 @I6@ INDI
 1 NAME Charles Philip Arthur /Windsor/
@@ -385,6 +399,7 @@
 3 CONT London, W1
 3 CONT England
 2 NOTE @N7@
+2 _GPS (51.5102, -0.1449)
 1 FAMS @F2@
 1 FAMC @F1@
 1 EVEN
@@ -398,8 +413,8 @@
 1 DSCR 5'4" tall and has blue eyes
 1 NOTE @N6@
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 22:49:15
+2 DATE 21 FEB 2012
+3 TIME 12:14:27
 1 OBJE @M13@
 1 RESI
 2 DATE From 1926
@@ -418,7 +433,9 @@
 1 SEX F
 1 BIRT
 2 DATE 23 Mar 1990
-2 PLAC Portland Hospital, London, England
+2 PLAC Westminster, London, England
+2 ADDR The Portland Hospital for Women and Children
+2 _GPS (51.5231, -0.1444)
 1 FAMC @F5@
 1 CHR
 2 DATE 23 Dec 1990
@@ -426,8 +443,8 @@
 1 TITL Princess
 1 REFN JAN 4 Oct 1998 1
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 22:47:41
+2 DATE 21 FEB 2012
+3 TIME 11:18:49
 1 OBJE @M20@
 0 @I1@ INDI
 1 NAME George VI /Windsor/
@@ -444,7 +461,9 @@
 1 FAMS @F1@
 1 BURI
 2 DATE 11 Mar 1952
-2 PLAC St. George's Chapel, Windsor, England
+2 PLAC Windsor, Berkshire, England
+2 ADDR St. George's Chapel
+2 _GPS (51.4836, -0.607)
 1 EVEN
 2 DATE 1936
 2 PLAC London, England
@@ -453,8 +472,8 @@
 1 OCCU King of England
 1 NOTE @N3@
 1 CHAN
-2 DATE 6 FEB 2012
-3 TIME 14:22:56
+2 DATE 21 FEB 2012
+3 TIME 11:43:06
 1 OBJE @M15@
 1 SOUR @SR1@
 1 SOUR @SR2@
@@ -463,25 +482,31 @@
 1 SEX M
 1 BIRT
 2 DATE 15 Sep 1984
-2 PLAC St. Mary's Hosp., Paddington, London, England
+2 PLAC Paddington, London, England
+2 ADDR St. Mary's Hospital
 2 NOTE @N26@
+2 _GPS (51.5174, -0.1741)
 1 FAMC @F3@
 1 CHR
 2 DATE DEC 1984
-2 PLAC St. George's Chapel, Windsor, England
+2 PLAC Windsor, Berkshire, England
+2 ADDR St. George's Chapel
+2 _GPS (51.4836, -0.607)
 1 TITL Prince
 1 NOTE @N25@
 1 CHAN
-2 DATE 7 JUN 2009
-3 TIME 15:50:52
+2 DATE 21 FEB 2012
+3 TIME 11:43:19
 1 OBJE @M9@
 0 @I4@ INDI
 1 NAME Margaret Rose /Windsor/
 1 SEX F
 1 BIRT
 2 DATE 21 Aug 1930
-2 PLAC Glamis Castle, Angus, Scotland
+2 PLAC Glamis, Angus, Tayside, Scotland
+2 ADDR Glamis Castle
 2 NOTE @N10@
+2 _GPS (56.6203, -3.0027)
 1 DEAT
 2 DATE 9 FEB 2002
 2 PLAC London, England
@@ -494,16 +519,18 @@
 1 NOTE @N9@
 1 OBJE @M5@
 1 CHAN
-2 DATE 5 JAN 2011
-3 TIME 21:51:00
+2 DATE 21 FEB 2012
+3 TIME 12:03:11
 0 @I11@ INDI
 1 NAME William Arthur Philip /Windsor/
 1 SEX M
 1 FAMS @F10@
 1 BIRT
 2 DATE 21 Jun 1982
-2 PLAC St. Mary's Hosp., Paddington, London, England
+2 PLAC Paddington, London, England
+2 ADDR St. Mary's Hospital
 2 NOTE @N24@
+2 _GPS (51.5174, -0.1741)
 1 FAMC @F3@
 1 CHR
 2 DATE 4 Aug 1982
@@ -512,8 +539,8 @@
 1 TITL Prince
 1 NOTE @N23@
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 23:11:29
+2 DATE 21 FEB 2012
+3 TIME 11:12:28
 1 OBJE @M8@
 0 @F4@ FAM
 1 HUSB @I13@
@@ -534,10 +561,11 @@
 1 WIFE @I7@
 1 MARR
 2 DATE 12 DEC 1992
-2 PLAC Crathie Church, Scotland
+2 PLAC Crathie, Aberdeenshire, Grampian, Scotland
+2 ADDR Crathie Church
 1 CHAN
-2 DATE 7 Nov 2001
-3 TIME 22:19:38
+2 DATE 21 FEB 2012
+3 TIME 12:11:03
 0 @F2@ FAM
 1 HUSB @I5@
 1 WIFE @I3@
@@ -569,25 +597,27 @@
 1 WIFE @I28@
 1 MARR
 2 DATE 17 MAY 2008
-2 PLAC St. George's Chapel, Windsor, England
+2 PLAC Windsor, Berkshire, England
+2 ADDR St. George's Chapel
+2 _GPS (51.4836, -0.607)
 1 CHIL @I29@
 1 REFN 9 OCT 2011 23:29:35
 2 TYPE Creation Date
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 23:30:36
+2 DATE 21 FEB 2012
+3 TIME 11:43:35
 0 @F11@ FAM
 1 HUSB @I27@
 1 WIFE @I21@
 1 MARR
 2 DATE 30 JUL 2011
-2 PLAC Edinburgh, Scotland
+2 PLAC Edinburgh, Lothian, Scotland
 2 ADDR Canongate Kirk
 1 REFN 9 OCT 2011 23:24:18
 2 TYPE Creation Date
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 23:28:09
+2 DATE 21 FEB 2012
+3 TIME 11:28:59
 1 OBJE @M23@
 0 @F5@ FAM
 1 HUSB @I8@
@@ -621,27 +651,29 @@
 1 WIFE @I25@
 1 MARR
 2 DATE 9 APR 2005
-2 PLAC Windsor, England
+2 PLAC Windsor, Berkshire, England
 2 ADDR Guildhall
 1 REFN 7 JUN 2009 15:34:06
 2 TYPE Creation Date
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 23:42:14
+2 DATE 21 FEB 2012
+3 TIME 11:38:14
 1 OBJE @M12@
 0 @F7@ FAM
 1 HUSB @I9@
 1 WIFE @I22@
 1 MARR
 2 DATE 19 JUN 1999
-2 PLAC St. George's Chapel, Windsor, England
+2 PLAC Windsor, Berkshire, England
+2 ADDR St. George's Chapel
+2 _GPS (51.4836, -0.607)
 1 ENGA
 2 DATE 6 JAN 1999
 1 CHIL @I24@
 1 CHIL @I30@
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 23:38:14
+2 DATE 21 FEB 2012
+3 TIME 11:43:45
 0 @F1@ FAM
 1 HUSB @I1@
 1 WIFE @I2@
@@ -1197,7 +1229,7 @@
 1 _PFACT Other change
 2 DATE 15 May 1532
 2 _VALUE Church governing body agrees to demands by Henry VIII
-2 _PNOTE Governing body for the Roman Catholic Church within England recognised Royal Supremacy over the church so that it could no longer make canon law without without the permission of the King
+2 _PNOTE Governing body for the Roman Catholic Church within England recognized Royal Supremacy over the church so that it could no longer make canon law without without the permission of the King
 1 _PFACT population total
 2 DATE 1541
 2 _VALUE 2,774,000
@@ -1224,22 +1256,126 @@
 1 _BOX Bounding Box
 2 _BNDS (49.871158, -6.37988), (55.811740, 1.768960)
 1 CHAN
-2 DATE 9 NOV 2011
-3 TIME 08:46:50
+2 DATE 21 FEB 2012
+3 TIME 11:00:19
+0 @P41@ _PLC
+1 _PLACE Old Windsor, Berkshire, England
+1 REFN 21 FEB 2012 11:46:40
+2 TYPE Creation Date
+1 CHAN
+2 DATE 21 FEB 2012
+3 TIME 11:46:40
+1 _BOX Old Windsor
+2 _BNDS (51.431339, -0.623279), (51.473807, -0.563529)
+2 _POI Old Windsor Library
+3 _GPS (51.464511, -0.586069)
+3 _CODE LIBR
 0 @P34@ _PLC
 1 _PLACE Reading, Berkshire, England
 1 REFN 9 OCT 2011 23:13:59
 2 TYPE Creation Date
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 23:15:39
+2 DATE 21 FEB 2012
+3 TIME 11:01:04
+1 _URL http://en.wikipedia.org/wiki/Reading,_Berkshire
+2 _LABEL Wikipedia
+1 _BOX Reading
+2 _BNDS (51.409889, -1.053029), (51.493130, -0.928470)
+2 _POI Bupa Dunedin Hospital
+3 _GPS (51.450220, -0.986820)
+3 _CODE HSP
+2 _POI Capio Reading Hospital
+3 _GPS (51.44455, -0.988310)
+3 _CODE HSP
+2 _POI Royal Berkshire Hospital
+3 _GPS (51.4514, -0.95865)
+3 _URL http://en.wikipedia.org/wiki/Royal_Berkshire_Hospital
+3 _CODE HSP
+0 @P40@ _PLC
+1 _PLACE Windsor, Berkshire, England
+1 REFN 21 FEB 2012 11:37:56
+2 TYPE Creation Date
+1 CHAN
+2 DATE 21 FEB 2012
+3 TIME 11:37:56
+1 _BOX Windsor
+2 _BNDS (51.459980, -0.682259), (51.498150, -0.595319)
+2 _POI King Edward VII Hospital-Windsor SL4
+3 _GPS (51.4739, -0.614099)
+3 _CODE HSP
+2 _POI Eton Wick Library
+3 _GPS (51.497211, -0.635789)
+3 _CODE LIBR
+2 _POI Dedworth Branch Library
+3 _GPS (51.479889, -0.64354)
+3 _CODE LIBR
+2 _POI Eton Library
+3 _GPS (51.490608, -0.609369)
+3 _CODE LIBR
+0 @P42@ _PLC
+1 _PLACE Tetbury, Cotswold District, Gloucestershire, England
+1 REFN 21 FEB 2012 11:48:06
+2 TYPE Creation Date
+1 CHAN
+2 DATE 21 FEB 2012
+3 TIME 11:48:06
+1 _BOX Tetbury
+2 _BNDS (51.582400, -2.293480), (51.706477, -2.083559)
+2 _POI Tetbury Hospital
+3 _GPS (51.635219, -2.154669)
+3 _CODE HSP
+2 _POI Athelstan Museum
+3 _GPS (51.583599, -2.096610)
+3 _CODE MUS
+2 _POI Minchinhampton Library
+3 _GPS (51.705879, -2.187149)
+3 _CODE LIBR
+2 _POI Tetbury Library
+3 _GPS (51.636662, -2.163359)
+3 _CODE LIBR
+2 _POI Malmesbury Public Library
+3 _GPS (51.582821, -2.096620)
+3 _CODE LIBR
 0 @P1@ _PLC
 1 _PLACE London, England
 1 REFN 9 OCT 2011 22:41:02
 2 TYPE Creation Date
 1 CHAN
-2 DATE 9 NOV 2011
-3 TIME 08:45:12
+2 DATE 21 FEB 2012
+3 TIME 11:02:18
+1 _URL http://en.wikipedia.org/wiki/Greater_London
+2 _LABEL Wikipedia
+1 _BOX London
+2 _BNDS (51.286839, -0.510349), (51.692321, 0.334029)
+2 _POI British Library
+3 _GPS (51.528799, -0.126700)
+3 _URL http://en.wikipedia.org/wiki/British_Library
+3 _CODE LIBR
+2 _POI Royal Courts of Justice
+3 _GPS (51.513680, -0.11332)
+3 _URL http://en.wikipedia.org/wiki/Royal_Courts_of_Justice
+3 _CODE CTHSE
+2 _POI St Paul's Cathedral
+3 _GPS (51.513860, -0.098299)
+3 _URL http://en.wikipedia.org/wiki/St_Paul%27s_Cathedral
+3 _CODE CH
+2 _POI The Temple Church
+3 _GPS (51.51323, -0.110380)
+3 _URL http://en.wikipedia.org/wiki/Temple_Church
+3 _CODE CH
+2 _POI West London Mental Health Trust
+3 _GPS (51.432899, -0.308099)
+3 _URL http://en.wikipedia.org/wiki/West_London_Mental_Health_%28NHS%29_Trust
+3 _CODE HSP
+2 _POI Westminster Abbey
+3 _GPS (51.499369, -0.128459)
+3 _URL http://ru.wikipedia.org/wiki/%D0%92%D0%B5%D1%81%D1%82%D0%BC%D0%B8%D0%BD%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%BE%D0%B5_%D0%B0%D0%B1%D0%B1%D0%B0%D1%82%D1%81%D1%82%D0%B2%D0%BE
+3 _CODE CH
+2 _POI London Family History Centre
+3 _GPS (51.496681, -0.173661)
+3 _URL http://www.londonfhc.org/
+3 _CODE LIBR
+3 _PNOTE Located at 64-68 Exhibition Road, close to the Imperial College just south of Hyde Park.
 0 @P14@ _PLC
 1 _PLACE Buckingham Palace, London, England
 1 _BOX Buckingham Palace
@@ -1255,19 +1391,31 @@
 1 REFN 9 OCT 2011 22:41:02
 2 TYPE Creation Date
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 22:48:17
+2 DATE 21 FEB 2012
+3 TIME 11:05:07
+1 _BOX Marylebone
+2 _BNDS (51.518180, -0.17068), (51.524261, -0.15137)
 0 @P7@ _PLC
-1 _PLACE St. Mary's Hosp., Paddington, London, England
-1 REFN 9 OCT 2011 22:41:02
-2 TYPE Creation Date
-0 @P15@ _PLC
-1 _PLACE Portland Hospital, London, England
+1 _PLACE Paddington, London, England
 1 REFN 9 OCT 2011 22:41:02
 2 TYPE Creation Date
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 22:44:37
+2 DATE 21 FEB 2012
+3 TIME 11:12:44
+1 _BOX Paddington
+2 _BNDS (51.503120, -0.20013), (51.524878, -0.16041)
+2 _POI Saint Mary's Hospital
+3 _CODE HSP
+3 _GPS (51.5174, -0.1741)
+0 @P39@ _PLC
+1 _PLACE Camberwell, Southwark, London, England
+1 REFN 21 FEB 2012 11:30:41
+2 TYPE Creation Date
+1 CHAN
+2 DATE 21 FEB 2012
+3 TIME 11:30:41
+1 _BOX Camberwell
+2 _BNDS (51.457118, -0.110990), (51.488190, -0.074730)
 0 @P31@ _PLC
 1 _PLACE St. Paul's Cathedral, London, England
 1 _BOX St. Paul's Cathedral
@@ -1278,6 +1426,18 @@
 1 CHAN
 2 DATE 9 OCT 2011
 3 TIME 23:07:02
+0 @P15@ _PLC
+1 _PLACE Westminster, London, England
+1 REFN 9 OCT 2011 22:41:02
+2 TYPE Creation Date
+1 CHAN
+2 DATE 21 FEB 2012
+3 TIME 11:18:13
+1 _BOX Westminster
+2 _BNDS (51.501491, -0.16685), (51.525230, -0.129260)
+2 _POI The Portland Hospital for Women and Children
+3 _CODE HSP
+3 _GPS (51.5231, -0.1444)
 0 @P29@ _PLC
 1 _PLACE Westminster Abbey, London, England
 1 _BOX Westminster Abbey
@@ -1290,11 +1450,14 @@
 3 TIME 23:09:37
 0 @P27@ _PLC
 1 _PLACE Westminster Cathedral, London, England
+1 _BOX Westminster Cathedral
+2 _BNDS (51.4947, -0.1403), (51.4965, -0.1383)
+2 _STYLE Satellite
 1 REFN 9 OCT 2011 22:41:02
 2 TYPE Creation Date
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 22:47:15
+2 DATE 21 FEB 2012
+3 TIME 11:24:27
 0 @P20@ _PLC
 1 _PLACE Sandringham, Norfolk, England
 1 _BOX The Town
@@ -1309,67 +1472,126 @@
 2 DATE 9 OCT 2011
 3 TIME 23:00:21
 0 @P9@ _PLC
-1 _PLACE Oxford, England
+1 _PLACE Oxford, Oxfordshire, England
 1 REFN 9 OCT 2011 22:41:02
 2 TYPE Creation Date
-0 @P13@ _PLC
-1 _PLACE Clarence House, St. James, England
-1 REFN 9 OCT 2011 22:41:02
-2 TYPE Creation Date
-0 @P38@ _PLC
-1 _PLACE Surrey, England
-1 REFN 9 OCT 2011 23:39:06
-2 TYPE Creation Date
+1 CHAN
+2 DATE 21 FEB 2012
+3 TIME 11:26:02
+1 _URL http://en.wikipedia.org/wiki/Oxford
+2 _LABEL Wikipedia
+1 _BOX Oxford
+2 _BNDS (51.71096, -1.30443), (51.796298, -1.175820)
+2 _POI John Radcliffe Hospital
+3 _GPS (51.763869, -1.219810)
+3 _URL http://en.wikipedia.org/wiki/John_Radcliffe_Hospital
+3 _CODE HSP
 0 @P6@ _PLC
-1 _PLACE Frimley Park NHS Hospital, Surrey, England
-1 REFN 9 OCT 2011 22:41:02
-2 TYPE Creation Date
-0 @P32@ _PLC
-1 _PLACE Windsor, England
+1 _PLACE Frimley, Surrey, England
 1 REFN 9 OCT 2011 22:41:02
 2 TYPE Creation Date
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 23:10:51
-0 @P2@ _PLC
-1 _PLACE Royal Lodge, Windsor, England
-1 REFN 9 OCT 2011 22:41:02
-2 TYPE Creation Date
-0 @P33@ _PLC
-1 _PLACE St. George's Chapel, Windsor, England
-1 REFN 9 OCT 2011 22:41:02
-2 TYPE Creation Date
-1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 22:46:19
+2 DATE 21 FEB 2012
+3 TIME 11:35:16
+1 _BOX Frimley
+2 _BNDS (51.299548, -0.761090), (51.323120, -0.71931)
+2 _POI Frimley Park Hospital
+3 _GPS (51.319670, -0.74156)
+3 _CODE HSP
+2 _POI Frimley Green Library
+3 _GPS (51.30294, -0.726260)
+3 _CODE LIBR
 0 @P11@ _PLC
 1 _PLACE Paris, France
 1 REFN 9 OCT 2011 22:41:02
 2 TYPE Creation Date
-0 @P36@ _PLC
-1 _PLACE Tetbury, Gloucestershire
-1 REFN 9 OCT 2011 23:32:32
-2 TYPE Creation Date
+1 _URL http://en.wikipedia.org/wiki/Paris
+2 _LABEL Wikipedia
+1 _BOX Paris
+2 _BNDS (48.815731, 2.22383), (48.902481, 2.46977)
+2 _POI Bibliothèque Nationale de France
+3 _GPS (48.833640, 2.37575)
+3 _URL http://en.wikipedia.org/wiki/Biblioth%C3%A8que_nationale_de_France
+3 _CODE LIBR
+2 _POI Cimetière Saint-Vincent
+3 _GPS (48.889400, 2.338900)
+3 _URL http://en.wikipedia.org/wiki/Saint-Vincent_Cemetery
+3 _CODE CMTY
+2 _POI Cimetière de Passy
+3 _GPS (48.861789, 2.284959)
+3 _URL http://en.wikipedia.org/wiki/Passy_Cemetery
+3 _CODE CMTY
+2 _POI Cimetière de Picpus
+3 _GPS (48.844029, 2.400199)
+3 _URL http://en.wikipedia.org/wiki/Picpus_Cemetery
+3 _CODE CMTY
+2 _POI Cimetière du Montparnasse
+3 _GPS (48.838679, 2.32666)
+3 _URL http://en.wikipedia.org/wiki/Montparnasse_Cemetery
+3 _CODE CMTY
+2 _POI Hôpital La Pitié-Salpñtrière
+3 _GPS (48.839019, 2.364120)
+3 _URL http://en.wikipedia.org/wiki/Piti%C3%A9-Salp%C3%AAtri%C3%A8re_Hospital
+3 _CODE HSP
+2 _POI Les Invalides
+3 _GPS (48.855020, 2.312510)
+3 _URL http://en.wikipedia.org/wiki/Les_Invalides
+3 _CODE CH
+2 _POI Montmartre Cemetery
+3 _GPS (48.887900, 2.329959)
+3 _URL http://en.wikipedia.org/wiki/Montmartre_Cemetery
+3 _CODE CMTY
+2 _POI Notre Dame de Paris
+3 _GPS (48.852960, 2.350070)
+3 _URL http://en.wikipedia.org/wiki/Notre_Dame_de_Paris
+3 _CODE CH
+2 _POI Père Lachaise Cemetery
+3 _GPS (48.86065, 2.394849)
+3 _URL http://en.wikipedia.org/wiki/P%C3%A8re_Lachaise_Cemetery
+3 _CODE CMTY
+1 CHAN
+2 DATE 21 FEB 2012
+3 TIME 11:27:23
 0 @P5@ _PLC
 1 _PLACE Isle of Kerkira, Mon Repos, Corfu, Greece
 1 REFN 9 OCT 2011 22:41:02
 2 TYPE Creation Date
-0 @P25@ _PLC
-1 _PLACE Glamis Castle, Angus, Scotland
-1 REFN 9 OCT 2011 22:41:02
-2 TYPE Creation Date
+1 _URL http://en.wikipedia.org/wiki/Kerkyra_Prefecture
+2 _LABEL Wikipedia
+1 _BOX Isle of Kerkira
+2 _BNDS (39.119259, 19.37359), (39.900761, 20.25967)
+1 CHAN
+2 DATE 21 FEB 2012
+3 TIME 11:52:17
 0 @P28@ _PLC
-1 _PLACE Crathie Church, Scotland
+1 _PLACE Crathie, Aberdeenshire, Grampian, Scotland
 1 REFN 9 OCT 2011 22:41:02
 2 TYPE Creation Date
+1 CHAN
+2 DATE 21 FEB 2012
+3 TIME 12:10:39
+1 _BOX Crathie
+2 _BNDS (57.035271, -3.220400), (57.075297, -3.192060)
 0 @P35@ _PLC
-1 _PLACE Edinburgh, Scotland
+1 _PLACE Edinburgh, Lothian, Scotland
 1 REFN 9 OCT 2011 23:25:54
 2 TYPE Creation Date
-0 @P37@ _PLC
-1 _PLACE Camberwell, South London
-1 REFN 9 OCT 2011 23:34:35
+1 CHAN
+2 DATE 21 FEB 2012
+3 TIME 11:28:59
+1 _URL http://en.wikipedia.org/wiki/Edinburgh
+2 _LABEL Wikipedia
+1 _BOX Edinburgh
+2 _BNDS (55.818877, -3.453949), (56.012217, -3.077119)
+0 @P25@ _PLC
+1 _PLACE Glamis, Angus, Tayside, Scotland
+1 REFN 9 OCT 2011 22:41:02
 2 TYPE Creation Date
+1 CHAN
+2 DATE 21 FEB 2012
+3 TIME 12:02:44
+1 _BOX Glamis
+2 _BNDS (56.600608, -3.015820), (56.628151, -2.993409)
 0 @B1@ _BOK
 1 _DESC Sample GEDitCOM II Book
 1 _ABOUT John A. Nairn is the author of "GEDitCOM II," which is the customizable genealogy application for the Macintosh. The web site for the application is http://www.geditcom.com. One feature of "GEDitCOM II" is that you can
