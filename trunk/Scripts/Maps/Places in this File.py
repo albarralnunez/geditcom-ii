@@ -119,11 +119,11 @@ poiall = ''.join(pois)
 rpt = ScriptOutput(GetScriptName(),"html")
 
 # enlarge to screen size and create map
-screen = GetScreenSize()
-mh = 20.
-mv = 40.
-mwidth = screen[0]-2.*mh
-mheight = screen[1]-mv-60.
+screen = GetMainScreenSize()
+mh = screen[0]+10.
+mv = screen[1]+10.
+mwidth = screen[2]-20.
+mheight = screen[3]-20.
 if bbox[3]>180. : bbox[3]-=360.
 [mcss,mscript,mbody] = createJSMap(mheight-160.,bbox,poiall,None,True)
 

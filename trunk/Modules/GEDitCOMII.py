@@ -1116,7 +1116,7 @@ def OpenWebSite(website) :
     NSWorkspace.sharedWorkspace().openURL_(theurl)
 
 # Get screen size by assuming it is desktop window bounds
-# May have issue if multiple screen?
+# Will span multiple screens when there are multiple monitors
 def GetScreenSize() :
     fndr = SBApplication.applicationWithBundleIdentifier_("com.apple.Finder")
     props = fndr.desktop().containerWindow().properties()
@@ -1126,6 +1126,13 @@ def GetScreenSize() :
     bnds = bnds.split(",")
     return [float(bnds[-2]),float(bnds[-1])]
 
+# Get size of main screen only (one with menu bar
+# Return visible area [x,y,width,height] accounting for dock and menu bar
+def GetMainScreenSize() :
+    screen = NSScreen.mainScreen()
+    screenRect = screen.visibleFrame()
+    return [screenRect.origin.x,screenRect.origin.y,NSWidth(screenRect),NSHeight(screenRect)]
+
 #--------------------------- Date Functions
 
 # Convert two date SDNs to years from first date to second date
@@ -1133,39 +1140,51 @@ def GetAgeSpan(beginDate, endDate) :
     return (endDate - beginDate) / 365.25
 
 # compare dates for match quality where date1 and date2 are two ranges
+# order is -1, 0, or 1 for y before, either, or after x
 # return 0 of can't compare, -1 if conflict, or ranking 0 to 1
-def DateQuality(date1,date2) :
+def DateQuality(date1,date2,order=0) :
     global _tau,_cutoff
     
     # check for no date
-    qual = 0.
-    if date1[0]==0 or date2[0]==0 :
-        return qual
-	
-    # reorder with wider one second
-    dy = date2[1]-date2[0]
-    dx = date1[1]-date1[0]
-    if dx > dy :
-        x = [date2[0],date2[1]]
-        y = [date1[0],date1[1]]
-        dy = dx
-        dx = x[1]-x[0]
+    if date1[0]==0 or date2[0]==0 : return 0.
+    
+    # make x exact if before or after and check for exit
+    # if order 0, switch dates if dx > dy
+    y = [date2[0],date2[1]]
+    dy = y[1] - y[0]
+    if order == 1 :
+        if y[1] <  date1[0] : return -1.
+        x = [date1[0], date1[0]]
+        dx = 0
+    elif order == -1 :
+        if y[0] > date1[1] : return -1.
+        x = [date1[1], date1[1]]
+        dx = 0
     else :
         x = [date1[0],date1[1]]
-        y = [date2[0],date2[1]]
+        dx = x[1] - x[0]
+        if dx > dy :
+            x = [date2[0],date2[1]]
+            y = [date1[0],date1[1]]
+            dy = dx
+            dx = x[1]-x[0]
+        # check for x within y
+        if x[0]>=y[0] and x[1]<=y[1] :
+            x[0] = y[0]+0.5*(dy-dx)
+            x[1] = x[0]+dx
     
     # check signs
     if y[1] < x[1] :
         x = [-x[1],-x[0]]
         y = [-y[1],-y[0]]
+        order = -order
     
-    # check for x within y
-    if x[0]>=y[0] and x[1]<=y[1] :
-        x[0] = y[0]+0.5*(dy-dx)
-        x[1] = x[0]+dx
+    # when order == 1, x[0]==x[1]=x and y[1]>=x
+    # when order == -1, x[0]==x[1]=x and y[0]<=x
     
     # quality function
     if y[0] >= x[1] :
+        # x[1]<=y[0]
         if x[1] > x[0] :
             e1 = -(y[0]-x[0])/_tau
             e2 = -(y[0]-x[1])/_tau
@@ -1175,14 +1194,17 @@ def DateQuality(date1,date2) :
             qual *= _tau*_tau/(dx*dy)
         else :
             if y[1] > y[0] :
-                e1 = -(y[0]-x[0])/_tau
-                e2 = -(y[1]-x[1])/_tau
-                qual = math.exp(e1)-math.exp(e2)
-                qual *= _tau/dy
+                if order==-1 :
+                    # shift y one day to the left to get a result
+                    qual = tau*(1.-math.exp(-1./_tau))/dy
+                else :
+                    e1 = -(y[0]-x[0])/_tau
+                    e2 = -(y[1]-x[1])/_tau
+                    qual = _tau*(math.exp(e1)-math.exp(e2))/dy
             else :
-                e1 = -(y[1]-x[0])/_tau
-                qual = math.exp(e1)
+                qual = math.exp(-(y[1]-x[0])/_tau)
     elif y[0] >= x[0] :
+        # x[0]<=y[0]<x[1], therefore x[0]<x[1], order=0
         e1 = -(x[1]-y[0])/_tau
         e2 = -(y[0]-x[0])/_tau
         e3 = -(y[1]-x[0])/_tau
@@ -1190,20 +1212,26 @@ def DateQuality(date1,date2) :
         qual = math.exp(e1)-math.exp(e2)+math.exp(e3)-math.exp(e4)
         qual = _tau*(2*(x[1]-y[0])+_tau*qual)/(dx*dy)
     else :
+        # y[0]<x[0]
         if x[1] > x[0] :
             e1 = -(x[0]-y[0])/_tau
             e2 = -(x[1]-y[0])/_tau
             e3 = -(y[1]-x[0])/_tau
             e4 = -(y[1]-x[1])/_tau
             qual = -math.exp(e1)+math.exp(e2)+math.exp(e3)-math.exp(e4)
-            qual *= _tau*_tau/(dx*dy)
-            qual += 2.*_tau/dy
+            qual = _tau*(2. + _tau*qual/dx)/dy
         else :
-            e1 = -(x[0]-y[0])/_tau
-            e2 = -(y[1]-x[1])/_tau
-            qual = -math.exp(e1)-math.exp(e2)
-            qual *= _tau/dy
-            qual += 2.*_tau/dy
+            if order==1 :
+                # when order == 1, y[0]<x<=y[1]
+                qual = _tau*(1.-math.exp(-(y[1]-x[1])/_tau))/dy
+            else :
+                # when order == -1, y[0]<x
+                if order==0 or y[1]<=x[0] :
+                    e1 = -(x[0]-y[0])/_tau
+                    e2 = -(y[1]-x[1])/_tau
+                    qual = _tau*(2.-math.exp(e1)-math.exp(e2))/dy
+                else :
+                    qual = _tau*(1.-math.exp(-(x[0]-y[0])/_tau))/dy
 
     if qual < _cutoff : qual = -1.
     return qual

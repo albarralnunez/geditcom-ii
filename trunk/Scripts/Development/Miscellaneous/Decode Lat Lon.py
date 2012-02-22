@@ -6,13 +6,6 @@
 from GEDitCOMII import *
 import math
 
-# Get size of main screen only (one with menu bar
-# Return visible area [x,y,width,height] accounting for dock and menu bar
-def GetMainScreenSize() :
-    screen = NSScreen.mainScreen()
-    screenRect = screen.visibleFrame()
-    return [screenRect.origin.x,screenRect.origin.y,NSWidth(screenRect),NSHeight(screenRect)]
-    
 ################### Main Script
 
 # Preamble

@@ -9,7 +9,7 @@ from GEDitCOMII import *
 
 # Search on set of records for date
 def DateSearch(recs,dateref) :
-    global numDates,hits
+    global numDates,hits,order
     global reci,numRecs,nextFraction
     
     for i in range(len(recs)) :
@@ -19,7 +19,7 @@ def DateSearch(recs,dateref) :
         for j in range(len(dates)) :
             onedate = dates[j]
             onerng = rec.sdnRangeFullDate_(onedate[0])
-            qual = DateQuality(dateref,onerng)
+            qual = DateQuality(dateref,onerng,order)
             if qual>0. :
                 hits.append([onedate[0],qual])
 
@@ -38,7 +38,7 @@ if not(gedit) : quit()
 gdoc = FrontDocument()
 
 # get the date
-mydate = gdoc.userInputPrompt_buttons_initialText_title_("Prompt Text",\
+mydate = gdoc.userInputPrompt_buttons_initialText_title_("Ener any valid date",\
 ["OK","Cancel"], "7 DEC 1941", None)
 if mydate[0]=="Cancel" : quit()
 
@@ -52,6 +52,7 @@ if myrng[0]==0 :
 SetTauCutoff(50.,2.)
 numDates = 0
 hits = []
+order = 0
 
 reci = 0
 fractionStepSize=nextFraction=0.01
@@ -64,6 +65,7 @@ print "Matching to date: "+mydate[1]
 [tau,cutoff] = GetTauCutoff()
 print "tau = "+str(tau)+" days"
 print "cutoff = "+str(cutoff)
+print "order = "+str(order)
 print "hits = "+str(len(hits))
 print ""
 
