@@ -772,8 +772,12 @@ while index < len(recs) :
             dList = recs[mindex].objectDescriptionOutputOptions_(options)
             d2 = '\n'.join(dList)
             prompt = "The following records match with score = "+s1(merit)
+            if merging == "NOTE" :
+                if len(recDescribe)>600 : recDescribe = recDescribe[:600]+"..."
+                if len(d2)>600 : d2 = d2[:600]+"..."
             msg = recDescribe +"\n\n"+d2
             choice = GetOption(prompt,msg,["Don't Merge","Merge","Cancel"])
+            
             if choice == "Cancel" :
                 index = len(recs)
                 break;
