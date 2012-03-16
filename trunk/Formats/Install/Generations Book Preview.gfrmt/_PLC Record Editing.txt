@@ -1,0 +1,179 @@
+load ResetTabs,RecordTitle,WikiSection,ClearFloats,WebLinks,ExtraSections
+
+DropTypes SOUR,NOTE,OBJE,_LOG
+
+#hasLabel="YES"
+gosub ResetTabs
+
+! -------- Title name
+#placeName=@this.altview
+GoSub RecordTitle,""
+
+#por=@OBJE
+if @_NOPOR="Y"
+  #por=""
+endif
+if #por!=""
+  #thumbW=190
+  newline
+  #boxtop=#vpos$
+  HMoveTo #rightMargin$-#rightSkip-#thumbW-8
+  
+  cell GroupBox
+    set width -1 border line titleposition none
+    
+    newline -#lineSkip
+    #leftSkip=1
+    #rightSkip=3
+    
+    cell staticfield,#placeName
+    set width -1 alignment center border no minheight 0
+
+    newline
+    cell LinkButton
+    set width #thumbW objectFull #por
+    #mmRatio=#imageHeight$/#imageWidth$
+    set height #thumbW*#mmRatio imageWidth #thumbW
+    set imageposition above
+    set border none target parent
+    RecordLink #por
+    Help local("Click to view and edit multimedia object")
+
+    #lineSkip=0
+    newline 3
+
+  endGroup
+  newline
+  #boxend=#vpos$
+  #lineSkip=#lineSkip$
+  #leftSkip=#leftSkip$
+  #rightSkip=#rightSkip$
+  
+  newline
+  DisplayWidth #oldWidth-#rightSkip$-#thumbW-8
+  MoveTo #leftSkip,#boxtop
+endif
+
+
+! Name details
+
+#sectionCount+=2
+GoSub WikiSection,local("Name Details"),"Name"
+
+ReadAll "#names" from @_PLACE
+
+newline
+cell StaticField
+set width -1 minheight 10 border none lineheight #lineMult
+
+if #names[0]=0
+  text "The name for this place is missing from the place record."
+
+else if #names[0]=1
+  text "This place's name "
+
+else if #names[0]>1
+  text "This place has "&#names[0]&" documented names. "
+  text "The first name "
+
+endif
+
+Repeat "#i",1,#names[0]
+  #lang=@_PLACE.i.#i.LANG
+  if #lang!=""
+    text "(in "&#lang&") "
+  endif
+  text "is "&#names[#i]&". "
+  #pform=@_PLACE.i.#i.FORM
+  #pdate=@_PLACE.i.#i.DATE
+  if #pform!=""
+    text "The hierachical form of this name is "&#pform
+    if #pdate!=""
+      text " and it is valid for dates "&#pdate
+    endif
+    text ". "
+  else if #pdate!=""
+    text "This name is valid for dates "&#pdate&". "
+  endif
+  if #i<#names[0]
+    if #i=1
+      text "The second name "
+    else if #i=2
+      text "The third name "
+    else if #i=3
+      text "The fourth name "
+    else
+      text "Name #"&(#i+1)&" "
+    endif
+  endif
+EndRepeat
+sizetofit
+
+! ---------Place facts
+#recSections[#sectionCount]=local("Place Information")
+#recSections[#sectionCount+1]="Facts"
+#sectionCount+=2
+if _PFACT is here
+  GoSub WikiSection,local("Place Information"),"Facts"
+  ShowAll _PFACT "wiki"
+endif
+
+! --------- Place maps
+#recSections[#sectionCount]=local("Place Maps")
+#recSections[#sectionCount+1]="Maps"
+#sectionCount+=2
+if _BOX is here
+  GoSub WikiSection,local("Place Maps"),"Maps"
+  #boxnum=0
+  ShowAll _BOX "wiki"
+endif
+
+! --------- Place URLs
+#recSections[#sectionCount]=local("Web Sites")
+#recSections[#sectionCount+1]="URLs"
+#sectionCount+=2
+if _URL is here
+  GoSub WikiSection,local("Web Sites"),"URLs"
+  ShowAll _URL "placewiki"
+endif
+
+!--------- Notes
+#recSections[#sectionCount]=local("Notes")
+#recSections[#sectionCount+1]="Notes"
+#sectionCount+=2
+if NOTE is here
+  GoSub WikiSection,local("Notes"),"Notes"
+  ShowAll NOTE "wiki"
+endif
+
+!-------- Multimedia
+gosub ClearFloats
+#recSections[#sectionCount]=local("Multimedia")
+#recSections[#sectionCount+1]="Media"
+#sectionCount+=2
+if OBJE is here
+  GoSub WikiSection,local("Multimedia"),"Media"
+  newline 3
+  #numURLs[0]=0
+  ShowAll OBJE
+  if #numURLs[0]>0
+    GoSub WebLinks,"wiki"
+  endif
+endif
+
+!-------- Sources
+#recSections[#sectionCount]=local("Sources")
+#recSections[#sectionCount+1]="Sources"
+#sectionCount+=2
+#sourceNumber=1
+if SOUR is here
+  GoSub WikiSection,local("Sources"),"Sources"
+  ShowAll SOUR "wiki"
+endif
+
+hideexcess
+
+GoSub ExtraSections
+
+! just in case
+DisplayWidth #oldWidth

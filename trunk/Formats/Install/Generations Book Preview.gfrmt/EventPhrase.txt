@@ -1,0 +1,81 @@
+! verb (like was born), date, age (if want it), and place
+! and address (if wanted)
+! when dull #phrase is set and #phraseTerm is " " if completed sentence (e.g., with notes)
+! too add notes, collect them first ReadAll "#theNotes", to skip set #theNotes[0]=0
+sub EventPhrase,#everb,#edate,#eage,#eplace,#eaddr
+  #phrase=""
+  #edate=titlecase(#edate)
+  if #edate!=""
+    #qual=word("1\"&#edate)
+    if #qual="Abt"
+      #phrase="about "&removeFirstWord(#edate)
+    else if #qual="Est"
+      #phrase="about "&removeFirstWord(#edate)
+    else if #qual="Bef"
+      #phrase="before "&removeFirstWord(#edate)
+    else if #qual="Aft"
+      #phrase="after "&removeFirstWord(#edate)
+    else if #qual="Bet"
+      #phrase="between "&removeFirstWord(#edate)
+      #phrase=replace(" And \ and \"&#phrase)
+    else if #qual="Cal"
+      #phrase="calculated "&removeFirstWord(#edate)
+    else if #qual="Int"
+      #phrase="interpreted "&removeFirstWord(#edate)
+    else if #qual="from"
+      #phrase="from "&removeFirstWord(#edate)
+      #phrase=replace(" To \ to \"&#phrase)
+    else if #qual="to"
+      #phrase="to "&removeFirstWord(#edate)
+    else
+      ! no qualifiy
+      if words(#edate)>2
+        #phrase="on "&#edate
+      else
+        #phrase="in "&#edate
+      endif
+    endif
+  endif
+  
+  ! age and initialize
+  if #eage!=""
+    #everb=#everb&" at age "&#eage
+  endif
+  #full=""
+  #space=""
+  if #everb!=""
+    #space=" "
+  endif
+  
+  ! address to place
+  if #eaddr!=""
+    if #eplace!=""
+      #eplace&=" "
+    endif
+    #eplace&="at "&replace(return&"\, \"&#eaddr)
+  endif
+  
+  ! combine all
+  if #phrase!=""
+    #full=#everb&#space&#phrase
+    if #eplace!=""
+      #full&=" in "&#eplace
+    endif
+  else if #eplace!=""
+    #full=#everb&#space&"in "#eplace
+  else if #eage!=""
+    #full=#everb
+  endif
+  #phrase=#full
+  #phraseTerm=""
+  
+  ! add notes
+  if #theNotes[0]>0
+    gosub GetNotes,""
+    if #notesPhrase!=""
+      #phrase&=". "&#notesPhrase
+      #phraseTerm=" "
+    endif
+  endif
+  
+endSub

@@ -1,0 +1,82 @@
+load LineLabel,WikiSection,EventDate
+
+if #msg="wiki"
+
+  if #hasLabel!="YES"
+    gosub WikiSection,#hasLabel,"Ordinances"
+    #hasLabel ="YES"
+  endif
+
+  newline
+  if #vpos$>#boxend
+    DisplayWidth #oldWidth
+  endif
+
+  cell static,"◾"
+  set fontcolor "Block Color" offset 3
+  sizetofit
+
+  hskip 0
+  #leftSkip=#hpos$
+
+  cell StaticField
+  set width -1 minheight 10 border none lineheight #lineMult
+  GoSub EventDate,#ePrefix&" "&#msg1,@DATE.user,@PLAC
+  if #etext=""
+    text #ePrefix&" "&#msg1&" on an unknown date. "
+  else
+    text #etext&". "
+  endif
+
+  if @TEMP!=""
+    text "It was performed at temple "&@TEMP&". "
+  endif
+  if @STAT!=""
+    text "The current status is "&@STAT&". "
+  endif
+
+  sizetofit
+
+  ShowAll NOTE "wiki"
+
+  #ePrefix=#Pronoun
+
+  hideexcess
+
+else
+
+  ! check box
+  newline
+  #gtop=#vpos$
+  if @tag!="BIRT"
+    cell CheckBoxEdit
+    help "Check this box if this ordinance occurred, but nothing else is known about the ordinance."
+  endif
+
+  ! label and check box (except no check bo for birth)
+  MoveTo #leftSkip,#vpos$+2
+  cell GroupBox,"  "&local(@tag)
+  set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+  show DATE
+  show PLAC  show TEMP  show STAT  #hasFAMC="no"
+  if FAMC is here
+    Show FAMC @tag
+    #hasFAMC="yes"
+  endif
+  showAll SOUR  showAll NOTE
+
+  newline 5
+  cell static,local("Attach")&": "
+  sizetofit
+  Show NOTE
+  Show SOUR
+  if #hasFAMC="no"
+    if @tag="SLGC"
+      Show FAMC @tag
+    endif
+  endif
+
+  EndGroup
+
+endif

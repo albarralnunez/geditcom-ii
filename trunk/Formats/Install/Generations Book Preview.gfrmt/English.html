@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=ISO-8859-1">
+  <title>GEDitCOM II Basic Format Help</title>
+  <link rel="stylesheet" type="text/css" href="help.css"></head>
+
+<body><h1>Wiki Genealogy Format</h1>
+
+<p>This format displays records in a style similar to Wikipedia pages. Since it is formatted for nice display, it is a good format for printing records. Like Wikipedia, you can edit the content of records by clicking any [<font color="blue">edit</font>] links on sections. This will move to a new display where you can edit most data. When done editing that section, click the &quot;Back To Record&quot; tab to return the the formatted display. You can also any standard <b>GEDitCOM II</b> editing options (<i>e.g.</i>, any menu commands). This format has lots of editing options (in the separate editing screens), but still has fewer than the &quot;Default Format&quot;. If you have trouble with some editing tasks, or find them more cumbersome here, you can always switch back the &quot;Default Format&quot; when you need much editing.
+</p>
+
+<p>Unlike other formats, which often pop-up child window for some data, this format always display data in a single browser window. You can move between records and back and forth between display and editing by clicking links (or by using certain menu commands), but you will always remain in a single browser window. You can, however, have multiple browser windows. To get a second window, double click a new record in the main index window. Alternatively, you can control-click any link to a record and choose to open that record in a new window.</p>
+
+<p>The quality of the display will depend somewhat on the style of the data in your file. To improve the final display, you might want to edit your data to work well in this format. Some ideas are:</p>
+
+<ul>
+<li>Use notes to document details about your research. Most notes will appear in the record display.</li>
+<li>When you use notes, enter them in good writing style. The notes are assumed to be well formatted sentences and paragraphs. Thus you should use complete sentences and paragraphs.</li>
+<li>When notes (or some other text items) use the <b>GEDitCOM II</b> advanced feature to include <code>html</code>, the formatted web display will fully appear in the record display. Thus, you can get great control of the output display by making use of <b>GEDitCOM II</b>'s web content features.
+</li>
+</ul>
+
+<p>The sections below are:
+</p>
+
+<ul>
+<li><a href="#scripts">Scripts</a></li>
+<li><a href="#properties">Wiki Genealogy Format Properties</a></li>
+<li><a href="#lang">Languages</a></li>
+</ul>
+
+
+<h2><a name="scripts"></a>Embedded Scripts</h2>
+
+<p>The following embedded scripts provided extra functions when control clicking on some fields:
+</p>
+
+<dl>
+<dt>Name Editing Fields</dt>
+<dd>Control click to change the case of the name (<i>e.g.</i>, to all uppercase, title case, or surname only in uppercase).</dd>
+
+</dl>
+
+<h2><a name="properties"></a>Wiki Genealogy Format Properties (or Preferences)</h2>
+
+<ul>
+
+<li>You change this format's fonts (and their colors) using the <b>GEDitCOM II</b> preferences. The available fonts are:
+<ul>
+
+<li><b>Button Text</b>: The text for buttons.
+
+<li><b>Check Box Text</b>: The text next to check boxes.
+
+<li><b>Editing Text</b>: The text used in editing fields.
+
+<li><b>Hyperlink Text</b>: The text used for clickable links between records and for links to web sites.
+
+<li><b>Label Text</b>: Prominent labels for genealogy data.
+
+<li><b>Popup Menu Text</b>: The text used in pop-up menus.
+
+<li><b>Section Label</b>: Text used for major sections of the record data such as grouped boxes for editing.
+
+<li><b>Static Text</b>: Text for most plain text fields in the record display and labels for lower-level data.
+
+<li><b>Static Italic Text</b>: An alternate text for some plain text fields (the default style is to be italicized, but you can select any other style as well).
+
+</ul>
+</li>
+
+<li>You change the format's colors using the <b>GEDitCOM II</b> preferences.
+The available colors are:
+
+<ul>
+
+<li><b>Back Button Border</b>: The color for the border around the &quot;Back to Record&quot; button in all editing screens.</li>
+
+<li><b>Block Color</b>: The color for square boxes used to indicate some items in lists (<i>e.g.</i>, events and attributes).</li>
+
+<li><b>Editing Background</b>: Background color of editing fields</li>
+
+<li><b>Editing Box Background</b>: Background color fro group boxes used in collections of data in the editing screens.</li>
+
+<li>Font Colors: Each font described above can have it's own color and is set when editing the font.</li>
+
+<li><b>Table Cell Background</b>: Background color of cells in the rows of some tables (<i>e.g.</i>, list of children)</li>
+
+<li><b>Table Header Background</b>: Background color of cells in the header row of some tables (<i>e.g.</i>, list of children)</li>
+
+<li><b>Table Lines</b>: Color for lines in some tables (<i>e.g.</i>, list of children)</li>
+
+<li><b>Window Background</b>: Background color of the window (white is best for printing).</li>
+
+</ul>
+
+</li>
+
+<li>The custom options in the &quot;Editing&quot; section of the <b>GEDitCOM II</b> preferences are:
+
+<ul>
+
+<li><b>Paragraph Line Height</b>: For better readability in record display, this format adds extra space between lines in fields have multiple lines of text. You can pick any number such as 1 for single spacing, 2 for double spacing, or fractional spacings are allowed. The default is 1.4 line spacing, which is similar to spacing used Wikipedia pages. The line spacing will be ignored for notes (or other text) that are formatted using <code>html</code> content.
+</li>
+
+<li><a name="levind"></a><b>Level Indentation</b>: Some subordinate data (mostly in editing screens) is indented further from the root level data. Use this setting to select the indentation per level.
+</li>
+
+<li><b>Vertical Shift of Edit Field Labels</b>: Extra shift added to all labels before text editing fields. It is normally 3, but might need to be different. If you change fonts and the labels and the text fields do not line up well, adjust this value to realign them; positive shifts the label down while negative shifts it up.
+</li>
+
+<li><b>Vertical Shift of Button Labels</b>: Extra shift added to all labels before buttons and popup menus. It is normally 3, but might need to be different. If you change fonts and the labels and buttons do not line up well, adjust this value to realign them; positive shifts the label down while negative shifts it up.
+</li>
+
+<li><a name="tpr"></a><b>Thumbnails Per Row</b>: Linked multimedia objects are displayed as thumbnails in the linking record. This option determines the number of thumbnails per row in the display and thus can be used to control the size of the thumbnail images. A few editing screens will double this number to fit more thumbnails in a smaller space.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;To speed up display of thumbnails, GEDitCOM II generates small thumbnails for each multimedia object containing an image. This format will use those thumbnails if this setting is 2 or higher, but if the setting is 1, the link will use the full-scale image instead. The use of full-scale images will give high-quality images suitable for printing, but will slow access to records linked to many large images. To maximize speed when opening such records, it is best set this option to 2 or higher.
+</li>
+
+</ul>
+</ul>
+
+
+<h2><a name="lang"></a>Alternate Languages</h2>
+
+<p>Because of the way this format tries to combine data from the file in to paragraphs, the format is only suitable for English and for files whose data is in English. Users interested in other languages could copy the entire format and then use the <b>GEDitCOM Editor</b> to change all sections that insert text into cells. The logic would have to be changed to work with syntax of the new language.
+</p>
+
+</html>

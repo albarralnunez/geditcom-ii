@@ -7,15 +7,14 @@ if @rec=HEAD
 else if @rec=SOUR
   use _Unknown_
 
-else if firstword(#msg)="Event"
+else if #msg="Event"
   ! edit field with value  cell editvalue
   set tabwidth 1 offset -2 width #cellWidth$+2
-  help local("Enter place for this event")
-  if #msg="Event ADDR"
-  	#addr=@parent.ADDR
-  	if #addr!=""
-  	  help " ("&replace(return&"\, \"&#addr)&")"
-  	endif
+  #addr=@parent.ADDR
+  if #addr!=""
+    help local("ADDR")&": "&replace(return&"\, \"&#addr)
+  else
+    help local("Enter place for this event")
   endif
   hskip -2
 
@@ -77,19 +76,19 @@ else
     if #i>1
       NewLine
       if #i=2
-      	tab 1
-      	hskip 5
+        tab 1
+        hskip 8
         cell static,local("Other")&":"
-        set fontsize 11
+        set fontsize 10
         sizetofit
         #altheight=#cellHeight$
         hskip 0
         #altspot=#hpos$
       else
-      	HMoveTo #altspot
+        HMoveTo #altspot
       endif
       cell expression,@contents.p._PLACE.i.#i
-      set width -1 fontsize 11 height #altheight
+      set width -1 fontsize 10 height #altheight
     else if #i=1
       NewLine -2
     endif

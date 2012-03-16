@@ -1,0 +1,24 @@
+! Static static field for preview text
+! If not printing and #recLink is not "", put editing button in left margin
+sub PreviewSection,#recLink,#paneLink
+  newline
+  
+  ! Edit button when no printing
+  if printing is false
+    if #recLink!=""
+      hskip -#leftSkip
+      cell LinkButton
+      set text "Edit" border no font "Hyperlink Text"
+      sizetofit
+      set width #leftSkip offset 6
+      set RecordLink #recLink PaneID #paneLink
+      HMoveTo #leftSkip
+    endif
+  endif
+
+  ! begin a static field
+  cell StaticField
+  set font "Paragraph"
+  set width #textWidth minheight 10 border none lineheight #lineMult
+
+endSub

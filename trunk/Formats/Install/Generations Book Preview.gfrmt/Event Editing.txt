@@ -1,0 +1,68 @@
+load RandomEventPhrase,GetNotes
+
+if #msg="preview"
+  gosub RandomEventPhrase,#indiNoun,#msg1,@DATE,@AGE,@PLAC,@ADDR
+  #allEvents&=#full
+
+  ! add notes
+  #indiNoun=lowercase(#Pronoun)
+  ReadAll "#theNotes",@NOTE
+  if #theNotes[0]>0
+    gosub GetNotes,""
+    if #notesPhrase!=""
+      #allEvents&=#notesPhrase
+      #indiNoun=firstword(#indiName)
+    endif
+  endif
+
+else
+
+  ! check box
+  newline
+  #gtop=#vpos$
+  if @tag!="BIRT"
+    cell CheckBoxEdit
+    help "Check this box if this even occurred, but nothing else is known about the event."
+  endif
+
+  ! label and check box (except no check bo for birth)
+  MoveTo #leftSkip,#vpos$+2
+  if @tag="EVEN"
+    if @TYPE!=""
+      #grpName=local(@TYPE)
+    else
+      #grpName=local(@tag)
+    endif
+  else
+    #grpName=local(@tag)
+  endif
+  cell GroupBox,"  "&#grpName
+    set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+    if @tag="EVEN"
+      Show TYPE
+    endif    show DATE
+    show PLAC    Show ADDR
+    if @rec=INDI
+      if @tag!="BIRT"        Show AGE
+      endif    endif
+    if @tag="DEAT"
+      Show CAUS
+    endif    if @rec=FAM
+      ShowAll HUSB      ShowAll WIFE    endif
+
+    showAll NOTE
+    showAll SOUR
+
+    newline 5
+    cell static,local("Attach Notes and Sources")&": "
+    sizetofit
+    Show NOTE
+    Show SOUR
+    !Show OBJE
+
+  EndGroup
+
+endif
+
+hideexcess

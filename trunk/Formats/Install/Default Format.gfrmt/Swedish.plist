@@ -242,10 +242,6 @@
 	<string>Omskärelse</string>
 	<key>Cited by</key>
 	<string>Citerad av</string>
-	<key>Click for death details</key>
-	<string>Klicka för döds detaljer</string>
-	<key>Click for marriage details</key>
-	<string>Klicka för äktenskaps detaljer</string>
 	<key>Click for name details</key>
 	<string>Klicka för namndetaljer</string>
 	<key>Click for source details specific to this record</key>
@@ -354,8 +350,6 @@
 	<string>Klicka för att se hustruns personkort</string>
 	<key>Click to view alias record</key>
 	<string>Klicka för att se alias uppgift</string>
-	<key>Click to view and edit birth details</key>
-	<string>Klicka för att se och redigera födelsedetaljer</string>
 	<key>Click to view and edit notes</key>
 	<string>Klicka för att se och redigera anteckningar</string>
 	<key>Click to view and edit source</key>
@@ -810,6 +804,8 @@
 	<string>Ordination</string>
 	<key>ORDN details</key>
 	<string>Ordination detaljer</string>
+	<key>Occurred</key>
+	<string>Inträffade</string>
 	<key>Other</key>
 	<string>Annat</string>
 	<key>Other Spouses/Children</key>
@@ -950,6 +946,8 @@
 	<string>Sealing</string>
 	<key>Secondary</key>
 	<string>Sekundär</string>
+	<key>See Linked Individuals or Families</key>
+	<string>Se länkade personer eller familjer</string>
 	<key>Select Script</key>
 	<string>Välj skripten</string>
 	<key>Select sex</key>
@@ -1026,6 +1024,8 @@
 	<string>Övre Marginal</string>
 	<key>Type of Data in the Source</key>
 	<string>Typ av Data i Källan</string>
+	<key>URL</key>
+	<string>URL</string>
 	<key>Unknown</key>
 	<string>Okänd</string>
 	<key>Unknown spouse</key>
@@ -1129,7 +1129,7 @@
 	<key>_KEY</key>
 	<string>Nyckelord</string>
 	<key>_LABEL</key>
-	<string>Label</string>
+	<string>Rubrik</string>
 	<key>_LINE</key>
 	<string>Radbredd</string>
 	<key>_LOC</key>

@@ -1,0 +1,39 @@
+load ResetTabs,EditingPage
+
+gosub ResetTabs
+
+gosub EditingPage,"Other Events for Book"
+
+cell label,local("Attach")&": "
+sizetofit
+set offset #buttonOffset
+
+cell LinkButton
+image "add"
+set border no width 24
+MenuLink "Attach Event/Attribute"
+help local("Click to add an event")
+
+cell LinkButton
+image "remove"
+set width 24 border no
+MenuLink "Detach Event/Attribute/Link"
+help local("Click to remove an event")
+
+!--------- Events
+ShowAll BAPM
+ShowAll CHR
+ShowAll ADOP
+ShowAll BARM
+ShowAll BASM
+ShowAll ORDN
+ShowAll NATU
+ShowAll EMIG
+ShowAll IMMI
+ShowAll GRAD
+ShowAll RETI
+ShowAll EVEN
+
+
+hideexcess
+

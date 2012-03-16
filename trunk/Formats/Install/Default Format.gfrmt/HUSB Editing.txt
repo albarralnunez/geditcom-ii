@@ -47,7 +47,7 @@ if @level=1
     TextExpression @contents.NAME
     AppendedExpression altview
     if @contents.FAMC!=""
-      Format "%@ ↑"
+      Format "%@"&#ANCArrow
     endif
     set font "Hyperlink Text"
     set border no alignment left

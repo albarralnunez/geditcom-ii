@@ -1,0 +1,5 @@
+if #msg="preview"
+  use Event
+else
+  use Attribute
+endif

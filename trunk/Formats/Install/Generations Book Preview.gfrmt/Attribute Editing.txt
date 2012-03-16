@@ -1,0 +1,50 @@
+load RandomEventPhrase,GetNotes
+
+if #msg="preview"
+  #attrtext=@contents
+  if #attrtext!=""
+    #atverb=#msg1&" "&#attrtext
+  else
+    #atverd=#msg1
+  endif
+  gosub RandomEventPhrase,#indiNoun,#atverb,@DATE,@AGE,@PLAC,@ADDR
+  #allEvents&=#full
+
+  ! add notes
+  #indiNoun=lowercase(#Possnoun)
+  ReadAll "#theNotes",@NOTE
+  if #theNotes[0]>0
+    gosub GetNotes,""
+    if #notesPhrase!=""
+      #allEvents&=#notesPhrase
+      #indiNoun=firstword(#indiName)&"'s"
+    endif
+  endif
+
+else
+
+  ! label and check box (except no check bo for birth)
+  newline
+  cell GroupBox,local(@tag)
+    set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+    if @tag!=RESI      cell static,local(@tag)&": "
+      set offset #editOffset
+      sizetofit
+      cell editValue
+      set width -1    endif    show DATE    show PLAC
+    show ADDR    show AGE    showAll NOTE
+    showAll SOUR
+
+    newline 5
+    cell static,local("Attach")&": "
+    sizetofit
+    Show NOTE
+    Show SOUR
+
+  EndGroup
+  
+endif
+
+hideexcess
+

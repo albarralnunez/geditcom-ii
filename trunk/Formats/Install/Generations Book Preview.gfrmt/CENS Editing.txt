@@ -1,0 +1,13 @@
+load GetNotes,FormatCensus
+if #msg="preview"
+  ! #cphrase
+  #cenNum+=1
+  ReadAll "#theNotes",@NOTE
+  gosub FormatCensus,@AGE,@ADDR,lowercase(#Pronoun),@DATE,@PLAC
+  if #cphrase!=""
+    #cenText&=#cphrase
+  endif
+  hideexcess
+else
+  use Event
+endif

@@ -9,7 +9,9 @@ property cmds : {"pwd", "who -a", "whoami"}
 if CheckAvailable(scriptName) is false then return
 
 tell application "GEDitCOM II"
-	set dn to date numbers full date "INT 1208 (or 1209)"
+	tell front document
+		set dn to event place plus address of structure named "MARR" of key record
+	end tell
 end tell
 
 return dn

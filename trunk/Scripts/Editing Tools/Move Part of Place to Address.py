@@ -27,17 +27,19 @@ prompt += " unchanged as the text to be the new place name"
 prompt += " (to change nothing, delete no characters or click 'Skip')."
 pbtns = ["Move","Cancel","Skip"]
 perror = "The place name you left was not found in the original name."
-pmsg = "You should delete just the address and leave a contiguous strings of remaining"
+pmsg = "You should delete just the address parts and leave a contiguous string of remaining"
 pmsg += " characters the same as in the original name. Click 'OK' and try again."
 
 # get selected place record
 numEdits = 0
+hasAPlace = False
 selRecs = gdoc.selectedRecords()
 for rec in selRecs :
     if rec.recordType()!="_PLC":
         continue
     
     # get name
+    hasAPlace = True
     oldName = rec.name()
     while True :
         res = gdoc.userInputPrompt_buttons_initialText_title_(prompt,pbtns,oldName,ptitle)
@@ -55,6 +57,11 @@ for rec in selRecs :
             if term < len(oldName) : addr += oldName[term:]
             addr = addr.strip()
             addr = addr.strip(",")
+            addrLines = addr.split(",")
+            if len(addrLines) > 1 :
+                for ii in range(len(addrLines)) :
+                    addrLines[ii] = addrLines[ii].strip()
+                addr = '\n'.join(addrLines)
             break
     
     if res[0] == "Skip" : continue
@@ -104,3 +111,7 @@ for rec in selRecs :
 # end undo if it started
 if numEdits > 0 :
     gdoc.endUndoAction_("Move Part of Place to Address Fields")
+
+# were they any places
+if hasAPlace == False :
+    Alert("You have to select one or more place records to use the '"+ptitle+"' script.")

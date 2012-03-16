@@ -7,6 +7,7 @@
 #
 # 1: Initial version posted with GEDitCOM 1.6, build 2
 # 2: Posted with GEDitCOM 1.7
+# 3: Posted with GEDitCOM 1.7 build 2
 #
 # Contents
 #
@@ -326,7 +327,6 @@ class RecordForSet :
 # Wrapper for an events
 # will load date and place and will clean up place to
 #   separation by ", " and empty fields removed
-# NOT DOCUMENTED
 class Event :
     def __init__(self,evnt) :
         self.event = evnt
@@ -344,7 +344,37 @@ class Event :
                     i += 1
             self.place = ', '.join(hier)
         self.phrase = None
+        self.datePhrase = None
             
+    # Describe the date for this event. It will begin in
+    # "on " or "in " for exact dates or inexact single dates
+    # GEDCOM words (like bet, abt, etc, will be replaced)
+    # by full English words.
+    def describeDate(self) :
+        if self.datePhrase != None : return self.datePhrase
+        # Get date phrase (or empty)
+        phrase = ""
+        if self.date :
+            eparts = self.event.datePartsFullDate_(self.date)
+            if len(eparts) > 2 and eparts[1] != "" :
+                # has at least one valid date
+                if len(eparts[0]) > 0 :
+                    # use or replace qualifier words
+                    phrase += GetGedWord(eparts[0].upper())+" "+eparts[1]
+                    if len(eparts[2]) > 0 :
+                        phrase += " "+GetGedWord(eparts[2].upper())
+                        if len(eparts[3]) > 0 :
+                            phrase += " " +eparts[3]
+                elif eparts[1] != "" :
+                    # assume only one date
+                    self.SDNRange()
+                    if self.sdn[0] == self.sdn[1] and self.sdn[0] != 0 :
+                        phrase = GetGedWord("ON")+" "+eparts[1]
+                    elif self.sdn[0] != self.sdn[1] :
+                        phrase = GetGedWord("IN")+" "+eparts[1]
+        self.datePhrase = phrase
+        return phrase
+
     # Describe this event with following terms
     # Age is optional, date prefaced by qualifier words, in, or on, as needed
     # Gedcom words will be replaced by better words
@@ -355,34 +385,7 @@ class Event :
     def describe(self,verb,atAge=False) :
         if self.phrase != None : return self.phrase
         # Get date phrase (or empty)
-        phrase = ""
-        if self.date :
-            eparts = self.event.datePartsFullDate_(self.date)
-            if len(eparts) > 2 and eparts[1] != "" :
-                # has at least one valid date
-                if len(eparts[0]) > 0 :
-                    # uses qualifier words
-                    q1 = eparts[0].upper()
-                    if q1 in _gedWords :
-                        phrase = _gedWords[q1]+" "
-                    elif q1 :
-                        phrase = q1+" "
-                    phrase += eparts[1]
-                    if len(eparts[2]) > 0 :
-                        q2 = eparts[2].upper()
-                        if q2 in _gedWords :
-                            phrase += " "+_gedWords[q2]
-                        elif q2 :
-                            phrase += " "+q2
-                        if len(eparts[3]) > 0 :
-                            phrase += " " +eparts[3]
-                elif eparts[1] != "" :
-                    # assume only one date
-                    self.SDNRange()
-                    if self.sdn[0] == self.sdn[1] and self.sdn[0] != 0 :
-                        phrase = "on "+eparts[1]
-                    elif self.sdn[0] != self.sdn[1] :
-                        phrase = "in "+eparts[1]
+        phrase = self.describeDate()
     
         # put together (optionally with age)
         age = None
@@ -393,12 +396,25 @@ class Event :
         space = ""
         if verb : space = " "
         
+        # check for address an no place (assume begins in "at ")
+        if self.place :
+            if len(self.place)>3 :
+                isAt = self.place[:3]
+            else :
+                isAt = ""
+            if isAt == "at " :
+                eplace = self.place
+            else :
+                eplace = "in "+self.place
+        else :
+            eplace = ""
+                
         # combine with date and place (phrase will be empty if no date)
         if phrase :
             full = verb+space+phrase
-            if self.place : full += " in "+self.place
-        elif self.place :
-            full = verb+space+"in "+self.place
+            if eplace != "" : full += " "+eplace
+        elif eplaceplace :
+            full = verb+space+eplace
         elif age :
             full = verb
         self.phrase = full
@@ -415,7 +431,7 @@ class Event :
     #    (date) [at age (age)], nounMid verb in (place)
     #      e.g. "On 12 Oct 1856 at age 84, Sam Adams died in Boston, MA, USA"
     #    nounMid verb in (place) (date) [at age (age)]
-    #      e.g. "Sam Adams died in Boston, MA USA On 12 Oct 1856 at age 84"
+    #      e.g. "Sam Adams died in Boston, MA USA on 12 Oct 1856 at age 84"
     def randomDescribe(self,nounMid,verb,atAge=False,freq=[.33,.67]) :
         if self.phrase != None : return self.phrase
         
@@ -428,34 +444,7 @@ class Event :
             pstyle = 2
             
         # Get date phrase (or empty)
-        dphrase = ""
-        if self.date :
-            eparts = self.event.datePartsFullDate_(self.date)
-            if len(eparts) > 2 and eparts[1] != "" :
-                # has at least one valid date
-                if len(eparts[0]) > 0 :
-                    # uses qualifier words
-                    q1 = eparts[0].upper()
-                    if q1 in _gedWords :
-                        dphrase = _gedWords[q1]+" "
-                    elif q1 :
-                        dphrase = q1+" "
-                    dphrase += eparts[1]
-                    if len(eparts[2]) > 0 :
-                        q2 = eparts[2].upper()
-                        if q2 in _gedWords :
-                            dphrase += " "+_gedWords[q2]
-                        elif q2 :
-                            dphrase += " "+q2
-                        if len(eparts[3]) > 0 :
-                            dphrase += " " +eparts[3]
-                elif eparts[1] != "" :
-                    # assume only one date
-                    self.SDNRange()
-                    if self.sdn[0] == self.sdn[1] and self.sdn[0] != 0 :
-                        dphrase = "on "+eparts[1]
-                    elif self.sdn[0] != self.sdn[1] :
-                        dphrase = "in "+eparts[1]
+        dphrase = self.describeDate()
     
         # get age
         age = ""
@@ -463,13 +452,26 @@ class Event :
             age = self.event.evaluateExpression_("AGE")
             if age : age = "at age "+age
         
+        # check for address an no place (assume begins in "at ")
+        if self.place :
+            if len(self.place)>3 :
+                isAt = self.place[:3]
+            else :
+                isAt = ""
+            if isAt == "at " :
+                eplace = " " + self.place
+            else :
+                eplace = " in "+self.place
+        else :
+            eplace = ""
+                
         # assumes nounMid and verb are non-empty strings
         if pstyle == 1 :
             # nounMid verb [at age (age)] (date) in (place)
             full = CapitalOne(nounMid) + " " + verb
             if age != "" : full += " " + age
             if dphrase != "" : full += " " + dphrase
-            if self.place != "" : full += " in " + self.place
+            full += eplace
         
         elif pstyle == 2 :
             # (date) [at age (age)], nounMid verb in (place)
@@ -484,12 +486,11 @@ class Event :
                 full = CapitalOne(nounMid) + " " + verb
             else :
                 full += nounMid + " " + verb
-            if self.place != "" : full += " in " + self.place
+            full += eplace
         
         else :
             # nounMid verb in (place) (date) [at age (age)]
-            full = CapitalOne(nounMid) + " " + verb
-            if self.place != "" : full += " in " + self.place
+            full = CapitalOne(nounMid) + " " + verb + eplace
             if dphrase != "" : full += " " + dphrase
             if age != "" : full += " " + age
 
@@ -508,7 +509,6 @@ class Event :
 #---------------------- Attribute Class
 
 # Wrapper for an attribute - changes description from events
-# NOT DOCUMENTED
 class Attribute(Event) :
     def __init__(self,evnt) :
         Event.__init__(self,evnt)
@@ -526,6 +526,7 @@ class Attribute(Event) :
         return Event.describe(self,averb,atAge)
             
     # Pass possessive in nounMid and attribute name as well or in verb
+    # address could be after verb as well
     #    nounMid verb attribute [at age (age)] (date) in (place)
     #      e.g. "Sam Adams' occupation was brewer at age 84 on 12 OCT 1856 in Boston, MA, USA"
     #    (date) [at age (age)], nounMid verb attribute in (place)
@@ -678,7 +679,6 @@ def EveryFamily(gdoc=None) :
     return enumerate(gdoc.families())
 
 # get alternate names such as John Hirst and Carolyn Kister
-# NOT DOCUMENTED
 def SpouseNames(famrec) :
     husb = famrec.husband().get()
     if husb :
@@ -752,6 +752,7 @@ def FirstMapCentroid(plc):
 # mapPOIs = java script code with pois
 # mapBB = [stroke color, opacity, fill color, opacity] or None to omit
 # style = ROADMAP, 
+# NOT DOCUMENTED
 def createJSMap(height,rect,mapPOIs=None,mapBB=None,clickLatLon=False,mapStyle="ROADMAP") :
     css = ["#mapPane {"]
     css.append("    width:100%;")
@@ -851,6 +852,7 @@ def createJSMap(height,rect,mapPOIs=None,mapBB=None,clickLatLon=False,mapStyle="
 # num - unique number for current map
 # poiname - text when hover over poi
 # details - html content for click window (if any get surrounded by <p>)
+# NOT DOCUMENTED
 def MakeMapPOI(lat,lon,num,poiname,details=None) :
     latstr = '{0:.6g}'.format(lat)
     lonstr = '{0:.6g}'.format(lon)
@@ -1029,8 +1031,13 @@ def RomanNumeral(number) :
 
 # cardinal number 0 to 10 (lowercase), number to string otherwise
 def Cardinal(anum) :
-    if anum <0 or anum>10 : return str(anum)
+    if anum <0 or anum>=len(_cardinal) : return str(anum)
     return _cardinal[anum]
+
+# set cardinal words
+def SetCardinal(newCards) :
+    global _cardinal
+    _cardinal = newCards
     
 # Send fraction and message to the progress panel
 def ProgressMessage(fraction,msg=None) :
@@ -1133,15 +1140,40 @@ def GetMainScreenSize() :
     screenRect = screen.visibleFrame()
     return [screenRect.origin.x,screenRect.origin.y,NSWidth(screenRect),NSHeight(screenRect)]
 
+# replace scripting addition say command
+# Uses current volume and default voice
+def SayText(utext) :
+    speech = NSSpeechSynthesizer.alloc().initWithVoice_(None)
+    result = speech.startSpeakingString_(utext)
+    if result!=0 :
+        while True :
+            if speech.isSpeaking()==False :
+                break;
+    else :
+        print "Speech synthesis failed"
+    speech.release()
+
 #--------------------------- Date Functions
 
 # Convert two date SDNs to years from first date to second date
 def GetAgeSpan(beginDate, endDate) :
     return (endDate - beginDate) / 365.25
 
+# pick new date words
+def SetGedWords(newWords) :
+    global _gedWords
+    _gedWords = newWords
+
+# get GEDCOM word or return key if not found in the list
+def GetGedWord(key) :
+    global _gedWords
+    if key in _gedWords : return _gedWords[key]
+    return key
+
 # compare dates for match quality where date1 and date2 are two ranges
 # order is -1, 0, or 1 for y before, either, or after x
 # return 0 of can't compare, -1 if conflict, or ranking 0 to 1
+# NOT DOCUMENTED
 def DateQuality(date1,date2,order=0) :
     global _tau,_cutoff
     
@@ -1237,12 +1269,14 @@ def DateQuality(date1,date2,order=0) :
     return qual
 
 # Set globals for date match
+# NOT DOCUMENTED
 def SetTauCutoff(atau,years) :
     global _tau,_cutoff
     _tau = atau
     _cutoff = math.exp(-365.*years/_tau)
 
 # Retrieve Globals
+# NOT DOCUMENTED
 def GetTauCutoff() : 
     return [_tau,_cutoff]
 
@@ -1251,6 +1285,7 @@ def GetTauCutoff() :
 # Class to store single coordinate
 # coordinate is signed value
 # direction is 0 (lat), 1 (lon), 2 (distance), 3 (unknown)
+# NOT DOCUMENTED
 class GlobalCoordinate :
     def __init__(self,gps=None,expect=3,coord=0.,dir=1) :
         self.coordinate = coord
@@ -1659,6 +1694,7 @@ def kmDistanceBetween(pt1,pt2):
 # Take list of comma-separated lat, lon, and distance numbers
 # and return list of GlobalCoordinate objects
 # If any have formatting errors return [item #, error message]
+# NOT DOCUMENTED
 def DecodeLatLonList(gpsStr) :
     gpsStr = gpsStr.replace("(","")
     gpsStr = gpsStr.replace(")",",")
@@ -1802,7 +1838,8 @@ def GetOneItem(items,prompt="Select an item",title=None) :
 
 _gedit = None
 _gedWords = {"ABT":"about","EST":"about","BEF":"before","AFT":"after","FROM":"from",\
-"TO":"to","BET":"between","AND":"and","CAL":"calculated","INT":"interpreted"}
+"TO":"to","BET":"between","AND":"and","CAL":"calculated","INT":"interpreted",\
+"ON":"on","IN":"in"}
 _recsetsort = 0
 _scriptName = "GEDitCOM II Python Script"
 _numerals = { 1 : "I", 4 : "IV", 5 : "V", 9 : "IX", 10 : "X", 40 : "XL",\

@@ -1,0 +1,6 @@
+newline 6
+#fldHeight=#displayHeight$-#vpos$-#bottomMargin$
+cell Editfield,"("&local("type to enter notes")&")"
+width -1
+height #fldHeight
+help local("Enter free-format notes")

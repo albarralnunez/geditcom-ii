@@ -1,0 +1,14 @@
+cell LinkButton
+set image caution border none
+sizetofit
+
+hskip 5
+cell staticField
+set width -1 border none font "Editing Text" fontsize 14 offset 8
+
+text local("The 'Generations Book Preview' format is not set up for editing of")&" "
+text local(@rec&" records")&". "
+text local("Please switch to a different format, such as the 'Default Format,' to edit this kind of record.")
+sizetofit
+
+hideexcess

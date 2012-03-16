@@ -1,0 +1,13 @@
+load LineLabel
+
+! label and editing field
+gosub LineLabel local(@tag)
+offset #editOffset
+cell EditValue
+set Width -1
+
+ShowAll FORMShowAll _GPS
+ShowAll SOUR
+ShowAll NOTE
+
+

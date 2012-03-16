@@ -1,0 +1,45 @@
+! ouput is #cphrase
+! pname is name or lowercase pronoun
+sub FormatCensus,#cage,#caddr,#pname,#cdate,#cplace
+  #caddr=replace(return&"\, \"&#caddr)
+  #detail = ""
+  if #cage!=""
+    #detail = #pname&" is listed with age "&#cage
+    if #caddr!=""
+      #detail&=" and living at "&#caddr
+    endif
+  else if #caddr!=""
+    #detail = #pname&" is listed as living at "&#caddr
+  endif
+  
+  if #detail!=""
+    #start = "In "
+  else
+    #start = Titlecase(#pname)&" is listed in "
+  endif
+  
+  if #cdate!=""
+    #start=#start&"the "&#cdate&" census"
+  else
+    #start=#start&"one census"
+  endif
+  
+  if #cplace!=""
+    #start=#start&" for "&#cplace
+  endif
+  
+  if #detail!=""
+    #cphrase=#start&", "&#detail&". "
+  else
+    #cphrase=#start&". "
+  endif
+  
+    ! add notes
+  if #theNotes[0]>0
+    gosub GetNotes,""
+    if #notesPhrase!=""
+      #cphrase&=#notesPhrase
+    endif
+  endif
+
+endSub

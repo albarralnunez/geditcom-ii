@@ -86,6 +86,34 @@
 	<array>
 		<string>Generic Event</string>
 	</array>
+	<key>EVEN1</key>
+	<array>
+		<string>Circumcision</string>
+	</array>
+	<key>EVEN2</key>
+	<array>
+		<string>Deed</string>
+	</array>
+	<key>EVEN3</key>
+	<array>
+		<string>Illness</string>
+	</array>
+	<key>EVEN4</key>
+	<array>
+		<string>Military Service</string>
+	</array>
+	<key>EVEN5</key>
+	<array>
+		<string>Miscarriage</string>
+	</array>
+	<key>EVEN6</key>
+	<array>
+		<string>Mission</string>
+	</array>
+	<key>EVEN7</key>
+	<array>
+		<string>Visit</string>
+	</array>
 	<key>FCOM</key>
 	<array>
 		<string>FCOM</string>

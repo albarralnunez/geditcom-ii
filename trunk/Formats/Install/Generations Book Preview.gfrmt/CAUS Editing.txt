@@ -1,0 +1,16 @@
+load LineLabel
+
+! Label and editing field
+gosub LineLabel "Cause"
+offset #editOffset
+
+hskip #cellSkip$
+#leftEdge=#hpos$
+cell EditValue
+set Width -1
+
+newline
+HMoveTo #leftEdge
+cell static
+set width -1 fontsize 11
+text "   Enter phrase to complete a sentence like 'His death was caused by _____.'"

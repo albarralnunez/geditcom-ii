@@ -1,0 +1,16 @@
+if #msg="wiki"
+  newline
+  cell Static
+  set border no
+  text " "&local(@tag)&": "
+  sizetofit
+
+  cell Multimedia
+  set url "mailto:"&@contents font "Hyperlink Text" width -1
+  set help local("Click to open in browser")
+  Text @contents
+  sizetofit
+
+else
+  use _Unknown_
+endif

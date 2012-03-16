@@ -22,6 +22,9 @@
 #                    and attributes
 # 6: 5 DEC 2011 - Manuy new features to support GEDitCOM II version 1.7 and
 #                    its new Book Style records
+# 7: 24 FEB 2012 - fixed characters, addresses to more events and attributres,
+#                    improved attribute formatting, create BookPreparation
+#                    module, fixed some spelling
 
 # Set preferences at top to speed it up
 #
@@ -30,6 +33,7 @@
 
 # Load GEDitCOM II Module
 from GEDitCOMII import *
+from BookPreparation import *
 import os, shutil, random
 
 # ----------- Preferences Start
@@ -83,72 +87,7 @@ porOption = None
 
 # ----------- Preferences End
 
-################### Subroutines
-
-# Subclass of event for custom descriptions and safe Tex characters
-class BookEvent(Event) :
-    def __init__(self,evnt,verb=None,atAge=False,noun=None,freq=[.33,.67]) :
-        Event.__init__(self,evnt)
-        self.place = SafeTex(self.place)
-        if verb != None :
-            if noun != None :
-                self.randomDescribe(noun,verb,atAge,freq)
-            else :
-                self.describe(verb,atAge)
-        self.sources = None            
-                        
-    # special phrase for burial (note, pass None for verb when create the event)
-    # was buried (in addr) (in place)
-    def FormatBurial(self) :
-        if self.phrase != None : return self.phrase
-        addr = self.event.evaluateExpression_("ADDR")
-        self.phrase = ""
-        if addr :
-            addr = SafeTex(', '.join(CompactLines(addr)))
-            self.phrase = "was buried in "+addr
-            if self.place :
-                self.phrase += " in "+self.place
-        elif self.place :
-            self.phrase = "was buried in "+self.place
-        return self.phrase
-    
-    # special phrase for census
-    # In (the date or one) census for (place), person is listed (with age xx) (and) (living at addr)
-    # If no age or addr
-    # Person is listed in (the date or one) census (for place)
-    def FormatCensus(self,person) :
-        if self.phrase != None : return self.phrase
-        age = self.event.evaluateExpression_("AGE")
-        addr = self.event.evaluateExpression_("ADDR")
-        if addr : addr = SafeTex(', '.join(CompactLines(addr)))
-        detail = ""
-        if age :
-            detail = person+" is listed with age "+age
-            if addr :
-                detail += " and living at "+addr
-        elif addr :
-            detail = person+" is listed as living at "+addr
-        if detail :
-            start = "In "
-        else :
-            start = CapitalOne(person)+" is listed in "
-        if self.date :
-            start = start+"the "+self.date+" census"
-        else :
-            start = start+"one census"
-        if self.place :
-            start = start+" for "+self.place
-        if detail:
-            self.phrase = start+", "+detail
-        else :
-            self.phrase = start
-        return self.phrase
-
-    # phrase for cause of this event
-    def FormatCause(self,verb,term="") :
-        cause = SafeTex(self.event.evaluateExpression_("CAUS"))
-        if not(cause) : return ""
-        return SafeTex(verb+" "+cause+term)
+################### Classes
 
 # Subclass of Records Set for this script
 class PersonSet(RecordsSet) :
@@ -220,7 +159,7 @@ class PersonSet(RecordsSet) :
 class PersonForSet(RecordForSet) :
     def __init__(self,record,val=None) :
         RecordForSet.__init__(self,record,val)
-        self.altname = SafeTex(record.alternateName())
+        self.altname = SafeTex(record.alternateName()).strip()
         self.parts = gdoc.namePartsGedcomName_(record.evaluateExpression_("NAME"))
         self.parts[0] = SafeTex(self.parts[0].strip())
         self.parts[1] = SafeTex(self.parts[1])
@@ -269,7 +208,7 @@ class PersonForSet(RecordForSet) :
         try :
             e = record.structures().objectWithName_("BURI").get()
             if e :
-                self.burial = BookEvent(e,None)
+                self.burial = BookEvent(e,None,False,None,[.33,.67],False)
                 self.alive = 0
             else :
                 self.burial = None
@@ -410,6 +349,8 @@ class PersonForSet(RecordForSet) :
         else :
             return "\\index{"+self.parts[1]+self.parts[2]+"}"
 
+################### Subroutines
+
 # Output all generic events of one type
 # Uses global preface and genname
 def GenericEvent(rfs,gtag,verb,freq=[0.33,0.67]) :
@@ -419,7 +360,7 @@ def GenericEvent(rfs,gtag,verb,freq=[0.33,0.67]) :
         if not(verb) :
             even = e.evaluateExpression_("TYPE")
             if not(even) : continue
-            even = "had "+even
+            even = "had an event described as "+even
             ge = BookEvent(e,SafeTex(even),True,eName,freq)
         else :
             ge = BookEvent(e,verb,True,eName,freq)
@@ -436,19 +377,14 @@ def GenericEvent(rfs,gtag,verb,freq=[0.33,0.67]) :
 
 # Output all attributes of one type
 # Uses global preface and eName (possessive)
-# if not age, date, or place than (His religion verb catholic)
-# if has details then (His religion was catholic at age xx on date in place)
-def GenericAttribute(rfs,gtag,atype,verb) :
+# atype is verb such as "occupation was"
+def GenericAttribute(rfs,gtag,atype) :
     global preface,eName
     evens = rfs.rec.findStructuresTag_output_value_(gtag,"references",None)
     for e in evens :
-        value = SafeTex(e.contents())
-        if not(value) : continue
-        ge = BookEvent(e,"",True)
-        if ge.phrase :
-            rpt.out(preface+eName+" "+atype+" was "+value+" "+ge.phrase)
-        else :
-        	rpt.out(preface+eName+" "+atype+" "+verb+" "+value)
+        ge = BookAttribute(e,atype,True,preface+eName)
+        if not(ge.attribute) : continue
+        rpt.out(ge.phrase)
         preface = ""
         rpt.out(GetSources(ge.event)+". ")
         gnotes = GetNotes(ge.event)
@@ -458,206 +394,6 @@ def GenericAttribute(rfs,gtag,atype,verb) :
         else :
             eName = rfs.poss
 
-# Output all attributes of one type
-# Uses global preface and eName (possessive)
-# if not age, date, or place than (His religion verb catholic)
-# if has details then (His religion was catholic at age xx on date in place)
-def GenericResi(rfs) :
-    global preface,eName
-    evens = rfs.rec.findStructuresTag_output_value_("RESI","references",None)
-    for e in evens :
-        addr = e.evaluateExpression_("ADDR")
-        if addr : addr = SafeTex(', '.join(CompactLines(addr)))
-        # It will be
-        # (date) [at age (age)], he resided in (place) at (address)
-        # He resided in (place) (date) [at age (age)] at (address)
-        ge = BookEvent(e,"resided",True,eName.lower(),[0,.5])
-        if addr :
-            rpt.out(preface+ge.phrase+" at "+addr)
-        elif ge.place :
-            rpt.out(preface+ge.phrase)
-        else :
-            continue
-        preface = ""
-        rpt.out(GetSources(ge.event)+". ")
-        gnotes = GetNotes(ge.event)
-        if gnotes :
-            rpt.out(gnotes)
-            eName = rfs.first
-        else :
-            eName = rfs.pronoun
-
-# collect all plain text note lines for this event
-# single line will be plain text. Multiple lines will
-# will be sparated and trailed by double line feeds
-def GetNotes(obj) :
-    if notesOption == "hideAll" : return ""
-    notes = obj.notations()
-    if len(notes) == 0 : return ""
-    totlines = []
-    texlines = []
-    for nid in notes :
-        note = gdoc.notes().objectWithID_(nid)
-        if note :
-            if notesOption != "hideNone" :
-                # setting is hideOwner or hideFamily
-                # Owner - always hide
-                # Family - hide if setting is hideFamily
-                dist = note.evaluateExpression_("_DIST")
-                if dist == "Owner" :
-                    continue
-                elif dist == "Family" and notesOption == "hideFamily" :
-                    continue
-            ntext = note.notesText().strip()
-            if not(ntext) : continue
-            [cmnt,ctext] = GetHTMLComment(ntext,("TeX","alt"))
-            if ctext != None :
-                if cmnt == "TeX" :
-                    texlines.append(ctext)
-                elif cmnt == "alt" :
-                    totlines.extend(CompactLines(ctext.strip()))
-            else :
-                totlines.extend(CompactLines(ntext))
-    if len(totlines) > 1 :
-        allText = SafeTex('\n\n'.join(totlines)+"\n\n")
-    elif len(totlines) == 1 :
-        allText = SafeTex(totlines[0]+" ")
-    else :
-        allText = ""
-    if len(texlines) == 0 : return allText
-    return allText + ''.join(texlines)
-
-# get sources and return citations
-# space before, but not after
-def GetSources(obj) :
-    sources = obj.citations()
-    if len(sources) == 0 : return ""
-    cites = []
-    for source in sources :
-        # if new source, add if need, or skip if not found
-        if source not in biblio.table :
-            sour = gdoc.sources().objectWithID_(source)
-            if not(sour) : continue
-            sfs = RecordForSet(sour,0)
-            biblio.addObjectWithKey(sfs,source)
-        cites.append("B"+source[1:-1])
-    if len(cites) == 0 : return ""
-    return " \\cite{"+','.join(cites)+"}"
-
-# Take string with multiple lines, remove empy lines and return list
-def CompactLines(ntext) :
-    if len(ntext) == 0 : return []
-    alllines = []
-    nlines = ntext.split("\n")
-    for line in nlines :
-        line = line.strip()
-        if len(line) > 0 :
-            alllines.append(line)
-    return alllines
-
-# convert string to safe TeX string
-# Special characters are # $ % & ~ _ ^ \ { }
-# Characters only in math are < > |
-# Perhaps move to modulue
-def SafeTex(ptext) :
-    ntext = []
-    lastIndex = 0
-    index = 0
-    last = len(ptext)
-    while index < last :
-        pchar = ptext[index]
-        
-        # special characters, put '\' before and after (if followed by space)
-        if pchar in Tspecial :
-            if lastIndex < index : ntext.append(ptext[lastIndex:index])
-            ntext.append('\\'+pchar)
-            if index+1 < last :
-                if ptext[index+1] == ' ' :
-                    ntext.append('\\')
-            lastIndex = index+1
-        
-        # special characers needed in verbatim mode
-        elif pchar in Tverbatim :
-            if lastIndex < index : ntext.append(ptext[lastIndex:index])
-            ntext.append('\\verb+'+pchar+'+')
-            lastIndex = index+1
-            
-        # math characters
-        elif pchar in Ttomath :
-            if lastIndex < index : ntext.append(ptext[lastIndex:index])
-            ntext.append('$'+pchar+'$')
-            lastIndex = index+1
-        
-        # replace characters
-        elif pchar in Treps :
-            if lastIndex < index : ntext.append(ptext[lastIndex:index])
-            ntext.append(Trepsto[Treps.index(pchar)])
-            lastIndex = index+1   
-        
-        # qt characters
-        elif pchar == Tqt :
-            if lastIndex < index : ntext.append(ptext[lastIndex:index])
-            # First check if at end or the beginning,
-            #    than check preceding or following characters
-            if index+1 >= last :
-                ntext.append("''")
-            elif index == 0 :
-                ntext.append("``")
-            elif ptext[index-1] == " " :
-                ntext.append("``")
-            else :
-                nchar = ptext[index+1]
-                if nchar in TqtTerm :
-                    ntext.append("''")
-                else :
-                    ntext.append("``")
-            lastIndex = index+1
-        
-        # on to next character
-        index += 1
-    
-    # return string in no changes
-    if lastIndex == 0 : return ptext
-    if lastIndex < last : ntext.append(ptext[lastIndex:])
-    return ''.join(ntext)
-
-# Look for special TeX characters
-# quotes to `` or '' (such as quote one followed incorrectly by punctuations)
-# \ before & and $
-# replace _ with -
-def OldSafeTex(ptext) :
-    qt = "\""
-    if ptext.endswith(qt) : ptext = ptext.rstrip(qt)+"''"
-    ptext = ptext.replace(qt+" ","''")
-    ptext = ptext.replace(qt,"``")
-    qt = unichr(8220)
-    ptext = ptext.replace(qt,"``")
-    qt = unichr(8221)
-    ptext = ptext.replace(qt,"''")
-    ptext = TexCharacter(ptext,"&")
-    ptext = TexCharacter(ptext,"$")
-    ptext = TexCharacter(ptext,"_")
-    ptext = TexCharacter(ptext,"#")
-    ptext = TexCharacter(ptext,"%")
-    nbs = u'\xa0'
-    ptext = ptext.replace(nbs," ")
-    ptext = ptext.replace("<","$<$")
-    ptext = ptext.replace(">","$>$")
-    return ptext
-
-# replace one character type
-def TexCharacter(ptext,achar) :
-    sp = ptext.split(achar)
-    if len(sp) == 1 : return ptext
-    for i in range(1,len(sp)) :
-        if len(sp[i]) > 0 :
-            if sp[i][0] == ' ' :
-                sp[i] = '\\' + sp[i]
-            if sp[i].endswith('\\') and i < len(sp)-1 :
-                sp[i] = sp[i][:-1]
-    jstr = '\\'+achar
-    return jstr.join(sp)
-    
 # Output section for one person
 def OutputPerson(rfs,inum) :
     global preface,eName
@@ -696,13 +432,15 @@ def OutputPerson(rfs,inum) :
             else :
                 rpt.out(rfs.pronoun+" married an unknown spouse")
                 spseNames.append(None)
-            # marriage events
+            # marriage event
             try :
                 m = fams.structures().objectWithName_("MARR").get()
                 if m :
                     marr = BookEvent(m," ")
                     rpt.out(marr.phrase)
-                    rpt.out(GetSources(m))
+                    rpt.out(GetSources(m)+". ")
+                    mnotes = GetNotes(m)
+                    if mnotes : rpt.out(mnotes)
                     if rfs.alive < 0 :
                         [mn,mx] = marr.SDNRange()
                         if mx > 0 :
@@ -710,7 +448,8 @@ def OutputPerson(rfs,inum) :
                                 rfs.alive = 1
                             else :
                                 rfs.alive = 0
-                rpt.out(". ")
+                else :
+                    rpt.out(". ")
             except :
                 rpt.out(". ")
             try :
@@ -748,6 +487,7 @@ def OutputPerson(rfs,inum) :
     buri = rfs.buried()
     if buri :
         rpt.out(rfs.pronoun+" "+buri+GetSources(rfs.burial.event)+". ")
+        rpt.out(GetNotes(rfs.burial.event))
     
     # children
     rpt.out("\n\n")
@@ -813,11 +553,13 @@ def OutputPerson(rfs,inum) :
     eName = rfs.pronoun.lower()
     GenericEvent(rfs,"BAPM","was baptised")
     GenericEvent(rfs,"CHR","was christened")
-    GenericEvent(rfs,"CHR","was adopted")
+    GenericEvent(rfs,"ADOP","was adopted")
+    GenericEvent(rfs,"BARM","had a Bar Mitzvah")
+    GenericEvent(rfs,"BASM","had a Bas Mitzvah")
     GenericEvent(rfs,"ORDN","was ordained")
     GenericEvent(rfs,"NATU","naturalized",[.5,.5])
+    GenericEvent(rfs,"EMIG","emigrated",[.5,.5])
     GenericEvent(rfs,"IMMI","immigrated",[.5,.5])
-    GenericEvent(rfs,"EMMI","emmigrated",[.5,.5])
     GenericEvent(rfs,"GRAD","graduated",[.5,.5])
     GenericEvent(rfs,"RETI","retired",[.5,.5])
     GenericEvent(rfs,"CREM","was cremated")
@@ -835,16 +577,17 @@ def OutputPerson(rfs,inum) :
     else :
         preface = "Here are some of "+rfs.altname+"'s attributes. "
     eName = rfs.pronoun
-    GenericResi(rfs)
+    GenericEvent(rfs,"RESI","lived",[0,.5])
     eName = rfs.poss
     iswas = rfs.iswas()
-    GenericAttribute(rfs,"OCCU","occupation",iswas)
-    GenericAttribute(rfs,"RELI","religion",iswas)
-    GenericAttribute(rfs,"TITL","title",iswas)
-    GenericAttribute(rfs,"DSCR","physical description",iswas)
-    GenericAttribute(rfs,"EDUC","education",iswas)
+    GenericAttribute(rfs,"OCCU","occupation "+iswas)
+    GenericAttribute(rfs,"RELI","religion "+iswas)
+    GenericAttribute(rfs,"TITL","title "+iswas)
+    GenericAttribute(rfs,"DSCR","physical description "+iswas+" described as")
+    GenericAttribute(rfs,"EDUC","education "+iswas)
+    GenericAttribute(rfs,"NATI","national or tribal origin was "+iswas)
     if rfs.alive == 0 :
-        GenericAttribute(rfs,"SSN","social security number",iswas)
+        GenericAttribute(rfs,"SSN","social security number was")
     if preface == "" : rpt.out("\n\n")
    
     # notes
@@ -872,7 +615,7 @@ def OutputChild(chil,inum) :
     dd = cfs.getFD("",0,False)
     if dd : rpt.out(dd+GetSources(cfs.death.event)+". ")
     
-    # marriages (unless deon ealier)
+    # marriages (unless done ealier)
     famses = cfs.rec.spouseFamilies()
     if cfsID:
         cnum = int(cfsID[7:-2])
@@ -1005,7 +748,7 @@ def DequeuePortraits(all=False) :
 ################### Main Script
 
 # Preamble
-scriptVersion = 6
+scriptVersion = 7
 scriptName = "Generations LaTeX Book"
 gedit = CheckVersionAndDocument(scriptName,1.7,1)
 gdoc = FrontDocument()
@@ -1022,25 +765,11 @@ pside = ["b","t"]
 pindex = 0
 doPortraits = True			# True or false to include portraits
 others = RecordsSet()
-biblio = RecordsSet()
 pqueue = []
 pscale = ("0.3","0.6","0.9")
 
 # look for convert command (but which command fails)?
 convertCmd = "convert"
-
-# TeX special characters
-Tspecial = ('$','%','&','_','{','}','#')
-# TeX verbatim characters
-Tverbatim = ('~','^','\\')
-# TeX need to be in math mode
-Ttomath = ('<','|','>')
-# Tex replace characters with strings
-Treps = [u'\xa0',unichr(8220),unichr(8221),unichr(0x2028),unichr(0x25e6)]
-Trepsto = [" ","``","''","\n",unichr(0x2022)]
-# TeX special handling of quotes
-Tqt = "\""
-TqtTerm = (' ','.',',',';',':',')',']','?','}','!',u'\x0a')
 
 # check for book settings
 selRecs = gdoc.selectedRecords()
@@ -1136,7 +865,6 @@ source = RecordsSet()
 source.addList(selRecs,0)
 
 # get root individuals
-roots = ""
 rootsFlat = ""
 numRoots = 0
 last = ""
@@ -1144,14 +872,11 @@ for rfs in source.recs :
     if rfs.type != "INDI" : continue
     numRoots += 1 
     if numRoots > 1 :
-        roots += last + "\\\\\n"
         rootsFlat += last + ", "
     last = rfs.rec.alternateName()
 if numRoots > 1 :
-    roots += "and\\\\\n"
     if numRoots == 2 : rootsFlat = rootsFlat[:-2]+" "
     rootsFlat += "and "
-roots += last + '\\\\'
 rootsFlat += last
 
 # check for none
@@ -1193,6 +918,8 @@ if fldr != None :
             fldr = None
     else :
         # must have at least one "/"
+        # get rootName = just folder name, fldr = folder holding folder
+        #    and rootFolder for full folder name
         parts = fldr.rpartition("/")
         if len(parts) > 2 and parts[0] :
             fldr = parts[0]
@@ -1252,7 +979,6 @@ if overwrite == False :
     # create the folder
     try :
         os.mkdir(rootFldr)
-        pickedFolder = True
     except: 
         Alert("Error trying to create the folder at the selected location")
         quit()
@@ -1337,6 +1063,7 @@ if notesOption == None :
         notesOption = "hideOwner"
     else :
         notesOption = "hideFamily"
+SetNotesOption(notesOption)
 
 # portriat options
 if porOption == None :
@@ -1612,7 +1339,7 @@ if cOwner != None :
 else :
     cRight = ""
 
-rpt.out("\\booktitlepage{"+btitle+"}{"+roots+"}{"+author+"}{"+email+"}{"+subtitle+"}{"+cRight+"}\n\n")
+rpt.out("\\booktitlepage{"+btitle+"}{"+rootsFlat+"}{"+author+"}{"+email+"}{"+subtitle+"}{"+cRight+"}\n\n")
 rpt.out("% Generations\n\n")
 
 if fontSize == 9 :
@@ -1753,6 +1480,7 @@ bib.append("%% http://www.geditcom.com\n")
 bib.append("%% Created for "+author+" on "+today+"\n")
 bib.append("%% Saved with string encoding Unicode (UTF-8)\n")
 
+biblio = GetBiblio()
 for sour in biblio.recs :
     type = sour.rec.sourceType().lower()
     date = sour.rec.sourceDate()

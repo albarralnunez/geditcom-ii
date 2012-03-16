@@ -1,0 +1,12 @@
+load LineLabel
+
+! Label and editing field
+gosub LineLabel local(@tag)
+
+hskip 0
+#editLeft=#hpos$
+cell EditField
+set Width -1 minheight 120 maxheight 400
+sizetofit
+
+show _TEX

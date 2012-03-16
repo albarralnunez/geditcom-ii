@@ -125,7 +125,7 @@ mv = screen[1]+10.
 mwidth = screen[2]-20.
 mheight = screen[3]-20.
 if bbox[3]>180. : bbox[3]-=360.
-[mcss,mscript,mbody] = createJSMap(mheight-160.,bbox,poiall,None,True)
+[mcss,mscript,mbody] = createJSMap(mheight-185.,bbox,poiall,None,True)
 
 # transfer to report and write it
 rpt.css(mcss)
@@ -134,6 +134,24 @@ if cname!="Entire World" :
     rpt.out("<h1>Mapped Places in "+cname+" from file "+gdoc.name()+"</h1>\n")
 else :
     rpt.out("<h1>Mapped Places from file "+gdoc.name()+"</h1>\n")
+
+if len(pois)==1 :
+    rpt.out("<p>This map shows one place. ")
+else :
+    rpt.out("<p>This map shows "+str(len(pois))+" places. ")
+numSkipped = numRecs - len(pois)
+if numSkipped==1 :
+    rpt.out("One place was skipped because it")
+    are = "is"
+elif numSkipped>0 :
+    rpt.out(str(numSkipped)+" places were skipped because they")
+    are = "are"
+if numSkipped>0 :
+    rpt.out(" did not have a bounding box")
+    if cname!="Entire World" :
+        rpt.out(" or "+are+" not within "+cname)
+    rpt.out(".</p>")
+
 rpt.out(mbody)
 rpt.write()
 

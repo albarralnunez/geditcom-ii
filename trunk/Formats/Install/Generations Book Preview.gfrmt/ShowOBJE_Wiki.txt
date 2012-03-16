@@ -1,0 +1,42 @@
+sub ShowOBJE_Wiki #objeID
+  #padding=3
+  #thumbW=int((#rightMargin$-#rightSkip-#leftSkip-(#mmPerRow-1)*#cellSkip)/#mmPerRow)
+  #thumbW-=5
+  #thumbH=#thumbW/1.61
+  cell LinkButton
+  set width #thumbW height #thumbH
+  if #mmPerRow>1
+    objectImage #objeID
+  else
+    objectFull #objeID
+  endif
+  #mmRatio=#imageHeight$/#imageWidth$
+  #posWidth=#thumbW-2*#padding
+  #posHeight=#thumbH-#padding-22
+  #cellRatio=#posHeight/#posWidth
+  if #mmRatio<#cellRatio
+    if #posWidth<#imageWidth$
+      set imagewidth #posWidth
+    endif
+  else
+    if #posHeight <#imageHeight$
+      set imageheight #posHeight
+    endif
+  endif
+
+  ! title in the same button
+  TextExpression @#objeID.rec
+  AppendedExpression view
+  autoreload yes
+  if @#objeID.TITL=""
+    text @#objeID._FILE
+  else
+    text @#objeID.TITL
+  endif
+
+  set imageposition above
+  set border smallsquare target parent
+  RecordLink #objeID
+  Help local("Click to view and edit multimedia object")
+  hskip 5
+endSub

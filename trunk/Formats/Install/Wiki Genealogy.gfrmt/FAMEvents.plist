@@ -26,6 +26,14 @@
 	<array>
 		<string>Generic Event</string>
 	</array>
+	<key>EVEN1</key>
+	<array>
+		<string>Separation</string>
+	</array>
+	<key>EVEN2</key>
+	<array>
+		<string>Visit</string>
+	</array>
 	<key>MARB</key>
 	<array>
 		<string>MARB</string>

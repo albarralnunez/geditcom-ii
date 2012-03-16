@@ -90,6 +90,8 @@
 	<string>All Linked Records</string>
 	<key>All Notated Records</key>
 	<string>All Notated Records</string>
+	<key>Ancestors Indicator</key>
+	<string>Ancestors Indicator</string>
 	<key>Anyone</key>
 	<string>Anyone</string>
 	<key>Article</key>
@@ -274,10 +276,8 @@
 	<string>Circumcision</string>
 	<key>Cited by</key>
 	<string>Cited by</string>
-	<key>Click for death details</key>
-	<string>Click for death details</string>
-	<key>Click for marriage details</key>
-	<string>Click for marriage details</string>
+	<key>Click 'info' icon to edit address</key>
+	<string>Click 'info' icon to edit address</string>
 	<key>Click for name details</key>
 	<string>Click for name details</string>
 	<key>Click for source details specific to this record</key>
@@ -368,6 +368,8 @@
 	<string>Click to link to an existing family record</string>
 	<key>Click to link to family record</key>
 	<string>Click to link to family record</string>
+	<key>Click to map the events for this record</key>
+	<string>Click to map the events for this record</string>
 	<key>Click to open family record #</key>
 	<string>Click to open family record #</string>
 	<key>Click to open home individual record</key>
@@ -450,8 +452,6 @@
 	<string>Click to view wife's record</string>
 	<key>Click to view alias record</key>
 	<string>Click to view alias record</string>
-	<key>Click to view and edit birth details</key>
-	<string>Click to view and edit birth details</string>
 	<key>Click to view and edit notes</key>
 	<string>Click to view and edit notes</string>
 	<key>Click to view and edit place record</key>
@@ -548,6 +548,8 @@
 	<string>Default Cell Width</string>
 	<key>Default Place Hierarchy</key>
 	<string>Default Place Hierarchy</string>
+	<key>Descendants Indicator</key>
+	<string>Descendants Indicator</string>
 	<key>Description</key>
 	<string>Description</string>
 	<key>Details</key>
@@ -558,6 +560,8 @@
 	<string>Died</string>
 	<key>Done</key>
 	<string>Done</string>
+	<key>Drag correct submitter from index window here to fix</key>
+	<string>Drag correct submitter from index window here to fix</string>
 	<key>EDUC</key>
 	<string>Education</string>
 	<key>EDUC details</key>
@@ -948,6 +952,8 @@
 	<string>Prefix</string>
 	<key>NSFX</key>
 	<string>Suffix</string>
+	<key>Navigation Aids</key>
+	<string>Navigation Aids</string>
 	<key>New</key>
 	<string>New</string>
 	<key>No image representation. Click to open in another application</key>
@@ -980,6 +986,8 @@
 	<string>Ordination</string>
 	<key>ORDN details</key>
 	<string>Ordination details</string>
+	<key>Occurred</key>
+	<string>Occurred</string>
 	<key>Omit 'Owner'</key>
 	<string>Omit 'Owner'</string>
 	<key>Omit 'Owner' and 'Family'</key>
@@ -1188,6 +1196,8 @@
 	<string>Sources on these data</string>
 	<key>Spouse</key>
 	<string>Spouse</string>
+	<key>Spouse Indicator</key>
+	<string>Spouse Indicator</string>
 	<key>Spouses</key>
 	<string>Spouses</string>
 	<key>Static Text</key>

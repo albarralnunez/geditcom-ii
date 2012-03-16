@@ -1,0 +1,9 @@
+load GetNotes,EventPhrase
+if #msg="preview"
+  ! #phrase and #phraseTerm set when done
+  ReadAll "#theNotes",@NOTE
+  gosub EventPhrase,"was born",@DATE,"",@PLAC,@ADDR
+  hideexcess
+else
+  use Event
+endif

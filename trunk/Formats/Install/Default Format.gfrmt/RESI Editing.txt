@@ -28,7 +28,7 @@ else
   endif
   
   show DATE Event
-  show PLAC "Event ADDR"
+  show PLAC Event
 
   ! rest in a child window
   cell StructuresLink,AttrDetails,RESI

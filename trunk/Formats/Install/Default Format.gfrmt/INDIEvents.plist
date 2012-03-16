@@ -110,6 +110,10 @@
 	<array>
 		<string>Mission</string>
 	</array>
+	<key>EVEN7</key>
+	<array>
+		<string>Visit</string>
+	</array>
 	<key>FCOM</key>
 	<array>
 		<string>FCOM</string>

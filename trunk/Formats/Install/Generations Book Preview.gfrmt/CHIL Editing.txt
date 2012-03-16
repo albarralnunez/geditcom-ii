@@ -1,0 +1,70 @@
+if #first="yes"
+  #cellTop=#vpos$
+  cell Palette
+  set width #tableWidth height #tableCellHeight
+  PalDrawColor "Table Header Background"
+  PalFillRect 1,1,#cellWidth$-2,#cellHeight$-2
+  PalDrawColor "Table Lines"
+  PalFrameRect 1,1,#cellWidth$-2,#cellHeight$-2
+  PalMoveTo .5*#tableWidth,0
+  PalLineTo .5*#tableWidth,#cellHeight$-1
+  PalMoveTo .65*#tableWidth,0
+  PalLineTo .65*#tableWidth,#cellHeight$-1
+
+  MoveTo #leftSkip,#cellTop
+  cell static,local("Name")
+  set tabwidth 1 border no height #tableCellHeight alignment center offset #buttonOffset
+
+  cell static,local("Sex")
+  set tabwidth 1 border no alignment center height #tableCellHeight offset #buttonOffset
+
+  cell static,local("Birth Date")
+  set tabwidth 1 border no alignment center height #tableCellHeight offset #buttonOffset
+
+  #first="no"
+  #num=0
+endif
+
+newline
+#num+=1
+
+#cellTop=#vpos$
+cell Palette
+set width #tableWidth height #tableCellHeight
+PalDrawColor "Table Cell Background"
+PalFillRect 1,1,#cellWidth$-2,#cellHeight$-2
+PalDrawColor "Table Lines"
+PalMoveTo 1,0
+PalLineTo 1,#cellHeight$-1
+PalLineTo #cellWidth$-1,#cellHeight$-1
+PalLineTo #cellWidth$-1,1
+PalMoveTo .5*#tableWidth,0
+PalLineTo .5*#tableWidth,#cellHeight$-1
+PalMoveTo .65*#tableWidth,0
+PalLineTo .65*#tableWidth,#cellHeight$-1
+
+MoveTo #leftSkip+#tablePad,#cellTop
+cell LinkButton
+set border no tabwidth 1 alignment left font "Hyperlink Text"
+TextExpression @contents.NAME
+AppendedExpression altview
+Format #num&". %@"
+RecordLink @contents
+help local("Click to view child's record")
+
+cell static
+#sex=@contents.SEX
+if #sex="M"
+  text local("Son")
+else if #sex="F"
+  text local("Daughter")
+else
+  text local("Unknown")
+endif
+set alignment center tabwidth 1 border no offset #buttonOffset
+
+cell Expression,@contents.BIRT.DATE
+set tabwidth 1 alignment center border no offset #buttonOffset
+set AppendedExpression view
+
+

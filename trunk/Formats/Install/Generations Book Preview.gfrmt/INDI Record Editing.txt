@@ -1,0 +1,358 @@
+load GetParents,GetNotes,EventPhrase,DescribePerson,PreviewSection
+
+dropTypes SOUR,NOTE,OBJE
+
+! To Do
+! BURI used in book for some others?
+! look for living individuals
+! Handle sources
+
+if printing is false
+  #leftSkip=72
+  #textWidth=6.5*72
+  #firstSkip=72-#topMargin$-10
+  DisplayWidth 8.5*72
+else
+  ! change left and right margins margin to 72
+  ! calculate remaining print area
+  #leftSkip=72-#printLeft$+#leftSkip$
+  #rightSkip=72-#printRight$+#rightSkip$
+  #textWidth=#printLeft$+#paperWidth$+#printRight$-144
+  #firstSkip=72-#printTop$+#topMargin$-10
+endif
+
+#indiName=@this.altview
+if @SEX="F"
+  #Pronoun="She"
+  #Possnoun="Her"
+  #child="daughter"
+else
+  #Pronoun="He"
+  #Possnoun="His"
+  #child="son"
+endif
+
+! ----------------------- Name and personal details
+#lineSkip=0
+Show NAME "preview"
+
+! Personal Details
+#xref=1
+! load #rents
+gosub GetParents,@this.FAMC
+#irents=#rents
+
+! collect for first field
+Show BIRT,"preview"
+#birtPhrase=""
+if #phraseTerm!=""
+  #birtPhrase=#phrase
+else if #phrase!=""
+  #birtPhrase=#phrase&". "
+endif
+#cause=""
+Show DEAT,"preview"
+#deatPhrase=""
+if #phraseTerm!=""
+  #deatPhrase=#phrase
+else if #phrase!=""
+  #deatPhrase=#phrase&". "
+endif
+Show BURI,"preview"
+#buriPhrase=""
+if #phraseTerm!=""
+  #buriPhrase=#phrase
+else if #phrase!=""
+  #buriPhrase=#phrase&". "
+endif
+#mnum=0
+ShowAll FAMS,"preview"
+
+! The individual paragraph
+
+newline 6
+gosub PreviewSection,@this,"Name"
+text #indiName
+
+! born
+if #phrase!=""
+  text ", the "&#child&" of "&#irents&", "&#birtPhrase
+else
+  text " was the "&#child&" of "&#irents&". "
+endif
+
+!apouses
+repeat "#i",1,#mnum
+  text #marriage[#i]
+endrepeat
+
+! death
+if #deatPhrase!=""
+  text firstword(#indiName)&" "&#deatPhrase
+  
+  ! cause
+  if #cause!=""
+    #rand=rand(3)
+    if #rand<1
+      text "The cause of "&lowercase(#Possnoun)&" death was "
+    else if #rand<2
+      text #Possnoun&" death was caused by "
+    else
+      text #Pronoun&" died from "
+    endif
+    text #cause&". "
+  endif
+endif
+
+! burial
+if #buriPhrase!=""
+  text #Pronoun&" "&#buriPhrase
+endif
+
+set alignment justify
+sizetofit
+
+! ----------------------- For each family, output children
+
+! children of each family
+repeat "#ii",1,#mnum
+  ! unpack "# id sentence"
+  #ftext=#famChildren[#ii]
+  #cnum=firstWord(#ftext)
+  #ftext=removeFirstWord(#ftext)
+  #famid=firstWord(#ftext)
+  #ftext=removeFirstWord(#ftext)
+  
+  gosub PreviewSection,#famid,""
+  text "    "&#ftext
+  set alignment "justify"
+  sizetofit
+  
+  ! output each child
+  repeat "#jj",1,#cnum
+    newline
+    cell static,#jj&". "
+    set width 30 alignment "right" font "Child List"
+    set offset 5
+    
+    hskip 0
+    cell StaticField
+    set font "Paragraph"
+    set width #textWidth+#leftSkip-#hpos$
+    set minheight 10 border none lineheight #lineMult
+    #cid=@#famid.CHIL.i.#jj
+    if @#cid.SEX="F"
+      #aChild="daughter"
+      #sChild="son"
+      #aPronoun="She"
+    else
+      #aChild="son"
+      #sChild="daughter"
+      #aPronoun="He"
+    endif
+    GoSub DescribePerson,@#cid.altview,#cid,#aChild,"child"
+    text #person
+    
+    #bplace=@#cid.BURI.PLAC
+    #baddr=@#cid.BURI.ADDR
+    #theNotes[0]=0
+    gosub EventPhrase,"was buried",@#cid.BURI.DATE,"",#bplace,#baddr
+    if #phrase!=""
+      text #aPronoun&" "&#phrase
+      if #phraseTerm=""
+        text ". "
+      endif
+    endif
+    
+    ! add child's marriages
+    RepeatWith "#fams" from @#cid.FAMS
+      if #aPronoun="He"
+        #sid=@#fams.WIFE
+      else
+        #sid=@#fams.HUSB
+      endif
+      if #sid==""
+        #cverb=#aPronoun&" married an unknown spouse"
+      else
+        #csname=@#sid.altview
+        #cverb=#aPronoun&" married "&#csname
+      endif
+      
+      ! marriage
+      #cplace=@#fams.MARR.PLAC
+      #caddr=@#fams.MARR.ADDR
+      #theNotes[0]=0
+      gosub EventPhrase,#cverb,@#fams.MARR.DATE,"",#cplace,#caddr
+      if #phrase!=""
+        text #phrase
+        if #phraseTerm=""
+          text ". "
+        endif
+      else
+        text #cverb&". "
+      endif
+      
+      #cplace=@#fams.DIV.PLAC
+      #caddr=@#fams.DIV.ADDR
+      #theNotes[0]=0
+      gosub EventPhrase,"They divorced",@#fams.DIV.DATE,"",#cplace,#caddr
+      if #phrase!=""
+        text #phrase
+        if #phraseTerm=""
+          text ". "
+        endif
+      endif
+      
+      if #sid!=""
+        gosub DescribePerson,firstword(#csname),#sid,#sChild,""
+        text #person
+      endif
+      
+    endrepeat ! loop of child's marriages
+    ! this child's field
+    set alignment "justify"
+    sizetofit
+  endrepeat ! loop of children
+endrepeat ! loop of families
+
+! -----------------------  Census Events
+
+if CENS is here
+  #cenNum=0
+  #cenText=""
+  ShowAll CENS "preview"
+  gosub PreviewSection,@this,"Census"
+  
+  text "    "&#indiName&" has been located in "&#cenNum&" census record"
+  if #cenNum>1
+    text "s"
+  endif
+  text ". "&#cenText
+  set alignment "justify"
+  sizetofit
+
+else
+  if printing is false
+    gosub PreviewSection,@this,"Census"
+    text "    [This section can list census events, but none were found. "
+    text "Click 'Edit' too document some.]"
+    set alignment "justify" fontcolor "red"
+    sizetofit
+  endif
+endif
+
+! -----------------------  Other Events
+#indiNoun=lowercase(#Pronoun)
+#allEvents=""
+ShowAll BAPM,"preview","was baptized"
+ShowAll CHR "preview","was christened"
+ShowAll ADOP "preview","was adopted"
+ShowAll BARM "preview","had a Bar Mitzvah"
+ShowAll BASM "preview","had a Bas Mitzvah"
+ShowAll ORDN "preview","was ordained"
+ShowAll NATU "preview","was naturalized"
+ShowAll EMIG "preview","emigrated"
+ShowAll IMMI "preview","immigrated"
+ShowAll GRAD "preview","graduated"
+ShowAll RETI "preview","retired"
+!ShowAll EVEN "wiki","had a generic event"
+
+if #allEvents!=""
+  gosub PreviewSection,@this,"Events"
+  #rand=rand(4)
+  if #rand <1
+    #preface="Here are some other known events in "&#indiName&"'s life. "
+  else if #rand <2
+    #preface="The following events in "&#indiName&"'s life have been documented. "
+  else if #rand<3
+    #preface="Several more events in "&#indiName&"'s life are known. "
+  else
+    #preface=#indiName&"'s other life events that are known are as follows. "
+  endif
+  text "    "&#preface&#allEvents
+  set alignment "justify"
+  sizetofit
+else
+  if printing is false
+    gosub PreviewSection,@this,"Events"
+    text "    [This sections can list other selected types of events, but none were found. "
+    text "Click 'Edit' too document some.]"
+    set alignment "justify" fontcolor "red"
+    sizetofit
+  endif
+endif
+
+! ----------------------- Attributes including residences first and by themselves
+!ShowAll RESI "wiki","residence"
+
+#indiNoun=lowercase(#Pronoun)
+#allEvents=""
+ShowAll RESI "preview","lived"
+#indiNoun=lowercase(#Possnoun)
+ShowAll OCCU "preview","occupation was"
+ShowAll RELI "preview","religion was"
+ShowAll DSCR "preview","physical description was"
+ShowAll TITL "preview","nobility title was"
+ShowAll EDUC "preview","educational achievement was"
+ShowAll NATI "preview","national or tribal origin was"
+ShowAll SSN "preview","social security number was"
+
+if #allEvents!=""
+  gosub PreviewSection,@this,"Attributes"
+  #rand = rand(4)
+  if #rand<1
+    #preface="Here are some facts about "&#indiName&". "
+  else if #rand<2
+    #preface="Some other facts about "&#indiName&" are as follows. "
+  else if #rand<3
+    #preface="The documented attributes of "&#indiName&" are as follows. "
+  else
+    #preface="Here are some of "&#indiName&"'s attributes. "
+  endif
+  text "    "&#preface&#allEvents
+  set alignment "justify"
+  sizetofit
+
+else
+  if printing is false
+    gosub PreviewSection,@this,"Attributes"
+    text "    [This section can list selected attributes for the individual, but none were found. "
+    text "Click 'Edit' too document some.]"
+    set alignment "justify" fontcolor "red"
+    sizetofit
+  endif
+endif
+
+! -----------------------  Notes
+ReadAll "#theNotes",@NOTE
+#notesPhrase=""
+if #theNotes[0]>0
+  gosub GetNotes,"    "
+  if #notesPhrase!=""
+    gosub PreviewSection,@this,"Notes"
+    text #notesPhrase&return
+    set alignment "justify"
+    sizetofit
+  endif
+endif
+
+if #notesPhrase==""
+  if printing is false
+    gosub PreviewSection,@this,"Notes"
+    text "    [This section displays the main notes written about the individual. "
+    text "These notes can be a great way to enhance your book with stories. "
+    text "Click 'Edit' too write some.]"
+    set alignment "justify" fontcolor "red"
+    sizetofit
+  endif
+endif
+
+! -----------------------  Portraut
+
+! -----------------------  Sources
+if SOUR is here
+  !ShowAll SOUR "wiki"
+endif
+
+hideexcess
+

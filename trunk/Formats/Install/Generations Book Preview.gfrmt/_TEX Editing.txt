@@ -1,0 +1,6 @@
+newline
+HMoveTo #editLeft
+hskip #cellSkip
+cell CheckBoxEdit,local("Use LaTeX")
+sizetofit
+help local("Check to all the above field to use LaTeX content")

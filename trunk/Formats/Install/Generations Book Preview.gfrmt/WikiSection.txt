@@ -1,0 +1,33 @@
+sub WikiSection,#theSection,#thePane
+  ifdef #sectionCount
+    #sectionCount-=2
+  endif
+
+  newline 6
+  if #vpos$>#boxend
+    DisplayWidth #oldWidth
+  endif
+
+  cell static,#theSection
+  set fontSize 18
+  sizetofit
+
+  if #thePane!=""
+    if printing is false
+      HMoveTo #rightMargin$-#rightSkip-100
+      cell LinkButton,"["&local("edit")&"]"
+      set font "Hyperlink Text" border none offset 6
+      sizetofit
+      set RecordLink @this PaneID #thePane shift 100-#cellWidth$
+    endif
+  endif
+
+  newline -2
+  cell Palette
+  set width -1 height 4
+  PalLineWidth 0.5
+  PalMoveTo 0,1
+  PalLineTo #cellWidth$,1
+  newline
+endsub
+

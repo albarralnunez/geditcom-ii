@@ -252,10 +252,6 @@
 	<string>Circoncision</string>
 	<key>Cited by</key>
 	<string>Cité par</string>
-	<key>Click for death details</key>
-	<string>Cliquez pour détails du mort</string>
-	<key>Click for marriage details</key>
-	<string>Cliquez para détails de mariage</string>
 	<key>Click for name details</key>
 	<string>Cliquez pour détails de nom</string>
 	<key>Click for source details specific to this record</key>
@@ -370,8 +366,6 @@
 	<string>Cliquer pour voir la fiche de l'épouse</string>
 	<key>Click to view alias record</key>
 	<string>Cliquer pour voir la fiche de pseudonyme</string>
-	<key>Click to view and edit birth details</key>
-	<string>Cliquez pour voir et éditer détails de naissance</string>
 	<key>Click to view and edit notes</key>
 	<string>Cliquer pour voir et éditer les notes</string>
 	<key>Click to view and edit source</key>
@@ -844,6 +838,8 @@
 	<string>Ordination</string>
 	<key>ORDN details</key>
 	<string>Détails de l'ordination</string>
+	<key>Occurred</key>
+	<string>Se passé</string>
 	<key>Other</key>
 	<string>Autre</string>
 	<key>Other Spouses/Children</key>

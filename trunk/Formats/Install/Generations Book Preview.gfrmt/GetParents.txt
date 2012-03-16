@@ -1,0 +1,19 @@
+! find parents or exprssion "unknown parents"
+! return in #rents (save for later use if needed)
+sub GetParents,#famc
+
+  #f=@#famc.HUSB.altview
+  #m=@#famc.WIFE.altview
+  
+  if #f!=""
+    #rents=#f
+    if #m!=""
+      #rents&=" and "&#m
+    endif
+  else if #m!=""
+    #rents=#m
+  else
+    #rents="unknown parents"
+  endif 
+
+endSub

@@ -15,29 +15,66 @@
 # Load GEDitCOM II Module
 from GEDitCOMII import *
 
+################### Classes
+
+# Cache repository record
+class Place :
+    def __init__(self,prec) :
+        self.rec = prec
+        self.bb = None
+    
+    # return bb for first map (only reads once)
+    # if none bb or error return 1 element list wih error message
+    def getBB(self) :
+        if self.bb==None :
+            bbmap = self.rec.structures().objectWithName_("_BOX")
+            if bbmap.exists() == True :
+                self.bb = GetLatLonCentroid(bbmap.evaluateExpression_("_BNDS"))
+            else :
+                self.bb = ["Place has no maps"]
+        return self.bb
+ 
 ################### Subroutines
 
-def AddRecPlaces(rec,rEvents,rVerb,pbox) :
+def AddRecPlaces(rec,rEvents,eType,pbox) :
     global pois,poiNum,poicache,firstRec,idcache,rectype
+    global preccache,numEvents,totalEvents,eventRecords,startEvents
     
     # skip if done already
     key = rec.id()
     if key in idcache : return
-    idcache[key] = "Done"
+    if eType!="INDIEvents" :
+        idcache[key] = "Done"
     
-    # get name
+    # get start count on first call for this record
+    if eType!="INDIAttributes" :
+        startEvents = numEvents
+        
+    # get name and type
     if rec.recordType()=="FAM" :
         recName = SpouseNames(rec)
     else :
         recName = rec.alternateName()
-    if firstRec==None : firstRec = recName
-    inAttr = False
-    for i in range(len(rEvents)) :
-        if rEvents[i]=="attr" :
-            recName += "'s"
-            inAttr = True
-        es = rec.findStructuresTag_output_value_(rEvents[i],"references",None)
-        for e in es :
+        
+    # check for first record
+    if firstRec==None :
+        firstRec = recName
+        if rec.recordType()=="FAM" : firstRec += " Family"
+    
+    if eType=="INDIAttributes" :
+        recName += "'s"
+        inAttr = True
+    else :
+        inAttr = False
+    
+    # get all events
+    es = rec.findStructuresTag_output_value_(eType,"references",None)
+    for e in es :
+        tag = e.name()
+        if tag in rEvents :
+            totalEvents += 1
+            typeVerb = rEvents[tag]
+            
             # get name or GPS location
             plcname = e.evaluateExpression_("_GPS")
             addrDet = ""
@@ -53,27 +90,41 @@ def AddRecPlaces(rec,rEvents,rVerb,pbox) :
             
             # if has place or GPS, create POI
             if plcname :
-                typeVerb = rVerb[i]
+                type = ""
                 if inAttr==False :
                     evnt = Event(e)
                     if typeVerb == "TYPE" :
                         type = e.evaluateExpression_("TYPE")
                         if len(type) > 0 :
                             typeVerb = "had an event of type "+type
+                        else :
+                            typeVerb = "had a generic event"
+                elif tag=="RESI" :
+                    # RESI must be the last attribute in the list
+                    if recName[-2:]=="'s" :
+                        recName = recName[:-2]
+                    evnt = Event(e)
                 else :
                     evnt = Attribute(e)
                 if plcname in poicache :
                     det = evnt.randomDescribe(recName,typeVerb,True)
                     poicache[plcname].append(det+addrDet)
+                    numEvents += 1
                 else :
                     if hasGPS==True :
                         bb = GetLatLonCentroid(plcname)
                     else :
-                        prec = gdoc.places().objectWithName_(plcname)
-                        if prec.exists()==True :
-                            bb = FirstMapCentroid(prec)
+                        # read map from class if cached or add to cache and read
+                        if plcname in preccache :
+                            bb = preccache[plcname].getBB()
                         else :
-                            bb = []
+                            prec = gdoc.places().objectWithName_(plcname)
+                            if prec.exists()==True :
+                                preccache[plcname] = Place(prec)
+                                bb = preccache[plcname].getBB()
+                            else :
+                                bb = []
+                    
                     if len(bb)>1 :
                         lat = bb[0].coordinate
                         lon = bb[1].coordinate
@@ -90,9 +141,17 @@ def AddRecPlaces(rec,rEvents,rVerb,pbox) :
                         CheckRange(lat,lon)
                         poiNum += 1
                         det = evnt.randomDescribe(recName,typeVerb,True)
-                        label = recName+" "+gdoc.localStringForKey_(rEvents[i])
+                        if len(type)>0 :
+                            label = recName+" "+gdoc.localStringForKey_(type)
+                        else :
+                            label = recName+" "+gdoc.localStringForKey_(tag)
                         poicache[plcname] = [lat,lon,poiNum,label,det+addrDet]
-                
+                        numEvents += 1
+    
+    # If added events, count this record
+    if eType!="INDIEvents" :
+        if startEvents < numEvents : eventRecords += 1
+    
 # expand bounding box if needed
 def CheckRange(lat,lon) :
     global bbox
@@ -111,12 +170,14 @@ gedit = CheckVersionAndDocument("Event Places for Window Records",1.6,2)
 if not(gedit) : quit()
 gdoc = FrontDocument()
 
-iEvnts = ["BIRT","DEAT","BAPM","GRAD","RESI","CENS","EVEN",\
-"attr","OCCU","EDUC"]
-iVerb = ["was born","died","was baptised","graduated","lived","was recorded in a census","TYPE",\
-"attr","occupation was","education was"]
-fEvnts = ["MARR","DIV","EVEN"]
-fVerb = ["were married","were divorced","TYPE"]
+iEvnts = { "BIRT":"was born","DEAT":"died","BAPM":"was baptised","CHR":"was christened",\
+"GRAD":"graduated","CENS":"was recorded in a census","BURI":"was buried",\
+"IMMI":"immigrated","EMMI":"emmigrated","NATU":"was naturalized","ADOP":"was adopted",\
+"ORDN":"was ordained","EVEN":"TYPE" }
+#  RESI has to be last in the attribute list
+iAttrs = { "OCCU":"occupation was","EDUC":"education was","RESI":"lived"}
+fEvnts = {"MARR":"were married","DIV":"were divorced","CENS":"were recorded in a census",\
+"EVEN":"TYPE" }
 
 # initialize
 bbox = None
@@ -124,6 +185,13 @@ poiNum=0
 pois = []
 poicache = {}
 idcache = {}
+preccache = {}
+
+# counts
+# len(poicache) is number of mapped points
+totalEvents = 0        # total number of possible
+numEvents = 0          # number of events mapped
+eventRecords = 0       # number of records with events
 
 # get listed records (pick out of tree windows)
 selRecs = gdoc.listedRecords()
@@ -168,15 +236,25 @@ for i in range(numRecs) :
     for subrec in subrecs :
         rectype = subrec.recordType()
         if rectype=="INDI":
-            AddRecPlaces(subrec,iEvnts,iVerb,ebox)
+            AddRecPlaces(subrec,iEvnts,"INDIEvents",ebox)
+            AddRecPlaces(subrec,iAttrs,"INDIAttributes",ebox)
+            famses = subrec.spouseFamilies()
+            for famrec in famses :
+                AddRecPlaces(famrec,fEvnts,"FAMEvents",ebox)
         elif rectype=="FAM":
-            AddRecPlaces(subrec,fEvnts,fVerb,ebox)
+            AddRecPlaces(subrec,fEvnts,"FAMEvents",ebox)
             husb = subrec.husband().get()
-            if husb : AddRecPlaces(husb,iEvnts,iVerb,ebox)
+            if husb :
+                AddRecPlaces(husb,iEvnts,"INDIEvents",ebox)
+                AddRecPlaces(husb,iAttrs,"INDIAttributes",ebox)
             wife = subrec.wife().get()
-            if wife : AddRecPlaces(wife,iEvnts,iVerb,ebox)
+            if wife :
+                AddRecPlaces(wife,iEvnts,"INDIEvents",ebox)
+                AddRecPlaces(wife,iAttrs,"INDIAttributes",ebox)
             chil = subrec.children()
-            for child in chil : AddRecPlaces(child,iEvnts,iVerb,ebox)
+            for child in chil :
+                AddRecPlaces(child,iEvnts,"INDIEvents",ebox)
+                AddRecPlaces(child,iAttrs,"INDIAttributes",ebox)
 
 ProgressMessage(1.0)
 
@@ -196,7 +274,9 @@ for key in poicache :
     
 # were any found
 if bbox==None :
-    Alert("Did not find any places for any of the selected records")
+    msg = "Either the current front window has no individual or family records"
+    msg += " or none of them have mappable events."
+    Alert("Did not find any mappable events for the records in the current front window.",msg)
     quit()
 
 # combine pois
@@ -211,14 +291,38 @@ mh = screen[0]+10.
 mv = screen[1]+10.
 mwidth = screen[2]-20.
 mheight = screen[3]-20.
-[mcss,mscript,mbody] = createJSMap(mheight-160.,bbox,poiall,None,True)
+[mcss,mscript,mbody] = createJSMap(mheight-185.,bbox,poiall,None,True)
 
 # transfer to report and write it
 rpt.css(mcss)
 rpt.addhead(mscript)
-if len(selRecs)>1 :
-    firstRec += " and other individuals or families"
-rpt.out("<h1>Mapped Places for "+firstRec+"</h1>\n")
+if len(selRecs) > 1:
+    firstRec = str(len(selRecs))+" individuals or families from "+gdoc.name()
+rpt.out("<h1>Mapped Events for "+firstRec+"</h1>\n")
+
+if len(poicache)==1 :
+    rpt.out("<p>This map shows one location ")
+else :
+    rpt.out("<p>This map shows "+str(len(poicache))+" locations ")
+if numEvents==1 :
+    rpt.out("for one events ")
+else :
+    rpt.out("for "+str(numEvents)+" events ")
+if eventRecords == 1 :
+    rpt.out("from one individual or family")
+else :
+    rpt.out("from "+str(eventRecords)+" individuals or families")
+numSkipped = totalEvents - numEvents
+if numSkipped==0:
+    rpt.out(" ")
+else :
+    if numSkipped==1 :
+        rpt.out(". One event was skipped because it")
+    else :
+        rpt.out(". "+str(numSkipped)+" events were skipped because they")
+    rpt.out(" did not have (lat,lon) information ")
+rpt.out("(generated on "+gdoc.dateToday()+").")
+rpt.out("</p>\n")
 rpt.out(mbody)
 rpt.write()
 

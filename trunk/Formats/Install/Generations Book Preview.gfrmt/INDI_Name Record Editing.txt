@@ -1,0 +1,72 @@
+load ResetTabs,EditingPage
+
+DropTypes SOUR,NOTE,OBJE,INDI,FAM,_LOG,SUBM,INDICtrl
+
+gosub EditingPage,"Personal Details"
+
+newline
+#hasLabel="YES"
+gosub ResetTabs
+
+!--------- Personal Details
+cell GroupBox,local("Personal Details")
+  set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+  ! NAME and SEX
+  Show NAME
+  ShowAll NAME  Show SEX
+  ShowAll RESN
+
+EndGroup
+
+! --------- Birth
+Show BIRT
+!--------- Parents
+cell GroupBox,local("Parents")
+  set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+  ! current parents if any
+  ShowAll FAMC
+
+  newline 5
+  cell static,local("Attach")&": "
+  set offset #buttonOffset
+  sizetofit
+
+  cell LinkButton,local("Attach as child in new family")
+  set border shadowlesssquare menulink "Attach As Child in New Family"
+  sizetofit
+
+EndGroup
+
+!--------- Family as spouse
+cell GroupBox,local("Spouses and Children")
+  set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+  ! current spouses if any
+  ShowAll FAMS
+
+  newline 5
+  cell static,local("Attach")&": "
+  set offset #buttonOffset
+  sizetofit
+
+  cell LinkButton
+  if @this.SEX="M"
+    text local("Attach as husband in new family")
+    menulink "Attach As Husband in New Family"
+  else
+    text local("Attach as wife in new family")
+    menulink "Attach As Wife in New Family"
+  endif
+  set border shadowlesssquare
+  sizetofit
+
+EndGroup
+
+! Death and Burial
+
+Show DEAT
+Show BURI
+hideexcess
+

@@ -1,0 +1,3 @@
+load ResetTabs,EditingPage,WikiSection,WebLinks,AttachMenu,MediaEditing
+
+gosub MediaEditing,"yes"

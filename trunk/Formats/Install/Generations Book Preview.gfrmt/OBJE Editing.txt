@@ -1,0 +1,27 @@
+load ShowOBJE_Wiki
+
+! Link to the multimedia object
+if @contents is validlink
+  if @contents.FORM="url"
+    #numURLs[0]+=1
+    #i=#numURLs[0]
+    #numURLs[#i]=@contents
+  else if #msg="wiki"
+    #otherOBJE=@contents&" "&#otherOBJE
+  else
+    gosub ShowOBJE_Wiki @contents
+  endif
+
+else
+  cell CreateLinkButton
+  set image media border no
+  sizetofit
+  help local("Click to attach multimedia object at this location")
+  hskip 5
+
+endif
+
+! should not be any details, but hide in case
+hideexcess
+
+

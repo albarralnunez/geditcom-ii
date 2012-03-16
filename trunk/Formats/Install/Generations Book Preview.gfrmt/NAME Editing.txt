@@ -1,0 +1,20 @@
+load LineLabel
+
+if #msg="preview"
+  newline #firstSkip
+  cell static "1. "&@this.altview
+  set font "Name Label"
+  sizetofit
+  hideexcess
+
+else
+  ! Here only for INDI name
+  gosub LineLabel,local("NAME")
+  offset #editOffset
+  Cell EditName
+  set width -1 
+  set ScriptLink "Make_UPPERCASE_NAME" ScriptType "format"
+  set ScriptLink "Make_Uppercase_SURNAME" ScriptType "format"
+  set ScriptLink "Make_Titlecase_Name" ScriptType "format"
+
+  hideexcessendif

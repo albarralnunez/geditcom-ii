@@ -1,0 +1,10 @@
+load LineLabel
+
+! Label and editing field
+gosub LineLabel local("Type")&": "
+offset #buttonOffset
+
+! popup menu
+cell PopupMenuEdit
+set autoreload yesMenuItems local("Battlefield")&":BTL"MenuItems local("Burial Cave")&":BUR"MenuItems local("Cemetery")&":CMTY"MenuItems local("Church")&":CH"MenuItems local("Courthouse")&":CTHSE"MenuItems local("Diplomatic Facility")&":DIP"MenuItems local("Government Building")&":GOVL"MenuItems local("Grave Site")&":GRVE"MenuItems local("Hospital")&":HSP"MenuItems local("Library")&":LIBR"MenuItems local("Medical Center")&":CTRM"MenuItems local("Mission")&":MSSN"MenuItems local("Mosque")&":MSQE"MenuItems local("Museum")&":MUS"MenuItems local("Other")&"::"MenuItems local("Religious Center")&":CTRR"MenuItems local("Religious Site")&":RLG"MenuItems local("RESI")&":RESI"MenuItems local("Synagogue")&":syn"MenuItems local("TEMP")&":TMPL"help local("Click to enter type of this point of interest")set controlsize small
+sizetofit

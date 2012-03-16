@@ -1,0 +1,10 @@
+load ResetTabs,EditingPage,AttachMenu
+
+gosub ResetTabs
+
+gosub EditingPage,"Notes Text"
+
+Show CONC
+
+
+hideexcess

@@ -1,0 +1,62 @@
+! Whe done #notePhrase has notes text (ending in space) or is empty
+sub GetNotes,#indent
+  #notesPhrase=""
+  if #omitNotes>=3
+    ! omit all notes
+    return
+  endif
+  Repeat "#n",1,#theNotes[0]
+    #nid=#theNotes[#n]
+    
+    if #omitNotes>0
+      ! will be 1 (omit owner) or 2 (omit owner and family)
+      #dist=@#nid._DIST
+      if #dist="Owner"
+        continue
+      else if #dist="Family"
+        if #omitNotes>1
+          continue
+        endif
+      endif
+    endif
+    
+    #nt=@#nid.CONC
+    if offset("<div\1\"&#nt)=0
+      if #nt!=""
+      	if #notesPhrase!=""
+      	  #notesPhrase&=return
+      	endif
+        #notesPhrase&=#indent&#nt
+        #len=length(#nt)
+        #last=chars(#len&"\"&#len&"\"&#nt)
+        if #last!=return
+          if #last!=" "
+            #notesPhrase&=" "
+          endif
+        endif
+      endif
+      
+    else
+      ! look for <!--TeX … --> command
+      #tex=offset("<!--TeX \1\"&#nt)
+      if #tex>0
+        #endtex=offset("-->\"&#tex&"\"&#nt)
+        if #endtex>0
+          #tt=chars((#tex+7)&"\"&(#endtex-2)&"\"&#nt)
+      	  if #notesPhrase!=""
+      	    #notesPhrase&=return
+      	  endif
+          #notesPhrase&=#indent&#tt
+          #len=length(#tt)
+          #last=chars(#len&"\"&#len&"\"&#tt)
+          if #last!=return
+            if #last!=" "
+              #notesPhrase&=" "
+            endif
+          endif
+        endif
+      endif
+    endif
+    
+  endrepeat
+endSub

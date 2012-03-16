@@ -1,0 +1,93 @@
+load ResetTabs,EditingPage
+
+DropTypes INDI, INDICtrl
+
+gosub EditingPage,"Family Details"
+
+newline
+#hasLabel="YES"
+gosub ResetTabs
+
+!--------- Personal Details
+cell GroupBox,local("Family Details")
+set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+! NAME and SEX
+Show HUSB
+Show WIFE
+
+EndGroup
+
+if @_UMR="Y"
+  cell GroupBox,local("Marriage")
+  set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+  cell static,"Unmarried Couple"
+  set offset #buttonOffset
+  sizetofit
+
+  hskip 5
+  cell LinkButton,"Change"
+  set border shadowlesssquare menulink "Attach Married Status"
+  sizetofit
+
+  EndGroup
+
+else
+  Show MARR
+endif
+
+Show DIV
+
+! Children
+gosub ResetTabs
+
+cell GroupBox,local("Children")
+set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+cell label,local("Attach")&": "
+sizetofit
+set offset #buttonOffset
+
+cell LinkButton
+image "add"
+set border no width 24
+MenuLink "Attach Child"
+help local("Click to add a child")
+
+cell LinkButton
+image "remove"
+set width 24 border no
+MenuLink "Detach Child"
+help local("Click to remove a child")
+
+!--------- The List
+if CHIL is here
+  newline 5
+  hskip 12
+  #leftSkip=#hpos$
+  #lineSkip=-2
+  ClearTabs
+  #tableWidth=#rightMargin$-#rightSkip-#hpos$
+  if #tableWidth>600
+    #tableWidth=600
+  endif
+  SetTab #habs$,#habs$+0.5*#tableWidth,#habs$+0.65*#tableWidth
+  SetTab #habs$+#tableWidth
+  #tableCellHeight=22
+  #tablePad=5
+  #first="yes"
+  ShowAll CHIL
+
+  #lineSkip=#lineSkip$
+  #cellSkip=#cellSkip$
+  gosub ResetTabs
+  NewLine #lineSkip
+  #leftSkip=#leftSkip$
+  newline
+endif
+
+Show NCHI
+
+
+HideExcess

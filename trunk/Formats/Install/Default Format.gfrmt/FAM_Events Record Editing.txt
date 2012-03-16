@@ -60,6 +60,13 @@ cell GroupBox,local("Events")
   help local("Click to paste previously copied event to this record")
   sizetofit 10
 
+  hskip 3
+  cell LinkButton local("Map")
+  set border shadowlesssquare
+  set ScriptLink "Maps/Event Places for Window Records" ScriptType "system"
+  help local("Click to map the events for this record")
+  sizetofit 10
+  
 EndGroup
 GoSub ResetTabs,0
 

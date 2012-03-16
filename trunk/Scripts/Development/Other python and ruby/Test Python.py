@@ -4,6 +4,7 @@
 # 5 MAY 2010, by John A. Nairn
 
 # Prepare to use Apple's Scripting Bridge for Python
+from GEDitCOMII import *
 from Foundation import *
 from ScriptingBridge import *
 
@@ -11,68 +12,6 @@ from ScriptingBridge import *
 #sys.setdefaultencoding('utf-8')
 
 ################### Subroutines
-
-# Check that the current version of GEDitCOM II is new enough for this script
-# Also check if a document is open
-# Return 0 to abort script or 1 if OK to continue
-def CheckAvailable():
-    if gedit.versionNumber()<1.29 :
-        print "This script requires GEDitCOM II, Version 1.3 or newer."
-        return 0
-
-    if gedit.documents().count()<1 :
-        print "You have to open a document in GEDitCOM II to use this script"
-        return 0
-
-    return 1
-
-# convert string to AppleScript enumerated constant
-def GCConstant(uniqueStr):
-    if uniqueStr=="chart":
-        byteForm = 0x74724348			# trCH
-    elif uniqueStr=="outline":
-        byteForm = 0x74724F55			# trOU
-    elif uniqueStr=="the children":
-        byteForm = 0x736B4348			# skCH
-    elif uniqueStr=="the events": 
-        byteForm = 0x736B4556			# skEV
-    elif uniqueStr=="the spouses":
-        byteForm = 0x736B5350			# skSP
-    elif uniqueStr=="charMacOS":
-        byteForm = 0x784F7031			# xOp1
-    elif uniqueStr=="charANSEL":
-        byteForm = 0x784F7032			# xOp2
-    elif uniqueStr=="charUTF8":
-        byteForm = 0x784F7033			# xOp3
-    elif uniqueStr=="charUTF16":
-        byteForm = 0x784F7034			# xOp4
-    elif uniqueStr=="charWindows":
-        byteForm = 0x784F7035			# xOp5
-    elif uniqueStr=="linesLF":
-        byteForm = 0x784F7036			# xOp6
-    elif uniqueStr=="linesCR":
-        byteForm = 0x784F7037			# xOp7
-    elif uniqueStr=="linesCRLF":
-        byteForm = 0x784F7038			# xOp8
-    elif uniqueStr=="mmGEDitCOM":
-        byteForm = 0x784F7039			# xOp9
-    elif uniqueStr=="mmEmbed":
-        byteForm = 0x784F7041			# xOpA
-    elif uniqueStr=="mmPhpGedView":
-        byteForm = 0x784F7042			# xOpB
-    elif uniqueStr=="logsInclude":
-        byteForm = 0x784F7043			# xOpC
-    elif uniqueStr=="logsOmit":
-        byteForm = 0x784F7044			# xOpD
-    elif uniqueStr=="locked":
-        byteForm = 0x724C636B			# rLck
-    elif uniqueStr=="privacy":
-        byteForm = 0x72507276			# rPrv
-    elif uniqueStr=="unlocked":
-        byteForm = 0x72556E6C			# rUnl
-    else:
-        byteForm = 0
-    return byteForm
 
 # return selected record (or None) if correct type
 def GrabRecord(adoc,needType):
@@ -85,19 +24,14 @@ def GrabRecord(adoc,needType):
         print "The selected record is not the correct type"
         return None
     return aRec
-
+    
 ################### Main Script
 
 # fetch application object
-gedit = SBApplication.applicationWithBundleIdentifier_("com.geditcom.GEDitCOMII")
+gedit = CheckVersionAndDocument("Text Python",1.7,2)
+gdoc = FrontDocument()
 
-# verify document is open and version is acceptable
-
-if CheckAvailable()==0 :
-    quit()
-
-# current front document
-gdoc = gedit.documents()[0]
+print str("Testing Python Scripting\n")
 
 ################### Create a Report
 
@@ -235,11 +169,11 @@ print "**** Test restriction property constants"
 indiRec = GrabRecord(gdoc,"INDI")
 if indiRec!=None:
 	resn=indiRec.restriction()
-	if resn==GCConstant("locked"):
+	if resn==GetConstant("locked"):
 		print "locked"
-	elif resn==GCConstant("privacy"):
+	elif resn== GetConstant("privacy"):
 		print "privacy"
-	elif resn==GCConstant("unlocked"):
+	elif resn== GetConstant("unlocked"):
 		print "unlocked"
 	else:
 		print "unknown constant"
@@ -400,15 +334,16 @@ arg2="linesCR"
 arg3="mmGEDitCOM"
 arg4="logsOmit"
 print arg1+", "+arg2+", "+arg3+", "+arg4
-gdoc.exportGedcomFilePath_withOptions_("/Users/nairnj/Desktop/pyExport.ged",[GCConstant(arg1),GCConstant(arg2),GCConstant(arg3),GCConstant(arg4)])
+gdoc.exportGedcomFilePath_withOptions_("/Users/nairnj/Desktop/pyExport.ged",[GetConstant(arg1), GetConstant(arg2), GetConstant(arg3), GetConstant(arg4)])
 """
 
 # findStructuresTag_output_value_()
-"""
+
 print "**** Test findStructuresTag_output_value_() command"
-cd=gdoc.individuals()[1].findStructuresTag_output_value_("PLAC",None,None)
-print cd
-"""
+indi = GrabRecord(gdoc,"FAM")
+cd=indi.findStructuresTag_output_value_("FAMEvents","list",None)
+print str(cd)
+
 
 # formatNameValue_case_()
 # See "Change Name Case" script
@@ -465,7 +400,7 @@ print "**** Test showAncestorsGenerations_treeStyle_() command"
 indiRec = GrabRecord(gdoc,"INDI")
 if indiRec!=None:
     # second is 'trCH' for chart and 'trOU' for outline
-    indiRec.showAncestorsGenerations_treeStyle_(4,GCConstant("outline"))
+    indiRec.showAncestorsGenerations_treeStyle_(4,GetConstant("outline"))
 """
 
 # showBrowser()
@@ -481,7 +416,7 @@ print "**** Test showDescendantsGenerations_treeStyle_() command"
 indiRec = GrabRecord(gdoc,"INDI")
 if indiRec!=None:
     # second is 'trCH' for chart and 'trOU' for outline
-    indiRec.showDescendantsGenerations_treeStyle_(4,GCConstant("chart"))
+    indiRec.showDescendantsGenerations_treeStyle_(4, GetConstant("chart"))
 """
 
 # sortData_()
@@ -490,7 +425,7 @@ if indiRec!=None:
 print "**** Test sortData_() command"
 aRec = GrabRecord(gdoc,"any")
 if aRec!=None:
-    aRec.sortData_(GCConstant("the spouses"))
+    aRec.sortData_(GetConstant("the spouses"))
 """
 
 #user choice

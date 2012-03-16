@@ -1,0 +1,5 @@
+hskip 5
+cell CheckBoxEdit,local("Hide")
+sizetofit
+set autoreload yes offset -2
+help local("Check to to hide this point of interest in the map")

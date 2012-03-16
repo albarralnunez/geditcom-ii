@@ -1,0 +1,129 @@
+load EndPeriod,LineLabel
+
+if #msg="wiki"
+
+  #boxnum+=1
+  newline
+  if #vpos$>#boxend
+    DisplayWidth #oldWidth
+  endif
+  
+  cell static,"◾"
+  set fontcolor "Block Color" offset 3
+  sizetofit
+
+  hskip 0
+  #leftSkip=#hpos$
+
+  cell StaticField
+  set width -1 minheight 10 border none lineheight #lineMult
+  
+  text "The map named "&@contents
+  #bnds=@_BNDS
+  if #bnds=""
+    text " has no bounding box. "
+  else
+    text " has bounding box "&#bnds&". "
+  endif
+
+  gosub EndPeriod,@_PNOTE
+  
+  sizetofit
+  
+  ! Map
+  NewLine
+  if #vpos$>#boxend
+    DisplayWidth #oldWidth
+  endif
+  hskip 18
+  #rectWidth=#rightMargin$-#leftSkip-#rightSkip
+  if #rectWidth>400
+    #rectWidth=400
+  endif
+  #rectHeight=#rectWidth/1.62
+  cell ExpressionField @this._BOX.i.#boxnum
+  set border line Width #rectWidth Height #rectHeight
+  set Width #rectWidth Height #rectHeight
+  
+  if _POI is here
+    newline
+    hskip 18
+    #leftSkip=#hpos$+6
+    cell static,"Points of Interest"
+    set font "Label Text"
+    sizetofit
+    showall _POI "wiki"
+  endif
+  
+  hideexcess
+
+else
+
+  ! number in this record
+  #boxnum+=1
+
+  newline
+  cell GroupBox,local("Map")
+    set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+    NewLine -3
+    
+    gosub LineLabel "Name"
+    offset #editOffset
+    
+    ! edit field with value    cell editvalue
+    set width -1
+    help local("Enter title for this bounding box")
+    
+    ! bounding box and optional
+    show _BNDS
+    show _PNOTE
+    ShowAll _PNOTE
+    
+    ! Style
+    Show _STYLE
+    
+    ! reset
+    NewLine
+    cell LinkButton,local("Reset")
+    set recordlink "reload" fontsize 10 controlsize small border rounded
+    sizetofit
+    
+    ! Map
+    hskip 5
+    #rectWidth=#rightMargin$-#leftSkip-#rightSkip
+    if #rectWidth>300
+      #rectWidth=300
+    endif
+    #rectHeight=#rectWidth/1.62
+    cell ExpressionField @this._BOX.i.#boxnum
+    set border line Width #rectWidth Height #rectHeight
+    set Width #rectWidth Height #rectHeight
+
+    NewLine 3
+    cell label,local("Points of Interest")&":"
+    set width -1
+    
+    ! Points of Interest
+    ReadAll "#pois" from @_POI
+    if #pois[0]=0
+      #pois[0]=1
+    endif
+    newline -3
+    Repeat "#i",1,#pois[0]
+      newline
+      cell LinkButton
+      set image "add" border none width 20
+      Help local("Click to add another point of interest on this map")
+      set ScriptLink "Add_POI" ScriptType format ScriptMessage #boxnum&" "&#i
+      if _POI is here
+        cell LinkButton
+        set image "remove" border none width 20
+        Help local("Click to remove this point of interest")
+        set ScriptLink "Remove_POI" ScriptType format ScriptMessage #boxnum&" "&#i
+      endif
+      #numpoi=#i
+      Show _POI
+    EndRepeat
+
+  endGroup
+endif

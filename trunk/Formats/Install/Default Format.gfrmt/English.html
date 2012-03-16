@@ -41,12 +41,14 @@
 
 <dl>
 <dt>Individual</dt>
-<dd>This pane has basic genealogy information such as name, birth and death details, links to parents, and links to spouses and children. The family icon button links to the associated family record. (Hint: you can control click on the name to change its case (<i>e.g.</i>, to all uppercase, title case, or surname only in uppercase.)</dd>
+<dd>This pane has basic genealogy information such as name, birth and death details, links to parents, and links to spouses and children. The family icon button links to the associated family record. (Hint: you can control click on the name to change its case (<i>e.g.</i>, to all uppercase, title case, or surname only in uppercase.)<br>
+&nbsp;&nbsp;&nbsp;The arrow indicators after a parent or spouse mean that person has additional ancestors. An arrow indicator before a child means that child has their own children. An equal sign before a child means that child has a spouse, but no known children. (Hint: you can customize these indicators using in the <a href="#variables">preferences</a>.</dd>
 
 <dt>Events</dt>
-<dd>This pane list all events (including repeat of birth and death from the &quot;Individual&quot; pane). You can attach or detach events and enter their date and place. For attributes you can enter text about the attribute. To add more detail on any event, click the &quot;info&quot; icon and enter the data into the window that appears.<br><br>
-The green arrow sorts events by dates.<br><br>
-The &quot;Copy Event&quot; button will copy the event currently with the editing cursor. You can move to another record and use its &quot;Paste Event&quot; button to add that event to the second individual.
+<dd>This pane list all events (including repeat of birth and death from the &quot;Individual&quot; pane). You can attach or detach events and enter their date and place. For attributes you can enter text about the attribute. To add more detail on any event, click the &quot;info&quot; icon and enter the data into the window that appears.<br>&nbsp;&nbsp;&nbsp;
+The green arrow sorts events by dates.<br>&nbsp;&nbsp;&nbsp;
+The &quot;Copy Event&quot; button will copy the event currently with the editing cursor. You can move to another record and use its &quot;Paste Event&quot; button to add that event to the second individual.<br>&nbsp;&nbsp;&nbsp;
+The &quot;Map&quot; button will map all events and attributes with known latitude and longitude (or place with known bounding box).
 </dd>
 
 <dt>Pedigree</dt>
@@ -72,12 +74,14 @@ The &quot;Copy Event&quot; button will copy the event currently with the editing
 
 <dl>
 <dt>Family</dt>
-<dd>This pane has basic genealogy information such as spouses and children in the family and the marriage details.</dd>
+<dd>This pane has basic genealogy information such as spouses and children in the family and the marriage details.<br>
+&nbsp;&nbsp;&nbsp;The arrow indicators after a spouse mean that person has additional ancestors. (Hint: you can customize this indicator using the <a href="#variables">preferences</a>.</dd>
 
 <dt>Events</dt>
-<dd>This pane list all events (including repeat of marriage from the &quot;Family&quot; pane). You can attach or detach events and enter their date and place. To add more detail on any event, click the &quot;info&quot; icon and enter the data into the window that appears.<br><br>
-The green arrow sorts events by dates.<br><br>
-The &quot;Copy Event&quot; button will copy the event currently with the editing cursor. You can move to another record and use it's &quot;Paste Event&quot; button to add that event to the second family.
+<dd>This pane list all events (including repeat of marriage from the &quot;Family&quot; pane). You can attach or detach events and enter their date and place. To add more detail on any event, click the &quot;info&quot; icon and enter the data into the window that appears.<br>&nbsp;&nbsp;&nbsp;
+The green arrow sorts events by dates.<br>&nbsp;&nbsp;&nbsp;
+The &quot;Copy Event&quot; button will copy the event currently with the editing cursor. You can move to another record and use it's &quot;Paste Event&quot; button to add that event to the second family.<br>&nbsp;&nbsp;&nbsp;
+The &quot;Map&quot; button will map all events and attributes with known latitude and longitude (or place with known bounding box) for parents and chilren in the family.
 </dd>
 
 <dt>Group</dt>
@@ -295,7 +299,7 @@ The &quot;Copy Event&quot; button will copy the event currently with the editing
 </dd>
 
 <dt>Notes Position</dt>
-<dd>A numeric code for location of the editing pane in Notes records. The options are: 1 = left, 2 = top, 3 = right, and 4 = bottom.
+<dd>The position for the text editing pane in Notes records. The options are: left, top, right, and bottom (case insensitive).
 </dd>
 
 <dt>Chart Box Width</dt>
@@ -310,6 +314,16 @@ The &quot;Copy Event&quot; button will copy the event currently with the editing
 
 <dt>Chart Box Padding</dt>
 <dd>Extra padding within the cell in the horizontal direction</dd>
+
+<dt>Ancestors Indicator</dt>
+<dd>This string (of any length) is placed after links to spouses and parents who have documented ancestors (at least parents are known)</dd>
+
+<dt>Descendants Indicator</dt>
+<dd>This string (of any length) is placed before links to children who have documented descendants (at least their children are known)</dd>
+
+<dt>Spouse Indicator<dt>
+<dd>This string (of any length) is placed before links to children who have no known children, but do have a known spouse.</dd>
+
 
 </dl>
 

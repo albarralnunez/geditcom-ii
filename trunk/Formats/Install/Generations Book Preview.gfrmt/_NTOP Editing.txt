@@ -1,0 +1,17 @@
+if #hpos$>#midPt-10
+  newline
+endif
+cell static,local(@tag)&":"
+set tabwidth 1 alignment right
+
+! popup menu
+cell PopupMenuEdit
+set offset -2MenuItems local("Include all")&":hideNone"
+MenuItems local("Omit all")&":hideAll"
+MenuItems local("Omit 'Owner'")&":hideOwner"
+MenuItems local("Omit 'Owner' and 'Family'")&":hideFamily"
+SizeToFit -1
+if @tag="_NTOP"
+  help local("Click to select which notes to include in the book")
+else  help local("Click to select which portraits to include in the book")
+endif

@@ -1,0 +1,13 @@
+load ResetTabs,EditingPage,AttachMenu
+
+gosub ResetTabs
+
+gosub EditingPage,"Place Name"
+
+Gosub AttachMenu "Attach Optional Data","Click to add another place name","Detach Event/Attribute/Link","Click to remove a place name"
+
+!--------- Research logs
+ShowAll _PLACE
+
+optionalTag _PLACE,"New Place Name","place name"
+hideexcess

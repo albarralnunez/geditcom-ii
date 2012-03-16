@@ -4,9 +4,9 @@ if printing is false
   #fraction=375/#rightMargin$
   show CONC 1-#fraction
   if #rightMargin$<375
-    if #posNotes>2.5
+    ifStr #posNotes="right"
       DisplayWidth 375
-    else if #posNotes=1
+    else ifStr #posNotes="left"
       DisplayWidth 375
     endif
   endif

@@ -4,7 +4,7 @@ sub NameWithAncestors,#mate
   TextExpression @#mate.NAME
   AppendedExpression altview
   if @#mate.FAMC!=""
-    Format "%@ ↑"
+    Format "%@"&#ANCArrow
   endif
   set font "Hyperlink Text"  set border no alignment left
   sizetofit -1
@@ -21,17 +21,17 @@ sub NameWithDescendants,#chil
   #hasSpouse=""
   RepeatWith "#family" from @#chil.FAMS
     if @#family.CHIL!=""
-      Format "↓ %@"
+      Format #DESArrow&"%@"
       #hasSpouse=""
       break
     endif
     if @#family.HUSB=#chil
       if @#family.WIFE!=""
-        #hasSpouse="= %@"
+        #hasSpouse=#SPSEArrow&"%@"
       endif
     else
       if @#family.HUSB!=""
-        #hasSpouse="= %@"
+        #hasSpouse=#SPSEArrow&"%@"
       endif
     endif
   EndRepeat

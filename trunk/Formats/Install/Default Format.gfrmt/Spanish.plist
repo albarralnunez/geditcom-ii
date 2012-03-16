@@ -90,6 +90,8 @@
 	<string>Todos los registros enlazados</string>
 	<key>All Notated Records</key>
 	<string>Todos los registros notados</string>
+	<key>Ancestors Indicator</key>
+	<string>Indicador de Antepasados</string>
 	<key>Anyone</key>
 	<string>Cualquier persona</string>
 	<key>Article</key>
@@ -274,10 +276,8 @@
 	<string>Circuncisión</string>
 	<key>Cited by</key>
 	<string>Citado por</string>
-	<key>Click for death details</key>
-	<string>Haga clic para detalles de muerto</string>
-	<key>Click for marriage details</key>
-	<string>Haga clic por detalles del matrimonio</string>
+	<key>Click 'info' icon to edit address</key>
+	<string>Haga clic sobre el icono 'info' para editar la dirección</string>
 	<key>Click for name details</key>
 	<string>Haga clic para detalles de nombre</string>
 	<key>Click for source details specific to this record</key>
@@ -368,6 +368,8 @@
 	<string>Haga clic para enlazer con registro de familia ya existente</string>
 	<key>Click to link to family record</key>
 	<string>Haga clic para enlazar al registro de familia</string>
+	<key>Click to map the events for this record</key>
+	<string>Haga clic para mapear los eventos</string>
 	<key>Click to open family record #</key>
 	<string>Haga clic para abrir registro de familia #</string>
 	<key>Click to open home individual record</key>
@@ -450,8 +452,6 @@
 	<string>Haga clic para ver el registro de esposa</string>
 	<key>Click to view alias record</key>
 	<string>Haga clic para ver el registro de seudónimo</string>
-	<key>Click to view and edit birth details</key>
-	<string>Haga clic para ver y editar detalles de nacimiento</string>
 	<key>Click to view and edit notes</key>
 	<string>Haga clic para ver y editar las notas</string>
 	<key>Click to view and edit place record</key>
@@ -523,7 +523,7 @@
 	<key>DEST</key>
 	<string>Archivo de destino</string>
 	<key>DIP</key>
-	<string>Diplomatic Facility</string>
+	<string>Complejo Diplomático</string>
 	<key>DIV</key>
 	<string>Divorcio</string>
 	<key>DIV details</key>
@@ -546,6 +546,8 @@
 	<string>Ancho de celdas por defecto</string>
 	<key>Default Place Hierarchy</key>
 	<string>Jerarquía por defecto de lugar</string>
+	<key>Descendants Indicator</key>
+	<string>Indicador de Descendientes</string>
 	<key>Description</key>
 	<string>Descripción</string>
 	<key>Details</key>
@@ -946,6 +948,8 @@
 	<string>Prefijo</string>
 	<key>NSFX</key>
 	<string>Sufijo</string>
+	<key>Navigation Aids</key>
+	<string>Herramientas de Navegación</string>
 	<key>New</key>
 	<string>Nuevo</string>
 	<key>No image representation. Click to open in another application</key>
@@ -978,6 +982,8 @@
 	<string>Ordenación</string>
 	<key>ORDN details</key>
 	<string>Detalles de la ordenación</string>
+	<key>Occurred</key>
+	<string>Ocurrido</string>
 	<key>Omit 'Owner'</key>
 	<string>Omitir objetos designados 'Owner' (proprietário)</string>
 	<key>Omit 'Owner' and 'Family'</key>
@@ -1186,6 +1192,8 @@
 	<string>Fuentes para estes datos</string>
 	<key>Spouse</key>
 	<string>Esposo</string>
+	<key>Spouse Indicator</key>
+	<string>Indicador de Esposo/Esposa</string>
 	<key>Spouses</key>
 	<string>Esposos</string>
 	<key>Static Text</key>

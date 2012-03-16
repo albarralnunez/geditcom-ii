@@ -1,0 +1,208 @@
+load LineLabel,RecordChildLink,GetParents,GetNotes,EventPhrase,DescribePerson
+
+! set an expression to display this name with a birth date if known
+sub NameWithAncestors,#mate
+  TextExpression @#mate.NAME
+  AppendedExpression altview
+  #extra=""
+  if @#mate.FAMC!=""
+    #extra=#extra&"+"
+  endif
+  #bdate=@#mate.BIRT.DATE.user
+  if #bdate<>""
+    #extra=#extra&" ("&local("born")&": "&#bdate&")"
+  endif
+  if #extra<>""
+    Format "%@"&#extra
+  endif
+  set font "Hyperlink Text"  set border no alignment left
+  sizetofit -1
+  help local("Click to view spouse's record")
+endsub
+
+! set an expression to display this name with sex and birth date as known
+sub NameWithDescendants,#chil
+  cell LinkButton
+  RecordLink #chil
+  TextExpression @#chil.NAME
+  AppendedExpression altview
+  #pref=""
+  if @#chil.FAMS.CHIL!=""
+    #pref="↓ "
+  else if @#chil.FAMS.i.2.CHIL!=""
+    #pref="↓ "
+  endif
+  #nsex=@#chil.SEX
+  if #nsex="M"
+    #suff=" ("&local("Son")
+  else if #nsex="F"
+    #suff=" ("&local("Daughter")
+  else
+    #suff=" ("&local("Unknown")
+  endif
+  #bdate=@#chil.BIRT.DATE.user
+  if #bdate<>""
+    #suff =#suff&", "&local("born")&": "&#bdate
+  endif
+  #ddate=@#chil.DEAT.DATE.user
+  if #ddate<>""
+    #suff =#suff&", "&local("died")&": "&#ddate&")"
+  else
+    #suff=#suff&")"
+  endif
+  Format #pref&"%@"&#suff
+  set font "Hyperlink Text"  set border no alignment left
+  sizetofit -1
+  help local("Click to view child's record")
+endsub
+
+! ----------- Template starts here
+
+if #msg="preview"
+  #mnum+=1
+  
+  #spouseID=@contents.HUSB
+  if #spouseID=@id
+    #spouseID=@contents.WIFE
+    #myAge=@contents.MARR.WIFE.AGE
+    #sChild="daughter"
+  else
+    #myAge=@contents.MARR.HUSB.AGE
+    #sChild="son"
+  endif
+
+  #marriage[#mnum]=#Pronoun
+  if @contents._UMR=""
+    #marriage[#mnum]&=" married "
+  else
+    #marriage[#mnum]&=" partnered with "
+  endif
+  
+  #mPref=" "
+  if #spouseID!=""
+    #sname=@#spouseID.altview
+    #marriage[#mnum]&=#sname
+  else
+    #marriage[#mnum]&="an unknown spouse"
+    #sname=""
+  endif
+  
+  ! Marriage
+  #mplace=@contents.MARR.PLAC
+  #maddr=@contents.MARR.ADDR
+  ReadAll "#theNotes",@contents.MARR.NOTE
+  GoSub EventPhrase,"",@contents.MARR.DATE,#myAge,#mplace,#maddr
+  if #phrase!=""
+    #marriage[#mnum]&=" "&#phrase
+    if #phraseTerm=""
+      #marriage[#mnum]&=". "
+    endif
+  else
+    #marriage[#mnum]&=". "
+  endif
+  
+  ! Divorce
+  #mplace=@contents.DIV.PLAC
+  #maddr=@contents.DIV.ADDR
+  ReadAll "#theNotes",@contents.DIV.NOTE
+  GoSub EventPhrase,"divorced",@contents.DIV.DATE,"",#mplace,#maddr
+  if #phrase!=""
+    #marriage[#mnum]&="They "&#phrase
+    if #phraseTerm=""
+      #marriage[#mnum]&=". "
+    endif
+  endif
+
+  if #spouseID!=""
+    GoSub DescribePerson,firstword(#sname),#spouseID,#sChild,""
+    #marriage[#mnum]&=#person
+  endif
+  
+  #cnum=@contents.count.CHIL
+  #preface=#cnum&" "&@contents&" "
+  if #cnum=0
+    #famChildren[#mnum]=#preface&#indiName&" and "&#sname&" had no known children. "
+  else
+    if #cnum=1
+      #famChildren[#mnum]=#preface&"The one known child of "&#indiName&" and "&#sname&" is:"
+    else
+      #famChildren[#mnum]=#preface&"The children of "&#indiName&" and "&#sname&" are:"
+    endif
+  endif
+  
+else
+
+  ! ----------- Label and link to family
+  gosub LineLabel,local("Family")
+  gosub RecordChildLink local("Click to view family record"),"parent"
+
+  ! ----------- Label and link to spouse (works for same-sex too)
+  newline
+  tab @level
+  cell static
+  #spouseID=@contents.HUSB
+  if #spouseID=@id
+    #spouseID=@contents.WIFE
+  endif
+
+  ! get sex of spouse
+  if #spouseID!=""
+    #sex=@#spouseID.SEX
+  else
+    #sex=@this.SEX
+    if #sex="F"
+      #sex="M"
+    else
+      #sex="F"
+    endif
+  endif
+
+  ! get label
+  if #sex="F"
+    if @contents._UMR=""
+      #spouse=local("WIFE")
+    else
+      #spouse=local("Partner")
+    endif
+  else
+    if @contents._UMR=""
+      #spouse=local("HUSB")
+    else
+      #spouse=local("Partner")
+    endif
+  endif
+  text #spouse&":"
+  sizetofit
+
+  ! spouse name and link
+  if #spouseID is validlink    cell LinkButton    RecordLink #spouseID    gosub NameWithAncestors #spouseID
+  else
+    cell static "<"&local("Unknown")&">"
+    sizetofit -1
+  endif
+
+  ! ----------- Links to all children with this spouse
+  #col=0
+  RepeatWith "#child" from @contents.CHIL
+    if #col<0.5
+      NewLine
+      #famsSkip=#leftSkip
+      tab @level
+      cell static,local("Children")&": "
+      sizetofit
+      #col=1
+      hskip 0
+      #leftSkip=#hpos$
+    else
+      newline
+    endif
+    gosub NameWithDescendants,#child
+  EndRepeat
+  if #col>0.5
+    #leftSkip=#famsSkip
+  endif
+
+  hideexcess
+  
+endif
+

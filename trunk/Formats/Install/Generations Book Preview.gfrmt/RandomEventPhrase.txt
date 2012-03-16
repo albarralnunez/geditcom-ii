@@ -1,0 +1,105 @@
+! #enoun is name (lowercase pronouns),
+! #everb is verb, #edate is date
+! #eage is age (or "" to skip)
+! #eplace is place and #addr is address
+! output is #full
+sub RandomEventPhrase,#enoun,#everb,#edate,#eage,#eplace,#eaddr
+  #dphrase=""
+  #edate=titlecase(#edate)
+  if #edate!=""
+    #qual=word("1\"&#edate)
+    if #qual="Abt"
+      #dphrase="about "&removeFirstWord(#edate)
+    else if #qual="Est"
+      #dphrase ="about "&removeFirstWord(#edate)
+    else if #qual="Bef"
+      #dphrase ="before "&removeFirstWord(#edate)
+    else if #qual="Aft"
+      #dphrase ="after "&removeFirstWord(#edate)
+    else if #qual="Bet"
+      #dphrase ="between "&removeFirstWord(#edate)
+      #dphrase =replace(" And \ and \"&#dphrase)
+    else if #qual="Cal"
+      #dphrase ="calculated "&removeFirstWord(#edate)
+    else if #qual="Int"
+      #dphrase ="interpreted "&removeFirstWord(#edate)
+    else if #qual="from"
+      #dphrase ="from "&removeFirstWord(#edate)
+      #dphrase =replace(" To \ to \"&#dphrase)
+    else if #qual="to"
+      #dphrase ="to "&removeFirstWord(#edate)
+    else
+      ! no qualifiy
+      if words(#edate)>2
+        #dphrase ="on "&#edate
+      else
+        #dphrase ="in "&#edate
+      endif
+    endif
+  endif
+  
+  ! age
+  if #eage!=""
+    #eage="at age "&#eage
+  endif
+  
+  ! address to place and preface place as needed
+  if #eaddr!=""
+    if #eplace!=""
+      #eplace=" in "&#eplace
+    endif
+    #eplace&=" at "&replace(return&"\, \"&#eaddr)
+  else if #eplace!=""
+    #eplace=" in "&#eplace
+  endif
+  
+  ! Three random version
+  if #everb="lived"
+    #rand=rand(2)+1
+  else
+    #rand=rand(3)
+  endif
+  if #rand<1
+    !nounMid verb [at age (age)] (date) in (place)
+    #full=titlecase(#enoun)&" "&#everb
+    if #eage!=""
+      #full&=" "&#eage
+    endif
+    if #dphrase!=""
+      #full&=" "&#dphrase
+    endif
+    #full&=#eplace
+    
+  else if #rand<2
+    ! (date) [at age (age)], nounMid verb in (place)
+    #full=""
+    if #dphrase!=""
+      #full=titlecase(#dphrase)
+      if #eage!=""
+        #full&=" "&#eage
+      endif
+      #full&=", "
+    else if #eage!=""
+      #full=titlecase(#eage)&", "
+    endif
+    if #full==""
+      #full=titlecase(#enoun)&" "&#everb
+    else
+      #full&=#enoun&" "&#everb
+    endif
+    #full&=#eplace
+    
+  else
+    ! nounMid verb in (place) (date) [at age (age)]
+    #full=titlecase(#enoun)&" "&#everb&#eplace
+    if #dphrase!=""
+      #full&=" "&#dphrase
+    endif
+    if #eage!=""
+      #full&=" "&#eage
+    endif
+    
+  endif
+  #full&=". "
+  
+endSub

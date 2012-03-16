@@ -1,0 +1,30 @@
+load LineLabel
+
+if #msg=""
+  ! Label and editing field
+  gosub LineLabel "Age"
+  offset #editOffset
+
+  hskip #cellSkip$
+  #leftEdge=#hpos$
+  cell EditValue
+  set Width -1
+  
+  newline
+  HMoveTo #leftEdge
+  cell static
+  set width -1 fontsize 11
+  text "   Enter age to complete a sentence like 'She died at age _____.'"
+
+else
+  ! Parent's age in AGE link subordinate to HUSB or WIFE
+  ! in Family event - #msg is localized string with label
+  ! for which parent
+  gosub LineLabel #msg
+  set offset #editOffset shift -#tabSpacing
+
+  cell EditValue
+  set width -1
+
+endif
+

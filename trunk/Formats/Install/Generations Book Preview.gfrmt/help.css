@@ -1,0 +1,74 @@
+body { background-color: #ffffff; }
+
+* {
+	font-size: 9pt;
+	line-height: 1.5;
+	font-family: "Lucida Grande", Helvetica, Arial;
+}
+	
+/* Redefine core elements, some with special cases */
+p {
+	margin-left: 9pt;
+}
+
+/* section elements */
+h1 {
+	font-size: 14pt;
+	color: #000;
+	border-bottom: solid;
+  	border-bottom-width: 2pt;
+	padding-top: 6px;
+}
+h2 {
+	font-size: 12pt;
+	color: #600;
+	margin-left: 3pt;
+	border-bottom: solid;
+  	border-bottom-width: thin;
+	padding-top: 3px;
+}
+h3 {
+	font-size: 10pt;
+	font-weight: bold;
+	color: #060;
+	margin-left: 6pt;
+}
+
+/* unordered lists */
+ul {
+	list-style-type: square;
+	margin-left: 0pt;
+	margin-right: 6pt;
+}
+ul li {
+	margin-top: 1pt;
+	margin-bottom: 3pt;
+}
+
+/* ordered lists */
+ol {
+	margin-left: 3pt;
+	margin-right: 6pt;
+}
+ol li {
+	margin-top: 1pt;
+	margin-bottom: 3pt;
+}
+
+/* Definition lists - bold terms */
+dl {
+}
+
+dl dt {
+	font-weight: bold;
+	margin-bottom: 3px; 
+	margin-left: 12px;
+}
+dl dd {
+	margin-bottom: 9px;
+	margin-left: 28px;
+}
+code {
+	font-family: "Courier";
+}
+

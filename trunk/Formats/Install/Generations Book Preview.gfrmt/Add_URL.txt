@@ -1,0 +1,4 @@
+tell application "GEDitCOM II"    set message visible to false
+    set newText to "http://"
+	tell front document		begin undo		set recRef to key record		tell recRef			set boxRef to (make new structure with properties {name:"_URL", contents:newText})
+		end tell		end undo action local string for key "Add New URL"	end tellend tell

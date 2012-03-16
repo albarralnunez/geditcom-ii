@@ -1,0 +1,131 @@
+load ResetTabs,RecordTitle,WikiSection
+
+DropTypes INDI
+
+gosub ResetTabs
+
+! -------- Title name
+GoSub RecordTitle,""
+
+#sectionCount+=2
+GoSub WikiSection,local("Description"),""
+#leftSkip=#leftSkip$+9
+Show _DESC
+#leftSkip=#leftSkip$
+
+! targets
+#sectionCount+=2
+GoSub WikiSection,local("Target Individuals"),""
+#leftSkip=#leftSkip$+9
+if _INDI is here
+  #hasINDI="Yes"
+else
+  #hasINDI="No"
+endif
+ShowAll _INDI
+Show _INDI
+DropTypes INDI
+
+! Remove _INDI
+if #hasINDI="YES"
+  cell LinkButton
+  set image "remove" border none height 22 width 24
+  Help local("Click to remove a target individual")
+  set MenuLink "Detach Event/Attribute/Link"
+endif
+#leftSkip=#leftSkip$
+
+! author information
+#sectionCount+=2
+GoSub WikiSection,local("Author Information"),""
+#leftSkip=#leftSkip$+9
+Show _AUTH
+Show _EMAIL
+#leftSkip=#leftSkip$
+
+! Generatinos
+GoSub WikiSection,local("Generations"),""
+#leftSkip=#leftSkip$+9
+Show _ANC
+Show _DES
+#leftSkip=#leftSkip$
+
+! --------- Run the Script -----------
+GoSub WikiSection,local("Create Book"),""
+hskip 9
+cell LinkButton,local("Create Book")
+set border shadowlesssquare
+sizetofit
+if @_USER="Y"
+  set ScriptLink "Reports/Generations LaTeX Book" ScriptType "user"
+else
+  set ScriptLink "Reports/Generations LaTeX Book" ScriptType "system"
+endif
+help local("Click to typeset the book")
+
+if @_FLDR!=""
+  hskip 10
+  cell LinkButton
+  set image "reveal" border none offset -2
+  set width 18
+  set ScriptLink "Open_BookFIle" ScriptType "format"
+  set help local("Open previously typeset book in Preview (if available)")
+endif
+
+Show _TSET
+
+! ----- Settings ------
+GoSub WikiSection,local("Style Settings"),""
+ClearTabs
+#midPt=#rightMargin$/2-#leftSkip-10
+SetTab 120,#midPt+120
+Show _TEXSTY
+Show _FFAM
+Show _PAPER
+Show _FONT
+Show _SIZE
+Show _LINE
+newline
+Show _NTOP
+Show _PTOP
+
+! ----- Introduction
+Gosub ResetTabs
+GoSub WikiSection,local("Book Introduction"),""
+#leftSkip=#leftSkip$+9
+Show _INTRO
+#leftSkip=#leftSkip$
+
+! ----- About the Author
+GoSub WikiSection,local("About the Author"),""
+#leftSkip=#leftSkip$+9
+Show _ABOUT
+#leftSkip=#leftSkip$
+
+! ----- About the Author
+GoSub WikiSection,local("Advanced Options"),""
+#leftSkip=#leftSkip$+9
+gosub ResetTabs
+Show _COPY
+Show _FLDR
+Show _OVER
+Show _USER
+#leftSkip=#leftSkip$
+
+! Change Date
+if CHAN is here
+  GoSub WikiSection,local("Additional Data"),""
+  #leftSkip=#leftSkip$+9
+  ShowAll CHAN
+  ShowAll REFN
+  #leftSkip=#leftSkip$
+endif
+
+hideexcess
+
+
+
+
+
+
+

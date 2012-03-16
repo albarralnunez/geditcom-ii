@@ -1,0 +1,10 @@
+load GetNotes,EventPhrase
+if #msg="preview"
+  ! #phrase and #phraseTerm set when done
+  ReadAll "#theNotes",@NOTE
+  gosub EventPhrase,"died",@DATE,"",@PLAC,@ADDR
+  #cause=@CAUS
+  hideexcess
+else
+  use Event
+endif

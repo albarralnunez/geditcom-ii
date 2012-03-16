@@ -26,3 +26,5 @@ cell GroupBox,local("Header Details")
   newline -3
   show DEST  show DATE  show FILE  show COPR  show GEDC  show CHAR  show LANG  show PLAC
   show NOTEEndGroup
+
+hideexcess

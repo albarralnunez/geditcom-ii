@@ -1,0 +1,49 @@
+sub WebLinks #linkStyle
+
+  if #linkStyle="wiki"
+    #sectionCount+=2
+	GoSub WikiSection,local("External Links"),"Media"
+  endif
+
+  repeat "#i",1,#numURLs[0]
+    ! Link to the web page
+    newline
+
+    if #linkStyle="wiki"
+      cell static,"◾"
+      set fontcolor "Block Color"
+      sizetofit
+    endif
+
+    cell Multimedia
+    #objeID=#numURLs[#i]
+    set url @#objeID._FILE font "Hyperlink Text"
+    if @#objeID.TITL<>""
+      TextExpression @#objeID.TITL
+    else
+      TextExpression @#objeID._FILE
+    endif
+
+    if #linkStyle!="wiki"
+      set image globe imageposition left
+	  sizetofit -1
+      set alignment left offset #buttonOffset
+      set help local("Click to open web site in browser")
+
+      ! rest in a child window
+      HMoveTo #rightMargin$-#rightSkip-60-#cellSkip
+      cell LinkButton
+      set border no image "details_here"
+      RecordLink @#objeID
+      set target parent
+      sizetofit
+      shift 60-#cellWidth$
+      Help local("Click to view and edit multimedia object")
+
+    else
+      sizetofit -1
+      set help local("Click to open in browser")
+    endif
+  endrepeat
+
+endSub

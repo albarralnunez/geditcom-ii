@@ -15,7 +15,7 @@ sub NameWithAncestors,#parent,#label,#nameWidth
     TextExpression @#parent.NAME
     AppendedExpression altview
     if @#parent.FAMC!=""
-      Format "%@ ↑"
+      Format "%@"&#ANCArrow
     endif
     set font "Hyperlink Text"    set border no alignment left width #nameWidth
     sizetofit -1

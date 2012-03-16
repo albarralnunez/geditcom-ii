@@ -1,0 +1,58 @@
+! Describe a person in sentence starting wiht #useName
+! give parents and known birth and death dates
+! will end in space
+! Relies on GetParents and EventPhrase
+sub DescribePerson,#useName,#pid,#asChild,#listType
+  ! get #rents
+  if #listType!="child"
+    gosub GetParents,@#pid.FAMC
+    #prents=#rents
+  else
+    #prents=""
+  endif
+  
+  ! get birth
+  #bp=@#pid.BIRT.PLAC
+  #ba=@#pid.BIRT.ADDR
+  #theNotes[0]=0
+  gosub EventPhrase,"was born",@#pid.BIRT.DATE,"",#bp,#ba
+  #bp=#phrase
+  
+  ! get birth
+  #dp=@#pid.DEAT.PLAC
+  #da=@#pid.DEAT.ADDR
+  #theNotes[0]=0
+  gosub EventPhrase,"died",@#pid.DEAT.DATE,"",#dp,#da
+  #dp=#phrase
+  
+  if #prents!=""
+    if #bp!=""
+      #person=#useName&", the "&#asChild&" of "&#prents&", "&#bp
+      if #dp!=""
+        #person&=" and "&#dp&". "
+      else
+        #person&=". "
+      endif
+    else if #dp!=""
+      #person=#useName&", the "&#asChild&" of "&#prents&", "&#dp&". "
+    else
+      #person=#useName&" is the "&#asChild&" of "&#prents&". "
+    endif
+  else
+    if #bp!=""
+      #person=#useName&", a "&#asChild&", "&#bp
+      if #dp!=""
+        #person&=" and "&#dp&". "
+      else
+        #person&=". "
+      endif
+    else if #dp!=""
+      #person=#useName&", a "&#asChild&", "&#dp&". "
+    else if #asChild="son"
+      #person=#useName&" is a son, but his birth date is not known. "
+    else
+      #person=#useName&" is a daughter, but her birth date is not known. "
+    endif
+  endif
+  
+endSub

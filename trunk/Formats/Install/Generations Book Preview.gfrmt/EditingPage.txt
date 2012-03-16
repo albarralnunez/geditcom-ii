@@ -1,0 +1,94 @@
+sub EditingPage,#editSection
+  #oldWidth=#rightMargin$
+  DisplayWidth #oldWidth+#rightSkip+2
+  newline -#topMargin$-2
+  hskip -#leftSkip-2
+  #lineSkip=-4
+  cell GroupBox
+  set border line borderwidth 2
+  titleposition none
+  cellbackground "Editing Box Background"
+  width -1
+
+  #shift=50
+  MoveTo #leftSkip+#shift,0
+  cell LinkButton,"Back to Preview"
+  sizetofit 10
+  #bwidth=#cellWidth$
+  #btop=#vabs$
+  #bleft=#habs$
+  set border none fontcolor white CellBackground white
+
+  EndGroup
+  DisplayWidth #oldWidth
+  newline
+  #bheight=#vpos$-#btop+2
+  #lineSkip=#lineSkip$
+
+  MoveTo #bleft,#btop
+  cell palette
+  set width #bwidth height #bheight
+  PalDrawColor white
+  PalFillRect 0,#bheight-2,#bwidth,2
+  PalDrawColor "Back Button Border"
+  PalLineWidth 2
+  PalMoveTo 1,#bheight
+  PalLineTo 1,1
+  PalLineTo #bwidth-1,1
+  PalLineTo #bwidth-1,#bheight
+
+  MoveTo #bleft+1,#btop
+  cell LinkButton,"Back to Preview"
+  sizetofit 8
+  if @rec="INDI"
+    set RecordLink @this PaneID ""
+  else
+    set MenuLink "Go Back"
+  endif
+  set border none fontcolor blue
+
+  hskip 6
+  cell LinkButton,"Edit These Data"
+  set border none CellBackground white
+  sizetofit 10
+  set height #bheight
+  #bleft=#hpos$
+  #bwidth=#cellWidth$
+
+  MoveTo #bleft,#btop
+  #bheight+=2
+  cell palette
+  set width #bwidth height #bheight
+  PalDrawColor white
+  PalFillRect 0,#bheight-4,#bwidth,4
+  PalDrawColor black
+  PalLineWidth 2
+  PalMoveTo 1,#bheight
+  PalLineTo 1,1
+  PalLineTo #bwidth-1,1
+  PalLineTo #bwidth-1,#bheight
+
+  newline
+  if @rec="NOTE"
+    cell static,"Notes"
+    set fontSize 18
+    #notesRef=@_REF.altview
+    if #notesRef!=""
+      text " on "&#notesRef
+    endif
+    text " ("&#editSection&")"
+  else
+    cell Expression,@this.rec
+    set fontSize 18 appendedExpression altview
+    set format "Editing %@ ("&#editSection&")"
+  endif
+  sizetofit
+
+  newline -2
+  cell Palette
+  set width -1 height 4
+  PalMoveTo 0,0
+  PalLineTo #cellWidth$,0
+  newline
+
+endSub
