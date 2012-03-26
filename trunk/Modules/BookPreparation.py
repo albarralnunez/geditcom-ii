@@ -14,8 +14,20 @@ class BookEvent(Event) :
         if withAddr==True :
             attAddr = evnt.evaluateExpression_("ADDR")
             if len(attAddr) > 0 :
-                if len(self.place) > 0 : self.place += " "
-                self.place += "at "+ ', '.join(CompactLines(attAddr))
+                if verb == "graduated" :
+                    # use "from" and start with address
+                    newplace = "from "+ ', '.join(CompactLines(attAddr))
+                    if len(self.place) > 0 : newplace += " "
+                    self.place = newplace + self.place
+                else :
+                    if len(self.place) > 0 : self.place += " "
+                    self.place += "at "+ ', '.join(CompactLines(attAddr))
+        if verb == "immigrated" :
+            # use "to"
+            if len(self.place) > 0 : self.place = "to " + self.place
+        elif verb == "emigrated" :
+            # use "from"
+            if len(self.place) > 0 : self.place = "to " + self.place
         self.place = SafeTex(self.place)
         if verb != None :
             if noun != None :
@@ -74,11 +86,17 @@ class BookEvent(Event) :
 #---------------------- BookAttribute Class
 
 # Subclass of event for custom descriptions and safe Tex characters
-# verb should be "occupation was", Noun should be "His"
+# verb should be "religion was", None should be "His"
 class BookAttribute(Attribute) :
     def __init__(self,evnt,verb=None,atAge=False,noun=None,freq=[.33,.67],withAddr=True) :
         Attribute.__init__(self,evnt)
         self.attribute = SafeTex(self.attribute)
+        # if verb ends in " a" drop it if attribute begins in "a ", "an " or "the "
+        if len(verb) > 2 :
+            if verb[-2:] == " a" :
+                if len(self.attribute) > 4 :
+                    if self.attribute[:2] == "a " or self.attribute[:3] == "an " or self.attribute[:4] == "the " :
+                        verb = verb[:-2]
         if withAddr==True :
             attAddr = evnt.evaluateExpression_("ADDR")
             if len(attAddr) > 0 :

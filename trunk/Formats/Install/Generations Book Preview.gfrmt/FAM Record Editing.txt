@@ -87,7 +87,5 @@ if CHIL is here
   newline
 endif
 
-Show NCHI
-
 
 HideExcess

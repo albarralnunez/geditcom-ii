@@ -14,3 +14,4 @@ HMoveTo #leftEdge
 cell static
 set width -1 fontsize 11
 text "   Enter phrase to complete a sentence like 'His death was caused by _____.'"
+sizetofit

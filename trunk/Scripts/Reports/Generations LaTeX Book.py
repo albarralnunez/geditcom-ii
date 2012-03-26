@@ -154,6 +154,25 @@ class PersonSet(RecordsSet) :
         rfs = PersonForSet(indi,0)
         others.addObjectWithKey(rfs,recid)
         return rfs
+    
+    # get parents if in the book
+    def getParentsInBook(self,rfs) :
+        if not(rfs) : return [None,None]
+        f = rfs.rec.father().get()
+        if f :
+            recid = f.id()
+            if recid in self.table :
+                f = self.table[recid]
+            else :
+                f = None
+        m = rfs.rec.mother().get()
+        if m :
+            recid = m.id()
+            if recid in self.table :
+                m = self.table[recid]
+            else :
+                m = None
+        return [f,m]
 
 # subclass of RecordForSet to handle individual details
 class PersonForSet(RecordForSet) :
@@ -166,6 +185,8 @@ class PersonForSet(RecordForSet) :
         self.parts[2] = SafeTex(self.parts[2])
         self.first = SafeTex(record.firstName())
         self.rents = None
+        self.tree = None
+        self.span = " ("+record.lifeSpan()+")"
         self.alive = -1     # -1 ?, 0 died, 1 has data that might be alive
         sex = record.sex()
         if sex == "M" :
@@ -274,7 +295,10 @@ class PersonForSet(RecordForSet) :
         fpb = [self.nameStyle(style)]
         # child of parents and birth date
         if self.born() :
-            fpb.append(", the "+self.child+" of "+self.parents()+", "+self.born())
+            if self.parents()=="unknown parents" :
+                fpb.append(" "+self.born())
+            else :
+                fpb.append(", the "+self.child+" of "+self.parents()+", "+self.born())
         else :
             fpb.append(" "+self.iswas()+" the "+self.child+" of "+self.parents())
         if term : fpb.append(term)
@@ -382,6 +406,12 @@ def GenericAttribute(rfs,gtag,atype) :
     global preface,eName
     evens = rfs.rec.findStructuresTag_output_value_(gtag,"references",None)
     for e in evens :
+        if gtag == "OCCU" :
+            rand = random.random()
+            if rand < 0.5 :
+                atype = "occupation was as a"
+            else:
+                atype = "job was as a"
         ge = BookAttribute(e,atype,True,preface+eName)
         if not(ge.attribute) : continue
         rpt.out(ge.phrase)
@@ -560,7 +590,7 @@ def OutputPerson(rfs,inum) :
     GenericEvent(rfs,"NATU","naturalized",[.5,.5])
     GenericEvent(rfs,"EMIG","emigrated",[.5,.5])
     GenericEvent(rfs,"IMMI","immigrated",[.5,.5])
-    GenericEvent(rfs,"GRAD","graduated",[.5,.5])
+    GenericEvent(rfs,"GRAD","graduated")
     GenericEvent(rfs,"RETI","retired",[.5,.5])
     GenericEvent(rfs,"CREM","was cremated")
     GenericEvent(rfs,"EVEN",None)
@@ -580,7 +610,7 @@ def OutputPerson(rfs,inum) :
     GenericEvent(rfs,"RESI","lived",[0,.5])
     eName = rfs.poss
     iswas = rfs.iswas()
-    GenericAttribute(rfs,"OCCU","occupation "+iswas)
+    GenericAttribute(rfs,"OCCU","OCCU")
     GenericAttribute(rfs,"RELI","religion "+iswas)
     GenericAttribute(rfs,"TITL","title "+iswas)
     GenericAttribute(rfs,"DSCR","physical description "+iswas+" described as")
@@ -593,13 +623,252 @@ def OutputPerson(rfs,inum) :
     # notes
     rpt.out(GetNotes(rfs.rec))
     
+    # tree
+    if rfs.tree :
+        if len(rfs.tree) > 1 :
+            rpt.out(rfs.tree[1])
+            
+        treeName = rfs.tree[0]
+        if treeName[:1] == "*" :
+            sibling = True
+            treeName = treeName[1:]
+        else :
+            sibling = False
+        rpt.out("\n\nThe ancestors of "+rfs.altname)
+        rpt.out(" are shown in a tree in Fig.~\\ref{"+treeName+"}")
+        if sibling == True :
+            rpt.out(", which is a tree for a sibling. ")
+        else :
+            rpt.out(". ")
+    
     # sources
     srcs = GetSources(rfs.rec)
     if srcs :
-        rpt.out("\n\nSome information on this person came from source "+srcs+". ")
+        if not(treeName) : rpt.out("\n\n")
+        rpt.out("Some of information about this person came from source "+srcs+". ")
     
     # terminator
     rpt.out("\n\n")
+
+# height of maximum tree size
+def TreeHeight() :
+    [s1,s2,s3] = [1.5,.85,.5]
+    if maxTreeGens >= 4 :
+        trow = int(s1*float(fontSize))
+    elif maxTreeGens == 3 :
+        trow = int(s2*float(fontSize))
+    else :
+        trow = int(s3*float(fontSize))
+    return 31*trow
+
+
+# generate tree for this individual if needed
+#     Index people in the tree
+#     Can branches be removed if missing all names
+#     14 pt font not working for book or tree sizing
+def MakeTree(rfs) :
+    global treeNum,treeName,hgap,maxTreeGens,ttxt,hasMore,hasPlus
+    
+    # if no trees exit
+    if maxTreeGens == 0 : return
+    
+    # if already in tree, no need to continue
+    if rfs.tree : return
+    
+    # father and mother (exit if none or already in tree)
+    [f,m] = ancestors.getParentsInBook(rfs)
+    if not(f) and not(m) : return
+    if f and m :
+        if f.tree and m.tree : rfs.tree = ["*"+f.tree[0]]
+    elif f :
+        if f.tree : rfs.tree = ["*"+f.tree[0]]
+    elif m :
+        if m.tree : rfs.tree = ["*"+m.tree[0]]
+    if rfs.tree : return
+    gens = 1
+    
+    # grandparents
+    [pp,pm] = ancestors.getParentsInBook(f)
+    [mp,mm] = ancestors.getParentsInBook(m)
+    if pp or pm or mp or mm : gens = 2
+    
+    # great grandparents
+    if maxTreeGens > 2 :
+        [ppp,ppm] = ancestors.getParentsInBook(pp)
+        [pmp,pmm] = ancestors.getParentsInBook(pm)
+        [mpp,mpm] = ancestors.getParentsInBook(mp)
+        [mmp,mmm] = ancestors.getParentsInBook(mm)
+        if ppp or ppm or pmp or pmm or mpp or mpm or mmp or mmm : gens = 3
+    
+    # great great grandparents
+    if maxTreeGens > 3 :
+        [pppp,pppm] = ancestors.getParentsInBook(ppp)
+        [ppmp,ppmm] = ancestors.getParentsInBook(ppm)
+        [pmpp,pmpm] = ancestors.getParentsInBook(pmp)
+        [pmmp,pmmm] = ancestors.getParentsInBook(pmm)
+        [mppp,mppm] = ancestors.getParentsInBook(mpp)
+        [mpmp,mpmm] = ancestors.getParentsInBook(mpm)
+        [mmpp,mmpm] = ancestors.getParentsInBook(mmp)
+        [mmmp,mmmm] = ancestors.getParentsInBook(mmm)
+        if pppp or pppm or ppmp or ppmm : gens = 4
+        if pmpp or pmpm or pmmp or pmmm : gens = 4
+        if mppp or mppm or mpmp or mpmm : gens = 4
+        if mmpp or mmpm or mmmp or mmmm : gens = 4
+    
+    [s1,s2,s3] = [1.5,.85,.5]
+    hgap = 0.1
+    if gens == 4 :
+        trow = int(s1*float(fontSize))
+        theight = 31
+        toff = 1
+        hoff = 0
+    
+    elif gens == 3 :
+        trow = int(s2*float(fontSize))
+        hgap *= s1/s2
+        theight = 29
+        toff = 2.5
+        hoff = 0
+    
+    else :
+        trow = int(s3*float(fontSize))
+        hgap *= s1/s3
+        if gens == 2 :
+            theight = 25
+            toff = 7
+            hoff = 1
+        else :
+            theight = 17
+            toff = 10
+            hoff = 2
+    
+    # has a tree
+    treeNum = treeNum+1
+    treeName = "tree"+str(treeNum)
+    
+    # length scaled to font size
+    hasMore = False
+    hasPlus = False
+    ttxt = []
+    ttxt.append("\n\n\\begin{figure}\n\\begin{center}\n")
+    ttxt.append("\\setlength{\\unitlength}{"+str(trow)+"pt}\n")
+    twidth = int(72.*(finalPaperWidth - bindMargin - rightMargin)/float(trow))
+    hlen = 0.3*twidth/4.
+    hoff = int(hlen*hoff)
+    ttxt.append("\\begin{picture}("+str(twidth)+","+str(theight)+")("+str(-hoff)+","+str(toff)+")\n")
+    
+    # self
+    ttxt.append("\\put(0,7.5){\\line(0,1){16}}\n")
+    treePerson(rfs,0,16)
+
+    # father and mother
+    ttxt.append("\\multiput(0,7.5)(0,16){2}{\\line(1,0){"+str(hlen)+"}}\n")
+    if gens > 1 :
+        ttxt.append("\\multiput("+str(hlen)+",3.5)(0,16){2}{\\line(0,1){8}}\n")
+    if f :
+        treePerson(f,hlen,24)
+    else :
+        treeNonbook(rfs.rec.father().get(),hlen,24)
+    if m :
+        treePerson(m,hlen,8)
+    else :
+        treeNonbook(rfs.rec.mother().get(),hlen,8)
+    
+    # grand parents
+    arrow = False
+    if maxTreeGens == 2 : arrow = True
+    if gens > 1 :
+        ttxt.append("\\multiput("+str(hlen)+",3.5)(0,8){4}{\\line(1,0){"+str(hlen)+"}}\n")
+        if gens > 2:
+            ttxt.append("\\multiput("+str(2*hlen)+",1.5)(0,8){4}{\\line(0,1){4}}\n")
+        treePerson(pp,2*hlen,28,arrow)
+        treePerson(pm,2*hlen,20)
+        treePerson(mp,2*hlen,12,arrow)
+        treePerson(mm,2*hlen,4,arrow)
+    
+    # great grandparents
+    if maxTreeGens == 3 : arrow = True
+    if gens > 2 :
+        ttxt.append("\\multiput("+str(2*hlen)+",1.5)(0,4){8}{\\line(1,0){"+str(hlen)+"}}\n")
+        if gens > 3 :
+            ttxt.append("\\multiput("+str(3*hlen)+",.5)(0,4){8}{\\line(0,1){2}}\n")
+        treePerson(ppp,3*hlen,30,arrow)
+        treePerson(ppm,3*hlen,26,arrow)
+        treePerson(pmp,3*hlen,22,arrow)
+        treePerson(pmm,3*hlen,18,arrow)
+        treePerson(mpp,3*hlen,14,arrow)
+        treePerson(mpm,3*hlen,10,arrow)
+        treePerson(mmp,3*hlen,6,arrow)
+        treePerson(mmm,3*hlen,2,arrow)
+    
+    # great great grandparents
+    if gens > 3 :
+        ttxt.append("\\multiput("+str(3*hlen)+",.5)(0,2){16}{\\line(1,0){"+str(hlen)+"}}\n")
+        if gens > 4 :
+            ttxt.append("\\multiput("+str(4*hlen)+",0)(0,2){16}{\\line(0,1){1}}\n")
+        treePerson(pppp,4*hlen,31,True)
+        treePerson(ppmp,4*hlen,27,True)
+        treePerson(ppmm,4*hlen,25,True)
+        treePerson(pmpp,4*hlen,23,True)
+        treePerson(pmpm,4*hlen,21,True)
+        treePerson(pmmp,4*hlen,19,True)
+        treePerson(pmmm,4*hlen,17,True)
+        treePerson(mppp,4*hlen,15,True)
+        treePerson(mppm,4*hlen,13,True)
+        treePerson(mpmp,4*hlen,11,True)
+        treePerson(mpmm,4*hlen,9,True)
+        treePerson(mmpp,4*hlen,7,True)
+        treePerson(mmpm,4*hlen,5,True)
+        treePerson(mmmp,4*hlen,3,True)
+        treePerson(mmmm,4*hlen,1,True)
+    
+    ttxt.append("\\end{picture}\n")
+    ttxt.append("\\end{center}\n")
+    ttxt.append("\\caption{"+CapitalOne(Cardinal(gens))+" generation")
+    if gens > 1 : ttxt.append("s")
+    ttxt.append(" of ancestors of "+rfs.altname+".")
+    if hasMore == True :
+        ttxt.append(" An arrow after a name means that person has additional known ancestors in this book.")
+    if hasPlus == True :
+        ttxt.append(" A '+' sign means that person has known ancestors not in this book.")
+    ttxt.append("\\label{"+treeName+"}}\n")
+    ttxt.append("\\end{figure}\n\n")
+    
+    # append to this person
+    rfs.tree.append(''.join(ttxt))
+
+# output person to the tree and provide coordinates
+def treePerson(rfs,h,v,arrow=False) :
+    global treeName,hgap,ttxt,hasMore
+    if not(rfs) : return
+    ttxt.append("\\put("+str(h+hgap)+","+str(v-.5)+"){\\makebox(0,0)[l]{")
+    rfsID = ancestors.xrefID(rfs.key)
+    ttxt.append(rfs.altname+"$^"+rfsID[2:-1]+"$")
+    if rfs.span != " ()" : ttxt.append(rfs.span)
+    # don't mark as in tree if has more ancestors
+    if arrow :
+        if rfs.parents() != "unknown parents" :
+            ttxt.append("$\\to$")
+            hasMore = True
+        elif not(rfs.tree) :
+            rfs.tree = [treeName]
+    elif not(rfs.tree) :
+        rfs.tree = [treeName]
+    ttxt.append(rfs.indexTag()+"}}\n")
+
+# output person to the tree and provide coordinates
+def treeNonbook(indi,h,v) :
+    global hgap,ttxt,hasPlus
+    if not(indi) : return
+    ttxt.append("\\put("+str(h+hgap)+","+str(v-.5)+"){\\makebox(0,0)[l]{")
+    ttxt.append(SafeTex(indi.alternateName()).strip())
+    nspan = indi.lifeSpan()
+    if nspan != "()" : ttxt.append(" "+nspan)
+    famc = indi.evaluateExpression_("FAMC")
+    if famc != "" :
+        ttxt.append(" +")
+        hasPlus = True
+    ttxt.append("}}\n")
 
 # output child in a child list item
 def OutputChild(chil,inum) :
@@ -767,6 +1036,8 @@ doPortraits = True			# True or false to include portraits
 others = RecordsSet()
 pqueue = []
 pscale = ("0.3","0.6","0.9")
+treeNum = 0                # number of trees
+maxTreeGens = 4            # can be 2, 3, or 4 to size for book page
 
 # look for convert command (but which command fails)?
 convertCmd = "convert"
@@ -861,8 +1132,9 @@ if bookRec.recordType() == "_BOK" :
         cGrantees = settings["grantees"]
 
 # collect and sort ancestors
-source = RecordsSet()
+source = PersonSet()
 source.addList(selRecs,0)
+source.GetXrefs()
 
 # get root individuals
 rootsFlat = ""
@@ -873,7 +1145,7 @@ for rfs in source.recs :
     numRoots += 1 
     if numRoots > 1 :
         rootsFlat += last + ", "
-    last = rfs.rec.alternateName()
+    last = rfs.altname
 if numRoots > 1 :
     if numRoots == 2 : rootsFlat = rootsFlat[:-2]+" "
     rootsFlat += "and "
@@ -1065,7 +1337,7 @@ if notesOption == None :
         notesOption = "hideFamily"
 SetNotesOption(notesOption)
 
-# portriat options
+# portrait options
 if porOption == None :
     # notes ("hideOwner","hideFamily","hideAll","hideNone")
     options = ["Include all","Omit 'Owner'","Omit 'Owner' and 'Family","Omit all"]
@@ -1172,7 +1444,7 @@ gdoc.notifyProgressFraction_message_(-1.,"Finding ancestors of root individuals"
 ancestors = PersonSet()
 ancestors.ancestorSet(source,True,ancestGen)
 
-# if desired, add descendants from sopt
+# if desired, add descendants from tops
 if descendGen > -ancestGen :
     gdoc.notifyProgressFraction_message_(-1.,"Finding descendants of tree-top individuals")
     theTops = RecordsSet()
@@ -1245,7 +1517,6 @@ else :
     topMargin = 1.0
     bottomMargin = 1.0
 
-
 # bindMargin = 1+\oddsideMargin
 # finalPaperWidth = bindMargin + \textwidth + rightMargin
 # physicalPaperWidth = 1 + \evensideMargin + \textwidth + rightMargin
@@ -1255,6 +1526,49 @@ textWidth = finalPaperWidth - bindMargin - rightMargin
 evenSideMargin = physicalPaperWidth - 1 - textWidth - rightMargin
 voffset = topMargin - 1.80
 textHeight = finalPaperHeight - topMargin - bottomMargin
+
+# Tree calculations
+if maxTreeGens > 0 :
+    # adjust tree height
+    thgt = TreeHeight()
+    troom = 72*textHeight
+    if troom-thgt < 50 :
+        maxTreeGens -= 1
+        th = TreeHeight()
+        if troom - thgt < 50 : maxTreeGens -= 1
+    
+    # find descendants
+    childes = []
+    for i in range(len(ancestors.recs)) :
+        rfs = ancestors.recs[i]
+        if rfs.value == 0 :
+            continue;
+        elif rfs.value < 1 :
+            childes.append(rfs)
+        else :
+            break;
+    
+    # append sources
+    for i in range(len(ancestors.recs)) :
+        rfs = ancestors.recs[i]
+        if rfs.value == 0 :
+            if source.xrefID(rfs.key) != "" :
+                childes.append(rfs)
+        else :
+            break;
+            
+    # descendant trees
+    numdes = len(childes)
+    if numdes > 0 :
+        for i in range(numdes) :
+            rfs = childes[numdes-1-i]
+            MakeTree(rfs)
+            
+    # rest of the trees
+    for (n,rfs) in enumerate(ancestors.recs) :
+        gen = rfs.value
+        if gen==0 or gen >=1 :
+            MakeTree(rfs)
 
 # preamble
 if fontSize == 9 :
@@ -1361,6 +1675,7 @@ for (n,rfs) in enumerate(ancestors.recs) :
         if gen == 0 :
             ctitle = "\\rootgen"
         elif gen < 1 :
+            # decendant generations -1, -2, etc. number .001,.002, etc.
             ctitle = "\\descendant\\ \\generation\\ "+str(int(1000*gen+0.1))
         else :
             ctitle = "\\ancestor\\ \\generation\\ "+str(gen)

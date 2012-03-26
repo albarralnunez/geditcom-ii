@@ -79,12 +79,12 @@
 1 FAMS @F1@
 1 CHR
 2 DATE 23 Sep 1900
-1 DSCR 5'2" tall and has blue eyes
+1 DSCR 5'2" tall with blue eyes
 1 TITL Lady
 1 NOTE @N4@
 1 CHAN
-2 DATE 21 FEB 2012
-3 TIME 11:46:53
+2 DATE 25 MAR 2012
+3 TIME 09:45:03
 1 OBJE @M18@
 1 RESI
 2 DATE From 1920 to 2002
@@ -278,13 +278,13 @@
 2 PLAC Paris, France
 2 AGE 36
 1 FAMS @F3@
-1 DSCR 5' 10" tall, has blond hair and blue eyes.
+1 DSCR 5' 10" tall, with blond hair and blue eyes.
 1 TITL Princess of Wales
 1 OBJE @M1@
 1 NOTE @N20@
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 22:51:18
+2 DATE 25 MAR 2012
+3 TIME 09:50:00
 0 @I27@ INDI
 1 NAME Mike /Tindall/
 1 SEX M
@@ -364,13 +364,13 @@
 2 PLAC Buckingham Palace, London, England
 2 ADDR The Music Room
 2 NOTE @N19@
-1 DSCR He is 5' 11" tall.
+1 DSCR 5' 11" tall.
 1 TITL Prince of Wales
 1 NOTE @N17@
 1 OBJE @M4@
 1 CHAN
-2 DATE 9 OCT 2011
-3 TIME 22:42:57
+2 DATE 25 MAR 2012
+3 TIME 09:51:19
 0 @I9@ INDI
 1 NAME Edward Antony Richard /Windsor/
 1 SEX M
@@ -413,8 +413,8 @@
 1 DSCR 5'4" tall and has blue eyes
 1 NOTE @N6@
 1 CHAN
-2 DATE 21 FEB 2012
-3 TIME 12:14:27
+2 DATE 25 MAR 2012
+3 TIME 09:52:17
 1 OBJE @M13@
 1 RESI
 2 DATE From 1926
@@ -422,9 +422,7 @@
 2 ADDR Buckingham Palace, London, SW1
 3 CONT Windsor Castle, Berkshire
 3 CONT Sandringham House, Norfolk
-3 CONT Balmoral Castle, Aberdeenshire. 
-3 CONT
-3 CONT
+3 CONT Balmoral Castle, Aberdeenshire
 2 NOTE @N39@
 1 SOUR @SR1@
 1 SOUR @SR2@
@@ -514,13 +512,13 @@
 2 AGE 71
 1 FAMS @F4@
 1 FAMC @F1@
-1 DSCR 5'2" tall and has blue eyes
+1 DSCR 5'2" tall with blue eyes
 1 TITL Princess
 1 NOTE @N9@
 1 OBJE @M5@
 1 CHAN
-2 DATE 21 FEB 2012
-3 TIME 12:03:11
+2 DATE 25 MAR 2012
+3 TIME 09:53:10
 0 @I11@ INDI
 1 NAME William Arthur Philip /Windsor/
 1 SEX M
@@ -727,19 +725,12 @@
 2 DATE 4 Dec 1998
 3 TIME 10:47:34
 0 @N40@ NOTE
-1 CONC British records list birth recorded in district of Hitchen near London
-1 CONT
-1 CONT Bowes-Lyon Elizabeth A M
-1 CONT District: Hitchen
-1 CONT Volume: 3a
-1 CONT Page 667
-1 CONT
-1 CONT Data can be found at http://freebmd.rootsweb.com
+1 CONC British records recorded her birth in the district of Hitchen near London (volume 3a, page 667, and the data can be found at http://freebmd.rootsweb.com).
 1 REFN 9 NOV 2011 08:44:19
 2 TYPE Creation Date
 1 CHAN
-2 DATE 9 NOV 2011
-3 TIME 08:44:26
+2 DATE 25 MAR 2012
+3 TIME 09:44:00
 0 @N29@ NOTE
 1 CONC Captain Mark Anthony Peter Phillips has has refused a title so far, therefore, his children have no titles. However, their Royal Grandmother may make them a Lord and Lady later so that they do not feel inferior.
 1 CHAN
@@ -1614,7 +1605,7 @@
 1 _AUTH John A. Nairn
 1 _EMAIL john@geditcom.com
 1 CHAN
-2 DATE 6 FEB 2012
-3 TIME 14:23:36
-1 _FLDR /Users/nairnj/Library/Application Support/GEDitCOM II/Windsors/Books/Sample GEDitCOM II Book
+2 DATE 25 MAR 2012
+3 TIME 09:53:52
+1 _FLDR /Users/nairnj/Programming/Cocoa_HomeProjects/geditcom-ii/trunk/Windsors/Books/Sample GEDitCOM II Book
 0 TRLR

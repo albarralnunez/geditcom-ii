@@ -15,6 +15,7 @@ if #msg=""
   cell static
   set width -1 fontsize 11
   text "   Enter age to complete a sentence like 'She died at age _____.'"
+  sizetofit
 
 else
   ! Parent's age in AGE link subordinate to HUSB or WIFE

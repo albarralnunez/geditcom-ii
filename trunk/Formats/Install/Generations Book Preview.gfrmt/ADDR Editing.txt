@@ -32,8 +32,25 @@ else
 
   ! edit address in multiline field
   cell EditField
+  #leftEdge=#hpos$
   set Width -1 minheight 44 maxheight 128
   sizetofit
+  
+  if #parentTag$="GRAD"
+  	#amsg="   Enter the school in the address to get 'He graduated from (school).'"
+  else if #parentTag$="BURI"
+  	#amsg="   The output reads best if cemetery name is entered in the address.'"
+  else
+    #amsg=""
+  endif
+  if #amsg!=""
+    newline
+    HMoveTo #leftEdge
+    cell static
+    set width -1 fontsize 11
+    text #amsg
+    sizetofit
+  endif
 
   hideexcess
 endif

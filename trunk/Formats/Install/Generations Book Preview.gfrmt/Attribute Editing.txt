@@ -2,10 +2,29 @@ load RandomEventPhrase,GetNotes
 
 if #msg="preview"
   #attrtext=@contents
-  if #attrtext!=""
-    #atverb=#msg1&" "&#attrtext
+  if @tag="OCCU"
+    if rand(2)<1
+      #atverb="job was as a"
+    else
+      #atverb=#msg1
+    endif
+    if #attrtext!=""
+      #afw=firstword(#attrtext)
+      if #afw="an"
+        #atverb=removeLastWord(#atverb)
+      else if #afw="the"
+        #atverb=removeLastWord(#atverb)
+      else if #afw="a"
+        #atverb=removeLastWord(#atverb)
+      endif
+      #atverb&=" "&#attrtext
+    endif
   else
-    #atverd=#msg1
+    if #attrtext!=""
+      #atverb=#msg1&" "&#attrtext
+    else
+      #atverb=#msg1
+    endif
   endif
   gosub RandomEventPhrase,#indiNoun,#atverb,@DATE,@AGE,@PLAC,@ADDR
   #allEvents&=#full
@@ -32,7 +51,32 @@ else
       set offset #editOffset
       sizetofit
       cell editValue
-      set width -1    endif    show DATE    show PLAC
+      #leftEdge=#hpos$
+      set width -1
+      
+      if @tag="OCCU"        newline
+        HMoveTo #leftEdge
+        cell static
+        set width -1 fontsize 11
+        text "   Enter occupation to complete a sentence like 'His job was as a _____.'"
+        sizetofit
+        newline -#lineSkip$
+        HMoveTo #leftEdge
+        cell static
+        set width -1 fontsize 11
+        text "      (if 'a' is wrong start the text with 'an' or 'the' to replace it)"
+        sizetofit
+        
+      else if @tag="DSCR"
+        newline
+        HMoveTo #leftEdge
+        cell static
+        set width -1 fontsize 11
+        text "   Enter description to complete a sentence like 'Her physcial description was _____.'"
+        sizetofit
+      endif
+      
+    endif    show DATE    show PLAC
     show ADDR    show AGE    showAll NOTE
     showAll SOUR
 

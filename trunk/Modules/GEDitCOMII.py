@@ -452,13 +452,16 @@ class Event :
             age = self.event.evaluateExpression_("AGE")
             if age : age = "at age "+age
         
-        # check for address an no place (assume begins in "at ")
+        # check for preformatted address and/or place
+        # "to ", "from ", or "at "
         if self.place :
             if len(self.place)>3 :
                 isAt = self.place[:3]
+                if isAt == "fro" and len(self.place)>5 :
+                    isAt = self.place[0:5]
             else :
                 isAt = ""
-            if isAt == "at " :
+            if isAt == "at " or isAt == "to " or isAt == "from " :
                 eplace = " " + self.place
             else :
                 eplace = " in "+self.place

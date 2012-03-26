@@ -4,6 +4,16 @@ DropTypes SOUR,NOTE,OBJE,INDI,FAM,_LOG,SUBM,INDICtrl
 
 gosub EditingPage,"Personal Details"
 
+cell staticfield
+set width -1 border no
+text "Each person starts with name, birth details, parents names (and their details), "
+text "all spouses (and marriage details), and children in each marriage. "
+text "This section ends with death and burial information. "
+text "You can enter name, birth, death, and burisl details here. Click the links "
+text "to parent's family, father, mother, families with each spouse, "
+text "spouses, can children to edit their details. "
+sizetofit
+
 newline
 #hasLabel="YES"
 gosub ResetTabs
@@ -28,15 +38,6 @@ cell GroupBox,local("Parents")
   ! current parents if any
   ShowAll FAMC
 
-  newline 5
-  cell static,local("Attach")&": "
-  set offset #buttonOffset
-  sizetofit
-
-  cell LinkButton,local("Attach as child in new family")
-  set border shadowlesssquare menulink "Attach As Child in New Family"
-  sizetofit
-
 EndGroup
 
 !--------- Family as spouse
@@ -45,22 +46,6 @@ cell GroupBox,local("Spouses and Children")
 
   ! current spouses if any
   ShowAll FAMS
-
-  newline 5
-  cell static,local("Attach")&": "
-  set offset #buttonOffset
-  sizetofit
-
-  cell LinkButton
-  if @this.SEX="M"
-    text local("Attach as husband in new family")
-    menulink "Attach As Husband in New Family"
-  else
-    text local("Attach as wife in new family")
-    menulink "Attach As Wife in New Family"
-  endif
-  set border shadowlesssquare
-  sizetofit
 
 EndGroup
 

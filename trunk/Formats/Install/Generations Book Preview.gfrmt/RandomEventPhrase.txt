@@ -45,12 +45,31 @@ sub RandomEventPhrase,#enoun,#everb,#edate,#eage,#eplace,#eaddr
   
   ! address to place and preface place as needed
   if #eaddr!=""
-    if #eplace!=""
-      #eplace=" in "&#eplace
+    if #everb="graduated"
+      #newplace=" from "&replace(return&"\, \"&#eaddr)
+      if #eplace!=""
+        #eplace=#newplace&" in "&#eplace
+      else
+        #eplace=#newplace
+      endif
+    else
+      if #eplace!=""
+        #eplace=" in "&#eplace
+      endif
+      #eplace&=" at "&replace(return&"\, \"&#eaddr)
     endif
-    #eplace&=" at "&replace(return&"\, \"&#eaddr)
   else if #eplace!=""
     #eplace=" in "&#eplace
+  endif
+  
+  if #everb="immigrated"
+    if #eplace!=""
+      #eplace=" to "&removefirstword(#eplace)
+    endif
+  else if #everb="emigrated"
+    if #eplace!=""
+      #eplace=" from "&removefirstword(#eplace)
+    endif
   endif
   
   ! Three random version

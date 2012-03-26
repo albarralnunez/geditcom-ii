@@ -1,3 +1,28 @@
-load ResetTabs,EditingPage,AttachMenu,NotesEditing
+load ResetTabs,EditingPage,AttachMenu
 
-gosub NotesEditing
+droptypes NOTE
+
+gosub ResetTabs
+
+gosub EditingPage,"Notes"
+
+cell staticfield
+set width -1 border no
+text "     Writing notes is one of the best ways to enhance the content of your book. "
+text "You can attach and edit notes on this page. To edit the notes text, click on the "
+text "link for those notes."
+sizetofit
+
+newline
+Gosub AttachMenu "Attach Notes","Click to add notes","Detach Event/Attribute/Link","Click to remove notes (or other links)"
+
+!--------- Events
+if NOTE is here
+  newline
+  cell GroupBox,local("Note Links")
+    set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+    ShowAll NOTE
+  EndGroup
+endif
+
+hideexcess

@@ -289,7 +289,7 @@ endif
 #allEvents=""
 ShowAll RESI "preview","lived"
 #indiNoun=lowercase(#Possnoun)
-ShowAll OCCU "preview","occupation was"
+ShowAll OCCU "preview","occupation was as a"
 ShowAll RELI "preview","religion was"
 ShowAll DSCR "preview","physical description was"
 ShowAll TITL "preview","nobility title was"

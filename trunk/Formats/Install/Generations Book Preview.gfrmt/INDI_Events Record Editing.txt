@@ -4,6 +4,15 @@ gosub ResetTabs
 
 gosub EditingPage,"Other Events for Book"
 
+cell staticfield
+set width -1 border no
+text "The book will list baptism, christening, adoption, bar mitzvah, "
+text "bas mitsvah, ordination, naturalization, emigration, immigration, "
+text "graduation, retirement, and generic (EVEN) events. "
+text "You can add and write about such events on this page."
+sizetofit
+
+newline
 cell label,local("Attach")&": "
 sizetofit
 set offset #buttonOffset

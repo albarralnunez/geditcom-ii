@@ -1,13 +1,8 @@
 load LineLabel
 
-if #msg="label"
-  ! label
-  gosub LineLabel,"Distribution"
-  offset #buttonOffset
-  ! popup menu
-  cell PopupMenuEdit
-  set width 90
-else
-  cell PopupMenuEdit
-  set controlsize small width 90
-endifMenuItems local("Anyone")&":Anyone"MenuItems local("Family")&":Family"MenuItems local("Owner")&":Owner"help local("Click to select distribution recommendations for this note")
+gosub LineLabel "          Distribution"
+offset #buttonOffset
+cell PopupMenuEdit
+set controlsize small width 90
+
+MenuItems local("Anyone")&":Anyone"MenuItems local("Family")&":Family"MenuItems local("Owner")&":Owner"help local("Click to select distribution recommendations for this note")
