@@ -52,8 +52,8 @@ property BritCensusDates : {"6 JUN 1841", "30 MAR 1851", "7 APR 1861", "2 APR 18
 property BritCensusNames : {"1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911"}
 property CanCensusDates : {"1 JUL 1851", "1 JUL 1871", "1 JUL 1881", "1 MAY 1891", "29 APR 1901", "1 JUN 1906", "1 JUN 1911"}
 property CanCensusNames : {"1851 (Partial)", "1871", "1881", "1891", "1901", "1906 (NW)", "1911"}
-property USCensusDates : {"2 AUG 1790", "4 AUG 1800", "6 AUG 1810", "7 AUG 1820", "1 JUN 1830", "1 JUN 1840", "1 JUN 1850", "1 JUN 1860", "1 JUN 1870", "1 JUN 1880", "2 JUN 1890", "1 JUN 1900", "15 APR 1910", "5 JAN 1920", "1 APR 1930"}
-property USCensusNames : {"1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930"}
+property USCensusDates : {"2 AUG 1790", "4 AUG 1800", "6 AUG 1810", "7 AUG 1820", "1 JUN 1830", "1 JUN 1840", "1 JUN 1850", "1 JUN 1860", "1 JUN 1870", "1 JUN 1880", "2 JUN 1890", "1 JUN 1900", "15 APR 1910", "5 JAN 1920", "1 APR 1930", "1 APR 1940"}
+property USCensusNames : {"1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930","1940"}
 property speculative : {"ff1919", "ff3333", "ff4d4d", "ff6666", "ff8080", "ff9999", "ffb2b2", "ffcccc"}
 global unRpt, minbdtesdn, maxbdtesdn, minddtesdn, maxddtesdn, MaxAge
 global NumCENS, CensusSDNsRef, CensusSDNs, colnum, CensusDates, CensusNames
@@ -68,13 +68,13 @@ if CheckAvailable(scriptName, 1.5) is false then return
 
 tell application "GEDitCOM II"
 	-- which census years?
-	set cenOptions to {"US Censuses 1790 to 1930", "UK Censuses 1841 to 1911", "Canadian Census 1851 to 1911"}
+	set cenOptions to {"US Censuses 1790 to 1940", "UK Censuses 1841 to 1911", "Canadian Census 1851 to 1911"}
 	set thePrompt to "Select census group and then click button for which individual to include in the report:"
 	set r to user choice prompt thePrompt list items cenOptions buttons {"All", "Selected", "Cancel"} title scriptName
 	set whichOnes to item 1 of r
 	if whichOnes is "Cancel" then return
 	set cenGroup to item 1 of item 2 of r
-	if cenGroup is "US Censuses 1790 to 1930" then
+	if cenGroup is "US Censuses 1790 to 1940" then
 		set CensusDates to USCensusDates
 		set CensusNames to USCensusNames
 	else if cenGroup is "UK Censuses 1841 to 1911" then

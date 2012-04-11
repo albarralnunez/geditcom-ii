@@ -1,4 +1,4 @@
-load RandomEventPhrase,GetNotes
+load GetNotes,GetSources,RandomEventPhrase
 
 if #msg="preview"
   #attrtext=@contents
@@ -26,6 +26,7 @@ if #msg="preview"
       #atverb=#msg1
     endif
   endif
+  ReadAll "#theSours",@SOUR
   gosub RandomEventPhrase,#indiNoun,#atverb,@DATE,@AGE,@PLAC,@ADDR
   #allEvents&=#full
 
@@ -47,6 +48,7 @@ else
   cell GroupBox,local(@tag)
     set width -1 font "Section Label" border line CellBackground "Editing Box Background"
 
+	settab 84
     if @tag!=RESI      cell static,local(@tag)&": "
       set offset #editOffset
       sizetofit
@@ -81,10 +83,16 @@ else
     showAll SOUR
 
     newline 5
-    cell static,local("Attach")&": "
+    cell static,local("Attach Notes and Sources")&": "
     sizetofit
     Show NOTE
     Show SOUR
+    newline
+    hskip 36
+  	cell static
+  	set width -1 fontsize 11
+  	text "Notes and sources will appear in the book and can make the book more interesting."
+  	sizetofit
 
   EndGroup
   

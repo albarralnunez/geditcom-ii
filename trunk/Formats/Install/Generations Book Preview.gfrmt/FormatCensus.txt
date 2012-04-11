@@ -29,12 +29,16 @@ sub FormatCensus,#cage,#caddr,#pname,#cdate,#cplace
   endif
   
   if #detail!=""
-    #cphrase=#start&", "&#detail&". "
+    #cphrase=#start&", "&#detail
   else
-    #cphrase=#start&". "
+    #cphrase=#start
   endif
   
-    ! add notes
+  ! add sources
+  gosub GetSources
+  #cphrase&=#sblock&". "
+
+  ! add notes
   if #theNotes[0]>0
     gosub GetNotes,""
     if #notesPhrase!=""

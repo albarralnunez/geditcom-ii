@@ -1,7 +1,0 @@
-sub ClearFloats
-  newline
-  DisplayWidth #oldWidth
-  if #vpos$<=#boxend
-    MoveTo #leftSkip,#boxend+#lineSkip
-  endif
-endSub

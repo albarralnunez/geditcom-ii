@@ -1,6 +1,4 @@
-load ResetTabs,EditingPage,AttachMenu
-
-gosub ResetTabs
+load EditingPage,AttachMenu
 
 gosub EditingPage,"Notes Text"
 
@@ -15,8 +13,12 @@ text "and then choose the book style option to omit those types of notes."
 sizetofit
 
 newline
-Show _DIST
-Show CONC
-
+#fldHeight=#displayHeight$-#vpos$-#bottomMargin$-70
+cell GroupBox,local("Notes Content")
+  set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+  newline
+  Show _DIST
+  Show CONC #fldHeight
+EndGroup
 
 hideexcess

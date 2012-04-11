@@ -5,7 +5,7 @@
 sub LineLabel #theLabel
   NewLine
   if @level>1
-    tab (@level-1)
+    hskip 18*(@level-1)
 	cell static #theLabel&": "
   else  	cell label #theLabel&": "
   endif

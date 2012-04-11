@@ -1,114 +1,43 @@
-load ResetTabs,WikiSection,RefLinks,RecordTitle,WebLinks,ExtraSections
-
-DropTypes NOTE,OBJE,REPO,INDI,FAM
-gosub ResetTabs
+load EditingPage
 
 ! -------------- Start Template -----------------
-GoSub RecordTitle,""
+gosub EditingPage,"Source Record"
 
-#sectionCount+=2
-GoSub WikiSection,local("Source Details"),""
-#leftSkip=#leftSkip$+#tabSpacing/2
+cell staticfield
+set width -1 border no
+text "     Select a source type in the menu and then enter text for all "
+text "available fields. The 'short title' is not used in the book but is "
+text "the view name for this record. "
+sizetofit
 
-! _TYPE is custom GCII tag. It is used to determine which tags
-! are shown an in which order. The templates for each tag may
-! also adjust their label depending on _TYPE
+cell GroupBox,local("Source Details")
+  set width -1 font "Section Label" border line CellBackground "Editing Box Background"
 
-#type=@_TYPE
-Show _TYPEif #type="article"
-  Show AUTH
-  Show TITL
-  Show ABBR
+  ! _TYPE is custom GCII tag. It is used to determine which tags
+  ! are shown an in which order. The templates for each tag may
+  ! also adjust their label depending on _TYPE
 
-else if #type="web page"
-  ! Display link to the web page and edit in a child window
-  NewLine
-  cell label,local("Web Page")&": "
-  offset #editOffset
-  sizetofit
+  #type=@_TYPE
+  Show _TYPE  if #type="article"
+    Show AUTH
+    Show TITL
+    Show ABBR
 
-  ! link to web site
-  hskip 0  #edge=#rightMargin$-#rightSkip-24-#cellSkip
-  cell Multimedia
-  set width #edge-#hpos$ alignment left
-  set url @_URL font "Hyperlink Text"
-  TextExpression @_URL
-  set help local("Click to open in browser")
-  ! rest in a child window
-  cell StructuresLink,URLDetails
-  set image "more" border no
-  sizetofit
-  shift 24-#cellWidth$
-  LinkAll _URL
-  help local("Click button to change the label")
+  else if #type="web page"
+  	Show _URL
+    Show TITL
+    Show ABBR
+    Show AUTH
 
-  Show TITL
-  Show ABBR
-  Show AUTH
+  else
+    Show TITL
+    Show ABBR
+    Show AUTH
 
-else
-  Show TITL
-  Show ABBR
-  Show AUTH
-
-endif
-Show PUBL
-Show _DATE
-
-#leftSkip=#leftSkip$
-! ---- Links to repository records (if any) ------
-#recSections[#sectionCount]=local("Repositories")
-#recSections[#sectionCount+1]="Repo"
-#sectionCount+=2
-if REPO is here
-  GoSub WikiSection,local("Repositories"),"Repo"
-  ShowAll REPO "wiki"
-endif
-
-! -------------- Citing Records -----------------
-if @_REF!=""
-  #sectionCount+=2
-  Gosub RefLinks,local("Citing Records"),local("All Citing Records")
-endif
-
-! -------------- Data and Text -----------------
-! TEXT (in separate editing pane) and DATA
-#recSections[#sectionCount]=local("Data and Text")
-#recSections[#sectionCount+1]="Text"
-#sectionCount+=2
-if TEXT|DATA is here
-  GoSub WikiSection,local("Data and Text"),"Text"
-
-  ShowAll DATA "wiki"
-
-  NewLine
-  cell ExpressionField,@TEXT
-  set Width -1 border none minheight 1 alignment justify lineheight #lineMult
-  sizetofit
-endif
-
-!--------- Notes
-#recSections[#sectionCount]=local("Notes")
-#recSections[#sectionCount+1]="Notes"
-#sectionCount+=2
-if NOTE is here
-  GoSub WikiSection,local("Notes"),"Notes"
-  ShowAll NOTE "wiki"
-endif
-
-!-------- Multimedia
-#recSections[#sectionCount]=local("Multimedia")
-#recSections[#sectionCount+1]="Media"
-#sectionCount+=2
-if OBJE is here
-  GoSub WikiSection,local("Multimedia"),"Media"
-  newline 3
-  #numURLs[0]=0
-  ShowAll OBJE
-  if #numURLs[0]>0
-    GoSub WebLinks,"wiki"
   endif
-endif
+  Show PUBL
+  Show _DATE
+
+EndGroup
 
 hideexcess
-GoSub ExtraSections

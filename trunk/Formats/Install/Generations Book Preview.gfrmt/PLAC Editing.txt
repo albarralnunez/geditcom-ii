@@ -1,13 +1,11 @@
-load LineLabel
-
 ! label and editing field
-gosub LineLabel local(@tag)
+newline
+cell static "Place:"
+set tabwidth 1 alignment right
 offset #editOffset
 cell EditValue
 set Width -1
 
-ShowAll FORMShowAll _GPS
-ShowAll SOUR
-ShowAll NOTE
+hideexcess
 
 

@@ -1,5 +1,0 @@
-if #msg="wiki"
-  use _UnknownWiki
-else
-  use _Unknown_
-endif

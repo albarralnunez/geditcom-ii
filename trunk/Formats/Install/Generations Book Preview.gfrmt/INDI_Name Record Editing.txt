@@ -1,4 +1,4 @@
-load ResetTabs,EditingPage
+load EditingPage
 
 DropTypes SOUR,NOTE,OBJE,INDI,FAM,_LOG,SUBM,INDICtrl
 
@@ -6,17 +6,16 @@ gosub EditingPage,"Personal Details"
 
 cell staticfield
 set width -1 border no
-text "Each person starts with name, birth details, parents names (and their details), "
+text "    Each person starts with name, birth details, parents names (and their details), "
 text "all spouses (and marriage details), and children in each marriage. "
-text "This section ends with death and burial information. "
-text "You can enter name, birth, death, and burisl details here. Click the links "
+text "This introduction section ends with death and burial information. "
+text "You can enter name, birth, death, and burial details here. Click the links "
 text "to parent's family, father, mother, families with each spouse, "
-text "spouses, can children to edit their details. "
+text "spouses, and children to edit their details. "
 sizetofit
 
 newline
 #hasLabel="YES"
-gosub ResetTabs
 
 !--------- Personal Details
 cell GroupBox,local("Personal Details")

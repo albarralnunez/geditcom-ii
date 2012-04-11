@@ -1,3 +1,28 @@
-load ResetTabs,EditingPage,AttachMenu,SourcesEditing
+load EditingPage,AttachMenu
 
-gosub SourcesEditing
+gosub EditingPage,"Sources"
+
+cell staticfield
+set width -1 border no
+text "     Source about records will be cited for each person and then appear"
+text " in a bibliography "
+text "at the end of the book. "
+text "You can attach and edit sources on this page. "
+text "To edit the source fields to change how they appear in the"
+text " bibliogrpahy, click on the "
+text "link for that source."
+sizetofit
+
+Gosub AttachMenu "Attach Source","Click to add a source","Detach Event/Attribute/Link","Click to remove a source"
+
+!--------- Sources
+if SOUR is here
+  newline
+  cell GroupBox,"Sources"
+    set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+    ShowAll SOUR "Edit"
+  EndGroup
+endif
+
+hideexcess
+

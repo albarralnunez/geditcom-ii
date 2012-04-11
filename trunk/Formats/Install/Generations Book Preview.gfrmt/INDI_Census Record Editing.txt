@@ -1,8 +1,13 @@
-load ResetTabs,EditingPage
-
-gosub ResetTabs
+load EditingPage
 
 gosub EditingPage,"Census Events"
+
+cell staticfield
+set width -1 border no
+text "    Census data are grouped together in the book. It is best to enter date, "
+text "place, and address "
+text "for each census event."
+sizetofit
 
 cell label,local("Attach")&": "
 sizetofit

@@ -1,4 +1,4 @@
-load LineLabel,RecordChildLink,GetParents,GetNotes,EventPhrase,DescribePerson
+load LineLabel,RecordChildLink,GetParents,GetNotes,GetSources,EventPhrase,DescribePerson
 
 ! set an expression to display this name with a birth date if known
 sub NameWithAncestors,#mate
@@ -91,6 +91,7 @@ if #msg="preview"
   #mplace=@contents.MARR.PLAC
   #maddr=@contents.MARR.ADDR
   ReadAll "#theNotes",@contents.MARR.NOTE
+  ReadAll "#theSours",@contents.MARR.SOUR
   GoSub EventPhrase,"",@contents.MARR.DATE,#myAge,#mplace,#maddr
   if #phrase!=""
     #marriage[#mnum]&=" "&#phrase
@@ -105,6 +106,7 @@ if #msg="preview"
   #mplace=@contents.DIV.PLAC
   #maddr=@contents.DIV.ADDR
   ReadAll "#theNotes",@contents.DIV.NOTE
+  ReadAll "#theSours",@contents.DIV.SOUR
   GoSub EventPhrase,"divorced",@contents.DIV.DATE,"",#mplace,#maddr
   if #phrase!=""
     #marriage[#mnum]&="They "&#phrase
@@ -138,7 +140,7 @@ else
 
   ! ----------- Label and link to spouse (works for same-sex too)
   newline
-  tab @level
+  tab 18*@level
   cell static
   #spouseID=@contents.HUSB
   if #spouseID=@id
@@ -187,7 +189,7 @@ else
     if #col<0.5
       NewLine
       #famsSkip=#leftSkip
-      tab @level
+      tab 18*@level
       cell static,local("Children")&": "
       sizetofit
       #col=1

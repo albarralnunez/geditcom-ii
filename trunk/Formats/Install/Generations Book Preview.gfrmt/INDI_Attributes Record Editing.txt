@@ -1,15 +1,12 @@
-load ResetTabs,EditingPage
+load EditingPage
 
-DropTypes SOUR,NOTE,OBJE,INDI,FAM,_LOG,SUBM,INDICtrl
-
-newline
-gosub ResetTabs
+DropTypes SOUR,NOTE
 
 gosub EditingPage,"Individual Attributes"
 
 cell staticfield
 set width -1 border no
-text "The book will list residences, occupations, religion, title, "
+text "    The book will list residences, occupations, religion, title, "
 text "physical description, education, and national or tribal origin. "
 text "You can add and write about such attributes on this page."
 sizetofit

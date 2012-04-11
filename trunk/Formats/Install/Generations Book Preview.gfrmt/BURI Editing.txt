@@ -1,7 +1,8 @@
-load GetNotes,EventPhrase
+load GetNotes,GetSources,EventPhrase
 if #msg="preview"
   ! #phrase and #phraseTerm set when done
   ReadAll "#theNotes",@NOTE
+  ReadAll "#theSours",@SOUR
   gosub EventPhrase,"was buried",@DATE,"",@PLAC,@ADDR
   hideexcess
 else

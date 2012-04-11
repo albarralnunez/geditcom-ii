@@ -26,6 +26,7 @@ sub GetNotes,#indent
       	if #notesPhrase!=""
       	  #notesPhrase&=return
       	endif
+      	#nt=replace(return&return&"\"&return&"    \"&#nt)
         #notesPhrase&=#indent&#nt
         #len=length(#nt)
         #last=chars(#len&"\"&#len&"\"&#nt)

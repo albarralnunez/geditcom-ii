@@ -110,7 +110,7 @@
 			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
 			ZWN0AIWEAWMBhARmZmZmg0bpizuDw2h9PIMqjDM/AYY=
 			</data>
-			<integer>1</integer>
+			<integer>0</integer>
 		</array>
 		<key>Label Text</key>
 		<array>
@@ -264,7 +264,7 @@
 			<integer>8</integer>
 		</array>
 		<array>
-			<string>Wiki Genealogy Format Settings</string>
+			<string>Generations Book Preview Format Settings</string>
 			<string></string>
 			<string>Group</string>
 			<string></string>

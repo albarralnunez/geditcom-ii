@@ -1,4 +1,0 @@
-load ResetTabs,EditingPage,AttachMenu,SourcesEditing
-
-gosub SourcesEditing
-

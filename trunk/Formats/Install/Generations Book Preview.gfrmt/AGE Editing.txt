@@ -1,8 +1,8 @@
-load LineLabel
-
 if #msg=""
   ! Label and editing field
-  gosub LineLabel "Age"
+  newline
+  cell static "Age:"
+  set tabwidth 1 alignment right
   offset #editOffset
 
   hskip #cellSkip$
@@ -21,8 +21,9 @@ else
   ! Parent's age in AGE link subordinate to HUSB or WIFE
   ! in Family event - #msg is localized string with label
   ! for which parent
-  gosub LineLabel #msg
-  set offset #editOffset shift -#tabSpacing
+  newline
+  cell static #msg&":"
+  set width 90 offset #editOffset alignment right
 
   cell EditValue
   set width -1

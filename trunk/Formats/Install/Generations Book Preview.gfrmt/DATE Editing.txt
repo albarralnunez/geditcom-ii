@@ -1,7 +1,12 @@
-load LineLabel
-
 ! Label and edit a date field
-gosub LineLabel local("DATE")
+newline
+if @level=1
+  cell label "Date:"
+  sizetofit
+else
+  cell static "Date:"
+  set tabwidth 1 alignment right
+endif
 offset #editOffset
 cell EditDate
 set Width -1

@@ -1,6 +1,6 @@
 load LineLabel
 
-gosub LineLabel "          Distribution"
+gosub LineLabel "Distribution"
 offset #buttonOffset
 cell PopupMenuEdit
 set controlsize small width 90

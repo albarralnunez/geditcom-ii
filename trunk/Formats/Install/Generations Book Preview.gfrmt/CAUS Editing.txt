@@ -1,7 +1,7 @@
-load LineLabel
-
 ! Label and editing field
-gosub LineLabel "Cause"
+newline
+cell static "Cause:"
+set tabwidth 1 alignment right
 offset #editOffset
 
 hskip #cellSkip$

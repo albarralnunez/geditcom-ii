@@ -663,13 +663,13 @@
 	<key>_ABOUT</key>
 	<string>About the Author</string>
 	<key>_ANC</key>
-	<string>Ancestor Generations</string>
+	<string>Ancestors</string>
 	<key>_AUTH</key>
 	<string>Author</string>
 	<key>_BNDS</key>
 	<string>Bounding Box</string>
 	<key>_DES</key>
-	<string>Descendant Generations</string>
+	<string>Descendants</string>
 	<key>_DESC</key>
 	<string>Book Content</string>
 	<key>_EMAIL</key>

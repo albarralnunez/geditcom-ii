@@ -69,6 +69,10 @@ sub EventPhrase,#everb,#edate,#eage,#eplace,#eaddr
   #phrase=#full
   #phraseTerm=""
   
+  ! add sources
+  gosub GetSources
+  #phrase&=#sblock
+  
   ! add notes
   if #theNotes[0]>0
     gosub GetNotes,""

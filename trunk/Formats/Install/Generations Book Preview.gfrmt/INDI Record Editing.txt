@@ -1,11 +1,47 @@
-load GetParents,GetNotes,EventPhrase,DescribePerson,PreviewSection
+load GetParents,GetNotes,GetSources,EventPhrase,DescribePerson
+
+! Static static field for preview text
+! If not printing and #recLink is not "", put editing button in left margin
+sub PreviewSection,#recLink,#paneLink,#hlink
+  newline
+  
+  ! Edit button when no printing
+  if printing is false
+    if #recLink!=""
+      hskip -#leftSkip
+      cell LinkButton
+      set text "Edit" border no font "Hyperlink Text"
+      sizetofit
+      set width #leftSkip offset 6
+      set RecordLink #recLink PaneID #paneLink
+      help #hlink
+      HMoveTo #leftSkip
+    endif
+  endif
+  
+  ! number
+  if @#recLink.rec="SOUR"
+    cell Static #snum&". "
+    set font "Paragraph" offset 2
+    sizetofit
+  endif
+
+  ! begin a static field
+  cell StaticField
+  set font "Paragraph"
+  set width #textWidth minheight 10 border none lineheight #lineMult
+
+endSub
 
 dropTypes SOUR,NOTE,OBJE
 
-! To Do
-! BURI used in book for some others?
-! look for living individuals
-! Handle sources
+! MORE TO DO
+! Generic events
+! Marriage Age (here and in book)
+! look for living individuals and change verb
+
+! count sources
+#numSours=0
 
 if printing is false
   #leftSkip=72
@@ -71,7 +107,7 @@ ShowAll FAMS,"preview"
 ! The individual paragraph
 
 newline 6
-gosub PreviewSection,@this,"Name"
+gosub PreviewSection,@this,"Name","Change basic individual information"
 text #indiName
 
 ! born
@@ -123,7 +159,7 @@ repeat "#ii",1,#mnum
   #famid=firstWord(#ftext)
   #ftext=removeFirstWord(#ftext)
   
-  gosub PreviewSection,#famid,""
+  gosub PreviewSection,#famid,"","Edit family details"
   text "    "&#ftext
   set alignment "justify"
   sizetofit
@@ -156,6 +192,7 @@ repeat "#ii",1,#mnum
     #bplace=@#cid.BURI.PLAC
     #baddr=@#cid.BURI.ADDR
     #theNotes[0]=0
+    #theSours[0]=0
     gosub EventPhrase,"was buried",@#cid.BURI.DATE,"",#bplace,#baddr
     if #phrase!=""
       text #aPronoun&" "&#phrase
@@ -182,6 +219,7 @@ repeat "#ii",1,#mnum
       #cplace=@#fams.MARR.PLAC
       #caddr=@#fams.MARR.ADDR
       #theNotes[0]=0
+      ReadAll "#theSours",@#fams.MARR.SOUR
       gosub EventPhrase,#cverb,@#fams.MARR.DATE,"",#cplace,#caddr
       if #phrase!=""
         text #phrase
@@ -195,6 +233,7 @@ repeat "#ii",1,#mnum
       #cplace=@#fams.DIV.PLAC
       #caddr=@#fams.DIV.ADDR
       #theNotes[0]=0
+      ReadAll "#theSours",@#fams.DIV.SOUR
       gosub EventPhrase,"They divorced",@#fams.DIV.DATE,"",#cplace,#caddr
       if #phrase!=""
         text #phrase
@@ -221,7 +260,7 @@ if CENS is here
   #cenNum=0
   #cenText=""
   ShowAll CENS "preview"
-  gosub PreviewSection,@this,"Census"
+  gosub PreviewSection,@this,"Census","Edit or add census data"
   
   text "    "&#indiName&" has been located in "&#cenNum&" census record"
   if #cenNum>1
@@ -233,7 +272,7 @@ if CENS is here
 
 else
   if printing is false
-    gosub PreviewSection,@this,"Census"
+    gosub PreviewSection,@this,"Census","Add census information"
     text "    [This section can list census events, but none were found. "
     text "Click 'Edit' too document some.]"
     set alignment "justify" fontcolor "red"
@@ -258,7 +297,7 @@ ShowAll RETI "preview","retired"
 !ShowAll EVEN "wiki","had a generic event"
 
 if #allEvents!=""
-  gosub PreviewSection,@this,"Events"
+  gosub PreviewSection,@this,"Events","Edit or add event details"
   #rand=rand(4)
   if #rand <1
     #preface="Here are some other known events in "&#indiName&"'s life. "
@@ -274,7 +313,7 @@ if #allEvents!=""
   sizetofit
 else
   if printing is false
-    gosub PreviewSection,@this,"Events"
+    gosub PreviewSection,@this,"Events","Add Event details"
     text "    [This sections can list other selected types of events, but none were found. "
     text "Click 'Edit' too document some.]"
     set alignment "justify" fontcolor "red"
@@ -283,7 +322,6 @@ else
 endif
 
 ! ----------------------- Attributes including residences first and by themselves
-!ShowAll RESI "wiki","residence"
 
 #indiNoun=lowercase(#Pronoun)
 #allEvents=""
@@ -298,7 +336,7 @@ ShowAll NATI "preview","national or tribal origin was"
 ShowAll SSN "preview","social security number was"
 
 if #allEvents!=""
-  gosub PreviewSection,@this,"Attributes"
+  gosub PreviewSection,@this,"Attributes","Edit or change attributes"
   #rand = rand(4)
   if #rand<1
     #preface="Here are some facts about "&#indiName&". "
@@ -315,7 +353,7 @@ if #allEvents!=""
 
 else
   if printing is false
-    gosub PreviewSection,@this,"Attributes"
+    gosub PreviewSection,@this,"Attributes","Add attributes"
     text "    [This section can list selected attributes for the individual, but none were found. "
     text "Click 'Edit' too document some.]"
     set alignment "justify" fontcolor "red"
@@ -329,7 +367,7 @@ ReadAll "#theNotes",@NOTE
 if #theNotes[0]>0
   gosub GetNotes,"    "
   if #notesPhrase!=""
-    gosub PreviewSection,@this,"Notes"
+    gosub PreviewSection,@this,"Notes","Edit or add notes"
     text #notesPhrase&return
     set alignment "justify"
     sizetofit
@@ -338,8 +376,8 @@ endif
 
 if #notesPhrase==""
   if printing is false
-    gosub PreviewSection,@this,"Notes"
-    text "    [This section displays the main notes written about the individual. "
+    gosub PreviewSection,@this,"Notes","Add notes"
+    text "    [This section will show all notes written about this individual. "
     text "These notes can be a great way to enhance your book with stories. "
     text "Click 'Edit' too write some.]"
     set alignment "justify" fontcolor "red"
@@ -347,11 +385,119 @@ if #notesPhrase==""
   endif
 endif
 
-! -----------------------  Portraut
-
 ! -----------------------  Sources
-if SOUR is here
-  !ShowAll SOUR "wiki"
+ReadAll "#theSours",@SOUR
+gosub GetSources
+if #sblock!=""
+  gosub PreviewSection,@this,"Sources","Edit or add sources"
+  text "    Some of information about this person came from source"
+  if #theSours[0]>1
+    text "s"
+  endif
+  text " "&#sblock&"."
+  set alignment "justify"
+  sizetofit
+else if printing is false
+  gosub PreviewSection,@this,"Sources","Attach sources"
+  text "    [This section will listed and sources attached to the main "
+  text "level of this individual. Click 'Edit' to attach some sources.]"
+  set alignment "justify" fontcolor "red"
+  sizetofit
+endif
+
+! -----------------------  Portrait
+newline 6
+cell static "Portrait"
+set font "Name Label"
+sizetofit
+#hasPortrait=@_NOPOR
+if OBJE is nothere
+  #hasPortrait="Y"
+endif
+
+if #hasPortrait!="Y"
+  gosub PreviewSection,@this,"Media","Change individual's portrait"
+  set width 0
+  Show OBJE "preview"
+else
+  gosub PreviewSection,@this,"Media","Link to a portrait"
+  text "    [This individual does not have a portrait to appear "
+  text "in the book. Click 'Edit' to attach or select one.]"
+  set alignment "justify" fontcolor "red"
+  sizetofit
+endif
+
+! -----------------------  Sources List
+if #numSours>0
+  newline 6
+  cell static "Sources"
+  set font "Name Label"
+  sizetofit
+  
+  Repeat "#snum",1,#numSours
+    newline 3
+    #sid = #recSours[#snum]
+    gosub PreviewSection,#sid,"","Edit data for this source"
+    #type=@#sid._TYPE
+    #year=@#sid._DATE.year
+    if #year=""
+      #year="????"
+    endif
+    #auth=@#sid.AUTH
+    if #auth=""
+      #auth="(no author)"
+    else
+      #auth=replace(return&"\, \"&#auth)
+    endif
+    #publ=@#sid.PUBL
+    if #publ!=""
+      #publ=replace(return&"\, \"&#publ)
+    endif
+    #titl=@#sid.TITL
+    if #titl=""
+      #titl="(no title)"
+    else
+      #titl=replace(return&"\, \"&#titl)
+    endif
+    
+    if #type="article"
+      if #publ=""
+        #publ="(no publisher)"
+      endif
+      text #auth&". "&#titl&". "
+      text #publ&", "&#year&"."
+    else if #type="web page"
+      text #auth&". "&#titl&". "
+      #web=@#sid._URL
+      if #web=""
+        #web="(no URL)"
+      endif
+      text #web&", "&#year&"."
+    else if #type="unpublished"
+      if #publ=""
+        #publ="(no comment)"
+      endif
+      text #auth&". "&#titl&". "
+      text #publ&", "&#year&"."
+    else if #type="vital records"
+      if #auth="(no author)"
+        #auth="(no location)"
+      endif
+      if #publ=""
+        #publ="(no storage/publisher)"
+      endif
+      text #auth&". "&#titl&". "
+      text #publ&", "&#year&"."
+    else
+      if #publ=""
+        #publ="(no publisher)"
+      endif
+      text #auth&". "&#titl&". "
+      text #publ&", "&#year&"."
+    endif
+    sizetofit
+  EndRepeat
+
 endif
 
 hideexcess

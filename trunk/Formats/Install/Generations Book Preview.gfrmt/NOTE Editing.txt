@@ -1,30 +1,16 @@
 load LineLabel,RecordChildLink
 
-if #msg="wiki"
+if @contents is validlink
   newline
-  newline
-  if #vpos$>#boxend
-    DisplayWidth #oldWidth
-  endif
-  cell ExpressionField @contents.CONC
-  set width -1 border none minheight 1 alignment justify lineheight #lineMult
+  cell LinkButton
+  set image notes border no
   sizetofit
-
+  hskip 3
+  gosub RecordChildLink local("Click to view and edit notes"),"parent"
 else
-
-  if @contents is validlink
-    newline
-    cell LinkButton
-    set image notes border no
-    sizetofit
-    hskip 3
-    gosub RecordChildLink local("Click to view and edit notes"),"parent"
-  else
-    cell CreateLinkButton
-    set image notes border no
-    sizetofit
-    help local("Click to attach new set of notes to this record")
-    hskip 5
-  endif
-
+  cell CreateLinkButton
+  set image notes border no
+  sizetofit
+  help local("Click to attach new set of notes to this record")
+  hskip 5
 endif

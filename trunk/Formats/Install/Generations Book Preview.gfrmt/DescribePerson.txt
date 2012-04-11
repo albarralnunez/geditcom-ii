@@ -1,4 +1,4 @@
-! Describe a person in sentence starting wiht #useName
+! Describe a person in sentence starting with #useName
 ! give parents and known birth and death dates
 ! will end in space
 ! Relies on GetParents and EventPhrase
@@ -15,6 +15,7 @@ sub DescribePerson,#useName,#pid,#asChild,#listType
   #bp=@#pid.BIRT.PLAC
   #ba=@#pid.BIRT.ADDR
   #theNotes[0]=0
+  ReadAll "#theSours",@#pid.BIRT.SOUR
   gosub EventPhrase,"was born",@#pid.BIRT.DATE,"",#bp,#ba
   #bp=#phrase
   
@@ -22,6 +23,7 @@ sub DescribePerson,#useName,#pid,#asChild,#listType
   #dp=@#pid.DEAT.PLAC
   #da=@#pid.DEAT.ADDR
   #theNotes[0]=0
+  ReadAll "#theSours",@#pid.DEAT.SOUR
   gosub EventPhrase,"died",@#pid.DEAT.DATE,"",#dp,#da
   #dp=#phrase
   

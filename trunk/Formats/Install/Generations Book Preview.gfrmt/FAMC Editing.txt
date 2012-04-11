@@ -2,7 +2,7 @@ load RecordChildLink,LineLabel,EventDate
 
 sub parent #parID,#parName
   ! label  newline
-  tab @level
+  hskip 18*@level
   #sex=@#parID.SEX
   if #sex="F"
     #parName=local("Mother")

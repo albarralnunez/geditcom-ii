@@ -1,3 +1,0 @@
-load ResetTabs,EditingPage,AttachMenu,NotesEditing
-
-gosub NotesEditing

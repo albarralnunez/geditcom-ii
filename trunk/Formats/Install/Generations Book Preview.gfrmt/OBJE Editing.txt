@@ -1,15 +1,60 @@
-load ShowOBJE_Wiki
-
 ! Link to the multimedia object
 if @contents is validlink
   if @contents.FORM="url"
     #numURLs[0]+=1
     #i=#numURLs[0]
     #numURLs[#i]=@contents
-  else if #msg="wiki"
-    #otherOBJE=@contents&" "&#otherOBJE
   else
-    gosub ShowOBJE_Wiki @contents
+    #objeID=@contents
+    if #msg="preview"
+      #mmThisRow=2
+    else
+      #mmThisRow=#mmPerRow
+    endif
+    #padding=3
+    #thumbW=int((#rightMargin$-#rightSkip-#leftSkip-(#mmPerRow-1)*#cellSkip)/#mmThisRow)
+    #thumbW-=5
+    #thumbH=#thumbW/1.61
+    cell LinkButton
+    set width #thumbW height #thumbH
+    if #mmThisRow>1
+      objectImage #objeID
+    else
+      objectFull #objeID
+    endif
+    #mmRatio=#imageHeight$/#imageWidth$
+    #posWidth=#thumbW-2*#padding
+    #posHeight=#thumbH-#padding-22
+    #cellRatio=#posHeight/#posWidth
+    if #mmRatio<#cellRatio
+      if #posWidth<#imageWidth$
+        set imagewidth #posWidth
+      endif
+    else
+      if #posHeight <#imageHeight$
+        set imageheight #posHeight
+      endif
+    endif
+
+    ! title in the same button
+    TextExpression @#objeID.rec
+    AppendedExpression view
+    autoreload yes
+    if @#objeID.TITL=""
+      text @#objeID._FILE
+    else
+      text @#objeID.TITL
+    endif
+
+    set imageposition above
+    if #msg="preview"
+      set border none offset 6 target parent
+    else
+      set border smallsquare target parent
+    endif
+    RecordLink #objeID
+    Help local("Click to view and edit multimedia object")
+    hskip 5
   endif
 
 else

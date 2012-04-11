@@ -1,10 +1,8 @@
-load ResetTabs,EventDate,WikiSection,RefLinks,RecordTitle,ExtraSections
+load EventDate,WikiSubtitle,EditingPage
 
-DropTypes SOUR,NOTE,INDI,FAM
-gosub ResetTabs
+gosub EditingPage,"View Multimedia"
 
 ! -------------- Start Template -----------------
-GoSub RecordTitle,local("Multimedia Object Record")
 
 ! The object#title=@TITL
 #path=@_FILE
@@ -17,7 +15,7 @@ endif
 newline
 #details="No"
 if #form="url"
-  tab 1
+  hskip 27
   cell Multimedia
   set url #path width -1 font "Hyperlink Text"
   if #title<>""
@@ -88,8 +86,7 @@ else
 endif
 
 !--------- Personal Details
-#sectionCount+=2
-GoSub WikiSection,local("Multimedia Details"),"Details"
+GoSub WikiSubtitle,"Multimedia Details"
 
 newline
 cell StaticField
@@ -135,31 +132,4 @@ endif
 
 sizetofit
 
-! --------- Linked Records -----------
-if @_REF!=""
-  #sectionCount+=2
-  GoSub RefLinks,local("Linked Records"),local("All Linked Records")
-endif
-
-!--------- Notes
-#recSections[#sectionCount]=local("Notes")
-#recSections[#sectionCount+1]="Notes"
-#sectionCount+=2
-if NOTE is here
-  GoSub WikiSection,local("Notes"),"Notes"
-  ShowAll NOTE "wiki"
-endif
-
-!-------- Sources
-#recSections[#sectionCount]=local("Sources")
-#recSections[#sectionCount+1]="Sources"
-#sectionCount+=2
-#sourceNumber=1
-if SOUR is here
-  GoSub WikiSection,local("Sources"),"Sources"
-  ShowAll SOUR "wiki"
-endif
-
 hideexcess
-
-GoSub ExtraSections

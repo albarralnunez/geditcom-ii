@@ -1,9 +1,7 @@
-if @rec="OBJE"
-  ! FORM in OBJE is edited only in attach file dialog box
-  hideexcess
-
-else
-  ! Other use is under PLAC lines for that place hierarchy
-  use _Unknown_
-
-endif
+! Label and edit a date field
+newline
+cell static "Form:"
+set tabwidth 1 alignment right
+offset #editOffset
+cell EditValue
+set Width -1

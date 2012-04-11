@@ -1,8 +1,0 @@
-load LineLabel
-
-! popup menu
-gosub LineLabel local(@tag)
-offset #buttonOffset
-
-cell PopupMenuEdit
-set autoreload yesMenuItems local("audio")MenuItems local("book")MenuItems local("card")MenuItems local("electronic")MenuItems local("fiche")MenuItems local("film")MenuItems local("magazine")MenuItems local("manuscript")MenuItems local("map")MenuItems local("newspaper")MenuItems local("photo")MenuItems local("tombstone")MenuItems local("video")MenuItems local("other")&"::"help local("Click to enter media type for this source")SizeToFit

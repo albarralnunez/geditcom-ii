@@ -1,12 +1,18 @@
-load ResetTabs,EditingPage
+load EditingPage
 
 DropTypes INDI, INDICtrl
 
 gosub EditingPage,"Family Details"
 
+cell staticfield
+set width -1 border no
+text "    The family information included in the book are marriage details, "
+text "divorce (if occurred), and a list of all children. You can edit "
+text "that information on this page and add or remove children."
+sizetofit
+
 newline
 #hasLabel="YES"
-gosub ResetTabs
 
 !--------- Personal Details
 cell GroupBox,local("Family Details")
@@ -40,7 +46,6 @@ endif
 Show DIV
 
 ! Children
-gosub ResetTabs
 
 cell GroupBox,local("Children")
 set width -1 font "Section Label" border line CellBackground "Editing Box Background"
@@ -81,7 +86,6 @@ if CHIL is here
 
   #lineSkip=#lineSkip$
   #cellSkip=#cellSkip$
-  gosub ResetTabs
   NewLine #lineSkip
   #leftSkip=#leftSkip$
   newline

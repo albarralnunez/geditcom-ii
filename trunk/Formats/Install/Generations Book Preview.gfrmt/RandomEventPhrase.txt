@@ -119,6 +119,9 @@ sub RandomEventPhrase,#enoun,#everb,#edate,#eage,#eplace,#eaddr
     endif
     
   endif
-  #full&=". "
+  
+  ! add sources
+  gosub GetSources
+  #full&=#sblock&". "
   
 endSub

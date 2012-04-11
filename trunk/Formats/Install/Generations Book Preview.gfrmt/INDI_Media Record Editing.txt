@@ -1,3 +1,32 @@
-load ResetTabs,EditingPage,WikiSection,WebLinks,AttachMenu,MediaEditing
+load EditingPage,AttachMenu
 
-gosub MediaEditing,"yes"
+droptypes OBJE
+
+gosub EditingPage,"Multimedia"
+
+cell staticfield
+set width -1 border no
+text "     You can include one portrait for each person and that portrait is"
+text " the first image displayed below. "
+text "To choose a different portrait, control click on it and select"
+text " 'Designate this Multimedia Object as this record's portrait'"
+text " from the pop-up menu."
+text " To have no portrait, check the 'None of these objects is "
+text "a portrait' box."
+sizetofit
+Gosub AttachMenu "Attach Multimedia","Click to add multimedia object","Detach Event/Attribute/Link","Click to remove multimedia object (or other links)"
+
+newline
+
+if OBJE is here
+  cell GroupBox,local("Multimedia Objects")
+    set width -1 font "Section Label" border line CellBackground "Editing Box Background"
+
+    #numURLs[0]=0
+    ShowAll OBJE
+    Show _NOPOR
+  EndGroup
+
+endif
+
+hideexcess

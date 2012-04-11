@@ -1,78 +1,12 @@
-load EndPeriod,LineLabel
+! static text with level and tabNewLine
+cell static,"Web Site:"
+sizetofit
 
-if #msg="wiki"
-  newline
-  cell Static
-  set border no
-  text " "&local(@tag)&": "
-  sizetofit
-
-  cell Multimedia
-  set url @contents font "Hyperlink Text" width -1
-  set help local("Click to open in browser")
-  Text @contents
-  sizetofit
-
-else if #msg="placewiki"
-  newline
-  if #vpos$>#boxend
-    DisplayWidth #oldWidth
-  endif
-  
-  cell static,"◾"
-  set fontcolor "Block Color" offset 3
-  sizetofit
-
-  hskip 0
-  #leftSkip=#hpos$
-
-  cell StaticField
-  set width -1 minheight 10 border none lineheight #lineMult
-  
-  #ulabel=@_LABEL
-  if #ulabel=""
-    #ulabel="Web site"
-  endif
-  #ulang=@LANG
-  if #ulang!=""
-    #ulabel&=" (in "&#ulang&")"
-  endif
-  gosub EndPeriod #ulabel
-  
-  gosub EndPeriod,@_PNOTE
-  
-  sizetofit
-  
-  newline
-  hskip 12
-  cell Multimedia
-  set url @contents font "Hyperlink Text" width -1
-  set help local("Click to open in browser")
-  Text @contents
-  sizetofit
-
-  hideexcess
-
-else if #msg="placeedit"
-  newline
-  cell GroupBox,local("Web Site")
-    set width -1 font "Section Label" border line CellBackground "Editing Box Background"
-    NewLine -3
-    
-    gosub LineLabel "URL"
-    offset #editOffset
-    
-    ! edit field with value    cell editvalue
-    set width -1
-    help local("Enter URL address for this web site")
-    
-    ! bounding box and optional
-    show _LABEL
-    show LANG
-    Show _PNOTE
-    ShowAll _PNOTE
-  EndGroup
-  hideexcess
-else
-  use _Unknown_
+! edit field with value
+cell EditURL
+set Width -1 font "Hyperlink Text"
+if tagexists is true
+  set border no cellbackground "parent"
 endif
+help local("Click to visit place web site")
+help " ("&local("option click to edit")&")"

@@ -1,2 +1,0 @@
-tell application "GEDitCOM II"    set message visible to false
-    set newText to local string for key "New Map"	tell front document		begin undo		set recRef to key record		tell recRef			set boxRef to (make new structure with properties {name:"_BOX", contents:newText})		end tell		end undo action local string for key "Add New Map"	end tellend tell
