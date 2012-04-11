@@ -1,0 +1,13 @@
+sub WikiSubtitle,#theSection
+  newline 6
+  cell static,#theSection
+  set fontSize 18
+  sizetofit
+  newline -2
+  cell Palette
+  set width -1 height 4
+  PalLineWidth 0.5
+  PalMoveTo 0,1
+  PalLineTo #cellWidth$,1
+  newline
+endSub

@@ -1,0 +1,29 @@
+! Must set #theSours before calling
+! if has any set #sblock to " [1, 3, 4]" as needed
+! otherwise sets #sblock to ""
+sub GetSources
+  #sblock=""
+  ! add sources
+  if #theSours[0]>0
+    #sblock&=" ["
+    Repeat "#src",1,#theSours[0]
+      #srcNum=0
+  	  Repeat "#rsrc",1,#numSours
+  	    if #theSours[#src]=#recSours[#rsrc]
+  	      #srcNum=#rsrc
+  	      break
+  	    endif
+  	  EndRepeat
+  	  if #srcNum=0
+  	    #numSours+=1
+  	    #recSours[#numSours]=#theSours[#src]
+  	    #srcNum=#numSours
+  	  endif
+  	  if #src>1
+  	    #sblock&=", "
+  	  endif
+  	  #sblock&=#srcNum
+  	EndRepeat
+  	#sblock&="]"
+  endif
+endSub

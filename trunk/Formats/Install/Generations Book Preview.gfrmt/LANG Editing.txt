@@ -1,0 +1,7 @@
+! Label and edit a date field
+newline
+cell static "Language:"
+set tabwidth 1 alignment right
+offset #editOffset
+cell EditValue
+set Width -1
