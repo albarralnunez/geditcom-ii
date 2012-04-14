@@ -500,6 +500,8 @@
 	<string>LaTeX Content</string>
 	<key>_TEXSTY</key>
 	<string>Style Sheet</string>
+	<key>_TGEN</key>
+	<string>Trees</string>
 	<key>_TSET</key>
 	<string>Auto Typeset</string>
 	<key>_TTL</key>

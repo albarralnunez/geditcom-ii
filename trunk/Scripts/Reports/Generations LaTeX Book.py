@@ -25,6 +25,7 @@
 # 7: 24 FEB 2012 - fixed characters, addresses to more events and attributres,
 #                    improved attribute formatting, create BookPreparation
 #                    module, fixed some spelling
+# 8: 12 APR 2012 - added trees to book and better wording on some events
 
 # Set preferences at top to speed it up
 #
@@ -640,6 +641,8 @@ def OutputPerson(rfs,inum) :
             rpt.out(", which is a tree for a sibling. ")
         else :
             rpt.out(". ")
+    else :
+        treeName = None
     
     # sources
     srcs = GetSources(rfs.rec)
@@ -1017,7 +1020,7 @@ def DequeuePortraits(all=False) :
 ################### Main Script
 
 # Preamble
-scriptVersion = 7
+scriptVersion = 8
 scriptName = "Generations LaTeX Book"
 gedit = CheckVersionAndDocument(scriptName,1.7,1)
 gdoc = FrontDocument()
@@ -1037,7 +1040,7 @@ others = RecordsSet()
 pqueue = []
 pscale = ("0.3","0.6","0.9")
 treeNum = 0                # number of trees
-maxTreeGens = 4            # can be 2, 3, or 4 to size for book page
+maxTreeGens = 4            # can be 2, 3, or 4 to size for book page or 0 to omit
 
 # look for convert command (but which command fails)?
 convertCmd = "convert"
@@ -1094,6 +1097,21 @@ if bookRec.recordType() == "_BOK" :
         if lineSpread < 0.8 : lineSpread = 0.8
     except :
         lineSpread = None
+    
+    # tree generations
+    treeGen = settings["treeGenerations"]
+    if treeGen :
+        try :
+            newMax = int(treeGen);
+            if newMax<0 :
+                newMax = 0
+            elif newMax>4 :
+                newMax = 4
+            elif newMax == 1 :
+                newMax = 2
+            maxTreeGens = newMax
+        except :
+            newMax = 0
         
     # page style
     paperType = settings["paperSize"]
@@ -1536,8 +1554,9 @@ if maxTreeGens > 0 :
         maxTreeGens -= 1
         th = TreeHeight()
         if troom - thgt < 50 : maxTreeGens -= 1
+        if maxTreeGens < 2 : maxTreeGens = 1
     
-    # find descendants
+    # find descendants (value<0)
     childes = []
     for i in range(len(ancestors.recs)) :
         rfs = ancestors.recs[i]
@@ -1548,7 +1567,7 @@ if maxTreeGens > 0 :
         else :
             break;
     
-    # append sources
+    # append source level individuals to the end
     for i in range(len(ancestors.recs)) :
         rfs = ancestors.recs[i]
         if rfs.value == 0 :
@@ -1557,7 +1576,7 @@ if maxTreeGens > 0 :
         else :
             break;
             
-    # descendant trees
+    # descendant trees starting with sources at the end
     numdes = len(childes)
     if numdes > 0 :
         for i in range(numdes) :

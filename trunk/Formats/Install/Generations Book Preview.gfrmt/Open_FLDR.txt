@@ -1,0 +1,11 @@
+(*	Open book folder in finder
+*)tell application "GEDitCOM II"
+    set message visible to false	set bookRef to ""	set recSet to selected records of front document	if number of items in recSet is not 0 then		set bookRef to item 1 of recSet		if record type of bookRef is not "_BOK" then			set bookRef to ""		end if	end if	if bookRef = "" then		set opt to user option title "You have to select a book style record to use this script."		return	end if		-- get folder name	tell bookRef		set fldr to evaluate expression "_FLDR"	end tell	if fldr = "" then		set opt to user option title "The folder field for this book style record is empty."		return	end ifend tell-- open the folder
+try  set the_folder to (POSIX file fldr) as alias  tell application "Finder"
+      if window 1 exists then
+          set target of window 1 to the_folder
+      else	      reveal the_folder
+	  end if	  activate	  select front window  end tell
+on error
+  set opt to user option title "The folder could not be found."
+end try

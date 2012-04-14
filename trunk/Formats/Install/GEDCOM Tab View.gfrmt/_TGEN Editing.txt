@@ -1,0 +1,14 @@
+load LevTag
+
+gosub LevTag
+
+! popup menu
+cell PopupMenuEdit
+MenuItems local("Omit")&":0"
+MenuItems local("2 Generations")&":2"
+MenuItems local("3 Generations")&":3"
+MenuItems local("4 Generations")&"::4"
+SizeToFit -1
+help local("Click to select size of tree charts output in the book")
+set controlsize small border no offset #popupOffset 
+sizetofit

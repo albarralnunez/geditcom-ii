@@ -82,10 +82,10 @@ cell GroupBox,local("Style Settings")
   Show _PAPER
   Show _FONT
   Show _SIZE
-  Show _LINE
-  newline
   Show _NTOP
   Show _PTOP
+  Show _TGEN
+  Show _LINE
 EndGroup
 
 optionaltag _INDI,local("Book Target Individual")

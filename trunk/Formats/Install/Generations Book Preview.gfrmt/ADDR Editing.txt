@@ -8,11 +8,13 @@ cell EditField
 #leftEdge=#hpos$
 set Width -1 minheight 44 maxheight 128
 sizetofit
+help "For books, enter brief address, point of interest name, or some other detail"
+help " beyond the place name. You need not repeat the place name in the address."
 
 if #parentTag$="GRAD"
   #amsg="   Enter the school in the address to get 'He graduated from (school).'"
 else if #parentTag$="BURI"
-  #amsg="   The output reads best if cemetery name is entered in the address.'"
+  #amsg="   The output reads best if cemetery name is entered in the address."
 else
   #amsg=""
 endif

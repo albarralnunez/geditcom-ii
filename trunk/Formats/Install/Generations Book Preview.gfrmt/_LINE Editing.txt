@@ -1,5 +1,8 @@
-! static text with level and tabif #hpos$>#midPt-10
+! static text with level and tabif #hpos$>=#midPt-10
   newline
+  #lswidth=1
+else
+  #lswidth=-1
 endif
 #tlabel=local(@tag)
 cell static,#tlabel&":"
@@ -9,5 +12,9 @@ help #tlabel
 ! edit field with value
 hskip 3
 cell EditValue
-set Width -1 Offset -2
+if #lswidth<0
+  set Width -1 Offset -2
+else
+  set Width #midPt-#hpos$-10 Offset -2
+endif
 help local("Enter")&" "&local(@tag)

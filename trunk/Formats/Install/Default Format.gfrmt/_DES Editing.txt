@@ -1,2 +1,2 @@
-#chelp=local("Enter number of descendant generations for 'none' or 'all'")
+#chelp=local("Enter number of descendant generations")
 use _Custom_Help

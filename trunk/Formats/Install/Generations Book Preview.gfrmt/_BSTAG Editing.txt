@@ -1,0 +1,9 @@
+! Label and editing field
+NewLine
+cell label local(@tag)&":"
+set tabwidth -1 alignment right offset #editOffset
+
+hskip 3
+cell EditValue
+set Width -1
+help #bhelp

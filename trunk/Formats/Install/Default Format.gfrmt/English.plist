@@ -646,12 +646,12 @@
 	<string>Enter name of source data</string>
 	<key>Enter name using slashes for surname if needed</key>
 	<string>Enter name using slashes for surname if needed</string>
-	<key>Enter number of ancestors generations for 'none' or 'all'</key>
-	<string>Enter number of ancestors generations for 'none' or 'all'</string>
+	<key>Enter number of ancestor generations</key>
+	<string>Enter number of ancestor generations or the words 'none' or 'all'</string>
 	<key>Enter number of children</key>
 	<string>Enter number of children</string>
-	<key>Enter number of descendant generations for 'none' or 'all'</key>
-	<string>Enter number of descendant generations for 'none' or 'all'</string>
+	<key>Enter number of descendant generations</key>
+	<string>Enter number of descendant generations or the words 'none' or 'all'</string>
 	<key>Enter overall summary of this research log.</key>
 	<string>Enter overall summary of this research log.</string>
 	<key>Enter place URL (including initial http:)</key>
@@ -1426,6 +1426,8 @@
 	<string>LaTeX Content</string>
 	<key>_TEXSTY</key>
 	<string>Style Sheet</string>
+	<key>_TGEN</key>
+	<string>Trees</string>
 	<key>_TSET</key>
 	<string>Auto Typeset</string>
 	<key>_TTL</key>

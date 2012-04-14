@@ -1,0 +1,2 @@
+#bhelp="Enter the name for the author of this book"
+use _BSTAG

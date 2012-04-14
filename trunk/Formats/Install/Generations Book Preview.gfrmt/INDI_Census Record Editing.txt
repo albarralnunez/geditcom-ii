@@ -9,6 +9,7 @@ text "place, and address "
 text "for each census event."
 sizetofit
 
+newline
 cell label,local("Attach")&": "
 sizetofit
 set offset #buttonOffset

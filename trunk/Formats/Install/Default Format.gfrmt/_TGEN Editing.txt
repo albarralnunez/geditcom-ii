@@ -1,0 +1,14 @@
+if #hpos$>=#midPt-10
+  newline
+endif
+cell static,local(@tag)&":"
+set tabwidth -1 alignment right
+
+! popup menu
+cell PopupMenuEdit
+set offset -2MenuItems local("Omit")&":0"
+MenuItems local("2 Generations")&":2"
+MenuItems local("3 Generations")&":3"
+MenuItems local("4 Generations")&"::4"
+SizeToFit -1
+help local("Click to select size of tree charts output in the book")

@@ -270,8 +270,8 @@ _Tverbatim = ('~','^','\\')
 # TeX need to be in math mode
 _Ttomath = ('<','|','>')
 # Tex replace characters with strings
-_Treps = [u'\xa0',unichr(8220),unichr(8221),unichr(0x2028),unichr(0x25e6)]
-_Trepsto = [" ","``","''","\n",unichr(0x2022)]
+_Treps = [u'\xa0',unichr(8220),unichr(8221),unichr(0x2028),unichr(0x25e6),unichr(0x200e),unichr(0x200f)]
+_Trepsto = [" ","``","''","\n",unichr(0x2022),"",""]
 # TeX special handling of quotes
 _Tqt = "\""
 _TqtTerm = (' ','.',',',';',':',')',']','?','}','!',u'\x0a')

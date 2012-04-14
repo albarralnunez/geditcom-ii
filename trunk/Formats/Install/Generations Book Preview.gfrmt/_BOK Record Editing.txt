@@ -1,3 +1,5 @@
+settab 84
+
 ! -------- Title name
 newline
 cell static,"Book Style Record"
@@ -85,10 +87,10 @@ cell GroupBox,local("Style Settings")
   Show _PAPER
   Show _FONT
   Show _SIZE
-  Show _LINE
-  newline
   Show _NTOP
   Show _PTOP
+  Show _TGEN
+  Show _LINE
 EndGroup
 
 ! ----- About the Author

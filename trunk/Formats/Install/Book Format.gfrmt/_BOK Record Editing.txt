@@ -28,6 +28,7 @@ Show _SIZE
 Show _PAPER
 Show _NTOP
 Show _PTOP
+Show _TGEN
 
 !--------- Introduction
 gosub SectionLabel local("_INTRO")

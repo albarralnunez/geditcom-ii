@@ -174,7 +174,11 @@ repeat "#ii",1,#mnum
     hskip 0
     cell StaticField
     set font "Paragraph"
-    set width #textWidth+#leftSkip-#hpos$
+    if printing is "false"
+      set width #textWidth+#leftSkip-#hpos$
+    else
+      set width -1
+    endif
     set minheight 10 border none lineheight #lineMult
     #cid=@#famid.CHIL.i.#jj
     if @#cid.SEX="F"
@@ -274,7 +278,7 @@ else
   if printing is false
     gosub PreviewSection,@this,"Census","Add census information"
     text "    [This section can list census events, but none were found. "
-    text "Click 'Edit' too document some.]"
+    text "Click 'Edit' to document some.]"
     set alignment "justify" fontcolor "red"
     sizetofit
   endif
@@ -315,7 +319,7 @@ else
   if printing is false
     gosub PreviewSection,@this,"Events","Add Event details"
     text "    [This sections can list other selected types of events, but none were found. "
-    text "Click 'Edit' too document some.]"
+    text "Click 'Edit' to document some.]"
     set alignment "justify" fontcolor "red"
     sizetofit
   endif
@@ -355,7 +359,7 @@ else
   if printing is false
     gosub PreviewSection,@this,"Attributes","Add attributes"
     text "    [This section can list selected attributes for the individual, but none were found. "
-    text "Click 'Edit' too document some.]"
+    text "Click 'Edit' to document some.]"
     set alignment "justify" fontcolor "red"
     sizetofit
   endif
@@ -379,7 +383,7 @@ if #notesPhrase==""
     gosub PreviewSection,@this,"Notes","Add notes"
     text "    [This section will show all notes written about this individual. "
     text "These notes can be a great way to enhance your book with stories. "
-    text "Click 'Edit' too write some.]"
+    text "Click 'Edit' to write some.]"
     set alignment "justify" fontcolor "red"
     sizetofit
   endif
@@ -406,20 +410,24 @@ else if printing is false
 endif
 
 ! -----------------------  Portrait
-newline 6
-cell static "Portrait"
-set font "Name Label"
-sizetofit
 #hasPortrait=@_NOPOR
 if OBJE is nothere
   #hasPortrait="Y"
 endif
 
 if #hasPortrait!="Y"
+  newline 6
+  cell static "Portrait"
+  set font "Name Label"
+  sizetofit
   gosub PreviewSection,@this,"Media","Change individual's portrait"
   set width 0
   Show OBJE "preview"
-else
+else if printing is "false"
+  newline 6
+  cell static "Portrait"
+  set font "Name Label"
+  sizetofit
   gosub PreviewSection,@this,"Media","Link to a portrait"
   text "    [This individual does not have a portrait to appear "
   text "in the book. Click 'Edit' to attach or select one.]"
@@ -438,6 +446,9 @@ if #numSours>0
     newline 3
     #sid = #recSours[#snum]
     gosub PreviewSection,#sid,"","Edit data for this source"
+    if printing is "true"
+      set width -1
+    endif
     #type=@#sid._TYPE
     #year=@#sid._DATE.year
     if #year=""
