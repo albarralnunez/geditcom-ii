@@ -85,6 +85,9 @@ else
   endif
 endif
 
+NewLine
+Show _DIST
+
 !--------- Personal Details
 GoSub WikiSubtitle,"Multimedia Details"
 
