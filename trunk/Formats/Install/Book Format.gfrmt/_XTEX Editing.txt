@@ -1,0 +1,8 @@
+load BookCheckBox
+hskip 10
+gosub BookCheckBox,local("Prepare for XeLaTeX instead of LaTeX"),@contents
+if printing is false
+  set autoreload yes
+endif
+help local("Check to prepare files for typesetting using XeTeX instead of LaTeX.")
+help " "&local("XeTeX allows any installed font and all Unicode characters.")

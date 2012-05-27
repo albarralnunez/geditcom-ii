@@ -261,6 +261,12 @@ def GetSources(obj) :
     if len(cites) == 0 : return ""
     return " \\cite{"+','.join(cites)+"}"
 
+# when using XeTeX can remove _Treps
+def SetUnireps(reps,repsto) :
+    global _Treps,_Trepsto
+    _Treps = reps
+    _Trepsto = repsto
+
 #----------------- Globals
 
 # TeX special characters

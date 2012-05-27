@@ -110,6 +110,7 @@ Show _COPY
 Show _FLDR
 Show _OVER
 Show _USER
+Show _XTEX
 #leftSkip=#leftSkip$
 
 ! Change Date

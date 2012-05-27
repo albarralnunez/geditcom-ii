@@ -21,6 +21,7 @@ cell GroupBox,local("Select Script")
   width -1
   newline -3
   Show _USER
+  Show _XTEX
 EndGroup
 
 ! Change Date

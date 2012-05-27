@@ -664,8 +664,8 @@ on WriteToTex(rpt)
 	-- compile les fichiers .tex et .idx en pdf
 	do shell script "/usr/texbin/pdflatex -output-directory " & qoutpath & " " & inpath
 	delay 0.2
-	do shell script "/usr/texbin/makeindex " & outpath & "people.idx'"
-	do shell script "/usr/texbin/makeindex " & outpath & "places.idx'"
+	do shell script "cd "&outpath&"';/usr/texbin/makeindex people.idx"
+	do shell script "cd "&outpath&"';/usr/texbin/makeindex places.idx"
 	delay 0.2
 	do shell script "/usr/texbin/pdflatex -output-directory " & qoutpath & " " & inpath
 	

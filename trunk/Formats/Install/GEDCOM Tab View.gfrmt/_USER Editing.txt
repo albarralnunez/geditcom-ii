@@ -1,6 +1,9 @@
-newline
-cell CheckBoxEdit,local("Run script in the 'User' domain")
-sizetofit
-set autoreload yes
+load LevTag
+
+gosub LevTag
+cell CheckBoxEdit local("Run script in the 'User' domain")
+set height #defaultHeight$ controlsize small offset #checkOffset
 help local("Check to run 'User' version of the book script rather then the 'System' version")
 help ". "&local("It must be the 'Reports/Generations LaTeX Book' script in the 'User' section")&"."
+sizetofit
+

@@ -1,0 +1,6 @@
+newline
+cell CheckBoxEdit,local("Prepare for XeLaTeX instead of LaTeX")
+sizetofit
+set autoreload yes
+help local("Check to prepare files for typesetting using XeTeX instead of LaTeX.")
+help " "&local("XeTeX allows any installed font and all Unicode characters.")

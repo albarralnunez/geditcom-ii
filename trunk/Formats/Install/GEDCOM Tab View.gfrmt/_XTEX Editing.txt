@@ -1,0 +1,8 @@
+load LevTag
+
+gosub LevTag
+cell CheckBoxEdit local("Prepare for XeLaTeX instead of LaTeX")
+set height #defaultHeight$ controlsize small offset #checkOffset
+help local("Check to prepare files for typesetting using XeTeX instead of LaTeX.")
+help " "&local("XeTeX allows any installed font and all Unicode characters.")
+sizetofit

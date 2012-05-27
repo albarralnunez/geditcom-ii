@@ -11,7 +11,6 @@
 %\pdftrue
 %\fi
 
-\usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{epstopdf}
 %\ifpdf
@@ -50,8 +49,10 @@
 % Citing references, equations, and figures
 
 % BIBLIOGRAPHY format
-\def\thebibliography#1{\chapter*{\MakeUppercase{\bibName}\@mkboth
-  {\bibName}{\bibName}}\list
+%\def\thebibliography#1{\chapter*{\bibName\@mkboth
+%  {\bibName}{\bibName}}\list
+\def\thebibliography#1{\chapter*{\bibName}\markboth{\bibName}{\bibName}
+  \addcontentsline{toc}{chapter}{\bibName}\list
   {\arabic{enumi}.}{\settowidth\labelwidth{#1.}\leftmargin\labelwidth
     \advance\leftmargin\labelsep
     \usecounter{enumi}}

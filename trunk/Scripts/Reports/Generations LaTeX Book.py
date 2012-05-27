@@ -26,6 +26,8 @@
 #                    improved attribute formatting, create BookPreparation
 #                    module, fixed some spelling
 # 8: 12 APR 2012 - added trees to book and better wording on some events
+# 9: 21 MAY 2012 - typesets in xelatex (can change texCmd to pdflatex to revert
+#                    to old mode if desired)
 
 # Set preferences at top to speed it up
 #
@@ -66,8 +68,9 @@ paperType = None
 # final book style "Hardcover Noval", "Large Textbook" or "Full Page"
 bookSize = None
 
-# try to typeset in the script
+# try to typeset in the script using "pdflatex", "xelatex", or others
 commandLineTypeset = False
+texCmd = "pdflatex"
 
 # user chapters
 introduction = None
@@ -106,7 +109,10 @@ class PersonSet(RecordsSet) :
     def xrefID(self,recid) :
         if not(recid) : return ""
         if recid in self.xref :
-            return " ({\\bf "+self.xref[recid]+"})"
+            lnk = self.xref[recid]
+            # for links
+            #return " ({\\bf "+lnk+"})"
+            return " ({\\bf\\hyperlink{"+lnk+"}{"+lnk+"}})"
         return ""
     
     # get or look up birth sdn max
@@ -636,6 +642,8 @@ def OutputPerson(rfs,inum) :
         else :
             sibling = False
         rpt.out("\n\nThe ancestors of "+rfs.altname)
+        # for links - link to the treeName (but Fig. num is automatic link)
+        # rpt.out(" are shown in a tree in \\hyperlink{"+treeName+"}{Fig.~\\ref{"+treeName+"}}")
         rpt.out(" are shown in a tree in Fig.~\\ref{"+treeName+"}")
         if sibling == True :
             rpt.out(", which is a tree for a sibling. ")
@@ -754,6 +762,8 @@ def MakeTree(rfs) :
     hasPlus = False
     ttxt = []
     ttxt.append("\n\n\\begin{figure}\n\\begin{center}\n")
+    # for links - target for the tree
+    #ttxt.append("\\hypertarget{"+treeName+"}{}\n")
     ttxt.append("\\setlength{\\unitlength}{"+str(trow)+"pt}\n")
     twidth = int(72.*(finalPaperWidth - bindMargin - rightMargin)/float(trow))
     hlen = 0.3*twidth/4.
@@ -810,6 +820,7 @@ def MakeTree(rfs) :
         if gens > 4 :
             ttxt.append("\\multiput("+str(4*hlen)+",0)(0,2){16}{\\line(0,1){1}}\n")
         treePerson(pppp,4*hlen,31,True)
+        treePerson(pppm,4*hlen,29,True)
         treePerson(ppmp,4*hlen,27,True)
         treePerson(ppmm,4*hlen,25,True)
         treePerson(pmpp,4*hlen,23,True)
@@ -890,7 +901,12 @@ def OutputChild(chil,inum) :
     # marriages (unless done ealier)
     famses = cfs.rec.spouseFamilies()
     if cfsID:
-        cnum = int(cfsID[7:-2])
+        # for links - get num from cfsID
+        # extract from ' ({\bf nn})'
+        #cnum = int(cfsID[7:-2])
+        # extract from ' ({\bf\hyperline{nn}{nn}})'
+        bnum = cfsID.rfind("}{")
+        cnum = int(cfsID[bnum+2:-3])
         if len(famses) == 0 :
             if cnum < inum :
                 rpt.out("More details on this child were given earlier"+cfsID+". ")
@@ -1017,13 +1033,28 @@ def DequeuePortraits(all=False) :
     pindex = 1-pindex
     pqueue = []
 
+def TeXCommand(command_line,theDir,descrip) :
+    gdoc.notifyProgressFraction_message_(1,descrip+": "+' '.join(command_line))
+    texEnv = {'PATH':"/usr/bin:/bin:/usr/local/bin:/usr/texbin"}
+    p = subprocess.Popen(command_line, stdout=subprocess.PIPE, cwd=theDir, env=texEnv, stderr=subprocess.PIPE)
+    output = p.communicate()
+    if p.poll() != 0 :
+        print "*** Command Output ***\n"+output[0]
+        print "\n*** Command Error Message ***\n"+output[1]
+        emsg = "A typesetting error ocurred - see console for output and error message."
+        msg = "You can trying typesetting the output file in another application instead, such as TeXShop, to get better results."
+        GetOption(emsg,msg,["OK"])
+        quit()
+
 ################### Main Script
 
 # Preamble
-scriptVersion = 8
+scriptVersion = 9
 scriptName = "Generations LaTeX Book"
 gedit = CheckVersionAndDocument(scriptName,1.7,1)
 gdoc = FrontDocument()
+gdoc.notifyProgressFraction_message_(-1.,"-------- Running '"+scriptName+"' version "+str(scriptVersion)+" --------")
+
 
 # globals
 # "Yes" means use as is, "No" means to convert to png if possible
@@ -1088,9 +1119,21 @@ if bookRec.recordType() == "_BOK" :
             except :
                 descendGen = None
     
+    # tex command
+    altCmd = settings["texCmd"];
+    if altCmd : texCmd = altCmd
+    
     # font settings (by menu)
     fontFamily = settings["fontFamily"]
-    fontSize = settings["fontSize"]
+    fontSize = int(settings["fontSize"])
+    if texCmd=="xelatex" :
+        afont = NSFont.fontWithName_size_(fontFamily,float(fontSize))
+        if afont==None :
+            emsg = "The font '"+fontFamily+"' is not available on your computer."
+            msg = "Change the font family to any installed font on your computer and try again."
+            GetOption(emsg,msg,["OK"])
+            quit()
+        
     lineSpread = settings["lineSpread"]
     try :
         lineSpread = float(lineSpread)
@@ -1388,7 +1431,7 @@ if not(email) :
     
 # font size
 if fontSize == None :
-    # LaTeX document class only supports 3 sizes (9 and 14 be rescaling)
+    # LaTeX document class only supports 3 sizes (9 and 14 by rescaling)
     options = [" 9 pt", "10 pt","11 pt","12 pt","14 pt"]
     fontPick = GetOneItem(options,"Select font size for the book","Font Size")
     if fontPick[0] == None : quit()
@@ -1396,12 +1439,22 @@ if fontSize == None :
 
 # font family
 if fontFamily == None :
+    if texCmd=="xelatex" :
+        fontFamily = "Times"
+    else :
+        fontFamily = "None"
+if texCmd!="xelatex" :
     options = ["Computer Modern Roman", "Times","Palatino","Bookman","New Century Schoolbook",
     "Charter","Helvetica","Avant-Garde","Zapf Chancery","Courier"]
-    fontPick = GetOneItem(options,"Select font family for the book","Font Family")
-    fontFamily = fontPick[0]
-    if fontPick[0] == None : quit()
-
+    if fontFamily not in options :
+        fontPick = GetOneItem(options,"Select font family for the book","Font Family")
+        fontFamily = fontPick[0]
+        if fontPick[0] == None : quit()
+        # set record to new choice
+        ffam = bookRec.structures().objectWithName_("_FFAM")
+        if ffam.exists() is True :
+            ffam.setContents_(fontFamily)
+            
 # line spread
 if lineSpread == None:
     prompt = "Enter line spread as factor to increase line spacing"+\
@@ -1454,8 +1507,13 @@ except :
     Alert("Error trying to copy BookLatexDefs.tex file to output folder")
     quit()
 
+# remove spaces form rootName
+rootWords = rootName.split();
+if len(rootWords) > 1 : rootName = '_'.join(rootWords)
+    
+
 # prepare to save tex file
-rpt = ScriptOutput(scriptName,"monospace",rootFldr+"/BookLaTeXBody.tex")
+rpt = ScriptOutput(scriptName,"monospace",rootFldr+"/"+rootName+".tex")
 
 # ancestor
 gdoc.notifyProgressFraction_message_(-1.,"Finding ancestors of root individuals")
@@ -1589,19 +1647,23 @@ if maxTreeGens > 0 :
         if gen==0 or gen >=1 :
             MakeTree(rfs)
 
-# preamble
+# preamble (9->10, 10, 11, 12, 14->12)
+# 9 and 14 need to be rescaled later
 if fontSize == 9 :
     docSize = 10
 elif fontSize == 14 :
     docSize = 12
 else :
     docSize = fontSize
-rpt.out("%&pdflatex\n\n")
+    
+rpt.out("%&"+texCmd+"\n\n")
 rpt.out("% Main LaTeX source file for a genealogy book\n")
 rpt.out("% File automatically generated by running '"+scriptName+"' version "+str(scriptVersion)+"\n")
 rpt.out("% Script run in "+AppVersion()+"\n\n")
 
 rpt.out("\\documentclass["+paperType+str(docSize)+"pt]{book}\n")
+if texCmd!="xelatex" :
+    rpt.out("\\usepackage[utf8]{inputenc}\n")
 rpt.out("\\input{"+defName+"}\n\n")
 
 rpt.out("\\textwidth"+str(textWidth)+"in\n")
@@ -1611,26 +1673,48 @@ rpt.out("\\textheight"+str(textHeight)+"in\n")
 rpt.out("\\voffset"+str(voffset)+"in\n")
 
 # font settings
-rpt.out("\n\\usepackage[T1]{fontenc}\n")
-if fontFamily == "Times" :
-    rpt.out("\\usepackage{mathptmx}\n")
-elif fontFamily == "Palatino" :
-    rpt.out("\\usepackage{mathpazo}\n")
-elif fontFamily == "Bookman" :
-    rpt.out("\\usepackage{bookman}\n")
-elif fontFamily == "New Century Schoolbook" :
-    rpt.out("\\usepackage{newcent}\n")
-elif fontFamily == "Charter" :
-    rpt.out("\\usepackage{charter}\n")
-elif fontFamily == "Helvetica" :
-    rpt.out("\\usepackage{helvet}\n\\renewcommand{\\familydefault}{\\sfdefault}\n")
-elif fontFamily == "Avant-Garde" :
-    rpt.out("\\usepackage{avant}\n\\renewcommand{\\familydefault}{\\sfdefault}\n")
-elif fontFamily == "Zapf Chancery" :
-    rpt.out("\\usepackage{chancery}\n")
-elif fontFamily == "Courier" :
-    rpt.out("\\usepackage{courier}\n\\renewcommand{\\familydefault}{\\ttdefault}\n")
-rpt.out("\\linespread{"+str(lineSpread)+"}\n\n")
+if texCmd=="xelatex" :
+    rpt.out("\n\\usepackage{fontspec}\n")
+    if len(fontFamily) != 0 :
+        rpt.out("\\setmainfont{"+fontFamily+"}\n")
+    SetUnireps([],[])
+else :
+    rpt.out("\n\\usepackage[T1]{fontenc}\n")
+    if fontFamily == "Times" :
+        rpt.out("\\usepackage{mathptmx}\n")
+    elif fontFamily == "Palatino" :
+        rpt.out("\\usepackage{mathpazo}\n")
+    elif fontFamily == "Bookman" :
+        rpt.out("\\usepackage{bookman}\n")
+    elif fontFamily == "New Century Schoolbook" :
+        rpt.out("\\usepackage{newcent}\n")
+    elif fontFamily == "Charter" :
+        rpt.out("\\usepackage{charter}\n")
+    elif fontFamily == "Helvetica" :
+        rpt.out("\\usepackage{helvet}\n\\renewcommand{\\familydefault}{\\sfdefault}\n")
+    elif fontFamily == "Avant-Garde" :
+        rpt.out("\\usepackage{avant}\n\\renewcommand{\\familydefault}{\\sfdefault}\n")
+    elif fontFamily == "Zapf Chancery" :
+        rpt.out("\\usepackage{chancery}\n")
+    elif fontFamily == "Courier" :
+        rpt.out("\\usepackage{courier}\n\\renewcommand{\\familydefault}{\\ttdefault}\n")
+
+# tiny, scriptsize, footnotesize, small, normalsize,
+# large, Large, LARGE, huge, Huge
+# Used in style: small, Large, Huge
+lineSpreadPlus=1.1*lineSpread
+if fontSize == 14 :
+    rpt.out("\\renewcommand\\normalsize{\\fontsize{14}{"+str(lineSpreadPlus*14)+"}\\selectfont}\n")
+    rpt.out("\\renewcommand\\small{\\fontsize{12}{"+str(lineSpreadPlus*12)+"}\\selectfont}\n")
+    rpt.out("\\renewcommand\\Large{\\fontsize{16}{"+str(lineSpreadPlus*16)+"}\\selectfont}\n")
+    rpt.out("\\renewcommand\\Huge{\\fontsize{24}{"+str(lineSpreadPlus*24)+"}\\selectfont}\n")
+elif fontSize == 9 :
+    rpt.out("\\renewcommand\\normalsize{\\fontsize{9}{"+str(lineSpreadPlus*9)+"}\\selectfont}\n")
+    rpt.out("\\renewcommand\\small{\\fontsize{8}{"+str(lineSpreadPlus*8)+"}\\selectfont}\n")
+    rpt.out("\\renewcommand\\Large{\\fontsize{13}{"+str(lineSpreadPlus*13)+"}\\selectfont}\n")
+    rpt.out("\\renewcommand\\Huge{\\fontsize{20}{"+str(lineSpreadPlus*20)+"}\\selectfont}\n")
+else :
+    rpt.out("\\linespread{"+str(lineSpread)+"}\n\n")
 
 # translation defs
 vers = str(int(10*gedit.versionNumber())/10.)+", build "+str(gedit.buildNumber())
@@ -1646,7 +1730,10 @@ rpt.out("\\def\\ancestor{Ancestor}\n")
 rpt.out("\\def\\descendant{Descendant}\n")
 rpt.out("\\def\\rootgen{Root \generation}\n\n")
 
-rpt.out("\\graphicspath{{./portraits/}}\n\n")
+rpt.out("\\graphicspath{{./portraits/}}\n")
+
+# for links - package and options
+rpt.out("\\usepackage[bookmarks,colorlinks,linkcolor=blue,citecolor=red]{hyperref}\n\n")
 
 # start document
 rpt.out("\\begin{document}\n\n")
@@ -1675,13 +1762,17 @@ else :
 rpt.out("\\booktitlepage{"+btitle+"}{"+rootsFlat+"}{"+author+"}{"+email+"}{"+subtitle+"}{"+cRight+"}\n\n")
 rpt.out("% Generations\n\n")
 
-if fontSize == 9 :
-    rpt.out("\\small\n\n")
-elif fontSize == 14 :
-    rpt.out("\\large\n\n")
+#if fontSize == 9 :
+#rpt.out("\\small\n\n")
+#elif fontSize == 14 :
+#rpt.out("\\large\n\n")
 
 # output
-gdoc.notifyProgressFraction_message_(0,"Preparing LaTeX source file")
+if texCmd == "xelatex" :
+    gdoc.notifyProgressFraction_message_(0,"Preparing XeTeX source files")
+else :
+    gdoc.notifyProgressFraction_message_(0,"Preparing LaTeX source files")
+
 fraction = nextFraction = 0.1
 nmax = len(ancestors.recs)+1
 last = None
@@ -1773,9 +1864,13 @@ for (n,rfs) in enumerate(ancestors.recs) :
     # check portraits
     DequeuePortraits(False)
     
+    # for links - target before the person
+    rpt.out("\\hypertarget{"+str(n+1)+"}{}\n")
+    
     # start person section
     rpt.out("\\person{"+str(n+1)+"}{"+rfs.altname+"}{"+rfs.indexTag()+"}{"+conj+"}\n\n")
     conj = ""
+    
     
     # Output the section
     OutputPerson(rfs,n+1)
@@ -1801,7 +1896,12 @@ if aboutAuthor != None :
     rpt.out("\n")
 
 rpt.out("\n\\bibliography{book}\n\n")
+
+rpt.out("\\clearpage\n")
+rpt.out("\\markboth{Index}{Index}\n")
+rpt.out("\\addcontentsline{toc}{chapter}{Index}\n")
 rpt.out("\\printindex\n\n")
+
 rpt.out("\\end{document}")
 
 #
@@ -1872,37 +1972,28 @@ WriteUTF8File(rootFldr+"/book.bib",'\n'.join(bib))
 
 # typeset here
 if commandLineTypeset == True :
-    gdoc.notifyProgressFraction_message_(1,"\n-------- Typesetting book: First Pass --------")
+    gdoc.notifyProgressFraction_message_(1,"\n-------- Typesetting the Book --------")
     
     # first pass
-    cdFldr = "cd '"+rootFldr+"'; "
-    makeTex = "/usr/texbin/pdflatex -halt-on-error -shell-escape BookLaTeXBody.tex"
-    retcode = subprocess.call(cdFldr+makeTex,shell=True)
-    if retcode != 0 :
-        msg = "You can trying typesetting the output file in another application instead, such as TeXShop, to get better results."
-        GetOption("An error ocurred when trying to typeset the book.",msg,["OK"])
-        quit()
+    makeTex = [texCmd,"-halt-on-error","-shell-escape",rootName+".tex"]
+    TeXCommand(makeTex,rootFldr,"First Pass")
     
     # make index
-    gdoc.notifyProgressFraction_message_(1,"\n-------- Typesetting book: Creating Index --------")
-    makeidx = "/usr/texbin/makeindex BookLaTeXBody.idx"
-    subprocess.call(cdFldr+ makeidx,shell=True)
+    makeidx = ["makeindex",rootName+".idx"]
+    TeXCommand(makeidx,rootFldr,"Creating Index")
     
     # make bibliography
-    gdoc.notifyProgressFraction_message_(1,"\n-------- Typesetting book: Creating Bibliography --------")
-    makebib = "/usr/texbin/bibtex BookLaTeXBody.aux"
-    subprocess.call(cdFldr+makebib,shell=True)
+    makebib = ["bibtex",rootName+".aux"]
+    TeXCommand(makebib,rootFldr,"Creating Bibliography")
     
     # second pass
-    gdoc.notifyProgressFraction_message_(1,"\n-------- Typesetting book: Second Pass --------")
-    subprocess.call(cdFldr+makeTex,shell=True)
+    TeXCommand(makeTex,rootFldr,"Second Pass")
     
     # final pass
-    gdoc.notifyProgressFraction_message_(1,"\n-------- Typesetting book: Final Pass --------")
-    subprocess.call(cdFldr+makeTex,shell=True)
+    TeXCommand(makeTex,rootFldr,"Final Pass")
     
     # open in Preview
-    astring = NSString.stringWithString_(rootFldr+"/BookLaTeXBody.pdf")
+    astring = NSString.stringWithString_(rootFldr+"/"+rootName+".pdf")
     fileURL = NSURL.fileURLWithPath_(astring)
     NSWorkspace.sharedWorkspace().openFile_(astring)
 

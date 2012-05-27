@@ -1,12 +1,29 @@
 if #hpos$>=#midPt-10
   newline
+  #lswidth=1
+else
+  #lswidth=-1
 endif
 cell static,local(@tag)&":"
 set tabwidth -1 alignment right
 
-! popup menu
-cell PopupMenuEdit
-set offset -2MenuItems "Computer Modern Roman","Times","Palatino","Bookman"
-MenuItems "New Century Schoolbook","Charter","Helvetica","Avant-Garde"
-MenuItems "Zapf Chancery"SizeToFit -1
-help local("Click to select font family for the book")
+if @this._XTEX="Y"
+  ! edit field with value
+  hskip 3
+  cell EditValue
+  if #lswidth<0
+    set Width -1 Offset -2
+  else
+    set Width #midPt-#hpos$-10 Offset -2
+  endif
+  help local("Enter any font installed on your computer")
+  help " ("&local("see any text panel for font names and entry is case sensitive")&")"
+
+else
+  ! popup menu
+  cell PopupMenuEdit
+  set offset -2  MenuItems "Computer Modern Roman","Times","Palatino","Bookman"
+  MenuItems "New Century Schoolbook","Charter","Helvetica","Avant-Garde"
+  MenuItems "Zapf Chancery"  SizeToFit -1
+  help local("Click to select font family for the book")
+  help " ("&local("to allow more fonts, switch to typesetting by XeTeX")&")"endif

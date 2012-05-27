@@ -53,6 +53,7 @@ endif
 
 Show _TSET
 Show _USER
+Show _XTEX
 Show _FLDR
 Show _OVER
 ShowAll _ABOUT
