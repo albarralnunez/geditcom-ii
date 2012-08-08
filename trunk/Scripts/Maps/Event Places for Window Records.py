@@ -131,11 +131,11 @@ def AddRecPlaces(rec,rEvents,eType,pbox) :
                         
                         # check if allowed
                         if pbox :
-                            if lat<pbox[0] or lat>pbox[1] : continue
-                            if pbox[2]>pbox[3] :
-                                if lon<pbox[2] and lon>pbox[3] : continue
+                            if lat<pbox[0] or lat>pbox[2] : continue
+                            if pbox[1]>pbox[3] :
+                                if lon<pbox[1] and lon>pbox[3] : continue
                             else :
-                                if lon<pbox[2] or lon>pbox[3] : continue
+                                if lon<pbox[1] or lon>pbox[3] : continue
                                     
                         # expand range and create POI
                         CheckRange(lat,lon)
