@@ -8,7 +8,7 @@ if #msg="poi"
   ! edit field with value
   cell EditURL
   set Width -1 font "Hyperlink Text"
-  if tagexisits is true
+  if tagexists is true
   	border no cellbackground "parent"
   endif
   help local("Click to visit place web site")
