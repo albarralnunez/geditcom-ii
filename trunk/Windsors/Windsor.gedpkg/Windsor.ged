@@ -1595,21 +1595,21 @@
 1 _ANC all
 1 _DES all
 1 _FONT 11
-1 _FFAM Avant-Garde
+1 _FFAM Helvetica
 1 _LINE 1.3
 1 _OVER Y
 1 _PAPER US Letter
 1 _SIZE Full Page
 1 _TEXSTY Default
 1 _TSET Y
-1 _USER Y
+1 _XTEX Y
 1 REFN 10 OCT 2011 09:06:35
 2 TYPE Creation Date
 1 _INDI @I11@
 1 _AUTH John A. Nairn
 1 _EMAIL john@geditcom.com
 1 CHAN
-2 DATE 25 MAR 2012
-3 TIME 09:53:52
+2 DATE 9 JUN 2012
+3 TIME 10:50:33
 1 _FLDR /Users/nairnj/Programming/Cocoa_HomeProjects/geditcom-ii/trunk/Windsors/Books/Sample GEDitCOM II Book
 0 TRLR

@@ -298,8 +298,6 @@
 	<string>Klicka för att skriva in kvalitén på denna källa</string>
 	<key>Click to enter type of source</key>
 	<string>Klicka för att lägga in typ av källa</string>
-	<key>Click to link as child to a newly created family</key>
-	<string>Klicka för att länka som barn till en nyskapad familj</string>
 	<key>Click to link as husband of a newly created family</key>
 	<string>Klicka för att länka som make till en nyskapad familj</string>
 	<key>Click to link as wife of a newly created family</key>
@@ -308,10 +306,8 @@
 	<string>Klicka för att länka till a repository uppgift</string>
 	<key>Click to link this record to a multimedia object.</key>
 	<string>Klicka för att länka denna uppgift till ett multimedia objekt.</string>
-	<key>Click to link to an existing family record</key>
-	<string>Klicka för att länka till ett befintligt familjekort</string>
 	<key>Click to link to family record</key>
-	<string>Klicka för att länka till familiekort</string>
+	<string>Klicka för att länka till en befintlig eller ny familiekort</string>
 	<key>Click to open family record #</key>
 	<string>Klicka för att öppna familjekort #</string>
 	<key>Click to open home individual record</key>
@@ -674,8 +670,6 @@
 	<string>Länka som Man i en ny familj</string>
 	<key>Link as Wife in a new family</key>
 	<string>Länka som Hustru i en ny familj</string>
-	<key>Link as child to new family</key>
-	<string>Länka som barn till den nya familjen</string>
 	<key>Linked Records</key>
 	<string>Länkade Uppgifter</string>
 	<key>Linked Sources</key>

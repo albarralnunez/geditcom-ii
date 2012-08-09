@@ -24,18 +24,33 @@ endsub
 ! --------- Template starts here
 
 if #parentTag$="INDI"
-  newline
-  #topX=#hpos$+#cellWidth$+#cellSkip
-  #topY=#vpos$
-  show PEDI
-  MoveTo #topX,#topY
+  if tagexists is true
+    newline
+    #topX=#hpos$+#cellWidth$+#cellSkip
+    #topY=#vpos$
+    show PEDI
+    MoveTo #topX,#topY
 
-  gosub LineLabel local("Parents")
-  gosub RecordChildLink local("Click to view family record"),"parent"
+    gosub LineLabel local("Parents")
+    gosub RecordChildLink local("Click to view family record"),"parent"
 
-  ! in INDI record, show parents, pedigree, and nots
-  gosub parent,@contents.HUSB,local("Father")  gosub parent,@contents.WIFE,local("Mother")
-  
+    ! in INDI record, show parents, pedigree, and nots
+    gosub parent,@contents.HUSB,local("Father")    gosub parent,@contents.WIFE,local("Mother")
+    
+  else
+    newline
+    cell static,"Attach: "
+    sizetofit
+    
+    cell CreateLinkButton
+    set image family border no
+    sizetofit
+    set offset -2
+    Autoreload yes
+    help local("Click to link to new or exiting family record")&" ("
+    help local("Hold option key to immediately link to a new family)")
+    hskip 5
+  endif
   hideexcess
   
 else
@@ -54,7 +69,8 @@ else
     set image family border no
     sizetofit
     Autoreload yes
-    help local("Click to link to family record")
+    help local("Click to link to new or exiting family record")&" ("
+    help local("Hold option key to immediately link to a new family)")
     hskip 5
   endif
 

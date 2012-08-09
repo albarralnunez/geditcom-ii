@@ -30,16 +30,8 @@ cell GroupBox,local("Parents")
 set width -1 font "Section Label" border line CellBackground "Editing Box Background"
 
 ! current parents if any
+Show FAMC
 ShowAll FAMC
-
-newline 5
-cell static,local("Attach")&": "
-set offset #buttonOffset
-sizetofit
-
-cell LinkButton,local("Attach as child in new family")
-set border shadowlesssquare menulink "Attach As Child in New Family"
-sizetofit
 
 EndGroup
 

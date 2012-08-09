@@ -354,8 +354,6 @@
 	<string>Click to enter type for this point of interest</string>
 	<key>Click to enter type of source</key>
 	<string>Click to enter type of source</string>
-	<key>Click to link as child to a newly created family</key>
-	<string>Click to link as child to a newly created family</string>
 	<key>Click to link as husband of a newly created family</key>
 	<string>Click to link as husband of a newly created family</string>
 	<key>Click to link as wife of a newly created family</key>
@@ -364,10 +362,8 @@
 	<string>Click to link source to a repository record</string>
 	<key>Click to link this record to a multimedia object.</key>
 	<string>Click to link this record to a multimedia object.</string>
-	<key>Click to link to an existing family record</key>
-	<string>Click to link to an existing family record</string>
 	<key>Click to link to family record</key>
-	<string>Click to link to family record</string>
+	<string>Click to link to an existing or new family record (hold option key to immediately link to new family)</string>
 	<key>Click to map the events for this record</key>
 	<string>Click to map the events for this record</string>
 	<key>Click to open family record #</key>
@@ -850,8 +846,6 @@
 	<string>Link as Husband in a new family</string>
 	<key>Link as Wife in a new family</key>
 	<string>Link as Wife in a new family</string>
-	<key>Link as child to new family</key>
-	<string>Link as child to new family</string>
 	<key>Link to Repository</key>
 	<string>Link to Repository</string>
 	<key>Linked Records</key>

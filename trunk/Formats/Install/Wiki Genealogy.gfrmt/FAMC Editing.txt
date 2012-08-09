@@ -14,7 +14,7 @@ sub parent #parID,#parName
   cell LinkButton  if #parID!=""    TextExpression @#parID.NAME
     AppendedExpression altview
     RecordLink #parID
-	set font "Hyperlink Text"
+    set font "Hyperlink Text"
     help local("Click to view record for")&" "&local(#parName)  else    set text "<"&local("Unknown")&">"
   endif
   set border no alignment left
@@ -71,79 +71,100 @@ if #msg="wiki"
   GoSub wikiParent,#father,#fname
   GoSub wikiParent,#mother,#mname
 
-sizetofit
-
-newline
-
-hskip 18
-cell static,local("See also")&":"
-font "Static Italic Text"
-sizetofit
-
-hskip 0
-#leftSkip=#hpos$
-cell LinkButton
-set font "Hyperlink Text" RecordLink @contents PaneID "" border none
-text @contents.altview
-sizetofit
-
-if #father!=""
-  cell static " "&local("and")&" "
   sizetofit
-  cell LinkButton
-  set font "Hyperlink Text" RecordLink #father PaneID "" border none
-  text @#father.altview
-  sizetofit
-endif
 
-if #mother!=""
-  cell static " "&local("and")&" "
-  sizetofit
-  cell LinkButton
-  set font "Hyperlink Text" RecordLink #mother PaneID "" border none
-  text @#mother.altview
-  sizetofit
-endif
-
-else
-
-if #parentTag$="INDI"
   newline
-  #topX=#hpos$+#cellWidth$+#cellSkip
-  #topY=#vpos$
-  show PEDI
-  MoveTo #topX,#topY
 
-  gosub LineLabel local("Parents")
-  gosub RecordChildLink local("Click to view family record"),"parent"
+  hskip 18
+  cell static,local("See also")&":"
+  font "Static Italic Text"
+  sizetofit
 
-  ! in INDI record, show parents, pedigree, and nots
-  gosub parent,@contents.HUSB,local("Father")  gosub parent,@contents.WIFE,local("Mother")  showAll PEDI  showAll NOTE
+  hskip 0
+  #leftSkip=#hpos$
+  cell LinkButton
+  set font "Hyperlink Text" RecordLink @contents PaneID "" border none
+  text @contents.altview
+  sizetofit
 
-else
-  if tagexists is true
-    gosub LineLabel local("Parents")
-    gosub RecordChildLink local("Click to view family record"),"parent"
-
-    if #msg="ADOP"
-	  show ADOP
-    else
-      hideexcess
-    endif
-
-  else
-    cell CreateLinkButton
-    set image family border no
+  if #father!=""
+    cell static " "&local("and")&" "
     sizetofit
-	Autoreload yes
-    help local("Click to link to family record")
-    hskip 5
+    cell LinkButton
+    set font "Hyperlink Text" RecordLink #father PaneID "" border none
+    text @#father.altview
+    sizetofit
+  endif
+
+  if #mother!=""
+    cell static " "&local("and")&" "
+    sizetofit
+    cell LinkButton
+    set font "Hyperlink Text" RecordLink #mother PaneID "" border none
+    text @#mother.altview
+    sizetofit
   endif
 
 else
-  ! should not be any subordinate data, but hide in case
-  hideexcess
 
-endif
+  if #parentTag$="INDI"
+    if tagexists is true
+      newline
+      #topX=#hpos$+#cellWidth$+#cellSkip
+      #topY=#vpos$
+      show PEDI
+      MoveTo #topX,#topY
+
+      gosub LineLabel local("Parents")
+      gosub RecordChildLink local("Click to view family record"),"parent"
+
+      ! in INDI record, show parents, pedigree, and nots
+      gosub parent,@contents.HUSB,local("Father")      gosub parent,@contents.WIFE,local("Mother")      showAll PEDI      showAll NOTE
+    else
+      newline
+      cell static,local("Attach")&": "
+      sizetofit
+
+      cell CreateLinkButton
+      set image family border no
+      sizetofit
+      set offset -2
+      Autoreload yes
+      help local("Click to link to new or exiting family record")&" ("
+      help local("Hold option key to immediately link to a new family)")
+      hskip 5
+    endif
+
+  else
+    if tagexists is true
+      gosub LineLabel local("Parents")
+      gosub RecordChildLink local("Click to view family record"),"parent"
+
+      if #msg="ADOP"
+        show ADOP
+      else
+        hideexcess
+      endif
+
+    else
+      newline
+      cell static,local("Attach")&": "
+      offset 2
+      sizetofit
+
+      cell CreateLinkButton
+      set image family border no
+      sizetofit
+      Autoreload yes
+      help local("Click to link to new or exiting family record")&" ("
+      help local("Hold option key to immediately link to a new family)")
+      hskip 5
+    endif
+
+  else
+    ! should not be any subordinate data, but hide in case
+    hideexcess
+
+  endif
 
 endif

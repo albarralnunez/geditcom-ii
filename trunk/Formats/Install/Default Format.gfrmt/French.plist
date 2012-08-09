@@ -310,8 +310,6 @@
 	<string>Cliquez pour entrer qualité de cette source</string>
 	<key>Click to enter type of source</key>
 	<string>Cliquez pour entrer type de source</string>
-	<key>Click to link as child to a newly created family</key>
-	<string>Cliquez para lier comme enfant d’une nouvelle famille</string>
 	<key>Click to link as husband of a newly created family</key>
 	<string>Cliquez pour lier comme mari d’une nouvelle famille</string>
 	<key>Click to link as wife of a newly created family</key>
@@ -320,10 +318,8 @@
 	<string>Cliquez pour lier source avec fiche de repositoire</string>
 	<key>Click to link this record to a multimedia object.</key>
 	<string>Cliquez pour lier ce fiche à un objet multimédia.</string>
-	<key>Click to link to an existing family record</key>
-	<string>Cliquez pour lier a une fiche de famille deja existant</string>
 	<key>Click to link to family record</key>
-	<string>Cliquez pour lier á fiche de famille</string>
+	<string>Cliquez pour lier á fiche d’une nouvelle ou de famille deja existant</string>
 	<key>Click to open family record #</key>
 	<string>Cliquez pour ouvrir fiche de famille #</string>
 	<key>Click to open home individual record</key>
@@ -704,8 +700,6 @@
 	<string>Liez comme mari d’une nouvelle famille</string>
 	<key>Link as Wife in a new family</key>
 	<string>Liez comme épouse d’une nouvelle famille</string>
-	<key>Link as child to new family</key>
-	<string>Liez comme enfant d’une nouvelle famille</string>
 	<key>Link to Repository</key>
 	<string>Liez au Dépôt</string>
 	<key>Linked Records</key>

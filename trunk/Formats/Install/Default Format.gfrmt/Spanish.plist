@@ -354,8 +354,6 @@
 	<string>Haga clic para entrar en el tipo de punto de interés</string>
 	<key>Click to enter type of source</key>
 	<string>Haga clic para entrar tipo de fuente de informacion</string>
-	<key>Click to link as child to a newly created family</key>
-	<string>Haga clic para enlazar como hijo en una familia nueva</string>
 	<key>Click to link as husband of a newly created family</key>
 	<string>Haga clic para enlazar como esposo de una familia nueva</string>
 	<key>Click to link as wife of a newly created family</key>
@@ -364,10 +362,8 @@
 	<string>Haga clic para enlazar fuente con registro de repositorio</string>
 	<key>Click to link this record to a multimedia object.</key>
 	<string>Haga clic para enlazar este registro a un objeto multimedia.</string>
-	<key>Click to link to an existing family record</key>
-	<string>Haga clic para enlazer con registro de familia ya existente</string>
 	<key>Click to link to family record</key>
-	<string>Haga clic para enlazar al registro de familia</string>
+	<string>Haga clic para enlazar al registro de familia existente o nuevo</string>
 	<key>Click to map the events for this record</key>
 	<string>Haga clic para mapear los eventos</string>
 	<key>Click to open family record #</key>
@@ -846,8 +842,6 @@
 	<string>Enlazar como Esposo en una familia nueva</string>
 	<key>Link as Wife in a new family</key>
 	<string>Enlazar como Esposa en una familia nueva</string>
-	<key>Link as child to new family</key>
-	<string>Enlazar como hijo/hija en una familia nueva</string>
 	<key>Link to Repository</key>
 	<string>Enlazado al Repositorio</string>
 	<key>Linked Records</key>

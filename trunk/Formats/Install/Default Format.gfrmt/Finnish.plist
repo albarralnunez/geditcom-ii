@@ -330,8 +330,6 @@
 	<string>Kosketus valitsee kiinnostuksen tyypin</string>
 	<key>Click to enter type of source</key>
 	<string>Kosketus valitsee lähteen tyypin</string>
-	<key>Click to link as child to a newly created family</key>
-	<string>Kosketus liittää lapseksi uuteen perheeseen</string>
 	<key>Click to link as husband of a newly created family</key>
 	<string>Kosketus liittää mieheksi vastaluotuun perheeseen</string>
 	<key>Click to link as wife of a newly created family</key>
@@ -340,10 +338,8 @@
 	<string>Kosketus liittää lähteen säilytystietueeseen</string>
 	<key>Click to link this record to a multimedia object.</key>
 	<string>Kosketus liittää tämän tietueen multimediakohteeseen.</string>
-	<key>Click to link to an existing family record</key>
-	<string>Kosketus liittää johonkin perhetietueeseen</string>
 	<key>Click to link to family record</key>
-	<string>Kosketus liittää perhetietueeseen</string>
+	<string>Klikkaa linkittää olemassa olevan tai uuden perheen ennätys</string>
 	<key>Click to open family record #</key>
 	<string>Kosketus avaa perhetietueen #</string>
 	<key>Click to open home individual record</key>
@@ -804,8 +800,6 @@
 	<string>Liitä aviomieheksi uuteen perheeseen</string>
 	<key>Link as Wife in a new family</key>
 	<string>Liitä vaimoksi uuteen perheeseen</string>
-	<key>Link as child to new family</key>
-	<string>Liitä lapseksi uuteen perheeseen</string>
 	<key>Link to Repository</key>
 	<string>Linkki säilytyspaikkaan</string>
 	<key>Linked Records</key>

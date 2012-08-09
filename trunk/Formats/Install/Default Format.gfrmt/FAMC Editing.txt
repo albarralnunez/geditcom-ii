@@ -100,16 +100,7 @@ else
     set border shadowlesssquare width 24 height 24
     set image "family"
 	Autoreload yes
-    help local("Click to link to an existing family record")
-
-    ! button to link to family
-    cell LinkButton
-    set border shadowlesssquare
-    text local("Link as child to new family")
-    sizetofit
-	set height 24
-    MenuLink "Attach As Child in New Family"
-    help local("Click to link as child to a newly created family")
+    help local("Click to link to family record")
 
   endif
 

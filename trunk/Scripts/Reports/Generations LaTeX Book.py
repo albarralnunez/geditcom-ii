@@ -28,6 +28,7 @@
 # 8: 12 APR 2012 - added trees to book and better wording on some events
 # 9: 21 MAY 2012 - typesets in xelatex (can change texCmd to pdflatex to revert
 #                    to old mode if desired)
+#                  inserted URL links
 
 # Set preferences at top to speed it up
 #
@@ -762,7 +763,7 @@ def MakeTree(rfs) :
     hasPlus = False
     ttxt = []
     ttxt.append("\n\n\\begin{figure}\n\\begin{center}\n")
-    # for links - target for the tree
+    # for links - target for the tree (but books get caption automatically)
     #ttxt.append("\\hypertarget{"+treeName+"}{}\n")
     ttxt.append("\\setlength{\\unitlength}{"+str(trow)+"pt}\n")
     twidth = int(72.*(finalPaperWidth - bindMargin - rightMargin)/float(trow))
@@ -1759,6 +1760,7 @@ if cOwner != None :
 else :
     cRight = ""
 
+rpt.out("\\setcounter{page}{-2}\n")
 rpt.out("\\booktitlepage{"+btitle+"}{"+rootsFlat+"}{"+author+"}{"+email+"}{"+subtitle+"}{"+cRight+"}\n\n")
 rpt.out("% Generations\n\n")
 
@@ -1867,7 +1869,7 @@ for (n,rfs) in enumerate(ancestors.recs) :
     # for links - target before the person
     rpt.out("\\hypertarget{"+str(n+1)+"}{}\n")
     
-    # start person section
+    # start person section (add index enter and \hypertarget
     rpt.out("\\person{"+str(n+1)+"}{"+rfs.altname+"}{"+rfs.indexTag()+"}{"+conj+"}\n\n")
     conj = ""
     
@@ -1898,6 +1900,7 @@ if aboutAuthor != None :
 rpt.out("\n\\bibliography{book}\n\n")
 
 rpt.out("\\clearpage\n")
+rpt.out("\\phantomsection\n")
 rpt.out("\\markboth{Index}{Index}\n")
 rpt.out("\\addcontentsline{toc}{chapter}{Index}\n")
 rpt.out("\\printindex\n\n")

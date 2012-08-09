@@ -367,6 +367,14 @@
 			<key>Album Type ID</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>Album Name</key>
+			<string>Reports</string>
+			<key>Album Record Type</key>
+			<string>_RPT</string>
+			<key>Album Type ID</key>
+			<integer>3</integer>
+		</dict>
 	</array>
 	<key>Save Thumbnails</key>
 	<false/>
