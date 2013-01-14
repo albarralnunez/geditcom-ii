@@ -12,17 +12,17 @@
 		<key>Record Header Box Background</key>
 		<data>
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWE
-		AWMBhARmZmZmg8bFRT+DzcxMP4PY11c/AYY=
+		AWMBhARmZmZmgyZrRj+DOEpNP4M4elg/AYY=
 		</data>
 		<key>Table Cell Background</key>
 		<data>
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWE
-		AWMBhARmZmZmg6WkJD+Dr64uP4PAvz8/AYY=
+		AWMBhARmZmZmg7SkJD+Dzv8uP4McGkA/AYY=
 		</data>
 		<key>Window Background</key>
 		<data>
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWE
-		AWMBhARmZmZmg97dXT+D4uFhP4Pp6Gg/AYY=
+		AWMBhARmZmZmg1+ZXj+DWHNiP4OTDWk/AYY=
 		</data>
 	</dict>
 	<key>Fonts</key>
@@ -127,7 +127,7 @@
 			</data>
 			<data>
 			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
-			ZWN0AIWEAWMDhAJmZgABhg==
+			ZWN0AIWEAWMBhARmZmZmAAAAAYY=
 			</data>
 			<integer>0</integer>
 		</array>
@@ -140,7 +140,7 @@
 			</data>
 			<data>
 			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
-			ZWN0AIWEAWMDhAJmZgABhg==
+			ZWN0AIWEAWMBhARmZmZmAAAAAYY=
 			</data>
 			<integer>0</integer>
 		</array>
@@ -166,7 +166,7 @@
 			</data>
 			<data>
 			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
-			ZWN0AIWEAWMBhARmZmZmg7e2Nj8AAAGG
+			ZWN0AIWEAWMBhARmZmZmg5JqVj8Ag6isAj4Bhg==
 			</data>
 			<integer>0</integer>
 		</array>
@@ -266,37 +266,72 @@
 		<array>
 			<string>Notes Position</string>
 			<string>#posNotes</string>
-			<string>Number</string>
-			<string>2</string>
+			<string>String</string>
+			<string>top</string>
 			<integer>12</integer>
+		</array>
+		<array>
+			<string>Pedigree Chart Settings</string>
+			<string></string>
+			<string>Group</string>
+			<string></string>
+			<integer>13</integer>
 		</array>
 		<array>
 			<string>Chart Box Width</string>
 			<string>#boxWidth</string>
 			<string>Number</string>
 			<string>200</string>
-			<integer>13</integer>
+			<integer>14</integer>
 		</array>
 		<array>
 			<string>Chart Box Padding</string>
 			<string>#boxPadding</string>
 			<string>Number</string>
 			<string>3</string>
-			<integer>14</integer>
+			<integer>15</integer>
 		</array>
 		<array>
 			<string>Chart Column Spacing</string>
 			<string>#boxSpacing</string>
 			<string>Number</string>
 			<string>20</string>
-			<integer>15</integer>
+			<integer>16</integer>
 		</array>
 		<array>
 			<string>Chart Row Spacing</string>
 			<string>#boxRowsep</string>
 			<string>Number</string>
 			<string>12</string>
-			<integer>16</integer>
+			<integer>17</integer>
+		</array>
+		<array>
+			<string>Navigation Aids</string>
+			<string></string>
+			<string>Group</string>
+			<string></string>
+			<integer>18</integer>
+		</array>
+		<array>
+			<string>Ancestors Indicator</string>
+			<string>#ANCArrow</string>
+			<string>String</string>
+			<string> ↑</string>
+			<integer>19</integer>
+		</array>
+		<array>
+			<string>Descendants Indicator</string>
+			<string>#DESArrow</string>
+			<string>String</string>
+			<string>↓ </string>
+			<integer>20</integer>
+		</array>
+		<array>
+			<string>Spouse Indicator</string>
+			<string>#SPSEArrow</string>
+			<string>String</string>
+			<string>= </string>
+			<integer>21</integer>
 		</array>
 	</array>
 </dict>

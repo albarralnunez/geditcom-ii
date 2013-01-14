@@ -5,6 +5,12 @@ load TagBlock
 if #msg="Media"
   Gosub TagBlock,"OBJE","Media"
   hideexcess
+
+else if #msg="Notes"
+  Gosub TagBlock,"NOTE","Notes_Sours"
+  Gosub TagBlock,"SOUR","Notes_Sours"
+  Gosub TagBlock,"_LOG","Notes_Sours"
+  hideexcess
   
 else
 newline
@@ -22,6 +28,7 @@ if #first="yes"
   
   cell static,local("PLAC")
   set tabwidth 1 alignment center border square
+  set width #cellWidth$+27
   cellBackground "Table Cell Background"
 
   newline

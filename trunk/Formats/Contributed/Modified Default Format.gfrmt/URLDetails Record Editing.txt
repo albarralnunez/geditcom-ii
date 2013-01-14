@@ -1,10 +1,0 @@
-Title local("Web Page for")&" "&@this.altview
-
-SetTab 90
-
-! show formcell GroupBox,local("Web Site Addresses")
-width -1
-Show _URL "here"
-ShowAll _URL "here"
-EndGroup
-resizeWindow yes

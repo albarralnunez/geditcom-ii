@@ -8,73 +8,85 @@ GoSub ResetTabs,0
 GoSub FAMPanes,""
 
 ! --------- Marriage --------------
-newline
-cell GroupBox local("MARR")
-width -1
-
 if @this._UMR=""
-  Show MARR details
-  ShowAll MARR details
+  Show MARR box
+  ShowAll MARR box
 else
   newline
+  cell GroupBox local("MARR")
+    width -1
+    cell static,local("Unmarried Couple")
+    SizeToFit
 
-  cell static,local("Unmarried Couple")
-  SizeToFit
+    hskip 10
+    cell LinkButton,local("Change")
+    set border shadowlesssquare offset -2
+    MenuLink "Attach Married Status"
+    Help local("Click to change to married couple")
 
-  hskip 10
-  cell LinkButton,local("Change")
-  set border shadowlesssquare
-  MenuLink "Attach Married Status"
-  Help local("Click to change to married couple")
-
-  ShowAll MARR details
+    ShowAll MARR box
+  EndGroup
 endif
 
-EndGroup
+! To show existing family events but none if no event,
+! add one line for each like:
+!ShowAll ENGA
+
+! To show existing family events and blank fields if no event,
+! add two lines for each like:
+!Show ENGA box
+!ShowAll ENGA box
 
 ! --------- Children --------------
 cell GroupBox,local("Children")
-width -1
+  width -1
 
-newline
-ClearTabs
-#lineSkip=2
-#cellSkip=2
-#tableWidth=#rightMargin$-#rightSkip-#hpos$
-!SetTab #habs$,#habs$+0.4*#tableWidth,#habs$+0.55*#tableWidth
-!SetTab #habs$+0.85*#tableWidth,#habs$+#tableWidth
+  newline
+  ClearTabs
+  #lineSkip=2
+  #cellSkip=2
+  #tableWidth=#rightMargin$-#rightSkip-#hpos$
+  ! .3 - .11 - .24 - .24 - .11
+  #t1=0.32
+  #t2=#t1+.12
+  #t3=#t2+.16
+  #t4=#t3+.16
+  #t5=#t4+.16
+  ! (0) Children (#t1) Sex (3t2) BD (#t3) DD (#t4) Links (1.0)
+  SetTab #habs$,#habs$+#t1*#tableWidth,#habs$+#t2*#tableWidth
+  SetTab #habs$+#t3*#tableWidth,#habs$+#t4*#tableWidth,#habs$+#t5*#tableWidth,#habs$+#tableWidth
 
-!Following two lines to replace two above to put baptism and death dates in family record SJGR
-SetTab #habs$,#habs$+0.33*#tableWidth,#habs$+0.45*#tableWidth
-SetTab #habs$+0.6*#tableWidth,#habs$+0.75*#tableWidth,#habs$+0.9*#tableWidth,#habs$+#tableWidth
+#chilNum=0
+#tstart=#vpos$ShowAll CHIL
 
+  #lineSkip=#lineSkip$
+  #cellSkip=#cellSkip$
 
-#chilNum=0ShowAll CHIL
+  newline
+  if #vpos$=#tstart
+    newline -3
+  endif
+  cell LinkButton
+  image "plus"
+  set width 24 border no
+  MenuLink "Attach Child"
+  help local("Click to attach new child")
 
-#lineSkip=#lineSkip$
-#cellSkip=#cellSkip$
+  cell LinkButton "-"
+  image "minus"
+  set width 24 border no
+  MenuLink "Detach Child"
+  help local("Click to detach child")
 
-newline -3
-cell LinkButton
-image "plus"
-set width 24 border no
-MenuLink "Attach Child"
-help local("Click to attach new child")
-
-cell LinkButton "-"
-image "minus"
-set width 24 border no
-MenuLink "Detach Child"
-help local("Click to detach child")
-
-if NCHI is here
-  show NCHI
-  hide NCHI
-endif
+  if NCHI is here
+    show NCHI
+    hide NCHI
+  endif
 
 EndGroup
 
 GoSub ResetTabs,0
+
 hideexcess
 
 optionalTag NCHI,local(NCHI),#chilNum

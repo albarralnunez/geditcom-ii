@@ -3,6 +3,12 @@ load TagBlock
 if #msg="Media"
   Gosub TagBlock,"OBJE","Media"
   hideexcess
+
+else if #msg="Notes"
+  Gosub TagBlock,"NOTE","Notes_Sours"
+  Gosub TagBlock,"SOUR","Notes_Sours"
+  Gosub TagBlock,"_LOG","Notes_Sours"
+  hideexcess
   
 else
   newline

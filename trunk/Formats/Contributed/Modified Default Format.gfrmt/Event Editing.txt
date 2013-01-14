@@ -1,83 +1,151 @@
-!SJGR changed from default to move place here from child window
-
 load TagBlock
 
 if #msg="Media"
   Gosub TagBlock,"OBJE","Media"
   hideexcess
+
+else if #msg="Notes"
+  Gosub TagBlock,"NOTE","Notes_Sours"
+  Gosub TagBlock,"SOUR","Notes_Sours"
+  Gosub TagBlock,"_LOG","Notes_Sours"
+  hideexcess
   
-else
-newline
-
-! header on first event
-if #first="yes"
-  cell static,local("EVEN")
-  set tabwidth 1 alignment center border square
-  cellBackground "Table Cell Background"
-
-  cell static,"?"
-  set tabwidth 1 alignment center border square
-  cellBackground "Table Cell Background"
-
-  cell static,local("DATE")
-  set tabwidth 1 alignment center border square
-  cellBackground "Table Cell Background"
-  
-  hskip -24
-  cell LinkButton
-  menulink "Sort Events"
-  set tabwidth 1 border none image "go-down" imageHeight 12
-  help local("Sort the events")
-  
-  ! Next block added to display place detail also needs tabs settings changed in INDI_Events, INDI_All, FAM_Events & FAM_All templates  SJGR
- 
-  cell static,local("PLAC")
-  set tabwidth 1 alignment center border square
-  cellBackground "Table Cell Background"
-
-
+else if #msg="box"
   newline
-  #first="no"
-endif
+  cell GroupBox local(@tag)
+    titleposition aboveTop
+    width -1
+
+    if @tag!="BIRT"
+      newline
+      HMoveTo #rightMargin$-#rightSkip-106
+      #vloc=#vpos$
+
+      if @tag="DEAT"
+        cell CheckBoxEdit,local("Has Died")
+        help local("Check if deceased but nothing else known")
+      else if @tag="MARR"
+        cell CheckBoxEdit,local("Married")
+        help local("Check if married but nothing else known")
+      else
+        cell CheckBoxEdit,local("Occurred")
+        if local("<LANG>")="English"
+          help "Check if "&local(@tag)&" occurred but nothing else known"
+        else
+          help local("Check if event occurred but nothing else known")
+        endif
+      endif
+      width 85
+      Offset -2
+      
+      VMoveTo #vloc
+      #dtype="DEAT"
+      #dskip=85
+    else
+      #dtype="BIRT"
+      #dskip=0
+    endif
+    
+    Show DATE #dtype
+    #hloc=#hpos$+#dskip
+    #vloc=#vpos$
+    Show PLAC @tag
+    
+    if @ADDR!=""
+      NewLine 1
+      tab 1
+      hskip 8
+      cell Expression,@ADDR
+      set format local("ADDR")&": %!"
+      set width -1 border none fontsize 10 height 15
+      help local("Click 'info' icon to edit address")
+    endif
+
+    ! rest in a child window
+    MoveTo #hloc,#vloc
+    cell StructuresLink,BirthDeathDetails,@tag
+    set border no
+    if more
+      set image "details_here"
+    else
+      set image "details"
+    endif
+    SizeToFit
+    LinkAll all
+    #tagKey=@tag&" details"
+    help local("Click to edit")&": "&local(#tagKey)
+  EndGroup
   
-! event name, check box, and date
-if @tag="EVEN"
-  #eName=@TYPE
-  if #eName=""
-	#eName=local(@tag)
-	cell static,#eName
-  else
-	cell expression,@TYPE
-    localize true
+else
+  newline
+
+  ! header on first event
+  if #first="yes"
+    cell static,local("EVEN")
+    set tabwidth 1 alignment center border square
+    cellBackground "Table Cell Background"
+
+    cell static,"?"
+    set tabwidth 1 alignment center border square
+    cellBackground "Table Cell Background"
+
+    cell static,local("DATE")
+    set tabwidth 1 alignment center border square
+    cellBackground "Table Cell Background"
+
+    hskip -24
+    cell LinkButton
+    menulink "Sort Events"
+    set tabwidth 1 border none image "go-down" imageHeight 12
+    help local("Sort the events")
+
+    cell static,local("PLAC")
+    set tabwidth 2 alignment center border square
+    set width #cellWidth$+5
+    cellBackground "Table Cell Background"
+
+    newline
+    #first="no"
   endif
-else
-  #eName=local(@tag)
-  cell static,#eName
-endif
-set tabwidth 1 alignment center border square
-cellBackground "Table Cell Background"
+  
+  ! event name, check box, and date
+  if @tag="EVEN"
+    #eName=@TYPE
+    if #eName=""
+      #eName=local(@tag)
+      cell static,#eName
+    else
+      cell expression,@TYPE
+      localize true
+    endif
+  else
+    #eName=local(@tag)
+    cell static,#eName
+  endif
+  set tabwidth 1 alignment center border square
+  cellBackground "Table Cell Background"
 
-cell CheckBoxEdit
-set tabwidth 1
-if local("<LANG>")="English"
-  help "Check if "&local(@tag)&" occurred but nothing else known"
-else
-  help local("Check if event occurred but nothing else known")
-endif
+  cell CheckBoxEdit
+  set tabwidth 1
+  if local("<LANG>")="English"
+    help "Check if "&local(@tag)&" occurred but nothing else known"
+  else
+    help local("Check if event occurred but nothing else known")
+  endif
 
-show DATE Event
-show PLAC Event
+  show DATE Event
+  show PLAC Event
 
-! rest in a child window
-cell StructuresLink,EventDetails,@tag
-set border no offset 3 width 22
-if more
-  set image "details_here"
-else
-  set image "details"
-endif
-LinkAll all
+  ! rest in a child window
+  cell StructuresLink,EventDetails,@tag
+  set border no width -1
+  if more
+    set image "details_here"
+  else
+    set image "details"
+  endif
+  LinkAll all
 
-#tagKey=@tag&" details"
-help local("Click to edit")&": "&local(#tagKey)
+  #tagKey=@tag&" details"
+  help local("Click to edit")&": "&local(#tagKey)
 endif

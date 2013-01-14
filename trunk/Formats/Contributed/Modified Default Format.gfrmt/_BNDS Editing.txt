@@ -6,3 +6,4 @@ sizetofit
 cell EditValue
 set Width -1 Offset -2
 help local("Enter (lat,lon), (lat,lon,span), or (lat1,lon2,lat2,lon2)")
+set ScriptLink "Open_Location_in_GeoHack.py" ScriptType format

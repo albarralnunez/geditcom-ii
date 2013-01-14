@@ -19,4 +19,18 @@ Show _LOG
 EndGroup
 #lineSkip=#lineSkip$
 
+! --------- Other Notes & Sources
+cell GroupBox,local("Event and Attribute Notes & Sources")
+  width -1
+  newline
+  #startVH=#vpos$+#hpos$
+  ShowAll FAMEvents "Notes"
+  ShowAll FAMOrdinances "Notes"
+  ShowAll FAMAttributes "Notes"
+  newline
+  if #startVH=#vpos$+#hpos$
+    cell static,local("None")
+  endif
+EndGroup
+
 hideexcess

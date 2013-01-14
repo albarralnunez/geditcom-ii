@@ -16,7 +16,11 @@ sub TagBlock,#theTag,#label
     else
       #numURLs[0]=0
     endif
+    if #label="Notes_Sours"
+    ShowAll #theTag "Notes_Sours"
+    else 
     ShowAll #theTag
+    endif
     if #theTag="OBJE"
       if @level=0
         if @rec="INDI"

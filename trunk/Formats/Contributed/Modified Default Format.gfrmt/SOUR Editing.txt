@@ -1,4 +1,5 @@
 ! SJGR Added buttons to copy and paste sources
+! and bits to display event/attribute sources in individual window on Notes and Sources tab
 
 ! special case for header
 if @rec=HEAD
@@ -31,7 +32,21 @@ else
         set alignment right tabwidth 1
       else
         newline
+        if #msg="Notes_Sours"   !SJGR extra lines to add event/attribute type
+        #label=@parent.tag
+        if @parent.tag="EVEN"
+          if @parent.TYPE<>""
+            #label=@parent.TYPE
+          endif
+        endif
+         
+        cell label,local(#label)&": "&@parent.DATE.user !SJGR
+        set alignment right tabwidth 2
+        
+        cell label,"  • " !SJGR
+        else !SJGR
 	    cell label,"• "
+	    endif
 	    SizeToFit
       endif
 

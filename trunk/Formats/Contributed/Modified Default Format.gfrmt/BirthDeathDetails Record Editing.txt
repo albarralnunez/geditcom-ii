@@ -27,9 +27,12 @@ set tabwidth 1 alignment right
 cell expression,@parent.PLAC
 set Width -1
 
-if #eventTag="BIRT"  Show ADDR  ShowAll TYPE  ShowAll AGNCelse if #eventTag="DEAT"  Show ADDR
+if #eventTag="BIRT"  Show ADDR
+  ShowAll _GPS  ShowAll TYPE  ShowAll AGNCelse if #eventTag="DEAT"  Show ADDR
+  ShowAll _GPS
   Show AGE  Show CAUS
   ShowAll TYPE  ShowAll AGNCelse  Show ADDR
+  ShowAll _GPS
   ShowAll TYPE  ShowAll AGNC  showAll HUSB  ShowAll WIFEendif
 
 ! Family link in Birth events
@@ -74,6 +77,7 @@ if @rec=FAM
     optionaltag WIFE,local("WIFE's Age"),"","AGE age"
   endif
 endif
+optionaltag _GPS,local("_GPS"),""
 
 resizewindow yes
 

@@ -1,6 +1,4 @@
-!SJGR added before pedigree was part of default format. Slightly different formatting
-
-load INDIPanes 
+load INDIPanes
 
 sub IndiBox,#rec,#boxLabel,#altLabel,#expectSex
   ! take one of the two labels
@@ -13,7 +11,7 @@ sub IndiBox,#rec,#boxLabel,#altLabel,#expectSex
   #boxLeft=#hpos$
   cell GroupBox,#boxLabel
   set width #boxWidth font "Pedigree Label"
-  !SJGR set border line
+  !set border line
   !if #rec=@this
 	!set cellbackground "Main Individual Background"
   !endif
@@ -30,14 +28,14 @@ sub IndiBox,#rec,#boxLabel,#altLabel,#expectSex
     set width #fldWidth
     
     if #rec=@this  !SJGR
-set font "Prime Individual"
-endif
+    set font "Prime Individual"
+    endif
 
     newline
     cell expression,@#rec.BIRT.DATE
     set font "Pedigree Detail"
     set width #fldWidth AppendedExpression view
-
+ 
     newline
     cell expression @#rec.BIRT.PLAC
     set font "Pedigree Detail"
@@ -88,16 +86,16 @@ endif
 
 endSub
 
-
 sub FamilyButton,#famsLink,#husbBottom,#col
 	if #famsLink!=""
 		newline
 		#oldVpos=#vpos$
-		#famBtn=#husbBottom-#famHeight/2+4.5
-		MoveTo #leftSkip+#col*(#boxWidth+#boxSpacing)-#boxSpacing-#famWidth-5,#famBtn
+		#famBtn=#husbBottom-#famHeight/2+1.5
+		MoveTo #leftSkip+#col*(#boxWidth+#boxSpacing)-#boxSpacing-#famWidth,#famBtn
 		cell LinkButton
-		set image "family" width #famWidth height #famHeight
-		set border shadowlesssquare RecordLink #famsLink
+		set image "family" width #famWidth height #famWidth
+		imagewidth #famWidth-6 !added to fit new icon to buttons
+		set border shadowlesssquare RecordLink #famsLink PaneID "Group"
 		TextExpression @#famsLink.rec
 		AutoReload yes
 		help local("Click to view family chart for this couple")
@@ -106,57 +104,22 @@ sub FamilyButton,#famsLink,#husbBottom,#col
 	endif
 endSub
 
-
-!GoSub INDIPanes,"Pedigree"
-
-! --------- Name -----------
-
-!#oldWidth=#rightMargin$
-!DisplayWidth #oldWidth+#rightSkip+1
-!newline -#topMargin$-1
-!hskip -#leftSkip-1
-
-!if printing is "false"
-!cell GroupBox
-!border line
-!titleposition none
-!cellbackground "Record Header Box Background"
-!width -1
-
-
-! -------------- Mini Toolbar -----------------
-
-Moveto 1,1
-newline 6
-GoSub INDIPanes,"Pedigree"
-
-!newline 5
-!Show NAME #rightMargin$-265
-!Show SEX
-!Show RESN
-!if NAME is here
-!  newline
- ! ShowAll NAME #rightMargin$-265
-!endif
-!EndGroup
-
+! Main template starts here
+if printing is "false"
+  gosub INDIPanes,"Pedi"
 else
-
-background "white"
+  background "white"
 endif
-
 
 DefaultCellSize 72,16
 #lineSkip=0
 #cellSkip=0
 
-if #rightMargin$>#leftSkip$+4*(#boxWidth+#boxSpacing)+#rightSkip$
-DisplayWidth  #rightMargin$ 
-else 
-DisplayWidth   #leftSkip$+4*(#boxWidth+#boxSpacing)+#rightSkip$
+#minWidth=#leftSkip$+4*(#boxWidth+#boxSpacing)+#rightSkip$
+if #minWidth>#rightMargin$-#rightSkip$
+  DisplayWidth #minWidth
 endif
-
-#famHeight=22
+#famHeight=20
 #famWidth=24
 
 #col[1]=#leftSkip+#boxWidth+#boxSpacing
@@ -168,12 +131,12 @@ newline 4
 #topChart=#vpos$
 gosub IndiBox,@this,local("INDI"),local("INDI"),"M"
 
-newline #boxRowsep/2
+newline #boxRowsep/2+2
 #husbLoc=#vpos$
 if @this.SEX="M"
-  gosub IndiBox @spouse,local("Spouse"),local("Male Partner"),"F"
+  gosub IndiBox @spouse,local("Female Spouse"),local("Male Spouse"),"F"
 else
-  gosub IndiBox @spouse,local("Spouse"),local("Female Partner"),"M"
+  gosub IndiBox @spouse,local("Male Spouse"),local("Female Spouse"),"M"
 endif
 
 gosub FamilyButton,@FAMS,#husbLoc,1
@@ -181,9 +144,9 @@ gosub FamilyButton,@FAMS,#husbLoc,1
 ! ----- Children
 
 newline #boxRowsep+50
+moveto #boxSpacing-10, 290 !SJGR make sure doesn't jump a few pixels when changing individuals
 cell label,local("Children")
 set width #boxWidth
-set font "Pedigree Label"
 
 newline 4
 cell Palette
@@ -201,11 +164,14 @@ RepeatWith "#child" from @FAMS.CHIL
     AppendedExpression altview
     if @#child.FAMS.CHIL!=""
       format #i&". +%@"
+    else if @#child.FAMS.i.2.CHIL!=""
+      format #i&". +%@"
     else
       format #i&". %@"
     endif
     sizetofit
 	set width #boxWidth border none height 20 alignment left
+	set font "Hyperlink Text"
 	RecordLink #child
 	help local("Click to promote this individual to top-left and view ancestral pedigree")
 	help ". "&local("A '+' means this child also has children")&"."
@@ -216,7 +182,6 @@ if #i=1
  	newline
 	cell static,local("None known")
 	set width #boxWidth border none height 20
-	set font "Pedigree Detail"
 endif
 
 ! ----- parents
@@ -226,6 +191,7 @@ MoveTo #col[1]-#boxSpacing,#topChart
 
 cell Palette
 set width #boxSpacing height 2*#boxHeight+#boxRowsep/2
+PalLineWidth 2
 PalLineWidth 2
 PalMoveTo 0,#boxHeight/2
 PalLine #boxSpacing,0
@@ -247,10 +213,10 @@ gosub FamilyButton,@FAMC,#husbLoc,2
 ! ----- Other Spouses and Children
 
 #leftSkip+=#boxWidth+#boxSpacing
-newline #boxRowsep+48
+newline #boxRowsep+50
+moveto #boxWidth+#boxSpacing+10, 290 !SJGR make sure doesn't jump a few pixels when changing individuals
 cell label,local("Other Spouses/Children")
 set width #boxWidth
-set font "Pedigree Label"
 
 newline 4
 cell Palette
@@ -274,7 +240,7 @@ RepeatWith "#fams" from @FAMS
 	  TextExpression @spouse.i.#i.rec
       AppendedExpression altview
       format #i&". %@"
-	  set alignment left
+	  set alignment left font "Hyperlink Text"
 	  RecordLink #fams
 	  help local("Click to promote this individual to top-left and view ancestral pedigree")
 	else
@@ -294,7 +260,7 @@ RepeatWith "#fams" from @FAMS
           format "    "&#i&"."&#j&" %@"
         endif
 		set width #boxWidth border none height 20
-		set alignment left
+		set alignment left font "Hyperlink Text"
 		RecordLink #child
 		help local("Click to promote this individual to top-left and view ancestral pedigree")
 		help ". "&local("A '+' means this child also has children")&"."
@@ -305,7 +271,6 @@ RepeatWith "#fams" from @FAMS
  		newline
 		cell static,"    "&local("None known")
 		set width #boxWidth border none height 20
-		set font "Pedigree Detail"
 	endif
 
 EndRepeat
@@ -360,7 +325,7 @@ gosub IndiBox,@FAMC.HUSB.FAMC.HUSB.FAMC.WIFE,local("Great Grandmother"),local("G
 gosub FamilyButton,@FAMC.HUSB.FAMC.HUSB.FAMC,#husbLoc,4
 
 ! ----- paternal-maternal great grandparents
-newline #boxRowsep
+newline #boxRowsep+2
 #husbLoc=#vpos$
 MoveTo #col[3]-#boxSpacing,#husbLoc-#boxRowsep-#boxHeight
 
@@ -392,7 +357,7 @@ newline #boxRowsep
 MoveTo #col[2]-#boxSpacing,#midChart-3*#boxHeight-5*#boxRowsep/2
 
 cell Palette
-set width #boxSpacing height 5*#boxHeight+3*#boxRowsep
+set width #boxSpacing height 5*#boxHeight+3*#boxRowsep+2
 PalLineWidth 2
 PalMoveTo 0,#boxHeight/2+10
 PalLine #boxSpacing/2,0
@@ -430,7 +395,7 @@ newline
 MoveTo #col[3],#midChart
 gosub IndiBox,@FAMC.WIFE.FAMC.HUSB.FAMC.HUSB,local("Great Grandfather"),local("Great Grandmother"),"M"
 
-newline #boxRowsep/2
+newline #boxRowsep/2+2
 #husbLoc=#vpos$
 HMoveTo #col[3]
 gosub IndiBox,@FAMC.WIFE.FAMC.HUSB.FAMC.WIFE,local("Great Grandmother"),local("Great Grandfather"),"F"
@@ -463,7 +428,5 @@ HMoveTo #col[3]
 gosub IndiBox,@FAMC.WIFE.FAMC.WIFE.FAMC.WIFE,local("Great Grandmother"),local("Great Grandfather"),"F"
 
 gosub FamilyButton,@FAMC.WIFE.FAMC.WIFE.FAMC,#husbLoc,4
-
-ResizeWindow
 
 hideexcess

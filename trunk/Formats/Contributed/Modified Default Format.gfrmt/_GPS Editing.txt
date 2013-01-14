@@ -25,4 +25,4 @@ else
 endif
 
 help local("Enter latitude and longitude (e.g., 45.3N, 112.3W)")
-set ScriptLink "Open_Location_in_GeoHack" ScriptType format
+set ScriptLink "Open_Location_in_GeoHack.py" ScriptType format

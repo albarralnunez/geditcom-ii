@@ -9,7 +9,7 @@ if #msg="all"
     cell EditPane,"("&local("type to enter notes")&")"
     
     if #posNotes>2.5
-      position right
+      position bottom
     else if #posNotes >1.5
       position bottom
     else if #posNotes >0.5

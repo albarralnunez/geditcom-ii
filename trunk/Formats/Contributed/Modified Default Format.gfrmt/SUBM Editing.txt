@@ -9,13 +9,18 @@ if tagexists is true
   endif
   help #tlabel
 
-  cell LinkButton
-  TextExpression @contents.rec
-  AppendedExpression view
-  set border no Font "Hyperlink Text" 
-  sizetofit -1
-  RecordLink @contents
-  Help local("Click to view Submitter record")
+  if @contents is validlink
+    cell LinkButton
+    TextExpression @contents.rec
+    AppendedExpression view
+    set border no Font "Hyperlink Text" 
+    sizetofit -1
+    RecordLink @contents
+    Help local("Click to view Submitter record")
+  else
+  	cell static,"(invalid submitted link)"
+  	sizetofit -1
+  	Help local("Drag correct submitter from index window here to fix")
 
 ! no data - an attach button
 else

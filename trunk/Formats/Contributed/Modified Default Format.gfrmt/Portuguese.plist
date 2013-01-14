@@ -90,6 +90,8 @@
 	<string>Todos os Registros Ligados</string>
 	<key>All Notated Records</key>
 	<string>Todos os Registros Notados</string>
+	<key>Ancestors Indicator</key>
+	<string>Indicador de Antepassados</string>
 	<key>Anyone</key>
 	<string>Qualquer pessoa</string>
 	<key>Article</key>
@@ -274,10 +276,8 @@
 	<string>Circuncisão</string>
 	<key>Cited by</key>
 	<string>Citado por</string>
-	<key>Click for death details</key>
-	<string>Cliquar para detalhes da morte</string>
-	<key>Click for marriage details</key>
-	<string>Cliquar por detalhes do casamento</string>
+	<key>Click 'info' icon to edit address</key>
+	<string>Cliquar no icone 'info' para editar o endereço</string>
 	<key>Click for name details</key>
 	<string>Cliquar para detalhes do nome</string>
 	<key>Click for source details specific to this record</key>
@@ -354,8 +354,6 @@
 	<string>Cliquar para entrar o tipo do ponto de interesse</string>
 	<key>Click to enter type of source</key>
 	<string>Cliquar para entrar o tipo da fonte de informações</string>
-	<key>Click to link as child to a newly created family</key>
-	<string>Cliquar para ligar como criança da família nova</string>
 	<key>Click to link as husband of a newly created family</key>
 	<string>Cliquar para ligar como marido da família nova</string>
 	<key>Click to link as wife of a newly created family</key>
@@ -364,10 +362,10 @@
 	<string>Cliquar para ligar fonte a registro de repositório</string>
 	<key>Click to link this record to a multimedia object.</key>
 	<string>Cliquar para ligar o registro a um objeto multimédia.</string>
-	<key>Click to link to an existing family record</key>
-	<string>Cliquar para ligar a registro de família existente</string>
 	<key>Click to link to family record</key>
-	<string>Cliquar para ligar a registro de família</string>
+	<string>Cliquar para ligar a registro de família existente ou nova</string>
+	<key>Click to map the events for this record</key>
+	<string>Cliquar para mapear os eventos</string>
 	<key>Click to open family record #</key>
 	<string>Cliquar para abrir registro de família #</string>
 	<key>Click to open home individual record</key>
@@ -450,8 +448,6 @@
 	<string>Cliquar para ver registro de esposa</string>
 	<key>Click to view alias record</key>
 	<string>Cliquar para ver el registro de seudónimo</string>
-	<key>Click to view and edit birth details</key>
-	<string>Cliquar para ver e editar detalhes de nascimento</string>
 	<key>Click to view and edit notes</key>
 	<string>Cliquar para ver e editar as notas</string>
 	<key>Click to view and edit place record</key>
@@ -523,7 +519,7 @@
 	<key>DEST</key>
 	<string>Arquivo de destino</string>
 	<key>DIP</key>
-	<string>Diplomatic Facility</string>
+	<string>Complejo Diplomático</string>
 	<key>DIV</key>
 	<string>Divórcio</string>
 	<key>DIV details</key>
@@ -546,6 +542,8 @@
 	<string>Largura padrão de células</string>
 	<key>Default Place Hierarchy</key>
 	<string>Hierarquia  padrão de lugar</string>
+	<key>Descendants Indicator</key>
+	<string>Indicador de Descendentes</string>
 	<key>Description</key>
 	<string>Descrição</string>
 	<key>Details</key>
@@ -842,8 +840,6 @@
 	<string>Ligar como Marido na família nova</string>
 	<key>Link as Wife in a new family</key>
 	<string>Ligar como Esposa na família nova</string>
-	<key>Link as child to new family</key>
-	<string>Ligar como criança na família nova</string>
 	<key>Link to Repository</key>
 	<string>Ligado a Repositório</string>
 	<key>Linked Records</key>
@@ -944,6 +940,8 @@
 	<string>Prefixo</string>
 	<key>NSFX</key>
 	<string>Sufixo</string>
+	<key>Navigation Aids</key>
+	<string>Ferramentas de Navegación</string>
 	<key>New</key>
 	<string>Novo</string>
 	<key>No image representation. Click to open in another application</key>
@@ -976,6 +974,8 @@
 	<string>Ordenação</string>
 	<key>ORDN details</key>
 	<string>Detalhes da ordenação</string>
+	<key>Occurred</key>
+	<string>Ocorreu</string>
 	<key>Omit 'Owner'</key>
 	<string>Omitir objetos designados 'Owner' (proprietário)</string>
 	<key>Omit 'Owner' and 'Family'</key>
@@ -1184,6 +1184,8 @@
 	<string>Fontes para os dados</string>
 	<key>Spouse</key>
 	<string>Cônjuge</string>
+	<key>Spouse Indicator</key>
+	<string>Indicador de Cônjuge</string>
 	<key>Spouses</key>
 	<string>Cônjuges</string>
 	<key>Static Text</key>

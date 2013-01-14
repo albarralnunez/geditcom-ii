@@ -28,6 +28,7 @@ newlinecell GroupBox,local("Repository Address")
   width -1
   newline -#lineSkip-3
   Show ADDR
+  ShowAll _GPS
   ShowAll PHON
   Show PHON
 
@@ -85,5 +86,7 @@ endif
 optionalTag RIN,local(RIN)
 optionalTag REFN,local(REFN)
 optionalTag,REFN,local("Keyword(s)"), ,"TYPE Keyword(s)"
-optionalTag,_URL,local("Web Page"),"("&local("option click to edit")&")"
+optionalTag,_URL,local("Web Page"),""
+optionaltag _GPS,local("_GPS"),""
+
 

@@ -3,7 +3,16 @@ load TagBlock
 if #msg="Media"
   Gosub TagBlock,"OBJE","Media"
   hideexcess
+
+else if #msg="Notes"
+  Gosub TagBlock,"NOTE","Notes_Sours"
+  Gosub TagBlock,"SOUR","Notes_Sours"
+  Gosub TagBlock,"_LOG","Notes_Sours"
+  hideexcess
   
+else if #msg="Box"
+  use Event
+
 else
   newline
 
@@ -17,7 +26,7 @@ else
 
     cell static,local("Residence Place")
     set tabwidth 2 alignment center border square
-    set width #cellWidth$+5
+    set width #cellWidth$-16 !Not sure what but something must be different somewhere which means this needs changing from +5
     cellBackground "Table Cell Background"
 
     newline

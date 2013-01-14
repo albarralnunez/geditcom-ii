@@ -17,6 +17,8 @@ if #opts[0]>0
       optionalTag #opts[#i],#plabel&" ("&#pdist&")",local(#opts[#i]),"_DIST Family"
       #pdist=local("Owner")
       optionalTag #opts[#i],#plabel&" ("&#pdist&")",local(#opts[#i]),"_DIST Owner"
+    else if #opts[#i]="_URL"
+      optionalTag #opts[#i],local(#opts[#i]),""
     else
       optionalTag #opts[#i],local(#opts[#i]),local(#opts[#i])
     endif

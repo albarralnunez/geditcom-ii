@@ -16,13 +16,15 @@ cell GroupBox,local("Events")
   ClearTabs
   #lineSkip=2
   #cellSkip=2
-  #tableWidth=#rightMargin$-#rightSkip-#hpos$-#cellSkip-48  !changed from 21 to account for extra space needed for 2 icons SJGR
-  #nameWidth=(#tableWidth-2*#cellSkip-20)/2
-  if #nameWidth>180
+  #tableWidth=#rightMargin$-#rightSkip-#hpos$-21
+  #cellWidth=(#tableWidth-3*#cellSkip-20)/3
+  #nameWidth=#cellWidth
+  if #cellWidth>180
     #nameWidth=180
+    #cellWidth=(3*#cellWidth-180)/2
   endif
-  SetTab #habs$+#nameWidth,#habs$+#nameWidth+20,#habs$+#nameWidth+222,#habs$+#tableWidth
-  #first="yes"
+  SetTab #habs$+#nameWidth,#habs$+#nameWidth+20,#habs$+#nameWidth+20+#habs$+.8*#cellWidth,#habs$+#tableWidth-25,#habs$+#tableWidth
+ #first="yes"
 
   #tstart=#vpos$
   ShowAll FAMEvents
@@ -63,7 +65,13 @@ cell GroupBox,local("Events")
   help local("Click to paste previously copied event to this record")
   sizetofit 10
 
-
+  hskip 3
+  cell LinkButton local("Map")
+  set border shadowlesssquare
+  set ScriptLink "Maps/Event Places for Window Records" ScriptType "system"
+  help local("Click to map the events for this record")
+  sizetofit 10
+  
 EndGroup
 GoSub ResetTabs,0
 

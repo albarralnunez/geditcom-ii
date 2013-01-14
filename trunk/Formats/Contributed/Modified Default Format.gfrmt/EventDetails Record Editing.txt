@@ -46,13 +46,16 @@ set Width -1 AppendedExpression view
 
 if #eventTag="BIRT"
   Show ADDR
+  ShowAll _GPS
   ShowAll TYPE
   ShowAll AGNC
 else if #eventTag="DEAT"
   Show ADDR
+  ShowAll _GPS
   Show AGE  Show CAUS
   ShowAll TYPE  ShowAll AGNCelse  if @rec=INDI    Show AGE  endif
-  Show TYPE  ShowAll TYPE  Show ADDR  ShowAll CAUS  ShowAll AGNCendif
+  Show TYPE  ShowAll TYPE  Show ADDR
+  ShowAll _GPS  ShowAll CAUS  ShowAll AGNCendif
 if @rec=FAM
   ShowAll AGE  ShowAll HUSB  ShowAll WIFEendif
 
@@ -110,6 +113,7 @@ if @rec=FAM
     optionaltag WIFE,local("WIFE's Age"),"","AGE age"
   endif
 endif
+optionaltag _GPS,local("_GPS"),""
 
 resizewindow yes
 

@@ -3,29 +3,35 @@
 
 load TagBlock,ResetTabs,ListBlock,References,AttachData,INDIPanes
 
+
 sub TableTabs,#check
   newline
   ClearTabs
   #lineSkip=2
   #cellSkip=2
-  #tableWidth=#rightMargin$-#rightSkip-#hpos$-#cellSkip-48  !changed from 21 to account for extra space needed for 2 icons SJGR
-  #nameWidth=(#tableWidth-2*#cellSkip-20)/2
-  if #nameWidth>180
+  #tableWidth=#rightMargin$-#rightSkip-#hpos$-21
+  #cellWidth=(#tableWidth-3*#cellSkip-20)/3
+  #nameWidth=#cellWidth
+  if #cellWidth>180
     #nameWidth=180
+    #cellWidth=(3*#cellWidth-180)/2
   endif
   if #check=1
-    !Tabs Changed to account for place detail in main window
+  	!Tabs Changed to account for place detail in main window
     !SetTab #habs$+#nameWidth,#habs$+#nameWidth+20,#habs$+#tableWidth
-    SetTab #habs$+#nameWidth,#habs$+#nameWidth+20,#habs$+#nameWidth+222,#habs$+#tableWidth
+    SetTab #habs$+#nameWidth,#habs$+#nameWidth+20,#habs$+#nameWidth+20+#habs$+.8*#cellWidth,#habs$+#tableWidth-25,#habs$+#tableWidth
   else if #check=0
-    SetTab #habs$+#nameWidth+20,(#habs$+#tableWidth)/1.7,#habs$+#tableWidth
-   else if #check=3 !for RESI tags
-    SetTab #habs$+#nameWidth+20,#habs$+#tableWidth
+    !SetTab #habs$+#nameWidth+20,(#habs$+#tableWidth)/1.7,#habs$+#tableWidth-25,#habs$+#tableWidth+25
+    SetTab #habs$+#nameWidth+20,#habs$+#nameWidth+20+#habs$+.8*#cellWidth,#habs$+#tableWidth-25,#habs$+#tableWidth
+  else if #check=3 !for RESI tags
+    SetTab #habs$+#nameWidth+20,#habs$+#tableWidth-25
   else
-    SetTab #habs$+#nameWidth+20,#habs$+#tableWidth-22,#habs$+#tableWidth
+    SetTab #habs$+#nameWidth+20,#habs$+#tableWidth-25,#habs$+#tableWidth
   endif
   #first="yes"
 endsub
+
+
 
 ! *************** ENTRY PANE ***************
 
@@ -33,10 +39,10 @@ GoSub ResetTabs,0
 GoSub INDIPanes,"All"
 
 ! --------- Birth and Death -----------
-show BIRT details
-showAll BIRT details
-show DEAT details
-showAll DEAT details
+show BIRT box
+showAll BIRT box
+show DEAT box
+showAll DEAT box
 
 ! --------- Parent links -----------
 #famLabelEnd=120
@@ -60,49 +66,63 @@ EndGroup
 
 ! --------- Events and attributes --------------
 cell GroupBox,local("Events and Attributes")
-width -1
+  width -1
 
-gosub TableTabs,1
-!hide BIRT,DEATShowAll INDIEvents
-ShowAll INDIOrdinances
+  newline -1
+  #tstart=#vpos$
+  gosub TableTabs,1
+  !hide BIRT,DEAT  ShowAll INDIEvents
+  ShowAll INDIOrdinances
 
-gosub TableTabs,3
-ShowAll RESI
+  gosub TableTabs,3
+  ShowAll RESI
 
-gosub TableTabs,0
-ShowAll INDIAttributes
+  gosub TableTabs,0
+  ShowAll INDIAttributes
 
-#lineSkip=#lineSkip$
-#cellSkip=#cellSkip$
+  #lineSkip=#lineSkip$
+  #cellSkip=#cellSkip$
 
-newline 3  !Changed from -3 to account for new Copy/Paste buttons SJGR
-cell LinkButton
-image "plus"
-set width 24 border no
-MenuLink "Attach Event/Attribute"
-help local("Click to add an event")
+  newline
+  if #vpos$=#tstart
+    newline -3
+  endif
+  cell LinkButton
+  image "plus"
+  set width 24 border no
+  MenuLink "Attach Event/Attribute"
+  help local("Click to add an event")
 
-cell LinkButton "-"
-image "minus"
-set width 24 border no
-MenuLink "Detach Event/Attribute/Link"
-help local("Click to remove an event")
+  cell LinkButton "-"
+  image "minus"
+  set width 24 border no
+  MenuLink "Detach Event/Attribute/Link"
+  help local("Click to remove an event")
 
-!Add two buttons to Copy/Paste SJGR
-hskip 2
+  hskip 10
+  cell LinkButton local("Copy Event")
+  set border shadowlesssquare
+  MenuLink "Copy Event"
+  help local("Click to copy event with text selection bar")
+  sizetofit 10
+
+
+hskip 3
 cell linkbutton
-set border shadowlesssquare height 18 Width 70
-text "Copy Event"
-ScriptType Format
-ScriptLink "CopyEvent"
-
-hskip 2
-cell linkbutton
-set border shadowlesssquare height 18 Width 70
+set border shadowlesssquare
 text "Paste Event"
 ScriptType Format
 ScriptLink "PasteEvent"
+sizetofit 10
 
+
+  hskip 3
+  cell LinkButton local("Map")
+  set border shadowlesssquare
+  set ScriptLink "Maps/Event Places for Window Records" ScriptType "system"
+  help local("Click to map the events for this record")
+  sizetofit 10
+  
 EndGroup
 GoSub ResetTabs,0
 

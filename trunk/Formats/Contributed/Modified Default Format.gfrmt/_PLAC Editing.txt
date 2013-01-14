@@ -1,15 +1,0 @@
-cell GroupBox,local("Place Details")
-width -1
-NewLine -3
-  NewLine
-  cell static,local(NAME)&":"
-  set tabwidth 1 alignment right
-  ! edit field with value  cell editvalue
-  set width -1 Offset -2
-  help local("Enter place for this event")
-
-  Show FORM
-  Show _GPS
-  Show DATE
-  Show LANG
-EndGroup

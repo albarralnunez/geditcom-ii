@@ -1,3 +1,5 @@
+!SJGR Changed to better count multimedia objects, notes and sources
+
 sub FAMPanes,#thisPane
   ! --------- Pane bar, husband, and wife in box -----------
   #oldWidth=#rightMargin$
@@ -11,14 +13,103 @@ sub FAMPanes,#thisPane
   width -1
 
   moveto 1,1
+  
+#objs=""
+#numobjs=0
+#numnotes=0
+#numsours=0
+
+RepeatWith "#obje" from @OBJE 
+    if offset(#obje&\1\&#objs)=0
+    #objs=#objs&#obje
+    #numobjs=#numobjs+1
+    endif
+EndRepeat
+#numnotes=#numnotes+@count.NOTE
+#numsours=#numsours+@count.SOUR
+
+#num=@count.ANULRepeat "#i",1,#num  RepeatWith "#obje" from @ANUL.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @ANUL.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @ANUL.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.CENSRepeat "#i",1,#num  RepeatWith "#obje" from @CENS.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @CENS.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @CENS.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.DIVRepeat "#i",1,#num  RepeatWith "#obje" from @DIV.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @DIV.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @DIV.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.DIVFRepeat "#i",1,#num  RepeatWith "#obje" from @DIVF.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @DIVF.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @DIVF.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.ENGARepeat "#i",1,#num  RepeatWith "#obje" from @ENGA.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @ENGA.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @ENGA.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.EVENRepeat "#i",1,#num  RepeatWith "#obje" from @EVEN.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @EVEN.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @EVEN.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.MARBRepeat "#i",1,#num  RepeatWith "#obje" from @MARB.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @MARB.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @MARB.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.MARCRepeat "#i",1,#num  RepeatWith "#obje" from @MARC.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @MARC.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @MARC.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.MARLRepeat "#i",1,#num  RepeatWith "#obje" from @MARL.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @MARL.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @MARL.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.MARRRepeat "#i",1,#num  RepeatWith "#obje" from @MARR.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @MARR.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @MARR.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.MARSRepeat "#i",1,#num  RepeatWith "#obje" from @MARS.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @MARS.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @MARS.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.SLGSRepeat "#i",1,#num  RepeatWith "#obje" from @SLGS.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @SLGS.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @SLGS.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat
+
   cell PaneBar
   AddPane local("Family"),""
   #nevt=@count.FAMEvents+@count.FAMOrdinances
   AddPane local("Events")&" ("&#nevt&")","Events"
   AddPane local("Group"),"Group"
-  AddPane local("Multimedia")&" ("&@countAll.OBJE&")","Media"
-  #plab=local("NOTE")&" ("&@count.NOTE&") "&local("and")
-  #plab&=" "&local("Sources")&" ("&@count.SOUR&")"
+  AddPane local("Multimedia")&" ("&#numobjs&")","Media"
+  #plab=local("NOTE")&" ("&#numnotes&") "&local("and")
+  #plab&=" "&local("Sources")&" ("&#numsours&")"
   AddPane #plab,"Notes"
   AddPane local("Other"),"Other"
   AddPane local("All"),"All"

@@ -3,6 +3,8 @@
 !just a link, to be 450 to avoid very long notes extending way off the bottom of the screen. Other
 !values may work better on monitors of different resolutions but this works fine on a screen with 900
 !pixels vertical resolution.
+! and bits to display event/attribute sources in individual window on Notes and Sources tab
+
 
 ! special case for header
 if @rec=HEAD
@@ -20,7 +22,7 @@ else
       !sizetofit
       !set alignment right tabwidth 1
       newline
-	  cell label,"• "
+      cell label,"• "
 	  SizeToFit
 cell LinkButton
       TextExpression @contents.rec
@@ -61,7 +63,32 @@ endif
       set alignment right tabwidth 1
     else
       newline
-	  cell label,"• "
+      if #msg="Notes_Sours"   !SJGR extra lines to add event/attribute type
+         #label=@parent.tag
+        if @parent.tag="EVEN"
+          if @parent.TYPE<>""
+            #label=@parent.TYPE
+          endif
+        endif
+        cell label,local(#label)&": "&@parent.DATE.user !SJGR
+        set alignment right tabwidth 2
+        
+        cell label,"  •" !SJGR
+        	sizetofit
+        	hskip 3    
+	    cell LinkButton
+      set border no
+      set image "note"
+      RecordLink @contents
+      Target child
+      !SizeToFit
+      !LinkAll all
+      !help local("Click for source details specific to this record")
+      
+        else !SJGR
+	    cell label,"• "
+
+	    endif
 	  SizeToFit
 	  set
     endif
@@ -83,7 +110,9 @@ endif
       !cell ExpressionField,@contents.CONC
       !set width -1 height 50
       !sizetofit 3
-
+	if #msg="Notes_Sours"
+	newline -3
+	endif
     ! embedded notes
     else
       cell static,local("(Embedded notes - reopen file to fix)")

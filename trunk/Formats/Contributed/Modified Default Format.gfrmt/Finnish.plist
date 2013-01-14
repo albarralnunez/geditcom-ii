@@ -81,7 +81,7 @@
 	<key>Adopted by</key>
 	<string>Adoptoija</string>
 	<key>Advanced</key>
-	<string>Advanced</string>
+	<string>Edistynyt</string>
 	<key>All</key>
 	<string>Kaikki</string>
 	<key>All Citing Records</key>
@@ -213,7 +213,7 @@
 	<key>CONT</key>
 	<string>Jatkoa</string>
 	<key>COPR</key>
-	<string>Copyright</string>
+	<string>Tekijänoikeus</string>
 	<key>CORP</key>
 	<string>Yhtiö</string>
 	<key>CREM</key>
@@ -260,10 +260,6 @@
 	<string>Ympärileikkaus</string>
 	<key>Cited by</key>
 	<string>Lainaaja</string>
-	<key>Click for death details</key>
-	<string>Kosketa kuolematietoja varten</string>
-	<key>Click for marriage details</key>
-	<string>Kosketus avaa vihkimistiedot</string>
 	<key>Click for name details</key>
 	<string>Kosketuksella nimitietoja</string>
 	<key>Click for source details specific to this record</key>
@@ -334,8 +330,6 @@
 	<string>Kosketus valitsee kiinnostuksen tyypin</string>
 	<key>Click to enter type of source</key>
 	<string>Kosketus valitsee lähteen tyypin</string>
-	<key>Click to link as child to a newly created family</key>
-	<string>Kosketus liittää lapseksi uuteen perheeseen</string>
 	<key>Click to link as husband of a newly created family</key>
 	<string>Kosketus liittää mieheksi vastaluotuun perheeseen</string>
 	<key>Click to link as wife of a newly created family</key>
@@ -344,10 +338,8 @@
 	<string>Kosketus liittää lähteen säilytystietueeseen</string>
 	<key>Click to link this record to a multimedia object.</key>
 	<string>Kosketus liittää tämän tietueen multimediakohteeseen.</string>
-	<key>Click to link to an existing family record</key>
-	<string>Kosketus liittää johonkin perhetietueeseen</string>
 	<key>Click to link to family record</key>
-	<string>Kosketus liittää perhetietueeseen</string>
+	<string>Klikkaa linkittää olemassa olevan tai uuden perheen ennätys</string>
 	<key>Click to open family record #</key>
 	<string>Kosketus avaa perhetietueen #</string>
 	<key>Click to open home individual record</key>
@@ -374,6 +366,8 @@
 	<string>Kosketus poistaa paikkatiedon</string>
 	<key>Click to remove this point of interest</key>
 	<string>Kosketus poistaa tämän kiinnostuksen</string>
+	<key>Click to reset map to origin position</key>
+	<string>Kosketus palauttaa kartan alkutilaan</string>
 	<key>Click to see all citing records</key>
 	<string>Kosketus näyttää kaikki siteeraavat tietueet</string>
 	<key>Click to see all individual or family records that refer to this place</key>
@@ -428,8 +422,6 @@
 	<string>Kosketus näyttää vaimon tietueen</string>
 	<key>Click to view alias record</key>
 	<string>Kosketus näyttää alias tietueen</string>
-	<key>Click to view and edit birth details</key>
-	<string>Kosketus näyttää ja antaa muokata syntymätietoja</string>
 	<key>Click to view and edit notes</key>
 	<string>Kosketus näyttää ja sallii muokata huomautuksia</string>
 	<key>Click to view and edit place record</key>
@@ -808,8 +800,6 @@
 	<string>Liitä aviomieheksi uuteen perheeseen</string>
 	<key>Link as Wife in a new family</key>
 	<string>Liitä vaimoksi uuteen perheeseen</string>
-	<key>Link as child to new family</key>
-	<string>Liitä lapseksi uuteen perheeseen</string>
 	<key>Link to Repository</key>
 	<string>Linkki säilytyspaikkaan</string>
 	<key>Linked Records</key>
@@ -905,7 +895,7 @@
 	<key>NOTE</key>
 	<string>Huomautuksia</string>
 	<key>NOTE Record</key>
-	<string>Notes Position</string>
+	<string>Huomautuksia</string>
 	<key>NPFX</key>
 	<string>Etuliite</string>
 	<key>NSFX</key>
@@ -942,6 +932,12 @@
 	<string>Papiksi vihkiminen</string>
 	<key>ORDN details</key>
 	<string>Papiksivihkimystietoja</string>
+	<key>Occurred</key>
+	<string>Tapahtui</string>
+	<key>Omit all</key>
+	<string>Poista kaikki</string>
+	<key>Open previously typeset book in Preview (if available)</key>
+	<string>Avaa aikaisemmin ladottu kirja Esikatselussa (jos käytettävissä)</string>
 	<key>Other</key>
 	<string>Muut</string>
 	<key>Other Spouses/Children</key>
@@ -1139,7 +1135,7 @@
 	<key>Spouse</key>
 	<string>Puoliso</string>
 	<key>Spouses</key>
-	<string>Puolisot</string>
+	<string>Puolisoita</string>
 	<key>Static Text</key>
 	<string>Kiinteä teksti</string>
 	<key>Storage</key>
@@ -1194,6 +1190,8 @@
 	<string>Yläreunus</string>
 	<key>Type of Data in the Source</key>
 	<string>Lähteen tietotyyppi</string>
+	<key>URL</key>
+	<string>URL</string>
 	<key>Unknown</key>
 	<string>Tuntematon</string>
 	<key>Unknown spouse</key>

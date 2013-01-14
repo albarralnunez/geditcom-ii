@@ -1,42 +1,5 @@
 if @this._UMR=""
-if #msg="details"
-  newline
-  HMoveTo #rightMargin$-#rightSkip-106
-  #vloc=#vpos$
-
-  cell CheckBoxEdit,local("Married")
-  width 85
-  Offset -2
-  help local("Check if married but nothing else known")
-
-  VMoveTo #vloc
-
-  Show DATE "DEAT"
-  #hloc=#hpos$+85
-  #vloc=#vpos$
-  Show PLAC @tag
-  newline
-  #endloc=#vpos$
-
-  ! rest in a child window
-  MoveTo #hloc,#vloc
-  cell StructuresLink,BirthDeathDetails,MARR
-  set border no
-  if more
-    set image "details_here"
-  else
-    set image "details"
-  endif
-  SizeToFit
-  LinkAll all
-  help local("Click for marriage details")
-
-  VMoveTo #endloc
-
-else
   use Event
-endif
-
 else
   hideexcess
 endif

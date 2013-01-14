@@ -1,26 +1,0 @@
-load ListBlock,References
-
-
-#tagKey="PLAC details"
-Title @this.altview&" - "&local(#tagKey)
-
-SetTab 90
-cell GroupBox,local("Place Hierarchy and Location")
-width -1
-Show FORM
-Show _GPS
-EndGroup
-! --------- NOTEs, SOURs -----------
-gosub References,"_LOG"
-
-! --------- Attach links
-newlinecell GroupBox,local("Attach")
-width -1
-newline -#lineSkip-3
-#lineSkip=0
-Show NOTE
-Show SOUR
-Show _LOG
-EndGroup
-#lineSkip=#lineSkip$
-resizeWindow yes

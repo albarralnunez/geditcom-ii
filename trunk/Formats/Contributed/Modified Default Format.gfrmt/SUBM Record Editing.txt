@@ -28,6 +28,7 @@ newlinecell GroupBox,local("Submitter Address")
 width -1
 newline -#lineSkip-3
 Show ADDR
+ShowAll _GPS
 Show PHON
 ShowAll PHON
 Show _EMAIL
@@ -64,5 +65,7 @@ optionaltag _EMAIL,local(_EMAIL),local(_EMAIL)
 optionalTag LANG,local(LANG),"English"
 optionalTag RFN,local(RFN),local(RFN)
 optionalTag REFN,local(REFN),local(REFN)
+optionaltag _GPS,local("_GPS"),""
+
 
 

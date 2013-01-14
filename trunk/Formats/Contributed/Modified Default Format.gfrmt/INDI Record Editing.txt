@@ -7,10 +7,10 @@ GoSub INDIPanes,""
 GoSub ResetTabs,0
 
 ! --------- Birth and Death -----------
-show BIRT details
-showAll BIRT details
-show DEAT details
-showAll DEAT details
+show BIRT box
+showAll BIRT box
+show DEAT box
+showAll DEAT box
 
 ! --------- Parent links -----------
 #famLabelEnd=120

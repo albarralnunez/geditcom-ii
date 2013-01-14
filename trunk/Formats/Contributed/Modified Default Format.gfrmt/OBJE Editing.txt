@@ -2,9 +2,18 @@
 
 if tagexists is true
 
-if offset(@contents._FILE&\1\&#objdone)=0  !SJGR
+#doobje="Y"
+
+if @rec="INDI"
+	 if offset(@contents._FILE&\1\&#objdone)=0  !SJGR
        #objdone=#objdone&@contents._FILE  !SJGR
-      	 
+       #doobje="Y"
+     else
+       #doobje="N"
+     endif
+ endif
+ 
+ if #doobje="Y"   	 
   ! link to OBJE record
   if @contents is validlink
     #padding=3

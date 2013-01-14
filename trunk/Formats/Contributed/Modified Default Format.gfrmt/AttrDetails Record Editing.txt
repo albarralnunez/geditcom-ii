@@ -42,6 +42,7 @@ set width -1 AppendedExpression view
 
 endif
 ShowAll TYPEShow ADDR
+ShowAll _GPS
 ShowAll PHONShow AGEShowAll CAUSShowAll AGNC
 EndGroup
 
@@ -67,6 +68,7 @@ optionaltag AGNC,local("AGNC"),local("AGNC")
 optionaltag CAUS,local("CAUS"),local("CAUS")
 optionaltag TYPE,local("TYPE"),local("TYPE")
 optionaltag PHON,local("PHON"),local("PHON")
+optionaltag _GPS,local("_GPS"),""
 
 resizeWindow yes
 

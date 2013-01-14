@@ -10,52 +10,65 @@ GoSub ResetTabs,0
 GoSub FAMPanes,"All"
 
 ! --------- Marriage --------------
-newline
-cell GroupBox local("MARR")
-width -1
-
 if @this._UMR=""
-  Show MARR details
-  ShowAll MARR details
+  Show MARR box
+  ShowAll MARR box
 else
   newline
+  cell GroupBox local("MARR")
+    width -1
 
-  cell static,local("Unmarried Couple")
-  SizeToFit
+    cell static,local("Unmarried Couple")
+    SizeToFit
 
-  hskip 10
-  cell LinkButton,local("Change")
-  set border shadowlesssquare
-  MenuLink "Attach Married Status"
-  Help local("Click to change to married couple")
+    hskip 10
+    cell LinkButton,local("Change")
+    set border shadowlesssquare offset -2
+    MenuLink "Attach Married Status"
+    Help local("Click to change to married couple")
 
-  ShowAll MARR details
+    ShowAll MARR box
+  EndGroup
 endif
 
-EndGroup
+! To show existing family events but none if no event,
+! add one line for each like:
+!ShowAll ENGA
+
+! To show existing family events and blank fields if no event,
+! add two lines for each like:
+!Show ENGA box
+!ShowAll ENGA box
 
 ! --------- Children --------------
 cell GroupBox,local("Children")
-width -1
+  width -1
 
-newline
-ClearTabs
-#lineSkip=2
-#cellSkip=2
-#tableWidth=#rightMargin$-#rightSkip-#hpos$
-!SetTab #habs$,#habs$+0.4*#tableWidth,#habs$+0.55*#tableWidth
-!SetTab #habs$+0.85*#tableWidth,#habs$+#tableWidth
+  newline
+  ClearTabs
+  #lineSkip=2
+  #cellSkip=2
+  #tableWidth=#rightMargin$-#rightSkip-#hpos$
+  ! .3 - .11 - .24 - .24 - .11
+  #t1=0.32
+  #t2=#t1+.12
+  #t3=#t2+.16
+  #t4=#t3+.16
+  #t5=#t4+.16
+  ! (0) Children (#t1) Sex (3t2) BD (#t3) DD (#t4) Links (1.0)
+  SetTab #habs$,#habs$+#t1*#tableWidth,#habs$+#t2*#tableWidth
+  SetTab #habs$+#t3*#tableWidth,#habs$+#t4*#tableWidth,#habs$+#t5*#tableWidth,#habs$+#tableWidth
 
-!Following two lines to replace two above to put baptism and death dates in family record  SJGR
-SetTab #habs$,#habs$+0.33*#tableWidth,#habs$+0.45*#tableWidth
-SetTab #habs$+0.6*#tableWidth,#habs$+0.75*#tableWidth,#habs$+0.9*#tableWidth,#habs$+#tableWidth
-
-#chilNum=0ShowAll CHIL
+#chilNum=0
+#tstart=#vpos$ShowAll CHIL
 
 #lineSkip=#lineSkip$
 #cellSkip=#cellSkip$
 
-newline -3
+newline
+ if #vpos$=#tstart
+   newline -3
+ endif
 cell LinkButton
 image "plus"
 set width 24 border no
@@ -80,55 +93,67 @@ GoSub ResetTabs,0
 
 ! --------- Events --------------
 cell GroupBox,local("Events")
-width -1
+  width -1
 
-newline
-ClearTabs
-#lineSkip=2
-#cellSkip=2
-#tableWidth=#rightMargin$-#rightSkip-#hpos$-#cellSkip-48  !changed from 21 to account for extra space needed for 2 icons SJGR
-#nameWidth=(#tableWidth-2*#cellSkip-20)/2
-if #nameWidth>180
-  #nameWidth=180
-endif
-  !Tabs Changed to account for place detail in main window SJGR
-  !SetTab #habs$+#nameWidth,#habs$+#nameWidth+20,#habs$+#tableWidth
-   SetTab #habs$+#nameWidth,#habs$+#nameWidth+20,#habs$+#nameWidth+222,#habs$+#tableWidth
-#first="yes"
+  newline
+  ClearTabs
+  #lineSkip=2
+  #cellSkip=2
+  #tableWidth=#rightMargin$-#rightSkip-#hpos$-21
+  #cellWidth=(#tableWidth-3*#cellSkip-20)/3
+  #nameWidth=#cellWidth
+  if #cellWidth>180
+    #nameWidth=180
+    #cellWidth=(3*#cellWidth-180)/2
+  endif
+  SetTab #habs$+#nameWidth,#habs$+#nameWidth+20,#habs$+#nameWidth+20+#habs$+.8*#cellWidth,#habs$+#tableWidth-25,#habs$+#tableWidth
+  #first="yes"
 
-hide MARRShowAll FAMEvents
-ShowAll FAMOrdinances
+  #tstart=#vpos$
+  hide MARR  ShowAll FAMEvents
+  ShowAll FAMOrdinances
 
-#lineSkip=#lineSkip$
-#cellSkip=#cellSkip$
+  #lineSkip=#lineSkip$
+  #cellSkip=#cellSkip$
 
-newline 3  !Changed from -3 to account for new Copy/Paste buttons SJGR
-cell LinkButton
-image "plus"
-set width 24 border no
-MenuLink "Attach Event/Attribute"
-help local("Click to add an event")
+  newline
+  if #vpos$=#tstart
+    newline -3
+  endif
+  cell LinkButton
+  image "plus"
+  set width 24 border no
+  MenuLink "Attach Event/Attribute"
+  help local("Click to add an event")
 
-cell LinkButton "-"
-image "minus"
-set width 24 border no
-MenuLink "Detach Event/Attribute/Link"
-help local("Click to remove an event")
+  cell LinkButton "-"
+  image "minus"
+  set width 24 border no
+  MenuLink "Detach Event/Attribute/Link"
+  help local("Click to remove an event")
 
-!Add two buttons to Copy/Paste SJGR
-hskip 2
+  hskip 10
+  cell LinkButton local("Copy Event")
+  set border shadowlesssquare
+  MenuLink "Copy Event"
+  help local("Click to copy event with text selection bar")
+  sizetofit 10
+
+!Add different button to Paste SJGR
+hskip 3
 cell linkbutton
-set border shadowlesssquare height 18 Width 70
-text "Copy Event"
-ScriptType Format
-ScriptLink "CopyEvent"
-
-hskip 2
-cell linkbutton
-set border shadowlesssquare height 18 Width 70
+set border shadowlesssquare
 text "Paste Event"
 ScriptType Format
 ScriptLink "PasteEvent"
+sizetofit 10
+
+  hskip 3
+  cell LinkButton local("Map")
+  set border shadowlesssquare
+  set ScriptLink "Maps/Event Places for Window Records" ScriptType "system"
+  help local("Click to map the events for this record")
+  sizetofit 10
 
 EndGroup
 GoSub ResetTabs,0

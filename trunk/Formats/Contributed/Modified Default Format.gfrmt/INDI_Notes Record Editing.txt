@@ -1,3 +1,5 @@
+!SJGR Event & Attribute Notes and Sources added
+
 load ListBlock,References,ResetTabs,INDIPanes
 
 ! -------------- Start Template -----------------
@@ -20,5 +22,20 @@ hskip 2
 
 EndGroup
 #lineSkip=#lineSkip$
+
+! --------- Other Notes & Sources
+cell GroupBox,local("Event and Attribute Notes & Sources")
+  width -1
+  newline
+  #startVH=#vpos$+#hpos$
+  ShowAll INDIEvents "Notes"
+  ShowAll INDIOrdinances "Notes"
+  ShowAll RESI "Notes"
+  ShowAll INDIAttributes "Notes"
+  newline
+  if #startVH=#vpos$+#hpos$
+    cell static,local("None")
+  endif
+EndGroup
 
 hideexcess

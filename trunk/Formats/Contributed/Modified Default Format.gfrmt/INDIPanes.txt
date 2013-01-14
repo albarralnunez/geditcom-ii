@@ -1,3 +1,5 @@
+!SJGR Changed to better count multimedia objects, notes and sources
+
 sub INDIPanes,#thisPane
 	! --------- Name -----------
 	#oldWidth=#rightMargin$
@@ -11,15 +13,292 @@ sub INDIPanes,#thisPane
 	width -1
 
 	moveto 1,1
+	
+
+#objs=""
+#numobjs=0
+#numnotes=0
+#numsours=0
+
+RepeatWith "#obje" from @OBJE 
+    if offset(#obje&\1\&#objs)=0
+    #objs=#objs&#obje
+    #numobjs=#numobjs+1
+    endif
+EndRepeat
+#numnotes=#numnotes+@count.NOTE
+#numsours=#numsours+@count.SOUR
+
+#num=@count.ADOPRepeat "#i",1,#num  RepeatWith "#obje" from @ADOP.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @ADOP.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @ADOP.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.BAPLRepeat "#i",1,#num  RepeatWith "#obje" from @BAPL.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @BAPL.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @BAPL.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.BAPMRepeat "#i",1,#num  RepeatWith "#obje" from @BAPM.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @BAPM.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @BAPM.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.BARMRepeat "#i",1,#num  RepeatWith "#obje" from @BARM.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @BARM.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @BARM.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.BASMRepeat "#i",1,#num  RepeatWith "#obje" from @BASM.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @BASM.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @BASM.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.BIRTRepeat "#i",1,#num  RepeatWith "#obje" from @BIRT.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @BIRT.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @BIRT.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.BLESRepeat "#i",1,#num  RepeatWith "#obje" from @BLES.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @BLES.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @BLES.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.BURIRepeat "#i",1,#num  RepeatWith "#obje" from @BURI.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @BURI.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @BURI.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.CASTRepeat "#i",1,#num  RepeatWith "#obje" from @CAST.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @CAST.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @CAST.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.CENSRepeat "#i",1,#num  RepeatWith "#obje" from @CENS.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @CENS.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @CENS.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.CHRRepeat "#i",1,#num  RepeatWith "#obje" from @CHR.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @CHR.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @CHR.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.CHRARepeat "#i",1,#num  RepeatWith "#obje" from @CHRA.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @CHRA.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @CHRA.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.CONFRepeat "#i",1,#num  RepeatWith "#obje" from @CONF.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @CONF.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @CONF.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.CONLRepeat "#i",1,#num  RepeatWith "#obje" from @CONL.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @CONL.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @CONL.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.CREMRepeat "#i",1,#num  RepeatWith "#obje" from @CREM.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @CREM.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @CREM.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat
+#num=@count.DEATRepeat "#i",1,#num  RepeatWith "#obje" from @DEAT.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif   EndRepeat
+   RepeatWith "#note" from @DEAT.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @DEAT.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeat
+EndRepeat#num=@count.DSCRRepeat "#i",1,#num  RepeatWith "#obje" from @DSCR.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @DSCR.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @DSCR.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.EDUCRepeat "#i",1,#num  RepeatWith "#obje" from @EDUC.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @EDUC.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @EDUC.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.EMIGRepeat "#i",1,#num  RepeatWith "#obje" from @EMIG.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @EMIG.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @EMIG.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.ENDLRepeat "#i",1,#num  RepeatWith "#obje" from @ENDL.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @ENDL.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @ENDL.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.EVENRepeat "#i",1,#num  RepeatWith "#obje" from @EVEN.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @EVEN.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @EVEN.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.FCOMRepeat "#i",1,#num  RepeatWith "#obje" from @FCOM.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @FCOM.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @FCOM.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.GRADRepeat "#i",1,#num  RepeatWith "#obje" from @GRAD.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @GRAD.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @GRAD.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.IDNORepeat "#i",1,#num  RepeatWith "#obje" from @IDNO.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @IDNO.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @IDNO.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.IMMIRepeat "#i",1,#num  RepeatWith "#obje" from @IMMI.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @IMMI.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @IMMI.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.NAMERepeat "#i",1,#num  RepeatWith "#obje" from @NAME.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @NAME.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @NAME.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.NATIRepeat "#i",1,#num  RepeatWith "#obje" from @NATI.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @NATI.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @NATI.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.NATURepeat "#i",1,#num  RepeatWith "#obje" from @NATU.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @NATU.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @NATU.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.NCHIRepeat "#i",1,#num  RepeatWith "#obje" from @NCHI.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @NCHI.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @NCHI.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.NMRRepeat "#i",1,#num  RepeatWith "#obje" from @NMR.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @NMR.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @NMR.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.OCCURepeat "#i",1,#num  RepeatWith "#obje" from @OCCU.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @OCCU.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @OCCU.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.ORDNRepeat "#i",1,#num  RepeatWith "#obje" from @ORDN.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @ORDN.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @ORDN.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.PROBRepeat "#i",1,#num  RepeatWith "#obje" from @PROB.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @PROB.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @PROB.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.PROPRepeat "#i",1,#num  RepeatWith "#obje" from @PROP.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @PROP.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @PROP.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.REFNRepeat "#i",1,#num  RepeatWith "#obje" from @REFN.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @REFN.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @REFN.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.RELIRepeat "#i",1,#num  RepeatWith "#obje" from @RELI.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @RELI.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @RELI.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.RESIRepeat "#i",1,#num  RepeatWith "#obje" from @RESI.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @RESI.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @RESI.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.RETIRepeat "#i",1,#num  RepeatWith "#obje" from @RETI.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @RETI.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @RETI.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.SLGCRepeat "#i",1,#num  RepeatWith "#obje" from @SLGC.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @SLGC.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @SLGC.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.SSNRepeat "#i",1,#num  RepeatWith "#obje" from @SSN.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @SSN.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @SSN.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.TITLRepeat "#i",1,#num  RepeatWith "#obje" from @TITL.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @TITL.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @TITL.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.WACRepeat "#i",1,#num  RepeatWith "#obje" from @WAC.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @WAC.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @WAC.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat#num=@count.WILLRepeat "#i",1,#num  RepeatWith "#obje" from @WILL.i.#i.OBJE        if offset(#obje&\1\&#objs)=0       #objs=#objs&#obje       #numobjs=#numobjs+1       endif    EndRepeat
+   RepeatWith "#note" from @WILL.i.#i.NOTE
+   #numnotes=#numnotes+1
+   EndRepeat
+   RepeatWith "#sour" from @WILL.i.#i.SOUR
+   #numsours=#numsours+1
+   EndRepeatEndRepeat
 
 	cell PaneBar
 	AddPane local("Individual"),""
 	#nevt=@count.INDIEvents+@count.INDIAttributes+@count.INDIOrdinances
 	AddPane local("Events")&" ("&#nevt&")","Events"
 	AddPane local("PEDI"),"Pedi"
-	AddPane local("Multimedia")&" ("&@countAll.OBJE&")","Media"
-	#plab=local("NOTE")&" ("&@count.NOTE&") "&local("and")
-	#plab&=" "&local("Sources")&" ("&@count.SOUR&")"
+	AddPane local("Multimedia")&" ("&#numobjs&")","Media"
+	#plab=local("NOTE")&" ("&#numnotes&") "&local("and")
+	#plab&=" "&local("Sources")&" ("&#numsours&")"
 	AddPane #plab,"Notes"
 	AddPane local("Other"),"Other"
     AddPane local("All"),"All"
