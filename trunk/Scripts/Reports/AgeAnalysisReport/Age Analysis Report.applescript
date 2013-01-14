@@ -24,6 +24,13 @@ set avgSpan to 0
 set bars to {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
 tell application "GEDitCOM II"
+	-- needs a document
+	activate
+	if number of documents is 0 then
+		user option title "The script '" & scriptName & Â
+			"' requires a document to be open" message "Please open a document and try again." buttons {"OK"}
+		return
+	end if
 	
 	set fractionStepSize to 0.01 -- progress reporting interval
 	set nextFraction to fractionStepSize -- progress reporting interval
