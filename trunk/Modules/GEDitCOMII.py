@@ -34,7 +34,7 @@
 # Load Apple's Scripting Bridge for Python
 from Foundation import *
 from ScriptingBridge import *
-import shlex, subprocess, os, random, math
+import shlex, subprocess, os, random, math, sys
 
 #----------------- ScriptOutput Class
 
@@ -547,11 +547,18 @@ class Attribute(Event) :
 #---------------------- Initialization
 
 # Verify acceptable version of GEDitCOM II is running and a document is open.
-# Return application object if script is done or None if checks faile
-def CheckVersionAndDocument(sName,vNeed,bNeed=1) :
+# Return application object if script is done or None if checks fail
+# Note that plug-ins can specify minimum version so verion check not needed here
+#    for any script put into a plug in (defaults version checks always succeed)s
+def CheckVersionAndDocument(sName,vNeed=0,bNeed=1) :
+    if len(sys.argv)>1 :
+        appID = sys.argv[1]
+    else :
+        appID = "com.geditcom.GEDitCOMII"
+    
     # get application object into module private global
     global _gedit,_scriptName
-    _gedit = SBApplication.applicationWithBundleIdentifier_("com.geditcom.GEDitCOMII")
+    _gedit = SBApplication.applicationWithBundleIdentifier_(appID)
     _scriptName = sName
     
     vnum = _gedit.versionNumber()
