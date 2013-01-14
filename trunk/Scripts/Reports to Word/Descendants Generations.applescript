@@ -11,22 +11,34 @@
 	"Reports" section or in the "Reports to Pages" section
 	   
 	Customization
-	1. To include extra events in the report, add two items to extraEvents property
-	    below. The first item should be the GEDCOM tag for the event and the
-	    second should be an event verb. The verb should be choosen to make a phrase
-	    like "He was buried 1943 in New Hampshire" where "was buried" is the
-	    entered verb. (example: add {"BURI","was buried"} to add burial events).
+	1. To include extra events in the report, add three items to extraEvents property
+	    below. The first item should be the GEDCOM tag for the event, the
+	    second should be an event verb, third item true or false to include address).
+           The verb should be choosen to make a phrase like:
+	       "He was buried 1943 in New Hampshire"
+	    where "was buried" is the entered verb. If address is true it will append
+          "at address" after the place.	    
+	2. For each direct descendant in this report, it lists all their spouse name along
+	   with marriage date and place. You can customize to include more details on each
+	   spouse as follows:
+	   a. Find the comment "-- if desired, collect details on the spouse in spouseDes"
+	   b. Using any scripting methods to load report details for the spouse
+	   c. The simplest is to uncomment the line beginning in "set spouseDes to description"
+	      adn select output options for the "description" scripting command.
+	   d. You are not limite to the "description" method. You can use any scripting
 *)
 
 -- script name
 property scriptName : "Descendants Generations Report"
 property extraEvents : {}
+-- Example: include burial events with address
+--property extraEvents : {"BURI", "was buried", true}
 
 -- set these strings for preferred style or a new language
 global MaxGen
 
 -- if no document is open then quit
-if CheckAvailable(scriptName, 1.5) is false then return
+if CheckAvailable(scriptName, 1.75) is false then return
 
 -- get selected record
 set indvRef to SelectedIndividual()
@@ -258,13 +270,17 @@ on WriteToReport(indvRef, DList)
 							set gtag to item i of extraEvents
 							try
 								set evnt to structure named gtag
-								set etext to my eventDate(item (i + 1) of extraEvents, event date user of evnt, Â
-									event place of evnt)
+								if item (i + 2) of extraEvents is true then
+									set ePlace to event place plus address of evnt
+								else
+									set ePlace to event place of evnt
+								end if
+								set etext to my eventDate(item (i + 1) of extraEvents, event date user of evnt, ePlace)
 								if etext is not "" then
 									my TextToWord(pronoun & etext & ". ", "", "")
 								end if
 							end try
-							set i to i + 2
+							set i to i + 3
 						end repeat
 					else
 						my TextToWord(alternate name & " (see #" & linkNum & ")", "", "")
@@ -326,12 +342,16 @@ on WriteToReport(indvRef, DList)
 				set fam to item 3 of dIndi
 				
 				-- spouse's name
+				-- optionally collect spouse description in spouseDes
+				set spouseDes to ""
 				if spouse is "" then
 					my TextToWord(HeShe & " married an unknown spouse", "", "")
 				else
 					tell application "GEDitCOM II"
 						tell spouse
 							my TextToWord(HeShe & " married " & alternate name, "", "")
+							-- if desired, collect details on the spouse in spouseDes
+							--set spouseDes to description output options {"PRON", "BD", "BP", "DD", "DP"}
 						end tell
 					end tell
 				end if
@@ -345,6 +365,11 @@ on WriteToReport(indvRef, DList)
 						my TextToWord(". ", "", "")
 					end if
 				end tell
+				
+				-- add optionally spouse details if collected above
+				if spouseDes is not "" then
+					my TextToWord(spouseDes, "", "")
+				end if
 				
 				-- and box with children (unless in the final generation)
 				if i < numDList then
