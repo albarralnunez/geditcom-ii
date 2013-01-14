@@ -11,9 +11,6 @@
 property scriptName : "Age Analysis Report"
 global rpt
 
--- if no document is open then quit
-if CheckAvailable(scriptName,1.5) is false then return
-
 -- results
 set numBdays to 0
 set minBday to 10000000
@@ -196,26 +193,6 @@ on writeExtreme(exTitle, exRef, exText)
 	set rpt to rpt & "</tr>" & return
 end writeExtreme
 
-(* Activate GEDitCOM II (if needed) and verify acceptable
-     version is running and a document is open. Return true
-     or false if script can run.
-*)
-on CheckAvailable(sName, vNeed)
-	tell application "GEDitCOM II"
-		activate
-		if versionNumber < vNeed then
-			user option title "The script '" & sName & Â
-				"' requires GEDitCOM II, Version " & vNeed & " or newer" message "Please upgrade and try again." buttons {"OK"}
-			return false
-		end if
-		if number of documents is 0 then
-			user option title "The script '" & sName & Â
-				"' requires a document to be open" message "Please open a document and try again." buttons {"OK"}
-			return false
-		end if
-	end tell
-	return true
-end CheckAvailable
 
 on roundThis(n, numDecimals)
 	set x to 10 ^ numDecimals
