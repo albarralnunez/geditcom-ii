@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>main</key>
+	<string>Timeline Report.py</string>
+	<key>minimum version</key>
+	<real>1.6</real>
+	<key>main SD</key>
+	<string>Timeline Report.py</string>
+	<key>minimum version SD</key>
+	<integer>1</integer>
+	<key>menu command</key>
+	<string>Timeline Report</string>
+	<key>description</key>
+	<string>Creates a table with a chronological list of genealogical events</string>
+	<key>help</key>
+	<string>help.html</string>
+	<key>category</key>
+	<string>Reports</string>
+</dict>
+</plist>

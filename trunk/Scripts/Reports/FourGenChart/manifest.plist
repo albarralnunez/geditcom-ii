@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>main</key>
+	<string>Four Gen Chart.py</string>
+	<key>minimum version</key>
+	<real>1.6</real>
+	<key>main SD</key>
+	<string>Four Gen Chart.py</string>
+	<key>minimum version SD</key>
+	<integer>1</integer>
+	<key>menu command</key>
+	<string>Four Generation Chart</string>
+	<key>description</key>
+	<string>Displays a four-generation tree of ancestors for the current individual</string>
+	<key>help</key>
+	<string>help.html</string>
+	<key>category</key>
+	<string>Reports</string>
+</dict>
+</plist>

@@ -39,8 +39,10 @@ def block(indi,gen,cell) :
 ################### Main Script
 
 # Preamble
-scriptName = "4gen1.ll native conversion"
-gedit = CheckVersionAndDocument(scriptName,1.6,2)
+scriptName = "Four Generation Chart"
+gedit = CheckVersionAndDocument(scriptName,0,0)
+if not(gedit) : quit()
+
 gdoc = FrontDocument()
 rpt = ScriptOutput(scriptName,"html")
 rpt.css("* { font-size: 12pt; }\n")

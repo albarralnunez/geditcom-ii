@@ -107,7 +107,7 @@ def GetBlockLine(blkYear) :
 ################### Main Script
 
 # fetch application object
-gedit = CheckVersionAndDocument("Perpetual Calendar",1.6,2)
+gedit = CheckVersionAndDocument("Perpetual Calendar",0,0)
 if not(gedit) : quit()
 gdoc = FrontDocument()
 
