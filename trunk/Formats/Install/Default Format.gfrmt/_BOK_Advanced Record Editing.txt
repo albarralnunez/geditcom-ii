@@ -20,7 +20,9 @@ EndGroup
 cell GroupBox,local("Select Script")
   width -1
   newline -3
-  Show _USER
+  if #appName$!="GEDitCOM SD"
+    Show _USER
+  endif
   Show _XTEX
 EndGroup
 

@@ -54,10 +54,15 @@ cell GroupBox,local("Create Book")
   cell LinkButton,local("Create Book")
   set border shadowlesssquare
   sizetofit
-  if @_USER="Y"
-    set ScriptLink "Reports/Generations LaTeX Book" ScriptType "user"
+  log #appName$
+  if #appName$!="GEDitCOM SD"
+    if @_USER="Y"
+      set ScriptLink "Reports/CreateBook.gplug/Generations LaTeX Book" ScriptType "user"
+    else
+      set ScriptLink "Reports/CreateBook.gplug/Generations LaTeX Book" ScriptType "system"
+    endif
   else
-    set ScriptLink "Reports/Generations LaTeX Book" ScriptType "system"
+    set ScriptLink "CreateBook.gplug/Generations LaTeX Book" ScriptType "system"
   endif
   help local("Click to typeset the book")
   
