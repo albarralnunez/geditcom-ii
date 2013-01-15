@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>category</key>
+	<string>Reports</string>
+	<key>description</key>
+	<string>Create a complete book from your genealogy data</string>
+	<key>help</key>
+	<string>help.html</string>
+	<key>main</key>
+	<string>Generations LaTeX Book.py</string>
+	<key>main SD</key>
+	<string>Generations LaTeX Book.py</string>
+	<key>menu command</key>
+	<string>Create Generations Book</string>
+	<key>minimum version</key>
+	<string>1.7</string>
+	<key>minimum version SD</key>
+	<string>1</string>
+</dict>
+</plist>

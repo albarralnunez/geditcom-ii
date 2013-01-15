@@ -1052,7 +1052,7 @@ def TeXCommand(command_line,theDir,descrip) :
 # Preamble
 scriptVersion = 9
 scriptName = "Generations LaTeX Book"
-gedit = CheckVersionAndDocument(scriptName,1.7,1)
+gedit = CheckVersionAndDocument(scriptName,0,0)
 gdoc = FrontDocument()
 gdoc.notifyProgressFraction_message_(-1.,"-------- Running '"+scriptName+"' version "+str(scriptVersion)+" --------")
 
