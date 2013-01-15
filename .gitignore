@@ -1,4 +1,5 @@
 # ignore in all folders
 .DS_Store
 *.pyc
+*.scpt
 

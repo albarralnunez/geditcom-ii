@@ -2,21 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>main</key>
-	<string>Age Analysis Report.applescript</string>
-	<key>minimum version</key>
-	<real>1.5</real>
-	<key>main SD</key>
-	<string>Age Analysis Report SD.scpt</string>
-	<key>minimum version SD</key>
-	<integer>1</integer>
-	<key>menu command</key>
-	<string>Age Analysis Report</string>
-	<key>description</key>
-	<string>Analyze ages of your ancestors and displays a bar chart of the results</string>
-	<key>help</key>
-	<string>help.html</string>
 	<key>category</key>
 	<string>Reports</string>
+	<key>description</key>
+	<string>Analyzes ages of your ancestors and displays a bar chart of the results</string>
+	<key>help</key>
+	<string>help.html</string>
+	<key>main</key>
+	<string>Age Analysis Report.scpt</string>
+	<key>main SD</key>
+	<string>Age Analysis Report SD.scpt</string>
+	<key>menu command</key>
+	<string>Age Analysis Report</string>
+	<key>minimum version</key>
+	<real>1.5</real>
+	<key>minimum version SD</key>
+	<integer>1</integer>
 </dict>
 </plist>
