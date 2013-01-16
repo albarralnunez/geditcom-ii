@@ -5,7 +5,7 @@
 	<key>category</key>
 	<string>Editing Tools</string>
 	<key>description</key>
-	<string>Changes case of all surnames to upper case, title case, or upper case surnames</string>
+	<string>Changes case of name to upper case, title case, or surname upper case</string>
 	<key>help</key>
 	<string>help.html</string>
 	<key>main</key>

@@ -15,12 +15,10 @@ property scriptName : "Name Case Script"
 global numChanged, nameCase, recs
 
 tell application "GEDitCOM II"
-	-- needs a document
-	activate
 	if number of documents is 0 then
 		user option title "The script '" & scriptName & Â
 			"' requires a document to be open" message "Please open a document and try again." buttons {"OK"}
-		return
+		return false
 	end if
 	
 	-- choose all records or selected records (with option to cancel)
