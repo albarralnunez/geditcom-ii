@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>category</key>
+	<string>Editing Tools</string>
+	<key>description</key>
+	<string>Changes case of all surnames to upper case, title case, or upper case surnames</string>
+	<key>help</key>
+	<string>help.html</string>
+	<key>main</key>
+	<string>Change Name Case.scpt</string>
+	<key>main SD</key>
+	<string>Change Name Case SD.scpt</string>
+	<key>menu command</key>
+	<string>Change Name Case</string>
+	<key>minimum version</key>
+	<real>1.5</real>
+	<key>minimum version SD</key>
+	<integer>1</integer>
+</dict>
+</plist>

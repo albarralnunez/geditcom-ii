@@ -14,10 +14,15 @@
 property scriptName : "Name Case Script"
 global numChanged, nameCase, recs
 
--- if no document is open then quit
-if CheckAvailable(scriptName, 1.5) is false then return
-
 tell application "GEDitCOM II"
+	-- needs a document
+	activate
+	if number of documents is 0 then
+		user option title "The script '" & scriptName & Â
+			"' requires a document to be open" message "Please open a document and try again." buttons {"OK"}
+		return
+	end if
+	
 	-- choose all records or selected records (with option to cancel)
 	set whichOnes to user option title Â
 		"Which names should be changed?" message Â
@@ -88,23 +93,3 @@ on nameChange(recSet)
 	end tell
 end nameChange
 
-(* Activate GEDitCOM II (if needed) and verify acceptable
-     version is running and a document is open. Return true
-     or false if script can run.
-*)
-on CheckAvailable(sName, vNeed)
-	tell application "GEDitCOM II"
-		activate
-		if versionNumber < vNeed then
-			user option title "The script '" & sName & Â
-				"' requires GEDitCOM II, Version " & vNeed & " or newer" message "Please upgrade and try again." buttons {"OK"}
-			return false
-		end if
-		if number of documents is 0 then
-			user option title "The script '" & sName & Â
-				"' requires a document to be open" message "Please open a document and try again." buttons {"OK"}
-			return false
-		end if
-	end tell
-	return true
-end CheckAvailable
